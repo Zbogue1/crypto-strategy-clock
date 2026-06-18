@@ -1,0 +1,2 @@
+[deploy]
+startCommand = "python crypto_oracle_v3.py --once"
