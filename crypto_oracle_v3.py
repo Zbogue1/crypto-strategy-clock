@@ -1489,6 +1489,7 @@ def run_cycle(expert_mode: bool = False):
         signal     = analysis.get("signal", "HOLD")
         confidence = analysis.get("confidence", 0)
         coin_price = analysis.get("selected_coin_price", snap.btc_price)
+        pre_trade_mode = analysis.get("_mode", "HUNTING")  # capture BEFORE pm changes it
         new_mode   = pm_process_signal(signal, coin_price, confidence)
         analysis["_mode"] = new_mode
         log.info(f"Mode: {new_mode}  |  Signal: {signal}  |  Coin: {analysis.get('selected_coin')}")
@@ -1501,7 +1502,7 @@ def run_cycle(expert_mode: bool = False):
         coin_price_  = analysis.get("selected_coin_price", snap.btc_price) or 0
         signal_      = analysis.get("signal", "HOLD")
         confidence_  = analysis.get("confidence", 0)
-        mode_        = analysis.get("_mode", "HUNTING")
+        mode_        = pre_trade_mode if HAS_POSITION else analysis.get("_mode", "HUNTING")
         exit_target_ = analysis.get("exit_target")
         stop_loss_   = analysis.get("stop_loss")
         entry_target_= analysis.get("entry_target")
