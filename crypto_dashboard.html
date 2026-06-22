@@ -2,148 +2,295 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Crypto Strategy Clock — BTC — Jun 17, 2026</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🔮 Crypto Strategy Clock</title>
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,sans-serif;background:#07070f;color:#e0e0e0;padding:20px 16px;min-height:100vh}
-.wrap{max-width:660px;margin:0 auto}
-.header{text-align:center;padding:24px 0 8px}
-.header-title{font-size:.8em;text-transform:uppercase;letter-spacing:.18em;color:#444;font-weight:600}
-.header-ts{font-size:.78em;color:#333;margin-top:6px}
-.alert-strip{padding:14px 18px;border-radius:10px;margin:16px 0;line-height:1.6;font-size:.92em;color:#ddd}
-.hero-card{background:linear-gradient(160deg,#0f0f1a,#141428);border:1px solid #1e1e3a;border-radius:16px;padding:40px 24px 32px;text-align:center;margin:16px 0;position:relative;overflow:hidden}
-.hero-card::before{content:'';position:absolute;top:-60px;left:50%;transform:translateX(-50%);width:320px;height:320px;background:radial-gradient(#ff980018,transparent 70%);pointer-events:none}
-.hero-coin{font-size:1.1em;font-weight:800;color:#fff;letter-spacing:.05em;margin-bottom:6px}
-.hero-price{font-size:.9em;color:#666;margin-bottom:24px}
-.hero-signal{font-size:4.5em;font-weight:900;letter-spacing:.15em;color:#ff9800;line-height:1;margin-bottom:12px;text-shadow:0 0 40px #ff980044}
-.hero-conf{font-size:.95em;color:#666;margin-bottom:20px}
-.conf-track{width:160px;height:4px;background:#1a1a2a;border-radius:2px;margin:0 auto 24px}
-.conf-fill{height:100%;border-radius:2px;background:#ff9800;width:0%}
-.hero-banner{font-size:.95em;color:#999;line-height:1.7;font-style:italic;max-width:500px;margin:0 auto 24px;padding:0 12px}
-.hero-explanation{font-size:1em;color:#ccc;line-height:1.75;margin-bottom:20px;text-align:left;background:#0a0a14;border-radius:10px;padding:16px 18px}
-.hero-action{background:#0f1f0f;border-left:3px solid #00c853;border-radius:0 8px 8px 0;padding:14px 16px;text-align:left;font-size:.92em;color:#ccc;line-height:1.7}
-.card{background:#0f0f1a;border:1px solid #1a1a2a;border-radius:12px;padding:20px;margin-bottom:14px}
-.card-label{font-size:.72em;text-transform:uppercase;letter-spacing:.12em;color:#444;font-weight:600;margin-bottom:14px}
-.targets-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.target-item{background:#0a0a14;border-radius:8px;padding:12px 14px}
-.target-lbl{font-size:.75em;color:#555;margin-bottom:4px}
-.target-val{font-size:1.15em;font-weight:700;color:#fff}
-.target-val.green{color:#00c853}
-.target-val.red{color:#ef5350}
-.why-catalyst{font-size:.9em;color:#aaa;margin-bottom:10px;line-height:1.6;padding:10px 14px;background:#0a0a14;border-left:3px solid #ff9800;border-radius:0 6px 6px 0}
-.catalyst-em{color:#ff9800;font-weight:600}
-.why-text{font-size:.9em;color:#888;line-height:1.65;margin-top:10px}
-.news-source{margin-bottom:16px}
-.news-src-lbl{font-size:.72em;text-transform:uppercase;letter-spacing:.1em;color:#444;font-weight:600;margin-bottom:8px}
-.card ul{padding-left:18px;color:#999;line-height:2.1;font-size:.9em}
-.risk-list li{color:#ef9a9a}
-.hl-src{color:#333;font-size:.82em}
-.footer{text-align:center;color:#252535;font-size:.75em;margin:24px 0 8px}
-/* Perf / learning (reuse from v2) */
-.accuracy-card h3{margin-bottom:4px}
-.acc-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px}
-.acc-pct{font-size:3em;font-weight:800;line-height:1}
-.acc-sub{color:#555;font-size:.85em;margin-top:2px}
-.gauge-track{height:10px;background:#1e1e2e;border-radius:5px;overflow:hidden;margin-bottom:8px}
-.gauge-fill{height:100%;border-radius:5px;transition:width 1s ease}
-.acc-trend{font-size:.9em;font-weight:500;margin-bottom:8px}
-.streak-badge{display:inline-block;padding:5px 14px;border-radius:20px;font-size:.85em;font-weight:600;margin:8px 0}
-.learning-card h3{margin-bottom:20px}
-.learning-tier{margin-bottom:22px;padding-bottom:22px;border-bottom:1px solid #1e1e2e}
-.learning-tier:last-child{margin-bottom:0;padding-bottom:0;border-bottom:none}
-.tier-eyebrow{font-size:.75em;text-transform:uppercase;letter-spacing:.1em;color:#555;margin-bottom:8px;font-weight:600}
-.tier1 .tier-eyebrow{color:#4caf50}
-.tier2 .tier-eyebrow{color:#64b5f6}
-.tier3 .tier-eyebrow{color:#ef9a9a}
-.tier-text{color:#ccc;line-height:1.75;font-size:.95em}
-.pattern-row{display:flex;align-items:flex-start;gap:12px;margin-bottom:10px}
-.pattern-num{font-size:1.3em;font-weight:800;color:#64b5f6;line-height:1.3;flex-shrink:0;width:20px}
-.pattern-text{color:#ccc;line-height:1.75;font-size:.95em}
+  :root {
+    --bg: #0a0a0f;
+    --card: #13131a;
+    --border: #1e1e2e;
+    --text: #e0e0f0;
+    --muted: #6e6e8e;
+    --green: #00c853;
+    --red: #ff1744;
+    --orange: #ff9800;
+    --blue: #448aff;
+    --purple: #c980ff;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    min-height: 100vh;
+    padding: 24px 16px;
+  }
+  .container { max-width: 860px; margin: 0 auto; }
+
+  .header { text-align: center; margin-bottom: 28px; }
+  .header h1 { font-size: 1.8rem; letter-spacing: 2px; color: var(--purple); }
+  .header .sub { color: var(--muted); font-size: 0.85rem; margin-top: 6px; }
+  .last-updated { color: var(--muted); font-size: 0.8rem; margin-top: 4px; }
+
+  .signal-block {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 16px; padding: 28px; text-align: center; margin-bottom: 20px;
+  }
+  .signal-badge {
+    display: inline-block; font-size: 2.2rem; font-weight: 800;
+    letter-spacing: 6px; padding: 14px 40px; border-radius: 12px; margin-bottom: 14px;
+  }
+  .badge-BUY, .badge-STRONG_BUY { background: #00c85322; color: var(--green); border: 2px solid var(--green); }
+  .badge-HOLD                   { background: #ff980022; color: var(--orange); border: 2px solid var(--orange); }
+  .badge-SELL, .badge-STRONG_SELL { background: #ff174422; color: var(--red); border: 2px solid var(--red); }
+  .coin-name { font-size: 1.4rem; font-weight: 700; margin-bottom: 6px; }
+  .coin-price { font-size: 1rem; color: var(--muted); }
+  .confidence-bar-wrap { margin: 14px auto 0; max-width: 320px; }
+  .confidence-label { font-size: 0.8rem; color: var(--muted); margin-bottom: 6px; }
+  .confidence-bar { background: #1e1e2e; border-radius: 8px; height: 10px; overflow: hidden; }
+  .confidence-fill { height: 100%; border-radius: 8px; }
+  .headline { font-style: italic; color: var(--muted); margin-top: 14px; font-size: 0.95rem; }
+
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px; }
+  @media (max-width: 600px) { .grid { grid-template-columns: 1fr; } }
+
+  .card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 12px; padding: 20px;
+  }
+  .card h3 { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1.5px; color: var(--muted); margin-bottom: 12px; }
+  .card p  { font-size: 0.92rem; line-height: 1.6; color: var(--text); }
+
+  .portfolio-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 12px; padding: 20px; margin-bottom: 20px;
+  }
+  .portfolio-card h3 { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1.5px; color: var(--muted); margin-bottom: 14px; }
+  .port-row { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid var(--border); }
+  .port-row:last-child { border-bottom: none; }
+  .port-label { font-size: 0.85rem; color: var(--muted); }
+  .port-value { font-size: 0.95rem; font-weight: 600; }
+  .pos-green { color: var(--green); }
+  .pos-red   { color: var(--red); }
+  .pos-neutral { color: var(--text); }
+
+  .cred-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 12px; padding: 20px; margin-bottom: 20px;
+  }
+  .cred-card h3 { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1.5px; color: var(--muted); margin-bottom: 14px; }
+  .cred-row { display: flex; align-items: center; gap: 10px; padding: 8px 0; border-bottom: 1px solid #1a1a28; }
+  .cred-row:last-child { border-bottom: none; }
+  .cred-source { flex: 1; font-size: 0.88rem; }
+  .cred-type { font-size: 0.72rem; color: var(--muted); background: #1e1e2e; padding: 2px 8px; border-radius: 4px; }
+  .cred-bar-wrap { width: 80px; }
+  .cred-bar { background: #1e1e2e; border-radius: 4px; height: 6px; overflow: hidden; }
+  .cred-fill { height: 100%; border-radius: 4px; }
+  .cred-pct { font-size: 0.8rem; text-align: right; margin-top: 2px; }
+  .cred-count { font-size: 0.72rem; color: var(--muted); }
+
+  .list-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px; margin-bottom: 20px; }
+  .list-card h3 { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1.5px; color: var(--muted); margin-bottom: 12px; }
+  .list-card li { font-size: 0.88rem; line-height: 1.55; margin-bottom: 8px; padding-left: 4px; }
+  .list-card ul  { padding-left: 18px; }
+
+  .market-pills { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 8px; }
+  .pill { background: #1e1e2e; border-radius: 8px; padding: 6px 14px; font-size: 0.82rem; }
+  .pill span { color: var(--muted); margin-right: 4px; }
+
+  .signals-list { display: flex; flex-direction: column; gap: 8px; }
+  .signal-pill { background: #1a1a28; border-radius: 8px; padding: 8px 12px; font-size: 0.83rem; line-height: 1.5; }
+  .signal-pill .sig-type { font-size: 0.7rem; color: var(--muted); background: #252535; padding: 2px 7px; border-radius: 4px; margin-right: 6px; }
+
+  .loading { text-align: center; color: var(--muted); padding: 60px; font-size: 1rem; }
+  .error   { text-align: center; color: var(--red); padding: 40px; font-size: 0.9rem; background: var(--card); border-radius: 12px; }
+
+  .refresh-btn {
+    display: block; margin: 0 auto 24px; padding: 10px 28px;
+    background: #1e1e2e; border: 1px solid var(--border); border-radius: 8px;
+    color: var(--text); font-size: 0.85rem; cursor: pointer;
+  }
+  .refresh-btn:hover { background: #252535; }
 </style>
 </head>
 <body>
-<div class="wrap">
-
+<div class="container">
   <div class="header">
-    <div class="header-title">🔮 Crypto Strategy Clock</div>
-    <div class="header-ts">June 17, 2026  ·  07:43 PM</div>
+    <h1>🔮 CRYPTO STRATEGY CLOCK</h1>
+    <div class="sub">Swing Trading Intelligence Agent · Paper Portfolio</div>
+    <div class="last-updated" id="lastUpdated">Loading…</div>
   </div>
 
-  
-
-  <div class="hero-card">
-    <div class="hero-coin">BTC &nbsp;·&nbsp; Bitcoin</div>
-    <div class="hero-price">$64,371.0000</div>
-    <div class="hero-signal">HOLD</div>
-    <div class="hero-conf">Confidence: 0%</div>
-    <div class="conf-track"><div class="conf-fill"></div></div>
-    
-    <div class="hero-explanation">Could not reach the analysis service.</div>
-    <div class="hero-action">👉 &nbsp;Wait for the next update.</div>
-  </div>
-
-  
-  <div class="card portfolio-card">
-    <div class="card-label">💼 Paper Portfolio — Virtual $1,000</div>
-
-    <div class="port-hero">
-      <div class="port-total">$1,000.00</div>
-      <div class="port-return" style="color:#00c853">+0.00% total return</div>
-    </div>
-
-    <div class="port-bar-track">
-      <div class="port-bar-fill" style="width:50%;background:#00c853"></div>
-    </div>
-
-    <div class="port-stats">
-      <div class="port-stat"><div class="ps-val">$1,000.00</div><div class="ps-label">Cash</div></div>
-      <div class="port-stat"><div class="ps-val">$+0.00</div><div class="ps-label">Realized P&L</div></div>
-      <div class="port-stat"><div class="ps-val" style="color:#f44336">0%</div><div class="ps-label">Win Rate</div></div>
-      <div class="port-stat"><div class="ps-val">0</div><div class="ps-label">Trades</div></div>
-    </div>
-
-    
-
-    <div class="port-section-label">Last 5 Trades</div>
-    <div style='color:#666;font-style:italic'>No completed trades yet — waiting for first signal.</div>
-    <div class="trades-list"></div>
-  </div>
-
-  <style>
-    .portfolio-card { background: #1a1a2e; border: 1px solid #2a2a4a; }
-    .port-hero { text-align:center; padding: 12px 0 4px; }
-    .port-total { font-size:2.2rem; font-weight:700; color:#fff; }
-    .port-return { font-size:1rem; margin-top:2px; }
-    .port-bar-track { height:6px; background:#2a2a4a; border-radius:3px; margin:10px 0; }
-    .port-bar-fill { height:100%; border-radius:3px; transition:width .4s; }
-    .port-stats { display:flex; gap:8px; margin:12px 0; }
-    .port-stat { flex:1; background:#12122a; border-radius:8px; padding:8px; text-align:center; }
-    .ps-val { font-size:1.1rem; font-weight:700; color:#e0e0e0; }
-    .ps-label { font-size:.7rem; color:#888; margin-top:2px; }
-    .port-row { display:flex; gap:12px; margin:6px 0; font-size:.85rem; }
-    .port-label { color:#888; min-width:60px; }
-    .port-val { color:#ccc; }
-    .port-section-label { font-size:.75rem; color:#555; text-transform:uppercase;
-                            letter-spacing:.08em; margin:14px 0 6px; }
-    .trades-list { display:flex; flex-direction:column; gap:4px; }
-    .trade-row { display:flex; gap:10px; font-size:.82rem; align-items:center;
-                  padding:4px 0; border-bottom:1px solid #1e1e3a; }
-    .trade-coin { min-width:60px; font-weight:600; }
-    .trade-dates { color:#666; font-size:.75rem; flex:1; }
-    .trade-pnl { font-weight:700; min-width:55px; text-align:right; }
-    .trade-usd { min-width:60px; text-align:right; }
-    .trade-reason { color:#555; font-size:.75rem; }
-  </style>
-  
-  
-  
-  
-  
-  <div class="card"><div class="card-label">Latest News</div><div class="news-source"><div class="news-src-lbl">CoinDesk</div><ul><li>Kentucky targets prediction markets, puts red state in potential clash with Trump team</li><li>Fidelity joins Wall Street's race to manage stablecoin reserves</li><li>Here is how Coinbase plan to survive the crypto downturn by ditching its reliance on trading fees</li></ul></div><div class="news-source"><div class="news-src-lbl">CoinTelegraph</div><ul><li>Here’s what happened in crypto today</li><li>Gaming groups urge Congress to ban prediction markets sports betting in CLARITY Act</li><li>Crypto-backed GOP candidate wins Alabama Senate runoff with June primaries looming</li></ul></div><div class="news-source"><div class="news-src-lbl">Blockworks</div><ul><li>Venezuela’s sanctions are stablecoins’ proof of concept</li><li>The Strategy playbook looks different in 2026</li><li>Ranger’s ICO starts today, and MetaDAO eyes a reset</li></ul></div><div class="news-source"><div class="news-src-lbl">CryptoSlate</div><ul><li>Elon Musk’s wealth has now surpassed Bitcoin market cap amid SpaceX’s continued rally</li><li>World Cup bettors are losing millions on Polymarket’s “safe” favorites</li></ul></div></div>
-  
-
-  <div class="footer">Crypto Strategy Clock · Powered by Claude AI · Not financial advice</div>
+  <button class="refresh-btn" onclick="loadData()">↻ Refresh</button>
+  <div id="content"><div class="loading">⏳ Fetching latest data from the cloud…</div></div>
 </div>
+
+<script>
+const REPO   = "Zbogue1/crypto-strategy-clock";
+const BRANCH = "main";
+const BASE   = "https://raw.githubusercontent.com/" + REPO + "/" + BRANCH;
+
+async function fetchJSON(path) {
+  const r = await fetch(BASE + "/" + path + "?t=" + Date.now());
+  if (!r.ok) throw new Error(path + ": " + r.status);
+  return r.json();
+}
+
+function signalLabel(sig) {
+  const map = { STRONG_BUY: "STRONG BUY", BUY: "B U Y", HOLD: "H O L D", SELL: "S E L L", STRONG_SELL: "SELL NOW" };
+  return map[sig] || sig || "–";
+}
+
+function pctColor(v) {
+  if (v > 0) return "pos-green";
+  if (v < 0) return "pos-red";
+  return "pos-neutral";
+}
+
+function fmtPct(v) {
+  if (v === undefined || v === null) return "–";
+  const sign = v >= 0 ? "▲ +" : "▼ ";
+  return sign + Math.abs(v).toFixed(2) + "%";
+}
+
+function credColor(wr) {
+  if (wr >= 0.65) return "var(--green)";
+  if (wr >= 0.45) return "var(--orange)";
+  return "var(--red)";
+}
+
+async function loadData() {
+  var content = document.getElementById("content");
+  content.innerHTML = '<div class="loading">⏳ Fetching latest data…</div>';
+
+  try {
+    var results = await Promise.allSettled([
+      fetchJSON("latest_analysis.json"),
+      fetchJSON("paper_portfolio.json"),
+      fetchJSON("signal_credibility.json")
+    ]);
+
+    var a  = results[0].status === "fulfilled" ? results[0].value : null;
+    var p  = results[1].status === "fulfilled" ? results[1].value : null;
+    var cr = results[2].status === "fulfilled" ? results[2].value : null;
+
+    if (!a) {
+      content.innerHTML = '<div class="error">⚠️ Could not load analysis data.<br><small>The agent may not have run yet, or the GitHub push hasn\'t happened yet.</small></div>';
+      return;
+    }
+
+    document.getElementById("lastUpdated").textContent =
+      "Last updated: " + (a.timestamp ? new Date(a.timestamp).toLocaleString() : "unknown");
+
+    var sig  = a.signal || "HOLD";
+    var conf = a.confidence || 0;
+    var confColor = conf >= 70 ? "var(--green)" : conf >= 50 ? "var(--orange)" : "var(--red)";
+
+    // Portfolio
+    var portHTML = "";
+    if (p) {
+      var h = p.holding;
+      var currentPrice = a.selected_coin_price || (h ? h.entry_price : 0);
+      var holdingVal = h ? h.units * currentPrice : 0;
+      var totalVal = p.cash + holdingVal;
+      var overallPct = ((totalVal - 1000) / 1000 * 100).toFixed(2);
+      var winRate = p.total_trades > 0 ? (p.winning_trades + "W / " + p.losing_trades + "L") : "No trades yet";
+
+      var holdingHTML = "";
+      if (h) {
+        var unrPct = ((currentPrice - h.entry_price) / h.entry_price * 100).toFixed(2);
+        holdingHTML =
+          '<div class="port-row"><span class="port-label">Holding</span><span class="port-value">' + h.coin_ticker + ' × ' + parseFloat(h.units).toFixed(4) + ' units</span></div>' +
+          '<div class="port-row"><span class="port-label">Entry → Now</span><span class="port-value">$' + h.entry_price.toLocaleString() + ' → $' + currentPrice.toLocaleString() + '</span></div>' +
+          '<div class="port-row"><span class="port-label">Unrealized</span><span class="port-value ' + pctColor(parseFloat(unrPct)) + '">' + fmtPct(parseFloat(unrPct)) + '</span></div>' +
+          (h.exit_target ? '<div class="port-row"><span class="port-label">Target / Stop</span><span class="port-value">$' + h.exit_target.toLocaleString() + ' / $' + (h.stop_loss||0).toLocaleString() + '</span></div>' : "");
+      }
+
+      portHTML =
+        '<div class="portfolio-card"><h3>💼 Paper Portfolio · Started $1,000</h3>' +
+        '<div class="port-row"><span class="port-label">Total Value</span><span class="port-value ' + pctColor(parseFloat(overallPct)) + '">$' + totalVal.toFixed(2) + ' (' + (parseFloat(overallPct) >= 0 ? "+" : "") + overallPct + '%)</span></div>' +
+        '<div class="port-row"><span class="port-label">Cash Available</span><span class="port-value">$' + p.cash.toFixed(2) + '</span></div>' +
+        '<div class="port-row"><span class="port-label">Realized P&L</span><span class="port-value ' + pctColor(p.realized_pnl) + '">$' + p.realized_pnl.toFixed(2) + '</span></div>' +
+        '<div class="port-row"><span class="port-label">Trade Record</span><span class="port-value">' + winRate + '</span></div>' +
+        holdingHTML + '</div>';
+    }
+
+    // Signal credibility
+    var credHTML = "";
+    if (cr && cr.signal_stats && Object.keys(cr.signal_stats).length > 0) {
+      var stats = Object.values(cr.signal_stats).sort(function(a,b){ return b.win_rate - a.win_rate; });
+      var rows = stats.slice(0, 8).map(function(s) {
+        return '<div class="cred-row">' +
+          '<div><div class="cred-source">' + s.source + '</div>' +
+          '<div class="cred-count">' + s.wins + 'W / ' + s.losses + 'L · avg ' + (s.avg_return >= 0 ? "+" : "") + s.avg_return.toFixed(1) + '%</div></div>' +
+          '<span class="cred-type">' + s.signal_type + '</span>' +
+          '<div class="cred-bar-wrap"><div class="cred-bar"><div class="cred-fill" style="width:' + (s.win_rate*100).toFixed(0) + '%;background:' + credColor(s.win_rate) + '"></div></div>' +
+          '<div class="cred-pct" style="color:' + credColor(s.win_rate) + '">' + (s.win_rate*100).toFixed(0) + '%</div></div>' +
+          '</div>';
+      }).join("");
+      credHTML = '<div class="cred-card"><h3>🔮 Signal Credibility · ' + (cr.trade_count||0) + ' trades scored</h3>' +
+        (rows || '<p style="color:var(--muted);font-size:.85rem">No trades scored yet — data builds after first sell.</p>') +
+        '</div>';
+    }
+
+    // Key signals this cycle
+    var keySignalsHTML = "";
+    if (a.key_signals && a.key_signals.length > 0) {
+      var pills = a.key_signals.map(function(s) {
+        return '<div class="signal-pill"><span class="sig-type">' + s.signal_type + '</span><strong>' + s.source + '</strong>: ' + s.description + '</div>';
+      }).join("");
+      keySignalsHTML = '<div class="list-card"><h3>⚡ Key Signals This Cycle</h3><div class="signals-list">' + pills + '</div></div>';
+    }
+
+    // Risks + watchlist
+    var risks   = (a.risk_factors||[]).map(function(r){ return "<li>"+r+"</li>"; }).join("");
+    var watches = (a.watch_list||[]).map(function(w){ return "<li>"+w+"</li>"; }).join("");
+    var mode    = (a["_mode"] || "HUNTING");
+
+    content.innerHTML =
+      '<div class="signal-block">' +
+        '<div class="signal-badge badge-' + sig + '">' + signalLabel(sig) + '</div>' +
+        '<div class="coin-name">' + (a.selected_coin_name||"") + ' (' + (a.selected_coin||"") + ')</div>' +
+        '<div class="coin-price">$' + (a.selected_coin_price||0).toLocaleString() + '</div>' +
+        '<div class="confidence-bar-wrap">' +
+          '<div class="confidence-label">Confidence: ' + conf + '%</div>' +
+          '<div class="confidence-bar"><div class="confidence-fill" style="width:' + conf + '%;background:' + confColor + '"></div></div>' +
+        '</div>' +
+        '<div class="headline">"' + (a.layman_headline||"") + '"</div>' +
+      '</div>' +
+
+      '<div class="card" style="margin-bottom:20px"><h3>📊 Market Context</h3>' +
+        '<div class="market-pills">' +
+          '<div class="pill"><span>BTC</span>$' + (a.btc_price||0).toLocaleString() + '</div>' +
+          '<div class="pill"><span>Dominance</span>' + (a.btc_dominance||0) + '%</div>' +
+          '<div class="pill"><span>Fear & Greed</span>' + (a.fear_greed||"–") + '</div>' +
+          '<div class="pill"><span>Mode</span>' + mode + '</div>' +
+        '</div>' +
+        (a.market_context ? '<p style="margin-top:12px;font-size:.88rem;color:var(--muted)">' + a.market_context + '</p>' : "") +
+      '</div>' +
+
+      '<div class="grid">' +
+        '<div class="card"><h3>📖 What\'s Happening</h3><p>' + (a.layman_explanation||"–") + '</p></div>' +
+        '<div class="card"><h3>👉 Suggested Action</h3><p>' + (a.layman_action||"–") + '</p></div>' +
+      '</div>' +
+
+      portHTML +
+      credHTML +
+      keySignalsHTML +
+
+      (risks || watches ? '<div class="grid">' +
+        (risks   ? '<div class="list-card"><h3>⚠️ Risks to Watch</h3><ul>' + risks + '</ul></div>' : '') +
+        (watches ? '<div class="list-card"><h3>👁 Monitor Next 48h</h3><ul>' + watches + '</ul></div>' : '') +
+      '</div>' : "") +
+
+      '<div class="card" style="margin-bottom:20px"><h3>🧠 Expert Reasoning</h3><p>' + (a.expert_reasoning||"–") + '</p></div>';
+
+  } catch(err) {
+    content.innerHTML = '<div class="error">⚠️ ' + err.message + '<br><small>Make sure the agent has run at least once and pushed to GitHub.</small></div>';
+  }
+}
+
+loadData();
+</script>
 </body>
 </html>

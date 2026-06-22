@@ -95,6 +95,8 @@ ALERT_EMAIL         = os.environ.get("ALERT_EMAIL", "")
 ALERT_EMAIL_PASS    = os.environ.get("ALERT_EMAIL_PASSWORD", "")
 ALERT_EMAIL_TO      = os.environ.get("ALERT_EMAIL_TO", ALERT_EMAIL)
 DISCORD_WEBHOOK_URL = os.environ.get("DISCORD_WEBHOOK_URL", "")
+GITHUB_TOKEN        = os.environ.get("GITHUB_TOKEN", "")
+GITHUB_REPO         = "Zbogue1/crypto-strategy-clock"
 
 MODEL      = "claude-opus-4-6"
 LOG_FILE   = "crypto_history.jsonl"
@@ -1603,7 +1605,85 @@ def run_cycle(expert_mode: bool = False):
     send_alerts(analysis, snap)   # urgent-only alerts (STRONG_BUY / STRONG_SELL)
 
     log.info(f"Cycle complete. Dashboard: {HTML_FILE}")
+
+    # ── 13. Push results to GitHub so local dashboard stays live ─
+    push_results_to_github(analysis, snap)
+
     return analysis
+
+
+# ─── GITHUB LIVE PUSH ────────────────────────────────────────────────────────
+
+def push_results_to_github(analysis: dict, snap: MarketSnapshot):
+    """
+    After every cycle, push key data files to GitHub.
+    The local crypto_dashboard.html fetches these on open — always fresh.
+    """
+    if not GITHUB_TOKEN:
+        return
+
+    import base64
+
+    # Build latest_analysis.json — everything the dashboard needs
+    latest = {
+        "timestamp":            snap.timestamp,
+        "signal":               analysis.get("signal"),
+        "selected_coin":        analysis.get("selected_coin"),
+        "selected_coin_name":   analysis.get("selected_coin_name"),
+        "selected_coin_price":  analysis.get("selected_coin_price"),
+        "confidence":           analysis.get("confidence"),
+        "layman_headline":      analysis.get("layman_headline"),
+        "layman_explanation":   analysis.get("layman_explanation"),
+        "layman_action":        analysis.get("layman_action"),
+        "expert_reasoning":     analysis.get("expert_reasoning"),
+        "risk_factors":         analysis.get("risk_factors", []),
+        "watch_list":           analysis.get("watch_list", []),
+        "market_context":       analysis.get("market_context"),
+        "context_banner":       analysis.get("context_banner"),
+        "btc_price":            snap.btc_price,
+        "fear_greed":           snap.fear_greed,
+        "btc_dominance":        snap.btc_dominance,
+        "key_signals":          analysis.get("key_signals", []),
+        "_mode":                analysis.get("_mode", "HUNTING"),
+        "exit_target":          analysis.get("exit_target"),
+        "stop_loss":            analysis.get("stop_loss"),
+    }
+
+    # Files to push: name → content string
+    to_push = [("latest_analysis.json", json.dumps(latest, indent=2, default=str))]
+    for fname in ("paper_portfolio.json", "signal_credibility.json"):
+        if os.path.exists(fname):
+            with open(fname) as f:
+                to_push.append((fname, f.read()))
+
+    gh_headers = {
+        "Authorization": f"token {GITHUB_TOKEN}",
+        "Accept": "application/vnd.github.v3+json",
+    }
+    base_url = f"https://api.github.com/repos/{GITHUB_REPO}/contents"
+
+    for filename, content in to_push:
+        try:
+            # Fetch current SHA (required to update existing files)
+            r = requests.get(f"{base_url}/{filename}", headers=gh_headers, timeout=10)
+            sha = r.json().get("sha") if r.status_code == 200 else None
+
+            payload = {
+                "message": f"[bot] {filename} — {snap.timestamp[:16]}",
+                "content": base64.b64encode(content.encode()).decode(),
+                "branch":  "main",
+            }
+            if sha:
+                payload["sha"] = sha
+
+            pr = requests.put(f"{base_url}/{filename}", headers=gh_headers,
+                              json=payload, timeout=20)
+            if pr.status_code in (200, 201):
+                log.info(f"GitHub ✓ pushed {filename}")
+            else:
+                log.warning(f"GitHub push {filename}: {pr.status_code} {pr.text[:120]}")
+        except Exception as e:
+            log.warning(f"GitHub push error ({filename}): {e}")
 
 
 # ─── ENTRY POINT ─────────────────────────────────────────────────────────────
