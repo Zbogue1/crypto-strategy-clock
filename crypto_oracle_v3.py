@@ -1555,24 +1555,32 @@ def run_cycle(expert_mode: bool = False):
         expected_d_  = analysis.get("expected_timeframe_days")
 
         # Check stop-loss and take-profit first (price-driven exits)
+        # IMPORTANT: must use the HELD coin's current price, not the selected coin's price.
+        # They can be completely different assets (e.g. holding BTC while Claude picks ETH).
         sl_trade = None
         tp_trade = None
-        if coin_price_ > 0:
-            sl_trade = check_stop_loss(coin_price_)
-            if sl_trade:
-                # Stop-loss hit — score the signals as a loss
-                log_trade_exit(
-                    profit_pct=sl_trade.get("profit_pct", 0.0),
-                    won=sl_trade.get("result", "LOSS") == "WIN",
-                )
-            else:
-                tp_trade = check_take_profit(coin_price_)
-                if tp_trade:
-                    # Take-profit hit — score the signals as a win
+        # Use the HELD coin's live price for stop-loss/take-profit checks.
+        # The selected coin may be a completely different asset.
+        held_state = load_portfolio()
+        held_info  = held_state.get("holding")
+        if held_info:
+            held_ticker    = held_info.get("coin_ticker", "")
+            held_coin_snap = next((c for c in snap.top_coins if c.ticker == held_ticker), None)
+            held_price_    = held_coin_snap.price if held_coin_snap else None
+            if held_price_ and held_price_ > 0:
+                sl_trade = check_stop_loss(held_price_)
+                if sl_trade:
                     log_trade_exit(
-                        profit_pct=tp_trade.get("profit_pct", 0.0),
-                        won=tp_trade.get("result", "WIN") == "WIN",
+                        profit_pct=sl_trade.get("profit_pct", 0.0),
+                        won=sl_trade.get("result", "LOSS") == "WIN",
                     )
+                else:
+                    tp_trade = check_take_profit(held_price_)
+                    if tp_trade:
+                        log_trade_exit(
+                            profit_pct=tp_trade.get("profit_pct", 0.0),
+                            won=tp_trade.get("result", "WIN") == "WIN",
+                        )
 
         # Signal-driven trades
         if signal_ in ("BUY", "STRONG_BUY") and mode_ == "HUNTING":
@@ -1636,7 +1644,7 @@ def pull_state_from_github():
     }
     base_url = f"https://api.github.com/repos/{GITHUB_REPO}/contents"
 
-    for filename in ("paper_portfolio.json", "signal_credibility.json"):
+    for filename in ("paper_portfolio.json", "signal_credibility.json", "position_state.json"):
         try:
             r = requests.get(f"{base_url}/{filename}", headers=gh_headers, timeout=10)
             if r.status_code == 200:
@@ -1699,6 +1707,12 @@ def push_results_to_github(analysis: dict, snap: MarketSnapshot):
         "Accept": "application/vnd.github.v3+json",
     }
     base_url = f"https://api.github.com/repos/{GITHUB_REPO}/contents"
+
+    # Also push position_state.json so mode survives between Railway runs
+    for fname in ("position_state.json",):
+        if os.path.exists(fname):
+            with open(fname) as f:
+                to_push.append((fname, f.read()))
 
     for filename, content in to_push:
         try:
