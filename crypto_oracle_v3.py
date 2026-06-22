@@ -1484,6 +1484,11 @@ def run_cycle(expert_mode: bool = False):
     log.info(f"Crypto Strategy Clock — {datetime.now().strftime('%Y-%m-%d %H:%M')}")
     log.info("━"*55)
 
+    # ── 0. Restore state from GitHub ─────────────────────────
+    # Railway filesystem resets between cron runs.
+    # Pull portfolio + signal data from GitHub so memory survives.
+    pull_state_from_github()
+
     snap = MarketSnapshot(timestamp=datetime.now(timezone.utc).isoformat())
 
     # ── 1. Market-wide context ───────────────────────────────
@@ -1612,7 +1617,40 @@ def run_cycle(expert_mode: bool = False):
     return analysis
 
 
-# ─── GITHUB LIVE PUSH ────────────────────────────────────────────────────────
+# ─── GITHUB STATE SYNC ───────────────────────────────────────────────────────
+
+def pull_state_from_github():
+    """
+    Pull persistent state files from GitHub at the start of each run.
+    Railway's filesystem resets between cron executions — this restores memory.
+    Files pulled: paper_portfolio.json, signal_credibility.json
+    """
+    if not GITHUB_TOKEN:
+        return
+
+    import base64
+
+    gh_headers = {
+        "Authorization": f"token {GITHUB_TOKEN}",
+        "Accept": "application/vnd.github.v3+json",
+    }
+    base_url = f"https://api.github.com/repos/{GITHUB_REPO}/contents"
+
+    for filename in ("paper_portfolio.json", "signal_credibility.json"):
+        try:
+            r = requests.get(f"{base_url}/{filename}", headers=gh_headers, timeout=10)
+            if r.status_code == 200:
+                content = base64.b64decode(r.json()["content"]).decode()
+                with open(filename, "w") as f:
+                    f.write(content)
+                log.info(f"GitHub ↓ restored {filename}")
+            elif r.status_code == 404:
+                log.info(f"GitHub: {filename} not on GitHub yet — will create after this run")
+            else:
+                log.warning(f"GitHub pull {filename}: {r.status_code}")
+        except Exception as e:
+            log.warning(f"GitHub pull error ({filename}): {e}")
+
 
 def push_results_to_github(analysis: dict, snap: MarketSnapshot):
     """
