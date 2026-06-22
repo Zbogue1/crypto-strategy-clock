@@ -76,6 +76,18 @@ try:
 except ImportError:
     HAS_PAPER = False
 
+try:
+    from signal_intelligence import (
+        log_trade_entry, log_trade_exit,
+        build_credibility_context
+    )
+    HAS_SIGNAL_INTEL = True
+except ImportError:
+    HAS_SIGNAL_INTEL = False
+    def log_trade_entry(*a, **kw): pass
+    def log_trade_exit(*a, **kw): pass
+    def build_credibility_context(): return ""
+
 # ─── CONFIG ──────────────────────────────────────────────────────────────────
 ANTHROPIC_API_KEY   = os.environ.get("ANTHROPIC_API_KEY", "")
 FRED_API_KEY        = os.environ.get("FRED_API_KEY", "")
@@ -652,6 +664,9 @@ def ask_claude(snap: MarketSnapshot) -> dict:
     # Intelligence from past predictions
     intelligence_context = load_intelligence_context() if HAS_MEMORY else ""
 
+    # Signal credibility — which sources have actually been reliable vs misleading
+    credibility_context = build_credibility_context()
+
     # Build candidate summaries
     candidate_summaries = []
     for c in snap.candidates:
@@ -736,6 +751,8 @@ and Messari metrics.
 
 {intelligence_context if intelligence_context else ""}
 
+{credibility_context}
+
 {mode_prompt}
 
 YOUR PRIMARY JOB:
@@ -774,7 +791,11 @@ OUTPUT (valid JSON only, no markdown):
   "market_context": "1-2 sentences on overall crypto market conditions right now",
   "context_banner": "One authoritative sentence summarizing the current opportunity.",
   "alert": null or "critical alert message",
-  "alert_type": null or "bullish | bearish | danger"
+  "alert_type": null or "bullish | bearish | danger",
+  "key_signals": [
+    {{"source": "name of the news outlet, indicator, or community (e.g. CoinDesk, RSI, Reddit_CryptoCurrency, MACD, Fear_Greed, DeFiLlama, Messari, CoinTelegraph, Blockworks, CryptoSlate, funding_rate, volume_breakout, on_chain)", "signal_type": "news | technical | sentiment | onchain | macro", "description": "one sentence on what this signal said and why it mattered to your decision"}},
+    ... up to 5 key signals that most influenced your BUY/SELL/HOLD decision
+  ]
 }}"""
 
     try:
@@ -1509,19 +1530,44 @@ def run_cycle(expert_mode: bool = False):
         expected_d_  = analysis.get("expected_timeframe_days")
 
         # Check stop-loss and take-profit first (price-driven exits)
+        sl_trade = None
+        tp_trade = None
         if coin_price_ > 0:
             sl_trade = check_stop_loss(coin_price_)
-            if not sl_trade:
+            if sl_trade:
+                # Stop-loss hit — score the signals as a loss
+                log_trade_exit(
+                    profit_pct=sl_trade.get("profit_pct", 0.0),
+                    won=sl_trade.get("result", "LOSS") == "WIN",
+                )
+            else:
                 tp_trade = check_take_profit(coin_price_)
+                if tp_trade:
+                    # Take-profit hit — score the signals as a win
+                    log_trade_exit(
+                        profit_pct=tp_trade.get("profit_pct", 0.0),
+                        won=tp_trade.get("result", "WIN") == "WIN",
+                    )
 
         # Signal-driven trades
         if signal_ in ("BUY", "STRONG_BUY") and mode_ == "HUNTING":
             execute_buy(coin_ticker, coin_id, coin_price_, signal_, confidence_,
                         entry_target=entry_target_, exit_target=exit_target_,
                         stop_loss=stop_loss_, expected_days=expected_d_)
+            # Log which signals drove this entry for future credibility scoring
+            log_trade_entry(
+                coin=coin_ticker,
+                key_signals=analysis.get("key_signals", []),
+                confidence=confidence_,
+            )
 
         elif signal_ in ("SELL", "STRONG_SELL") and mode_ == "HOLDING":
-            execute_sell(coin_price_, signal_, reason="signal")
+            sold = execute_sell(coin_price_, signal_, reason="signal")
+            if sold:
+                log_trade_exit(
+                    profit_pct=sold.get("profit_pct", 0.0),
+                    won=sold.get("result", "LOSS") == "WIN",
+                )
 
     # ── 10. Save prediction ──────────────────────────────────
     if HAS_MEMORY:

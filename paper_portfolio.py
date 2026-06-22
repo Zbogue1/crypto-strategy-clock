@@ -16,8 +16,9 @@ Design:
 
 Position sizing (confidence-based):
   ≥ 80% confidence  →  40% of available cash
-  60–79% confidence →  20% of available cash
-  < 60% confidence  →  skip (signal not strong enough to act)
+  60–79% confidence →  25% of available cash
+  50–59% confidence →  15% of available cash (learning-mode small bet)
+  < 50% confidence  →  skip (signal not strong enough to act)
 """
 
 import os
@@ -33,8 +34,9 @@ STARTING_CASH   = 1_000.0
 # Confidence → fraction of bankroll to risk
 SIZING_TIERS = [
     (80, 0.40),   # ≥80% confidence → 40% of cash
-    (60, 0.20),   # ≥60%            → 20% of cash
-    (0,  0.00),   # <60%            → skip
+    (60, 0.25),   # ≥60%            → 25% of cash
+    (50, 0.15),   # ≥50%            → 15% of cash (learning mode — smaller bet)
+    (0,  0.00),   # <50%            → skip
 ]
 
 
