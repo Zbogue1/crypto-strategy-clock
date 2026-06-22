@@ -207,19 +207,37 @@ class MarketSnapshot:
 
 def scan_top_coins(snap: MarketSnapshot):
     """CoinGecko: top 20 coins by market cap — one batch request."""
+    # Retry up to 3 times with backoff on 429 rate-limit responses
+    for attempt in range(3):
+        try:
+            r = requests.get(
+                "https://api.coingecko.com/api/v3/coins/markets",
+                params={
+                    "vs_currency": "usd",
+                    "order": "market_cap_desc",
+                    "per_page": TOP_N_SCAN,
+                    "page": 1,
+                    "sparkline": "false",
+                    "price_change_percentage": "24h,7d",
+                },
+                timeout=15, headers=HEADERS)
+            if r.status_code == 429:
+                wait = 15 * (attempt + 1)   # 15s, 30s, 45s
+                log.warning(f"CoinGecko 429 rate-limit — waiting {wait}s (attempt {attempt+1}/3)")
+                time.sleep(wait)
+                continue
+            r.raise_for_status()
+            break   # success — exit retry loop
+        except Exception as e:
+            if attempt < 2:
+                time.sleep(15)
+                continue
+            log.warning(f"Top-20 scan failed after retries: {e}")
+            return
+    else:
+        log.warning("Top-20 scan: all retries exhausted")
+        return
     try:
-        r = requests.get(
-            "https://api.coingecko.com/api/v3/coins/markets",
-            params={
-                "vs_currency": "usd",
-                "order": "market_cap_desc",
-                "per_page": TOP_N_SCAN,
-                "page": 1,
-                "sparkline": "false",
-                "price_change_percentage": "24h,7d",
-            },
-            timeout=15, headers=HEADERS)
-        r.raise_for_status()
         coins = []
         for c in r.json():
             coins.append(CoinScan(
@@ -1476,7 +1494,7 @@ def run_cycle(expert_mode: bool = False):
     # ── 2. Top-20 scan ───────────────────────────────────────
     scan_top_coins(snap)
     if not snap.top_coins:
-        log.error("Could not scan top coins — aborting cycle")
+        log.warning("CoinGecko unavailable this cycle — will retry next run")
         return
 
     # ── 3. Select candidates for deep dive ───────────────────
