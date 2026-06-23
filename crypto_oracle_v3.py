@@ -70,7 +70,8 @@ try:
         execute_buy, execute_sell,
         check_stop_loss, check_take_profit,
         get_portfolio_value, get_portfolio_summary_lines,
-        build_portfolio_html, reset_portfolio
+        build_portfolio_html, reset_portfolio,
+        load_portfolio
     )
     HAS_PAPER = True
 except ImportError:
