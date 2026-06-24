@@ -1709,11 +1709,28 @@ def push_results_to_github(analysis: dict, snap: MarketSnapshot):
     }
     base_url = f"https://api.github.com/repos/{GITHUB_REPO}/contents"
 
-    # Also push position_state.json so mode survives between Railway runs
+    # Also push position_state.json and signal_history.json
     for fname in ("position_state.json",):
         if os.path.exists(fname):
             with open(fname) as f:
                 to_push.append((fname, f.read()))
+
+    # Push last 40 signal history entries so dashboard can show the chart
+    if os.path.exists(LOG_FILE):
+        try:
+            rows = []
+            with open(LOG_FILE) as f:
+                for line in f:
+                    line = line.strip()
+                    if line:
+                        try:
+                            rows.append(json.loads(line))
+                        except Exception:
+                            pass
+            to_push.append(("signal_history.json",
+                            json.dumps(rows[-40:], indent=2, default=str)))
+        except Exception as e:
+            log.warning(f"signal_history build failed: {e}")
 
     for filename, content in to_push:
         try:

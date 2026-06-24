@@ -11,34 +11,81 @@ Or just double-click "Open Dashboard.bat"
 import os, json, math, webbrowser, threading, time
 from datetime import datetime, timezone
 from http.server import HTTPServer, BaseHTTPRequestHandler
+try:
+    import urllib.request as urlreq
+except ImportError:
+    urlreq = None
 
 PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
 PORT = 8888
 
-# ─── DATA READERS ─────────────────────────────────────────────────────────────
+GITHUB_REPO   = "Zbogue1/crypto-strategy-clock"
+GITHUB_BRANCH = "main"
+GITHUB_BASE   = f"https://raw.githubusercontent.com/{GITHUB_REPO}/{GITHUB_BRANCH}"
+
+# Simple in-memory cache so we don't hit GitHub on every request
+_cache = {}
+CACHE_TTL = 300   # seconds (5 minutes — matches auto-refresh interval)
+
+def fetch_github_json(filename, default=None):
+    """Fetch a JSON file from GitHub with TTL caching."""
+    now = time.time()
+    if filename in _cache:
+        data, ts = _cache[filename]
+        if now - ts < CACHE_TTL:
+            return data
+    try:
+        url = f"{GITHUB_BASE}/{filename}"
+        req = urlreq.Request(url, headers={"Cache-Control": "no-cache"})
+        with urlreq.urlopen(req, timeout=8) as r:
+            data = json.loads(r.read().decode())
+        _cache[filename] = (data, now)
+        return data
+    except Exception as e:
+        print(f"[dashboard] GitHub fetch {filename}: {e}")
+        # Return stale cache if available
+        if filename in _cache:
+            return _cache[filename][0]
+        return default or {}
+
+def fetch_github_jsonl(filename, n=40):
+    """Fetch a JSONL file from GitHub and return last n rows."""
+    now = time.time()
+    cache_key = f"_jsonl_{filename}"
+    if cache_key in _cache:
+        data, ts = _cache[cache_key]
+        if now - ts < CACHE_TTL:
+            return data
+    try:
+        url = f"{GITHUB_BASE}/{filename}"
+        req = urlreq.Request(url, headers={"Cache-Control": "no-cache"})
+        with urlreq.urlopen(req, timeout=8) as r:
+            rows = []
+            for line in r.read().decode().splitlines():
+                line = line.strip()
+                if line:
+                    try:
+                        rows.append(json.loads(line))
+                    except Exception:
+                        pass
+        result = rows[-n:]
+        _cache[cache_key] = (result, now)
+        return result
+    except Exception as e:
+        print(f"[dashboard] GitHub fetch {filename}: {e}")
+        if cache_key in _cache:
+            return _cache[cache_key][0]
+        return []
 
 def read_json(filename, default=None):
-    path = os.path.join(PROJECT_DIR, filename)
-    if os.path.exists(path):
-        try:
-            with open(path) as f:
-                return json.load(f)
-        except Exception:
-            pass
-    return default or {}
+    return fetch_github_json(filename, default)
 
 def read_signal_history(n=40):
-    path = os.path.join(PROJECT_DIR, "crypto_history.jsonl")
-    if not os.path.exists(path):
-        return []
-    rows = []
-    with open(path) as f:
-        for line in f:
-            try:
-                rows.append(json.loads(line.strip()))
-            except Exception:
-                pass
-    return rows[-n:]
+    # Try signal_history.json first (pushed by Railway), fall back to jsonl
+    hist = fetch_github_json("signal_history.json", None)
+    if hist and isinstance(hist, list):
+        return hist[-n:]
+    return fetch_github_jsonl("crypto_history.jsonl", n)
 
 def build_api_data():
     port  = read_json("paper_portfolio.json")
