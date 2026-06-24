@@ -8,9 +8,9 @@ as if it were live, so the learning loop has honest performance data.
 
 Design:
   • Starts with $1,000 cash
-  • Holds ONE position at a time (single best opportunity model)
+  • Holds up to MAX_POSITIONS simultaneous positions
   • Auto-buys on BUY / STRONG_BUY using confidence-weighted sizing
-  • Auto-sells on SELL / STRONG_SELL (or stop-loss breach)
+  • Auto-sells specific coins on SELL signal or stop-loss/take-profit breach
   • Enforces stop-loss on every cycle automatically
   • Full trade history saved to paper_portfolio.json
 
@@ -30,6 +30,7 @@ log = logging.getLogger("paper_portfolio")
 
 PORTFOLIO_FILE  = "paper_portfolio.json"
 STARTING_CASH   = 1_000.0
+MAX_POSITIONS   = 3   # maximum simultaneous open positions
 
 # Confidence → fraction of bankroll to risk
 SIZING_TIERS = [
@@ -45,7 +46,7 @@ SIZING_TIERS = [
 def _default_state() -> dict:
     return {
         "cash":            STARTING_CASH,
-        "holding":         None,       # dict or None — only one position at a time
+        "holdings":        [],          # list of open position dicts
         "realized_pnl":    0.0,
         "peak_value":      STARTING_CASH,
         "total_trades":    0,
@@ -61,7 +62,16 @@ def load_portfolio() -> dict:
     if os.path.exists(PORTFOLIO_FILE):
         try:
             with open(PORTFOLIO_FILE) as f:
-                return json.load(f)
+                state = json.load(f)
+            # ── Migrate from old single-holding format ──
+            if "holding" in state and "holdings" not in state:
+                old = state.pop("holding")
+                state["holdings"] = [old] if old else []
+                save_portfolio(state)
+                log.info("Migrated portfolio: single holding → multi-holdings format")
+            elif "holdings" not in state:
+                state["holdings"] = []
+            return state
         except Exception as e:
             log.warning(f"Could not load portfolio: {e}")
     state = _default_state()
@@ -94,19 +104,25 @@ def execute_buy(coin_ticker: str, coin_id: str, price: float,
                 stop_loss: float = None, expected_days: int = None) -> dict:
     """
     Auto-execute a virtual BUY.
-    Returns a trade record dict, or None if the trade was skipped.
+    Returns a holding dict, or None if the trade was skipped.
 
     Skips if:
-      - Already holding a position
-      - Confidence below 60%
+      - Already holding this coin
+      - At MAX_POSITIONS
+      - Confidence below 50%
       - Not enough cash (< $10)
     """
     state = load_portfolio()
+    holdings = state.get("holdings", [])
 
-    # Already holding — one position at a time
-    if state["holding"]:
-        held = state["holding"]["coin_ticker"]
-        log.info(f"PAPER: Already holding {held} — skip BUY signal for {coin_ticker}")
+    # Already holding this coin?
+    if any(h["coin_ticker"] == coin_ticker for h in holdings):
+        log.info(f"PAPER: Already holding {coin_ticker} — skip duplicate BUY")
+        return None
+
+    # At max positions?
+    if len(holdings) >= MAX_POSITIONS:
+        log.info(f"PAPER: At max {MAX_POSITIONS} positions — skip buy {coin_ticker}")
         return None
 
     alloc = _position_size(state["cash"], confidence)
@@ -114,9 +130,9 @@ def execute_buy(coin_ticker: str, coin_id: str, price: float,
         log.info(f"PAPER: Confidence {confidence}% too low or cash too thin — skip buy {coin_ticker}")
         return None
 
-    fee      = round(alloc * TAKER_FEE, 4)
+    fee       = round(alloc * TAKER_FEE, 4)
     alloc_net = alloc - fee
-    units    = alloc_net / price
+    units     = alloc_net / price
 
     state["cash"]       = round(state["cash"] - alloc, 4)
     state["total_fees"] = round(state["total_fees"] + fee, 4)
@@ -136,21 +152,24 @@ def execute_buy(coin_ticker: str, coin_id: str, price: float,
         "entry_target":       entry_target,
         "expected_days":      expected_days,
     }
-    state["holding"] = holding
+    state["holdings"].append(holding)
     save_portfolio(state)
 
+    slots = f"[{len(state['holdings'])}/{MAX_POSITIONS} slots]"
     log.info(f"PAPER BUY  ▶ {coin_ticker}  ${price:,.4f}  ×{units:.4f} units  "
-             f"(${alloc:.2f} at {confidence}% conf)")
+             f"(${alloc:.2f} at {confidence}% conf)  {slots}")
     return holding
 
 
-def execute_sell(price: float, signal: str, reason: str = "signal") -> dict:
+def execute_sell(coin_ticker: str, price: float,
+                 signal: str, reason: str = "signal") -> dict:
     """
-    Auto-execute a virtual SELL of the current holding.
-    Returns a completed trade record, or None if no position held.
+    Auto-execute a virtual SELL of the named coin.
+    Returns a completed trade record, or None if that coin isn't held.
     """
-    state = load_portfolio()
-    h = state.get("holding")
+    state    = load_portfolio()
+    holdings = state.get("holdings", [])
+    h        = next((x for x in holdings if x["coin_ticker"] == coin_ticker), None)
     if not h:
         return None
 
@@ -183,110 +202,134 @@ def execute_sell(price: float, signal: str, reason: str = "signal") -> dict:
         "days_held":          days_held,
         "exit_target":        h.get("exit_target"),
         "stop_loss":          h.get("stop_loss"),
-        "hit_target":         h.get("exit_target") and price >= h["exit_target"],
-        "hit_stop":           h.get("stop_loss") and price <= h["stop_loss"],
+        "hit_target":         bool(h.get("exit_target") and price >= h["exit_target"]),
+        "hit_stop":           bool(h.get("stop_loss")   and price <= h["stop_loss"]),
         "result":             "WIN" if profit_pct > 0 else "LOSS",
     }
 
-    state["cash"]           = round(state["cash"] + net, 4)
-    state["realized_pnl"]   = round(state["realized_pnl"] + profit_usd, 4)
-    state["total_trades"]  += 1
-    state["total_fees"]     = round(state["total_fees"] + fee, 4)
+    # Remove this holding
+    state["holdings"]    = [x for x in holdings if x["coin_ticker"] != coin_ticker]
+    state["cash"]        = round(state["cash"] + net, 4)
+    state["realized_pnl"]= round(state["realized_pnl"] + profit_usd, 4)
+    state["total_trades"]+= 1
+    state["total_fees"]  = round(state["total_fees"] + fee, 4)
     if profit_pct > 0:
         state["winning_trades"] += 1
     else:
         state["losing_trades"]  += 1
 
-    total_val = state["cash"]  # no open position after sell
+    # Update peak value (cash + remaining positions at cost basis)
+    remaining_val = sum(x["allocated_usd"] for x in state["holdings"])
+    total_val     = state["cash"] + remaining_val
     if total_val > state["peak_value"]:
         state["peak_value"] = total_val
 
     state["trade_history"].append(trade)
-    state["holding"] = None
     save_portfolio(state)
 
     emoji = "✅" if profit_pct > 0 else "❌"
-    log.info(f"PAPER SELL {emoji} {h['coin_ticker']}  ${price:,.4f}  "
-             f"{profit_pct:+.2f}%  (${profit_usd:+.2f})  reason={reason}")
+    slots = f"[{len(state['holdings'])}/{MAX_POSITIONS} slots]"
+    log.info(f"PAPER SELL {emoji} {coin_ticker}  ${price:,.4f}  "
+             f"{profit_pct:+.2f}%  (${profit_usd:+.2f})  reason={reason}  {slots}")
     return trade
 
 
-def check_stop_loss(current_price: float) -> dict:
+def check_stop_loss(coin_ticker: str, current_price: float) -> dict:
     """
-    Called every cycle. If current price breaches the stop-loss, auto-sells.
-    Returns completed trade dict if stop triggered, else None.
+    Check stop-loss for a specific coin.
+    Returns completed trade dict if triggered, else None.
     """
-    state = load_portfolio()
-    h = state.get("holding")
+    state    = load_portfolio()
+    holdings = state.get("holdings", [])
+    h        = next((x for x in holdings if x["coin_ticker"] == coin_ticker), None)
     if not h or not h.get("stop_loss"):
         return None
-
     if current_price <= h["stop_loss"]:
-        log.warning(f"PAPER: Stop-loss hit! {h['coin_ticker']} "
+        log.warning(f"PAPER: Stop-loss hit! {coin_ticker} "
                     f"${current_price:.4f} ≤ stop ${h['stop_loss']:.4f}")
-        return execute_sell(current_price, "STOP_LOSS", reason="stop_loss")
+        return execute_sell(coin_ticker, current_price, "STOP_LOSS", reason="stop_loss")
     return None
 
 
-def check_take_profit(current_price: float) -> dict:
+def check_take_profit(coin_ticker: str, current_price: float) -> dict:
     """
-    Called every cycle. If price hits exit target, auto-sells.
-    Returns completed trade dict if target hit, else None.
+    Check take-profit for a specific coin.
+    Returns completed trade dict if triggered, else None.
     """
-    state = load_portfolio()
-    h = state.get("holding")
+    state    = load_portfolio()
+    holdings = state.get("holdings", [])
+    h        = next((x for x in holdings if x["coin_ticker"] == coin_ticker), None)
     if not h or not h.get("exit_target"):
         return None
-
     if current_price >= h["exit_target"]:
-        log.info(f"PAPER: Take-profit hit! {h['coin_ticker']} "
+        log.info(f"PAPER: Take-profit hit! {coin_ticker} "
                  f"${current_price:.4f} ≥ target ${h['exit_target']:.4f}")
-        return execute_sell(current_price, "TAKE_PROFIT", reason="take_profit")
+        return execute_sell(coin_ticker, current_price, "TAKE_PROFIT", reason="take_profit")
     return None
 
 
 # ─── PORTFOLIO VALUATION ──────────────────────────────────────────────────────
 
-def get_portfolio_value(current_price: float = None) -> dict:
+def get_portfolio_value(prices: dict = None) -> dict:
     """
     Returns a full snapshot of current portfolio value.
-    Pass current_price to compute unrealized P&L on open position.
+    prices: dict mapping ticker -> current_price for unrealized P&L computation.
+    Also accepts a single float (legacy) for BTC-only backward compat.
     """
-    state = load_portfolio()
-    h     = state.get("holding")
+    state    = load_portfolio()
+    holdings = state.get("holdings", [])
+    if isinstance(prices, (int, float)):
+        # Legacy: single price passed — try to map to first holding's ticker
+        if holdings:
+            prices = {holdings[0]["coin_ticker"]: prices}
+        else:
+            prices = {}
+    prices = prices or {}
 
-    unrealized_usd = 0.0
-    unrealized_pct = 0.0
-    holding_value  = 0.0
+    total_holding_value = 0.0
+    total_unrealized    = 0.0
+    holdings_detail     = []
 
-    if h and current_price:
-        holding_value  = round(h["units"] * current_price, 4)
-        unrealized_usd = round(holding_value - h["allocated_usd"], 4)
-        unrealized_pct = round(unrealized_usd / h["allocated_usd"] * 100, 2)
+    for h in holdings:
+        ticker    = h["coin_ticker"]
+        curr      = prices.get(ticker)
+        hv        = round(h["units"] * curr, 4)  if curr else 0.0
+        u_usd     = round(hv - h["allocated_usd"], 4) if curr else 0.0
+        u_pct     = round(u_usd / h["allocated_usd"] * 100, 2) if curr and h["allocated_usd"] else 0.0
+        total_holding_value += hv if curr else h["allocated_usd"]  # cost basis if no price
+        total_unrealized    += u_usd
+        holdings_detail.append({
+            **h,
+            "current_value":   hv,
+            "current_price":   curr,
+            "unrealized_usd":  u_usd,
+            "unrealized_pct":  u_pct,
+        })
 
-    total_value   = round(state["cash"] + holding_value, 4)
-    total_return  = round((total_value - STARTING_CASH) / STARTING_CASH * 100, 2)
-    drawdown      = round((total_value - state["peak_value"]) / state["peak_value"] * 100, 2) \
-                    if state["peak_value"] > 0 else 0.0
+    total_value  = round(state["cash"] + total_holding_value, 4)
+    total_return = round((total_value - STARTING_CASH) / STARTING_CASH * 100, 2)
+    drawdown     = round((total_value - state["peak_value"]) / state["peak_value"] * 100, 2) \
+                   if state["peak_value"] > 0 else 0.0
 
-    n       = state["total_trades"]
+    n        = state["total_trades"]
     win_rate = round(state["winning_trades"] / n * 100, 1) if n > 0 else 0.0
 
-    # Average profit per completed trade
     trades  = state.get("trade_history", [])
     avg_pnl = round(sum(t["profit_pct"] for t in trades) / len(trades), 2) if trades else 0.0
     best    = max((t["profit_pct"] for t in trades), default=0.0)
     worst   = min((t["profit_pct"] for t in trades), default=0.0)
 
-    return {
+    result = {
         "cash":             state["cash"],
-        "holding":          h,
-        "holding_value":    holding_value,
+        "holdings":         holdings_detail,               # full list
+        "holding":          holdings_detail[0] if holdings_detail else None,  # backward compat
+        "holding_value":    total_holding_value,
         "total_value":      total_value,
         "starting_cash":    STARTING_CASH,
         "realized_pnl":     state["realized_pnl"],
-        "unrealized_usd":   unrealized_usd,
-        "unrealized_pct":   unrealized_pct,
+        "unrealized_usd":   round(total_unrealized, 4),
+        "unrealized_pct":   round(total_unrealized / max(total_holding_value, 1) * 100, 2)
+                            if total_holding_value > 0 else 0.0,
         "total_return_pct": total_return,
         "peak_value":       state["peak_value"],
         "drawdown_pct":     drawdown,
@@ -299,36 +342,37 @@ def get_portfolio_value(current_price: float = None) -> dict:
         "worst_trade_pct":  worst,
         "total_fees":       state["total_fees"],
         "trade_history":    trades,
+        "position_count":   len(holdings),
+        "max_positions":    MAX_POSITIONS,
     }
+    return result
 
 
 # ─── DISPLAY HELPERS ──────────────────────────────────────────────────────────
 
-def get_portfolio_summary_lines(current_price: float = None) -> list:
+def get_portfolio_summary_lines(prices: dict = None) -> list:
     """Returns a list of display-ready strings for terminal output."""
-    p = get_portfolio_value(current_price)
-    h = p["holding"]
+    p     = get_portfolio_value(prices)
+    RESET = "\033[0m"
 
-    ret_col  = "\033[92m" if p["total_return_pct"] >= 0 else "\033[91m"
-    RESET    = "\033[0m"
-
+    ret_col = "\033[92m" if p["total_return_pct"] >= 0 else "\033[91m"
     lines = [
         f"  💼  Paper Portfolio  ·  Started $1,000",
         f"  Total value:  ${p['total_value']:,.2f}  "
         f"({ret_col}{p['total_return_pct']:+.2f}%{RESET}  overall)",
-        f"  Cash:         ${p['cash']:,.2f}",
+        f"  Cash:         ${p['cash']:,.2f}  "
+        f"[{p['position_count']}/{p['max_positions']} positions]",
     ]
 
-    if h:
-        u_col = "\033[92m" if p["unrealized_pct"] >= 0 else "\033[91m"
+    for h in p["holdings"]:
+        u_col = "\033[92m" if h["unrealized_pct"] >= 0 else "\033[91m"
         lines.append(
-            f"  Holding:      {h['coin_ticker']}  ×{h['units']:.4f} units  "
+            f"  ▶ {h['coin_ticker']}  ×{h['units']:.4f}  "
             f"entry ${h['entry_price']:,.4f}  "
-            f"now {u_col}{p['unrealized_pct']:+.1f}%{RESET}"
+            f"now {u_col}{h['unrealized_pct']:+.1f}%{RESET}"
         )
         if h.get("exit_target"):
-            lines.append(f"  Target:       ${h['exit_target']:,.4f}  |  "
-                         f"Stop: ${h.get('stop_loss', 0):,.4f}")
+            lines.append(f"      Target ${h['exit_target']:,.4f}  |  Stop ${h.get('stop_loss', 0):,.4f}")
 
     if p["total_trades"] > 0:
         lines.append(
@@ -342,33 +386,33 @@ def get_portfolio_summary_lines(current_price: float = None) -> list:
     return lines
 
 
-def build_portfolio_html(current_price: float = None) -> str:
+def build_portfolio_html(prices: dict = None) -> str:
     """Returns an HTML card for the dashboard."""
-    p = get_portfolio_value(current_price)
-    h = p["holding"]
+    p = get_portfolio_value(prices)
 
     ret_col  = "#00c853" if p["total_return_pct"] >= 0 else "#f44336"
-    u_col    = "#00c853" if p["unrealized_pct"] >= 0 else "#f44336"
     fill_pct = min(max((p["total_value"] - STARTING_CASH) / STARTING_CASH * 100 + 50, 0), 100)
 
-    holding_html = ""
-    if h:
-        holding_html = f"""
+    holdings_html = ""
+    for h in p["holdings"]:
+        u_col = "#00c853" if h["unrealized_pct"] >= 0 else "#f44336"
+        holdings_html += f"""
       <div class="port-row">
-        <span class="port-label">Holding</span>
+        <span class="port-label">{h['coin_ticker']}</span>
         <span class="port-val">
-          {h['coin_ticker']} &nbsp;·&nbsp; {h['units']:.4f} units &nbsp;·&nbsp;
-          entry ${h['entry_price']:,.4f} &nbsp;·&nbsp;
-          <span style="color:{u_col}">{p['unrealized_pct']:+.1f}% unrealized</span>
+          {h['units']:.4f} units &nbsp;·&nbsp; entry ${h['entry_price']:,.4f} &nbsp;·&nbsp;
+          <span style="color:{u_col}">{h['unrealized_pct']:+.1f}% unrealized</span>
         </span>
       </div>
       <div class="port-row">
         <span class="port-label">Targets</span>
         <span class="port-val">
-          🎯 Exit ${h.get('exit_target', 0):,.4f} &nbsp;&nbsp;
-          🛑 Stop ${h.get('stop_loss', 0):,.4f}
+          🎯 ${h.get('exit_target', 0):,.4f} &nbsp;&nbsp; 🛑 ${h.get('stop_loss', 0):,.4f}
         </span>
       </div>"""
+
+    if not holdings_html:
+        holdings_html = "<div style='color:#666;font-style:italic'>No open positions — hunting for entry.</div>"
 
     trade_rows = ""
     for t in reversed(p["trade_history"][-5:]):
@@ -387,6 +431,7 @@ def build_portfolio_html(current_price: float = None) -> str:
                 if not p["trade_history"] else ""
 
     win_color = "#00c853" if p["win_rate"] >= 50 else "#f44336"
+    slots_color = "#ffab40" if p["position_count"] >= MAX_POSITIONS else "#00c853"
 
     return f"""
   <div class="card portfolio-card">
@@ -405,10 +450,11 @@ def build_portfolio_html(current_price: float = None) -> str:
       <div class="port-stat"><div class="ps-val">${p['cash']:,.2f}</div><div class="ps-label">Cash</div></div>
       <div class="port-stat"><div class="ps-val">${p['realized_pnl']:+,.2f}</div><div class="ps-label">Realized P&L</div></div>
       <div class="port-stat"><div class="ps-val" style="color:{win_color}">{p['win_rate']:.0f}%</div><div class="ps-label">Win Rate</div></div>
-      <div class="port-stat"><div class="ps-val">{p['total_trades']}</div><div class="ps-label">Trades</div></div>
+      <div class="port-stat"><div class="ps-val" style="color:{slots_color}">{p['position_count']}/{MAX_POSITIONS}</div><div class="ps-label">Positions</div></div>
     </div>
 
-    {holding_html}
+    <div class="port-section-label">Open Positions</div>
+    {holdings_html}
 
     <div class="port-section-label">Last 5 Trades</div>
     {no_trades}
@@ -446,7 +492,6 @@ def build_portfolio_html(current_price: float = None) -> str:
 
 def _days_between(date_str1: str, date_str2: str) -> float:
     try:
-        from datetime import datetime, timezone
         d1 = datetime.fromisoformat(date_str1.replace("Z", "+00:00"))
         d2 = datetime.fromisoformat(date_str2.replace("Z", "+00:00"))
         return round(abs((d2 - d1).total_seconds() / 86400), 2)

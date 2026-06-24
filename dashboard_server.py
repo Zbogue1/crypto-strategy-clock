@@ -23,12 +23,12 @@ GITHUB_REPO   = "Zbogue1/crypto-strategy-clock"
 GITHUB_BRANCH = "main"
 GITHUB_BASE   = f"https://raw.githubusercontent.com/{GITHUB_REPO}/{GITHUB_BRANCH}"
 
-# Simple in-memory cache so we don't hit GitHub on every request
+# Simple in-memory cache
 _cache = {}
-CACHE_TTL = 300   # seconds (5 minutes — matches auto-refresh interval)
+CACHE_TTL = 300
 
 def fetch_github_json(filename, default=None):
-    """Fetch a JSON file from GitHub with TTL caching."""
+    """Fetch a JSON file from public GitHub raw URL."""
     now = time.time()
     if filename in _cache:
         data, ts = _cache[filename]
@@ -37,19 +37,19 @@ def fetch_github_json(filename, default=None):
     try:
         url = f"{GITHUB_BASE}/{filename}"
         req = urlreq.Request(url, headers={"Cache-Control": "no-cache"})
-        with urlreq.urlopen(req, timeout=8) as r:
+        with urlreq.urlopen(req, timeout=10) as r:
             data = json.loads(r.read().decode())
         _cache[filename] = (data, now)
+        print(f"[dashboard] fetched {filename} OK", flush=True)
         return data
     except Exception as e:
-        print(f"[dashboard] GitHub fetch {filename}: {e}")
-        # Return stale cache if available
+        print(f"[dashboard] GitHub fetch {filename}: {e}", flush=True)
         if filename in _cache:
             return _cache[filename][0]
-        return default or {}
+        return default if default is not None else {}
 
 def fetch_github_jsonl(filename, n=40):
-    """Fetch a JSONL file from GitHub and return last n rows."""
+    """Fetch a JSONL file from public GitHub raw URL, return last n rows."""
     now = time.time()
     cache_key = f"_jsonl_{filename}"
     if cache_key in _cache:
@@ -59,7 +59,7 @@ def fetch_github_jsonl(filename, n=40):
     try:
         url = f"{GITHUB_BASE}/{filename}"
         req = urlreq.Request(url, headers={"Cache-Control": "no-cache"})
-        with urlreq.urlopen(req, timeout=8) as r:
+        with urlreq.urlopen(req, timeout=10) as r:
             rows = []
             for line in r.read().decode().splitlines():
                 line = line.strip()
@@ -72,7 +72,7 @@ def fetch_github_jsonl(filename, n=40):
         _cache[cache_key] = (result, now)
         return result
     except Exception as e:
-        print(f"[dashboard] GitHub fetch {filename}: {e}")
+        print(f"[dashboard] GitHub fetch {filename}: {e}", flush=True)
         if cache_key in _cache:
             return _cache[cache_key][0]
         return []
@@ -103,21 +103,29 @@ def build_api_data():
         val_labels.append(t.get("exit_date", "")[:10])
         val_data.append(round(running, 2))
 
-    # Holding P&L if open position exists
-    holding      = port.get("holding")
+    # Multi-position holdings (migrate old single "holding" format)
+    holdings_raw = port.get("holdings")
+    if holdings_raw is None:
+        old = port.get("holding")
+        holdings_raw = [old] if old else []
+
+    # Compute unrealized P&L across all positions
     unrealized   = 0.0
-    unrealized_pct = 0.0
-    if holding and last.get("price"):
-        curr = last["price"]
-        if holding.get("units") and holding.get("allocated_usd"):
-            gross = holding["units"] * curr
-            unrealized = round(gross - holding["allocated_usd"], 2)
-            unrealized_pct = round(unrealized / holding["allocated_usd"] * 100, 2)
+    total_hold_val = 0.0
+    for h in holdings_raw:
+        if last.get("price") and h.get("coin_ticker") == last.get("coin"):
+            curr  = last["price"]
+            gross = h["units"] * curr
+            unrealized   += round(gross - h["allocated_usd"], 2)
+            total_hold_val += gross
+        else:
+            total_hold_val += h.get("allocated_usd", 0)
+
+    unrealized_pct = round(unrealized / max(total_hold_val, 1) * 100, 2) if total_hold_val else 0.0
 
     # Overall stats
     cash         = port.get("cash", 1000.0)
-    hold_val     = (holding["units"] * last["price"]) if holding and last.get("price") else 0.0
-    total_val    = round(cash + hold_val, 2)
+    total_val    = round(cash + total_hold_val, 2)
     total_ret    = round((total_val - 1000) / 1000 * 100, 2)
     n_trades     = port.get("total_trades", 0)
     winners      = port.get("winning_trades", 0)
@@ -133,9 +141,11 @@ def build_api_data():
     sig_signals  = [r.get("signal", "HOLD") for r in hist[-20:]]
     sig_colors   = []
     for s in sig_signals:
-        if s in ("BUY", "STRONG_BUY"):   sig_colors.append("#00c853")
+        if s in ("BUY", "STRONG_BUY"):    sig_colors.append("#00c853")
         elif s in ("SELL", "STRONG_SELL"): sig_colors.append("#f44336")
         else:                              sig_colors.append("#ff9800")
+
+    holding = holdings_raw[0] if holdings_raw else None  # backward compat
 
     return {
         "last_run":        last.get("ts", "Never"),
@@ -147,18 +157,20 @@ def build_api_data():
         "coin_ticker_held":pos.get("coin_ticker"),
 
         "portfolio": {
-            "cash":          round(cash, 2),
-            "total_value":   total_val,
-            "total_return":  total_ret,
-            "realized_pnl":  round(realized_pnl, 2),
-            "unrealized":    unrealized,
-            "unrealized_pct":unrealized_pct,
-            "n_trades":      n_trades,
-            "win_rate":      win_rate,
-            "avg_pnl":       avg_pnl,
-            "best":          round(best, 2),
-            "worst":         round(worst, 2),
-            "holding":       holding,
+            "cash":           round(cash, 2),
+            "total_value":    total_val,
+            "total_return":   total_ret,
+            "realized_pnl":   round(realized_pnl, 2),
+            "unrealized":     unrealized,
+            "unrealized_pct": unrealized_pct,
+            "n_trades":       n_trades,
+            "win_rate":       win_rate,
+            "avg_pnl":        avg_pnl,
+            "best":           round(best, 2),
+            "worst":          round(worst, 2),
+            "holding":        holding,
+            "holdings":       holdings_raw,
+            "position_count": len(holdings_raw),
         },
 
         "charts": {
@@ -770,6 +782,19 @@ if __name__ == "__main__":
   ╚══════════════════════════════════════════════╝
 """)
     os.chdir(PROJECT_DIR)
+
+    # Startup connectivity test
+    print("[startup] Testing GitHub connection...", flush=True)
+    try:
+        test_url = f"{GITHUB_BASE}/paper_portfolio.json"
+        test_req = urlreq.Request(test_url, headers={"Cache-Control": "no-cache"})
+        with urlreq.urlopen(test_req, timeout=10) as r:
+            test_data = json.loads(r.read().decode())
+        cash = test_data.get("cash", "?")
+        print(f"[startup] GitHub OK — cash=${cash}", flush=True)
+    except Exception as e:
+        print(f"[startup] GitHub FAILED: {e}", flush=True)
+
     threading.Thread(target=open_browser, daemon=True).start()
     server = HTTPServer(("localhost", PORT), Handler)
     try:

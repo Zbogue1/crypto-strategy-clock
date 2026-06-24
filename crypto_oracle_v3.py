@@ -71,7 +71,7 @@ try:
         check_stop_loss, check_take_profit,
         get_portfolio_value, get_portfolio_summary_lines,
         build_portfolio_html, reset_portfolio,
-        load_portfolio
+        load_portfolio, MAX_POSITIONS
     )
     HAS_PAPER = True
 except ImportError:
@@ -103,8 +103,8 @@ MODEL      = "claude-opus-4-6"
 LOG_FILE   = "crypto_history.jsonl"
 HTML_FILE  = "crypto_dashboard.html"
 
-TOP_N_SCAN = 20    # scan top N coins by market cap
-TOP_N_DEEP = 5     # deep-dive on top N candidates
+TOP_N_SCAN = 150   # scan top N coins by market cap (wider net catches explosive smaller caps)
+TOP_N_DEEP = 7     # deep-dive on top N momentum candidates (+ any held coins)
 
 NEWS_SOURCES = [
     ("https://www.coindesk.com/arc/outboundfeeds/rss/",  "CoinDesk"),
@@ -209,7 +209,7 @@ class MarketSnapshot:
 # ─── PHASE 1: TOP-20 MARKET SCAN ─────────────────────────────────────────────
 
 def scan_top_coins(snap: MarketSnapshot):
-    """CoinGecko: top 20 coins by market cap — one batch request."""
+    """CoinGecko: top 150 coins by market cap — scanned in two pages to catch explosive smaller caps."""
     # Retry up to 3 times with backoff on 429 rate-limit responses
     for attempt in range(3):
         try:
@@ -305,6 +305,19 @@ def select_candidates(snap: MarketSnapshot) -> List[CoinScan]:
 
     scored.sort(key=lambda x: x[0], reverse=True)
     candidates = [c for _, c in scored[:TOP_N_DEEP]]
+
+    # Always include currently held coins so Claude has their fresh data for HOLD/SELL decisions
+    try:
+        from paper_portfolio import load_portfolio as _lp
+        held_tickers = {h["coin_ticker"] for h in _lp().get("holdings", [])}
+        cand_tickers = {c.ticker for c in candidates}
+        for c in snap.top_coins:
+            if c.ticker in held_tickers and c.ticker not in cand_tickers:
+                candidates.append(c)
+                log.info(f"Force-added held coin {c.ticker} to candidates for HOLD/SELL evaluation")
+    except Exception:
+        pass
+
     log.info(f"Top candidates: {[c.ticker for c in candidates]}")
     return candidates
 
@@ -744,29 +757,8 @@ def ask_claude(snap: MarketSnapshot) -> dict:
         "investment_position": pos_ctx,
     }
 
-    # Mode-specific signal schema
-    if mode == "HOLDING":
-        signal_field = '"signal": "HOLD | SELL | STRONG_SELL",'
-        extra_fields = """
-  "exit_urgency": 1-10,
-  "exit_recommendation": "hold_full | consider_partial | full_exit",
-  "exit_thesis": "why hold or sell right now","""
-    elif mode == "WAITING":
-        signal_field = '"signal": "RE_ENTER | WAIT_LONGER",'
-        extra_fields = """
-  "reentry_readiness": 0-100,
-  "optimal_reentry_price": float or null,
-  "reentry_thesis": "why re-enter or keep waiting","""
-    else:
-        signal_field = '"signal": "STRONG_BUY | BUY | HOLD | SELL | STRONG_SELL",'
-        extra_fields = """
-  "entry_target": suggested entry price as float,
-  "exit_target": profit-taking target price as float,
-  "stop_loss": suggested stop-loss price as float,
-  "expected_timeframe_days": expected trade duration as int,"""
-
-    system = f"""You are a professional cryptocurrency swing trader and market analyst.
-You have access to real-time data on the top 20 cryptocurrencies, news from CoinDesk,
+    system = f"""You are a professional cryptocurrency swing trader managing a multi-position portfolio.
+You have access to real-time data on the top 150 cryptocurrencies by market cap, news from CoinDesk,
 Blockworks, CoinTelegraph, and CryptoSlate, Reddit community sentiment, DeFiLlama TVL data,
 and Messari metrics.
 
@@ -776,17 +768,14 @@ and Messari metrics.
 
 {mode_prompt}
 
-YOUR PRIMARY JOB:
-{"Find the single best swing trade opportunity from the candidates provided." if mode == "HUNTING" else "Manage the open position — should the investor hold or exit now?" if mode == "HOLDING" else "Determine if it's time to re-enter the market."}
-
 SWING TRADING PRINCIPLES:
 - Target: 5-20% gains over days to 2 weeks
 - Best setups: oversold RSI bounce, MACD bullish cross, volume breakout, news catalyst
-- Risk management: always consider downside. A good setup has clear stop-loss levels.
+- Risk management: always define a stop-loss. A good setup has clear downside limits.
 - Timing: news catalysts and community momentum drive short-term price action
-- Avoid: coins in downtrends with no catalyst, overbought with negative news
+- Do not duplicate coins already held. Do not open a position without a clear stop-loss.
 
-For your selected coin, analyze:
+For any new entry candidate, analyze:
 1. Technical setup (RSI, MACD, volume, trend)
 2. News catalyst (what's driving momentum or creating opportunity)
 3. Community interest (Reddit buzz, sentiment direction)
@@ -795,18 +784,24 @@ For your selected coin, analyze:
 
 OUTPUT (valid JSON only, no markdown):
 {{
-  {signal_field}
-  "selected_coin": "TICKER",
+  "signal": "BUY | HOLD",
+  "selected_coin": "TICKER of coin to BUY (or current best coin if HOLD)",
   "selected_coin_name": "Full Name",
   "selected_coin_price": float,
   "confidence": 0-100,
   "composite_score": float,
-  "layman_headline": "One punchy sentence about this opportunity",
-  "layman_explanation": "3-4 sentences in plain English. No jargon. Why this coin, why now.",
+  "sell_coins": ["TICKER1", "TICKER2"],
+  "sell_reasons": {{"TICKER1": "one sentence reason for exit", "TICKER2": "..."}},
+  "entry_target": suggested entry price as float (for BUY signal),
+  "exit_target": profit-taking target price as float,
+  "stop_loss": suggested stop-loss price as float,
+  "expected_timeframe_days": expected trade duration as int,
+  "layman_headline": "One punchy sentence about the portfolio situation",
+  "layman_explanation": "3-4 sentences in plain English. No jargon. What's happening and why.",
   "layman_action": "Exactly what a cautious investor should consider doing right now",
-  "trade_catalyst": "The specific news/event/signal driving this setup in 1-2 sentences",
+  "trade_catalyst": "The specific news/event/signal driving the best setup in 1-2 sentences",
   "why_this_coin": "Why this coin over the others on the watchlist in 1-2 sentences",
-  "expert_reasoning": "3-5 sentences with full technical + fundamental justification",{extra_fields}
+  "expert_reasoning": "3-5 sentences with full technical + fundamental justification",
   "risk_factors": ["2-3 specific risks that could invalidate this setup"],
   "watch_list": ["3 things to monitor over the next 48 hours"],
   "market_context": "1-2 sentences on overall crypto market conditions right now",
@@ -815,9 +810,13 @@ OUTPUT (valid JSON only, no markdown):
   "alert_type": null or "bullish | bearish | danger",
   "key_signals": [
     {{"source": "name of the news outlet, indicator, or community (e.g. CoinDesk, RSI, Reddit_CryptoCurrency, MACD, Fear_Greed, DeFiLlama, Messari, CoinTelegraph, Blockworks, CryptoSlate, funding_rate, volume_breakout, on_chain)", "signal_type": "news | technical | sentiment | onchain | macro", "description": "one sentence on what this signal said and why it mattered to your decision"}},
-    ... up to 5 key signals that most influenced your BUY/SELL/HOLD decision
+    ... up to 5 key signals that most influenced your decisions this cycle
   ]
-}}"""
+}}
+
+IMPORTANT: sell_coins must be a JSON array ([] if no exits recommended).
+signal = BUY means open a new position in selected_coin (if slots available).
+signal = HOLD means no new entry this cycle."""
 
     try:
         _r = requests.post(
@@ -1067,7 +1066,7 @@ def display_layman(analysis: dict, snap: MarketSnapshot, perf: dict = None):
 
 # ─── HTML REPORT ─────────────────────────────────────────────────────────────
 
-def _display_portfolio(current_price: float = None):
+def _display_portfolio(prices=None):
     """Print paper portfolio card to terminal after the main display."""
     W      = 58
     BOLD   = "\033[1m"
@@ -1079,7 +1078,7 @@ def _display_portfolio(current_price: float = None):
     def row(s):
         return "║" + s + " "*(W - len(s)) + "║"
 
-    lines = get_portfolio_summary_lines(current_price)
+    lines = get_portfolio_summary_lines(prices if isinstance(prices, dict) else {})
     print()
     print(mid)
     for line in lines:
@@ -1555,53 +1554,55 @@ def run_cycle(expert_mode: bool = False):
         entry_target_= analysis.get("entry_target")
         expected_d_  = analysis.get("expected_timeframe_days")
 
-        # Check stop-loss and take-profit first (price-driven exits)
-        # IMPORTANT: must use the HELD coin's current price, not the selected coin's price.
-        # They can be completely different assets (e.g. holding BTC while Claude picks ETH).
-        sl_trade = None
-        tp_trade = None
-        # Use the HELD coin's live price for stop-loss/take-profit checks.
-        # The selected coin may be a completely different asset.
-        held_state = load_portfolio()
-        held_info  = held_state.get("holding")
-        if held_info:
-            held_ticker    = held_info.get("coin_ticker", "")
-            held_coin_snap = next((c for c in snap.top_coins if c.ticker == held_ticker), None)
-            held_price_    = held_coin_snap.price if held_coin_snap else None
-            if held_price_ and held_price_ > 0:
-                sl_trade = check_stop_loss(held_price_)
-                if sl_trade:
-                    log_trade_exit(
-                        profit_pct=sl_trade.get("profit_pct", 0.0),
-                        won=sl_trade.get("result", "LOSS") == "WIN",
-                    )
-                else:
-                    tp_trade = check_take_profit(held_price_)
-                    if tp_trade:
-                        log_trade_exit(
-                            profit_pct=tp_trade.get("profit_pct", 0.0),
-                            won=tp_trade.get("result", "WIN") == "WIN",
-                        )
+        # Build a price map for all coins in this snapshot (ticker → price)
+        price_map = {c.ticker: c.price for c in snap.top_coins}
 
-        # Signal-driven trades
-        if signal_ in ("BUY", "STRONG_BUY") and mode_ == "HUNTING":
+        # ── Price-driven exits: check stop-loss and take-profit for every holding ──
+        held_state = load_portfolio()
+        for held_info in held_state.get("holdings", []):
+            held_ticker = held_info.get("coin_ticker", "")
+            held_price_ = price_map.get(held_ticker)
+            if not held_price_ or held_price_ <= 0:
+                continue
+            sl_trade = check_stop_loss(held_ticker, held_price_)
+            if sl_trade:
+                log_trade_exit(
+                    profit_pct=sl_trade.get("profit_pct", 0.0),
+                    won=sl_trade.get("result", "LOSS") == "WIN",
+                )
+            else:
+                tp_trade = check_take_profit(held_ticker, held_price_)
+                if tp_trade:
+                    log_trade_exit(
+                        profit_pct=tp_trade.get("profit_pct", 0.0),
+                        won=tp_trade.get("result", "WIN") == "WIN",
+                    )
+
+        # ── Signal-driven exits: sell any coins Claude flagged ──
+        for ticker_to_sell in analysis.get("sell_coins", []):
+            sell_price_ = price_map.get(ticker_to_sell)
+            if sell_price_ and sell_price_ > 0:
+                sold = execute_sell(ticker_to_sell, sell_price_, signal_, reason="signal")
+                if sold:
+                    log_trade_exit(
+                        profit_pct=sold.get("profit_pct", 0.0),
+                        won=sold.get("result", "LOSS") == "WIN",
+                    )
+            else:
+                log.warning(f"PAPER: sell_coins included {ticker_to_sell} but no price found in snapshot")
+
+        # ── Signal-driven entry: open new position if BUY and slots available ──
+        current_holdings = load_portfolio().get("holdings", [])
+        if signal_ in ("BUY", "STRONG_BUY") and len(current_holdings) < MAX_POSITIONS:
             execute_buy(coin_ticker, coin_id, coin_price_, signal_, confidence_,
                         entry_target=entry_target_, exit_target=exit_target_,
                         stop_loss=stop_loss_, expected_days=expected_d_)
-            # Log which signals drove this entry for future credibility scoring
             log_trade_entry(
                 coin=coin_ticker,
                 key_signals=analysis.get("key_signals", []),
                 confidence=confidence_,
             )
 
-        elif signal_ in ("SELL", "STRONG_SELL") and mode_ == "HOLDING":
-            sold = execute_sell(coin_price_, signal_, reason="signal")
-            if sold:
-                log_trade_exit(
-                    profit_pct=sold.get("profit_pct", 0.0),
-                    won=sold.get("result", "LOSS") == "WIN",
-                )
 
     # ── 10. Save prediction ──────────────────────────────────
     if HAS_MEMORY:
@@ -1610,7 +1611,7 @@ def run_cycle(expert_mode: bool = False):
     # ── 11. Output ───────────────────────────────────────────
     display_layman(analysis, snap, perf=perf)
     if HAS_PAPER:
-        _display_portfolio(analysis.get("selected_coin_price", snap.btc_price))
+        _display_portfolio({c.ticker: c.price for c in snap.top_coins})
 
     # ── 12. Artifacts ────────────────────────────────────────
     generate_html_report(analysis, snap, perf=perf)
