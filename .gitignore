@@ -1,0 +1,16 @@
+# Data files managed by Railway — never overwrite with local versions
+paper_portfolio.json
+signal_credibility.json
+position_state.json
+signal_history.json
+latest_analysis.json
+
+# Logs
+crypto_history.jsonl
+crystal_ball_predictions.jsonl
+crystal_ball_postmortems.jsonl
+
+# Generated
+crypto_dashboard.html
+__pycache__/
+*.pyc
