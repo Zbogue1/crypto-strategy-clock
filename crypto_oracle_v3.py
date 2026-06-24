@@ -98,6 +98,7 @@ ALERT_EMAIL_TO      = os.environ.get("ALERT_EMAIL_TO", ALERT_EMAIL)
 DISCORD_WEBHOOK_URL = os.environ.get("DISCORD_WEBHOOK_URL", "")
 GITHUB_TOKEN        = os.environ.get("GITHUB_TOKEN", "")
 GITHUB_REPO         = "Zbogue1/crypto-strategy-clock"
+GITHUB_DATA_BRANCH  = "data"   # separate branch for persistent data — never touched by code deploys
 
 MODEL      = "claude-opus-4-6"
 LOG_FILE   = "crypto_history.jsonl"
@@ -1648,7 +1649,7 @@ def pull_state_from_github():
 
     for filename in ("paper_portfolio.json", "signal_credibility.json", "position_state.json"):
         try:
-            r = requests.get(f"{base_url}/{filename}", headers=gh_headers, timeout=10)
+            r = requests.get(f"{base_url}/{filename}?ref={GITHUB_DATA_BRANCH}", headers=gh_headers, timeout=10)
             if r.status_code == 200:
                 content = base64.b64decode(r.json()["content"]).decode()
                 with open(filename, "w") as f:
@@ -1735,14 +1736,14 @@ def push_results_to_github(analysis: dict, snap: MarketSnapshot):
 
     for filename, content in to_push:
         try:
-            # Fetch current SHA (required to update existing files)
-            r = requests.get(f"{base_url}/{filename}", headers=gh_headers, timeout=10)
+            # Fetch current SHA from data branch (required to update existing files)
+            r = requests.get(f"{base_url}/{filename}?ref={GITHUB_DATA_BRANCH}", headers=gh_headers, timeout=10)
             sha = r.json().get("sha") if r.status_code == 200 else None
 
             payload = {
                 "message": f"[bot] {filename} — {snap.timestamp[:16]}",
                 "content": base64.b64encode(content.encode()).decode(),
-                "branch":  "main",
+                "branch":  GITHUB_DATA_BRANCH,
             }
             if sha:
                 payload["sha"] = sha

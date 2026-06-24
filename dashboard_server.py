@@ -20,7 +20,7 @@ PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
 PORT = 8888
 
 GITHUB_REPO   = "Zbogue1/crypto-strategy-clock"
-GITHUB_BRANCH = "main"
+GITHUB_BRANCH = "data"   # data branch — never wiped by code deploys
 GITHUB_BASE   = f"https://raw.githubusercontent.com/{GITHUB_REPO}/{GITHUB_BRANCH}"
 
 # Simple in-memory cache
