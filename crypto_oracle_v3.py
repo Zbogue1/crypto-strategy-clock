@@ -286,8 +286,14 @@ def select_candidates(snap: MarketSnapshot) -> List[CoinScan]:
     """
     scored = []
     for c in snap.top_coins:
-        if c.ticker in ("USDT", "USDC", "BUSD", "DAI", "TUSD", "USDP"):
-            continue  # skip stablecoins
+        if c.ticker in (
+            # Stablecoins
+            "USDT", "USDC", "BUSD", "DAI", "TUSD", "USDP", "FDUSD", "RLUSD",
+            "USDD", "FRAX", "LUSD", "CRVUSD", "PYUSD", "GUSD", "USDJ",
+            # Tokenized gold (not swing tradable)
+            "XAUT", "PAXG", "XGOLD",
+        ):
+            continue  # skip stablecoins and gold tokens
 
         # Mean-reversion play: significant 7d dip
         dip_score = max(0, -c.change_7d / 5)
@@ -727,7 +733,10 @@ def ask_claude(snap: MarketSnapshot) -> dict:
     top_overview = [
         {"ticker": c.ticker, "change_24h": c.change_24h, "change_7d": c.change_7d,
          "volume_m": round(c.volume_24h / 1e6, 1)}
-        for c in snap.top_coins if c.ticker not in ("USDT", "USDC", "BUSD", "DAI")
+        for c in snap.top_coins if c.ticker not in (
+            "USDT", "USDC", "BUSD", "DAI", "TUSD", "USDP", "FDUSD", "RLUSD",
+            "USDD", "FRAX", "XAUT", "PAXG", "PYUSD", "GUSD",
+        )
     ][:15]
 
     # News by source
