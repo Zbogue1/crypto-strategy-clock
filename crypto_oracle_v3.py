@@ -96,7 +96,7 @@ ALERT_EMAIL         = os.environ.get("ALERT_EMAIL", "")
 ALERT_EMAIL_PASS    = os.environ.get("ALERT_EMAIL_PASSWORD", "")
 ALERT_EMAIL_TO      = os.environ.get("ALERT_EMAIL_TO", ALERT_EMAIL)
 DISCORD_WEBHOOK_URL = os.environ.get("DISCORD_WEBHOOK_URL", "")
-GITHUB_TOKEN        = os.environ.get("GITHUB_TOKEN", "")
+GITHUB_TOKEN        = os.environ.get("GITHUB_TOKEN", "").strip()
 GITHUB_REPO         = "Zbogue1/crypto-strategy-clock"
 GITHUB_DATA_BRANCH  = "data"   # separate branch for persistent data — never touched by code deploys
 
@@ -290,8 +290,8 @@ def select_candidates(snap: MarketSnapshot) -> List[CoinScan]:
             # Stablecoins
             "USDT", "USDC", "BUSD", "DAI", "TUSD", "USDP", "FDUSD", "RLUSD",
             "USDD", "FRAX", "LUSD", "CRVUSD", "PYUSD", "GUSD", "USDJ",
-            # Tokenized gold (not swing tradable)
-            "XAUT", "PAXG", "XGOLD",
+            # Tokenized gold / synthetic USD (not swing tradable)
+            "XAUT", "PAXG", "XGOLD", "APXUSD", "SUSD", "EURC", "EURS",
         ):
             continue  # skip stablecoins and gold tokens
 
@@ -883,7 +883,7 @@ def display_layman(analysis: dict, snap: MarketSnapshot, perf: dict = None):
     conf         = analysis.get("confidence", 0)
     coin_ticker  = analysis.get("selected_coin", "?")
     coin_name    = analysis.get("selected_coin_name", "")
-    coin_price   = analysis.get("selected_coin_price", snap.btc_price)
+    coin_price   = analysis.get("selected_coin_price") or snap.btc_price or 0
     color, label, _ = SIGNAL_STYLES.get(display_sig, SIGNAL_STYLES["HOLD"])
 
     W      = 60
@@ -1109,7 +1109,7 @@ def generate_html_report(analysis: dict, snap: MarketSnapshot, perf: dict = None
     conf         = analysis.get("confidence", 0)
     coin_ticker  = analysis.get("selected_coin", "BTC")
     coin_name    = analysis.get("selected_coin_name", "Bitcoin")
-    coin_price   = analysis.get("selected_coin_price", snap.btc_price)
+    coin_price   = analysis.get("selected_coin_price") or snap.btc_price or 0
 
     sig_hex = {"BUY": "#00c853", "HOLD": "#ff9800", "WAIT": "#f44336",
                "SELL": "#ef5350", "SELL NOW": "#ff1744",
@@ -1544,7 +1544,7 @@ def run_cycle(expert_mode: bool = False):
     if HAS_POSITION:
         signal     = analysis.get("signal", "HOLD")
         confidence = analysis.get("confidence", 0)
-        coin_price = analysis.get("selected_coin_price", snap.btc_price)
+        coin_price = analysis.get("selected_coin_price") or snap.btc_price or 0
         pre_trade_mode = analysis.get("_mode", "HUNTING")  # capture BEFORE pm changes it
         new_mode   = pm_process_signal(signal, coin_price, confidence)
         analysis["_mode"] = new_mode
