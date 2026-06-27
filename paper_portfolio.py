@@ -60,6 +60,8 @@ def _default_state() -> dict:
         "btc_benchmark_units":    None,   # how many BTC $1000 would have bought
         # Bear market regime filter
         "consecutive_fear_cycles": 0,     # cycles where Fear & Greed < 20
+        # Drawdown circuit breaker
+        "drawdown_halt":           False, # True = new BUYs paused until recovery
     }
 
 
@@ -156,6 +158,7 @@ def execute_buy(coin_ticker: str, coin_id: str, price: float,
         "stop_loss":          stop_loss,
         "entry_target":       entry_target,
         "expected_days":      expected_days,
+        "partial_taken":      False,   # True after 50%-of-target partial exit fires
     }
     state["holdings"].append(holding)
     save_portfolio(state)
@@ -275,6 +278,138 @@ def check_time_exit(coin_ticker: str, current_price: float) -> dict:
         )
         return execute_sell(coin_ticker, current_price, "HOLD", reason="time_exit")
     return None
+
+
+def check_partial_take(coin_ticker: str, current_price: float) -> dict:
+    """
+    Partial exit: when price reaches 50% of the way to the take-profit target,
+    sell exactly half the position and move the stop-loss to breakeven.
+
+    This locks in gains on winners that reverse before hitting the full target,
+    while letting the remaining half ride to the original target free of risk.
+
+    Returns a partial trade record if triggered, else None.
+    Only fires once per trade (partial_taken flag prevents double-fire).
+    """
+    state    = load_portfolio()
+    holdings = state.get("holdings", [])
+    h        = next((x for x in holdings if x["coin_ticker"] == coin_ticker), None)
+    if not h:
+        return None
+    if h.get("partial_taken"):
+        return None   # already fired once — don't fire again
+    if not h.get("exit_target") or not h.get("entry_price"):
+        return None
+
+    entry  = h["entry_price"]
+    target = h["exit_target"]
+    if target <= entry:
+        return None   # bad target data
+
+    half_target = entry + (target - entry) * 0.5
+    if current_price < half_target:
+        return None   # haven't reached 50% of the way yet
+
+    # Sell half: create a new holding with half the units, sell the other half
+    half_units = h["units"] / 2
+    fee        = round(half_units * current_price * TAKER_FEE, 4)
+    gross      = round(half_units * current_price, 4)
+    net        = round(gross - fee, 4)
+    half_cost  = h["allocated_usd"] / 2
+    profit_usd = round(net - half_cost, 4)
+    profit_pct = round(profit_usd / half_cost * 100, 2)
+    days_held  = _days_between(h["entry_date"], datetime.now(timezone.utc).isoformat())
+
+    trade = {
+        "trade_num":        state["total_trades"] + 1,
+        "coin_ticker":      h["coin_ticker"],
+        "coin_id":          h["coin_id"],
+        "entry_price":      entry,
+        "entry_date":       h["entry_date"],
+        "entry_signal":     h["entry_signal"],
+        "entry_confidence": h["entry_confidence"],
+        "allocated_usd":    half_cost,
+        "exit_price":       current_price,
+        "exit_date":        datetime.now(timezone.utc).isoformat(),
+        "exit_signal":      "PARTIAL",
+        "exit_reason":      "partial_take_50pct",
+        "units":            half_units,
+        "gross_proceeds":   gross,
+        "fees_total":       round(h["fee_paid"] / 2 + fee, 4),
+        "net_proceeds":     net,
+        "profit_usd":       profit_usd,
+        "profit_pct":       profit_pct,
+        "days_held":        days_held,
+        "exit_target":      target,
+        "result":           "WIN" if profit_pct > 0 else "LOSS",
+    }
+
+    # Update the remaining half of the holding in-place
+    for holding in state["holdings"]:
+        if holding["coin_ticker"] == coin_ticker:
+            holding["units"]         = half_units
+            holding["allocated_usd"] = half_cost
+            holding["fee_paid"]      = round(h["fee_paid"] / 2, 4)
+            holding["partial_taken"] = True
+            holding["stop_loss"]     = entry   # move stop to breakeven — no-lose position
+            break
+
+    # Book the partial sell
+    state["cash"]         = round(state["cash"] + net, 4)
+    state["realized_pnl"] = round(state["realized_pnl"] + profit_usd, 4)
+    state["total_trades"] += 1
+    state["total_fees"]   = round(state["total_fees"] + fee, 4)
+    if profit_pct > 0:
+        state["winning_trades"] += 1
+    else:
+        state["losing_trades"]  += 1
+    state["trade_history"].append(trade)
+    save_portfolio(state)
+
+    log.info(
+        f"PAPER PARTIAL ✂️  {coin_ticker}  ${current_price:,.4f}  "
+        f"Sold 50% at {profit_pct:+.2f}% profit (${profit_usd:+.2f}). "
+        f"Stop moved to breakeven ${entry:,.4f}. Remaining half rides to ${target:,.4f}."
+    )
+    return trade
+
+
+def check_drawdown_halt(prices: dict = None) -> bool:
+    """
+    If the total portfolio value has fallen 15%+ from its peak, halt new BUYs.
+    The halt clears automatically when portfolio recovers to within 10% of peak.
+
+    Returns True if a halt is currently active (block BUYs), False if clear.
+    """
+    state = load_portfolio()
+    p     = get_portfolio_value(prices)
+    total = p["total_value"]
+    peak  = state.get("peak_value", STARTING_CASH)
+
+    drawdown_pct = (peak - total) / peak * 100 if peak > 0 else 0
+
+    currently_halted = state.get("drawdown_halt", False)
+
+    if drawdown_pct >= 15.0 and not currently_halted:
+        state["drawdown_halt"] = True
+        save_portfolio(state)
+        log.warning(
+            f"DRAWDOWN HALT ACTIVATED: portfolio ${total:,.2f} is "
+            f"{drawdown_pct:.1f}% below peak ${peak:,.2f}. "
+            f"New BUYs suspended until recovery."
+        )
+        return True
+
+    if currently_halted and drawdown_pct < 10.0:
+        state["drawdown_halt"] = False
+        save_portfolio(state)
+        log.info(
+            f"DRAWDOWN HALT CLEARED: portfolio recovered to within "
+            f"{drawdown_pct:.1f}% of peak. BUYs re-enabled."
+        )
+        return False
+
+    return currently_halted
 
 
 def check_take_profit(coin_ticker: str, current_price: float) -> dict:
@@ -609,15 +744,12 @@ def reset_portfolio():
 # ─── BTC BENCHMARK ────────────────────────────────────────────────────────────
 
 def update_btc_benchmark(btc_price: float):
-    """
-    Record the BTC price at portfolio start so we can compare agent vs buy-and-hold.
-    No-op after the first call — benchmark is set once and never updated.
-    """
+    """Record BTC price at portfolio start for buy-and-hold comparison. No-op after first call."""
     if not btc_price or btc_price <= 0:
         return
     state = load_portfolio()
     if state.get("btc_benchmark_price"):
-        return  # already set
+        return
     state["btc_benchmark_price"] = btc_price
     state["btc_benchmark_units"] = round(STARTING_CASH / btc_price, 8)
     save_portfolio(state)
@@ -627,10 +759,7 @@ def update_btc_benchmark(btc_price: float):
 # ─── BEAR MARKET REGIME FILTER ────────────────────────────────────────────────
 
 def update_fear_counter(fear_value) -> int:
-    """
-    Track consecutive cycles where Fear & Greed index < 20 (extreme fear).
-    Resets to 0 when fear_value >= 20. Returns current consecutive count.
-    """
+    """Track consecutive cycles where Fear & Greed < 20. Returns current count."""
     state = load_portfolio()
     try:
         val = int(fear_value) if fear_value is not None else 50
@@ -649,14 +778,7 @@ def update_fear_counter(fear_value) -> int:
 def get_graduation_status() -> dict:
     """
     Evaluate whether the agent is ready to graduate from paper trading to real money.
-    Returns a dict with score (X/5), individual criteria, and a ready flag.
-
-    Criteria:
-      1. At least 10 completed trades
-      2. Win rate > 50%
-      3. Average trade return > 0%
-      4. Portfolio running for at least 30 days
-      5. No losing streak of 3+ consecutive trades in recent history
+    Criteria: 10+ trades, >50% win rate, positive avg return, 30+ days, no 3-loss streak.
     """
     state    = load_portfolio()
     history  = state.get("trade_history", [])
@@ -664,29 +786,42 @@ def get_graduation_status() -> dict:
     wins     = state.get("winning_trades", 0)
 
     criteria = {}
-
-    # 1. Trade count
     criteria["min_trades"] = n_trades >= 10
 
-    # 2. Win rate
     win_rate = (wins / n_trades * 100) if n_trades > 0 else 0.0
     criteria["win_rate"] = win_rate > 50
 
-    # 3. Average trade return positive
-    if history:
-        avg_pct = sum(t.get("profit_pct", 0) for t in history) / len(history)
-    else:
-        avg_pct = 0.0
+    avg_pct = sum(t.get("profit_pct", 0) for t in history) / len(history) if history else 0.0
     criteria["positive_avg"] = avg_pct > 0
 
-    # 4. Running at least 30 days
     started = state.get("started_at", datetime.now(timezone.utc).isoformat())
     days_running = _days_between(started, datetime.now(timezone.utc).isoformat())
     criteria["days_30"] = days_running >= 30
 
-    # 5. No streak of 3+ consecutive losses in recent 10 trades
     recent = history[-10:] if len(history) >= 10 else history
-    max_streak = 0
+    max_streak = streak = 0
+    for t in recent:
+        if t.get("profit_pct", 0) < 0:
+            streak += 1
+            max_streak = max(max_streak, streak)
+        else:
+            streak = 0
+    criteria["no_bad_streak"] = max_streak < 3
+
+    score     = sum(criteria.values())
+    score_str = f"{score}/5"
+    ready     = score == 5
+
+    return {
+        "score":        score_str,
+        "ready":        ready,
+        "criteria":     criteria,
+        "days_running": days_running,
+        "win_rate":     win_rate,
+        "avg_trade":    round(avg_pct, 2),
+        "n_trades":     n_trades,
+    }
+eak = 0
     streak     = 0
     for t in recent:
         if t.get("profit_pct", 0) < 0:

@@ -69,6 +69,7 @@ try:
     from paper_portfolio import (
         execute_buy, execute_sell,
         check_stop_loss, check_take_profit, check_time_exit,
+        check_partial_take, check_drawdown_halt,
         get_portfolio_value, get_portfolio_summary_lines,
         build_portfolio_html, reset_portfolio,
         load_portfolio, MAX_POSITIONS,
@@ -89,6 +90,13 @@ except ImportError:
     def log_trade_entry(*a, **kw): pass
     def log_trade_exit(*a, **kw): pass
     def build_credibility_context(): return ""
+
+try:
+    from chart_analysis import analyze_chart
+    HAS_CHART_ANALYSIS = True
+except ImportError:
+    HAS_CHART_ANALYSIS = False
+    def analyze_chart(ohlc, ticker=""): return {}
 
 # ─── CONFIG ──────────────────────────────────────────────────────────────────
 ANTHROPIC_API_KEY   = os.environ.get("ANTHROPIC_API_KEY", "")
@@ -481,6 +489,13 @@ def build_technicals_for_coin(coin: CoinScan):
 
     coin.technicals = t
 
+    # ── Chart pattern analysis (full technical read on the chart) ────────────
+    if HAS_CHART_ANALYSIS and coin.ohlc:
+        try:
+            coin.technicals["chart_analysis"] = analyze_chart(coin.ohlc, coin.ticker)
+        except Exception as e:
+            log.warning(f"Chart analysis {coin.ticker}: {e}")
+
 
 def build_signals_for_coin(coin: CoinScan, snap: MarketSnapshot) -> List[Signal]:
     """Score one candidate coin's swing trade opportunity."""
@@ -584,6 +599,43 @@ def build_signals_for_coin(coin: CoinScan, snap: MarketSnapshot) -> List[Signal]
                 ("TVL growing = more capital flowing in. Bullish." if v > 0 else
                  "TVL declining = capital leaving the ecosystem. Bearish." if v < 0 else "TVL stable."),
                 "onchain"))
+
+    # ── FUNDING RATE ──────────────────────────────────────────────────────────
+    funding_rates = snap.macro.get("funding_rates", {})
+    fr = funding_rates.get(coin.ticker)
+    if fr:
+        rate = fr["rate_pct"]
+        signal_map = {
+            "bullish":          1.5,
+            "slightly_bullish": 0.5,
+            "neutral":          0.0,
+            "slightly_bearish": -0.5,
+            "bearish":         -1.5,
+        }
+        v = signal_map.get(fr["signal"], 0)
+        sigs.append(Signal(
+            "Funding Rate (Binance)",
+            v, 0.9, "Binance Futures",
+            (f"{coin.ticker} funding rate is {rate:+.4f}%/8h ({fr['bias'].replace('_', ' ')}). " +
+             ("Shorts are crowded — squeeze potential if price rises." if v > 0 else
+              "Longs are heavily leveraged — flush risk if price drops." if v < -1 else
+              "Slightly elevated longs — watch for long liquidations." if v < 0 else
+              "Funding is neutral — no extreme leverage bias.")),
+            "macro"
+        ))
+
+    # ── CHART PATTERN BIAS ────────────────────────────────────────────────────
+    chart = t.get("chart_analysis", {})
+    if chart and "signal_bias" in chart:
+        bias = chart["signal_bias"]
+        if abs(bias) >= 0.3:
+            v = max(-2.0, min(2.0, bias))
+            sigs.append(Signal(
+                "Chart Pattern Analysis",
+                v, 0.85, "OHLC",
+                chart.get("summary", f"Chart bias: {bias:+.2f}").split("\n")[0],
+                "momentum"
+            ))
 
     coin.signals = sigs
     return sigs
@@ -691,6 +743,66 @@ def collect_news(snap: MarketSnapshot):
 # Reddit removed — API restrictions prevent reliable data retrieval.
 
 
+# ─── FUNDING RATES (BINANCE FUTURES) ─────────────────────────────────────────
+
+def collect_funding_rates(snap: MarketSnapshot):
+    """
+    Fetch perpetual futures funding rates from Binance (no API key required).
+    Funding rate tells us how overleveraged the market is:
+      > +0.05% per 8h = crowded longs = correction risk
+      < -0.05% per 8h = crowded shorts = short squeeze risk
+    """
+    # Map our coin tickers to Binance futures symbols
+    symbols = {
+        "BTC": "BTCUSDT", "ETH": "ETHUSDT", "SOL": "SOLUSDT",
+        "BNB": "BNBUSDT", "XRP": "XRPUSDT", "ADA": "ADAUSDT",
+        "AVAX": "AVAXUSDT", "DOGE": "DOGEUSDT", "DOT": "DOTUSDT",
+        "LINK": "LINKUSDT", "MATIC": "MATICUSDT", "ATOM": "ATOMUSDT",
+        "UNI": "UNIUSDT", "LTC": "LTCUSDT",
+    }
+    rates = {}
+    try:
+        # Fetch all funding rates in one call (more efficient)
+        r = requests.get(
+            "https://fapi.binance.com/fapi/v1/premiumIndex",
+            timeout=10, headers=HEADERS
+        )
+        if r.status_code == 200:
+            for item in r.json():
+                sym = item.get("symbol", "")
+                rate = item.get("lastFundingRate")
+                if rate is not None:
+                    for ticker, bsym in symbols.items():
+                        if bsym == sym:
+                            rate_pct = round(float(rate) * 100, 4)
+                            rates[ticker] = {
+                                "rate_pct":     rate_pct,
+                                "annualized":   round(rate_pct * 3 * 365, 1),
+                                "bias": (
+                                    "heavily_long"  if rate_pct >  0.05 else
+                                    "lightly_long"  if rate_pct >  0.01 else
+                                    "neutral"       if abs(rate_pct) <= 0.01 else
+                                    "lightly_short" if rate_pct > -0.05 else
+                                    "heavily_short"
+                                ),
+                                "signal": (
+                                    "bearish"  if rate_pct >  0.05 else   # overleveraged longs = correction risk
+                                    "slightly_bearish" if rate_pct > 0.01 else
+                                    "neutral"  if abs(rate_pct) <= 0.01 else
+                                    "slightly_bullish" if rate_pct > -0.05 else
+                                    "bullish"           # shorts getting squeezed
+                                ),
+                            }
+        if rates:
+            snap.macro["funding_rates"] = rates
+            btc_rate = rates.get("BTC", {}).get("rate_pct", 0)
+            log.info(f"Funding rates: {len(rates)} coins. BTC: {btc_rate:+.4f}%/8h")
+        else:
+            log.warning("Funding rates: no data returned from Binance")
+    except Exception as e:
+        log.warning(f"Funding rates: {e}")
+
+
 # ─── AGGREGATE SIGNAL SCORE ──────────────────────────────────────────────────
 
 def build_market_signals(snap: MarketSnapshot):
@@ -730,6 +842,11 @@ def ask_claude(snap: MarketSnapshot) -> dict:
     candidate_summaries = []
     for c in snap.candidates:
         t = c.technicals
+        # Chart analysis summary for Claude
+        chart = t.get("chart_analysis", {})
+        chart_summary = chart.get("summary", "") if chart else ""
+        chart_bias    = chart.get("signal_bias", 0) if chart else 0
+
         candidate_summaries.append({
             "ticker":        c.ticker,
             "name":          c.name,
@@ -744,6 +861,9 @@ def ask_claude(snap: MarketSnapshot) -> dict:
             "above_sma200":  t.get("above_sma200"),
             "ath_change_pct": c.ath_change_pct,
             "messari":       c.messari,
+            "chart_analysis": chart_summary,
+            "chart_bias_score": chart_bias,
+            "funding_rate":  snap.macro.get("funding_rates", {}).get(c.ticker),
             "signals":       [{"name": s.name, "score": s.value, "text": s.plain_english} for s in c.signals],
         })
 
@@ -799,10 +919,23 @@ SWING TRADING PRINCIPLES:
 - Timing: news catalysts and community momentum drive short-term price action
 - Do not duplicate coins already held. Do not open a position without a clear stop-loss.
 
+CHART READING GUIDANCE (chart_analysis field in each candidate):
+- candlestick_patterns: single/multi-candle formations. Hammer/Morning Star = bullish reversal. Shooting Star/Evening Star = bearish reversal. Engulfing patterns = momentum shift.
+- chart_patterns: Double Bottom / Inverse H&S = strong bullish reversal. Double Top / H&S = strong bearish reversal. Bull Flag = bullish continuation. Triangles signal imminent breakout.
+- support_resistance: trade entries near support, exits near resistance. risk_reward > 2 is ideal.
+- moving_averages: golden cross = major buy signal. Price above all 3 MAs = bull structure. Death cross = avoid or short.
+- volume_analysis: OBV divergence catches hidden accumulation/distribution. Volume-confirmed breakouts are highest quality.
+- chart_bias_score: -2.0 (strongly bearish chart) to +2.0 (strongly bullish chart). Weight heavily in decisions.
+
+FUNDING RATE GUIDANCE (funding_rate field):
+- > +0.05%/8h = market is overleveraged long. Longs will be liquidated on any dip. SELL signal / avoid buying.
+- -0.05% to +0.05% = neutral. Safe to trade based on other signals.
+- < -0.05%/8h = crowded shorts. Short squeeze could ignite a rapid rally. Adds to bullish case.
+
 For any new entry candidate, analyze:
-1. Technical setup (RSI, MACD, volume, trend)
-2. News catalyst (what's driving momentum or creating opportunity)
-3. Community interest (Reddit buzz, sentiment direction)
+1. Chart patterns and technical setup (RSI, MACD, candlestick patterns, support/resistance)
+2. Funding rate (is the market overleveraged in one direction?)
+3. News catalyst (what's driving momentum or creating opportunity)
 4. DeFi health if applicable (TVL trends)
 5. Market context (BTC dominance, overall Fear & Greed)
 
@@ -1510,6 +1643,7 @@ def run_cycle(expert_mode: bool = False):
     collect_macro(snap)
     collect_defi_summary(snap)
     collect_news(snap)
+    collect_funding_rates(snap)  # Binance futures funding rates
 
     # ── 2. Top-20 scan ───────────────────────────────────────
     scan_top_coins(snap)
@@ -1608,6 +1742,12 @@ def run_cycle(expert_mode: bool = False):
                         f"({divergence*100:.1f}% divergence). Skipping exit check this cycle."
                     )
                     continue
+            # Partial take at 50% of target (fires once, then stop moves to breakeven)
+            partial_trade = check_partial_take(held_ticker, held_price_)
+            if partial_trade:
+                log_trade_exit(profit_pct=partial_trade.get("profit_pct", 0.0),
+                               won=partial_trade.get("result", "WIN") == "WIN")
+            # Full exits (stop-loss, take-profit, time exit) checked every cycle
             sl_trade = check_stop_loss(held_ticker, held_price_)
             if sl_trade:
                 log_trade_exit(profit_pct=sl_trade.get("profit_pct", 0.0),
@@ -1634,10 +1774,15 @@ def run_cycle(expert_mode: bool = False):
             else:
                 log.warning(f"PAPER: sell_coins included {ticker_to_sell} but no price found in snapshot")
 
-        # ── Signal-driven entry: blocked in bear regime; open if BUY and slots available ──
+        # ── Drawdown circuit breaker: suspend BUYs if portfolio is 15%+ below peak ──
+        in_drawdown_halt = check_drawdown_halt(price_map)
+
+        # ── Signal-driven entry: blocked in bear regime or drawdown halt ──
         current_holdings = load_portfolio().get("holdings", [])
         if signal_ in ("BUY", "STRONG_BUY") and len(current_holdings) < MAX_POSITIONS:
-            if in_bear_regime:
+            if in_drawdown_halt:
+                log.warning(f"PAPER: BUY signal for {coin_ticker} blocked — drawdown circuit breaker active.")
+            elif in_bear_regime:
                 log.warning(f"PAPER: BUY signal for {coin_ticker} blocked — bear market regime active.")
             else:
                 execute_buy(coin_ticker, coin_id, coin_price_, signal_, confidence_,
@@ -1729,7 +1874,6 @@ def push_results_to_github(analysis: dict, snap: MarketSnapshot):
     # Build latest_analysis.json — everything the dashboard needs
     latest = {
         "timestamp":            snap.timestamp,
-        "signal":               analysis.get("signal"),
         "selected_coin":        analysis.get("selected_coin"),
         "selected_coin_name":   analysis.get("selected_coin_name"),
         "selected_coin_price":  analysis.get("selected_coin_price"),
