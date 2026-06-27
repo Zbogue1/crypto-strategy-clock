@@ -1,6 +1,37 @@
 {
-  "open_trade": null,
+  "open_trade": {
+    "coin": "SOL",
+    "entry_time": "2026-06-27T04:05:30.295052+00:00",
+    "key_signals": [
+      {
+        "source": "Fear_Greed",
+        "signal_type": "sentiment",
+        "description": "Fear & Greed at 15 (Extreme Fear) and worsening \u2014 historically a contrarian buying zone, but caution warranted as capitulation may not be complete."
+      },
+      {
+        "source": "CoinDesk",
+        "signal_type": "news",
+        "description": "Headline confirms Solana ecosystem tokens leading the crypto rebound alongside Aave, validating SOL's relative strength as a narrative-driven move."
+      },
+      {
+        "source": "CoinTelegraph",
+        "signal_type": "onchain",
+        "description": "SOL reclaimed $72 but on-chain data flags weakening momentum \u2014 a cautionary signal that tempers conviction and supports tighter stop-loss placement."
+      },
+      {
+        "source": "volume_breakout",
+        "signal_type": "technical",
+        "description": "SOL 24h volume at $4.1B significantly elevated relative to other top-20 coins, suggesting real buying interest rather than just a dead-cat bounce."
+      },
+      {
+        "source": "Blockworks",
+        "signal_type": "macro",
+        "description": "ETH derivatives reset signals broader market positioning flush, which often precedes relief rallies \u2014 supportive of near-term bounce thesis."
+      }
+    ],
+    "confidence": 62
+  },
   "signal_stats": {},
   "trade_count": 0,
-  "last_updated": null
+  "last_updated": "2026-06-27T04:05:30.295060+00:00"
 }
