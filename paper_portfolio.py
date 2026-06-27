@@ -45,16 +45,21 @@ SIZING_TIERS = [
 
 def _default_state() -> dict:
     return {
-        "cash":            STARTING_CASH,
-        "holdings":        [],          # list of open position dicts
-        "realized_pnl":    0.0,
-        "peak_value":      STARTING_CASH,
-        "total_trades":    0,
-        "winning_trades":  0,
-        "losing_trades":   0,
-        "total_fees":      0.0,        # simulated 0.1% taker fee per side
-        "trade_history":   [],
-        "started_at":      datetime.now(timezone.utc).isoformat(),
+        "cash":                   STARTING_CASH,
+        "holdings":               [],
+        "realized_pnl":           0.0,
+        "peak_value":             STARTING_CASH,
+        "total_trades":           0,
+        "winning_trades":         0,
+        "losing_trades":          0,
+        "total_fees":             0.0,
+        "trade_history":          [],
+        "started_at":             datetime.now(timezone.utc).isoformat(),
+        # BTC benchmark — tracks what $1000 in BTC would be worth
+        "btc_benchmark_price":    None,   # BTC price when portfolio started
+        "btc_benchmark_units":    None,   # how many BTC $1000 would have bought
+        # Bear market regime filter
+        "consecutive_fear_cycles": 0,     # cycles where Fear & Greed < 20
     }
 
 
@@ -251,6 +256,27 @@ def check_stop_loss(coin_ticker: str, current_price: float) -> dict:
     return None
 
 
+def check_time_exit(coin_ticker: str, current_price: float) -> dict:
+    """
+    Exit a position that has exceeded 1.5x its expected hold time with no target/stop hit.
+    Prevents capital sitting idle in a stalled trade indefinitely.
+    """
+    state    = load_portfolio()
+    holdings = state.get("holdings", [])
+    h        = next((x for x in holdings if x["coin_ticker"] == coin_ticker), None)
+    if not h or not h.get("expected_days"):
+        return None
+    days_held = _days_between(h["entry_date"], datetime.now(timezone.utc).isoformat())
+    max_days  = h["expected_days"] * 1.5
+    if days_held >= max_days:
+        log.info(
+            f"PAPER: Time exit — {coin_ticker} held {days_held:.0f}d "
+            f"(expected {h['expected_days']}d, max {max_days:.0f}d)"
+        )
+        return execute_sell(coin_ticker, current_price, "HOLD", reason="time_exit")
+    return None
+
+
 def check_take_profit(coin_ticker: str, current_price: float) -> dict:
     """
     Check take-profit for a specific coin.
@@ -345,6 +371,29 @@ def get_portfolio_value(prices: dict = None) -> dict:
         "position_count":   len(holdings),
         "max_positions":    MAX_POSITIONS,
     }
+
+    # BTC benchmark comparison
+    btc_benchmark_price = state.get("btc_benchmark_price")
+    btc_benchmark_units = state.get("btc_benchmark_units")
+    if btc_benchmark_price and btc_benchmark_units:
+        current_btc = prices.get("BTC") if isinstance(prices, dict) else None
+        if current_btc:
+            benchmark_value  = round(btc_benchmark_units * current_btc, 2)
+            benchmark_return = round((benchmark_value - STARTING_CASH) / STARTING_CASH * 100, 2)
+        else:
+            benchmark_value  = None
+            benchmark_return = None
+        result["btc_benchmark_value"]  = benchmark_value
+        result["btc_benchmark_return"] = benchmark_return
+        result["btc_benchmark_price"]  = btc_benchmark_price
+    else:
+        result["btc_benchmark_value"]  = None
+        result["btc_benchmark_return"] = None
+        result["btc_benchmark_price"]  = None
+
+    # Graduation readiness
+    result["graduation"] = get_graduation_status()
+
     return result
 
 
@@ -382,6 +431,26 @@ def get_portfolio_summary_lines(prices: dict = None) -> list:
         )
     else:
         lines.append("  Trades: 0  —  waiting for first signal")
+
+    # BTC benchmark comparison
+    if p.get("btc_benchmark_return") is not None:
+        bret = p["btc_benchmark_return"]
+        aret = p["total_return_pct"]
+        diff = round(aret - bret, 2)
+        diff_col = "\033[92m" if diff >= 0 else "\033[91m"
+        lines.append(
+            f"  vs BTC hold: agent {ret_col}{aret:+.2f}%{RESET}  "
+            f"/ BTC {bret:+.2f}%  "
+            f"({diff_col}{diff:+.2f}% edge{RESET})"
+        )
+
+    # Graduation readiness
+    grad = p.get("graduation", {})
+    grad_icon = "🎓" if grad.get("ready") else "📚"
+    lines.append(
+        f"  {grad_icon} Real-money readiness: {grad.get('score', '0/5')}  "
+        f"({grad.get('days_running', 0):.0f} days running)"
+    )
 
     return lines
 
@@ -430,12 +499,41 @@ def build_portfolio_html(prices: dict = None) -> str:
     no_trades = "<div style='color:#666;font-style:italic'>No completed trades yet — waiting for first signal.</div>" \
                 if not p["trade_history"] else ""
 
-    win_color = "#00c853" if p["win_rate"] >= 50 else "#f44336"
+    win_color   = "#00c853" if p["win_rate"] >= 50 else "#f44336"
     slots_color = "#ffab40" if p["position_count"] >= MAX_POSITIONS else "#00c853"
+
+    # BTC benchmark HTML section
+    btc_bret = p.get("btc_benchmark_return")
+    if btc_bret is not None:
+        aret     = p["total_return_pct"]
+        edge     = round(aret - btc_bret, 2)
+        btc_col  = "#00c853" if btc_bret >= 0 else "#f44336"
+        edge_col = "#00c853" if edge >= 0 else "#f44336"
+        benchmark_html = (
+            '<div class="port-section-label">vs BTC Buy-and-Hold</div>'
+            f'<div class="port-row"><span class="port-label">Agent</span>'
+            f'<span class="port-val" style="color:{ret_col}">{aret:+.2f}%</span></div>'
+            f'<div class="port-row"><span class="port-label">BTC hold</span>'
+            f'<span class="port-val" style="color:{btc_col}">{btc_bret:+.2f}%</span></div>'
+            f'<div class="port-row"><span class="port-label">Edge</span>'
+            f'<span class="port-val" style="color:{edge_col}">{edge:+.2f}%</span></div>'
+        )
+    else:
+        benchmark_html = ""
+
+    # Graduation readiness HTML section
+    grad      = p.get("graduation", {})
+    grad_icon = "&#127891; READY" if grad.get("ready") else "&#128218; Learning"
+    grad_html = (
+        '<div class="port-section-label">Real-Money Readiness</div>'
+        f'<div class="port-row"><span class="port-label">{grad_icon}</span>'
+        f'<span class="port-val">{grad.get("score", "0/5")} criteria'
+        f' &middot; {grad.get("days_running", 0):.0f} days running</span></div>'
+    )
 
     return f"""
   <div class="card portfolio-card">
-    <div class="card-label">💼 Paper Portfolio — Virtual $1,000</div>
+    <div class="card-label">&#128188; Paper Portfolio &mdash; Virtual $1,000</div>
 
     <div class="port-hero">
       <div class="port-total">${p['total_value']:,.2f}</div>
@@ -448,7 +546,7 @@ def build_portfolio_html(prices: dict = None) -> str:
 
     <div class="port-stats">
       <div class="port-stat"><div class="ps-val">${p['cash']:,.2f}</div><div class="ps-label">Cash</div></div>
-      <div class="port-stat"><div class="ps-val">${p['realized_pnl']:+,.2f}</div><div class="ps-label">Realized P&L</div></div>
+      <div class="port-stat"><div class="ps-val">${p['realized_pnl']:+,.2f}</div><div class="ps-label">Realized P&amp;L</div></div>
       <div class="port-stat"><div class="ps-val" style="color:{win_color}">{p['win_rate']:.0f}%</div><div class="ps-label">Win Rate</div></div>
       <div class="port-stat"><div class="ps-val" style="color:{slots_color}">{p['position_count']}/{MAX_POSITIONS}</div><div class="ps-label">Positions</div></div>
     </div>
@@ -459,6 +557,9 @@ def build_portfolio_html(prices: dict = None) -> str:
     <div class="port-section-label">Last 5 Trades</div>
     {no_trades}
     <div class="trades-list">{trade_rows}</div>
+
+    {benchmark_html}
+    {grad_html}
   </div>
 
   <style>
@@ -503,3 +604,108 @@ def reset_portfolio():
     """Wipe portfolio and start fresh with $1,000. USE WITH CAUTION."""
     save_portfolio(_default_state())
     log.info("Paper portfolio reset to $1,000.")
+
+
+# ─── BTC BENCHMARK ────────────────────────────────────────────────────────────
+
+def update_btc_benchmark(btc_price: float):
+    """
+    Record the BTC price at portfolio start so we can compare agent vs buy-and-hold.
+    No-op after the first call — benchmark is set once and never updated.
+    """
+    if not btc_price or btc_price <= 0:
+        return
+    state = load_portfolio()
+    if state.get("btc_benchmark_price"):
+        return  # already set
+    state["btc_benchmark_price"] = btc_price
+    state["btc_benchmark_units"] = round(STARTING_CASH / btc_price, 8)
+    save_portfolio(state)
+    log.info(f"BTC benchmark set: ${btc_price:,.2f}  ({state['btc_benchmark_units']:.8f} BTC)")
+
+
+# ─── BEAR MARKET REGIME FILTER ────────────────────────────────────────────────
+
+def update_fear_counter(fear_value) -> int:
+    """
+    Track consecutive cycles where Fear & Greed index < 20 (extreme fear).
+    Resets to 0 when fear_value >= 20. Returns current consecutive count.
+    """
+    state = load_portfolio()
+    try:
+        val = int(fear_value) if fear_value is not None else 50
+    except (TypeError, ValueError):
+        val = 50
+    if val < 20:
+        state["consecutive_fear_cycles"] = state.get("consecutive_fear_cycles", 0) + 1
+    else:
+        state["consecutive_fear_cycles"] = 0
+    save_portfolio(state)
+    return state["consecutive_fear_cycles"]
+
+
+# ─── GRADUATION READINESS ─────────────────────────────────────────────────────
+
+def get_graduation_status() -> dict:
+    """
+    Evaluate whether the agent is ready to graduate from paper trading to real money.
+    Returns a dict with score (X/5), individual criteria, and a ready flag.
+
+    Criteria:
+      1. At least 10 completed trades
+      2. Win rate > 50%
+      3. Average trade return > 0%
+      4. Portfolio running for at least 30 days
+      5. No losing streak of 3+ consecutive trades in recent history
+    """
+    state    = load_portfolio()
+    history  = state.get("trade_history", [])
+    n_trades = state.get("total_trades", 0)
+    wins     = state.get("winning_trades", 0)
+
+    criteria = {}
+
+    # 1. Trade count
+    criteria["min_trades"] = n_trades >= 10
+
+    # 2. Win rate
+    win_rate = (wins / n_trades * 100) if n_trades > 0 else 0.0
+    criteria["win_rate"] = win_rate > 50
+
+    # 3. Average trade return positive
+    if history:
+        avg_pct = sum(t.get("profit_pct", 0) for t in history) / len(history)
+    else:
+        avg_pct = 0.0
+    criteria["positive_avg"] = avg_pct > 0
+
+    # 4. Running at least 30 days
+    started = state.get("started_at", datetime.now(timezone.utc).isoformat())
+    days_running = _days_between(started, datetime.now(timezone.utc).isoformat())
+    criteria["days_30"] = days_running >= 30
+
+    # 5. No streak of 3+ consecutive losses in recent 10 trades
+    recent = history[-10:] if len(history) >= 10 else history
+    max_streak = 0
+    streak     = 0
+    for t in recent:
+        if t.get("profit_pct", 0) < 0:
+            streak += 1
+            max_streak = max(max_streak, streak)
+        else:
+            streak = 0
+    criteria["no_bad_streak"] = max_streak < 3
+
+    score     = sum(criteria.values())
+    score_str = f"{score}/5"
+    ready     = score == 5
+
+    return {
+        "score":        score_str,
+        "ready":        ready,
+        "criteria":     criteria,
+        "days_running": days_running,
+        "win_rate":     win_rate,
+        "avg_trade":    round(avg_pct, 2),
+        "n_trades":     n_trades,
+    }

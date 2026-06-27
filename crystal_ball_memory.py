@@ -234,22 +234,27 @@ def _get_coin_price_at(target_dt: datetime, coin_id: str = "bitcoin") -> Optiona
     Fetch historical price for any coin via CoinGecko.
     coin_id is the CoinGecko ID (e.g. "bitcoin", "ethereum", "solana").
     Used for outcome evaluation of swing trade predictions.
+    Retries up to 3 times with exponential backoff on 429 rate limits.
     """
-    try:
-        date_str = target_dt.strftime("%d-%m-%Y")
-        r = requests.get(
-            f"https://api.coingecko.com/api/v3/coins/{coin_id}/history",
-            params={"date": date_str, "localization": "false"},
-            timeout=10
-        )
-        r.raise_for_status()
-        data = r.json()
-        price = data.get("market_data", {}).get("current_price", {}).get("usd")
-        time.sleep(1.5)  # respect rate limit
-        return float(price) if price else None
-    except Exception as e:
-        log.warning(f"Historical price fetch failed for {coin_id} on {date_str}: {e}")
-        return None
+    date_str = target_dt.strftime("%d-%m-%Y")
+    for attempt in range(3):
+        try:
+            r = requests.get(
+                f"https://api.coingecko.com/api/v3/coins/{coin_id}/history",
+                params={"date": date_str, "localization": "false"},
+                timeout=10
+            )
+            r.raise_for_status()
+            data  = r.json()
+            price = data.get("market_data", {}).get("current_price", {}).get("usd")
+            time.sleep(2)   # always space calls even on success
+            return float(price) if price else None
+        except Exception as e:
+            wait = 2 ** attempt * 3   # 3s, 6s, 12s
+            log.warning(f"Historical price fetch failed for {coin_id} on {date_str} "
+                        f"(attempt {attempt+1}/3): {e} — retrying in {wait}s")
+            time.sleep(wait)
+    return None
 
 # Keep legacy alias for backwards compatibility
 def _get_btc_price_at(target_dt: datetime) -> Optional[float]:

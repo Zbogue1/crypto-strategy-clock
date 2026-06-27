@@ -68,10 +68,11 @@ except ImportError:
 try:
     from paper_portfolio import (
         execute_buy, execute_sell,
-        check_stop_loss, check_take_profit,
+        check_stop_loss, check_take_profit, check_time_exit,
         get_portfolio_value, get_portfolio_summary_lines,
         build_portfolio_html, reset_portfolio,
-        load_portfolio, MAX_POSITIONS
+        load_portfolio, MAX_POSITIONS,
+        update_btc_benchmark, update_fear_counter, get_graduation_status,
     )
     HAS_PAPER = True
 except ImportError:
@@ -114,7 +115,7 @@ NEWS_SOURCES = [
     ("https://cryptoslate.com/feed/",                     "CryptoSlate"),
 ]
 
-REDDIT_SUBS = ["CryptoCurrency", "Bitcoin", "ethereum", "solana", "altcoin"]
+# REDDIT_SUBS removed — Reddit API restrictions prevent reliable data retrieval
 
 HEADERS = {"User-Agent": "CryptoOracle/3.0 (swing trading research; non-commercial)"}
 
@@ -203,7 +204,7 @@ class MarketSnapshot:
     btc_price:      float           = 0.0
     btc_dominance:  float           = 0.0
     news:           list            = field(default_factory=list)   # all sources
-    reddit_posts:   list            = field(default_factory=list)
+    reddit_posts:   list            = field(default_factory=list)   # unused — Reddit API restricted
     all_signals:    List[Signal]    = field(default_factory=list)   # aggregate
 
 
@@ -687,31 +688,7 @@ def collect_news(snap: MarketSnapshot):
     log.info(f"News: {len(snap.news)} headlines from {len(NEWS_SOURCES)} sources")
 
 
-def collect_reddit(snap: MarketSnapshot):
-    """Reddit hot posts from key crypto subreddits. No auth needed."""
-    posts = []
-    for sub in REDDIT_SUBS[:3]:  # limit to 3 to stay in rate limits
-        try:
-            r = requests.get(
-                f"https://www.reddit.com/r/{sub}/hot.json",
-                params={"limit": 10},
-                timeout=10, headers=HEADERS)
-            if r.status_code == 200:
-                data = r.json().get("data", {}).get("children", [])
-                for post in data[:5]:
-                    p = post["data"]
-                    posts.append({
-                        "title":  p.get("title", ""),
-                        "score":  p.get("score", 0),
-                        "sub":    sub,
-                        "comments": p.get("num_comments", 0),
-                        "upvote_ratio": p.get("upvote_ratio", 0),
-                    })
-            time.sleep(0.8)
-        except Exception as e:
-            log.warning(f"Reddit r/{sub}: {e}")
-    snap.reddit_posts = posts
-    log.info(f"Reddit: {len(posts)} posts from {len(REDDIT_SUBS[:3])} subreddits")
+# Reddit removed — API restrictions prevent reliable data retrieval.
 
 
 # ─── AGGREGATE SIGNAL SCORE ──────────────────────────────────────────────────
@@ -785,9 +762,6 @@ def ask_claude(snap: MarketSnapshot) -> dict:
     for h in snap.news[:20]:
         news_by_source.setdefault(h["source"], []).append(h["title"])
 
-    # Reddit trending
-    reddit_titles = [p["title"] for p in sorted(snap.reddit_posts, key=lambda x: x["score"], reverse=True)[:10]]
-
     # DeFi TVL highlights
     defi_highlights = {
         k: v for k, v in snap.defi_summary.get("chains", {}).items()
@@ -803,7 +777,6 @@ def ask_claude(snap: MarketSnapshot) -> dict:
         "top_20_overview":     top_overview,
         "swing_candidates":    candidate_summaries,
         "news":                news_by_source,
-        "reddit_trending":     reddit_titles,
         "defi_chain_tvl":      defi_highlights,
         "investment_position": pos_ctx,
     }
@@ -1205,16 +1178,8 @@ def generate_html_report(analysis: dict, snap: MarketSnapshot, perf: dict = None
         items = "".join(f"<li>{t}</li>" for t in titles[:3])
         news_html += f'<div class="news-source"><div class="news-src-lbl">{source}</div><ul>{items}</ul></div>'
 
-    # Reddit trending
-    reddit_html = ""
-    if snap.reddit_posts:
-        top_posts = sorted(snap.reddit_posts, key=lambda x: x["score"], reverse=True)[:5]
-        reddit_items = "".join(f'<li>{p["title"]} <span class="hl-src">r/{p["sub"]} · {p["score"]} pts</span></li>'
-                               for p in top_posts)
-        reddit_html = f'<div class="card"><div class="card-label">Reddit Trending</div><ul>{reddit_items}</ul></div>'
-
-    # Paper portfolio card
-    portfolio_html = build_portfolio_html(coin_price) if HAS_PAPER else ""
+    # Paper portfolio card — pass full price map so BTC benchmark renders correctly
+    portfolio_html = build_portfolio_html({c.ticker: c.price for c in snap.top_coins}) if HAS_PAPER else ""
 
     # Performance/learning section
     perf_html = _build_performance_html(perf) if perf and perf.get("evaluated", 0) >= 3 else ""
@@ -1321,8 +1286,6 @@ body{{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,sans-ser
   {risk_html}
   {'<div class="card"><div class="card-label">Watch Next 48 Hours</div><ul>' + watch_items + '</ul></div>' if watch_items else ""}
   {'<div class="card"><div class="card-label">Latest News</div>' + news_html + '</div>' if news_html else ""}
-  {reddit_html}
-
   <div class="footer">Crypto Strategy Clock · Powered by Claude AI · Not financial advice</div>
 </div>
 </body>
@@ -1547,7 +1510,6 @@ def run_cycle(expert_mode: bool = False):
     collect_macro(snap)
     collect_defi_summary(snap)
     collect_news(snap)
-    collect_reddit(snap)
 
     # ── 2. Top-20 scan ───────────────────────────────────────
     scan_top_coins(snap)
@@ -1608,12 +1570,23 @@ def run_cycle(expert_mode: bool = False):
         # Build a price map for all coins in this snapshot (ticker → price)
         price_map = {c.ticker: c.price for c in snap.top_coins}
 
-        # ── Price-driven exits: check stop-loss and take-profit for every holding ──
+        # ── Update BTC benchmark (no-op after first call) ────────────────────
+        update_btc_benchmark(snap.btc_price)
+
+        # ── Update bear market regime counter ─────────────────────────────────
+        fear_cycles = update_fear_counter(snap.fear_greed.get("current") if isinstance(snap.fear_greed, dict) else snap.fear_greed)
+        in_bear_regime = fear_cycles >= 3
+        if in_bear_regime:
+            log.warning(f"BEAR REGIME: Fear & Greed < 20 for {fear_cycles} consecutive cycles — new BUYs paused.")
+
+        # ── Price-driven exits: stop-loss, take-profit, and time exit ─────────
         held_state = load_portfolio()
         for held_info in held_state.get("holdings", []):
             held_ticker = held_info.get("coin_ticker", "")
             held_price_ = price_map.get(held_ticker)
             if not held_price_ or held_price_ <= 0:
+                # No live price — can't execute any exit this cycle
+                log.warning(f"PAPER: No price for {held_ticker} in snapshot — skipping exit checks.")
                 continue
             # Sanity check: reject prices that dropped >70% from entry in one cycle —
             # that's a CoinGecko data error, not a real move.
@@ -1637,17 +1610,18 @@ def run_cycle(expert_mode: bool = False):
                     continue
             sl_trade = check_stop_loss(held_ticker, held_price_)
             if sl_trade:
-                log_trade_exit(
-                    profit_pct=sl_trade.get("profit_pct", 0.0),
-                    won=sl_trade.get("result", "LOSS") == "WIN",
-                )
+                log_trade_exit(profit_pct=sl_trade.get("profit_pct", 0.0),
+                               won=sl_trade.get("result", "LOSS") == "WIN")
             else:
                 tp_trade = check_take_profit(held_ticker, held_price_)
                 if tp_trade:
-                    log_trade_exit(
-                        profit_pct=tp_trade.get("profit_pct", 0.0),
-                        won=tp_trade.get("result", "WIN") == "WIN",
-                    )
+                    log_trade_exit(profit_pct=tp_trade.get("profit_pct", 0.0),
+                                   won=tp_trade.get("result", "WIN") == "WIN")
+                else:
+                    time_trade = check_time_exit(held_ticker, held_price_)
+                    if time_trade:
+                        log_trade_exit(profit_pct=time_trade.get("profit_pct", 0.0),
+                                       won=time_trade.get("result", "LOSS") == "WIN")
 
         # ── Signal-driven exits: sell any coins Claude flagged ──
         for ticker_to_sell in analysis.get("sell_coins", []):
@@ -1655,24 +1629,33 @@ def run_cycle(expert_mode: bool = False):
             if sell_price_ and sell_price_ > 0:
                 sold = execute_sell(ticker_to_sell, sell_price_, signal_, reason="signal")
                 if sold:
-                    log_trade_exit(
-                        profit_pct=sold.get("profit_pct", 0.0),
-                        won=sold.get("result", "LOSS") == "WIN",
-                    )
+                    log_trade_exit(profit_pct=sold.get("profit_pct", 0.0),
+                                   won=sold.get("result", "LOSS") == "WIN")
             else:
                 log.warning(f"PAPER: sell_coins included {ticker_to_sell} but no price found in snapshot")
 
-        # ── Signal-driven entry: open new position if BUY and slots available ──
+        # ── Signal-driven entry: blocked in bear regime; open if BUY and slots available ──
         current_holdings = load_portfolio().get("holdings", [])
         if signal_ in ("BUY", "STRONG_BUY") and len(current_holdings) < MAX_POSITIONS:
-            execute_buy(coin_ticker, coin_id, coin_price_, signal_, confidence_,
-                        entry_target=entry_target_, exit_target=exit_target_,
-                        stop_loss=stop_loss_, expected_days=expected_d_)
-            log_trade_entry(
-                coin=coin_ticker,
-                key_signals=analysis.get("key_signals", []),
-                confidence=confidence_,
-            )
+            if in_bear_regime:
+                log.warning(f"PAPER: BUY signal for {coin_ticker} blocked — bear market regime active.")
+            else:
+                execute_buy(coin_ticker, coin_id, coin_price_, signal_, confidence_,
+                            entry_target=entry_target_, exit_target=exit_target_,
+                            stop_loss=stop_loss_, expected_days=expected_d_)
+                log_trade_entry(
+                    coin=coin_ticker,
+                    key_signals=analysis.get("key_signals", []),
+                    confidence=confidence_,
+                )
+
+        # ── Graduation readiness check ────────────────────────────────────────
+        grad = get_graduation_status()
+        analysis["_graduation"] = grad
+        if grad["ready"]:
+            log.info(f"🎓 GRADUATION READY: All criteria met ({grad['score']}) — agent may be ready for real money.")
+        else:
+            log.info(f"Learning progress: {grad['score']} criteria met | {grad['days_running']}d running")
 
 
     # ── 10. Save prediction ──────────────────────────────────
@@ -1812,7 +1795,6 @@ def push_results_to_github(analysis: dict, snap: MarketSnapshot):
 
             payload = {
                 "message": f"[bot] {filename} — {snap.timestamp[:16]}",
-                "content": base64.b64encode(content.encode()).decode(),
                 "branch":  GITHUB_DATA_BRANCH,
             }
             if sha:
