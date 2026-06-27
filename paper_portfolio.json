@@ -1,6 +1,6 @@
 {
   "cash": 1000.0,
-  "holding": null,
+  "holdings": [],
   "realized_pnl": 0.0,
   "peak_value": 1000.0,
   "total_trades": 0,
@@ -8,5 +8,5 @@
   "losing_trades": 0,
   "total_fees": 0.0,
   "trade_history": [],
-  "started_at": "2026-06-14T01:40:12.276838+00:00"
+  "started_at": "2026-06-27T00:00:00+00:00"
 }
