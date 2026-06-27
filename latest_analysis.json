@@ -1,0 +1,63 @@
+{
+  "timestamp": "2026-06-27T04:04:36.512256+00:00",
+  "signal": "BUY",
+  "selected_coin": "SOL",
+  "selected_coin_name": "Solana",
+  "selected_coin_price": 72.0,
+  "confidence": 62,
+  "layman_headline": "Solana stands out as the lone green light in a sea of crypto fear.",
+  "layman_explanation": "The entire crypto market is gripped by extreme fear \u2014 the sentiment index is at just 15 out of 100, which historically tends to mark good buying windows. While almost every major coin has dropped 5-10% over the past week, Solana has actually gained over 3% and jumped 6% in the last 24 hours. It's showing relative strength when most coins are bleeding, which is exactly the kind of leadership signal swing traders look for. Bitcoin is holding near $60,000, providing a fragile but stable floor for the market.",
+  "layman_action": "Consider a small position in Solana with a clear exit plan: sell if it drops below $65 (about 10% downside risk) and take profits around $82 (about 14% upside). This is a cautious bet on the strongest horse in a weak market.",
+  "expert_reasoning": "SOL exhibits clear relative strength with +6.07% 24h and +3.22% 7d performance while BTC is -4.82% and ETH is -7.4% on the week. The Fear & Greed index at 15 (extreme fear, worsening from 13 yesterday) historically correlates with local bottoms \u2014 buying during these periods has positive expected value over 1-2 week horizons. News catalysts confirm SOL ecosystem tokens are leading the rebound. While CoinTelegraph flags weakening on-chain momentum, the price action divergence from the broader market suggests institutional or large buyer accumulation. The risk-reward setup with a $65 stop and $82 target gives roughly 1.5:1 reward-to-risk, acceptable given the macro backdrop. I'm choosing SOL over the swing candidates like INJ (+9.7% 24h) or AAVE (+11% 24h, +26% 7d) because SOL has deeper liquidity, a cleaner trend, and isn't as extended as AAVE.",
+  "risk_factors": [
+    "BTC dominance at 55.7% and rising means capital is rotating out of alts \u2014 SOL could lose its relative strength if BTC drops below $58K",
+    "CoinTelegraph flags weakening on-chain momentum despite the price recovery, suggesting the bounce may lack conviction",
+    "Extreme fear index is still worsening (trend: worsening), meaning we may not have seen capitulation yet and a broader market flush could drag SOL down"
+  ],
+  "watch_list": [
+    "BTC price action around $58,000-$60,000 support \u2014 a break below $58K likely drags all alts including SOL",
+    "Fear & Greed index trajectory \u2014 look for stabilization or uptick as a confirmation signal",
+    "SOL daily volume sustainability \u2014 the 24h $4.1B volume needs to hold above $3B to confirm genuine buying interest"
+  ],
+  "market_context": "The crypto market is in deep extreme fear (15/100, worsening trend) with BTC struggling near $60K and most alts down 5-10% on the week. This is a high-risk but potentially high-reward environment where selective buying during fear has historically paid off over 1-2 week windows.",
+  "context_banner": "Extreme fear grips crypto markets, but Solana's relative strength amid the sell-off signals a potential mean-reversion leader for the next bounce.",
+  "btc_price": 60253,
+  "fear_greed": {
+    "current": 15,
+    "label": "Extreme Fear",
+    "yesterday": 13,
+    "week_avg": 17.6,
+    "trend": "worsening"
+  },
+  "btc_dominance": 55.7,
+  "key_signals": [
+    {
+      "source": "Fear_Greed",
+      "signal_type": "sentiment",
+      "description": "Fear & Greed at 15 (Extreme Fear) and worsening \u2014 historically a contrarian buying zone, but caution warranted as capitulation may not be complete."
+    },
+    {
+      "source": "CoinDesk",
+      "signal_type": "news",
+      "description": "Headline confirms Solana ecosystem tokens leading the crypto rebound alongside Aave, validating SOL's relative strength as a narrative-driven move."
+    },
+    {
+      "source": "CoinTelegraph",
+      "signal_type": "onchain",
+      "description": "SOL reclaimed $72 but on-chain data flags weakening momentum \u2014 a cautionary signal that tempers conviction and supports tighter stop-loss placement."
+    },
+    {
+      "source": "volume_breakout",
+      "signal_type": "technical",
+      "description": "SOL 24h volume at $4.1B significantly elevated relative to other top-20 coins, suggesting real buying interest rather than just a dead-cat bounce."
+    },
+    {
+      "source": "Blockworks",
+      "signal_type": "macro",
+      "description": "ETH derivatives reset signals broader market positioning flush, which often precedes relief rallies \u2014 supportive of near-term bounce thesis."
+    }
+  ],
+  "_mode": "HUNTING",
+  "exit_target": 82.0,
+  "stop_loss": 65.0
+}
