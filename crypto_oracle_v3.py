@@ -329,6 +329,46 @@ def select_candidates(snap: MarketSnapshot) -> List[CoinScan]:
     return candidates
 
 
+# ─── PRICE VALIDATION ────────────────────────────────────────────────────────
+
+def get_coinpaprika_price(coin_ticker: str, coin_id: str) -> float:
+    """
+    Fetch price from CoinPaprika as a secondary source to cross-validate CoinGecko.
+    Returns price float or None if unavailable.
+    """
+    # Try common ID pattern: {ticker_lower}-{coingecko_id}
+    paprika_id = f"{coin_ticker.lower()}-{coin_id}"
+    try:
+        r = requests.get(
+            f"https://api.coinpaprika.com/v1/tickers/{paprika_id}",
+            timeout=8
+        )
+        if r.status_code == 200:
+            return float(r.json()["quotes"]["USD"]["price"])
+    except Exception:
+        pass
+
+    # Fallback: search by symbol and pick the matching result
+    try:
+        r = requests.get(
+            f"https://api.coinpaprika.com/v1/search?q={coin_ticker}&c=currencies&limit=5",
+            timeout=8
+        )
+        if r.status_code == 200:
+            for result in r.json().get("currencies", []):
+                if result.get("symbol", "").upper() == coin_ticker.upper():
+                    r2 = requests.get(
+                        f"https://api.coinpaprika.com/v1/tickers/{result['id']}",
+                        timeout=8
+                    )
+                    if r2.status_code == 200:
+                        return float(r2.json()["quotes"]["USD"]["price"])
+    except Exception:
+        pass
+
+    return None
+
+
 # ─── PHASE 2: DEEP DIVE ON CANDIDATES ────────────────────────────────────────
 
 def collect_coin_ohlc(coin: CoinScan):
@@ -340,9 +380,10 @@ def collect_coin_ohlc(coin: CoinScan):
             timeout=12, headers=HEADERS)
         r.raise_for_status()
         coin.ohlc = r.json()
-        time.sleep(1.3)  # respect rate limit
     except Exception as e:
         log.warning(f"OHLC {coin.ticker}: {e}")
+    finally:
+        time.sleep(1.3)  # always wait — even on 429, so next call isn't immediate
 
 
 def collect_messari_metrics(coin: CoinScan):
@@ -1418,7 +1459,7 @@ def send_alerts(analysis: dict, snap: MarketSnapshot):
     sig   = analysis.get("signal", "HOLD")
     alert = analysis.get("alert")
     coin  = analysis.get("selected_coin", "CRYPTO")
-    price = analysis.get("selected_coin_price", 0)
+    price = analysis.get("selected_coin_price") or snap.btc_price or 0
     conf  = analysis.get("confidence", 0)
 
     should_alert = sig in ("STRONG_BUY", "STRONG_SELL") or \
@@ -1574,6 +1615,26 @@ def run_cycle(expert_mode: bool = False):
             held_price_ = price_map.get(held_ticker)
             if not held_price_ or held_price_ <= 0:
                 continue
+            # Sanity check: reject prices that dropped >70% from entry in one cycle —
+            # that's a CoinGecko data error, not a real move.
+            entry_price_ = held_info.get("entry_price", 0)
+            if entry_price_ and held_price_ < entry_price_ * 0.30:
+                log.warning(
+                    f"PAPER: Skipping {held_ticker} stop-loss — price ${held_price_:.4f} is "
+                    f">70% below entry ${entry_price_:.4f}. Likely bad data from CoinGecko."
+                )
+                continue
+            # Cross-validate with CoinPaprika before acting on any exit
+            paprika_price = get_coinpaprika_price(held_ticker, held_info.get("coin_id", held_ticker.lower()))
+            if paprika_price is not None:
+                divergence = abs(held_price_ - paprika_price) / paprika_price
+                if divergence > 0.20:
+                    log.warning(
+                        f"PAPER: Price validation failed for {held_ticker} — "
+                        f"CoinGecko ${held_price_:.4f} vs CoinPaprika ${paprika_price:.4f} "
+                        f"({divergence*100:.1f}% divergence). Skipping exit check this cycle."
+                    )
+                    continue
             sl_trade = check_stop_loss(held_ticker, held_price_)
             if sl_trade:
                 log_trade_exit(
