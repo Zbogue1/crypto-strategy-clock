@@ -381,18 +381,25 @@ def get_coinpaprika_price(coin_ticker: str, coin_id: str) -> float:
 # ─── PHASE 2: DEEP DIVE ON CANDIDATES ────────────────────────────────────────
 
 def collect_coin_ohlc(coin: CoinScan):
-    """CoinGecko OHLC for one coin — 90 days of daily candles."""
-    try:
-        r = requests.get(
-            f"https://api.coingecko.com/api/v3/coins/{coin.id}/ohlc",
-            params={"vs_currency": "usd", "days": 90},
-            timeout=12, headers=HEADERS)
-        r.raise_for_status()
-        coin.ohlc = r.json()
-    except Exception as e:
-        log.warning(f"OHLC {coin.ticker}: {e}")
-    finally:
-        time.sleep(1.3)  # always wait — even on 429, so next call isn't immediate
+    """CoinGecko OHLC for one coin — 90 days of daily candles. Retries once on 429."""
+    for attempt in range(2):
+        try:
+            r = requests.get(
+                f"https://api.coingecko.com/api/v3/coins/{coin.id}/ohlc",
+                params={"vs_currency": "usd", "days": 90},
+                timeout=12, headers=HEADERS)
+            if r.status_code == 429:
+                wait = 20 if attempt == 0 else 40
+                log.warning(f"OHLC {coin.ticker}: 429 — waiting {wait}s before retry")
+                time.sleep(wait)
+                continue
+            r.raise_for_status()
+            coin.ohlc = r.json()
+            break
+        except Exception as e:
+            log.warning(f"OHLC {coin.ticker}: {e}")
+            break
+    time.sleep(2)  # brief gap after each OHLC regardless of outcome
 
 
 def collect_messari_metrics(coin: CoinScan):
@@ -767,10 +774,16 @@ def collect_funding_rates(snap: MarketSnapshot):
             "https://fapi.binance.com/fapi/v1/premiumIndex",
             timeout=10, headers=HEADERS
         )
+        if r.status_code != 200:
+            log.warning(f"Funding rates: Binance returned HTTP {r.status_code} — may be geo-blocked")
         if r.status_code == 200:
-            for item in r.json():
+            data = r.json()
+            log.info(f"Funding rates: Binance returned {len(data)} items")
+            if data:
+                log.info(f"Funding rates sample fields: {list(data[0].keys())}")
+            for item in data:
                 sym = item.get("symbol", "")
-                # Binance uses lastFundingRate on premiumIndex; fall back to fundingRate
+                # lastFundingRate is the standard field; fall back to fundingRate
                 rate = item.get("lastFundingRate") or item.get("fundingRate")
                 if not rate and rate != 0:
                     continue
