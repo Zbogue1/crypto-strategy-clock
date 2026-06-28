@@ -58,5 +58,27 @@
       "SOL"
     ],
     "alert": "Market in extreme fear with active capitulation \u2014 preserve capital and wait for reversal confirmation before entering new positions."
+  },
+  {
+    "ts": "2026-06-28T08:01:49.331961+00:00",
+    "coin": "NEAR",
+    "price": 1.87,
+    "signal": "HOLD",
+    "confidence": 32,
+    "score": -0.15,
+    "fg": 18,
+    "btc_price": 60121,
+    "btc_dominance": 0.0,
+    "candidates": [
+      "VELVET",
+      "\u5e01\u5b89\u4eba\u751f",
+      "KITE",
+      "WLD",
+      "PUMP",
+      "NEAR",
+      "ENA",
+      "SOL"
+    ],
+    "alert": "Bitcoin below $60K with worsening Fear & Greed (18). Capitulation in progress \u2014 do not deploy capital without confirmed reversal signals."
   }
 ]
