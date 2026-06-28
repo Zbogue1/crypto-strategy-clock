@@ -770,29 +770,34 @@ def collect_funding_rates(snap: MarketSnapshot):
         if r.status_code == 200:
             for item in r.json():
                 sym = item.get("symbol", "")
-                rate = item.get("lastFundingRate")
-                if rate is not None:
-                    for ticker, bsym in symbols.items():
-                        if bsym == sym:
-                            rate_pct = round(float(rate) * 100, 4)
-                            rates[ticker] = {
-                                "rate_pct":     rate_pct,
-                                "annualized":   round(rate_pct * 3 * 365, 1),
-                                "bias": (
-                                    "heavily_long"  if rate_pct >  0.05 else
-                                    "lightly_long"  if rate_pct >  0.01 else
-                                    "neutral"       if abs(rate_pct) <= 0.01 else
-                                    "lightly_short" if rate_pct > -0.05 else
-                                    "heavily_short"
-                                ),
-                                "signal": (
-                                    "bearish"  if rate_pct >  0.05 else   # overleveraged longs = correction risk
-                                    "slightly_bearish" if rate_pct > 0.01 else
-                                    "neutral"  if abs(rate_pct) <= 0.01 else
-                                    "slightly_bullish" if rate_pct > -0.05 else
-                                    "bullish"           # shorts getting squeezed
-                                ),
-                            }
+                # Binance uses lastFundingRate on premiumIndex; fall back to fundingRate
+                rate = item.get("lastFundingRate") or item.get("fundingRate")
+                if not rate and rate != 0:
+                    continue
+                try:
+                    rate_pct = round(float(rate) * 100, 4)
+                except (ValueError, TypeError):
+                    continue
+                for ticker, bsym in symbols.items():
+                    if bsym == sym:
+                        rates[ticker] = {
+                            "rate_pct":   rate_pct,
+                            "annualized": round(rate_pct * 3 * 365, 1),
+                            "bias": (
+                                "heavily_long"  if rate_pct >  0.05 else
+                                "lightly_long"  if rate_pct >  0.01 else
+                                "neutral"       if abs(rate_pct) <= 0.01 else
+                                "lightly_short" if rate_pct > -0.05 else
+                                "heavily_short"
+                            ),
+                            "signal": (
+                                "bearish"          if rate_pct >  0.05 else
+                                "slightly_bearish" if rate_pct >  0.01 else
+                                "neutral"          if abs(rate_pct) <= 0.01 else
+                                "slightly_bullish" if rate_pct > -0.05 else
+                                "bullish"
+                            ),
+                        }
         if rates:
             snap.macro["funding_rates"] = rates
             btc_rate = rates.get("BTC", {}).get("rate_pct", 0)
@@ -1659,6 +1664,7 @@ def run_cycle(expert_mode: bool = False):
     for coin in candidates:
         log.info(f"Deep dive: {coin.ticker}")
         collect_coin_ohlc(coin)
+        time.sleep(6)          # CoinGecko free tier: 30 req/min — 6s gap keeps us safe
         collect_messari_metrics(coin)
         build_technicals_for_coin(coin)
 
@@ -1940,6 +1946,7 @@ def push_results_to_github(analysis: dict, snap: MarketSnapshot):
             payload = {
                 "message": f"[bot] {filename} — {snap.timestamp[:16]}",
                 "branch":  GITHUB_DATA_BRANCH,
+                "content": base64.b64encode(content.encode("utf-8")).decode("ascii"),
             }
             if sha:
                 payload["sha"] = sha
