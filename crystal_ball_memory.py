@@ -863,6 +863,9 @@ def run_learning_cycle(current_price: float) -> Dict:
     """
     log.info("Running learning cycle...")
 
+    # Wait for CoinGecko rate-limit window to recover after deep-dive OHLC calls
+    time.sleep(30)
+
     # Evaluate predictions that have matured
     newly_resolved = evaluate_pending_predictions(current_price)
 
