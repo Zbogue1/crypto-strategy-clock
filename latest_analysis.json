@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-06-28T04:02:46.832600+00:00",
+  "timestamp": "2026-06-28T08:01:49.331961+00:00",
   "selected_coin": "NEAR",
   "selected_coin_name": "NEAR Protocol",
-  "selected_coin_price": 1.9,
+  "selected_coin_price": 1.87,
   "confidence": 32,
-  "layman_headline": "Extreme fear grips the crypto market \u2014 patience is the best trade right now.",
-  "layman_explanation": "The entire crypto market is in a deep slump with Bitcoin down nearly 7% this week and Fear & Greed at an extreme low of 18. News headlines point to capitulation, gold/silver dragging crypto down, and crypto stocks underperforming. While extreme fear often precedes good buying opportunities, none of the candidates today show a clean, high-conviction setup \u2014 most are either already overbought after explosive runs or still in freefall with no reversal signals. The best approach right now is to wait for clearer bottoming patterns before committing capital.",
-  "layman_action": "Stay in cash and on the sidelines. Watch NEAR Protocol around $1.78 for a potential entry if it holds support and shows a reversal candle. Do not chase anything that has already pumped 200%+.",
-  "expert_reasoning": "VELVET is the strongest chart (+1.8 bias) but is massively overbought with RSI 70 after a 208% weekly move \u2014 chasing it here has terrible risk/reward (0.66x). KITE and ENA are strongly bearish with Three Black Crows and Bearish Marubozu patterns, making them falling knives. WLD dropped 27% but shows bearish marubozu with only 0.99x R:R. SKYAI is a doji indecision after a 36% crash \u2014 too uncertain. NEAR stands out with a slightly bullish chart bias (+0.4), price above two MAs in an uptrend, neutral RSI, and a manageable pullback. However, I'm not entering yet because the broader market context is terrible \u2014 BTC capitulation signals, extreme fear trending worse, and no macro catalyst for a reversal. I want to see NEAR hold $1.80 support and print a bullish reversal candle before committing.",
+  "layman_headline": "Crypto market is in deep fear mode \u2014 patience is the best trade right now.",
+  "layman_explanation": "Bitcoin has dropped below $60,000 and the overall market sentiment is at 'Extreme Fear' \u2014 one of the lowest readings possible. Almost every major cryptocurrency is down significantly over the past week. While fear can create buying opportunities, none of the coins on our watchlist have a clean enough setup to justify risking money right now. The best candidates are either already overbought after huge runs (VELVET up 218% in a week) or stuck in clear downtrends with no reversal signals yet.",
+  "layman_action": "Stay in cash and wait. Set alerts for NEAR Protocol around $1.75 and Solana around $66. If either reaches those levels with signs of a bounce, that could be a much better entry. Don't chase anything in this fearful environment without a confirmed reversal.",
+  "expert_reasoning": "The market is in extreme fear (18/100, worsening trend) with BTC losing the $60K level and facing capitulation-level UTXO movements. VELVET's +218% weekly gain and RSI of 70 make it a classic 'too late to chase' setup with a terrible R/R ratio of 0.66x near resistance. WLD and NEAR both pulled back 15-25% but neither shows a bullish reversal candle or MACD cross to confirm a bottom. SOL at RSI 42 is approaching oversold but its chart bias is -0.70 with price below all major MAs \u2014 no reason to catch this knife yet. ENA and PUMP are in confirmed downtrends with -1.40 chart bias scores. The prudent move is to remain in cash and let the capitulation play out before deploying capital. NEAR gets the nod as the best watchlist candidate given its uptrend structure still intact and moderate pullback, but entry should wait for $1.75 support or a confirmed bullish reversal candle.",
   "risk_factors": [
-    "Bitcoin capitulation could accelerate, dragging all alts down another 15-20%",
-    "Extreme fear index is still worsening (15 yesterday \u2192 18 today but weekly avg 16.9), suggesting we haven't bottomed",
-    "No clear macro catalyst or positive news to reverse the bearish sentiment across crypto"
+    "BTC breaking below $58K could trigger cascading liquidations and drag all alts down another 15-20%",
+    "Extreme Fear readings can persist for weeks \u2014 catching the exact bottom is nearly impossible",
+    "Macro headwinds from gold/silver selloff correlating with crypto weakness suggest broader risk-off environment"
   ],
   "watch_list": [
-    "BTC price action around $58,000-$60,000 support \u2014 a breakdown below $58K would invalidate all alt setups",
-    "NEAR holding $1.80 support with a bullish reversal candle (hammer or morning star)",
-    "Fear & Greed index stabilization or uptick above 20 would signal capitulation exhaustion"
+    "BTC price action around $58,000 \u2014 a break below could trigger full capitulation and create real buying opportunities",
+    "Fear & Greed Index trajectory \u2014 watch for stabilization or uptick from current 18 as a sign of sentiment bottoming",
+    "NEAR and SOL daily candles for hammer/morning star reversal patterns at support levels"
   ],
-  "market_context": "Crypto is in a broad bear phase with BTC at $60K, extreme fear at 18 and worsening, headlines about capitulation and crypto stock underperformance. This is a 'be patient and accumulate watchlists' environment, not a 'rush to buy' moment.",
-  "context_banner": "Extreme fear and capitulation signals suggest a potential bottom is forming, but confirmation is needed before deploying capital.",
-  "btc_price": 60126,
+  "market_context": "Bitcoin is below $60K heading toward a rare back-to-back quarterly loss, with extreme fear dominating sentiment at 18/100 and worsening. UTXO data shows 50K BTC moved at a loss, signaling active capitulation \u2014 the market hasn't found its floor yet.",
+  "context_banner": "Extreme Fear at 18/100 with BTC capitulation underway \u2014 capital preservation trumps opportunity hunting until a reversal signal appears.",
+  "btc_price": 60121,
   "fear_greed": {
     "current": 18,
     "label": "Extreme Fear",
@@ -33,30 +33,30 @@
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Fear & Greed at 18 (Extreme Fear) and worsening week-over-week, historically precedes local bottoms but timing is uncertain."
+      "description": "Extreme Fear at 18/100 with a worsening weekly trend (avg 16.9) \u2014 sentiment has not bottomed and buying into this without reversal confirmation is premature."
     },
     {
       "source": "CoinTelegraph",
       "signal_type": "news",
-      "description": "Bitcoin UTXO capitulation signals and 50K BTC moved at a loss indicate heavy selling pressure still in progress."
+      "description": "50K BTC moved at a loss signals active capitulation phase \u2014 historically this precedes a bottom but the timing is uncertain and more downside is possible."
     },
     {
       "source": "CoinDesk",
       "signal_type": "macro",
-      "description": "Gold and silver selloff dragging Bitcoin down, suggesting cross-asset risk-off sentiment affecting crypto."
+      "description": "Gold and silver selloff dragging BTC down indicates a broader risk-off environment, not just crypto-specific weakness."
     },
     {
       "source": "RSI",
       "signal_type": "technical",
-      "description": "NEAR RSI at 54 is the best-positioned candidate \u2014 neutral with room to run, unlike VELVET at overbought 70."
+      "description": "SOL and PUMP approaching oversold (RSI ~42) but lack bullish reversal candles \u2014 oversold can get more oversold in capitulation markets."
     },
     {
       "source": "volume_breakout",
       "signal_type": "technical",
-      "description": "No volume-confirmed breakout setups among candidates; VELVET's parabolic move lacks sustainable risk/reward for swing entry."
+      "description": "No volume-confirmed breakouts among candidates \u2014 VELVET's volume surge is into overbought territory (RSI 70) making it a distribution risk, not accumulation."
     }
   ],
   "_mode": "HUNTING",
-  "exit_target": 2.15,
+  "exit_target": 2.1,
   "stop_loss": 1.65
 }
