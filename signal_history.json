@@ -124,5 +124,27 @@
       "SOL"
     ],
     "alert": "BTC below $60,000 with worsening extreme fear \u2014 capital preservation mode. Do not force entries in falling-knife conditions."
+  },
+  {
+    "ts": "2026-06-28T20:01:39.266344+00:00",
+    "coin": "SOL",
+    "price": 70.57,
+    "signal": "HOLD",
+    "confidence": 28,
+    "score": -0.3,
+    "fg": 18,
+    "btc_price": 59409,
+    "btc_dominance": 0.0,
+    "candidates": [
+      "\u5e01\u5b89\u4eba\u751f",
+      "VELVET",
+      "KITE",
+      "WLD",
+      "GWEI",
+      "ENA",
+      "TRUMP",
+      "SOL"
+    ],
+    "alert": "BTC has broken below $60,000 with worsening fear sentiment. No swing candidates offer a favorable risk/reward setup. Stay in cash and wait for capitulation bottom signals."
   }
 ]
