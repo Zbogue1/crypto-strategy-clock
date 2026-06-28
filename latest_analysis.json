@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-06-28T00:11:55.639227+00:00",
+  "timestamp": "2026-06-28T00:30:54.456074+00:00",
   "selected_coin": "NEAR",
   "selected_coin_name": "NEAR Protocol",
-  "selected_coin_price": 1.9,
-  "confidence": 30,
-  "layman_headline": "Crypto market is in deep fear mode \u2014 patience is the smartest play right now.",
-  "layman_explanation": "The entire crypto market is experiencing extreme fear, with Bitcoin down over 6% in a week and most altcoins falling even harder \u2014 some 15-25%. This is a classic 'blood in the streets' moment where prices are falling broadly but no clear bottom has formed yet. While some coins like NEAR show a small bounce today, the overall trend is still pointing down and it's too early to catch the knife. We're watching for a real stabilization before jumping in.",
-  "layman_action": "Stay in cash and wait. The market hasn't shown convincing signs of a bottom yet. Watch for Bitcoin to hold above $58,000 and the Fear & Greed index to stop worsening before committing new money.",
-  "expert_reasoning": "The market is in extreme fear (18/100) and worsening \u2014 this week's average is only 16.9. BTC is at $60,040 and falling, with 50K BTC reportedly moved at a loss signaling capitulation risk per CoinTelegraph. BTC dominance at 55.8% is crushing alts. VELVET is the only strongly bullish chart but is massively overbought (RSI 70, +217% in 7 days) making it a terrible risk/reward entry. KITE has a strongly bearish chart (-2.0 bias). WLD and SKYAI have slightly bearish charts. NEAR bounced 5.4% today but lacks any chart data for technical confirmation. Without a clear technical setup with defined support and a favorable risk/reward ratio, entering any position in this environment carries excessive downside risk. The prudent move is to wait for BTC stabilization and a Fear & Greed reversal.",
+  "selected_coin_price": 1.91,
+  "confidence": 32,
+  "layman_headline": "Extreme fear grips the crypto market \u2014 patience is the best trade right now.",
+  "layman_explanation": "The entire crypto market is in a deep slump with Bitcoin down over 6% this week and most altcoins bleeding even harder. The Fear & Greed index reads 18 \u2014 'Extreme Fear' \u2014 meaning most investors are panicking. While extreme fear can eventually create great buying opportunities, right now there are no clear bottom signals in the charts. Jumping in too early during a panic can mean catching a falling knife.",
+  "layman_action": "Stay in cash and watch from the sidelines. Wait for Bitcoin to stabilize and for fear to start easing before putting money to work. If NEAR drops to $1.80 with a clear bounce pattern, that could be the moment.",
+  "expert_reasoning": "No candidate presents a high-conviction swing entry right now. VELVET is up 218% in 7 days with RSI at 70 \u2014 classic blow-off top risk with a risk/reward of just 0.66x, making it a hard pass. KITE and ENA have strongly bearish chart structures with Three Black Crows and Bearish Marubozu patterns. SKYAI dropped 31% with a doji showing indecision and below all MAs. WLD lacks any chart data. NEAR is the relative standout: it bounced 6.5% today, sits above its 20-day MA with neutral RSI at 54, and has a slightly bullish chart bias. However, BTC dominance at 55.8% is punishing alts, the Fear & Greed index at 18 is worsening (not yet bottoming), and the news cycle \u2014 capitulation risk with 50K BTC moved at a loss, gold/silver correlation dragging crypto \u2014 suggests more downside may come before a true reversal.",
   "risk_factors": [
-    "BTC capitulation risk \u2014 50K BTC moved at a loss could trigger cascading sell pressure below $58K",
-    "Fear & Greed at 18 and still worsening \u2014 no sign of sentiment bottom yet",
-    "High BTC dominance (55.8%) means altcoins face double headwind of BTC decline plus capital rotation away from alts"
+    "BTC could break below $60K triggering further altcoin liquidation cascades \u2014 NEAR would follow",
+    "Fear & Greed trend is still worsening (not bottoming), meaning capitulation may not be complete",
+    "High BTC dominance at 55.8% means capital is rotating out of alts \u2014 NEAR could underperform even if BTC stabilizes"
   ],
   "watch_list": [
-    "Bitcoin price action around $58,000 \u2014 a break below could accelerate selling across all alts",
-    "Fear & Greed index \u2014 watch for first day above 25 as early sign of sentiment bottoming",
-    "NEAR Protocol: if it holds above $1.75 with rising volume over next 48 hours, it becomes the top entry candidate"
+    "Bitcoin price action at the $58,000-$60,000 support zone \u2014 a breakdown triggers more alt pain",
+    "Fear & Greed index: watch for a turn from 'worsening' to 'improving' as the first bottoming signal",
+    "NEAR holding $1.80 support with increasing volume \u2014 would confirm accumulation and set up a buy"
   ],
-  "market_context": "Crypto is in a broad risk-off phase with extreme fear, BTC down 6.5% weekly, and gold/silver selloffs dragging crypto lower. CZ attributes the sour 2026 market to AI competition, global tensions, and the typical 4-year cycle downturn.",
-  "context_banner": "Extreme fear dominates crypto markets \u2014 disciplined patience now sets up superior entries when capitulation exhausts itself.",
-  "btc_price": 60040,
+  "market_context": "Bitcoin is clinging to $60K amid broad risk-off sentiment driven by gold/silver correlation breakdown and macro uncertainty. Extreme Fear at 18 with a worsening trend suggests the market hasn't found its floor yet \u2014 historically great long-term buying zones but premature for swing entries.",
+  "context_banner": "Extreme Fear dominates crypto markets \u2014 discipline and patience outperform bravery until clear reversal signals emerge.",
+  "btc_price": 60078,
   "fear_greed": {
     "current": 18,
     "label": "Extreme Fear",
@@ -33,30 +33,30 @@
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Fear & Greed at 18 (Extreme Fear) and still worsening from 15 yesterday \u2014 no sentiment floor established yet, making new entries premature."
+      "description": "Fear & Greed at 18 with worsening trend indicates capitulation phase is ongoing \u2014 historically great for long-term buys but too early for swing trades."
     },
     {
       "source": "CoinTelegraph",
       "signal_type": "news",
-      "description": "50K BTC moved at a loss signals fresh capitulation risk \u2014 historically this precedes final washout moves before bottoms form."
+      "description": "50K BTC moved at a loss signals fresh capitulation risk, meaning selling pressure hasn't exhausted yet."
     },
     {
       "source": "CoinDesk",
       "signal_type": "macro",
-      "description": "Gold and silver selloff is dragging Bitcoin down, indicating correlated macro deleveraging rather than crypto-specific weakness."
+      "description": "Gold and silver selloff dragging Bitcoin down highlights macro correlation risk and broader risk-off environment."
     },
     {
-      "source": "CoinDesk",
-      "signal_type": "news",
-      "description": "CZ attributes crypto's poor 2026 performance to AI competition for capital, global tensions, and the 4-year cycle \u2014 suggesting structural headwinds remain."
+      "source": "RSI",
+      "signal_type": "technical",
+      "description": "NEAR RSI at 54 is neutral \u2014 not oversold enough for a high-conviction mean-reversion entry during a bear phase."
     },
     {
       "source": "volume_breakout",
       "signal_type": "technical",
-      "description": "No swing candidate shows a volume-confirmed breakout or bullish reversal pattern \u2014 VELVET is overbought at RSI 70 after +217% and remaining candidates lack chart confirmation."
+      "description": "No candidates show volume-confirmed breakouts from support \u2014 all rallies are tentative and lack conviction."
     }
   ],
   "_mode": "HUNTING",
   "exit_target": 2.15,
-  "stop_loss": 1.6
+  "stop_loss": 1.65
 }
