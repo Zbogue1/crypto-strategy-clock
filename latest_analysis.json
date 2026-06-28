@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-06-28T12:01:30.457608+00:00",
+  "timestamp": "2026-06-28T16:04:10.387762+00:00",
   "selected_coin": "SOL",
   "selected_coin_name": "Solana",
-  "selected_coin_price": 71.82,
+  "selected_coin_price": 71.89,
   "confidence": 28,
-  "layman_headline": "Crypto markets are in deep fear territory \u2014 patience is the best trade right now.",
-  "layman_explanation": "Bitcoin has dropped below $60,000 and the overall crypto market mood is at 'Extreme Fear' \u2014 one of the lowest readings we've seen. Almost every altcoin is bleeding, with many down 15-25% in the past week. While extreme fear can eventually create great buying opportunities, the selling hasn't shown clear signs of stopping yet. Trying to catch a falling knife in this environment is risky.",
-  "layman_action": "Stay in cash and wait. The market is still falling and there's no clear bottom signal yet. Keep watching for stabilization \u2014 a day or two where prices stop dropping and volume picks up on the buy side would be the green light.",
-  "expert_reasoning": "Every swing candidate has significant technical problems. VELVET is up 269% in a week with RSI at 70 \u2014 textbook overbought after a parabolic move, terrible risk/reward for entry. KITE and ENA have strongly bearish chart structures with Three Black Crows and Bearish Marubozu patterns. WLD dropped 25% with a slightly bearish chart bias and only 1x risk/reward. SOL is the relative outperformer but remains below all major moving averages with a bearish chart bias of -0.70 and a Doji candle showing indecision. The Fear & Greed index at 18 with a worsening trend suggests capitulation is underway but not yet complete \u2014 BTC UTXO data confirms this per CoinTelegraph. BTC dominance at 55.9% means capital is fleeing alts to BTC or stables. The macro news flow is uniformly negative. The disciplined play is to wait for RSI to hit true oversold (<30) on a quality asset, or for a clear reversal pattern to form.",
+  "layman_headline": "The crypto market is in deep fear territory \u2014 patience is the best trade right now.",
+  "layman_explanation": "Bitcoin has fallen below $60,000 and the entire market is gripped by extreme fear, with the sentiment index at just 18 out of 100 and worsening. Almost every major cryptocurrency is down significantly over the past week. The candidates on our watchlist are either already extended from big runs (VELVET up 252%, GWEI up 49%) making them risky to chase, or are in strong downtrends with no clear sign of a bottom yet (KITE, TRUMP, WLD). None of the setups offer a compelling risk-reward ratio with a clear catalyst right now.",
+  "layman_action": "Stay in cash and wait. The market hasn't shown signs of stabilizing yet. Watch for Bitcoin to find a convincing floor \u2014 potentially around $57,000-$58,000 \u2014 before committing capital. Solana near $66 support could become interesting if it gets there with improving sentiment.",
+  "expert_reasoning": "Every candidate fails the swing trade criteria in at least one critical dimension. VELVET has a +1.80 chart bias but RSI at 70 after a 252% weekly move \u2014 this is a momentum chase with extreme correction risk and poor R/R (0.66x). TRUMP has oversold RSI (27) but the chart is strongly bearish (-1.40) with Three Black Crows and below all MAs \u2014 catching a falling knife. KITE is the worst chart on the board (-2.00 bias) with accelerating selling. WLD and ENA lack chart data entirely, down 31% and 17% respectively with no visible floor. SOL is the most defensible large-cap with RSI 41 approaching oversold, relative strength vs peers, and $66 support, but the doji indecision candle, bearish structure below all MAs, and 0.12x R/R at current levels make entry premature. With Fear & Greed at 18 and worsening, BTC dominance at 55.7% crushing alts, and headlines about capitulation and bear-market lines being breached, the highest-probability trade is no trade.",
   "risk_factors": [
-    "BTC could break below $58K support, triggering cascading liquidations and another 10-15% altcoin drawdown",
-    "Strategy potentially selling $3B in BTC and Binance's $400M+ outflows could accelerate selling pressure",
-    "High BTC dominance trend and worsening Fear & Greed suggest alt season is nowhere close \u2014 alts could underperform for weeks"
+    "BTC below $60K could cascade to $55K-$52K, dragging all alts down another 15-25%",
+    "Extreme Fear at 18 and worsening means sentiment hasn't bottomed \u2014 could reach single digits",
+    "High BTC dominance (55.7%) means alts face double headwind of BTC decline plus rotation away from alts"
   ],
   "watch_list": [
-    "BTC price action around $58,000-$60,000 \u2014 a decisive break below $58K would signal deeper correction; a bounce with volume would signal opportunity",
-    "Fear & Greed index \u2014 watch for a reversal from 'worsening' trend to 'improving'; historically extreme readings below 15 mark bottoms",
-    "SOL holding $66 support \u2014 if it holds and RSI drops below 35, it becomes a high-conviction mean-reversion entry"
+    "Bitcoin price action at $57,000-$58,000 support zone \u2014 a bounce here could set up alt entries",
+    "Fear & Greed index \u2014 watch for stabilization or uptick from current 18 as a contrarian signal",
+    "SOL holding $66 support \u2014 if it bounces there with rising volume, that's a swing entry"
   ],
-  "market_context": "The crypto market is in a significant correction with BTC below $60K and tracking a rare back-to-back quarterly loss. Extreme Fear at 18/100 with a worsening trend, negative macro headlines, and institutional outflows suggest the bottom is not yet confirmed.",
-  "context_banner": "Market capitulation is underway with Bitcoin below $60K and Extreme Fear at 18 \u2014 discipline means waiting for the reversal signal, not guessing the bottom.",
-  "btc_price": 60255,
+  "market_context": "Bitcoin has broken below $60,000 amid broad risk-off conditions, with the Fear & Greed index at an extreme 18 and worsening. This is a capitulation environment where preserving capital takes priority over finding entries \u2014 the market is searching for a floor.",
+  "context_banner": "Extreme fear and a broken $60K Bitcoin mean the best swing trade today is staying in cash and waiting for capitulation to exhaust itself.",
+  "btc_price": 59841,
   "fear_greed": {
     "current": 18,
     "label": "Extreme Fear",
@@ -28,32 +28,32 @@
     "week_avg": 16.9,
     "trend": "worsening"
   },
-  "btc_dominance": 55.9,
+  "btc_dominance": 55.7,
   "key_signals": [
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Fear & Greed at 18 with a worsening weekly trend (avg 16.9) signals active capitulation \u2014 historically a precondition for bottoms but timing is uncertain."
+      "description": "Fear & Greed at 18 (Extreme Fear) and worsening from 15 yesterday \u2014 market hasn't found a sentiment floor yet, making all entries high-risk."
+    },
+    {
+      "source": "CryptoSlate",
+      "signal_type": "news",
+      "description": "Bitcoin slipped below the bear-market line traders cannot ignore \u2014 headline confirms broad technical breakdown and bearish narrative domination."
     },
     {
       "source": "CoinTelegraph",
       "signal_type": "onchain",
-      "description": "Bitcoin UTXO analysis signals capitulation is underway, confirming on-chain stress aligns with sentiment readings."
-    },
-    {
-      "source": "CoinTelegraph",
-      "signal_type": "news",
-      "description": "Grayscale's Pandl suggesting Strategy sell $3B in BTC to 'restore confidence' introduces significant potential sell pressure overhang."
+      "description": "Bitcoin UTXO analysis signals capitulation is underway \u2014 on-chain data suggests selling pressure hasn't fully exhausted."
     },
     {
       "source": "CoinDesk",
       "signal_type": "macro",
-      "description": "Gold and silver selloff dragging Bitcoin down indicates this is a broader risk-off move across all hard assets, not crypto-specific weakness."
+      "description": "Gold and silver selloff is dragging Bitcoin down, indicating macro risk-off conditions beyond crypto-specific factors."
     },
     {
       "source": "RSI",
       "signal_type": "technical",
-      "description": "No candidate has RSI below 35 \u2014 SOL and KITE at ~41 are approaching oversold but haven't reached levels that reliably mark swing bottoms."
+      "description": "Best candidate SOL has RSI at 41.75 \u2014 approaching but not yet in oversold territory, and chart bias is bearish at -0.70 with price below all major MAs."
     }
   ],
   "_mode": "HUNTING",
