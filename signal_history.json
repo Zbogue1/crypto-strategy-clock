@@ -102,5 +102,27 @@
       "SOL"
     ],
     "alert": "Extreme Fear at 18 with worsening trend \u2014 BTC below $60K and potential forced selling from Strategy. Do not chase entries until clear stabilization."
+  },
+  {
+    "ts": "2026-06-28T16:04:10.387762+00:00",
+    "coin": "SOL",
+    "price": 71.89,
+    "signal": "HOLD",
+    "confidence": 28,
+    "score": -0.35,
+    "fg": 18,
+    "btc_price": 59841,
+    "btc_dominance": 55.7,
+    "candidates": [
+      "\u5e01\u5b89\u4eba\u751f",
+      "WLD",
+      "VELVET",
+      "ENA",
+      "KITE",
+      "GWEI",
+      "TRUMP",
+      "SOL"
+    ],
+    "alert": "BTC below $60,000 with worsening extreme fear \u2014 capital preservation mode. Do not force entries in falling-knife conditions."
   }
 ]
