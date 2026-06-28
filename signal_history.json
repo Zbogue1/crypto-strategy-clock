@@ -38,24 +38,25 @@
     "alert": null
   },
   {
-    "ts": "2026-06-27T04:04:36.512256+00:00",
-    "coin": "SOL",
-    "price": 72.0,
-    "signal": "BUY",
-    "confidence": 62,
-    "score": 6.2,
-    "fg": 15,
-    "btc_price": 60253,
-    "btc_dominance": 55.7,
+    "ts": "2026-06-28T00:11:55.639227+00:00",
+    "coin": "NEAR",
+    "price": 1.9,
+    "signal": "HOLD",
+    "confidence": 30,
+    "score": -0.3,
+    "fg": 18,
+    "btc_price": 60040,
+    "btc_dominance": 55.8,
     "candidates": [
       "VELVET",
       "SKYAI",
-      "KITE",
       "WLD",
+      "KITE",
+      "NEAR",
+      "ENA",
       "INJ",
-      "PEPE",
-      "AAVE"
+      "SOL"
     ],
-    "alert": "Extreme Fear at 15 and worsening \u2014 position sizing should be conservative (25-50% of normal) until sentiment stabilizes."
+    "alert": "Bitcoin capitulation risk elevated: 50K BTC moved at a loss. Monitor $58,000 support closely."
   }
 ]
