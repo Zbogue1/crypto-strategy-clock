@@ -80,5 +80,27 @@
       "SOL"
     ],
     "alert": "Bitcoin below $60K with worsening Fear & Greed (18). Capitulation in progress \u2014 do not deploy capital without confirmed reversal signals."
+  },
+  {
+    "ts": "2026-06-28T12:01:30.457608+00:00",
+    "coin": "SOL",
+    "price": 71.82,
+    "signal": "HOLD",
+    "confidence": 28,
+    "score": -0.45,
+    "fg": 18,
+    "btc_price": 60255,
+    "btc_dominance": 55.9,
+    "candidates": [
+      "VELVET",
+      "\u5e01\u5b89\u4eba\u751f",
+      "KITE",
+      "WLD",
+      "PUMP",
+      "ENA",
+      "NEAR",
+      "SOL"
+    ],
+    "alert": "Extreme Fear at 18 with worsening trend \u2014 BTC below $60K and potential forced selling from Strategy. Do not chase entries until clear stabilization."
   }
 ]
