@@ -754,69 +754,69 @@ def collect_news(snap: MarketSnapshot):
 
 def collect_funding_rates(snap: MarketSnapshot):
     """
-    Fetch perpetual futures funding rates from Binance (no API key required).
+    Fetch perpetual futures funding rates from Bybit (no API key, US-accessible).
     Funding rate tells us how overleveraged the market is:
       > +0.05% per 8h = crowded longs = correction risk
       < -0.05% per 8h = crowded shorts = short squeeze risk
     """
-    # Map our coin tickers to Binance futures symbols
+    # Map our coin tickers to Bybit linear perpetual symbols
     symbols = {
         "BTC": "BTCUSDT", "ETH": "ETHUSDT", "SOL": "SOLUSDT",
         "BNB": "BNBUSDT", "XRP": "XRPUSDT", "ADA": "ADAUSDT",
         "AVAX": "AVAXUSDT", "DOGE": "DOGEUSDT", "DOT": "DOTUSDT",
         "LINK": "LINKUSDT", "MATIC": "MATICUSDT", "ATOM": "ATOMUSDT",
-        "UNI": "UNIUSDT", "LTC": "LTCUSDT",
+        "UNI": "UNIUSDT", "LTC": "LTCUSDT", "NEAR": "NEARUSDT",
+        "INJ": "INJUSDT", "ENA": "ENAUSDT", "WLD": "WLDUSDT",
     }
     rates = {}
     try:
-        # Fetch all funding rates in one call (more efficient)
+        # Bybit v5 tickers — returns funding rate for all linear perpetuals
         r = requests.get(
-            "https://fapi.binance.com/fapi/v1/premiumIndex",
+            "https://api.bybit.com/v5/market/tickers",
+            params={"category": "linear"},
             timeout=10, headers=HEADERS
         )
         if r.status_code != 200:
-            log.warning(f"Funding rates: Binance returned HTTP {r.status_code} — may be geo-blocked")
-        if r.status_code == 200:
-            data = r.json()
-            log.info(f"Funding rates: Binance returned {len(data)} items")
-            if data:
-                log.info(f"Funding rates sample fields: {list(data[0].keys())}")
-            for item in data:
-                sym = item.get("symbol", "")
-                # lastFundingRate is the standard field; fall back to fundingRate
-                rate = item.get("lastFundingRate") or item.get("fundingRate")
-                if not rate and rate != 0:
-                    continue
-                try:
-                    rate_pct = round(float(rate) * 100, 4)
-                except (ValueError, TypeError):
-                    continue
-                for ticker, bsym in symbols.items():
-                    if bsym == sym:
-                        rates[ticker] = {
-                            "rate_pct":   rate_pct,
-                            "annualized": round(rate_pct * 3 * 365, 1),
-                            "bias": (
-                                "heavily_long"  if rate_pct >  0.05 else
-                                "lightly_long"  if rate_pct >  0.01 else
-                                "neutral"       if abs(rate_pct) <= 0.01 else
-                                "lightly_short" if rate_pct > -0.05 else
-                                "heavily_short"
-                            ),
-                            "signal": (
-                                "bearish"          if rate_pct >  0.05 else
-                                "slightly_bearish" if rate_pct >  0.01 else
-                                "neutral"          if abs(rate_pct) <= 0.01 else
-                                "slightly_bullish" if rate_pct > -0.05 else
-                                "bullish"
-                            ),
-                        }
+            log.warning(f"Funding rates: Bybit returned HTTP {r.status_code}")
+            return
+        data = r.json()
+        items = data.get("result", {}).get("list", [])
+        log.info(f"Funding rates: Bybit returned {len(items)} tickers")
+        for item in items:
+            sym = item.get("symbol", "")
+            rate = item.get("fundingRate")
+            if not rate and rate != 0:
+                continue
+            try:
+                rate_pct = round(float(rate) * 100, 4)
+            except (ValueError, TypeError):
+                continue
+            for ticker, bsym in symbols.items():
+                if bsym == sym:
+                    rates[ticker] = {
+                        "rate_pct":   rate_pct,
+                        "annualized": round(rate_pct * 3 * 365, 1),
+                        "bias": (
+                            "heavily_long"  if rate_pct >  0.05 else
+                            "lightly_long"  if rate_pct >  0.01 else
+                            "neutral"       if abs(rate_pct) <= 0.01 else
+                            "lightly_short" if rate_pct > -0.05 else
+                            "heavily_short"
+                        ),
+                        "signal": (
+                            "bearish"          if rate_pct >  0.05 else
+                            "slightly_bearish" if rate_pct >  0.01 else
+                            "neutral"          if abs(rate_pct) <= 0.01 else
+                            "slightly_bullish" if rate_pct > -0.05 else
+                            "bullish"
+                        ),
+                    }
         if rates:
             snap.macro["funding_rates"] = rates
             btc_rate = rates.get("BTC", {}).get("rate_pct", 0)
             log.info(f"Funding rates: {len(rates)} coins. BTC: {btc_rate:+.4f}%/8h")
         else:
-            log.warning("Funding rates: no data returned from Binance")
+            log.warning("Funding rates: no matching tickers from Bybit")
     except Exception as e:
         log.warning(f"Funding rates: {e}")
 
@@ -1674,6 +1674,9 @@ def run_cycle(expert_mode: bool = False):
     snap.candidates = candidates
 
     # ── 4. Deep dive on each candidate ───────────────────────
+    # Let CoinGecko rate-limit window reset after the 150-coin market scan
+    log.info("Cooling down 30s after market scan before OHLC deep dives...")
+    time.sleep(30)
     for coin in candidates:
         log.info(f"Deep dive: {coin.ticker}")
         collect_coin_ohlc(coin)
