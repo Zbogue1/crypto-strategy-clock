@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-06-28T08:01:49.331961+00:00",
-  "selected_coin": "NEAR",
-  "selected_coin_name": "NEAR Protocol",
-  "selected_coin_price": 1.87,
-  "confidence": 32,
-  "layman_headline": "Crypto market is in deep fear mode \u2014 patience is the best trade right now.",
-  "layman_explanation": "Bitcoin has dropped below $60,000 and the overall market sentiment is at 'Extreme Fear' \u2014 one of the lowest readings possible. Almost every major cryptocurrency is down significantly over the past week. While fear can create buying opportunities, none of the coins on our watchlist have a clean enough setup to justify risking money right now. The best candidates are either already overbought after huge runs (VELVET up 218% in a week) or stuck in clear downtrends with no reversal signals yet.",
-  "layman_action": "Stay in cash and wait. Set alerts for NEAR Protocol around $1.75 and Solana around $66. If either reaches those levels with signs of a bounce, that could be a much better entry. Don't chase anything in this fearful environment without a confirmed reversal.",
-  "expert_reasoning": "The market is in extreme fear (18/100, worsening trend) with BTC losing the $60K level and facing capitulation-level UTXO movements. VELVET's +218% weekly gain and RSI of 70 make it a classic 'too late to chase' setup with a terrible R/R ratio of 0.66x near resistance. WLD and NEAR both pulled back 15-25% but neither shows a bullish reversal candle or MACD cross to confirm a bottom. SOL at RSI 42 is approaching oversold but its chart bias is -0.70 with price below all major MAs \u2014 no reason to catch this knife yet. ENA and PUMP are in confirmed downtrends with -1.40 chart bias scores. The prudent move is to remain in cash and let the capitulation play out before deploying capital. NEAR gets the nod as the best watchlist candidate given its uptrend structure still intact and moderate pullback, but entry should wait for $1.75 support or a confirmed bullish reversal candle.",
+  "timestamp": "2026-06-28T12:01:30.457608+00:00",
+  "selected_coin": "SOL",
+  "selected_coin_name": "Solana",
+  "selected_coin_price": 71.82,
+  "confidence": 28,
+  "layman_headline": "Crypto markets are in deep fear territory \u2014 patience is the best trade right now.",
+  "layman_explanation": "Bitcoin has dropped below $60,000 and the overall crypto market mood is at 'Extreme Fear' \u2014 one of the lowest readings we've seen. Almost every altcoin is bleeding, with many down 15-25% in the past week. While extreme fear can eventually create great buying opportunities, the selling hasn't shown clear signs of stopping yet. Trying to catch a falling knife in this environment is risky.",
+  "layman_action": "Stay in cash and wait. The market is still falling and there's no clear bottom signal yet. Keep watching for stabilization \u2014 a day or two where prices stop dropping and volume picks up on the buy side would be the green light.",
+  "expert_reasoning": "Every swing candidate has significant technical problems. VELVET is up 269% in a week with RSI at 70 \u2014 textbook overbought after a parabolic move, terrible risk/reward for entry. KITE and ENA have strongly bearish chart structures with Three Black Crows and Bearish Marubozu patterns. WLD dropped 25% with a slightly bearish chart bias and only 1x risk/reward. SOL is the relative outperformer but remains below all major moving averages with a bearish chart bias of -0.70 and a Doji candle showing indecision. The Fear & Greed index at 18 with a worsening trend suggests capitulation is underway but not yet complete \u2014 BTC UTXO data confirms this per CoinTelegraph. BTC dominance at 55.9% means capital is fleeing alts to BTC or stables. The macro news flow is uniformly negative. The disciplined play is to wait for RSI to hit true oversold (<30) on a quality asset, or for a clear reversal pattern to form.",
   "risk_factors": [
-    "BTC breaking below $58K could trigger cascading liquidations and drag all alts down another 15-20%",
-    "Extreme Fear readings can persist for weeks \u2014 catching the exact bottom is nearly impossible",
-    "Macro headwinds from gold/silver selloff correlating with crypto weakness suggest broader risk-off environment"
+    "BTC could break below $58K support, triggering cascading liquidations and another 10-15% altcoin drawdown",
+    "Strategy potentially selling $3B in BTC and Binance's $400M+ outflows could accelerate selling pressure",
+    "High BTC dominance trend and worsening Fear & Greed suggest alt season is nowhere close \u2014 alts could underperform for weeks"
   ],
   "watch_list": [
-    "BTC price action around $58,000 \u2014 a break below could trigger full capitulation and create real buying opportunities",
-    "Fear & Greed Index trajectory \u2014 watch for stabilization or uptick from current 18 as a sign of sentiment bottoming",
-    "NEAR and SOL daily candles for hammer/morning star reversal patterns at support levels"
+    "BTC price action around $58,000-$60,000 \u2014 a decisive break below $58K would signal deeper correction; a bounce with volume would signal opportunity",
+    "Fear & Greed index \u2014 watch for a reversal from 'worsening' trend to 'improving'; historically extreme readings below 15 mark bottoms",
+    "SOL holding $66 support \u2014 if it holds and RSI drops below 35, it becomes a high-conviction mean-reversion entry"
   ],
-  "market_context": "Bitcoin is below $60K heading toward a rare back-to-back quarterly loss, with extreme fear dominating sentiment at 18/100 and worsening. UTXO data shows 50K BTC moved at a loss, signaling active capitulation \u2014 the market hasn't found its floor yet.",
-  "context_banner": "Extreme Fear at 18/100 with BTC capitulation underway \u2014 capital preservation trumps opportunity hunting until a reversal signal appears.",
-  "btc_price": 60121,
+  "market_context": "The crypto market is in a significant correction with BTC below $60K and tracking a rare back-to-back quarterly loss. Extreme Fear at 18/100 with a worsening trend, negative macro headlines, and institutional outflows suggest the bottom is not yet confirmed.",
+  "context_banner": "Market capitulation is underway with Bitcoin below $60K and Extreme Fear at 18 \u2014 discipline means waiting for the reversal signal, not guessing the bottom.",
+  "btc_price": 60255,
   "fear_greed": {
     "current": 18,
     "label": "Extreme Fear",
@@ -28,35 +28,35 @@
     "week_avg": 16.9,
     "trend": "worsening"
   },
-  "btc_dominance": 0.0,
+  "btc_dominance": 55.9,
   "key_signals": [
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Extreme Fear at 18/100 with a worsening weekly trend (avg 16.9) \u2014 sentiment has not bottomed and buying into this without reversal confirmation is premature."
+      "description": "Fear & Greed at 18 with a worsening weekly trend (avg 16.9) signals active capitulation \u2014 historically a precondition for bottoms but timing is uncertain."
+    },
+    {
+      "source": "CoinTelegraph",
+      "signal_type": "onchain",
+      "description": "Bitcoin UTXO analysis signals capitulation is underway, confirming on-chain stress aligns with sentiment readings."
     },
     {
       "source": "CoinTelegraph",
       "signal_type": "news",
-      "description": "50K BTC moved at a loss signals active capitulation phase \u2014 historically this precedes a bottom but the timing is uncertain and more downside is possible."
+      "description": "Grayscale's Pandl suggesting Strategy sell $3B in BTC to 'restore confidence' introduces significant potential sell pressure overhang."
     },
     {
       "source": "CoinDesk",
       "signal_type": "macro",
-      "description": "Gold and silver selloff dragging BTC down indicates a broader risk-off environment, not just crypto-specific weakness."
+      "description": "Gold and silver selloff dragging Bitcoin down indicates this is a broader risk-off move across all hard assets, not crypto-specific weakness."
     },
     {
       "source": "RSI",
       "signal_type": "technical",
-      "description": "SOL and PUMP approaching oversold (RSI ~42) but lack bullish reversal candles \u2014 oversold can get more oversold in capitulation markets."
-    },
-    {
-      "source": "volume_breakout",
-      "signal_type": "technical",
-      "description": "No volume-confirmed breakouts among candidates \u2014 VELVET's volume surge is into overbought territory (RSI 70) making it a distribution risk, not accumulation."
+      "description": "No candidate has RSI below 35 \u2014 SOL and KITE at ~41 are approaching oversold but haven't reached levels that reliably mark swing bottoms."
     }
   ],
   "_mode": "HUNTING",
-  "exit_target": 2.1,
-  "stop_loss": 1.65
+  "exit_target": 78.0,
+  "stop_loss": 62.0
 }
