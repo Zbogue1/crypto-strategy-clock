@@ -821,26 +821,3 @@ def get_graduation_status() -> dict:
         "avg_trade":    round(avg_pct, 2),
         "n_trades":     n_trades,
     }
-eak = 0
-    streak     = 0
-    for t in recent:
-        if t.get("profit_pct", 0) < 0:
-            streak += 1
-            max_streak = max(max_streak, streak)
-        else:
-            streak = 0
-    criteria["no_bad_streak"] = max_streak < 3
-
-    score     = sum(criteria.values())
-    score_str = f"{score}/5"
-    ready     = score == 5
-
-    return {
-        "score":        score_str,
-        "ready":        ready,
-        "criteria":     criteria,
-        "days_running": days_running,
-        "win_rate":     win_rate,
-        "avg_trade":    round(avg_pct, 2),
-        "n_trades":     n_trades,
-    }
