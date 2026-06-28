@@ -771,10 +771,12 @@ def collect_funding_rates(snap: MarketSnapshot):
     rates = {}
     try:
         # Bybit v5 tickers — returns funding rate for all linear perpetuals
+        # Use neutral headers — Bybit blocks custom User-Agent strings
+        bybit_headers = {"User-Agent": "Mozilla/5.0 (compatible; python-requests)"}
         r = requests.get(
             "https://api.bybit.com/v5/market/tickers",
             params={"category": "linear"},
-            timeout=10, headers=HEADERS
+            timeout=10, headers=bybit_headers
         )
         if r.status_code != 200:
             log.warning(f"Funding rates: Bybit returned HTTP {r.status_code}")
