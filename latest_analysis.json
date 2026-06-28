@@ -1,63 +1,62 @@
 {
-  "timestamp": "2026-06-27T04:04:36.512256+00:00",
-  "signal": "BUY",
-  "selected_coin": "SOL",
-  "selected_coin_name": "Solana",
-  "selected_coin_price": 72.0,
-  "confidence": 62,
-  "layman_headline": "Solana stands out as the lone green light in a sea of crypto fear.",
-  "layman_explanation": "The entire crypto market is gripped by extreme fear \u2014 the sentiment index is at just 15 out of 100, which historically tends to mark good buying windows. While almost every major coin has dropped 5-10% over the past week, Solana has actually gained over 3% and jumped 6% in the last 24 hours. It's showing relative strength when most coins are bleeding, which is exactly the kind of leadership signal swing traders look for. Bitcoin is holding near $60,000, providing a fragile but stable floor for the market.",
-  "layman_action": "Consider a small position in Solana with a clear exit plan: sell if it drops below $65 (about 10% downside risk) and take profits around $82 (about 14% upside). This is a cautious bet on the strongest horse in a weak market.",
-  "expert_reasoning": "SOL exhibits clear relative strength with +6.07% 24h and +3.22% 7d performance while BTC is -4.82% and ETH is -7.4% on the week. The Fear & Greed index at 15 (extreme fear, worsening from 13 yesterday) historically correlates with local bottoms \u2014 buying during these periods has positive expected value over 1-2 week horizons. News catalysts confirm SOL ecosystem tokens are leading the rebound. While CoinTelegraph flags weakening on-chain momentum, the price action divergence from the broader market suggests institutional or large buyer accumulation. The risk-reward setup with a $65 stop and $82 target gives roughly 1.5:1 reward-to-risk, acceptable given the macro backdrop. I'm choosing SOL over the swing candidates like INJ (+9.7% 24h) or AAVE (+11% 24h, +26% 7d) because SOL has deeper liquidity, a cleaner trend, and isn't as extended as AAVE.",
+  "timestamp": "2026-06-28T00:11:55.639227+00:00",
+  "selected_coin": "NEAR",
+  "selected_coin_name": "NEAR Protocol",
+  "selected_coin_price": 1.9,
+  "confidence": 30,
+  "layman_headline": "Crypto market is in deep fear mode \u2014 patience is the smartest play right now.",
+  "layman_explanation": "The entire crypto market is experiencing extreme fear, with Bitcoin down over 6% in a week and most altcoins falling even harder \u2014 some 15-25%. This is a classic 'blood in the streets' moment where prices are falling broadly but no clear bottom has formed yet. While some coins like NEAR show a small bounce today, the overall trend is still pointing down and it's too early to catch the knife. We're watching for a real stabilization before jumping in.",
+  "layman_action": "Stay in cash and wait. The market hasn't shown convincing signs of a bottom yet. Watch for Bitcoin to hold above $58,000 and the Fear & Greed index to stop worsening before committing new money.",
+  "expert_reasoning": "The market is in extreme fear (18/100) and worsening \u2014 this week's average is only 16.9. BTC is at $60,040 and falling, with 50K BTC reportedly moved at a loss signaling capitulation risk per CoinTelegraph. BTC dominance at 55.8% is crushing alts. VELVET is the only strongly bullish chart but is massively overbought (RSI 70, +217% in 7 days) making it a terrible risk/reward entry. KITE has a strongly bearish chart (-2.0 bias). WLD and SKYAI have slightly bearish charts. NEAR bounced 5.4% today but lacks any chart data for technical confirmation. Without a clear technical setup with defined support and a favorable risk/reward ratio, entering any position in this environment carries excessive downside risk. The prudent move is to wait for BTC stabilization and a Fear & Greed reversal.",
   "risk_factors": [
-    "BTC dominance at 55.7% and rising means capital is rotating out of alts \u2014 SOL could lose its relative strength if BTC drops below $58K",
-    "CoinTelegraph flags weakening on-chain momentum despite the price recovery, suggesting the bounce may lack conviction",
-    "Extreme fear index is still worsening (trend: worsening), meaning we may not have seen capitulation yet and a broader market flush could drag SOL down"
+    "BTC capitulation risk \u2014 50K BTC moved at a loss could trigger cascading sell pressure below $58K",
+    "Fear & Greed at 18 and still worsening \u2014 no sign of sentiment bottom yet",
+    "High BTC dominance (55.8%) means altcoins face double headwind of BTC decline plus capital rotation away from alts"
   ],
   "watch_list": [
-    "BTC price action around $58,000-$60,000 support \u2014 a break below $58K likely drags all alts including SOL",
-    "Fear & Greed index trajectory \u2014 look for stabilization or uptick as a confirmation signal",
-    "SOL daily volume sustainability \u2014 the 24h $4.1B volume needs to hold above $3B to confirm genuine buying interest"
+    "Bitcoin price action around $58,000 \u2014 a break below could accelerate selling across all alts",
+    "Fear & Greed index \u2014 watch for first day above 25 as early sign of sentiment bottoming",
+    "NEAR Protocol: if it holds above $1.75 with rising volume over next 48 hours, it becomes the top entry candidate"
   ],
-  "market_context": "The crypto market is in deep extreme fear (15/100, worsening trend) with BTC struggling near $60K and most alts down 5-10% on the week. This is a high-risk but potentially high-reward environment where selective buying during fear has historically paid off over 1-2 week windows.",
-  "context_banner": "Extreme fear grips crypto markets, but Solana's relative strength amid the sell-off signals a potential mean-reversion leader for the next bounce.",
-  "btc_price": 60253,
+  "market_context": "Crypto is in a broad risk-off phase with extreme fear, BTC down 6.5% weekly, and gold/silver selloffs dragging crypto lower. CZ attributes the sour 2026 market to AI competition, global tensions, and the typical 4-year cycle downturn.",
+  "context_banner": "Extreme fear dominates crypto markets \u2014 disciplined patience now sets up superior entries when capitulation exhausts itself.",
+  "btc_price": 60040,
   "fear_greed": {
-    "current": 15,
+    "current": 18,
     "label": "Extreme Fear",
-    "yesterday": 13,
-    "week_avg": 17.6,
+    "yesterday": 15,
+    "week_avg": 16.9,
     "trend": "worsening"
   },
-  "btc_dominance": 55.7,
+  "btc_dominance": 55.8,
   "key_signals": [
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Fear & Greed at 15 (Extreme Fear) and worsening \u2014 historically a contrarian buying zone, but caution warranted as capitulation may not be complete."
+      "description": "Fear & Greed at 18 (Extreme Fear) and still worsening from 15 yesterday \u2014 no sentiment floor established yet, making new entries premature."
+    },
+    {
+      "source": "CoinTelegraph",
+      "signal_type": "news",
+      "description": "50K BTC moved at a loss signals fresh capitulation risk \u2014 historically this precedes final washout moves before bottoms form."
+    },
+    {
+      "source": "CoinDesk",
+      "signal_type": "macro",
+      "description": "Gold and silver selloff is dragging Bitcoin down, indicating correlated macro deleveraging rather than crypto-specific weakness."
     },
     {
       "source": "CoinDesk",
       "signal_type": "news",
-      "description": "Headline confirms Solana ecosystem tokens leading the crypto rebound alongside Aave, validating SOL's relative strength as a narrative-driven move."
-    },
-    {
-      "source": "CoinTelegraph",
-      "signal_type": "onchain",
-      "description": "SOL reclaimed $72 but on-chain data flags weakening momentum \u2014 a cautionary signal that tempers conviction and supports tighter stop-loss placement."
+      "description": "CZ attributes crypto's poor 2026 performance to AI competition for capital, global tensions, and the 4-year cycle \u2014 suggesting structural headwinds remain."
     },
     {
       "source": "volume_breakout",
       "signal_type": "technical",
-      "description": "SOL 24h volume at $4.1B significantly elevated relative to other top-20 coins, suggesting real buying interest rather than just a dead-cat bounce."
-    },
-    {
-      "source": "Blockworks",
-      "signal_type": "macro",
-      "description": "ETH derivatives reset signals broader market positioning flush, which often precedes relief rallies \u2014 supportive of near-term bounce thesis."
+      "description": "No swing candidate shows a volume-confirmed breakout or bullish reversal pattern \u2014 VELVET is overbought at RSI 70 after +217% and remaining candidates lack chart confirmation."
     }
   ],
   "_mode": "HUNTING",
-  "exit_target": 82.0,
-  "stop_loss": 65.0
+  "exit_target": 2.15,
+  "stop_loss": 1.6
 }
