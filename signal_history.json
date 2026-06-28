@@ -38,25 +38,25 @@
     "alert": null
   },
   {
-    "ts": "2026-06-28T00:30:54.456074+00:00",
+    "ts": "2026-06-28T04:02:46.832600+00:00",
     "coin": "NEAR",
-    "price": 1.91,
+    "price": 1.9,
     "signal": "HOLD",
     "confidence": 32,
     "score": -0.15,
     "fg": 18,
-    "btc_price": 60078,
-    "btc_dominance": 55.8,
+    "btc_price": 60126,
+    "btc_dominance": 0.0,
     "candidates": [
       "VELVET",
-      "PIEVERSE",
       "SKYAI",
+      "PIEVERSE",
       "KITE",
       "WLD",
       "NEAR",
       "ENA",
       "SOL"
     ],
-    "alert": "Market in Extreme Fear with worsening trend \u2014 no high-quality swing setups available. Capital preservation is priority."
+    "alert": "Market in extreme fear with active capitulation \u2014 preserve capital and wait for reversal confirmation before entering new positions."
   }
 ]
