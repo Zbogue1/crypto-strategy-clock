@@ -80,5 +80,27 @@
       "SOL"
     ],
     "alert": "Record spot Bitcoin ETF outflows of $4B this month signal institutional exodus \u2014 do not catch falling knives until flows stabilize."
+  },
+  {
+    "ts": "2026-06-29T12:03:08.650023+00:00",
+    "coin": "SOL",
+    "price": 72.32,
+    "signal": "HOLD",
+    "confidence": 30,
+    "score": -0.3,
+    "fg": 12,
+    "btc_price": 59722,
+    "btc_dominance": 0.0,
+    "candidates": [
+      "TAC",
+      "GWEI",
+      "UB",
+      "VELVET",
+      "KITE",
+      "WLD",
+      "M",
+      "SOL"
+    ],
+    "alert": "Market in Extreme Fear (12/100) and worsening. All swing candidates are either overextended to the upside or in active freefall. No high-conviction entry exists."
   }
 ]
