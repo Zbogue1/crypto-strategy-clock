@@ -1,62 +1,62 @@
 {
-  "timestamp": "2026-06-28T20:01:39.266344+00:00",
+  "timestamp": "2026-06-29T00:00:22.492876+00:00",
   "selected_coin": "SOL",
   "selected_coin_name": "Solana",
-  "selected_coin_price": 70.57,
+  "selected_coin_price": 71.29,
   "confidence": 28,
-  "layman_headline": "Crypto market is bleeding \u2014 patience beats bravery right now.",
-  "layman_explanation": "Bitcoin has fallen below $60,000 and is heading for back-to-back quarterly losses. The Fear & Greed Index is at 18 (Extreme Fear), meaning almost everyone is scared. Most coins on our watchlist are either crashing hard or have already pumped too much to safely buy. In times like these, the smartest move is often to wait for the dust to settle rather than try to catch a falling knife.",
-  "layman_action": "Do not buy anything today. Wait for signs of stabilization \u2014 ideally Bitcoin holding above $58,000 and the Fear & Greed index starting to recover above 20-25. Keep cash ready for when a clear bounce setup emerges.",
-  "expert_reasoning": "Every candidate has a fatal flaw right now. VELVET is up 272% in 7 days with RSI at 70 \u2014 textbook blow-off top risk with an unfavorable 0.66x risk/reward ratio. GWEI is up 58% weekly, also extended. TRUMP has a deeply oversold RSI of 27 which is attractive, but Three Black Crows pattern and bearish chart bias of -1.4 signal continued downtrend \u2014 catching this knife requires confirmation first. WLD dropped 30% but shows a Bearish Marubozu with -0.3 chart bias, no reversal signal. ENA is in a clear downtrend with -1.4 chart bias and bearish structure. SOL shows relative strength but lacks chart analysis data to confirm entry. In Extreme Fear with BTC breaking $60K, the probability of further downside across altcoins is elevated. The disciplined move is to preserve capital and wait for reversal confirmation.",
+  "layman_headline": "Crypto market is in deep fear territory \u2014 patience is the best trade right now.",
+  "layman_explanation": "Bitcoin just fell below $60,000 and the entire crypto market is gripped by extreme fear (12 out of 100). Almost every coin is down significantly over the past week, and the charts are showing persistent selling pressure. In environments like this, catching a falling knife is dangerous \u2014 even coins that look cheap can get much cheaper. The best approach is to wait for signs of stabilization before committing capital.",
+  "layman_action": "Do not buy anything right now. Keep your cash ready. Watch for Bitcoin to find a floor and hold it for 2-3 days before considering any new positions. Patience in extreme fear often leads to the best entries.",
+  "expert_reasoning": "Every swing candidate fails the quality test right now. VELVET and GWEI have parabolic moves (+296% and +67% weekly) with overbought RSI \u2014 classic blow-off top risk. TRUMP and PEPE show RSI oversold but have deeply bearish chart structures (Three Black Crows, -1.4 bias scores) with no reversal confirmation. WLD dropped 27.5% with a Bearish Marubozu \u2014 pure sell conviction. SOL shows relative strength and a Doji candle hinting at potential indecision, but it's still below all moving averages with a -0.7 chart bias. With Fear & Greed at 12 and worsening, BTC dominance at 55.7% crushing alts, and major headwinds from Binance's EU exit and ETF sell walls, the risk-reward for any new position is poor. The correct play is to wait for a capitulation wick or confirmed reversal pattern.",
   "risk_factors": [
-    "BTC could break below $58K support triggering a broader altcoin capitulation wave",
-    "Binance MiCA-related outflows and regulatory pressure could accelerate selling",
-    "Extreme Fear has been worsening week-over-week (15\u219218 yesterday, 16.9 avg) \u2014 no sign of bottoming sentiment yet"
+    "BTC could break below $58K support triggering a cascade of liquidations and dragging all alts down another 15-25%",
+    "Binance regulatory crisis (EU exit, $400M outflows) could trigger broader exchange contagion fears",
+    "Fear & Greed at 12 and worsening \u2014 sentiment can stay irrational and push prices far below fair value"
   ],
   "watch_list": [
-    "BTC price action around $58,000 \u2014 a clean bounce here could signal the local bottom",
-    "TRUMP RSI \u2014 if it drops to 20-22 with a bullish candle reversal (hammer/morning star), that becomes a high-conviction oversold bounce trade",
-    "SOL relative strength \u2014 if SOL holds above $68 while BTC retests lows, it becomes the first mover on any recovery"
+    "BTC price action around $58,000-$60,000 \u2014 a daily close above $60K would be the first bullish signal",
+    "Fear & Greed index \u2014 any stabilization or uptick from 12 would suggest panic selling is exhausting",
+    "SOL's $66 support level \u2014 a bounce there with volume would create a proper swing entry setup"
   ],
-  "market_context": "Crypto is in a deep risk-off environment with BTC below $60K, Extreme Fear at 18, and institutional outflows from Binance. Headlines about rare back-to-back quarterly losses and regulatory pressure from EU/MiCA are suppressing any bullish sentiment.",
-  "context_banner": "Extreme Fear dominates with BTC below $60K \u2014 capital preservation trumps opportunity-seeking until reversal signals emerge.",
-  "btc_price": 59409,
+  "market_context": "Bitcoin is below $60K heading for rare back-to-back quarterly losses, Fear & Greed is at 12 (extreme fear, worsening), and altcoins are being crushed with BTC dominance at 55.7%. This is a capital preservation environment, not a deployment environment.",
+  "context_banner": "Extreme fear at 12/100 with Bitcoin below $60K and deteriorating sentiment \u2014 disciplined traders wait for confirmed reversal signals before deploying capital.",
+  "btc_price": 59483,
   "fear_greed": {
-    "current": 18,
+    "current": 12,
     "label": "Extreme Fear",
-    "yesterday": 15,
-    "week_avg": 16.9,
+    "yesterday": 18,
+    "week_avg": 15.7,
     "trend": "worsening"
   },
-  "btc_dominance": 0.0,
+  "btc_dominance": 55.7,
   "key_signals": [
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Fear & Greed at 18 (Extreme Fear) and worsening week-over-week from 15 to 18, indicating no sign of sentiment bottoming yet."
+      "description": "Fear & Greed at 12 (extreme fear) and worsening from 18 yesterday \u2014 panic selling is intensifying, not bottoming."
     },
     {
       "source": "CoinDesk",
       "signal_type": "news",
-      "description": "Bitcoin falls below $60,000 on track for rare back-to-back quarterly loss \u2014 a major bearish headline that sets the macro backdrop."
+      "description": "Bitcoin fell below $60K on track for rare back-to-back quarterly loss \u2014 a historically significant bearish milestone that signals deeper institutional caution."
     },
     {
       "source": "CoinTelegraph",
       "signal_type": "news",
-      "description": "Binance posts over $400M in weekly net outflows as MiCA deadline nears, signaling institutional/exchange-level capital flight."
+      "description": "Binance facing EU ban and $400M+ weekly outflows as MiCA deadline nears \u2014 major exchange risk adding selling pressure across the market."
     },
     {
-      "source": "RSI",
-      "signal_type": "technical",
-      "description": "TRUMP RSI at 27 is deeply oversold, but Three Black Crows pattern and -1.4 chart bias mean the downtrend hasn't confirmed a reversal yet."
+      "source": "CryptoSlate",
+      "signal_type": "macro",
+      "description": "Bitcoin's biggest ETF is becoming a sell wall \u2014 institutional flows turning negative removes a key demand pillar."
     },
     {
-      "source": "volume_breakout",
+      "source": "volume_analysis",
       "signal_type": "technical",
-      "description": "VELVET up 272% in 7 days near ATH with overbought RSI of 70 \u2014 parabolic move with extreme reversion risk, not a safe entry."
+      "description": "All swing candidates show either parabolic exhaustion (VELVET, GWEI) or bearish continuation patterns (TRUMP, PEPE, WLD) \u2014 no clean setups with favorable risk/reward above 2x."
     }
   ],
   "_mode": "HUNTING",
   "exit_target": 78.0,
-  "stop_loss": 61.0
+  "stop_loss": 62.0
 }
