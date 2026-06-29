@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-06-29T04:03:38.521970+00:00",
+  "timestamp": "2026-06-29T08:04:36.869312+00:00",
   "selected_coin": "SOL",
   "selected_coin_name": "Solana",
-  "selected_coin_price": 72.52,
+  "selected_coin_price": 72.68,
   "confidence": 28,
-  "layman_headline": "Crypto markets are in deep fear mode \u2014 patience is the best trade right now.",
-  "layman_explanation": "Bitcoin has dropped below $60,000 and is on track for rare back-to-back quarterly losses. The entire market is in 'Extreme Fear' at 12 out of 100, and it's getting worse day by day. Most altcoins are bleeding heavily. While extreme fear can eventually create buying opportunities, there's no clear sign yet that selling has stopped \u2014 so jumping in now is like trying to catch a falling knife.",
-  "layman_action": "Stay in cash and wait. The market is still falling and there's no confirmed reversal yet. Watch for Bitcoin to stabilize above $60,000 and fear to start easing before committing capital.",
-  "expert_reasoning": "Every swing candidate has significant flaws this cycle. VELVET is up 292% in a week with RSI at 70 \u2014 classic blowoff risk in a fearful market, terrible risk/reward. GWEI is similarly overextended at +51% weekly. KITE has a -2.0 chart bias with Three Black Crows \u2014 actively crashing. WLD dropped 31% but chart bias is bearish with a Bearish Marubozu. PEPE has a -1.4 chart bias in confirmed downtrend. SOL shows the best relative strength among large caps (+2.49% daily while most are red) with RSI at 42 approaching oversold, but its chart bias is still -0.7 with price below all major MAs and a doji signaling indecision \u2014 not yet a confirmed entry. The Fear & Greed index at 12 and worsening suggests capitulation may not be complete. BTC dominance at 55.6% means capital is fleeing alts into Bitcoin, making alt swing trades especially risky. The prudent move is to wait for a reversal confirmation \u2014 a hammer or morning star on SOL near $66 support would be actionable.",
+  "layman_headline": "Crypto market is in full panic mode \u2014 patience is the best trade right now.",
+  "layman_explanation": "The entire crypto market is in extreme fear territory, with Bitcoin dropping below $60,000 and spot Bitcoin ETFs on track for their worst month ever with $4 billion in outflows. Almost every altcoin is bleeding heavily over the past week. While extreme fear can eventually create buying opportunities, the selling momentum hasn't shown clear signs of exhaustion yet \u2014 catching a falling knife here is dangerous.",
+  "layman_action": "Do not buy anything yet. Wait for the market to show actual stabilization \u2014 look for a day or two where Bitcoin holds a level and altcoins stop making new lows. Cash is a position, and right now it's the best one.",
+  "expert_reasoning": "All swing candidates present poor risk/reward at current levels. The micro-caps (BinanceLife, GWEI, VELVET) have already pumped 34-270% and are extended. The beaten-down names (KITE, WLD, ENA) show strongly bearish chart structures with Three Black Crows and Bearish Marubozu patterns \u2014 classic falling knife territory. SOL stands out as the relative strength leader among top-20 assets with only -1.85% weekly loss versus BTC's -6.55%, but its chart bias is still -0.70 with price below all major MAs. The macro backdrop is terrible: record ETF outflows, worsening fear/greed (12, trending down from 18), and BTC dominance at 55.8% crushing altcoins. The prudent move is to wait for a capitulation wick or a clear bottoming pattern before deploying capital.",
   "risk_factors": [
-    "BTC below $60K with potential for further capitulation toward $55K, which would drag all alts down significantly",
-    "Fear & Greed at 12 and still worsening \u2014 no sign of sentiment bottoming yet",
-    "BTC dominance at 55.6% means capital continues rotating out of alts into Bitcoin"
+    "BTC could break below $58K support triggering cascading liquidations and another 10-15% leg down across all alts",
+    "Record ETF outflows suggest institutional selling may not be finished \u2014 this is structural, not just sentiment-driven",
+    "High BTC dominance at 55.8% means any alt position carries additional rotation risk even if BTC stabilizes"
   ],
   "watch_list": [
-    "Bitcoin price action around $58,000-$60,000 \u2014 a decisive close below $58K would signal deeper correction",
-    "SOL holding $66 support level \u2014 a bounce there with volume would create a proper entry",
-    "Fear & Greed index \u2014 any reversal from 12 back above 20 would signal early sentiment recovery"
+    "BTC price action at $58,000-$59,000 support \u2014 a daily close below $58K would signal further downside and delay any entry",
+    "Spot BTC ETF flow data over the next 48 hours \u2014 any day of net inflows would be the first sign of institutional capitulation ending",
+    "SOL RSI dropping below 35 with a hammer or morning star candle on the daily \u2014 that would be the actionable entry signal"
   ],
-  "market_context": "Bitcoin is below $60,000 heading for rare back-to-back quarterly losses, with Fear & Greed at an extreme 12/100 and worsening. This is a defensive environment where capital preservation beats aggressive entries.",
-  "context_banner": "Extreme Fear dominates crypto markets with BTC below $60K \u2014 no confirmed reversal signals yet, patience is the highest-conviction play.",
-  "btc_price": 59913,
+  "market_context": "The crypto market is in a severe downturn with Fear & Greed at 12 and worsening, BTC below $60K, and record-breaking ETF outflows of $4 billion this month. This is a market where capital preservation takes priority over opportunity hunting.",
+  "context_banner": "Extreme fear at 12/100 with record ETF outflows \u2014 the market is in capitulation territory but hasn't found a floor yet.",
+  "btc_price": 59933,
   "fear_greed": {
     "current": 12,
     "label": "Extreme Fear",
@@ -28,32 +28,32 @@
     "week_avg": 15.7,
     "trend": "worsening"
   },
-  "btc_dominance": 55.6,
+  "btc_dominance": 55.8,
   "key_signals": [
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Fear & Greed index at 12 (Extreme Fear) and trending lower from 18 yesterday \u2014 capitulation may still be underway, making new entries premature."
+      "description": "Fear & Greed index at 12 (Extreme Fear) and worsening from 18 yesterday \u2014 sentiment has not yet reached the capitulation bounce point as it continues to deteriorate."
+    },
+    {
+      "source": "CoinDesk",
+      "signal_type": "macro",
+      "description": "$4 billion in spot Bitcoin ETF outflows on track for worst month on record \u2014 institutional selling pressure is the primary driver of this downturn."
     },
     {
       "source": "CoinDesk",
       "signal_type": "news",
-      "description": "Bitcoin fell below $60,000 and is on track for rare back-to-back quarterly losses, signaling a sustained bearish macro environment."
-    },
-    {
-      "source": "CryptoSlate",
-      "signal_type": "news",
-      "description": "Bitcoin's biggest ETF is becoming a 'sell wall bulls have to break' \u2014 institutional flows are turning into overhead resistance."
+      "description": "Bitcoin dipped to $59,700 as Iran de-escalation lifted stocks but NOT crypto \u2014 divergence from equities suggests crypto-specific headwinds beyond macro."
     },
     {
       "source": "RSI",
       "signal_type": "technical",
-      "description": "SOL RSI at 42 approaching oversold while showing best 7-day relative performance (-1.4%) among top 20 \u2014 first coin to watch for reversal entry."
+      "description": "SOL RSI at 42 approaching oversold while showing relative strength (-1.85% weekly vs market -7 to -18%) \u2014 best large-cap candidate once bottom forms."
     },
     {
       "source": "CoinTelegraph",
-      "signal_type": "news",
-      "description": "Bullish Bitcoin RSI divergence has analysts calling for a 2022-style bear market bottom \u2014 potential bottom forming but not yet confirmed."
+      "signal_type": "technical",
+      "description": "Analysts noting bullish Bitcoin RSI divergence reminiscent of 2022 bear market bottom \u2014 potential macro bottom forming but timing remains uncertain."
     }
   ],
   "_mode": "HUNTING",
