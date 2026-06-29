@@ -58,5 +58,27 @@
       "SOL"
     ],
     "alert": "Bitcoin below $60,000 with worsening extreme fear \u2014 avoid new positions until stabilization confirmed."
+  },
+  {
+    "ts": "2026-06-29T08:04:36.869312+00:00",
+    "coin": "SOL",
+    "price": 72.68,
+    "signal": "HOLD",
+    "confidence": 28,
+    "score": -0.4,
+    "fg": 12,
+    "btc_price": 59933,
+    "btc_dominance": 55.8,
+    "candidates": [
+      "\u5e01\u5b89\u4eba\u751f",
+      "VELVET",
+      "GWEI",
+      "UB",
+      "KITE",
+      "WLD",
+      "ENA",
+      "SOL"
+    ],
+    "alert": "Record spot Bitcoin ETF outflows of $4B this month signal institutional exodus \u2014 do not catch falling knives until flows stabilize."
   }
 ]
