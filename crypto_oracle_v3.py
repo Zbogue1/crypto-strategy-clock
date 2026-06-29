@@ -779,7 +779,8 @@ def collect_funding_rates(snap: MarketSnapshot):
             timeout=10, headers=bybit_headers
         )
         if r.status_code != 200:
-            log.warning(f"Funding rates: Bybit returned HTTP {r.status_code}")
+            # 403/451 = geo-blocked (Railway US servers). Skip silently.
+            log.debug(f"Funding rates unavailable (HTTP {r.status_code}) — skipping")
             return
         data = r.json()
         items = data.get("result", {}).get("list", [])

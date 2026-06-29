@@ -339,13 +339,23 @@ def evaluate_pending_predictions(current_price: float) -> List[Dict]:
     now        = datetime.now(timezone.utc)
     newly_eval = []
 
+    # Ticker → CoinGecko ID mapping (in case old records saved ticker instead of ID)
+    TICKER_TO_CG_ID = {
+        "btc": "bitcoin", "eth": "ethereum", "sol": "solana",
+        "bnb": "binancecoin", "xrp": "ripple", "ada": "cardano",
+        "avax": "avalanche-2", "doge": "dogecoin", "dot": "polkadot",
+        "link": "chainlink", "near": "near", "inj": "injective-protocol",
+        "ena": "ethena", "wld": "worldcoin-wld",
+    }
+
     for rec in records:
         ts = datetime.fromisoformat(rec["timestamp"].replace("Z", "+00:00"))
         signal = rec.get("signal", "HOLD")
         price0 = rec.get("price_at_pred", 0)
         updated = False
 
-        coin_id = rec.get("coin_id", "bitcoin")
+        raw_id  = rec.get("coin_id", "bitcoin")
+        coin_id = TICKER_TO_CG_ID.get(raw_id.lower(), raw_id)
 
         # 7-day evaluation
         if not rec.get("evaluated_7d") and (now - ts).days >= 7:
