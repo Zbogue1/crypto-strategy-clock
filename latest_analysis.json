@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-06-29T08:04:36.869312+00:00",
+  "timestamp": "2026-06-29T12:03:08.650023+00:00",
   "selected_coin": "SOL",
   "selected_coin_name": "Solana",
-  "selected_coin_price": 72.68,
-  "confidence": 28,
-  "layman_headline": "Crypto market is in full panic mode \u2014 patience is the best trade right now.",
-  "layman_explanation": "The entire crypto market is in extreme fear territory, with Bitcoin dropping below $60,000 and spot Bitcoin ETFs on track for their worst month ever with $4 billion in outflows. Almost every altcoin is bleeding heavily over the past week. While extreme fear can eventually create buying opportunities, the selling momentum hasn't shown clear signs of exhaustion yet \u2014 catching a falling knife here is dangerous.",
-  "layman_action": "Do not buy anything yet. Wait for the market to show actual stabilization \u2014 look for a day or two where Bitcoin holds a level and altcoins stop making new lows. Cash is a position, and right now it's the best one.",
-  "expert_reasoning": "All swing candidates present poor risk/reward at current levels. The micro-caps (BinanceLife, GWEI, VELVET) have already pumped 34-270% and are extended. The beaten-down names (KITE, WLD, ENA) show strongly bearish chart structures with Three Black Crows and Bearish Marubozu patterns \u2014 classic falling knife territory. SOL stands out as the relative strength leader among top-20 assets with only -1.85% weekly loss versus BTC's -6.55%, but its chart bias is still -0.70 with price below all major MAs. The macro backdrop is terrible: record ETF outflows, worsening fear/greed (12, trending down from 18), and BTC dominance at 55.8% crushing altcoins. The prudent move is to wait for a capitulation wick or a clear bottoming pattern before deploying capital.",
+  "selected_coin_price": 72.32,
+  "confidence": 30,
+  "layman_headline": "Extreme Fear grips the market \u2014 patience is the smartest trade right now.",
+  "layman_explanation": "The entire crypto market is in deep fear territory with Bitcoin hovering below $60,000 and most coins down 7-15% or more in the past week. The candidates that are up big (TAC +165%, VELVET +286%, GWEI +125%) have already made their move and are dangerously extended \u2014 chasing them now risks buying the top. The beaten-down coins (KITE, M/MemeCore) have strongly bearish charts with no reversal signals yet. Solana is the relative strongest major coin, barely down 2.5% this week, but lacks a clear catalyst or technical entry right now.",
+  "layman_action": "Stay in cash and wait. Set price alerts for Solana around $68 and Bitcoin around $57,000. If we see a capitulation wick into those levels with a quick recovery, that's when to act. Don't chase coins that already pumped 100%+.",
+  "expert_reasoning": "Fear & Greed at 12 and worsening signals we haven't reached capitulation bottom yet \u2014 typically the index needs to spike back up from a low to confirm a reversal. The parabolic movers (TAC, VELVET, GWEI) are near ATH and have no chart history to define reliable support \u2014 catching a knife on the way down from a 150-280% pump is extremely high risk. KITE and M both score -2.0 on chart bias with Three Black Crows patterns \u2014 these are actively falling knives with no reversal candle yet. WLD at -32% weekly with a Bearish Marubozu and only 0.99 R:R is unattractive. SOL is the cleanest setup on the watchlist but needs a deeper pullback to ~$68 to offer favorable risk/reward. In Extreme Fear environments, the best trades come from patience, not urgency.",
   "risk_factors": [
-    "BTC could break below $58K support triggering cascading liquidations and another 10-15% leg down across all alts",
-    "Record ETF outflows suggest institutional selling may not be finished \u2014 this is structural, not just sentiment-driven",
-    "High BTC dominance at 55.8% means any alt position carries additional rotation risk even if BTC stabilizes"
+    "Bitcoin breaking below $57K could trigger cascading liquidations and drag all alts down another 15-25%",
+    "U.S. jobs report this week could strengthen dollar and pressure risk assets further",
+    "CLARITY Act odds falling to 50% introduces regulatory uncertainty that may suppress institutional buying"
   ],
   "watch_list": [
-    "BTC price action at $58,000-$59,000 support \u2014 a daily close below $58K would signal further downside and delay any entry",
-    "Spot BTC ETF flow data over the next 48 hours \u2014 any day of net inflows would be the first sign of institutional capitulation ending",
-    "SOL RSI dropping below 35 with a hammer or morning star candle on the daily \u2014 that would be the actionable entry signal"
+    "Bitcoin price action around $57,000 \u2014 a break below would signal deeper correction, a hold could form a base",
+    "Fear & Greed Index \u2014 watch for a reversal from 12 back above 20 as an early sign of capitulation bottom",
+    "U.S. June jobs report impact on dollar strength and risk appetite"
   ],
-  "market_context": "The crypto market is in a severe downturn with Fear & Greed at 12 and worsening, BTC below $60K, and record-breaking ETF outflows of $4 billion this month. This is a market where capital preservation takes priority over opportunity hunting.",
-  "context_banner": "Extreme fear at 12/100 with record ETF outflows \u2014 the market is in capitulation territory but hasn't found a floor yet.",
-  "btc_price": 59933,
+  "market_context": "Bitcoin hovering below $60K in extreme fear (12/100) with institutional ETF outflows reported. A pivotal week ahead with macro data and European MiCA regulatory deadline could drive the next major directional move.",
+  "context_banner": "Extreme Fear at 12/100 with no reversal signals yet \u2014 capital preservation is the priority while waiting for a true capitulation setup.",
+  "btc_price": 59722,
   "fear_greed": {
     "current": 12,
     "label": "Extreme Fear",
@@ -28,35 +28,35 @@
     "week_avg": 15.7,
     "trend": "worsening"
   },
-  "btc_dominance": 55.8,
+  "btc_dominance": 0.0,
   "key_signals": [
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Fear & Greed index at 12 (Extreme Fear) and worsening from 18 yesterday \u2014 sentiment has not yet reached the capitulation bounce point as it continues to deteriorate."
-    },
-    {
-      "source": "CoinDesk",
-      "signal_type": "macro",
-      "description": "$4 billion in spot Bitcoin ETF outflows on track for worst month on record \u2014 institutional selling pressure is the primary driver of this downturn."
+      "description": "Fear & Greed at 12 (Extreme Fear) and worsening from 18 yesterday \u2014 capitulation hasn't completed yet, suggesting more downside is possible before a tradeable bottom forms."
     },
     {
       "source": "CoinDesk",
       "signal_type": "news",
-      "description": "Bitcoin dipped to $59,700 as Iran de-escalation lifted stocks but NOT crypto \u2014 divergence from equities suggests crypto-specific headwinds beyond macro."
+      "description": "Bitcoin in 'technical no man's land' below $60K with major support levels far away \u2014 headline confirms there's no nearby floor to trade against."
     },
     {
-      "source": "RSI",
-      "signal_type": "technical",
-      "description": "SOL RSI at 42 approaching oversold while showing relative strength (-1.85% weekly vs market -7 to -18%) \u2014 best large-cap candidate once bottom forms."
+      "source": "CryptoSlate",
+      "signal_type": "macro",
+      "description": "Institutions dumped BTC and ETH ETFs, signaling professional money is de-risking \u2014 not the backdrop for aggressive long entries."
     },
     {
       "source": "CoinTelegraph",
       "signal_type": "technical",
-      "description": "Analysts noting bullish Bitcoin RSI divergence reminiscent of 2022 bear market bottom \u2014 potential macro bottom forming but timing remains uncertain."
+      "description": "BTC price RSI printing a key 2026 signal \u2014 worth monitoring but not yet confirmed as a buy trigger."
+    },
+    {
+      "source": "Blockworks",
+      "signal_type": "technical",
+      "description": "ETH derivatives reset noted \u2014 could set up a cleaner long entry once the reset completes and funding normalizes."
     }
   ],
   "_mode": "HUNTING",
   "exit_target": 78.0,
-  "stop_loss": 62.0
+  "stop_loss": 64.0
 }
