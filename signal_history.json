@@ -146,5 +146,27 @@
       "SOL"
     ],
     "alert": "BTC has broken below $60,000 with worsening fear sentiment. No swing candidates offer a favorable risk/reward setup. Stay in cash and wait for capitulation bottom signals."
+  },
+  {
+    "ts": "2026-06-29T00:00:22.492876+00:00",
+    "coin": "SOL",
+    "price": 71.29,
+    "signal": "HOLD",
+    "confidence": 28,
+    "score": -0.35,
+    "fg": 12,
+    "btc_price": 59483,
+    "btc_dominance": 55.7,
+    "candidates": [
+      "\u5e01\u5b89\u4eba\u751f",
+      "KITE",
+      "WLD",
+      "GWEI",
+      "VELVET",
+      "TRUMP",
+      "PEPE",
+      "SOL"
+    ],
+    "alert": "Market in extreme fear with worsening trend \u2014 avoid new positions until stabilization is confirmed. Cash is a position."
   }
 ]
