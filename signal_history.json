@@ -38,135 +38,25 @@
     "alert": null
   },
   {
-    "ts": "2026-06-28T04:02:46.832600+00:00",
-    "coin": "NEAR",
-    "price": 1.9,
-    "signal": "HOLD",
-    "confidence": 32,
-    "score": -0.15,
-    "fg": 18,
-    "btc_price": 60126,
-    "btc_dominance": 0.0,
-    "candidates": [
-      "VELVET",
-      "SKYAI",
-      "PIEVERSE",
-      "KITE",
-      "WLD",
-      "NEAR",
-      "ENA",
-      "SOL"
-    ],
-    "alert": "Market in extreme fear with active capitulation \u2014 preserve capital and wait for reversal confirmation before entering new positions."
-  },
-  {
-    "ts": "2026-06-28T08:01:49.331961+00:00",
-    "coin": "NEAR",
-    "price": 1.87,
-    "signal": "HOLD",
-    "confidence": 32,
-    "score": -0.15,
-    "fg": 18,
-    "btc_price": 60121,
-    "btc_dominance": 0.0,
-    "candidates": [
-      "VELVET",
-      "\u5e01\u5b89\u4eba\u751f",
-      "KITE",
-      "WLD",
-      "PUMP",
-      "NEAR",
-      "ENA",
-      "SOL"
-    ],
-    "alert": "Bitcoin below $60K with worsening Fear & Greed (18). Capitulation in progress \u2014 do not deploy capital without confirmed reversal signals."
-  },
-  {
-    "ts": "2026-06-28T12:01:30.457608+00:00",
+    "ts": "2026-06-29T04:03:38.521970+00:00",
     "coin": "SOL",
-    "price": 71.82,
+    "price": 72.52,
     "signal": "HOLD",
     "confidence": 28,
-    "score": -0.45,
-    "fg": 18,
-    "btc_price": 60255,
-    "btc_dominance": 55.9,
-    "candidates": [
-      "VELVET",
-      "\u5e01\u5b89\u4eba\u751f",
-      "KITE",
-      "WLD",
-      "PUMP",
-      "ENA",
-      "NEAR",
-      "SOL"
-    ],
-    "alert": "Extreme Fear at 18 with worsening trend \u2014 BTC below $60K and potential forced selling from Strategy. Do not chase entries until clear stabilization."
-  },
-  {
-    "ts": "2026-06-28T16:04:10.387762+00:00",
-    "coin": "SOL",
-    "price": 71.89,
-    "signal": "HOLD",
-    "confidence": 28,
-    "score": -0.35,
-    "fg": 18,
-    "btc_price": 59841,
-    "btc_dominance": 55.7,
-    "candidates": [
-      "\u5e01\u5b89\u4eba\u751f",
-      "WLD",
-      "VELVET",
-      "ENA",
-      "KITE",
-      "GWEI",
-      "TRUMP",
-      "SOL"
-    ],
-    "alert": "BTC below $60,000 with worsening extreme fear \u2014 capital preservation mode. Do not force entries in falling-knife conditions."
-  },
-  {
-    "ts": "2026-06-28T20:01:39.266344+00:00",
-    "coin": "SOL",
-    "price": 70.57,
-    "signal": "HOLD",
-    "confidence": 28,
-    "score": -0.3,
-    "fg": 18,
-    "btc_price": 59409,
-    "btc_dominance": 0.0,
-    "candidates": [
-      "\u5e01\u5b89\u4eba\u751f",
-      "VELVET",
-      "KITE",
-      "WLD",
-      "GWEI",
-      "ENA",
-      "TRUMP",
-      "SOL"
-    ],
-    "alert": "BTC has broken below $60,000 with worsening fear sentiment. No swing candidates offer a favorable risk/reward setup. Stay in cash and wait for capitulation bottom signals."
-  },
-  {
-    "ts": "2026-06-29T00:00:22.492876+00:00",
-    "coin": "SOL",
-    "price": 71.29,
-    "signal": "HOLD",
-    "confidence": 28,
-    "score": -0.35,
+    "score": -0.4,
     "fg": 12,
-    "btc_price": 59483,
-    "btc_dominance": 55.7,
+    "btc_price": 59913,
+    "btc_dominance": 55.6,
     "candidates": [
+      "VELVET",
       "\u5e01\u5b89\u4eba\u751f",
       "KITE",
       "WLD",
       "GWEI",
-      "VELVET",
-      "TRUMP",
+      "ENA",
       "PEPE",
       "SOL"
     ],
-    "alert": "Market in extreme fear with worsening trend \u2014 avoid new positions until stabilization is confirmed. Cash is a position."
+    "alert": "Bitcoin below $60,000 with worsening extreme fear \u2014 avoid new positions until stabilization confirmed."
   }
 ]
