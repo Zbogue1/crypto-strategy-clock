@@ -102,5 +102,27 @@
       "SOL"
     ],
     "alert": "Market in Extreme Fear (12/100) and worsening. All swing candidates are either overextended to the upside or in active freefall. No high-conviction entry exists."
+  },
+  {
+    "ts": "2026-06-29T16:01:06.126602+00:00",
+    "coin": "GWEI",
+    "price": 0.171837,
+    "signal": "HOLD",
+    "confidence": 35,
+    "score": 0.3,
+    "fg": 12,
+    "btc_price": 59715,
+    "btc_dominance": 55.7,
+    "candidates": [
+      "TAC",
+      "UB",
+      "GWEI",
+      "VELVET",
+      "M",
+      "WLD",
+      "KITE",
+      "SOL"
+    ],
+    "alert": "Market in Extreme Fear (12/100) and deteriorating \u2014 avoid chasing pumps or catching knives until BTC stabilizes."
   }
 ]
