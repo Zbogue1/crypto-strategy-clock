@@ -92,6 +92,21 @@ except ImportError:
     def build_credibility_context(): return ""
 
 try:
+    from fomo_portfolio import (
+        check_fomo_auto_exits,
+        get_fomo_stats,
+        get_fomo_graduation_status,
+    )
+    from fomo_tracker import sync_alchemy_webhooks
+    HAS_FOMO = True
+except ImportError:
+    HAS_FOMO = False
+    def check_fomo_auto_exits(*a, **kw): return []
+    def get_fomo_stats(): return {}
+    def get_fomo_graduation_status(): return {}
+    def sync_alchemy_webhooks(*a, **kw): pass
+
+try:
     from chart_analysis import analyze_chart
     HAS_CHART_ANALYSIS = True
 except ImportError:
@@ -1828,6 +1843,32 @@ def run_cycle(expert_mode: bool = False):
             log.info(f"Learning progress: {grad['score']} criteria met | {grad['days_running']}d running")
 
 
+    # ── 9b. FOMO portfolio maintenance ───────────────────────────────────────
+    if HAS_FOMO:
+        # Auto-exit open FOMO position if time limit or hard stop triggered
+        price_map = {c.ticker.upper(): c.price for c in snap.top_coins}
+        fomo_exits = check_fomo_auto_exits(price_map)
+        for exit_rec in fomo_exits:
+            log.info(f"FOMO auto-exit: {exit_rec}")
+
+        # Sync Alchemy webhooks for Tier A wallets
+        webhook_base = os.environ.get("RAILWAY_PUBLIC_DOMAIN", "")
+        if webhook_base:
+            sync_alchemy_webhooks(f"https://{webhook_base}")
+
+        fomo_stats = get_fomo_stats()
+        fomo_grad  = get_fomo_graduation_status()
+        analysis["_fomo_stats"]      = fomo_stats
+        analysis["_fomo_graduation"] = fomo_grad
+
+        log.info(
+            f"FOMO portfolio: ${fomo_stats.get('total_value', 500):.2f} "
+            f"({fomo_stats.get('total_pnl_pct', 0):+.1f}%) | "
+            f"{fomo_stats.get('total_trades', 0)} trades | "
+            f"{fomo_stats.get('win_rate', 0):.0f}% win rate | "
+            f"Grad: {fomo_grad.get('score','0/7')}"
+        )
+
     # ── 10. Save prediction ──────────────────────────────────
     if HAS_MEMORY:
         save_prediction(snap, analysis)
@@ -1870,7 +1911,7 @@ def pull_state_from_github():
     }
     base_url = f"https://api.github.com/repos/{GITHUB_REPO}/contents"
 
-    for filename in ("paper_portfolio.json", "signal_credibility.json", "position_state.json"):
+    for filename in ("paper_portfolio.json", "signal_credibility.json", "position_state.json", "fomo_portfolio.json", "fomo_lessons.json", "trusted_wallets.json"):
         try:
             r = requests.get(f"{base_url}/{filename}?ref={GITHUB_DATA_BRANCH}", headers=gh_headers, timeout=10)
             if r.status_code == 200:
@@ -1934,7 +1975,7 @@ def push_results_to_github(analysis: dict, snap: MarketSnapshot):
     base_url = f"https://api.github.com/repos/{GITHUB_REPO}/contents"
 
     # Also push position_state.json and signal_history.json
-    for fname in ("position_state.json",):
+    for fname in ("position_state.json", "fomo_portfolio.json", "fomo_lessons.json", "trusted_wallets.json"):
         if os.path.exists(fname):
             with open(fname) as f:
                 to_push.append((fname, f.read()))

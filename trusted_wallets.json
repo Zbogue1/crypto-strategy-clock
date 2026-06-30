@@ -1,0 +1,133 @@
+{
+  "tier_a": [
+    {
+      "wallet": "FILL_IN_mk4_WALLET_ADDRESS",
+      "alias": "mk4",
+      "fomo_profile": "@boosted",
+      "tier": "A",
+      "chain": "base",
+      "alchemy_webhook_id": null,
+      "notes": "Rank #1 on FOMO leaderboard. Strong memecoin trader on Base.",
+      "stats": {
+        "trades_followed": 0,
+        "wins": 0,
+        "losses": 0,
+        "win_rate_30d": null,
+        "win_rate_7d": null,
+        "avg_return": null,
+        "consecutive_losses": 0,
+        "last_trade_at": null,
+        "last_outcome": null
+      },
+      "added_at": "2026-06-30T00:00:00Z",
+      "promoted_at": null,
+      "demoted_at": null
+    },
+    {
+      "wallet": "FILL_IN_remus_WALLET_ADDRESS",
+      "alias": "remus",
+      "fomo_profile": "@rtrd/acc",
+      "tier": "A",
+      "chain": "base",
+      "alchemy_webhook_id": null,
+      "notes": "Rank #2. Consistent performer. Verify wallet via fomo.family profile.",
+      "stats": {
+        "trades_followed": 0,
+        "wins": 0,
+        "losses": 0,
+        "win_rate_30d": null,
+        "win_rate_7d": null,
+        "avg_return": null,
+        "consecutive_losses": 0,
+        "last_trade_at": null,
+        "last_outcome": null
+      },
+      "added_at": "2026-06-30T00:00:00Z",
+      "promoted_at": null,
+      "demoted_at": null
+    },
+    {
+      "wallet": "FILL_IN_WhiteRussian_WALLET_ADDRESS",
+      "alias": "White Russian",
+      "fomo_profile": "@WhiteRusskiye",
+      "tier": "A",
+      "chain": "base",
+      "alchemy_webhook_id": null,
+      "notes": "Rank #3. Research before adding wallet.",
+      "stats": {
+        "trades_followed": 0,
+        "wins": 0,
+        "losses": 0,
+        "win_rate_30d": null,
+        "win_rate_7d": null,
+        "avg_return": null,
+        "consecutive_losses": 0,
+        "last_trade_at": null,
+        "last_outcome": null
+      },
+      "added_at": "2026-06-30T00:00:00Z",
+      "promoted_at": null,
+      "demoted_at": null
+    }
+  ],
+  "tier_b": [
+    {
+      "wallet": "FILL_IN_Daumen_WALLET_ADDRESS",
+      "alias": "Daumen",
+      "fomo_profile": "@daumenxyz",
+      "tier": "B",
+      "chain": "base",
+      "alchemy_webhook_id": null,
+      "notes": "Rank #4. Monitoring — needs 2 weeks of observed trades before Tier A.",
+      "stats": {
+        "trades_followed": 0,
+        "wins": 0,
+        "losses": 0,
+        "win_rate_30d": null,
+        "win_rate_7d": null,
+        "avg_return": null,
+        "consecutive_losses": 0,
+        "last_trade_at": null,
+        "last_outcome": null
+      },
+      "added_at": "2026-06-30T00:00:00Z",
+      "promoted_at": null,
+      "demoted_at": null
+    },
+    {
+      "wallet": "FILL_IN_GCR_WALLET_ADDRESS",
+      "alias": "GCR Junior",
+      "fomo_profile": "@gcjR",
+      "tier": "B",
+      "chain": "base",
+      "alchemy_webhook_id": null,
+      "notes": "Rank #5. Monitoring.",
+      "stats": {
+        "trades_followed": 0,
+        "wins": 0,
+        "losses": 0,
+        "win_rate_30d": null,
+        "win_rate_7d": null,
+        "avg_return": null,
+        "consecutive_losses": 0,
+        "last_trade_at": null,
+        "last_outcome": null
+      },
+      "added_at": "2026-06-30T00:00:00Z",
+      "promoted_at": null,
+      "demoted_at": null
+    }
+  ],
+  "demotion_rules": {
+    "consecutive_losses_for_demotion": 3,
+    "win_rate_7d_floor": 40.0,
+    "win_rate_sustained_low_weeks": 2,
+    "catastrophic_loss_pct": -50.0
+  },
+  "promotion_rules": {
+    "min_tier_b_trades_observed": 10,
+    "min_win_rate_for_promotion": 65.0,
+    "min_days_observed": 14
+  },
+  "last_updated": "2026-06-30T00:00:00Z"
+}

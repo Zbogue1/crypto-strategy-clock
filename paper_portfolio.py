@@ -777,8 +777,9 @@ def update_fear_counter(fear_value) -> int:
 
 def get_graduation_status() -> dict:
     """
-    Evaluate whether the agent is ready to graduate from paper trading to real money.
-    Criteria: 10+ trades, >50% win rate, positive avg return, 30+ days, no 3-loss streak.
+    Evaluate whether the main swing agent is ready to graduate to real money.
+    Tightened criteria: 20+ trades, 55%+ win rate, 3%+ avg return,
+    60+ days running, max drawdown <20%, no 3-loss streak in last 10.
     """
     state    = load_portfolio()
     history  = state.get("trade_history", [])
@@ -786,17 +787,20 @@ def get_graduation_status() -> dict:
     wins     = state.get("winning_trades", 0)
 
     criteria = {}
-    criteria["min_trades"] = n_trades >= 10
+    criteria["min_trades_20"] = n_trades >= 20
 
     win_rate = (wins / n_trades * 100) if n_trades > 0 else 0.0
-    criteria["win_rate"] = win_rate > 50
+    criteria["win_rate_55"] = win_rate >= 55.0
 
     avg_pct = sum(t.get("profit_pct", 0) for t in history) / len(history) if history else 0.0
-    criteria["positive_avg"] = avg_pct > 0
+    criteria["avg_return_3pct"] = avg_pct >= 3.0
 
     started = state.get("started_at", datetime.now(timezone.utc).isoformat())
     days_running = _days_between(started, datetime.now(timezone.utc).isoformat())
-    criteria["days_30"] = days_running >= 30
+    criteria["days_60"] = days_running >= 60
+
+    max_dd = state.get("max_drawdown", 0.0)
+    criteria["max_drawdown_ok"] = max_dd <= 20.0
 
     recent = history[-10:] if len(history) >= 10 else history
     max_streak = streak = 0
@@ -809,15 +813,16 @@ def get_graduation_status() -> dict:
     criteria["no_bad_streak"] = max_streak < 3
 
     score     = sum(criteria.values())
-    score_str = f"{score}/5"
-    ready     = score == 5
+    score_str = f"{score}/6"
+    ready     = score == 6
 
     return {
         "score":        score_str,
         "ready":        ready,
         "criteria":     criteria,
         "days_running": days_running,
-        "win_rate":     win_rate,
+        "win_rate":     round(win_rate, 1),
         "avg_trade":    round(avg_pct, 2),
         "n_trades":     n_trades,
+        "max_drawdown": max_dd,
     }
