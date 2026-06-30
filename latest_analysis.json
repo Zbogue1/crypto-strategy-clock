@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-06-30T00:04:24.972714+00:00",
-  "selected_coin": "SOL",
-  "selected_coin_name": "Solana",
-  "selected_coin_price": 75.0,
-  "confidence": 52,
-  "layman_headline": "Solana stands out as the rare green light in a sea of red \u2014 buying carefully while others panic.",
-  "layman_explanation": "The entire crypto market is gripped by extreme fear, with Bitcoin struggling to hold $60,000 and most altcoins down 5-14% on the week. But Solana is bucking the trend \u2014 it's up 5% today and 4.4% this week while nearly everything else is bleeding. In times of extreme fear, assets showing relative strength often lead the recovery. We're looking to buy Solana on a small pullback with a tight stop-loss, targeting a 12-15% swing over the next week or two.",
-  "layman_action": "If you're comfortable with risk, consider a small position in Solana around $73-75 with a strict stop-loss at $68. This is a contrarian bet during extreme fear \u2014 only risk what you can afford to lose.",
-  "expert_reasoning": "The Fear & Greed index at 15 with a worsening trend signals capitulatory sentiment \u2014 historically a fertile ground for mean-reversion entries. SOL's relative strength in this environment is remarkable: +5.22% 24h and +4.41% 7d versus BTC -5.92%, ETH -6.75%, and DOGE -10.95% weekly. The other candidates were rejected systematically: TAC and VELVET are parabolic with RSI near 70 after 200%+ weekly gains \u2014 chasing those is asking for a blowoff top. KITE and M have -2.0 chart bias scores with Three Black Crows patterns \u2014 catching falling knives. WLD has a bearish marubozu and negative chart bias despite the dip. SOL's $4B+ daily volume provides liquidity for clean entries and exits, and its ecosystem strength (DePIN, gaming rebounds per Blockworks) provides fundamental backing. The stop at $68 represents a clean break below round-number support and limits downside to ~9.3% while targeting $84 for a 12% gain \u2014 roughly 1.3:1 risk/reward, acceptable given the high-conviction relative strength signal.",
+  "timestamp": "2026-06-30T04:01:35.672204+00:00",
+  "selected_coin": "GWEI",
+  "selected_coin_name": "ETHGas",
+  "selected_coin_price": 0.16279,
+  "confidence": 32,
+  "layman_headline": "Extreme fear grips the crypto market \u2014 patience is the best trade right now.",
+  "layman_explanation": "The entire crypto market is in a deep slump with Bitcoin struggling around $59,500 and the Fear & Greed index at an extreme low of 15. Most altcoins have been hammered, losing 7-17% in the past week. While fear this extreme can signal buying opportunities, the charts show continued selling pressure with no clear bottom confirmed yet. Jumping in now would be like trying to catch a falling knife.",
+  "layman_action": "Stay in cash and wait. The market is still falling and no coin offers a high-confidence setup right now. Watch for Bitcoin to stabilize above $60,000 before committing capital.",
+  "expert_reasoning": "In an Extreme Fear environment (15/100, worsening trend), BTC is testing the critical $60K level with headlines about volatility shocks and downside hedging. High BTC dominance at 55.6% means capital is rotating out of alts. Among candidates: TAC and VELVET are parabolic (200%+ in 7 days) and far too extended. JTO is overbought at RSI 74 and already dropping 13% today. WLD's bearish marubozu and -32% weekly decline show no reversal signal yet. PEPE has Three Black Crows \u2014 actively selling off. SOL's risk/reward is just 0.12x with resistance immediately overhead. GWEI is the best setup technically but has already rallied 35% into resistance and offers only 1:1 risk/reward at current price. No candidate provides a favorable entry with clear downside protection in this environment.",
   "risk_factors": [
-    "BTC breaking below $58,000 could trigger a broader capitulation that drags even strong performers like SOL down sharply",
-    "Bitcoin put-call ratio at 1-year highs suggests institutional hedging for a deeper drop \u2014 the fear may be justified, not contrarian",
-    "High BTC dominance at 55.6% means capital is flowing away from alts \u2014 SOL's strength may fade if BTC dominance continues rising"
+    "BTC breaking below $58,000 could trigger another 10-15% cascade across all alts",
+    "Fear & Greed worsening from 12 to 15 suggests sentiment hasn't capitulated fully \u2014 more downside possible",
+    "High BTC dominance at 55.6% means alt season is far away and small caps face outsized drawdown risk"
   ],
   "watch_list": [
-    "Bitcoin's ability to hold $58,000-$60,000 support over the next 48 hours \u2014 a breakdown invalidates all alt long setups",
-    "Whether the Bitcoin put-call ratio begins declining (would confirm fear is peaking rather than building)",
-    "SOL daily volume staying above $3B \u2014 declining volume would signal the relative strength is fading"
+    "Bitcoin's ability to hold the $58,000-$60,000 support zone over the next 48 hours",
+    "GWEI pulling back toward the $0.10-$0.11 support zone for a high-R entry",
+    "Fear & Greed index \u2014 a spike below 10 or a reversal above 20 could mark the turning point"
   ],
-  "market_context": "The crypto market is in extreme fear (15/100, worsening) with BTC fighting to hold $60K and most alts down 6-14% weekly. Institutional headlines are mixed \u2014 JPMorgan and banks expanding blockchain infrastructure is bullish long-term, but traders are loading downside hedges at a 1-year high clip.",
-  "context_banner": "Extreme fear at 15/100 with Solana showing rare relative strength \u2014 a disciplined contrarian entry with tight risk management.",
-  "btc_price": 60128,
+  "market_context": "The crypto market is in a pronounced downtrend with BTC testing the critical $60K level amid extreme fear (15/100). Sovereign funds reportedly see this as a discount, but technicals show no confirmed bottom yet \u2014 patience is warranted.",
+  "context_banner": "Extreme Fear at 15/100 with BTC fighting for $60K \u2014 capital preservation takes priority over opportunity hunting until a bottom is confirmed.",
+  "btc_price": 59520,
   "fear_greed": {
     "current": 15,
     "label": "Extreme Fear",
@@ -33,30 +33,30 @@
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Fear & Greed at 15 (Extreme Fear) and worsening \u2014 historically a zone where contrarian buyers are rewarded, but requires tight stops as capitulation can extend."
+      "description": "Fear & Greed at 15 (Extreme Fear) and worsening \u2014 historically a contrarian buy zone but current trend suggests no capitulation bottom yet."
+    },
+    {
+      "source": "CryptoSlate",
+      "signal_type": "news",
+      "description": "Bitcoin's $60K breakdown is setting up a volatility shock as traders aggressively load downside hedges, signaling institutional expectation of further decline."
     },
     {
       "source": "CoinTelegraph",
       "signal_type": "news",
-      "description": "Bitcoin put-call ratio hitting 1-year highs signals peak hedging activity \u2014 this level of bearish positioning often precedes relief rallies as shorts get squeezed."
+      "description": "Bitcoin faces a critical test as bulls aim to hold $60K \u2014 the outcome of this level will determine whether alts get a relief bounce or face another leg down."
+    },
+    {
+      "source": "RSI",
+      "signal_type": "technical",
+      "description": "Best candidates are either overbought (JTO at 74, TAC at 68) or still mid-range with bearish structure (PEPE at 34 with Three Black Crows), offering no clean entry."
     },
     {
       "source": "volume_breakout",
       "signal_type": "technical",
-      "description": "SOL's $4.1B daily volume is the third-highest in the market, and it's the only top-15 asset green on both 24h (+5.2%) and 7d (+4.4%) timeframes \u2014 clear relative strength."
-    },
-    {
-      "source": "Blockworks",
-      "signal_type": "news",
-      "description": "DePIN and crypto gaming led a surprising end-of-year rebound \u2014 both sectors are heavily built on Solana, providing ecosystem-level demand tailwinds."
-    },
-    {
-      "source": "CryptoSlate",
-      "signal_type": "macro",
-      "description": "Bitcoin's $60K breakdown setting up a volatility shock \u2014 this creates the fearful environment where relative-strength plays like SOL can outperform significantly on any relief bounce."
+      "description": "GWEI's Morning Star pattern is the strongest bullish chart signal among candidates (bias +1.40) but risk/reward at current levels is only 1:1, requiring a pullback for proper entry."
     }
   ],
   "_mode": "HUNTING",
-  "exit_target": 84.0,
-  "stop_loss": 68.0
+  "exit_target": 0.161,
+  "stop_loss": 0.098
 }
