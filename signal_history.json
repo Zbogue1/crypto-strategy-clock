@@ -168,5 +168,27 @@
       "SOL"
     ],
     "alert": "Market in extreme fear with BTC put-call ratio at 1-year highs \u2014 position sizing should be conservative and stop-losses non-negotiable."
+  },
+  {
+    "ts": "2026-06-30T04:01:35.672204+00:00",
+    "coin": "GWEI",
+    "price": 0.16279,
+    "signal": "HOLD",
+    "confidence": 32,
+    "score": -0.15,
+    "fg": 15,
+    "btc_price": 59520,
+    "btc_dominance": 55.6,
+    "candidates": [
+      "TAC",
+      "UB",
+      "GWEI",
+      "WLD",
+      "VELVET",
+      "JTO",
+      "PEPE",
+      "SOL"
+    ],
+    "alert": "BTC testing critical $60,000 support \u2014 a breakdown could trigger cascading liquidations across altcoins. Stay defensive."
   }
 ]
