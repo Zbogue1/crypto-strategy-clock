@@ -146,5 +146,27 @@
       "SOL"
     ],
     "alert": "Bitcoin put-call ratio at 1-year high with price at $60K support \u2014 a breakdown could trigger cascading liquidations across altcoins."
+  },
+  {
+    "ts": "2026-06-30T00:04:24.972714+00:00",
+    "coin": "SOL",
+    "price": 75.0,
+    "signal": "BUY",
+    "confidence": 52,
+    "score": 0.55,
+    "fg": 15,
+    "btc_price": 60128,
+    "btc_dominance": 55.6,
+    "candidates": [
+      "TAC",
+      "UB",
+      "VELVET",
+      "GWEI",
+      "WLD",
+      "KITE",
+      "M",
+      "SOL"
+    ],
+    "alert": "Market in extreme fear with BTC put-call ratio at 1-year highs \u2014 position sizing should be conservative and stop-losses non-negotiable."
   }
 ]
