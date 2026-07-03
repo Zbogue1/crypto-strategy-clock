@@ -61,6 +61,10 @@ MAX_LAG_MINUTES = 15        # don't enter if we're >15 min behind the trader
 
 HEADERS = {"User-Agent": "CryptoOracle/3.0 (fomo-tracker; non-commercial)"}
 
+HELIUS_API_KEY     = os.environ.get("HELIUS_API_KEY", "")
+HELIUS_AUTH_HEADER = os.environ.get("HELIUS_AUTH_HEADER", "")
+WSOL_MINT = "So11111111111111111111111111111111111111112"
+
 TRUSTED_WALLETS_FILE = "trusted_wallets.json"
 
 
@@ -344,6 +348,98 @@ def parse_alchemy_activity(activity: dict, wallet_address: str) -> Optional[dict
     return None
 
 
+
+# ─── HELIUS (SOLANA) WEBHOOK SUPPORT ─────────────────────────────────────────
+
+def parse_helius_activity(tx, wallet_address):
+    if tx.get("type") != "SWAP":
+        return None
+    fee_payer = tx.get("feePayer", "")
+    if fee_payer.lower() != wallet_address.lower():
+        return None
+    token_transfers = tx.get("tokenTransfers", [])
+    bought, sold = [], []
+    for xfer in token_transfers:
+        mint = xfer.get("mint", "")
+        if mint == WSOL_MINT:
+            continue
+        to_user   = xfer.get("toUserAccount", "")
+        from_user = xfer.get("fromUserAccount", "")
+        if to_user.lower() == wallet_address.lower():
+            bought.append(mint)
+        elif from_user.lower() == wallet_address.lower():
+            sold.append(mint)
+    if bought:
+        return {"type": "BUY", "contract": bought[0]}
+    if sold:
+        return {"type": "SELL", "contract": sold[0]}
+    return None
+
+
+def register_helius_webhook(wallet_address, webhook_url):
+    if not HELIUS_API_KEY:
+        log.warning("HELIUS_API_KEY not set")
+        return None
+    try:
+        payload = {
+            "webhookURL":       webhook_url + "/webhook/helius",
+            "transactionTypes": ["SWAP"],
+            "accountAddresses": [wallet_address],
+            "webhookType":      "enhanced",
+        }
+        if HELIUS_AUTH_HEADER:
+            payload["authHeader"] = HELIUS_AUTH_HEADER
+        r = requests.post(
+            "https://api.helius.xyz/v0/webhooks",
+            params={"api-key": HELIUS_API_KEY},
+            json=payload,
+            timeout=15,
+        )
+        if r.status_code in (200, 201):
+            wid = r.json().get("webhookID")
+            log.info("Helius webhook: %s -> %s", wallet_address[:8], wid)
+            return wid
+        log.warning("Helius registration failed: %s %s", r.status_code, r.text[:120])
+        return None
+    except Exception as e:
+        log.warning("Helius registration error: %s", e)
+        return None
+
+
+def delete_helius_webhook(webhook_id):
+    if not HELIUS_API_KEY:
+        return False
+    try:
+        r = requests.delete(
+            "https://api.helius.xyz/v0/webhooks/" + webhook_id,
+            params={"api-key": HELIUS_API_KEY},
+            timeout=10,
+        )
+        return r.status_code in (200, 204)
+    except Exception:
+        return False
+
+
+def sync_helius_webhooks(webhook_base_url):
+    data    = load_trusted_wallets()
+    changed = False
+    for w in data.get("tier_a", []):
+        addr = w.get("wallet", "")
+        if addr.startswith("FILL_IN") or w.get("chain", "base") != "solana":
+            continue
+        if not w.get("alchemy_webhook_id"):
+            wid = register_helius_webhook(addr, webhook_base_url)
+            if wid:
+                w["alchemy_webhook_id"] = wid
+                changed = True
+    for w in data.get("tier_b", []):
+        if w.get("chain", "base") == "solana" and w.get("alchemy_webhook_id"):
+            if delete_helius_webhook(w["alchemy_webhook_id"]):
+                w["alchemy_webhook_id"] = None
+                changed = True
+    if changed:
+        save_trusted_wallets(data)
+
 # ─── WEBHOOK ENDPOINT ─────────────────────────────────────────────────────────
 
 @app.route("/health", methods=["GET"])
@@ -355,6 +451,91 @@ def health():
         "fomo_value":  stats["total_value"],
         "fomo_trades": stats["total_trades"],
     })
+
+
+@app.route("/webhook/helius", methods=["POST"])
+def helius_webhook():
+    if HELIUS_AUTH_HEADER:
+        incoming = request.headers.get("Authorization", "")
+        if incoming != HELIUS_AUTH_HEADER:
+            log.warning("Helius webhook: invalid auth header")
+            return jsonify({"error": "Unauthorized"}), 401
+
+    events = request.json or []
+    if isinstance(events, dict):
+        events = [events]
+
+    for tx in events:
+        fee_payer   = tx.get("feePayer", "").lower()
+        wallet_info = get_wallet_info(fee_payer)
+        if not wallet_info:
+            continue
+
+        alias       = wallet_info["alias"]
+        wallet_addr = wallet_info["wallet"]
+        portfolio   = load_fomo_portfolio()
+        holding     = portfolio.get("holding")
+        parsed      = parse_helius_activity(tx, wallet_addr)
+        if not parsed:
+            continue
+
+        if parsed["type"] == "SELL" and holding:
+            held_contract = (holding.get("contract_address") or "").lower()
+            if held_contract == parsed["contract"].lower():
+                log.info("FOMO Solana: %s sold %s - following", alias, holding["token_ticker"])
+                token_data = validate_token(parsed["contract"])
+                exit_price = token_data.get("price") or holding["entry_price"]
+                entered_at = datetime.fromisoformat(holding["entered_at"].replace("Z", "+00:00"))
+                held_hrs   = (datetime.now(timezone.utc) - entered_at).total_seconds() / 3600
+                result     = execute_fomo_sell(
+                    exit_price,
+                    reason="tracker_sell_" + alias,
+                    trader_held_hours=held_hrs,
+                    exit_lag_minutes=0,
+                )
+                if result:
+                    pct     = result["profit_pct"]
+                    outcome = "WIN" if pct > 0 else "LOSS"
+                    update_wallet_stats(alias, outcome, pct)
+                    icon = "\U0001f7e2" if pct > 0 else "\U0001f534"
+                    msg  = (icon + " <b>FOMO Exit (Solana): " + holding["token_ticker"] + "</b>\n"
+                            + "Following " + alias + " sell\n"
+                            + "Return: <b>" + "{:+.1f}".format(pct) + "%</b>")
+                    send_telegram(msg)
+
+        elif parsed["type"] == "BUY" and not holding:
+            contract   = parsed["contract"]
+            token_data = validate_token(contract)
+            if not token_data["valid"]:
+                log.info("FOMO Solana: skipping %s buy - %s",
+                         alias, token_data.get("reject_reason"))
+                continue
+            catalyst_data = scan_catalyst(token_data["symbol"], contract)
+            result = execute_fomo_buy(
+                token_ticker=token_data["symbol"],
+                token_name=token_data["name"],
+                entry_price=token_data["price"],
+                wallet_alias=alias,
+                wallet_address=wallet_addr,
+                contract_address=contract,
+                catalyst=catalyst_data["catalyst"],
+                catalyst_score=catalyst_data["score"],
+                market_cap=token_data.get("market_cap"),
+                liquidity_usd=token_data.get("liquidity_usd"),
+                token_age_days=token_data.get("age_days"),
+                volume_spike_pct=token_data.get("volume_spike_pct"),
+            )
+            if result:
+                msg = ("\U0001f6a8 <b>FOMO Entry (Solana): " + token_data["symbol"] + "</b>\n"
+                       + "Following: " + alias + "\n"
+                       + "Price: $" + "{:.8f}".format(token_data["price"]) + "\n"
+                       + "Market cap: $" + "{:,.0f}".format(token_data.get("market_cap") or 0) + "\n"
+                       + "Catalyst (" + str(catalyst_data["score"]) + "/10): "
+                       + catalyst_data["catalyst"] + "\n"
+                       + "Stop: -15% | Auto-exit: 24h")
+                send_telegram(msg)
+
+    return jsonify({"ok": True})
 
 
 @app.route("/webhook/alchemy", methods=["POST"])
