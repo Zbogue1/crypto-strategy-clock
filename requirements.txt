@@ -2,3 +2,4 @@ anthropic>=0.40.0
 requests>=2.31.0
 feedparser>=6.0.10
 apscheduler>=3.10.4
+flask>=3.0.0
