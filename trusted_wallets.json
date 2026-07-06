@@ -195,14 +195,14 @@
       "bankroll_usd": null
     },
     {
-      "wallet": "FILL_IN_curb_WALLET_ADDRESS",
+      "wallet": "5hh7UE6i2BtyCvaMMadS71wFwK88JRmtRTfXkjZ3CHvF",
       "alias": "curb",
       "fomo_profile": "@CryptoCurb",
       "tier": "B",
       "chain": "solana",
       "alchemy_webhook_id": null,
-      "bankroll_usd": 1150995.75,
-      "notes": "Rank #1 (24h). 116 trades, 16d 13h avg hold, joined May 2025. 3,639 followers. Bio: 'Crypto/Memes since 2017. Always Early.' Top trade: CURB +$921,002.82 (406.14%). Wallet not yet verified on-chain.",
+      "bankroll_usd": 1014893.45,
+      "notes": "Rank #1 (24h). 116 trades, 16d 13h avg hold, joined May 2025. 3,639 followers. Bio: 'Crypto/Memes since 2017. Always Early.' Top trade: CURB +$921,002.82 (406.14%). Wallet not yet verified on-chain. | Wallet confirmed via on-chain cross-reference (Rudi buy tx match, May 6 2026).",
       "stats": {
         "trades_followed": 0,
         "wins": 0,
@@ -231,5 +231,5 @@
     "min_days_observed": 14,
     "min_bankroll_usd": 50000
   },
-  "last_updated": "2026-07-06T09:23:29.600227+00:00"
+  "last_updated": "2026-07-06T09:46:08.139008+00:00"
 }
