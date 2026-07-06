@@ -217,6 +217,56 @@ def send_telegram(message: str):
         log.warning(f"Telegram send failed: {e}")
 
 
+def send_telegram_button(message: str, button_text: str, callback_data: str):
+    """
+    Send a Telegram message with a single tappable inline button.
+    This is the plumbing for the execute-confirmation flow -- the button tap
+    is the actual human trigger-pull, never automatic.
+    """
+    if not TELEGRAM_BOT_TOKEN or not TELEGRAM_CHAT_ID:
+        log.info(f"[TELEGRAM-BUTTON] {message} | [{button_text}]")
+        return None
+    try:
+        r = requests.post(
+            f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage",
+            json={
+                "chat_id": TELEGRAM_CHAT_ID,
+                "text": message,
+                "parse_mode": "HTML",
+                "reply_markup": {
+                    "inline_keyboard": [[
+                        {"text": button_text, "callback_data": callback_data}
+                    ]]
+                },
+            },
+            timeout=10,
+        )
+        return r.json()
+    except Exception as e:
+        log.warning(f"Telegram button send failed: {e}")
+        return None
+
+
+def register_telegram_webhook():
+    """
+    Called once at startup. Tells Telegram where to POST button-tap events.
+    Requires RAILWAY_PUBLIC_DOMAIN to be set on this service.
+    """
+    webhook_base = os.environ.get("RAILWAY_PUBLIC_DOMAIN", "")
+    if not TELEGRAM_BOT_TOKEN or not webhook_base:
+        log.warning("Telegram webhook not registered -- missing token or public domain")
+        return
+    try:
+        r = requests.post(
+            f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/setWebhook",
+            json={"url": f"https://{webhook_base}/webhook/telegram"},
+            timeout=10,
+        )
+        log.info(f"Telegram webhook registered: {r.json()}")
+    except Exception as e:
+        log.warning(f"Telegram webhook registration failed: {e}")
+
+
 # ─── TOKEN VALIDATION (DexScreener) ──────────────────────────────────────────
 
 def validate_token(contract_address: str) -> dict:
@@ -505,6 +555,54 @@ def health():
         "fomo_value":  stats["total_value"],
         "fomo_trades": stats["total_trades"],
     })
+
+
+@app.route("/test/telegram-button", methods=["GET"])
+def test_telegram_button():
+    """Plumbing test only -- sends a fake button, no trade logic attached."""
+    send_telegram_button(
+        "\U0001f514 TEST NOTIFICATION -- this is a plumbing test, not a real trade.",
+        "EXECUTE (test)",
+        "test_execute_1",
+    )
+    return jsonify({"ok": True, "message": "Test button sent"})
+
+
+@app.route("/webhook/telegram", methods=["POST"])
+def telegram_webhook():
+    """Receives button taps from Telegram. Plumbing-test version just confirms receipt."""
+    update = request.json or {}
+    callback = update.get("callback_query")
+    if not callback:
+        return jsonify({"ok": True})
+
+    callback_id = callback["id"]
+    data        = callback.get("data", "")
+    message     = callback.get("message", {})
+    chat_id     = message.get("chat", {}).get("id")
+    message_id  = message.get("message_id")
+
+    log.info(f"Telegram button tapped: {data}")
+
+    try:
+        requests.post(
+            f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/answerCallbackQuery",
+            json={"callback_query_id": callback_id, "text": "Received!"},
+            timeout=10,
+        )
+        requests.post(
+            f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/editMessageText",
+            json={
+                "chat_id": chat_id,
+                "message_id": message_id,
+                "text": f"\u2705 Button tap received: {data}",
+            },
+            timeout=10,
+        )
+    except Exception as e:
+        log.warning(f"Telegram callback handling failed: {e}")
+
+    return jsonify({"ok": True})
 
 
 @app.route("/webhook/helius", methods=["POST"])
@@ -844,4 +942,5 @@ def sync_alchemy_webhooks(webhook_base_url: str):
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     log.info(f"FOMO Tracker starting on port {port}")
+    register_telegram_webhook()
     app.run(host="0.0.0.0", port=port, debug=False)
