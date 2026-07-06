@@ -1,5 +1,5 @@
 {
-  "cash": 889.7721,
+  "cash": 667.3321,
   "holdings": [
     {
       "coin_ticker": "SOL",
@@ -16,6 +16,22 @@
       "entry_target": 70.5,
       "expected_days": 7,
       "partial_taken": true
+    },
+    {
+      "coin_ticker": "ZRO",
+      "coin_id": "zro",
+      "units": 222.92449356910765,
+      "entry_price": 0.996829,
+      "entry_date": "2026-07-06T16:13:05.916225+00:00",
+      "entry_signal": "BUY",
+      "entry_confidence": 62,
+      "allocated_usd": 222.44,
+      "fee_paid": 0.2224,
+      "exit_target": 1.1,
+      "stop_loss": 0.85,
+      "entry_target": 0.93,
+      "expected_days": 7,
+      "partial_taken": false
     }
   ],
   "realized_pnl": 14.7721,
@@ -23,7 +39,7 @@
   "total_trades": 1,
   "winning_trades": 1,
   "losing_trades": 0,
-  "total_fees": 0.3899,
+  "total_fees": 0.6123,
   "trade_history": [
     {
       "trade_num": 1,
