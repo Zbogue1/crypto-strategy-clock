@@ -1,32 +1,32 @@
 {
   "open_trade": {
     "coin": "ZRO",
-    "entry_time": "2026-07-06T20:13:06.993289+00:00",
+    "entry_time": "2026-07-06T21:13:08.810480+00:00",
     "key_signals": [
       {
         "source": "RSI",
         "signal_type": "technical",
-        "description": "ZRO RSI at 31 is near-oversold territory, indicating seller exhaustion and elevated probability of a bounce."
-      },
-      {
-        "source": "CoinDesk",
-        "signal_type": "technical",
-        "description": "Morning Star candlestick pattern on ZRO chart \u2014 a classic three-candle bullish reversal formation at a potential bottom."
+        "description": "ZRO RSI at 30.83 is the most oversold of all candidates, indicating seller exhaustion and high probability of a bounce."
       },
       {
         "source": "Fear_Greed",
         "signal_type": "sentiment",
-        "description": "Market at Extreme Fear (24) with improving trend from 19.3 weekly average \u2014 historically the best contrarian buying window."
-      },
-      {
-        "source": "CryptoSlate",
-        "signal_type": "macro",
-        "description": "Bitcoin needs trillions for parabolic moves and ETF demand is fading \u2014 macro headwinds temper position sizing and confidence."
+        "description": "Extreme Fear at 24 improving from 19.3 weekly average \u2014 historically the best contrarian buying window for swing trades."
       },
       {
         "source": "CoinTelegraph",
         "signal_type": "news",
-        "description": "Strategy BTC sale causing 4% Bitcoin drop reminds that institutional selling pressure is an active risk to all crypto positions."
+        "description": "Ripple's full MiCA license and Bitmine's $74M ETH purchase signal institutional conviction in crypto infrastructure, supporting cross-chain protocols like LayerZero."
+      },
+      {
+        "source": "volume_breakout",
+        "signal_type": "technical",
+        "description": "Morning Star candlestick pattern on ZRO chart at $0.90 support confirms a three-candle bullish reversal with risk/reward of 2.93x."
+      },
+      {
+        "source": "Blockworks",
+        "signal_type": "news",
+        "description": "ETH derivatives reset narrative and DePIN/gaming rebound suggest capital rotating back into infrastructure and cross-chain plays."
       }
     ],
     "confidence": 62
@@ -35,13 +35,13 @@
     "Fear_Greed__sentiment": {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "wins": 1,
+      "wins": 2,
       "losses": 0,
-      "total": 1,
+      "total": 2,
       "win_rate": 1.0,
-      "total_pct": 11.82,
-      "avg_return": 11.82,
-      "last_seen": "2026-07-06T04:09:50.313763+00:00"
+      "total_pct": 25.66,
+      "avg_return": 12.83,
+      "last_seen": "2026-07-06T21:13:07.906134+00:00"
     },
     "CoinDesk__news": {
       "source": "CoinDesk",
@@ -86,8 +86,52 @@
       "total_pct": 11.82,
       "avg_return": 11.82,
       "last_seen": "2026-07-06T04:09:50.313801+00:00"
+    },
+    "RSI__technical": {
+      "source": "RSI",
+      "signal_type": "technical",
+      "wins": 1,
+      "losses": 0,
+      "total": 1,
+      "win_rate": 1.0,
+      "total_pct": 13.84,
+      "avg_return": 13.84,
+      "last_seen": "2026-07-06T21:13:07.906120+00:00"
+    },
+    "CoinDesk__technical": {
+      "source": "CoinDesk",
+      "signal_type": "technical",
+      "wins": 1,
+      "losses": 0,
+      "total": 1,
+      "win_rate": 1.0,
+      "total_pct": 13.84,
+      "avg_return": 13.84,
+      "last_seen": "2026-07-06T21:13:07.906129+00:00"
+    },
+    "CryptoSlate__macro": {
+      "source": "CryptoSlate",
+      "signal_type": "macro",
+      "wins": 1,
+      "losses": 0,
+      "total": 1,
+      "win_rate": 1.0,
+      "total_pct": 13.84,
+      "avg_return": 13.84,
+      "last_seen": "2026-07-06T21:13:07.906138+00:00"
+    },
+    "CoinTelegraph__news": {
+      "source": "CoinTelegraph",
+      "signal_type": "news",
+      "wins": 1,
+      "losses": 0,
+      "total": 1,
+      "win_rate": 1.0,
+      "total_pct": 13.84,
+      "avg_return": 13.84,
+      "last_seen": "2026-07-06T21:13:07.906141+00:00"
     }
   },
-  "trade_count": 1,
-  "last_updated": "2026-07-06T20:13:06.993296+00:00"
+  "trade_count": 2,
+  "last_updated": "2026-07-06T21:13:08.810485+00:00"
 }
