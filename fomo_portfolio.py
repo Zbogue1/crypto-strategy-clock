@@ -18,7 +18,12 @@ import os
 from datetime import datetime, timezone, timedelta
 from typing import Optional
 
+import anthropic
+
 log = logging.getLogger(__name__)
+
+ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY", "")
+AI_MODEL          = "claude-opus-4-6"
 
 # ─── CONSTANTS ────────────────────────────────────────────────────────────────
 
@@ -388,6 +393,129 @@ def run_fomo_postmortem(trade: dict) -> dict:
 
     log.info(f"FOMO post-mortem complete: {ticker} ({outcome}) — {len(lessons)} lessons")
     return postmortem
+
+
+# --- AI post-mortem & social commentary (side-channel, non-blocking) ---------
+
+def run_fomo_ai_postmortem(trade: dict, commentary: str = None) -> Optional[dict]:
+    """
+    Optional deep-dive analysis of a completed trade, mirroring the main portfolio's
+    Claude-powered post-mortem (crystal_ball_memory.py). Runs on the side after the
+    rule-based post-mortem -- never blocks a buy, sell, or auto-exit.
+
+    If `commentary` (something the trader posted publicly about this trade) is
+    supplied, it's folded in as extra context. If not supplied, the analysis still
+    runs -- commentary is a bonus input, never a requirement.
+    """
+    if not ANTHROPIC_API_KEY:
+        log.warning("FOMO: no ANTHROPIC_API_KEY -- skipping AI post-mortem")
+        return None
+
+    client = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY)
+    alias  = trade.get("wallet_alias", "unknown")
+    ticker = trade.get("token_ticker", "???")
+
+    commentary_block = (
+        f'\nTRADER\'S OWN COMMENTARY ABOUT THIS TRADE:\n"{commentary}"\n'
+        if commentary else
+        "\n(No trader commentary captured for this trade yet.)\n"
+    )
+
+    system = """You are a forensic analyst reviewing a copy-trade in a Solana memecoin
+FOMO copy-trading system. Judge whether following this trader on this specific trade
+was a genuinely sound decision, independent of whether it happened to make money --
+a win on a reckless setup and a loss on a sound setup both deserve honest scrutiny.
+If trader commentary is provided, assess whether it shows real understanding of
+market structure (liquidity, catalyst quality, exchange/KOL dynamics, rug risk) or
+is just hype-repeating with no substance. Respond ONLY with valid JSON."""
+
+    prompt = f"""Review this completed FOMO copy-trade.
+
+WALLET: {alias}
+TOKEN: {ticker}
+CATALYST AT ENTRY: {trade.get('catalyst', 'none')} (score {trade.get('catalyst_score', 0)}/10)
+MARKET CAP AT ENTRY: ${(trade.get('market_cap') or 0):,.0f}
+LIQUIDITY AT ENTRY: ${(trade.get('liquidity_usd') or 0):,.0f}
+TOKEN AGE AT ENTRY: {trade.get('token_age_days')} days
+ENTRY PRICE: ${trade.get('entry_price', 0):.8f}
+EXIT PRICE: ${trade.get('exit_price', 0):.8f}
+RESULT: {trade.get('profit_pct', 0):+.1f}% ({trade.get('exit_reason', 'unknown')})
+HELD: {trade.get('held_minutes', 0):.0f} minutes
+{commentary_block}
+Respond with this JSON structure:
+{{
+  "was_good_decision": true or false,
+  "reasoning": "Was following this trade sound, independent of the outcome? Why.",
+  "commentary_shows_understanding": true, false, or null if no commentary given,
+  "commentary_assessment": "What the trader's own words reveal about their process, or null",
+  "lessons_for_this_wallet": ["specific, actionable lesson", "..."],
+  "trust_adjustment": "increase | decrease | no_change"
+}}"""
+
+    try:
+        resp = client.messages.create(
+            model=AI_MODEL, max_tokens=1000, system=system,
+            messages=[{"role": "user", "content": prompt}],
+        )
+        raw = resp.content[0].text.strip()
+        if raw.startswith("```"):
+            raw = raw.split("```")[1]
+            if raw.startswith("json"):
+                raw = raw[4:]
+        result = json.loads(raw.strip())
+        result["analyzed_at"]    = datetime.now(timezone.utc).isoformat()
+        result["had_commentary"] = commentary is not None
+        result["ticker"]         = ticker
+
+        _record_ai_insight(alias, result)
+
+        log.info(f"FOMO AI post-mortem: {ticker} -- "
+                 f"good_decision={result.get('was_good_decision')} "
+                 f"commentary={'yes' if commentary else 'no'}")
+        return result
+
+    except Exception as e:
+        log.error(f"FOMO AI post-mortem failed for {ticker}: {e}")
+        return None
+
+
+def _record_ai_insight(alias: str, insight: dict):
+    """
+    Append an AI-generated qualitative insight to a wallet's profile. Kept in its
+    own list, separate from trade_history, so it never skews the numeric
+    best_conditions/avoid_when averages already computed there.
+    """
+    db = load_fomo_lessons()
+    if alias not in db["wallets"]:
+        db["wallets"][alias] = {
+            "trade_history":   [],
+            "patterns":        [],
+            "best_conditions": {},
+            "avoid_when":      [],
+            "ai_insights":     [],
+            "last_updated":    None,
+        }
+    db["wallets"][alias].setdefault("ai_insights", []).append(insight)
+    db["wallets"][alias]["last_updated"] = datetime.now(timezone.utc).isoformat()
+    save_fomo_lessons(db)
+
+
+def enrich_trade_with_commentary(trade_id: str, commentary: str) -> Optional[dict]:
+    """
+    Manual, side-channel entry point. Call any time after a trade closes -- an hour
+    later, next week, whenever you've captured something the trader posted about it
+    on fomo.family's feed. trade_id is the trade's "entered_at" timestamp (visible
+    in fomo_portfolio.json's trade_history). Never required for a trade to execute,
+    exit, or for its base post-mortem to complete -- pure bonus context.
+    """
+    state = load_fomo_portfolio()
+    trade = next((t for t in state.get("trade_history", [])
+                  if t.get("entered_at") == trade_id), None)
+    if not trade:
+        log.warning(f"FOMO: no trade found with id {trade_id}")
+        return None
+
+    return run_fomo_ai_postmortem(trade, commentary=commentary)
 
 
 def _update_fomo_lessons(alias: str, wallet_lesson: dict, new_lessons: list, outcome: str):

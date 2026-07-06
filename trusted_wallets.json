@@ -1,13 +1,13 @@
 {
   "tier_a": [
     {
-      "wallet": "FILL_IN_continuity_WALLET_ADDRESS",
+      "wallet": "2CQgjcdNEo7WtbQLpJTAVcC3Ga61pNvRDTgP5grzctFG",
       "alias": "continuity",
       "fomo_profile": "@continuity",
       "tier": "A",
       "chain": "solana",
       "alchemy_webhook_id": null,
-      "notes": "Rank #1 on fomo.family. +$62K PnL. 363 trades. Joined Mar 2026.",
+      "notes": "Rank #1 on fomo.family. +$62K PnL. 363 trades. Joined Mar 2026. Wallet identified via FINNY sell tx 5eADx... (15.85M FINNY, 53.35 SOL balance).",
       "stats": {
         "trades_followed": 0,
         "wins": 0,
@@ -21,122 +21,8 @@
       },
       "added_at": "2026-07-02T00:00:00Z",
       "promoted_at": null,
-      "demoted_at": null
-    },
-    {
-      "wallet": "FILL_IN_Binkieee_WALLET_ADDRESS",
-      "alias": "Binkieee",
-      "fomo_profile": "@Binkieee",
-      "tier": "A",
-      "chain": "solana",
-      "alchemy_webhook_id": null,
-      "notes": "Rank #2 on fomo.family. Strong performer.",
-      "stats": {
-        "trades_followed": 0,
-        "wins": 0,
-        "losses": 0,
-        "win_rate_30d": null,
-        "win_rate_7d": null,
-        "avg_return": null,
-        "consecutive_losses": 0,
-        "last_trade_at": null,
-        "last_outcome": null
-      },
-      "added_at": "2026-07-02T00:00:00Z",
-      "promoted_at": null,
-      "demoted_at": null
-    },
-    {
-      "wallet": "FILL_IN_MevZoid_WALLET_ADDRESS",
-      "alias": "MevZoid",
-      "fomo_profile": "@mev",
-      "tier": "A",
-      "chain": "solana",
-      "alchemy_webhook_id": null,
-      "notes": "Rank #3 on fomo.family.",
-      "stats": {
-        "trades_followed": 0,
-        "wins": 0,
-        "losses": 0,
-        "win_rate_30d": null,
-        "win_rate_7d": null,
-        "avg_return": null,
-        "consecutive_losses": 0,
-        "last_trade_at": null,
-        "last_outcome": null
-      },
-      "added_at": "2026-07-02T00:00:00Z",
-      "promoted_at": null,
-      "demoted_at": null
-    },
-    {
-      "wallet": "FILL_IN_mk4_WALLET_ADDRESS",
-      "alias": "mk4",
-      "fomo_profile": "@boosted",
-      "tier": "A",
-      "chain": "solana",
-      "alchemy_webhook_id": null,
-      "notes": "Rank #8 on fomo.family leaderboard. Solana memecoin trader.",
-      "stats": {
-        "trades_followed": 0,
-        "wins": 0,
-        "losses": 0,
-        "win_rate_30d": null,
-        "win_rate_7d": null,
-        "avg_return": null,
-        "consecutive_losses": 0,
-        "last_trade_at": null,
-        "last_outcome": null
-      },
-      "added_at": "2026-06-30T00:00:00Z",
-      "promoted_at": null,
-      "demoted_at": null
-    },
-    {
-      "wallet": "FILL_IN_remus_WALLET_ADDRESS",
-      "alias": "remus",
-      "fomo_profile": "@rtrd/acc",
-      "tier": "A",
-      "chain": "solana",
-      "alchemy_webhook_id": null,
-      "notes": "Rank #2. Solana trader. Verify wallet via fomo.family profile.",
-      "stats": {
-        "trades_followed": 0,
-        "wins": 0,
-        "losses": 0,
-        "win_rate_30d": null,
-        "win_rate_7d": null,
-        "avg_return": null,
-        "consecutive_losses": 0,
-        "last_trade_at": null,
-        "last_outcome": null
-      },
-      "added_at": "2026-06-30T00:00:00Z",
-      "promoted_at": null,
-      "demoted_at": null
-    },
-    {
-      "wallet": "FILL_IN_WhiteRussian_WALLET_ADDRESS",
-      "alias": "White Russian",
-      "fomo_profile": "@WhiteRusskiye",
-      "tier": "A",
-      "chain": "solana",
-      "alchemy_webhook_id": null,
-      "notes": "Rank #3. Solana trader.",
-      "stats": {
-        "trades_followed": 0,
-        "wins": 0,
-        "losses": 0,
-        "win_rate_30d": null,
-        "win_rate_7d": null,
-        "avg_return": null,
-        "consecutive_losses": 0,
-        "last_trade_at": null,
-        "last_outcome": null
-      },
-      "added_at": "2026-06-30T00:00:00Z",
-      "promoted_at": null,
-      "demoted_at": null
+      "demoted_at": null,
+      "bankroll_usd": null
     }
   ],
   "tier_b": [
@@ -161,7 +47,8 @@
       },
       "added_at": "2026-06-30T00:00:00Z",
       "promoted_at": null,
-      "demoted_at": null
+      "demoted_at": null,
+      "bankroll_usd": null
     },
     {
       "wallet": "FILL_IN_GCR_WALLET_ADDRESS",
@@ -184,7 +71,128 @@
       },
       "added_at": "2026-06-30T00:00:00Z",
       "promoted_at": null,
-      "demoted_at": null
+      "demoted_at": null,
+      "bankroll_usd": null
+    },
+    {
+      "wallet": "FILL_IN_Binkieee_WALLET_ADDRESS",
+      "alias": "Binkieee",
+      "fomo_profile": "@Binkieee",
+      "tier": "B",
+      "chain": "solana",
+      "alchemy_webhook_id": null,
+      "notes": "Rank #2 on fomo.family. Strong performer. | Reclassified to Tier B pending observation -- was added on leaderboard rank alone, no track record or capital-size vetting yet.",
+      "stats": {
+        "trades_followed": 0,
+        "wins": 0,
+        "losses": 0,
+        "win_rate_30d": null,
+        "win_rate_7d": null,
+        "avg_return": null,
+        "consecutive_losses": 0,
+        "last_trade_at": null,
+        "last_outcome": null
+      },
+      "added_at": "2026-07-02T00:00:00Z",
+      "promoted_at": null,
+      "demoted_at": null,
+      "bankroll_usd": null
+    },
+    {
+      "wallet": "FILL_IN_MevZoid_WALLET_ADDRESS",
+      "alias": "MevZoid",
+      "fomo_profile": "@mev",
+      "tier": "B",
+      "chain": "solana",
+      "alchemy_webhook_id": null,
+      "notes": "Rank #3 on fomo.family. | Reclassified to Tier B pending observation -- was added on leaderboard rank alone, no track record or capital-size vetting yet.",
+      "stats": {
+        "trades_followed": 0,
+        "wins": 0,
+        "losses": 0,
+        "win_rate_30d": null,
+        "win_rate_7d": null,
+        "avg_return": null,
+        "consecutive_losses": 0,
+        "last_trade_at": null,
+        "last_outcome": null
+      },
+      "added_at": "2026-07-02T00:00:00Z",
+      "promoted_at": null,
+      "demoted_at": null,
+      "bankroll_usd": null
+    },
+    {
+      "wallet": "FILL_IN_mk4_WALLET_ADDRESS",
+      "alias": "mk4",
+      "fomo_profile": "@boosted",
+      "tier": "B",
+      "chain": "solana",
+      "alchemy_webhook_id": null,
+      "notes": "Rank #8 on fomo.family leaderboard. Solana memecoin trader. | Reclassified to Tier B pending observation -- was added on leaderboard rank alone, no track record or capital-size vetting yet.",
+      "stats": {
+        "trades_followed": 0,
+        "wins": 0,
+        "losses": 0,
+        "win_rate_30d": null,
+        "win_rate_7d": null,
+        "avg_return": null,
+        "consecutive_losses": 0,
+        "last_trade_at": null,
+        "last_outcome": null
+      },
+      "added_at": "2026-06-30T00:00:00Z",
+      "promoted_at": null,
+      "demoted_at": null,
+      "bankroll_usd": null
+    },
+    {
+      "wallet": "FILL_IN_remus_WALLET_ADDRESS",
+      "alias": "remus",
+      "fomo_profile": "@rtrd/acc",
+      "tier": "B",
+      "chain": "solana",
+      "alchemy_webhook_id": null,
+      "notes": "Rank #2. Solana trader. Verify wallet via fomo.family profile. | Reclassified to Tier B pending observation -- was added on leaderboard rank alone, no track record or capital-size vetting yet.",
+      "stats": {
+        "trades_followed": 0,
+        "wins": 0,
+        "losses": 0,
+        "win_rate_30d": null,
+        "win_rate_7d": null,
+        "avg_return": null,
+        "consecutive_losses": 0,
+        "last_trade_at": null,
+        "last_outcome": null
+      },
+      "added_at": "2026-06-30T00:00:00Z",
+      "promoted_at": null,
+      "demoted_at": null,
+      "bankroll_usd": null
+    },
+    {
+      "wallet": "FILL_IN_WhiteRussian_WALLET_ADDRESS",
+      "alias": "White Russian",
+      "fomo_profile": "@WhiteRusskiye",
+      "tier": "B",
+      "chain": "solana",
+      "alchemy_webhook_id": null,
+      "notes": "Rank #3. Solana trader. | Reclassified to Tier B pending observation -- was added on leaderboard rank alone, no track record or capital-size vetting yet.",
+      "stats": {
+        "trades_followed": 0,
+        "wins": 0,
+        "losses": 0,
+        "win_rate_30d": null,
+        "win_rate_7d": null,
+        "avg_return": null,
+        "consecutive_losses": 0,
+        "last_trade_at": null,
+        "last_outcome": null
+      },
+      "added_at": "2026-06-30T00:00:00Z",
+      "promoted_at": null,
+      "demoted_at": null,
+      "bankroll_usd": null
     }
   ],
   "demotion_rules": {
@@ -196,7 +204,8 @@
   "promotion_rules": {
     "min_tier_b_trades_observed": 10,
     "min_win_rate_for_promotion": 65.0,
-    "min_days_observed": 14
+    "min_days_observed": 14,
+    "min_bankroll_usd": 50000
   },
-  "last_updated": "2026-07-03T02:24:25.238631+00:00"
+  "last_updated": "2026-07-06T01:15:53.941859+00:00"
 }

@@ -147,6 +147,60 @@ def _demote_wallet(data: dict, alias: str):
             break
 
 
+def check_wallet_promotions() -> list:
+    """
+    Called during every 4-hour cycle. Checks each Tier B wallet against
+    promotion_rules (trades observed, win rate, days observed, min bankroll)
+    and promotes qualifying wallets to Tier A. Returns list of promoted aliases.
+    Bookkeeping only — never blocks or delays live buy/sell execution.
+    """
+    data  = load_trusted_wallets()
+    rules = data.get("promotion_rules", {})
+    min_trades   = rules.get("min_tier_b_trades_observed", 10)
+    min_winrate  = rules.get("min_win_rate_for_promotion", 65.0)
+    min_days     = rules.get("min_days_observed", 14)
+    min_bankroll = rules.get("min_bankroll_usd", 0)
+
+    now      = datetime.now(timezone.utc)
+    promoted = []
+    still_b  = []
+
+    for w in data.get("tier_b", []):
+        stats    = w.get("stats", {})
+        trades   = stats.get("trades_followed", 0)
+        winrate  = stats.get("win_rate_30d") or 0
+        bankroll = w.get("bankroll_usd") or 0
+
+        days_observed = 0
+        added_at = w.get("added_at")
+        if added_at:
+            try:
+                added_dt = datetime.fromisoformat(added_at.replace("Z", "+00:00"))
+                days_observed = (now - added_dt).days
+            except Exception:
+                pass
+
+        meets_bankroll = min_bankroll <= 0 or bankroll >= min_bankroll
+
+        if (trades >= min_trades and winrate >= min_winrate
+                and days_observed >= min_days and meets_bankroll):
+            w["tier"]        = "A"
+            w["promoted_at"] = now.isoformat()
+            promoted.append(w["alias"])
+            data.setdefault("tier_a", []).append(w)
+            log.info(f"FOMO: {w['alias']} promoted to Tier A "
+                     f"({trades} trades, {winrate:.0f}% win rate, "
+                     f"{days_observed}d observed, ${bankroll:,.0f} bankroll)")
+        else:
+            still_b.append(w)
+
+    if promoted:
+        data["tier_b"] = still_b
+        save_trusted_wallets(data)
+
+    return promoted
+
+
 # ─── TELEGRAM ─────────────────────────────────────────────────────────────────
 
 def send_telegram(message: str):
@@ -511,6 +565,23 @@ def helius_webhook():
                          alias, token_data.get("reject_reason"))
                 continue
             catalyst_data = scan_catalyst(token_data["symbol"], contract)
+
+            # Check wallet lessons — avoid known bad patterns for this trader
+            lessons = get_wallet_lessons(alias)
+            best    = lessons.get("best_conditions", {})
+            skip_reason = None
+            if best.get("min_catalyst_score_for_win") and catalyst_data["score"] < best["min_catalyst_score_for_win"] - 2:
+                skip_reason = (f"Catalyst score {catalyst_data['score']} below "
+                               f"{alias}'s historical win threshold")
+            if skip_reason:
+                log.info("FOMO Solana: skipping %s buy - learned filter: %s", alias, skip_reason)
+                send_telegram(
+                    f"\u26a0\ufe0f <b>FOMO Signal Filtered by Lessons</b>\n"
+                    f"{alias} bought {token_data['symbol']}\n"
+                    f"Reason: {skip_reason}"
+                )
+                continue
+
             result = execute_fomo_buy(
                 token_ticker=token_data["symbol"],
                 token_name=token_data["name"],

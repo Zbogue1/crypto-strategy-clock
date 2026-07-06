@@ -96,15 +96,22 @@ try:
         check_fomo_auto_exits,
         get_fomo_stats,
         get_fomo_graduation_status,
+        get_pending_postmortems,
+        run_fomo_postmortem,
+        run_fomo_ai_postmortem,
     )
-    from fomo_tracker import sync_alchemy_webhooks
+    from fomo_tracker import sync_alchemy_webhooks, check_wallet_promotions
     HAS_FOMO = True
 except ImportError:
     HAS_FOMO = False
-    def check_fomo_auto_exits(*a, **kw): return []
+    def check_fomo_auto_exits(*a, **kw): return None
     def get_fomo_stats(): return {}
     def get_fomo_graduation_status(): return {}
+    def get_pending_postmortems(): return []
+    def run_fomo_postmortem(*a, **kw): return None
+    def run_fomo_ai_postmortem(*a, **kw): return None
     def sync_alchemy_webhooks(*a, **kw): pass
+    def check_wallet_promotions(): return []
 
 try:
     from chart_analysis import analyze_chart
@@ -1850,6 +1857,20 @@ def run_cycle(expert_mode: bool = False):
         fomo_exit = check_fomo_auto_exits(price_map)
         if fomo_exit:
             log.info(f"FOMO auto-exit: {fomo_exit}")
+
+        # Post-mortems on any completed FOMO trades -- rule-based + AI deep dive.
+        # Runs on the side after the fact; never blocks a buy, sell, or exit.
+        pending_fomo_pm = get_pending_postmortems()
+        for _trade in pending_fomo_pm:
+            run_fomo_postmortem(_trade)
+            run_fomo_ai_postmortem(_trade)
+            time.sleep(2)
+        if pending_fomo_pm:
+            log.info(f"FOMO: completed {len(pending_fomo_pm)} post-mortem(s)")
+
+        # Promote Tier B wallets that have earned Tier A trust
+        for _alias in check_wallet_promotions():
+            log.info(f"FOMO: {_alias} promoted to Tier A")
 
         # Sync Alchemy webhooks for Tier A wallets
         webhook_base = os.environ.get("RAILWAY_PUBLIC_DOMAIN", "")
