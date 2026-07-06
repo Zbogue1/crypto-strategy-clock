@@ -217,6 +217,30 @@
       "added_at": "2026-07-06T09:23:29.600210+00:00",
       "promoted_at": null,
       "demoted_at": null
+    },
+    {
+      "wallet": "HDixbrzwwLXczhDBk1JVrurPQsuLE8FUKnW2pucSXN3o",
+      "alias": "PoorGoat",
+      "fomo_profile": "@PoorGoat_",
+      "tier": "B",
+      "chain": "solana",
+      "alchemy_webhook_id": null,
+      "bankroll_usd": 1365104.33,
+      "notes": "Rank #2 (24h). 433 trades, 1d 12h avg hold, joined Nov 2025. 50,713 followers. Top trade: +$1,257,064.58 (4,250.12%). Wallet not yet verified on-chain. | Wallet confirmed via on-chain cross-reference (Slop buy tx match, Jun 9 2026).",
+      "stats": {
+        "trades_followed": 0,
+        "wins": 0,
+        "losses": 0,
+        "win_rate_30d": null,
+        "win_rate_7d": null,
+        "avg_return": null,
+        "consecutive_losses": 0,
+        "last_trade_at": null,
+        "last_outcome": null
+      },
+      "added_at": "2026-07-06T09:50:57.914259+00:00",
+      "promoted_at": null,
+      "demoted_at": null
     }
   ],
   "demotion_rules": {
@@ -231,5 +255,5 @@
     "min_days_observed": 14,
     "min_bankroll_usd": 50000
   },
-  "last_updated": "2026-07-06T09:46:08.139008+00:00"
+  "last_updated": "2026-07-06T10:02:52.761238+00:00"
 }
