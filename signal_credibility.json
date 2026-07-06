@@ -1,35 +1,35 @@
 {
   "open_trade": {
     "coin": "SOL",
-    "entry_time": "2026-07-06T14:13:09.591136+00:00",
+    "entry_time": "2026-07-06T15:13:03.862818+00:00",
     "key_signals": [
       {
         "source": "Fear_Greed",
         "signal_type": "sentiment",
-        "description": "Extreme Fear at 24 but improving from 19 weekly average \u2014 historically a contrarian buy zone when trend is improving."
-      },
-      {
-        "source": "CoinTelegraph",
-        "signal_type": "news",
-        "description": "$60.4K flagged as Bitcoin's 'most important area' \u2014 holding above this level is critical for any alt trade thesis."
+        "description": "Extreme Fear at 24 improving from weekly average of 19.3 \u2014 historically a contrarian buy signal for quality assets."
       },
       {
         "source": "RSI",
         "signal_type": "technical",
-        "description": "SOL RSI at 54 is neutral with room to run, unlike GWEI and GRASS which are already at 62 (elevated correction risk)."
-      },
-      {
-        "source": "CoinDesk",
-        "signal_type": "news",
-        "description": "Strategy selling $216M in BTC and Summer.fi $6M exploit add bearish overhang, justifying conservative position sizing."
+        "description": "SOL RSI at 54 is neutral with ample room to expand upward, unlike LIT (75) which is overbought."
       },
       {
         "source": "Blockworks",
         "signal_type": "news",
-        "description": "ETH derivatives reset and 'finding good news in spite of bad headlines' framing suggests institutional sentiment may be turning."
+        "description": "ETH derivatives reset article signals renewed institutional interest in major L1 ecosystems including Solana."
+      },
+      {
+        "source": "volume_breakout",
+        "signal_type": "technical",
+        "description": "SOL daily volume at $2.08B is robust for a $80 asset, confirming genuine buying interest behind the 10% weekly recovery."
+      },
+      {
+        "source": "CoinTelegraph",
+        "signal_type": "news",
+        "description": "$60.4K identified as Bitcoin's most important support area \u2014 BTC holding above this level is critical for alt recovery."
       }
     ],
-    "confidence": 58
+    "confidence": 62
   },
   "signal_stats": {
     "Fear_Greed__sentiment": {
@@ -89,5 +89,5 @@
     }
   },
   "trade_count": 1,
-  "last_updated": "2026-07-06T14:13:09.591141+00:00"
+  "last_updated": "2026-07-06T15:13:03.862823+00:00"
 }
