@@ -1,35 +1,35 @@
 {
   "open_trade": {
     "coin": "SOL",
-    "entry_time": "2026-07-06T05:13:44.831624+00:00",
+    "entry_time": "2026-07-06T06:13:41.500923+00:00",
     "key_signals": [
       {
         "source": "Fear_Greed",
         "signal_type": "sentiment",
-        "description": "Extreme Fear at 24 with improving weekly trend from 19.3 \u2014 historically a contrarian buy signal when combined with stabilizing prices."
-      },
-      {
-        "source": "CoinTelegraph",
-        "signal_type": "news",
-        "description": "Binance outflows tripled to $1.2B with ETH withdrawals hitting 3-year high \u2014 suggests large holders moving to self-custody (bullish accumulation signal) or exchange risk concerns."
+        "description": "Extreme Fear at 24 improving from weekly avg of 19.3 \u2014 historically a contrarian buy zone that favors measured entries in liquid assets."
       },
       {
         "source": "RSI",
         "signal_type": "technical",
-        "description": "SOL RSI at 54 is neutral, providing room for upside without overbought risk, unlike LIT at 75 RSI which faces imminent correction risk."
+        "description": "SOL RSI at 54 is neutral with headroom, whereas the most bullish-looking candidate LIT has RSI at 75 (overbought and high correction risk)."
+      },
+      {
+        "source": "CoinTelegraph",
+        "signal_type": "news",
+        "description": "Record $1.79T stablecoin transaction volume in June signals surging on-chain activity, particularly benefiting high-throughput chains like Solana."
       },
       {
         "source": "Blockworks",
         "signal_type": "news",
-        "description": "ETH derivatives reset signals a leverage flush is complete, potentially setting the stage for the next clean move higher in quality alts."
+        "description": "ETH derivatives reset and articles on 'the next retail trade' suggest fresh capital rotation into alts may be beginning."
       },
       {
-        "source": "CoinTelegraph",
-        "signal_type": "macro",
-        "description": "Trader warns of 'terrible Monday' for BTC near $63.5K \u2014 key risk factor that warrants staged entry rather than full allocation."
+        "source": "volume_breakout",
+        "signal_type": "technical",
+        "description": "SOL's $1.7B daily volume dwarfs all other swing candidates, providing liquidity confidence and institutional-grade execution for the trade."
       }
     ],
-    "confidence": 58
+    "confidence": 62
   },
   "signal_stats": {
     "Fear_Greed__sentiment": {
@@ -89,5 +89,5 @@
     }
   },
   "trade_count": 1,
-  "last_updated": "2026-07-06T05:13:44.831634+00:00"
+  "last_updated": "2026-07-06T06:13:41.500928+00:00"
 }
