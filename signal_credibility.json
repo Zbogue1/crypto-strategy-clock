@@ -1,37 +1,93 @@
 {
   "open_trade": {
     "coin": "SOL",
-    "entry_time": "2026-06-27T04:05:30.295052+00:00",
+    "entry_time": "2026-07-06T04:09:50.314805+00:00",
     "key_signals": [
       {
         "source": "Fear_Greed",
         "signal_type": "sentiment",
-        "description": "Fear & Greed at 15 (Extreme Fear) and worsening \u2014 historically a contrarian buying zone, but caution warranted as capitulation may not be complete."
-      },
-      {
-        "source": "CoinDesk",
-        "signal_type": "news",
-        "description": "Headline confirms Solana ecosystem tokens leading the crypto rebound alongside Aave, validating SOL's relative strength as a narrative-driven move."
+        "description": "Extreme Fear at 24/100, improving from weekly average of 19.3 \u2014 classic contrarian buy signal at sentiment extremes."
       },
       {
         "source": "CoinTelegraph",
-        "signal_type": "onchain",
-        "description": "SOL reclaimed $72 but on-chain data flags weakening momentum \u2014 a cautionary signal that tempers conviction and supports tighter stop-loss placement."
+        "signal_type": "news",
+        "description": "Binance outflows tripled to $1.2B with ETH withdrawals at 3-year highs, indicating large-scale accumulation and reduced sell pressure on exchanges."
+      },
+      {
+        "source": "RSI",
+        "signal_type": "technical",
+        "description": "SOL RSI at 54 is neutral with significant room to run before overbought, unlike LIT at 75 which is already extended."
       },
       {
         "source": "volume_breakout",
         "signal_type": "technical",
-        "description": "SOL 24h volume at $4.1B significantly elevated relative to other top-20 coins, suggesting real buying interest rather than just a dead-cat bounce."
+        "description": "SOL 24h volume of $1.64B remains robust, confirming genuine buying interest behind the 12% weekly recovery."
       },
       {
         "source": "Blockworks",
-        "signal_type": "macro",
-        "description": "ETH derivatives reset signals broader market positioning flush, which often precedes relief rallies \u2014 supportive of near-term bounce thesis."
+        "signal_type": "news",
+        "description": "ETH derivatives reset noted alongside DePIN/crypto gaming rebound \u2014 broader Layer 1 ecosystem recovery benefits SOL as the leading alternative smart contract platform."
       }
     ],
-    "confidence": 62
+    "confidence": 58
   },
-  "signal_stats": {},
-  "trade_count": 0,
-  "last_updated": "2026-06-27T04:05:30.295060+00:00"
+  "signal_stats": {
+    "Fear_Greed__sentiment": {
+      "source": "Fear_Greed",
+      "signal_type": "sentiment",
+      "wins": 1,
+      "losses": 0,
+      "total": 1,
+      "win_rate": 1.0,
+      "total_pct": 11.82,
+      "avg_return": 11.82,
+      "last_seen": "2026-07-06T04:09:50.313763+00:00"
+    },
+    "CoinDesk__news": {
+      "source": "CoinDesk",
+      "signal_type": "news",
+      "wins": 1,
+      "losses": 0,
+      "total": 1,
+      "win_rate": 1.0,
+      "total_pct": 11.82,
+      "avg_return": 11.82,
+      "last_seen": "2026-07-06T04:09:50.313779+00:00"
+    },
+    "CoinTelegraph__onchain": {
+      "source": "CoinTelegraph",
+      "signal_type": "onchain",
+      "wins": 1,
+      "losses": 0,
+      "total": 1,
+      "win_rate": 1.0,
+      "total_pct": 11.82,
+      "avg_return": 11.82,
+      "last_seen": "2026-07-06T04:09:50.313787+00:00"
+    },
+    "volume_breakout__technical": {
+      "source": "volume_breakout",
+      "signal_type": "technical",
+      "wins": 1,
+      "losses": 0,
+      "total": 1,
+      "win_rate": 1.0,
+      "total_pct": 11.82,
+      "avg_return": 11.82,
+      "last_seen": "2026-07-06T04:09:50.313794+00:00"
+    },
+    "Blockworks__macro": {
+      "source": "Blockworks",
+      "signal_type": "macro",
+      "wins": 1,
+      "losses": 0,
+      "total": 1,
+      "win_rate": 1.0,
+      "total_pct": 11.82,
+      "avg_return": 11.82,
+      "last_seen": "2026-07-06T04:09:50.313801+00:00"
+    }
+  },
+  "trade_count": 1,
+  "last_updated": "2026-07-06T04:09:50.314813+00:00"
 }
