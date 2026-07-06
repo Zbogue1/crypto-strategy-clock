@@ -1847,9 +1847,9 @@ def run_cycle(expert_mode: bool = False):
     if HAS_FOMO:
         # Auto-exit open FOMO position if time limit or hard stop triggered
         price_map = {c.ticker.upper(): c.price for c in snap.top_coins}
-        fomo_exits = check_fomo_auto_exits(price_map)
-        for exit_rec in fomo_exits:
-            log.info(f"FOMO auto-exit: {exit_rec}")
+        fomo_exit = check_fomo_auto_exits(price_map)
+        if fomo_exit:
+            log.info(f"FOMO auto-exit: {fomo_exit}")
 
         # Sync Alchemy webhooks for Tier A wallets
         webhook_base = os.environ.get("RAILWAY_PUBLIC_DOMAIN", "")
