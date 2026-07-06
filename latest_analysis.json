@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-07-06T08:09:57.988780+00:00",
+  "timestamp": "2026-07-06T12:03:30.006675+00:00",
   "selected_coin": "SOL",
   "selected_coin_name": "Solana",
-  "selected_coin_price": 80.91,
+  "selected_coin_price": 80.37,
   "confidence": 62,
-  "layman_headline": "Extreme Fear in crypto creates a potential buying window for Solana as the market stabilizes.",
-  "layman_explanation": "The crypto market is in 'Extreme Fear' mode \u2014 most people are scared and selling. Historically, these periods often mark good entry points for patient buyers. Solana has bounced 11% this past week, is sitting above key moving averages, and has massive room to its next resistance level at ~$98. Bitcoin is holding above $63K which provides a stable backdrop for this trade.",
-  "layman_action": "Consider a small position in Solana around $79-81. Set a stop-loss at $73.50 to limit downside to about 9%, and look to take profits near $95 for roughly a 17-19% gain.",
-  "expert_reasoning": "SOL RSI at 54 is neutral \u2014 not overbought despite an 11% weekly gain, suggesting the move has room to continue. Price is above its 20-day SMA with moderately bullish MA structure. The chart shows an extraordinary R/R ratio with support at $81 just 0.6% below current price and resistance at $98.26 offering 20%+ upside. Extreme Fear at 24 with an improving trend (up from 19.3 weekly average) historically precedes relief rallies, and high-beta assets like SOL tend to outperform in those moves. The Ethereum rebuild narrative and record stablecoin volumes provide fundamental tailwinds for the entire smart contract platform sector. BTC dominance at 55.7% is a headwind for alts, but SOL's strong relative performance suggests institutional accumulation.",
+  "layman_headline": "Extreme Fear in crypto creates a window to buy Solana at a steep discount from its highs.",
+  "layman_explanation": "The entire crypto market is gripped by Extreme Fear (24/100), which historically has been a good time for patient buyers to step in. Solana has bounced 11% over the past week, showing signs of life, and is still sitting 73% below its all-time high. With Bitcoin stabilizing above $62K and altcoin optimism returning according to headlines, SOL offers a solid risk-reward setup with a clear support floor nearby and meaningful upside to the next resistance zone near $98.",
+  "layman_action": "Consider opening a small position in Solana around $79-80, with a firm stop-loss at $72.50. If it reaches $95, take profits. Only risk money you can afford to lose.",
+  "expert_reasoning": "SOL presents the strongest setup in this cycle. RSI at 53.87 is neutral \u2014 not overbought like LIT (75.3) and not in a structural downtrend like PYTH (-0.70 chart bias). Price is above the 20-day SMA with moderately bullish MA structure. The chart shows support at $81 (just 0.6% below) with resistance at $98.26, yielding an exceptional theoretical R:R of ~36x to nearest levels. While the 11% weekly gain suggests some momentum is already priced in, the Extreme Fear environment (F&G = 24) means the broader market hasn't caught up. The news backdrop is constructive: stablecoin volume hitting record $1.79T in June indicates strong crypto adoption, and ETH derivatives resetting suggests fresh positioning in the L1 space. SOL's $1.7B daily volume provides excellent liquidity for swing entry/exit.",
   "risk_factors": [
-    "BTC dominance at 55.7% continues rising, crushing alt performance \u2014 SOL could give back its weekly gains quickly",
-    "Support at $81 is extremely thin (only 0.6% below price), meaning a minor dip could trigger a cascade to deeper support levels",
-    "Extreme Fear environments can persist and worsen \u2014 a BTC breakdown below $60K would drag SOL down significantly"
+    "BTC dominance at 55.6% means Bitcoin is absorbing capital \u2014 alts including SOL could underperform if dominance rises further",
+    "SOL already up 11% on the week \u2014 a pullback to retest lower support around $72-75 is possible before further upside",
+    "Macro uncertainty persists \u2014 Bitcoin's Sharpe Ratio at lowest since 2022 signals poor risk-adjusted returns could drag the whole market"
   ],
   "watch_list": [
-    "BTC holding above $62,000 support \u2014 a break below invalidates the alt-recovery thesis",
-    "Fear & Greed index trajectory \u2014 continued improvement toward 30+ would confirm a sentiment bottom",
-    "SOL daily close above $83 would confirm breakout above near-term consolidation"
+    "BTC price action around the $60.4K 'most important area' \u2014 a breakdown would drag all alts including SOL",
+    "Fear & Greed Index trajectory \u2014 currently improving from 19.3 weekly average to 24; continued improvement would confirm risk-on rotation",
+    "SOL's ability to hold above the $81 support level on any intraday dips over the next 48 hours"
   ],
-  "market_context": "The crypto market is stabilizing after a fear-driven selloff, with BTC holding $63K and major alts bouncing 10-15% off lows. Extreme Fear at 24 but improving from 19.3 weekly average suggests sentiment may be bottoming, while record stablecoin volumes signal capital readiness on the sidelines.",
-  "context_banner": "Extreme Fear at 24 with an improving trend and BTC holding $63K creates a contrarian buying window in high-quality alts like Solana.",
-  "btc_price": 63100,
+  "market_context": "The crypto market is in Extreme Fear (24/100) but improving from last week's 19.3 average, with BTC holding above $62K and altcoins showing a broad 7-day recovery led by ADA (+26%), XLM (+17%), and ETH/SOL (+11% each). Stablecoin volumes hitting record highs and institutional developments like Ripple's license upgrade and Russia's crypto wallet plans suggest underlying demand remains robust despite depressed sentiment.",
+  "context_banner": "Extreme Fear at 24/100 with improving trend and broad altcoin recovery creates a contrarian buying window in high-quality L1 assets.",
+  "btc_price": 62094,
   "fear_greed": {
     "current": 24,
     "label": "Extreme Fear",
@@ -28,35 +28,35 @@
     "week_avg": 19.3,
     "trend": "improving"
   },
-  "btc_dominance": 55.7,
+  "btc_dominance": 55.6,
   "key_signals": [
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Extreme Fear at 24 improving from 19.3 weekly average \u2014 historically a contrarian buy zone with the improving trend suggesting the worst may be past."
+      "description": "Extreme Fear at 24/100 with improving weekly trend (from 19.3) \u2014 historically a strong contrarian buy signal for quality assets."
     },
     {
-      "source": "CoinTelegraph",
+      "source": "CoinDesk",
       "signal_type": "news",
-      "description": "Record $1.79T stablecoin transaction volume in June indicates massive capital sitting on the sidelines ready to deploy into risk assets."
-    },
-    {
-      "source": "Blockworks",
-      "signal_type": "news",
-      "description": "ETH derivatives reset and 'next retail trade' narrative suggests alt-coin sentiment is resetting for a potential fresh leg up."
+      "description": "\"Crypto bounces back from the brink as altcoin optimism returns\" validates the risk-on rotation thesis and supports L1 entries."
     },
     {
       "source": "RSI",
       "signal_type": "technical",
-      "description": "SOL RSI at 54 is neutral despite 11% weekly gain, indicating the rally has room to run before reaching overbought territory."
+      "description": "SOL RSI at 53.87 is neutral with room to expand, unlike LIT at 75 (overbought) or candidates with bearish chart structure."
+    },
+    {
+      "source": "CoinTelegraph",
+      "signal_type": "news",
+      "description": "Stablecoin transaction volume hitting record $1.79T in June signals strong underlying crypto adoption and capital inflows."
     },
     {
       "source": "volume_breakout",
       "signal_type": "technical",
-      "description": "SOL daily volume at $1.72B is robust and supports the price recovery, with chart showing moderately bullish MA structure above the 20-day SMA."
+      "description": "SOL's chart shows exceptional R:R with support at $81 and resistance at $98.26, with price holding above 20-day SMA in moderately bullish structure."
     }
   ],
   "_mode": "HUNTING",
   "exit_target": 95.0,
-  "stop_loss": 73.5
+  "stop_loss": 72.5
 }
