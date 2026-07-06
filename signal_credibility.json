@@ -1,35 +1,35 @@
 {
   "open_trade": {
     "coin": "SOL",
-    "entry_time": "2026-07-06T07:13:41.882149+00:00",
+    "entry_time": "2026-07-06T08:13:41.926239+00:00",
     "key_signals": [
       {
         "source": "Fear_Greed",
         "signal_type": "sentiment",
-        "description": "Extreme Fear at 24 improving from 19.3 weekly average \u2014 contrarian buy signal as panic recedes."
+        "description": "Extreme Fear at 24 improving from 19.3 weekly average \u2014 historically a contrarian buy zone with the improving trend suggesting the worst may be past."
+      },
+      {
+        "source": "CoinTelegraph",
+        "signal_type": "news",
+        "description": "Record $1.79T stablecoin transaction volume in June indicates massive capital sitting on the sidelines ready to deploy into risk assets."
       },
       {
         "source": "Blockworks",
         "signal_type": "news",
-        "description": "ETH derivatives have reset, reducing systemic liquidation risk and creating a cleaner environment for altcoin recovery."
-      },
-      {
-        "source": "CoinDesk",
-        "signal_type": "news",
-        "description": "Ether leading crypto's hold above key levels as BTC steadies over $63K \u2014 confirms broad market stabilization."
+        "description": "ETH derivatives reset and 'next retail trade' narrative suggests alt-coin sentiment is resetting for a potential fresh leg up."
       },
       {
         "source": "RSI",
         "signal_type": "technical",
-        "description": "SOL RSI at 54 is neutral with room to run, unlike overbought candidates like LIT at 75."
+        "description": "SOL RSI at 54 is neutral despite 11% weekly gain, indicating the rally has room to run before reaching overbought territory."
       },
       {
         "source": "volume_breakout",
         "signal_type": "technical",
-        "description": "SOL's $1.7B daily volume provides excellent liquidity and the chart shows a 36:1 risk/reward ratio to $98.26 resistance."
+        "description": "SOL daily volume at $1.72B is robust and supports the price recovery, with chart showing moderately bullish MA structure above the 20-day SMA."
       }
     ],
-    "confidence": 58
+    "confidence": 62
   },
   "signal_stats": {
     "Fear_Greed__sentiment": {
@@ -89,5 +89,5 @@
     }
   },
   "trade_count": 1,
-  "last_updated": "2026-07-06T07:13:41.882155+00:00"
+  "last_updated": "2026-07-06T08:13:41.926249+00:00"
 }
