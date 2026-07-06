@@ -58,5 +58,27 @@
       "SOL"
     ],
     "alert": null
+  },
+  {
+    "ts": "2026-07-06T13:09:21.991733+00:00",
+    "coin": "SOL",
+    "price": 79.33,
+    "signal": "BUY",
+    "confidence": 52,
+    "score": 0.45,
+    "fg": 24,
+    "btc_price": 61648,
+    "btc_dominance": 55.5,
+    "candidates": [
+      "MON",
+      "VVV",
+      "GWEI",
+      "GRASS",
+      "UB",
+      "FET",
+      "ENA",
+      "SOL"
+    ],
+    "alert": "BTC $60,400 is the line in the sand \u2014 if it breaks, exit all positions immediately."
   }
 ]
