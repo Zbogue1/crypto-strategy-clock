@@ -256,7 +256,7 @@ def execute_fomo_sell(
 def check_fomo_auto_exits(price_map: dict = None) -> Optional[dict]:
     """
     Called during every 4-hour cycle and by the webhook server.
-    Checks hard stop and 24h time limit.
+    Checks hard stop, take-profit target, and 24h time limit.
     Returns trade record if exited, None otherwise.
     """
     state   = load_fomo_portfolio()
@@ -274,8 +274,13 @@ def check_fomo_auto_exits(price_map: dict = None) -> Optional[dict]:
         log.warning(f"FOMO: Auto-exit {ticker} — 24h time limit reached")
         return execute_fomo_sell(current_price, reason="time_exit_24h")
 
-    # Hard stop — -15%
     if current_price > 0:
+        # Take profit — hit exit_target
+        if current_price >= holding["exit_target"]:
+            log.warning(f"FOMO: Take-profit {ticker} — target ${holding['exit_target']:.8f} reached")
+            return execute_fomo_sell(current_price, reason="take_profit")
+
+        # Hard stop — -15%
         pct = (current_price - holding["entry_price"]) / holding["entry_price"] * 100
         if pct <= FOMO_HARD_STOP_PCT * 100:
             log.warning(f"FOMO: Hard stop {ticker} — {pct:.1f}%")
