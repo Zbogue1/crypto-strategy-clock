@@ -1,35 +1,35 @@
 {
   "open_trade": {
     "coin": "SOL",
-    "entry_time": "2026-07-06T13:13:07.708295+00:00",
+    "entry_time": "2026-07-06T14:13:09.591136+00:00",
     "key_signals": [
       {
         "source": "Fear_Greed",
         "signal_type": "sentiment",
-        "description": "Extreme Fear at 24 but improving from 19.3 weekly average signals potential sentiment bottom \u2014 historically one of the strongest contrarian buy indicators."
+        "description": "Extreme Fear at 24 but improving from 19 weekly average \u2014 historically a contrarian buy zone when trend is improving."
       },
       {
         "source": "CoinTelegraph",
         "signal_type": "news",
-        "description": "$60.4K flagged as 'most important area' for Bitcoin \u2014 BTC holding above this level is critical for any altcoin long thesis."
+        "description": "$60.4K flagged as Bitcoin's 'most important area' \u2014 holding above this level is critical for any alt trade thesis."
+      },
+      {
+        "source": "RSI",
+        "signal_type": "technical",
+        "description": "SOL RSI at 54 is neutral with room to run, unlike GWEI and GRASS which are already at 62 (elevated correction risk)."
+      },
+      {
+        "source": "CoinDesk",
+        "signal_type": "news",
+        "description": "Strategy selling $216M in BTC and Summer.fi $6M exploit add bearish overhang, justifying conservative position sizing."
       },
       {
         "source": "Blockworks",
         "signal_type": "news",
-        "description": "ETH derivatives reset and positive inflation outlook narrative supports a risk-on rotation into quality altcoins like SOL."
-      },
-      {
-        "source": "volume_breakout",
-        "signal_type": "technical",
-        "description": "SOL has $1.9B in 24h volume \u2014 by far the highest liquidity among swing candidates, ensuring clean entries and exits."
-      },
-      {
-        "source": "CoinDesk",
-        "signal_type": "macro",
-        "description": "U.S. inflation outlook underpins bitcoin bulls \u2014 macro tailwind supports broader crypto recovery from fear levels."
+        "description": "ETH derivatives reset and 'finding good news in spite of bad headlines' framing suggests institutional sentiment may be turning."
       }
     ],
-    "confidence": 52
+    "confidence": 58
   },
   "signal_stats": {
     "Fear_Greed__sentiment": {
@@ -89,5 +89,5 @@
     }
   },
   "trade_count": 1,
-  "last_updated": "2026-07-06T13:13:07.708302+00:00"
+  "last_updated": "2026-07-06T14:13:09.591141+00:00"
 }
