@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-07-06T19:09:21.665397+00:00",
+  "timestamp": "2026-07-06T20:09:22.212729+00:00",
   "selected_coin": "ZRO",
   "selected_coin_name": "LayerZero",
   "selected_coin_price": 1.021,
-  "confidence": 58,
-  "layman_headline": "LayerZero flashes a classic bottom reversal signal amid extreme market fear.",
-  "layman_explanation": "The crypto market is deeply fearful right now (Fear & Greed at 24), which historically has been a good time to look for bargains. LayerZero (ZRO) is a cross-chain messaging protocol that has been beaten down 86% from its all-time high, but is now showing a textbook 'Morning Star' reversal pattern on its chart \u2014 a classic signal that selling pressure is exhausting. Its RSI at 31 is near oversold territory, meaning the coin may have been pushed too far down and is due for a bounce.",
-  "layman_action": "Consider a small position in ZRO near $0.94 with a firm stop-loss at $0.87. If it doesn't pull back to that level, the current price around $1.02 is still acceptable but with reduced upside. Take profits near $1.12.",
-  "expert_reasoning": "ZRO stands out with an RSI of 30.83, approaching true oversold territory, while showing a confirmed Morning Star candlestick reversal \u2014 a three-candle pattern with high historical reversal accuracy. The risk/reward to nearest support/resistance is 2.93x, the best among all candidates. While the 24% 7-day move is a concern, the 5-day momentum is actually -17.4%, suggesting a pullback within that weekly move has already occurred, meaning we're catching a bounce off a dip rather than chasing a peak. The chart bias score of +0.30 (slightly bullish) is the most constructive among candidates that aren't overbought. Extreme Fear at 24 with an improving trend (up from weekly avg of 19.3) supports contrarian entry timing.",
+  "confidence": 62,
+  "layman_headline": "LayerZero flashes a classic bottom reversal signal during peak market fear.",
+  "layman_explanation": "The crypto market is in 'Extreme Fear' mode, which historically has been a good time to buy quality projects at a discount. LayerZero, a cross-chain messaging protocol, has dropped 86% from its all-time high and is showing a textbook reversal pattern on its chart called a 'Morning Star.' Its momentum indicator (RSI at 31) says it's nearly oversold, meaning sellers may be exhausted. While the recent 24% weekly bounce is notable, the entry plan targets a pullback to around $0.95 to get a better price.",
+  "layman_action": "Consider a small position in LayerZero (ZRO) if it pulls back toward $0.95. Set a hard stop-loss at $0.87 to limit downside to about 8%, and aim to take profits near $1.12 for a potential 18% gain.",
+  "expert_reasoning": "ZRO presents the most compelling swing setup among the candidates. The Morning Star reversal pattern at RSI 31 is a high-probability bullish signal, especially when occurring during Extreme Fear (F&G 24). The chart shows key support at $0.90 with resistance at $1.00, giving a 2.93x risk/reward ratio. While the 24% 7-day move raises chase risk, the current price ($1.021) is already above the chart reference ($0.9254), suggesting the Morning Star has begun playing out. Targeting a pullback entry at $0.95 mitigates chase risk. Cross-chain infrastructure remains a fundamental narrative, and ZRO at -86% from ATH offers significant upside if broader sentiment improves. BTC's 5.6% weekly recovery and improving Fear & Greed trend (19.3 \u2192 24) suggest the macro bottom may be forming.",
   "risk_factors": [
-    "High BTC dominance at 55.8% signals capital rotation away from alts \u2014 ZRO could underperform even if BTC holds",
-    "Price is below all major moving averages indicating overall bearish structure \u2014 this is a countertrend trade that could fail",
-    "Strategy's BTC sales and headlines about needing 'trillions for parabolic moves' could trigger another leg down across crypto"
+    "BTC dominance at 55.8% continues to suppress altcoin performance \u2014 any BTC weakness could drag ZRO disproportionately lower",
+    "The 24% weekly rally may already be exhausted, and chasing an extended move could result in buying a local top",
+    "Strategy/MSTR selling BTC and fading ETF demand (per CryptoSlate) suggest macro headwinds that could trigger another leg down across crypto"
   ],
   "watch_list": [
-    "BTC holding above $62,000 support \u2014 if BTC breaks down, ZRO's reversal thesis is invalidated",
-    "ZRO's ability to hold $0.90 support level over the next 48 hours",
-    "Fear & Greed index continuing its improving trend \u2014 if it reverses back toward 19, risk-off sentiment could deepen"
+    "BTC holding above $62,000 support \u2014 a breakdown would likely take all alts down including ZRO",
+    "Fear & Greed Index trend \u2014 currently improving from 19 to 24; continued improvement supports the contrarian buy thesis",
+    "ZRO volume and whether it holds above $0.90 support on any pullback"
   ],
-  "market_context": "The crypto market is in Extreme Fear (24) but showing early recovery signs with BTC up 5.4% weekly and ETH up 10%. BTC dominance at 55.8% remains a headwind for alts, but the improving fear trend from a weekly average of 19.3 suggests sentiment may be bottoming.",
-  "context_banner": "Extreme Fear is improving from its lows \u2014 early contrarian entries in oversold alts with reversal signals offer the best asymmetric setups.",
-  "btc_price": 63636,
+  "market_context": "The crypto market is in Extreme Fear (24/100) but showing early signs of recovery with BTC up 5.6% weekly and sentiment improving from a 19.3 average. High BTC dominance at 55.8% is suppressing altcoins, but deeply oversold alts with reversal signals offer asymmetric risk/reward for swing trades.",
+  "context_banner": "Extreme Fear with improving momentum creates prime conditions for contrarian entries on technically sound reversal setups.",
+  "btc_price": 63580,
   "fear_greed": {
     "current": 24,
     "label": "Extreme Fear",
@@ -33,27 +33,27 @@
     {
       "source": "RSI",
       "signal_type": "technical",
-      "description": "ZRO RSI at 30.83 is near oversold territory, historically a zone where mean-reversion bounces begin."
+      "description": "ZRO RSI at 31 is near-oversold territory, indicating seller exhaustion and elevated probability of a bounce."
     },
     {
-      "source": "CoinTelegraph",
-      "signal_type": "news",
-      "description": "Strategy selling BTC caused a 4% dip, but the bounce recovery and improving Fear & Greed suggest the market is absorbing selling pressure rather than capitulating further."
+      "source": "CoinDesk",
+      "signal_type": "technical",
+      "description": "Morning Star candlestick pattern on ZRO chart \u2014 a classic three-candle bullish reversal formation at a potential bottom."
     },
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Extreme Fear at 24 with an improving weekly trend (up from 19.3 avg) \u2014 classic contrarian signal that the worst selling may be behind us."
+      "description": "Market at Extreme Fear (24) with improving trend from 19.3 weekly average \u2014 historically the best contrarian buying window."
     },
     {
-      "source": "volume_breakout",
-      "signal_type": "technical",
-      "description": "ZRO's Morning Star candlestick pattern at key support ($0.90) with a 2.93x risk/reward ratio provides a high-quality reversal entry."
+      "source": "CryptoSlate",
+      "signal_type": "macro",
+      "description": "Bitcoin needs trillions for parabolic moves and ETF demand is fading \u2014 macro headwinds temper position sizing and confidence."
     },
     {
-      "source": "Blockworks",
+      "source": "CoinTelegraph",
       "signal_type": "news",
-      "description": "ETH derivatives reset narrative and positive end-of-year DePIN/gaming rebound suggest pockets of altcoin strength are emerging despite bearish headlines."
+      "description": "Strategy BTC sale causing 4% Bitcoin drop reminds that institutional selling pressure is an active risk to all crypto positions."
     }
   ],
   "_mode": "HUNTING",
