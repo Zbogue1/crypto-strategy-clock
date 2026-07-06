@@ -1,32 +1,32 @@
 {
   "open_trade": {
     "coin": "SOL",
-    "entry_time": "2026-07-06T04:09:50.314805+00:00",
+    "entry_time": "2026-07-06T05:13:44.831624+00:00",
     "key_signals": [
       {
         "source": "Fear_Greed",
         "signal_type": "sentiment",
-        "description": "Extreme Fear at 24/100, improving from weekly average of 19.3 \u2014 classic contrarian buy signal at sentiment extremes."
+        "description": "Extreme Fear at 24 with improving weekly trend from 19.3 \u2014 historically a contrarian buy signal when combined with stabilizing prices."
       },
       {
         "source": "CoinTelegraph",
         "signal_type": "news",
-        "description": "Binance outflows tripled to $1.2B with ETH withdrawals at 3-year highs, indicating large-scale accumulation and reduced sell pressure on exchanges."
+        "description": "Binance outflows tripled to $1.2B with ETH withdrawals hitting 3-year high \u2014 suggests large holders moving to self-custody (bullish accumulation signal) or exchange risk concerns."
       },
       {
         "source": "RSI",
         "signal_type": "technical",
-        "description": "SOL RSI at 54 is neutral with significant room to run before overbought, unlike LIT at 75 which is already extended."
-      },
-      {
-        "source": "volume_breakout",
-        "signal_type": "technical",
-        "description": "SOL 24h volume of $1.64B remains robust, confirming genuine buying interest behind the 12% weekly recovery."
+        "description": "SOL RSI at 54 is neutral, providing room for upside without overbought risk, unlike LIT at 75 RSI which faces imminent correction risk."
       },
       {
         "source": "Blockworks",
         "signal_type": "news",
-        "description": "ETH derivatives reset noted alongside DePIN/crypto gaming rebound \u2014 broader Layer 1 ecosystem recovery benefits SOL as the leading alternative smart contract platform."
+        "description": "ETH derivatives reset signals a leverage flush is complete, potentially setting the stage for the next clean move higher in quality alts."
+      },
+      {
+        "source": "CoinTelegraph",
+        "signal_type": "macro",
+        "description": "Trader warns of 'terrible Monday' for BTC near $63.5K \u2014 key risk factor that warrants staged entry rather than full allocation."
       }
     ],
     "confidence": 58
@@ -89,5 +89,5 @@
     }
   },
   "trade_count": 1,
-  "last_updated": "2026-07-06T04:09:50.314813+00:00"
+  "last_updated": "2026-07-06T05:13:44.831634+00:00"
 }
