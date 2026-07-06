@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-07-06T14:09:21.849973+00:00",
+  "timestamp": "2026-07-06T15:09:21.735362+00:00",
   "selected_coin": "SOL",
   "selected_coin_name": "Solana",
-  "selected_coin_price": 80.1,
-  "confidence": 58,
-  "layman_headline": "Extreme fear in crypto markets creates a cautious buying opportunity in Solana.",
-  "layman_explanation": "The entire crypto market is gripped by extreme fear, with sentiment at 24 out of 100. Historically, buying during extreme fear has been rewarding for patient investors. Solana is already up about 9% this week, showing relative strength, and its price is sitting right above a key support level at $81 with significant upside room toward $98. Among the candidates, it offers the best combination of liquidity, established fundamentals, and a clear technical setup.",
-  "layman_action": "Consider a small position in Solana near $79-80 with a stop-loss at $73.50. This is a fear-driven opportunity but the market remains fragile, so size the position conservatively.",
-  "expert_reasoning": "SOL trades at $80.10, above its SMA20 with moderately bullish MA structure. RSI at 54 is neutral \u2014 not overbought, leaving room for continuation. The chart shows support at $81 (essentially current price) with resistance at $98.26, yielding a massive theoretical risk/reward. The 9.2% weekly gain demonstrates relative strength in a fearful market. While BTC dominance at 55.5% is headwind for alts, SOL's deep liquidity and institutional interest (ETF narratives, ecosystem growth) make it the safest alt play. The Fear & Greed improving from 19 to 24 suggests the worst selling pressure may be abating. Stop at $73.50 (8.2% below) captures a clean break of the support zone.",
+  "selected_coin_price": 80.48,
+  "confidence": 62,
+  "layman_headline": "Extreme fear in crypto markets creates a buying window for Solana near key support.",
+  "layman_explanation": "The entire crypto market is gripped by extreme fear, with the sentiment index at just 24 out of 100. Historically, this is when smart money starts buying. Solana has bounced 10% over the past week and is sitting right on a major support level at $81, with a clear path to resistance near $98. That's roughly a 20% upside with defined downside risk.",
+  "layman_action": "Consider a small position in Solana around current prices ($80-81). Set a stop-loss at $73.50 to limit downside, and look to take profits near $96. This is a fear-driven opportunity, not a guaranteed trade.",
+  "expert_reasoning": "SOL presents the most compelling swing setup in this cycle. Price is above two major moving averages with a moderately bullish structure, RSI at 54 is neutral with room to run, and the support at $81 is essentially right at current price \u2014 meaning we enter with minimal drawdown risk before invalidation. The resistance target at $98.26 gives ~20% upside. The broader context of Extreme Fear (24) improving from 19.3 weekly average suggests a sentiment inflection point. BTC's 5% weekly gain and ETH's 12% weekly gain confirm the broader market is recovering. SOL's high-cap, high-liquidity profile ($2B+ daily volume) makes it the safest vehicle for this fear-driven bounce trade.",
   "risk_factors": [
-    "BTC dominance at 55.5% and rising could continue suppressing alt performance, dragging SOL lower despite its own strength",
-    "BTC at $61.8K is key \u2014 a break below $60.4K (flagged as 'most important area' by CoinTelegraph) could trigger a broader market selloff",
-    "Strategy/MicroStrategy selling 3,588 BTC for $216M signals potential institutional de-risking that could cascade across crypto"
+    "BTC dominance at 55.5% continues to squeeze alts \u2014 if BTC drops, SOL could fall harder",
+    "Support at $81 is extremely close \u2014 a break below could trigger rapid selling to $73 or lower",
+    "Strategy/Saylor selling 3,588 BTC for $216M could signal institutional de-risking that pressures the entire market"
   ],
   "watch_list": [
-    "BTC price action around $60,400 support \u2014 a break below invalidates the bullish thesis for all alts",
-    "Fear & Greed Index trajectory \u2014 continued improvement above 25-30 would confirm sentiment bottoming",
-    "SOL daily close relative to $81 support \u2014 a close below signals the setup is failing"
+    "BTC price action around $60.4K support \u2014 a breakdown there would invalidate all alt setups",
+    "Fear & Greed Index trajectory \u2014 continued improvement above 25-30 would confirm sentiment reversal",
+    "SOL holding above $81 support over the next 48 hours with volume confirmation"
   ],
-  "market_context": "The crypto market is in Extreme Fear (24/100) but improving from last week's 19, suggesting a potential sentiment inflection. BTC is holding above $60K with 55.5% dominance, and while Strategy selling BTC adds overhang, the broader market is showing green weekly candles across most top-20 assets.",
-  "context_banner": "Extreme Fear is improving off multi-week lows \u2014 Solana offers the cleanest large-cap swing setup with tight support and 20% upside to resistance.",
-  "btc_price": 61797,
+  "market_context": "The crypto market is in Extreme Fear (24/100) but showing improving sentiment from a weekly average of 19.3. BTC is recovering at $62.3K with major alts posting 7-12% weekly gains, suggesting the worst of the selloff may be behind us.",
+  "context_banner": "Extreme Fear is improving \u2014 high-quality large-caps near support offer the best risk/reward setups for a sentiment reversal trade.",
+  "btc_price": 62288,
   "fear_greed": {
     "current": 24,
     "label": "Extreme Fear",
@@ -33,30 +33,30 @@
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Extreme Fear at 24 but improving from 19 weekly average \u2014 historically a contrarian buy zone when trend is improving."
-    },
-    {
-      "source": "CoinTelegraph",
-      "signal_type": "news",
-      "description": "$60.4K flagged as Bitcoin's 'most important area' \u2014 holding above this level is critical for any alt trade thesis."
+      "description": "Extreme Fear at 24 improving from weekly average of 19.3 \u2014 historically a contrarian buy signal for quality assets."
     },
     {
       "source": "RSI",
       "signal_type": "technical",
-      "description": "SOL RSI at 54 is neutral with room to run, unlike GWEI and GRASS which are already at 62 (elevated correction risk)."
-    },
-    {
-      "source": "CoinDesk",
-      "signal_type": "news",
-      "description": "Strategy selling $216M in BTC and Summer.fi $6M exploit add bearish overhang, justifying conservative position sizing."
+      "description": "SOL RSI at 54 is neutral with ample room to expand upward, unlike LIT (75) which is overbought."
     },
     {
       "source": "Blockworks",
       "signal_type": "news",
-      "description": "ETH derivatives reset and 'finding good news in spite of bad headlines' framing suggests institutional sentiment may be turning."
+      "description": "ETH derivatives reset article signals renewed institutional interest in major L1 ecosystems including Solana."
+    },
+    {
+      "source": "volume_breakout",
+      "signal_type": "technical",
+      "description": "SOL daily volume at $2.08B is robust for a $80 asset, confirming genuine buying interest behind the 10% weekly recovery."
+    },
+    {
+      "source": "CoinTelegraph",
+      "signal_type": "news",
+      "description": "$60.4K identified as Bitcoin's most important support area \u2014 BTC holding above this level is critical for alt recovery."
     }
   ],
   "_mode": "HUNTING",
-  "exit_target": 95.0,
+  "exit_target": 96.0,
   "stop_loss": 73.5
 }
