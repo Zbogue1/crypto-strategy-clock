@@ -102,5 +102,27 @@
       "SOL"
     ],
     "alert": "Strategy sold 3,588 BTC ($216M) \u2014 monitor for further institutional selling pressure on BTC which could drag the entire market."
+  },
+  {
+    "ts": "2026-07-06T15:09:21.735362+00:00",
+    "coin": "SOL",
+    "price": 80.48,
+    "signal": "BUY",
+    "confidence": 62,
+    "score": 0.55,
+    "fg": 24,
+    "btc_price": 62288,
+    "btc_dominance": 55.5,
+    "candidates": [
+      "MON",
+      "VVV",
+      "PYTH",
+      "LIT",
+      "GRASS",
+      "FET",
+      "AAVE",
+      "SOL"
+    ],
+    "alert": null
   }
 ]
