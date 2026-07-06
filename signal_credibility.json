@@ -1,32 +1,32 @@
 {
   "open_trade": {
     "coin": "SOL",
-    "entry_time": "2026-07-06T08:13:41.926239+00:00",
+    "entry_time": "2026-07-06T12:09:14.783973+00:00",
     "key_signals": [
       {
         "source": "Fear_Greed",
         "signal_type": "sentiment",
-        "description": "Extreme Fear at 24 improving from 19.3 weekly average \u2014 historically a contrarian buy zone with the improving trend suggesting the worst may be past."
+        "description": "Extreme Fear at 24/100 with improving weekly trend (from 19.3) \u2014 historically a strong contrarian buy signal for quality assets."
       },
       {
-        "source": "CoinTelegraph",
+        "source": "CoinDesk",
         "signal_type": "news",
-        "description": "Record $1.79T stablecoin transaction volume in June indicates massive capital sitting on the sidelines ready to deploy into risk assets."
-      },
-      {
-        "source": "Blockworks",
-        "signal_type": "news",
-        "description": "ETH derivatives reset and 'next retail trade' narrative suggests alt-coin sentiment is resetting for a potential fresh leg up."
+        "description": "\"Crypto bounces back from the brink as altcoin optimism returns\" validates the risk-on rotation thesis and supports L1 entries."
       },
       {
         "source": "RSI",
         "signal_type": "technical",
-        "description": "SOL RSI at 54 is neutral despite 11% weekly gain, indicating the rally has room to run before reaching overbought territory."
+        "description": "SOL RSI at 53.87 is neutral with room to expand, unlike LIT at 75 (overbought) or candidates with bearish chart structure."
+      },
+      {
+        "source": "CoinTelegraph",
+        "signal_type": "news",
+        "description": "Stablecoin transaction volume hitting record $1.79T in June signals strong underlying crypto adoption and capital inflows."
       },
       {
         "source": "volume_breakout",
         "signal_type": "technical",
-        "description": "SOL daily volume at $1.72B is robust and supports the price recovery, with chart showing moderately bullish MA structure above the 20-day SMA."
+        "description": "SOL's chart shows exceptional R:R with support at $81 and resistance at $98.26, with price holding above 20-day SMA in moderately bullish structure."
       }
     ],
     "confidence": 62
@@ -89,5 +89,5 @@
     }
   },
   "trade_count": 1,
-  "last_updated": "2026-07-06T08:13:41.926249+00:00"
+  "last_updated": "2026-07-06T12:09:14.783978+00:00"
 }
