@@ -1,31 +1,56 @@
 {
-  "cash": 750.0,
+  "cash": 889.7721,
   "holdings": [
     {
       "coin_ticker": "SOL",
       "coin_id": "sol",
-      "units": 3.46875,
+      "units": 1.734375,
       "entry_price": 72.0,
       "entry_date": "2026-06-27T04:05:30.294651+00:00",
       "entry_signal": "BUY",
       "entry_confidence": 62,
-      "allocated_usd": 250.0,
-      "fee_paid": 0.25,
+      "allocated_usd": 125.0,
+      "fee_paid": 0.125,
       "exit_target": 82.0,
-      "stop_loss": 65.0,
+      "stop_loss": 72.0,
       "entry_target": 70.5,
-      "expected_days": 7
+      "expected_days": 7,
+      "partial_taken": true
     }
   ],
-  "realized_pnl": 0.0,
+  "realized_pnl": 14.7721,
   "peak_value": 1000.0,
-  "total_trades": 0,
-  "winning_trades": 0,
+  "total_trades": 1,
+  "winning_trades": 1,
   "losing_trades": 0,
-  "total_fees": 0.25,
-  "trade_history": [],
+  "total_fees": 0.3899,
+  "trade_history": [
+    {
+      "trade_num": 1,
+      "coin_ticker": "SOL",
+      "coin_id": "sol",
+      "entry_price": 72.0,
+      "entry_date": "2026-06-27T04:05:30.294651+00:00",
+      "entry_signal": "BUY",
+      "entry_confidence": 62,
+      "allocated_usd": 125.0,
+      "exit_price": 80.67,
+      "exit_date": "2026-07-06T04:09:50.313119+00:00",
+      "exit_signal": "PARTIAL",
+      "exit_reason": "partial_take_50pct",
+      "units": 1.734375,
+      "gross_proceeds": 139.912,
+      "fees_total": 0.2649,
+      "net_proceeds": 139.7721,
+      "profit_usd": 14.7721,
+      "profit_pct": 11.82,
+      "days_held": 9.0,
+      "exit_target": 82.0,
+      "result": "WIN"
+    }
+  ],
   "started_at": "2026-06-27T00:00:00+00:00",
   "btc_benchmark_price": 60040,
   "btc_benchmark_units": 0.01665556,
-  "consecutive_fear_cycles": 15
+  "consecutive_fear_cycles": 0
 }
