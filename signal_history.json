@@ -58,5 +58,27 @@
       "SOL"
     ],
     "alert": "Market is in Extreme Fear \u2014 ideal for contrarian entries but size positions conservatively as volatility remains elevated."
+  },
+  {
+    "ts": "2026-07-06T05:09:57.894276+00:00",
+    "coin": "SOL",
+    "price": 80.6,
+    "signal": "BUY",
+    "confidence": 58,
+    "score": 0.45,
+    "fg": 24,
+    "btc_price": 63129,
+    "btc_dominance": 55.8,
+    "candidates": [
+      "MON",
+      "LIT",
+      "VVV",
+      "UB",
+      "PUMP",
+      "FET",
+      "XPL",
+      "SOL"
+    ],
+    "alert": "CoinTelegraph warns of potential 'terrible Monday' \u2014 monitor BTC closely at weekly open before committing full position size."
   }
 ]
