@@ -1,13 +1,13 @@
 {
   "tier_a": [
     {
-      "wallet": "2CQgjcdNEo7WtbQLpJTAVcC3Ga61pNvRDTgP5grzctFG",
+      "wallet": "Dq2UkKj2bAWusWGDkuJsRRz52y3NQpYvmqgyhd8PkRzA",
       "alias": "continuity",
       "fomo_profile": "@continuity",
       "tier": "A",
       "chain": "solana",
       "alchemy_webhook_id": null,
-      "notes": "Rank #1 on fomo.family. +$62K PnL. 363 trades. Joined Mar 2026. Wallet identified via FINNY sell tx 5eADx... (15.85M FINNY, 53.35 SOL balance).",
+      "notes": "Rank #1 on fomo.family. +$62K PnL. 363 trades. Joined Mar 2026. Wallet identified via FINNY sell tx 5eADx... (15.85M FINNY, 53.35 SOL balance). | Wallet confirmed via on-chain cross-reference (manlet buy tx match, Jul 1 2026).",
       "stats": {
         "trades_followed": 0,
         "wins": 0,
@@ -22,7 +22,7 @@
       "added_at": "2026-07-02T00:00:00Z",
       "promoted_at": null,
       "demoted_at": null,
-      "bankroll_usd": null
+      "bankroll_usd": 24131.55
     }
   ],
   "tier_b": [
@@ -207,5 +207,5 @@
     "min_days_observed": 14,
     "min_bankroll_usd": 50000
   },
-  "last_updated": "2026-07-06T01:15:53.941859+00:00"
+  "last_updated": "2026-07-06T08:57:51.101452+00:00"
 }
