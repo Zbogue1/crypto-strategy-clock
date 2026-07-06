@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-07-06T15:09:21.735362+00:00",
-  "selected_coin": "SOL",
-  "selected_coin_name": "Solana",
-  "selected_coin_price": 80.48,
+  "timestamp": "2026-07-06T16:09:21.833334+00:00",
+  "selected_coin": "ZRO",
+  "selected_coin_name": "LayerZero",
+  "selected_coin_price": 0.996829,
   "confidence": 62,
-  "layman_headline": "Extreme fear in crypto markets creates a buying window for Solana near key support.",
-  "layman_explanation": "The entire crypto market is gripped by extreme fear, with the sentiment index at just 24 out of 100. Historically, this is when smart money starts buying. Solana has bounced 10% over the past week and is sitting right on a major support level at $81, with a clear path to resistance near $98. That's roughly a 20% upside with defined downside risk.",
-  "layman_action": "Consider a small position in Solana around current prices ($80-81). Set a stop-loss at $73.50 to limit downside, and look to take profits near $96. This is a fear-driven opportunity, not a guaranteed trade.",
-  "expert_reasoning": "SOL presents the most compelling swing setup in this cycle. Price is above two major moving averages with a moderately bullish structure, RSI at 54 is neutral with room to run, and the support at $81 is essentially right at current price \u2014 meaning we enter with minimal drawdown risk before invalidation. The resistance target at $98.26 gives ~20% upside. The broader context of Extreme Fear (24) improving from 19.3 weekly average suggests a sentiment inflection point. BTC's 5% weekly gain and ETH's 12% weekly gain confirm the broader market is recovering. SOL's high-cap, high-liquidity profile ($2B+ daily volume) makes it the safest vehicle for this fear-driven bounce trade.",
+  "layman_headline": "LayerZero flashes a classic bottom signal while the market is gripped by fear.",
+  "layman_explanation": "The crypto market is in 'Extreme Fear' mode, which historically has been a good time to look for bargains. LayerZero (ZRO) is showing a textbook reversal pattern on its chart \u2014 a 'Morning Star' \u2014 which often marks the end of a selloff. Its RSI is near oversold territory at 31, meaning sellers are exhausted. The risk-reward ratio on this trade is nearly 3:1, which is attractive for a swing setup.",
+  "layman_action": "Consider a small position in ZRO around $0.93, with a firm stop-loss at $0.85. If it bounces toward $1.10, take profits. This is a recovery bet in a fearful market \u2014 size accordingly.",
+  "expert_reasoning": "ZRO presents the strongest swing trade setup among all candidates. The Morning Star pattern is a high-reliability three-candle reversal formation appearing after a -17.4% five-day pullback, suggesting the downtrend is exhausting. RSI at 30.83 is approaching oversold territory, providing a technical floor for a bounce. The chart's risk/reward to nearest support/resistance levels is 2.93x \u2014 the best among all candidates. While the broader structure remains bearish (below all MAs), extreme fear at 24 historically correlates with local bottoms, and the improving fear/greed trend (from 19.3 weekly average to 24) suggests sentiment is turning. BTC's 7% weekly recovery provides a macro tailwind.",
   "risk_factors": [
-    "BTC dominance at 55.5% continues to squeeze alts \u2014 if BTC drops, SOL could fall harder",
-    "Support at $81 is extremely close \u2014 a break below could trigger rapid selling to $73 or lower",
-    "Strategy/Saylor selling 3,588 BTC for $216M could signal institutional de-risking that pressures the entire market"
+    "Price remains below all major moving averages \u2014 the broader downtrend could resume if BTC falters",
+    "High BTC dominance at 55.8% means capital is flowing away from alts, limiting upside potential",
+    "Strategy's Bitcoin sale and bearish macro headlines could trigger another leg down across the market"
   ],
   "watch_list": [
-    "BTC price action around $60.4K support \u2014 a breakdown there would invalidate all alt setups",
-    "Fear & Greed Index trajectory \u2014 continued improvement above 25-30 would confirm sentiment reversal",
-    "SOL holding above $81 support over the next 48 hours with volume confirmation"
+    "BTC holding above $62,000 \u2014 a break below would drag alts including ZRO down sharply",
+    "ZRO reclaiming the $1.00 psychological level and SMA20 as confirmation of the reversal",
+    "Fear & Greed Index trajectory \u2014 continued improvement above 25-30 would support risk-on positioning"
   ],
-  "market_context": "The crypto market is in Extreme Fear (24/100) but showing improving sentiment from a weekly average of 19.3. BTC is recovering at $62.3K with major alts posting 7-12% weekly gains, suggesting the worst of the selloff may be behind us.",
-  "context_banner": "Extreme Fear is improving \u2014 high-quality large-caps near support offer the best risk/reward setups for a sentiment reversal trade.",
-  "btc_price": 62288,
+  "market_context": "The market is in Extreme Fear (24) but improving from last week's 19.3 average, with BTC up 7% weekly. Strategy selling 3,588 BTC adds headline risk, but the overall bounce structure looks constructive for a short-term mean reversion in oversold alts.",
+  "context_banner": "Extreme Fear is improving and a classic Morning Star reversal on ZRO offers the best risk/reward entry among swing candidates.",
+  "btc_price": 63517,
   "fear_greed": {
     "current": 24,
     "label": "Extreme Fear",
@@ -28,35 +28,35 @@
     "week_avg": 19.3,
     "trend": "improving"
   },
-  "btc_dominance": 55.5,
+  "btc_dominance": 55.8,
   "key_signals": [
-    {
-      "source": "Fear_Greed",
-      "signal_type": "sentiment",
-      "description": "Extreme Fear at 24 improving from weekly average of 19.3 \u2014 historically a contrarian buy signal for quality assets."
-    },
     {
       "source": "RSI",
       "signal_type": "technical",
-      "description": "SOL RSI at 54 is neutral with ample room to expand upward, unlike LIT (75) which is overbought."
-    },
-    {
-      "source": "Blockworks",
-      "signal_type": "news",
-      "description": "ETH derivatives reset article signals renewed institutional interest in major L1 ecosystems including Solana."
-    },
-    {
-      "source": "volume_breakout",
-      "signal_type": "technical",
-      "description": "SOL daily volume at $2.08B is robust for a $80 asset, confirming genuine buying interest behind the 10% weekly recovery."
+      "description": "ZRO RSI at 30.83 is near oversold territory, indicating seller exhaustion and a potential bounce setup."
     },
     {
       "source": "CoinTelegraph",
       "signal_type": "news",
-      "description": "$60.4K identified as Bitcoin's most important support area \u2014 BTC holding above this level is critical for alt recovery."
+      "description": "Strategy selling 3,588 BTC created downward pressure, but BTC held and recovered \u2014 suggesting the selling wave is being absorbed."
+    },
+    {
+      "source": "Fear_Greed",
+      "signal_type": "sentiment",
+      "description": "Extreme Fear at 24 with an improving trend from 19.3 weekly average \u2014 historically one of the best times to enter swing trades."
+    },
+    {
+      "source": "volume_breakout",
+      "signal_type": "technical",
+      "description": "ZRO's Morning Star candlestick pattern with 2.93x risk/reward ratio is the highest quality reversal signal among all candidates."
+    },
+    {
+      "source": "Blockworks",
+      "signal_type": "news",
+      "description": "ETH derivatives reset and Friday charts piece noting 'good news in spite of bad headlines' supports the case for a near-term bounce in quality alts."
     }
   ],
   "_mode": "HUNTING",
-  "exit_target": 96.0,
-  "stop_loss": 73.5
+  "exit_target": 1.1,
+  "stop_loss": 0.85
 }
