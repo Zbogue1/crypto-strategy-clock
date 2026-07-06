@@ -1,32 +1,32 @@
 {
   "open_trade": {
-    "coin": "SOL",
-    "entry_time": "2026-07-06T15:13:03.862818+00:00",
+    "coin": "ZRO",
+    "entry_time": "2026-07-06T16:13:05.916720+00:00",
     "key_signals": [
-      {
-        "source": "Fear_Greed",
-        "signal_type": "sentiment",
-        "description": "Extreme Fear at 24 improving from weekly average of 19.3 \u2014 historically a contrarian buy signal for quality assets."
-      },
       {
         "source": "RSI",
         "signal_type": "technical",
-        "description": "SOL RSI at 54 is neutral with ample room to expand upward, unlike LIT (75) which is overbought."
-      },
-      {
-        "source": "Blockworks",
-        "signal_type": "news",
-        "description": "ETH derivatives reset article signals renewed institutional interest in major L1 ecosystems including Solana."
-      },
-      {
-        "source": "volume_breakout",
-        "signal_type": "technical",
-        "description": "SOL daily volume at $2.08B is robust for a $80 asset, confirming genuine buying interest behind the 10% weekly recovery."
+        "description": "ZRO RSI at 30.83 is near oversold territory, indicating seller exhaustion and a potential bounce setup."
       },
       {
         "source": "CoinTelegraph",
         "signal_type": "news",
-        "description": "$60.4K identified as Bitcoin's most important support area \u2014 BTC holding above this level is critical for alt recovery."
+        "description": "Strategy selling 3,588 BTC created downward pressure, but BTC held and recovered \u2014 suggesting the selling wave is being absorbed."
+      },
+      {
+        "source": "Fear_Greed",
+        "signal_type": "sentiment",
+        "description": "Extreme Fear at 24 with an improving trend from 19.3 weekly average \u2014 historically one of the best times to enter swing trades."
+      },
+      {
+        "source": "volume_breakout",
+        "signal_type": "technical",
+        "description": "ZRO's Morning Star candlestick pattern with 2.93x risk/reward ratio is the highest quality reversal signal among all candidates."
+      },
+      {
+        "source": "Blockworks",
+        "signal_type": "news",
+        "description": "ETH derivatives reset and Friday charts piece noting 'good news in spite of bad headlines' supports the case for a near-term bounce in quality alts."
       }
     ],
     "confidence": 62
@@ -89,5 +89,5 @@
     }
   },
   "trade_count": 1,
-  "last_updated": "2026-07-06T15:13:03.862823+00:00"
+  "last_updated": "2026-07-06T16:13:05.916728+00:00"
 }
