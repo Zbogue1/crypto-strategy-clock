@@ -212,5 +212,27 @@
       "SOL"
     ],
     "alert": null
+  },
+  {
+    "ts": "2026-07-06T20:09:22.212729+00:00",
+    "coin": "ZRO",
+    "price": 1.021,
+    "signal": "BUY",
+    "confidence": 62,
+    "score": 0.45,
+    "fg": 24,
+    "btc_price": 63580,
+    "btc_dominance": 55.8,
+    "candidates": [
+      "MON",
+      "UB",
+      "PYTH",
+      "VVV",
+      "ZRO",
+      "AAVE",
+      "DEXE",
+      "SOL"
+    ],
+    "alert": null
   }
 ]
