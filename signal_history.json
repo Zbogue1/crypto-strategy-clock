@@ -256,5 +256,26 @@
       "SOL"
     ],
     "alert": "Entry recommended near $0.93-0.95 on pullback \u2014 current price at $1.048 is above chart reference; patience for a retest of $1.00 support improves risk/reward significantly."
+  },
+  {
+    "ts": "2026-07-06T22:09:21.625288+00:00",
+    "coin": "ZRO",
+    "price": 1.021,
+    "signal": "BUY",
+    "confidence": 62,
+    "score": 0.55,
+    "fg": 24,
+    "btc_price": 64277,
+    "btc_dominance": 55.9,
+    "candidates": [
+      "MON",
+      "VVV",
+      "PYTH",
+      "UB",
+      "ZRO",
+      "JTO",
+      "BONK"
+    ],
+    "alert": "BonkDAO reports $20M theft \u2014 avoid BONK positions and monitor for broader DeFi contagion risk."
   }
 ]
