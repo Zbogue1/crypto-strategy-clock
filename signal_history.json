@@ -80,5 +80,27 @@
       "SOL"
     ],
     "alert": "BTC $60,400 is the line in the sand \u2014 if it breaks, exit all positions immediately."
+  },
+  {
+    "ts": "2026-07-06T14:09:21.849973+00:00",
+    "coin": "SOL",
+    "price": 80.1,
+    "signal": "BUY",
+    "confidence": 58,
+    "score": 0.45,
+    "fg": 24,
+    "btc_price": 61797,
+    "btc_dominance": 55.5,
+    "candidates": [
+      "MON",
+      "VVV",
+      "UB",
+      "GRASS",
+      "GWEI",
+      "PYTH",
+      "ENA",
+      "SOL"
+    ],
+    "alert": "Strategy sold 3,588 BTC ($216M) \u2014 monitor for further institutional selling pressure on BTC which could drag the entire market."
   }
 ]
