@@ -124,5 +124,27 @@
       "SOL"
     ],
     "alert": null
+  },
+  {
+    "ts": "2026-07-06T08:09:57.988780+00:00",
+    "coin": "SOL",
+    "price": 80.91,
+    "signal": "BUY",
+    "confidence": 62,
+    "score": 0.55,
+    "fg": 24,
+    "btc_price": 63100,
+    "btc_dominance": 55.7,
+    "candidates": [
+      "MON",
+      "VVV",
+      "UB",
+      "LIT",
+      "PYTH",
+      "FET",
+      "PUMP",
+      "SOL"
+    ],
+    "alert": null
   }
 ]
