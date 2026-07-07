@@ -1,5 +1,5 @@
 {
-  "cash": 809.6339,
+  "cash": 688.1839,
   "holdings": [
     {
       "coin_ticker": "ZRO",
@@ -16,6 +16,22 @@
       "entry_target": 0.93,
       "expected_days": 7,
       "partial_taken": false
+    },
+    {
+      "coin_ticker": "GRASS",
+      "coin_id": "grass",
+      "units": 225.6329908410433,
+      "entry_price": 0.537725,
+      "entry_date": "2026-07-07T08:10:17.405542+00:00",
+      "entry_signal": "BUY",
+      "entry_confidence": 52,
+      "allocated_usd": 121.45,
+      "fee_paid": 0.1215,
+      "exit_target": 0.595,
+      "stop_loss": 0.485,
+      "entry_target": 0.515,
+      "expected_days": 7,
+      "partial_taken": false
     }
   ],
   "realized_pnl": 32.0739,
@@ -23,7 +39,7 @@
   "total_trades": 2,
   "winning_trades": 2,
   "losing_trades": 0,
-  "total_fees": 0.7547,
+  "total_fees": 0.8762,
   "trade_history": [
     {
       "trade_num": 1,
