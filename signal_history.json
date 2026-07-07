@@ -58,5 +58,28 @@
       "ZRO"
     ],
     "alert": "BONK faces a $20M treasury drain from a governance attack \u2014 avoid BONK positions until the situation is resolved."
+  },
+  {
+    "ts": "2026-07-07T09:10:26.521891+00:00",
+    "coin": "LDO",
+    "price": 0.28456,
+    "signal": "BUY",
+    "confidence": 52,
+    "score": 0.35,
+    "fg": 27,
+    "btc_price": 63117,
+    "btc_dominance": 55.8,
+    "candidates": [
+      "MON",
+      "VVV",
+      "BONK",
+      "JTO",
+      "WLD",
+      "PYTH",
+      "LDO",
+      "ZRO",
+      "GRASS"
+    ],
+    "alert": "BONK treasury attack: $20M drain risk after malicious governance proposal \u2014 avoid BONK positions"
   }
 ]
