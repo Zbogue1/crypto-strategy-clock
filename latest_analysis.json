@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-07-07T08:00:44.701708+00:00",
-  "selected_coin": "GRASS",
-  "selected_coin_name": "Grass",
-  "selected_coin_price": 0.537725,
+  "timestamp": "2026-07-07T09:10:26.521891+00:00",
+  "selected_coin": "LDO",
+  "selected_coin_name": "Lido DAO",
+  "selected_coin_price": 0.28456,
   "confidence": 52,
-  "layman_headline": "A cautious buy in a fearful market: Grass shows the best risk/reward setup among today's candidates.",
-  "layman_explanation": "The crypto market is in a 'Fear' zone, which historically can be a good time to buy if you pick carefully. Grass (GRASS) is a DePIN token that's been climbing steadily with solid chart structure \u2014 it's above its key moving averages with strong support nearby and much more room to run to resistance. While it's already moved 16% this week, the risk/reward ratio on its chart is excellent at over 6:1, meaning the potential upside is six times the distance to support.",
-  "layman_action": "Consider a small position in GRASS near $0.515 with a strict stop-loss at $0.485. This is a moderate-confidence trade in a fearful market \u2014 size accordingly and don't risk more than you can afford to lose.",
-  "expert_reasoning": "GRASS presents the most attractive setup among the swing candidates for several reasons. First, the chart analysis shows a slightly bullish bias (+0.40) with price above two moving averages and strong 5-day momentum of +11.4%. The risk/reward to nearest levels is exceptional at 6.24x, with support at $0.50 just 2.7% below current price and resistance at $0.60 offering 16.8% upside. RSI at 61.8 is elevated but not yet in dangerous overbought territory (below 70). The DePIN narrative is gaining traction per Blockworks coverage, providing a fundamental tailwind. The main concern is the 16.3% 7-day move which suggests some extension, hence the recommendation to enter on a pullback toward $0.515 rather than chasing at current levels. Fear & Greed at 27 but improving from 21 weekly average suggests the market may be bottoming.",
+  "layman_headline": "Lido DAO flashes a classic bottom reversal pattern as fear grips the broader market.",
+  "layman_explanation": "The crypto market is in a fearful mood right now, with most coins well off their highs. Lido DAO, which powers Ethereum staking, just printed a textbook reversal signal on its chart \u2014 a 'Morning Star' pattern that often marks the end of a selloff. It's still down over 96% from its all-time high, but buyers are stepping in aggressively with strong conviction candles. The broader market is starting to recover from deep fear, which historically creates good buying opportunities.",
+  "layman_action": "Consider a small position in LDO around $0.274 with a strict stop-loss at $0.241. If you see it drop below that level, exit immediately. Target selling around $0.335 for a ~22% gain.",
+  "expert_reasoning": "LDO presents the best risk-adjusted setup among the candidates. The Morning Star + Bullish Marubozu combination on the chart provides a clear reversal signal. RSI at 46.62 is neutral with upside room \u2014 not overbought like many extended candidates. Key support at $0.2438 gives us a defined stop-loss with only ~11% downside, while resistance at $0.30 and potential continuation to $0.335 offers solid reward. The 14.2% weekly gain is a concern for chasing, but the chart structure suggests this is early-stage reversal rather than exhaustion. Ethereum's $40B TVL stability underpins Lido's fundamental value as the dominant liquid staking protocol. The improving Fear & Greed trend from 21 to 27 suggests we're in the early phase of sentiment recovery.",
   "risk_factors": [
-    "BTC dominance at 55.8% continues to suppress altcoin performance \u2014 if BTC dominance rises further, GRASS could sell off regardless of its own chart strength",
-    "Already up 16.3% in 7 days \u2014 a pullback to support at $0.50 or below is possible before any continuation higher",
-    "Limited chart and fundamental data available (no MACD, no SMA200, no funding rate) reduces conviction in the technical setup"
+    "BTC dominance at 55.8% continues to suppress altcoin performance \u2014 if BTC retraces from the $64K rejection, alts like LDO will suffer disproportionately",
+    "BONK treasury attack headline signals broader DeFi security concerns that could create contagion fear across DeFi tokens including LDO",
+    "Price is still below all major moving averages (bearish structure) despite the reversal candles \u2014 this is a counter-trend trade"
   ],
   "watch_list": [
-    "BTC price action around $63,000-$64,000 resistance \u2014 a rejection here could drag alts down",
-    "BONK treasury exploit developments \u2014 if the $20M drain materializes it could spread fear to other small-cap tokens",
-    "Fear & Greed Index trajectory \u2014 if it continues improving from 21 toward 30+, it supports risk-on positioning in alts"
+    "BTC price action around $63K-$64K resistance \u2014 a clean break above $64K would boost all alts including LDO",
+    "Ethereum TVL trends on DeFiLlama \u2014 any significant outflow from Ethereum DeFi would directly pressure LDO",
+    "Fear & Greed Index continuation \u2014 needs to keep improving above 30 to confirm sentiment shift"
   ],
-  "market_context": "The market is in a 'Fear' state at 27/100, but improving from 21 last week, suggesting a potential sentiment bottom. BTC is up ~6% on the week holding near $63K, while ETH gained 11% \u2014 early signs of a recovery, though high BTC dominance at 55.8% means capital hasn't fully rotated into alts yet.",
-  "context_banner": "Fear is improving and BTC is consolidating near $63K \u2014 selective alt entries with tight stops offer asymmetric upside in this environment.",
-  "btc_price": 63040,
+  "market_context": "The crypto market is recovering from deep fear (F&G improving from 21 to 27), with BTC up 6.6% on the week but stalling near $64K resistance. High BTC dominance at 55.8% makes altcoin trades riskier, requiring extra conviction on individual setups.",
+  "context_banner": "Early fear recovery + chart reversal on a deeply oversold DeFi blue-chip creates a measured swing opportunity in LDO.",
+  "btc_price": 63117,
   "fear_greed": {
     "current": 27,
     "label": "Fear",
@@ -31,32 +31,32 @@
   "btc_dominance": 55.8,
   "key_signals": [
     {
-      "source": "Fear_Greed",
-      "signal_type": "sentiment",
-      "description": "Fear & Greed at 27 but trending up from 21 weekly average \u2014 improving sentiment from fearful levels historically precedes bounces, supporting cautious new entries."
-    },
-    {
-      "source": "GRASS_chart",
+      "source": "Chart Pattern Analysis",
       "signal_type": "technical",
-      "description": "GRASS shows a 6.24x risk/reward ratio with clear support at $0.50 and resistance at $0.60, above two moving averages in an uptrend \u2014 the strongest chart setup among all candidates."
-    },
-    {
-      "source": "Blockworks",
-      "signal_type": "news",
-      "description": "Blockworks highlighted DePIN and crypto gaming leading a surprising rebound, providing narrative tailwind for GRASS as a leading DePIN token."
-    },
-    {
-      "source": "CoinDesk",
-      "signal_type": "news",
-      "description": "BONK faces $20M treasury drain from malicious governance proposal \u2014 critical risk flag that eliminates BONK as a candidate and warns of small-cap governance risks."
+      "description": "LDO printed a Morning Star + Bullish Marubozu combination, classic bottom reversal signal with chart bias score of +1.0 \u2014 the strongest bullish chart among all candidates."
     },
     {
       "source": "RSI",
       "signal_type": "technical",
-      "description": "GRASS RSI at 61.8 is elevated but still below the 70 overbought threshold, suggesting room for further upside before a correction becomes likely."
+      "description": "LDO RSI at 46.62 is neutral with ample upside room before overbought territory, unlike extended candidates (MON +33%, PYTH +22%) that are likely overbought."
+    },
+    {
+      "source": "Fear_Greed",
+      "signal_type": "sentiment",
+      "description": "Fear & Greed at 27 (Fear) but trending up from week average of 21 \u2014 improving sentiment in early stages supports mean reversion trades on quality assets."
+    },
+    {
+      "source": "CoinDesk",
+      "signal_type": "news",
+      "description": "BONK faces $20M treasury drain from malicious governance proposal \u2014 eliminated BONK as a candidate and highlights governance risk across DeFi."
+    },
+    {
+      "source": "DeFiLlama",
+      "signal_type": "onchain",
+      "description": "Ethereum TVL stable at ~$40B providing fundamental support for Lido as the dominant ETH liquid staking protocol."
     }
   ],
   "_mode": "HUNTING",
-  "exit_target": 0.595,
-  "stop_loss": 0.485
+  "exit_target": 0.335,
+  "stop_loss": 0.241
 }
