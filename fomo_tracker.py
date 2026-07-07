@@ -23,6 +23,7 @@ import json
 import logging
 import os
 import time
+import uuid
 from datetime import datetime, timezone, timedelta
 from typing import Optional
 
@@ -66,6 +67,8 @@ HELIUS_AUTH_HEADER = os.environ.get("HELIUS_AUTH_HEADER", "")
 WSOL_MINT = "So11111111111111111111111111111111111111112"
 
 TRUSTED_WALLETS_FILE = "trusted_wallets.json"
+FOMO_PENDING_ALERTS_FILE = "fomo_pending_alerts.json"
+BUY_ALERT_EXPIRY_MINUTES = 15   # memecoins move fast -- signal goes stale if untapped
 
 
 # ─── WALLET REGISTRY ─────────────────────────────────────────────────────────
@@ -199,6 +202,78 @@ def check_wallet_promotions() -> list:
         save_trusted_wallets(data)
 
     return promoted
+
+
+# ─── PENDING BUY ALERTS (human-confirmed execution) ──────────────────────────
+
+def load_pending_alerts() -> dict:
+    try:
+        with open(FOMO_PENDING_ALERTS_FILE) as f:
+            return json.load(f)
+    except Exception:
+        return {}
+
+
+def save_pending_alerts(data: dict):
+    with open(FOMO_PENDING_ALERTS_FILE, "w") as f:
+        json.dump(data, f, indent=2)
+
+
+def _prune_pending_alerts(data: dict) -> dict:
+    """Drop anything older than an hour so this file doesn't grow forever."""
+    cutoff = datetime.now(timezone.utc) - timedelta(hours=1)
+    kept = {}
+    for aid, rec in data.items():
+        try:
+            created = datetime.fromisoformat(rec["created_at"].replace("Z", "+00:00"))
+        except Exception:
+            continue
+        if created > cutoff:
+            kept[aid] = rec
+    return kept
+
+
+def create_pending_buy_alert(details: dict) -> str:
+    """Store a live buy signal awaiting a human tap. Returns a short alert_id."""
+    data = _prune_pending_alerts(load_pending_alerts())
+    alert_id = uuid.uuid4().hex[:8]
+    details["created_at"] = datetime.now(timezone.utc).isoformat()
+    data[alert_id] = details
+    save_pending_alerts(data)
+    return alert_id
+
+
+def get_pending_alert(alert_id: str) -> Optional[dict]:
+    """Return the alert if it exists and hasn't expired, else None."""
+    data = load_pending_alerts()
+    rec  = data.get(alert_id)
+    if not rec:
+        return None
+    created = datetime.fromisoformat(rec["created_at"].replace("Z", "+00:00"))
+    age_min = (datetime.now(timezone.utc) - created).total_seconds() / 60
+    if age_min > BUY_ALERT_EXPIRY_MINUTES:
+        return None
+    return rec
+
+
+def consume_pending_alert(alert_id: str):
+    """Remove an alert once it's been acted on (executed or expired)."""
+    data = load_pending_alerts()
+    if alert_id in data:
+        del data[alert_id]
+        save_pending_alerts(data)
+
+
+def suggest_buy_amount(catalyst_score: int) -> str:
+    """Map catalyst confidence to a suggested $ tier -- a suggestion only,
+    the human still picks the final amount."""
+    if catalyst_score >= 8:
+        return "500"
+    if catalyst_score >= 6:
+        return "200"
+    if catalyst_score >= 4:
+        return "100"
+    return "50"
 
 
 # ─── TELEGRAM ─────────────────────────────────────────────────────────────────
@@ -581,7 +656,7 @@ def test_buy_alert():
 
 @app.route("/webhook/telegram", methods=["POST"])
 def telegram_webhook():
-    """Receives button taps from Telegram. Plumbing-test version just confirms receipt."""
+    """Receives button taps from Telegram -- this is the human trigger-pull."""
     update = request.json or {}
     callback = update.get("callback_query")
     if not callback:
@@ -595,6 +670,18 @@ def telegram_webhook():
 
     log.info(f"Telegram button tapped: {data}")
 
+    def edit(text, reply_markup=None):
+        payload = {"chat_id": chat_id, "message_id": message_id, "text": text, "parse_mode": "HTML"}
+        if reply_markup:
+            payload["reply_markup"] = reply_markup
+        try:
+            requests.post(
+                f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/editMessageText",
+                json=payload, timeout=10,
+            )
+        except Exception as e:
+            log.warning(f"Telegram edit failed: {e}")
+
     try:
         requests.post(
             f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/answerCallbackQuery",
@@ -602,51 +689,90 @@ def telegram_webhook():
             timeout=10,
         )
 
-        if data == "test_buy_show_amounts":
+        # ── Real buy flow: EXECUTE tapped -> reveal $ amount options ──────────
+        if data.startswith("buy_show:"):
+            alert_id = data.split(":", 1)[1]
+            alert    = get_pending_alert(alert_id)
+            if not alert:
+                edit("\u23f1 Signal expired -- no longer valid.")
+            else:
+                suggested = suggest_buy_amount(alert.get("catalyst_score", 0))
+                def label(amt):
+                    return f"\u2b50 ${amt}" if amt == suggested else f"${amt}"
+                edit(
+                    f"\U0001f6a8 <b>{alert['token_ticker']} @ ${alert['entry_price']:.8f}</b>\n"
+                    f"How much to invest?",
+                    reply_markup={
+                        "inline_keyboard": [
+                            [{"text": label("50"),  "callback_data": f"buy_amt:{alert_id}:50"},
+                             {"text": label("100"), "callback_data": f"buy_amt:{alert_id}:100"}],
+                            [{"text": label("200"), "callback_data": f"buy_amt:{alert_id}:200"},
+                             {"text": label("500"), "callback_data": f"buy_amt:{alert_id}:500"}],
+                        ]
+                    },
+                )
+
+        # ── Real buy flow: $ amount tapped -> actually execute the paper buy ──
+        elif data.startswith("buy_amt:"):
+            _, alert_id, amount_str = data.split(":", 2)
+            alert = get_pending_alert(alert_id)
+            if not alert:
+                edit("\u23f1 Window expired -- trade not executed.")
+            else:
+                result = execute_fomo_buy(
+                    token_ticker=alert["token_ticker"],
+                    token_name=alert["token_name"],
+                    entry_price=alert["entry_price"],
+                    wallet_alias=alert["wallet_alias"],
+                    wallet_address=alert["wallet_address"],
+                    contract_address=alert.get("contract_address"),
+                    catalyst=alert.get("catalyst"),
+                    catalyst_score=alert.get("catalyst_score", 0),
+                    market_cap=alert.get("market_cap"),
+                    liquidity_usd=alert.get("liquidity_usd"),
+                    token_age_days=alert.get("token_age_days"),
+                    volume_spike_pct=alert.get("volume_spike_pct"),
+                    amount_usd=float(amount_str),
+                )
+                consume_pending_alert(alert_id)
+                if result:
+                    edit(
+                        f"\u2705 <b>Bought {result['token_ticker']}</b>\n"
+                        f"${result['spent']:.2f} @ ${result['entry_price']:.8f}\n"
+                        f"Stop: ${result['stop_loss']:.8f} (-15%) | "
+                        f"Target: ${result['exit_target']:.8f} (+30%)\n"
+                        f"Following {alert['wallet_alias']}"
+                    )
+                else:
+                    edit("\u26a0\ufe0f Buy did not execute (already holding a position, or insufficient cash).")
+
+        # ── Visual-test flows (unchanged) ──────────────────────────────────────
+        elif data == "test_buy_show_amounts":
             suggested = "200"
             def label(amt):
                 return f"\u2b50 ${amt}" if amt == suggested else f"${amt}"
-            requests.post(
-                f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/editMessageText",
-                json={
-                    "chat_id": chat_id,
-                    "message_id": message_id,
-                    "text": "\U0001f6a8 TEST BUY: TESTCOIN @ $0.00043\nHow much to invest?",
-                    "reply_markup": {
-                        "inline_keyboard": [
-                            [{"text": label("50"),  "callback_data": "test_buy_amt_50"},
-                             {"text": label("100"), "callback_data": "test_buy_amt_100"}],
-                            [{"text": label("200"), "callback_data": "test_buy_amt_200"},
-                             {"text": label("500"), "callback_data": "test_buy_amt_500"}],
-                        ]
-                    },
+            edit(
+                "\U0001f6a8 TEST BUY: TESTCOIN @ $0.00043\nHow much to invest?",
+                reply_markup={
+                    "inline_keyboard": [
+                        [{"text": label("50"),  "callback_data": "test_buy_amt_50"},
+                         {"text": label("100"), "callback_data": "test_buy_amt_100"}],
+                        [{"text": label("200"), "callback_data": "test_buy_amt_200"},
+                         {"text": label("500"), "callback_data": "test_buy_amt_500"}],
+                    ]
                 },
-                timeout=10,
             )
 
         elif data.startswith("test_buy_amt_"):
             amount = data.replace("test_buy_amt_", "")
-            requests.post(
-                f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/editMessageText",
-                json={
-                    "chat_id": chat_id,
-                    "message_id": message_id,
-                    "text": (f"\u2705 TEST: Would execute ${amount} buy of TESTCOIN @ $0.00043\n"
-                             f"(This was a test -- no trade occurred.)"),
-                },
-                timeout=10,
+            edit(
+                f"\u2705 TEST: Would execute ${amount} buy of TESTCOIN @ $0.00043\n"
+                f"(This was a test -- no trade occurred.)"
             )
 
         else:
-            requests.post(
-                f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/editMessageText",
-                json={
-                    "chat_id": chat_id,
-                    "message_id": message_id,
-                    "text": f"\u2705 Button tap received: {data}",
-                },
-                timeout=10,
-            )
+            edit(f"\u2705 Button tap received: {data}")
+
     except Exception as e:
         log.warning(f"Telegram callback handling failed: {e}")
 
@@ -728,29 +854,33 @@ def helius_webhook():
                 )
                 continue
 
-            result = execute_fomo_buy(
-                token_ticker=token_data["symbol"],
-                token_name=token_data["name"],
-                entry_price=token_data["price"],
-                wallet_alias=alias,
-                wallet_address=wallet_addr,
-                contract_address=contract,
-                catalyst=catalyst_data["catalyst"],
-                catalyst_score=catalyst_data["score"],
-                market_cap=token_data.get("market_cap"),
-                liquidity_usd=token_data.get("liquidity_usd"),
-                token_age_days=token_data.get("age_days"),
-                volume_spike_pct=token_data.get("volume_spike_pct"),
+            # Don't auto-buy -- store the signal and let the human tap EXECUTE.
+            alert_id = create_pending_buy_alert({
+                "token_ticker":     token_data["symbol"],
+                "token_name":       token_data["name"],
+                "entry_price":      token_data["price"],
+                "wallet_alias":     alias,
+                "wallet_address":   wallet_addr,
+                "contract_address": contract,
+                "catalyst":         catalyst_data["catalyst"],
+                "catalyst_score":   catalyst_data["score"],
+                "market_cap":       token_data.get("market_cap"),
+                "liquidity_usd":    token_data.get("liquidity_usd"),
+                "token_age_days":   token_data.get("age_days"),
+                "volume_spike_pct": token_data.get("volume_spike_pct"),
+            })
+            send_telegram_button(
+                "\U0001f6a8 <b>BUY SIGNAL: " + token_data["symbol"] + " @ $"
+                + "{:.8f}".format(token_data["price"]) + "</b>\n"
+                + "Following: " + alias + "\n"
+                + "Catalyst (" + str(catalyst_data["score"]) + "/10): "
+                + catalyst_data["catalyst"] + "\n"
+                + "Mcap: $" + "{:,.0f}".format(token_data.get("market_cap") or 0)
+                + " | Liq: $" + "{:,.0f}".format(token_data.get("liquidity_usd") or 0) + "\n"
+                + "\u23f1 Expires in " + str(BUY_ALERT_EXPIRY_MINUTES) + " min",
+                "EXECUTE",
+                f"buy_show:{alert_id}",
             )
-            if result:
-                msg = ("\U0001f6a8 <b>FOMO Entry (Solana): " + token_data["symbol"] + "</b>\n"
-                       + "Following: " + alias + "\n"
-                       + "Price: $" + "{:.8f}".format(token_data["price"]) + "\n"
-                       + "Market cap: $" + "{:,.0f}".format(token_data.get("market_cap") or 0) + "\n"
-                       + "Catalyst (" + str(catalyst_data["score"]) + "/10): "
-                       + catalyst_data["catalyst"] + "\n"
-                       + "Stop: -15% | Auto-exit: 24h")
-                send_telegram(msg)
 
     return jsonify({"ok": True})
 
@@ -864,37 +994,32 @@ def alchemy_webhook():
                 )
                 continue
 
-            # Execute the buy
-            result = execute_fomo_buy(
-                token_ticker=token_data["symbol"],
-                token_name=token_data["name"],
-                entry_price=token_data["price"],
-                wallet_alias=alias,
-                wallet_address=wallet_addr,
-                contract_address=contract,
-                catalyst=catalyst_data["catalyst"],
-                catalyst_score=catalyst_data["score"],
-                market_cap=token_data.get("market_cap"),
-                liquidity_usd=token_data.get("liquidity_usd"),
-                token_age_days=token_data.get("age_days"),
-                volume_spike_pct=token_data.get("volume_spike_pct"),
+            # Don't auto-buy -- store the signal and let the human tap EXECUTE.
+            stats    = wallet_info.get("stats", {})
+            win_rate = stats.get("win_rate_30d", "N/A")
+            alert_id = create_pending_buy_alert({
+                "token_ticker":     token_data["symbol"],
+                "token_name":       token_data["name"],
+                "entry_price":      token_data["price"],
+                "wallet_alias":     alias,
+                "wallet_address":   wallet_addr,
+                "contract_address": contract,
+                "catalyst":         catalyst_data["catalyst"],
+                "catalyst_score":   catalyst_data["score"],
+                "market_cap":       token_data.get("market_cap"),
+                "liquidity_usd":    token_data.get("liquidity_usd"),
+                "token_age_days":   token_data.get("age_days"),
+                "volume_spike_pct": token_data.get("volume_spike_pct"),
+            })
+            send_telegram_button(
+                f"🚨 <b>BUY SIGNAL: {token_data['symbol']} @ ${token_data['price']:.8f}</b>\n"
+                f"Following: {alias} (30d win rate: {win_rate}%)\n"
+                f"Catalyst ({catalyst_data['score']}/10): {catalyst_data['catalyst']}\n"
+                f"Mcap: ${token_data['market_cap']:,.0f} | Liq: ${token_data['liquidity_usd']:,.0f}\n"
+                f"⏱ Expires in {BUY_ALERT_EXPIRY_MINUTES} min",
+                "EXECUTE",
+                f"buy_show:{alert_id}",
             )
-
-            if result:
-                stats    = wallet_info.get("stats", {})
-                win_rate = stats.get("win_rate_30d", "N/A")
-                cat_str  = catalyst_data["catalyst"]
-                score    = catalyst_data["score"]
-                send_telegram(
-                    f"🚨 <b>FOMO Entry: {token_data['symbol']}</b>\n"
-                    f"Following: {alias} (30d win rate: {win_rate}%)\n"
-                    f"Price: ${token_data['price']:.8f}\n"
-                    f"Market cap: ${token_data['market_cap']:,.0f}\n"
-                    f"Liquidity: ${token_data['liquidity_usd']:,.0f}\n"
-                    f"Catalyst ({score}/10): {cat_str}\n"
-                    f"Stop: -15% | Target: +30%\n"
-                    f"Auto-exit in 24h if {alias} hasn't sold"
-                )
 
     return jsonify({"ok": True})
 
