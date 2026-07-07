@@ -568,6 +568,17 @@ def test_telegram_button():
     return jsonify({"ok": True, "message": "Test button sent"})
 
 
+@app.route("/test/buy-alert", methods=["GET"])
+def test_buy_alert():
+    """Visual test only -- shows what a real buy alert would look like, with fake data."""
+    send_telegram_button(
+        "\U0001f6a8 TEST BUY: TESTCOIN @ $0.00043",
+        "EXECUTE",
+        "test_buy_show_amounts",
+    )
+    return jsonify({"ok": True, "message": "Test buy alert sent"})
+
+
 @app.route("/webhook/telegram", methods=["POST"])
 def telegram_webhook():
     """Receives button taps from Telegram. Plumbing-test version just confirms receipt."""
@@ -590,15 +601,52 @@ def telegram_webhook():
             json={"callback_query_id": callback_id, "text": "Received!"},
             timeout=10,
         )
-        requests.post(
-            f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/editMessageText",
-            json={
-                "chat_id": chat_id,
-                "message_id": message_id,
-                "text": f"\u2705 Button tap received: {data}",
-            },
-            timeout=10,
-        )
+
+        if data == "test_buy_show_amounts":
+            suggested = "200"
+            def label(amt):
+                return f"\u2b50 ${amt}" if amt == suggested else f"${amt}"
+            requests.post(
+                f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/editMessageText",
+                json={
+                    "chat_id": chat_id,
+                    "message_id": message_id,
+                    "text": "\U0001f6a8 TEST BUY: TESTCOIN @ $0.00043\nHow much to invest?",
+                    "reply_markup": {
+                        "inline_keyboard": [
+                            [{"text": label("50"),  "callback_data": "test_buy_amt_50"},
+                             {"text": label("100"), "callback_data": "test_buy_amt_100"}],
+                            [{"text": label("200"), "callback_data": "test_buy_amt_200"},
+                             {"text": label("500"), "callback_data": "test_buy_amt_500"}],
+                        ]
+                    },
+                },
+                timeout=10,
+            )
+
+        elif data.startswith("test_buy_amt_"):
+            amount = data.replace("test_buy_amt_", "")
+            requests.post(
+                f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/editMessageText",
+                json={
+                    "chat_id": chat_id,
+                    "message_id": message_id,
+                    "text": (f"\u2705 TEST: Would execute ${amount} buy of TESTCOIN @ $0.00043\n"
+                             f"(This was a test -- no trade occurred.)"),
+                },
+                timeout=10,
+            )
+
+        else:
+            requests.post(
+                f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/editMessageText",
+                json={
+                    "chat_id": chat_id,
+                    "message_id": message_id,
+                    "text": f"\u2705 Button tap received: {data}",
+                },
+                timeout=10,
+            )
     except Exception as e:
         log.warning(f"Telegram callback handling failed: {e}")
 
