@@ -1,5 +1,5 @@
 {
-  "cash": 688.1839,
+  "cash": 584.9539,
   "holdings": [
     {
       "coin_ticker": "ZRO",
@@ -32,6 +32,22 @@
       "entry_target": 0.515,
       "expected_days": 7,
       "partial_taken": false
+    },
+    {
+      "coin_ticker": "LDO",
+      "coin_id": "ldo",
+      "units": 362.4079280292382,
+      "entry_price": 0.28456,
+      "entry_date": "2026-07-07T09:21:17.347251+00:00",
+      "entry_signal": "BUY",
+      "entry_confidence": 52,
+      "allocated_usd": 103.23,
+      "fee_paid": 0.1032,
+      "exit_target": 0.335,
+      "stop_loss": 0.241,
+      "entry_target": 0.274,
+      "expected_days": 8,
+      "partial_taken": false
     }
   ],
   "realized_pnl": 32.0739,
@@ -39,7 +55,7 @@
   "total_trades": 2,
   "winning_trades": 2,
   "losing_trades": 0,
-  "total_fees": 0.8762,
+  "total_fees": 0.9794,
   "trade_history": [
     {
       "trade_num": 1,
