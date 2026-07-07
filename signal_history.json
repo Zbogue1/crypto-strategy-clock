@@ -125,5 +125,27 @@
       "ZRO"
     ],
     "alert": "Low data quality on most swing candidates \u2014 position size conservatively and honor stop-losses strictly."
+  },
+  {
+    "ts": "2026-07-07T18:10:26.917053+00:00",
+    "coin": "ZRO",
+    "price": 0.970055,
+    "signal": "BUY",
+    "confidence": 42,
+    "score": 0.35,
+    "fg": 27,
+    "btc_price": 63984,
+    "btc_dominance": 0.0,
+    "candidates": [
+      "LAB",
+      "MON",
+      "VVV",
+      "GWEI",
+      "LDO",
+      "GRASS",
+      "SUN",
+      "ZRO"
+    ],
+    "alert": "Low data quality across all swing candidates \u2014 most lack RSI, MACD, volume, and chart analysis. Trade with reduced position size."
   }
 ]
