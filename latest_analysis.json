@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-07-07T04:04:54.347178+00:00",
-  "selected_coin": "ZRO",
-  "selected_coin_name": "LayerZero",
-  "selected_coin_price": 1.005,
+  "timestamp": "2026-07-07T08:00:44.701708+00:00",
+  "selected_coin": "GRASS",
+  "selected_coin_name": "Grass",
+  "selected_coin_price": 0.537725,
   "confidence": 52,
-  "layman_headline": "LayerZero flashes a classic bottom reversal signal in a fearful but improving market.",
-  "layman_explanation": "The crypto market is in 'fear' mode, meaning most people are scared and selling. That often creates buying opportunities for patient traders. LayerZero (ZRO), a cross-chain messaging protocol, has been beaten down 86% from its all-time high but just printed a textbook reversal candle pattern called a Morning Star. Its RSI is near oversold territory at 31, suggesting the selling may be exhausted. The broader market is showing signs of stabilization with Bitcoin recovering above $63K.",
-  "layman_action": "Consider a small position in ZRO around $0.94 with a strict stop-loss at $0.86. This is a higher-risk trade in a fearful market \u2014 only risk what you can afford to lose. Take profits around $1.12.",
-  "expert_reasoning": "ZRO presents the strongest technical setup among the candidates despite the challenging macro backdrop. The Morning Star pattern at $0.925 after a -17.4% five-day decline suggests a reversal in progress. RSI at 30.83 is the lowest on the board, approaching classical oversold territory. The risk/reward to nearest support/resistance levels is 2.93x, which exceeds the 2.0x threshold for ideal setups. The current price at $1.005 has already bounced 8% from the pattern formation level, so I'm targeting a pullback entry near $0.94 to improve the R/R. The bearish structure (below all MAs, downtrend) is a concern, which is why confidence remains moderate. Fear & Greed improving from 21 to 27 provides a tailwind, and BTC holding $63K gives alts a stable base.",
+  "layman_headline": "A cautious buy in a fearful market: Grass shows the best risk/reward setup among today's candidates.",
+  "layman_explanation": "The crypto market is in a 'Fear' zone, which historically can be a good time to buy if you pick carefully. Grass (GRASS) is a DePIN token that's been climbing steadily with solid chart structure \u2014 it's above its key moving averages with strong support nearby and much more room to run to resistance. While it's already moved 16% this week, the risk/reward ratio on its chart is excellent at over 6:1, meaning the potential upside is six times the distance to support.",
+  "layman_action": "Consider a small position in GRASS near $0.515 with a strict stop-loss at $0.485. This is a moderate-confidence trade in a fearful market \u2014 size accordingly and don't risk more than you can afford to lose.",
+  "expert_reasoning": "GRASS presents the most attractive setup among the swing candidates for several reasons. First, the chart analysis shows a slightly bullish bias (+0.40) with price above two moving averages and strong 5-day momentum of +11.4%. The risk/reward to nearest levels is exceptional at 6.24x, with support at $0.50 just 2.7% below current price and resistance at $0.60 offering 16.8% upside. RSI at 61.8 is elevated but not yet in dangerous overbought territory (below 70). The DePIN narrative is gaining traction per Blockworks coverage, providing a fundamental tailwind. The main concern is the 16.3% 7-day move which suggests some extension, hence the recommendation to enter on a pullback toward $0.515 rather than chasing at current levels. Fear & Greed at 27 but improving from 21 weekly average suggests the market may be bottoming.",
   "risk_factors": [
-    "Price is below all major moving averages \u2014 bearish structure could reassert and negate the Morning Star reversal",
-    "BTC dominance at 55.8% indicates capital rotation away from alts, which could suppress ZRO's upside",
-    "Already +23% in 7 days \u2014 the bounce may be a dead cat rally within a larger downtrend rather than a true reversal"
+    "BTC dominance at 55.8% continues to suppress altcoin performance \u2014 if BTC dominance rises further, GRASS could sell off regardless of its own chart strength",
+    "Already up 16.3% in 7 days \u2014 a pullback to support at $0.50 or below is possible before any continuation higher",
+    "Limited chart and fundamental data available (no MACD, no SMA200, no funding rate) reduces conviction in the technical setup"
   ],
   "watch_list": [
-    "ZRO price action around the $0.90 support level \u2014 a break below invalidates the setup",
-    "Bitcoin's ability to hold above $62K and whether Fear & Greed continues improving toward 30+",
-    "Volume on ZRO \u2014 need to see volume confirmation of the Morning Star pattern to validate the reversal"
+    "BTC price action around $63,000-$64,000 resistance \u2014 a rejection here could drag alts down",
+    "BONK treasury exploit developments \u2014 if the $20M drain materializes it could spread fear to other small-cap tokens",
+    "Fear & Greed Index trajectory \u2014 if it continues improving from 21 toward 30+, it supports risk-on positioning in alts"
   ],
-  "market_context": "The crypto market is in 'Fear' (27/100) but improving from last week's 21 average. BTC is up 6% on the week and holding $63K, providing a stabilizing backdrop for selective alt entries, though high BTC dominance at 55.8% remains a headwind for altcoins.",
-  "context_banner": "Fear is fading and BTC is stabilizing \u2014 oversold alts with reversal signals offer the best asymmetric setups in this transitional market.",
-  "btc_price": 63128,
+  "market_context": "The market is in a 'Fear' state at 27/100, but improving from 21 last week, suggesting a potential sentiment bottom. BTC is up ~6% on the week holding near $63K, while ETH gained 11% \u2014 early signs of a recovery, though high BTC dominance at 55.8% means capital hasn't fully rotated into alts yet.",
+  "context_banner": "Fear is improving and BTC is consolidating near $63K \u2014 selective alt entries with tight stops offer asymmetric upside in this environment.",
+  "btc_price": 63040,
   "fear_greed": {
     "current": 27,
     "label": "Fear",
@@ -31,32 +31,32 @@
   "btc_dominance": 55.8,
   "key_signals": [
     {
-      "source": "RSI",
-      "signal_type": "technical",
-      "description": "ZRO RSI at 30.83 is the lowest among all candidates and approaching oversold territory, suggesting selling pressure may be exhausted."
-    },
-    {
-      "source": "CoinTelegraph",
-      "signal_type": "news",
-      "description": "Bitcoin recovering from Strategy's $216M BTC sale and reclaiming $64K shows market resilience, providing a stable base for alt trades."
-    },
-    {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Fear & Greed improving from weekly average of 21 to current 27 \u2014 fear is easing, which historically precedes bounces in oversold assets."
+      "description": "Fear & Greed at 27 but trending up from 21 weekly average \u2014 improving sentiment from fearful levels historically precedes bounces, supporting cautious new entries."
     },
     {
-      "source": "volume_breakout",
+      "source": "GRASS_chart",
       "signal_type": "technical",
-      "description": "ZRO's Morning Star candlestick pattern is a classic three-candle bullish reversal formation, the strongest pattern signal among all candidates."
+      "description": "GRASS shows a 6.24x risk/reward ratio with clear support at $0.50 and resistance at $0.60, above two moving averages in an uptrend \u2014 the strongest chart setup among all candidates."
     },
     {
       "source": "Blockworks",
       "signal_type": "news",
-      "description": "ETH derivatives reset narrative and cross-chain infrastructure narratives remain relevant, keeping LayerZero's fundamental thesis intact despite price weakness."
+      "description": "Blockworks highlighted DePIN and crypto gaming leading a surprising rebound, providing narrative tailwind for GRASS as a leading DePIN token."
+    },
+    {
+      "source": "CoinDesk",
+      "signal_type": "news",
+      "description": "BONK faces $20M treasury drain from malicious governance proposal \u2014 critical risk flag that eliminates BONK as a candidate and warns of small-cap governance risks."
+    },
+    {
+      "source": "RSI",
+      "signal_type": "technical",
+      "description": "GRASS RSI at 61.8 is elevated but still below the 70 overbought threshold, suggesting room for further upside before a correction becomes likely."
     }
   ],
   "_mode": "HUNTING",
-  "exit_target": 1.12,
-  "stop_loss": 0.86
+  "exit_target": 0.595,
+  "stop_loss": 0.485
 }
