@@ -19,11 +19,14 @@ from datetime import datetime, timezone, timedelta
 from typing import Optional
 
 import anthropic
+import requests
 
 log = logging.getLogger(__name__)
 
-ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY", "")
-AI_MODEL          = "claude-opus-4-6"
+ANTHROPIC_API_KEY  = os.environ.get("ANTHROPIC_API_KEY", "")
+AI_MODEL           = "claude-opus-4-6"
+TELEGRAM_BOT_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN", "")
+TELEGRAM_CHAT_ID   = os.environ.get("TELEGRAM_CHAT_ID", "")
 
 # ─── CONSTANTS ────────────────────────────────────────────────────────────────
 
@@ -262,6 +265,41 @@ def execute_fomo_sell(
 
 # ─── AUTO EXIT CHECKS ─────────────────────────────────────────────────────────
 
+def _notify_auto_exit(result: dict):
+    """
+    Informational-only Telegram message for auto-exits (stop/target/24h) --
+    the trade has already executed by the time this fires, so there's no
+    button, nothing to tap. Just makes sure you always get a text either way.
+    """
+    if not TELEGRAM_BOT_TOKEN or not TELEGRAM_CHAT_ID:
+        log.info(f"[TELEGRAM] auto-exit notify skipped (no token/chat id): {result}")
+        return
+    reason = result.get("exit_reason", "")
+    labels = {
+        "take_profit":   "\u2705 Target hit",
+        "hard_stop":     "\U0001f534 Stop hit",
+        "time_exit_24h": "\u23f1 24h time exit",
+    }
+    label  = labels.get(reason, "Auto-exit")
+    ticker = result.get("token_ticker", "???")
+    price  = result.get("exit_price", 0)
+    pct    = result.get("profit_pct", 0)
+    profit = result.get("profit", 0)
+    sign   = "+" if profit >= 0 else ""
+    message = (
+        f"{label}: SOLD {ticker} @ ${price:.8f}\n"
+        f"{sign}${profit:,.2f} ({pct:+.1f}%)"
+    )
+    try:
+        requests.post(
+            f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage",
+            json={"chat_id": TELEGRAM_CHAT_ID, "text": message, "parse_mode": "HTML"},
+            timeout=10,
+        )
+    except Exception as e:
+        log.warning(f"FOMO: auto-exit Telegram notify failed: {e}")
+
+
 def check_fomo_auto_exits(price_map: dict = None) -> Optional[dict]:
     """
     Called during every 4-hour cycle and by the webhook server.
@@ -281,19 +319,28 @@ def check_fomo_auto_exits(price_map: dict = None) -> Optional[dict]:
     auto_exit_at = datetime.fromisoformat(holding["auto_exit_at"].replace("Z", "+00:00"))
     if now >= auto_exit_at:
         log.warning(f"FOMO: Auto-exit {ticker} — 24h time limit reached")
-        return execute_fomo_sell(current_price, reason="time_exit_24h")
+        result = execute_fomo_sell(current_price, reason="time_exit_24h")
+        if result:
+            _notify_auto_exit(result)
+        return result
 
     if current_price > 0:
         # Take profit — hit exit_target
         if current_price >= holding["exit_target"]:
             log.warning(f"FOMO: Take-profit {ticker} — target ${holding['exit_target']:.8f} reached")
-            return execute_fomo_sell(current_price, reason="take_profit")
+            result = execute_fomo_sell(current_price, reason="take_profit")
+            if result:
+                _notify_auto_exit(result)
+            return result
 
         # Hard stop — -15%
         pct = (current_price - holding["entry_price"]) / holding["entry_price"] * 100
         if pct <= FOMO_HARD_STOP_PCT * 100:
             log.warning(f"FOMO: Hard stop {ticker} — {pct:.1f}%")
-            return execute_fomo_sell(current_price, reason="hard_stop")
+            result = execute_fomo_sell(current_price, reason="hard_stop")
+            if result:
+                _notify_auto_exit(result)
+            return result
 
     return None
 
