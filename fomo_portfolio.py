@@ -141,6 +141,7 @@ def execute_fomo_buy(
     token_age_days:   float = None,
     holder_count:     int   = None,
     volume_spike_pct: float = None,  # % volume increase in last 10 min
+    amount_usd:       float = None,  # human-selected $ from Telegram button; overrides auto-sizing
 ) -> Optional[dict]:
     """Execute a FOMO copy trade buy. Returns holding dict or None if skipped."""
     state = load_fomo_portfolio()
@@ -149,8 +150,11 @@ def execute_fomo_buy(
         log.warning(f"FOMO: Already holding {state['holding']['token_ticker']} — skip buy")
         return None
 
-    cash  = state["cash"]
-    spend = min(cash * FOMO_MAX_POSITION_PCT, cash * 0.90)
+    cash = state["cash"]
+    if amount_usd is not None:
+        spend = min(amount_usd, cash * 0.95)
+    else:
+        spend = min(cash * FOMO_MAX_POSITION_PCT, cash * 0.90)
     if spend < 5:
         log.warning("FOMO: Insufficient cash for buy")
         return None
