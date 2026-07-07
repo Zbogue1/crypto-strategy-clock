@@ -81,5 +81,27 @@
       "GRASS"
     ],
     "alert": "BONK treasury attack: $20M drain risk after malicious governance proposal \u2014 avoid BONK positions"
+  },
+  {
+    "ts": "2026-07-07T12:10:27.383858+00:00",
+    "coin": "ZRO",
+    "price": 0.996684,
+    "signal": "BUY",
+    "confidence": 42,
+    "score": 0.35,
+    "fg": 27,
+    "btc_price": 63678,
+    "btc_dominance": 0.0,
+    "candidates": [
+      "TAC",
+      "MON",
+      "VVV",
+      "LDO",
+      "GRASS",
+      "JTO",
+      "LIT",
+      "ZRO"
+    ],
+    "alert": "Strategy (formerly MicroStrategy) reported $8.3B Bitcoin Q2 loss and Saylor sold over $200M BTC \u2014 monitor for institutional selling pressure on BTC."
   }
 ]
