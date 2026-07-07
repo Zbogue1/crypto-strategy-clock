@@ -1,58 +1,27 @@
 {
-  "open_trade": {
-    "coin": "LDO",
-    "entry_time": "2026-07-07T09:21:17.347881+00:00",
-    "key_signals": [
-      {
-        "source": "Chart Pattern Analysis",
-        "signal_type": "technical",
-        "description": "LDO printed a Morning Star + Bullish Marubozu combination, classic bottom reversal signal with chart bias score of +1.0 \u2014 the strongest bullish chart among all candidates."
-      },
-      {
-        "source": "RSI",
-        "signal_type": "technical",
-        "description": "LDO RSI at 46.62 is neutral with ample upside room before overbought territory, unlike extended candidates (MON +33%, PYTH +22%) that are likely overbought."
-      },
-      {
-        "source": "Fear_Greed",
-        "signal_type": "sentiment",
-        "description": "Fear & Greed at 27 (Fear) but trending up from week average of 21 \u2014 improving sentiment in early stages supports mean reversion trades on quality assets."
-      },
-      {
-        "source": "CoinDesk",
-        "signal_type": "news",
-        "description": "BONK faces $20M treasury drain from malicious governance proposal \u2014 eliminated BONK as a candidate and highlights governance risk across DeFi."
-      },
-      {
-        "source": "DeFiLlama",
-        "signal_type": "onchain",
-        "description": "Ethereum TVL stable at ~$40B providing fundamental support for Lido as the dominant ETH liquid staking protocol."
-      }
-    ],
-    "confidence": 52
-  },
+  "open_trade": null,
   "signal_stats": {
     "Fear_Greed__sentiment": {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
       "wins": 2,
-      "losses": 0,
-      "total": 2,
-      "win_rate": 1.0,
-      "total_pct": 25.66,
-      "avg_return": 12.83,
-      "last_seen": "2026-07-06T21:13:07.906134+00:00"
+      "losses": 1,
+      "total": 3,
+      "win_rate": 0.667,
+      "total_pct": 5.34,
+      "avg_return": 1.78,
+      "last_seen": "2026-07-07T21:21:19.201261+00:00"
     },
     "CoinDesk__news": {
       "source": "CoinDesk",
       "signal_type": "news",
       "wins": 1,
-      "losses": 0,
-      "total": 1,
-      "win_rate": 1.0,
-      "total_pct": 11.82,
-      "avg_return": 11.82,
-      "last_seen": "2026-07-06T04:09:50.313779+00:00"
+      "losses": 1,
+      "total": 2,
+      "win_rate": 0.5,
+      "total_pct": -8.5,
+      "avg_return": -4.25,
+      "last_seen": "2026-07-07T21:21:19.201266+00:00"
     },
     "CoinTelegraph__onchain": {
       "source": "CoinTelegraph",
@@ -91,12 +60,12 @@
       "source": "RSI",
       "signal_type": "technical",
       "wins": 1,
-      "losses": 0,
-      "total": 1,
-      "win_rate": 1.0,
-      "total_pct": 13.84,
-      "avg_return": 13.84,
-      "last_seen": "2026-07-06T21:13:07.906120+00:00"
+      "losses": 1,
+      "total": 2,
+      "win_rate": 0.5,
+      "total_pct": -6.48,
+      "avg_return": -3.24,
+      "last_seen": "2026-07-07T21:21:19.201255+00:00"
     },
     "CoinDesk__technical": {
       "source": "CoinDesk",
@@ -130,8 +99,30 @@
       "total_pct": 13.84,
       "avg_return": 13.84,
       "last_seen": "2026-07-06T21:13:07.906141+00:00"
+    },
+    "Chart Pattern Analysis__technical": {
+      "source": "Chart Pattern Analysis",
+      "signal_type": "technical",
+      "wins": 0,
+      "losses": 1,
+      "total": 1,
+      "win_rate": 0.0,
+      "total_pct": -20.32,
+      "avg_return": -20.32,
+      "last_seen": "2026-07-07T21:21:19.201233+00:00"
+    },
+    "DeFiLlama__onchain": {
+      "source": "DeFiLlama",
+      "signal_type": "onchain",
+      "wins": 0,
+      "losses": 1,
+      "total": 1,
+      "win_rate": 0.0,
+      "total_pct": -20.32,
+      "avg_return": -20.32,
+      "last_seen": "2026-07-07T21:21:19.201271+00:00"
     }
   },
-  "trade_count": 2,
-  "last_updated": "2026-07-07T09:21:17.347890+00:00"
+  "trade_count": 3,
+  "last_updated": "2026-07-07T21:21:19.201330+00:00"
 }
