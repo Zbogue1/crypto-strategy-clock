@@ -103,5 +103,27 @@
       "ZRO"
     ],
     "alert": "Strategy (formerly MicroStrategy) reported $8.3B Bitcoin Q2 loss and Saylor sold over $200M BTC \u2014 monitor for institutional selling pressure on BTC."
+  },
+  {
+    "ts": "2026-07-07T13:10:26.674437+00:00",
+    "coin": "ZRO",
+    "price": 0.988317,
+    "signal": "BUY",
+    "confidence": 42,
+    "score": 0.35,
+    "fg": 27,
+    "btc_price": 63308,
+    "btc_dominance": 0.0,
+    "candidates": [
+      "TAC",
+      "MON",
+      "VVV",
+      "LAB",
+      "GRASS",
+      "LIT",
+      "LDO",
+      "ZRO"
+    ],
+    "alert": "Low data quality on most swing candidates \u2014 position size conservatively and honor stop-losses strictly."
   }
 ]
