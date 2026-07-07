@@ -243,6 +243,16 @@ def create_pending_buy_alert(details: dict) -> str:
     return alert_id
 
 
+def create_pending_sell_alert(details: dict) -> str:
+    """Store a live sell signal (tracked wallet exited) awaiting a human tap."""
+    data = _prune_pending_alerts(load_pending_alerts())
+    alert_id = uuid.uuid4().hex[:8]
+    details["created_at"] = datetime.now(timezone.utc).isoformat()
+    data[alert_id] = details
+    save_pending_alerts(data)
+    return alert_id
+
+
 def get_pending_alert(alert_id: str) -> Optional[dict]:
     """Return the alert if it exists and hasn't expired, else None."""
     data = load_pending_alerts()
@@ -746,6 +756,55 @@ def telegram_webhook():
                 else:
                     edit("\u26a0\ufe0f Buy did not execute (already holding a position, or insufficient cash).")
 
+        # ── Real sell flow: EXECUTE tapped -> re-check price, execute the sell,
+        #    reveal $ profit as the actual confirm ─────────────────────────────
+        elif data.startswith("sell_exec:"):
+            alert_id = data.split(":", 1)[1]
+            alert    = get_pending_alert(alert_id)
+            if not alert:
+                edit("\u23f1 Signal expired -- no longer valid.")
+            else:
+                portfolio = load_fomo_portfolio()
+                holding   = portfolio.get("holding")
+                if not holding or (holding.get("contract_address") or "") != alert.get("contract_address"):
+                    consume_pending_alert(alert_id)
+                    edit("\u26a0\ufe0f Position already closed (an auto-exit likely already fired) -- nothing to execute.")
+                else:
+                    token_data      = validate_token(alert["contract_address"])
+                    current_price   = token_data.get("price") or alert["price_at_signal"]
+                    price_at_signal = alert.get("price_at_signal") or current_price
+                    drift_pct = ((current_price - price_at_signal) / price_at_signal * 100) if price_at_signal else 0
+
+                    entered_at   = datetime.fromisoformat(holding["entered_at"].replace("Z", "+00:00"))
+                    held_hrs     = (datetime.now(timezone.utc) - entered_at).total_seconds() / 3600
+                    created_at   = datetime.fromisoformat(alert["created_at"].replace("Z", "+00:00"))
+                    exit_lag_min = (datetime.now(timezone.utc) - created_at).total_seconds() / 60
+
+                    result = execute_fomo_sell(
+                        current_price,
+                        reason="tracker_sell_" + alert["wallet_alias"],
+                        trader_held_hours=held_hrs,
+                        exit_lag_minutes=exit_lag_min,
+                    )
+                    consume_pending_alert(alert_id)
+
+                    if result:
+                        pct     = result["profit_pct"]
+                        profit  = result["profit"]
+                        outcome = "WIN" if pct > 0 else "LOSS"
+                        update_wallet_stats(alert["wallet_alias"], outcome, pct)
+                        icon = "\u2705" if pct > 0 else "\U0001f534"
+                        drift_note = ""
+                        if abs(drift_pct) >= 10:
+                            drift_note = f"\n(Price moved {drift_pct:+.1f}% since the signal was sent)"
+                        edit(
+                            f"{icon} <b>SOLD {result['token_ticker']}</b>\n"
+                            f"{'+' if profit >= 0 else ''}${profit:,.2f} ({pct:+.1f}%)\n"
+                            f"Following {alert['wallet_alias']}'s exit{drift_note}"
+                        )
+                    else:
+                        edit("\u26a0\ufe0f Sell did not execute (no matching position found).")
+
         # ── Visual-test flows (unchanged) ──────────────────────────────────────
         elif data == "test_buy_show_amounts":
             suggested = "200"
@@ -808,26 +867,21 @@ def helius_webhook():
         if parsed["type"] == "SELL" and holding:
             held_contract = (holding.get("contract_address") or "").lower()
             if held_contract == parsed["contract"].lower():
-                log.info("FOMO Solana: %s sold %s - following", alias, holding["token_ticker"])
+                log.info("FOMO Solana: %s sold %s - awaiting human confirm", alias, holding["token_ticker"])
                 token_data = validate_token(parsed["contract"])
-                exit_price = token_data.get("price") or holding["entry_price"]
-                entered_at = datetime.fromisoformat(holding["entered_at"].replace("Z", "+00:00"))
-                held_hrs   = (datetime.now(timezone.utc) - entered_at).total_seconds() / 3600
-                result     = execute_fomo_sell(
-                    exit_price,
-                    reason="tracker_sell_" + alias,
-                    trader_held_hours=held_hrs,
-                    exit_lag_minutes=0,
+                price_at_signal = token_data.get("price") or holding["entry_price"]
+                alert_id = create_pending_sell_alert({
+                    "token_ticker":     holding["token_ticker"],
+                    "wallet_alias":     alias,
+                    "contract_address": holding.get("contract_address"),
+                    "price_at_signal":  price_at_signal,
+                })
+                send_telegram_button(
+                    "\U0001f514 <b>" + alias + " sold " + holding["token_ticker"] + "</b>\n"
+                    + "Tap to confirm your exit.",
+                    "EXECUTE",
+                    f"sell_exec:{alert_id}",
                 )
-                if result:
-                    pct     = result["profit_pct"]
-                    outcome = "WIN" if pct > 0 else "LOSS"
-                    update_wallet_stats(alias, outcome, pct)
-                    icon = "\U0001f7e2" if pct > 0 else "\U0001f534"
-                    msg  = (icon + " <b>FOMO Exit (Solana): " + holding["token_ticker"] + "</b>\n"
-                            + "Following " + alias + " sell\n"
-                            + "Return: <b>" + "{:+.1f}".format(pct) + "%</b>")
-                    send_telegram(msg)
 
         elif parsed["type"] == "BUY" and not holding:
             contract   = parsed["contract"]
@@ -923,37 +977,24 @@ def alchemy_webhook():
         # ── SELL: tracked wallet selling a token we're holding ────────────────
         if parsed["type"] == "SELL" and holding:
             if (holding.get("contract_address") or "").lower() == parsed["contract"].lower():
-                log.info(f"FOMO: {alias} sold {holding['token_ticker']} — following exit")
+                log.info(f"FOMO: {alias} sold {holding['token_ticker']} — awaiting human confirm")
 
-                # Get current price
+                # Get a reference price now; re-checked again at the moment of execution
                 token_data = validate_token(parsed["contract"])
-                exit_price = token_data.get("price") or holding["entry_price"]
+                price_at_signal = token_data.get("price") or holding["entry_price"]
 
-                # Calculate how long trader held vs us
-                entered_at       = datetime.fromisoformat(holding["entered_at"].replace("Z", "+00:00"))
-                trader_held_hrs  = (datetime.now(timezone.utc) - entered_at).total_seconds() / 3600
-                exit_lag_min     = 0   # we're following within seconds
-
-                result = execute_fomo_sell(
-                    exit_price,
-                    reason=f"tracker_sell_{alias}",
-                    trader_held_hours=trader_held_hrs,
-                    exit_lag_minutes=exit_lag_min,
+                alert_id = create_pending_sell_alert({
+                    "token_ticker":     holding["token_ticker"],
+                    "wallet_alias":     alias,
+                    "contract_address": holding.get("contract_address"),
+                    "price_at_signal":  price_at_signal,
+                })
+                send_telegram_button(
+                    f"🔔 <b>{alias} sold {holding['token_ticker']}</b>\n"
+                    f"Tap to confirm your exit.",
+                    "EXECUTE",
+                    f"sell_exec:{alert_id}",
                 )
-
-                if result:
-                    pct   = result["profit_pct"]
-                    emoji = "🟢" if pct > 0 else "🔴"
-                    outcome = "WIN" if pct > 0 else "LOSS"
-                    update_wallet_stats(alias, outcome, pct)
-                    send_telegram(
-                        f"{emoji} <b>FOMO Auto-Exit: {holding['token_ticker']}</b>\n"
-                        f"Following {alias}'s sell\n"
-                        f"Entry: ${holding['entry_price']:.6f} → Exit: ${exit_price:.6f}\n"
-                        f"Return: <b>{pct:+.1f}%</b>\n"
-                        f"Held: {trader_held_hrs:.1f}h\n"
-                        f"Post-mortem will run next 4h cycle"
-                    )
 
         # ── BUY: tracked wallet buying something new ──────────────────────────
         elif parsed["type"] == "BUY" and not holding:
