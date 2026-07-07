@@ -1,32 +1,32 @@
 {
   "open_trade": {
-    "coin": "ZRO",
-    "entry_time": "2026-07-07T04:10:17.547712+00:00",
+    "coin": "GRASS",
+    "entry_time": "2026-07-07T08:10:17.406112+00:00",
     "key_signals": [
-      {
-        "source": "RSI",
-        "signal_type": "technical",
-        "description": "ZRO RSI at 30.83 is the lowest among all candidates and approaching oversold territory, suggesting selling pressure may be exhausted."
-      },
-      {
-        "source": "CoinTelegraph",
-        "signal_type": "news",
-        "description": "Bitcoin recovering from Strategy's $216M BTC sale and reclaiming $64K shows market resilience, providing a stable base for alt trades."
-      },
       {
         "source": "Fear_Greed",
         "signal_type": "sentiment",
-        "description": "Fear & Greed improving from weekly average of 21 to current 27 \u2014 fear is easing, which historically precedes bounces in oversold assets."
+        "description": "Fear & Greed at 27 but trending up from 21 weekly average \u2014 improving sentiment from fearful levels historically precedes bounces, supporting cautious new entries."
       },
       {
-        "source": "volume_breakout",
+        "source": "GRASS_chart",
         "signal_type": "technical",
-        "description": "ZRO's Morning Star candlestick pattern is a classic three-candle bullish reversal formation, the strongest pattern signal among all candidates."
+        "description": "GRASS shows a 6.24x risk/reward ratio with clear support at $0.50 and resistance at $0.60, above two moving averages in an uptrend \u2014 the strongest chart setup among all candidates."
       },
       {
         "source": "Blockworks",
         "signal_type": "news",
-        "description": "ETH derivatives reset narrative and cross-chain infrastructure narratives remain relevant, keeping LayerZero's fundamental thesis intact despite price weakness."
+        "description": "Blockworks highlighted DePIN and crypto gaming leading a surprising rebound, providing narrative tailwind for GRASS as a leading DePIN token."
+      },
+      {
+        "source": "CoinDesk",
+        "signal_type": "news",
+        "description": "BONK faces $20M treasury drain from malicious governance proposal \u2014 critical risk flag that eliminates BONK as a candidate and warns of small-cap governance risks."
+      },
+      {
+        "source": "RSI",
+        "signal_type": "technical",
+        "description": "GRASS RSI at 61.8 is elevated but still below the 70 overbought threshold, suggesting room for further upside before a correction becomes likely."
       }
     ],
     "confidence": 52
@@ -133,5 +133,5 @@
     }
   },
   "trade_count": 2,
-  "last_updated": "2026-07-07T04:10:17.547716+00:00"
+  "last_updated": "2026-07-07T08:10:17.406123+00:00"
 }
