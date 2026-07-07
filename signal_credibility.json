@@ -1,32 +1,32 @@
 {
   "open_trade": {
-    "coin": "GRASS",
-    "entry_time": "2026-07-07T08:10:17.406112+00:00",
+    "coin": "LDO",
+    "entry_time": "2026-07-07T09:21:17.347881+00:00",
     "key_signals": [
       {
-        "source": "Fear_Greed",
-        "signal_type": "sentiment",
-        "description": "Fear & Greed at 27 but trending up from 21 weekly average \u2014 improving sentiment from fearful levels historically precedes bounces, supporting cautious new entries."
-      },
-      {
-        "source": "GRASS_chart",
+        "source": "Chart Pattern Analysis",
         "signal_type": "technical",
-        "description": "GRASS shows a 6.24x risk/reward ratio with clear support at $0.50 and resistance at $0.60, above two moving averages in an uptrend \u2014 the strongest chart setup among all candidates."
-      },
-      {
-        "source": "Blockworks",
-        "signal_type": "news",
-        "description": "Blockworks highlighted DePIN and crypto gaming leading a surprising rebound, providing narrative tailwind for GRASS as a leading DePIN token."
-      },
-      {
-        "source": "CoinDesk",
-        "signal_type": "news",
-        "description": "BONK faces $20M treasury drain from malicious governance proposal \u2014 critical risk flag that eliminates BONK as a candidate and warns of small-cap governance risks."
+        "description": "LDO printed a Morning Star + Bullish Marubozu combination, classic bottom reversal signal with chart bias score of +1.0 \u2014 the strongest bullish chart among all candidates."
       },
       {
         "source": "RSI",
         "signal_type": "technical",
-        "description": "GRASS RSI at 61.8 is elevated but still below the 70 overbought threshold, suggesting room for further upside before a correction becomes likely."
+        "description": "LDO RSI at 46.62 is neutral with ample upside room before overbought territory, unlike extended candidates (MON +33%, PYTH +22%) that are likely overbought."
+      },
+      {
+        "source": "Fear_Greed",
+        "signal_type": "sentiment",
+        "description": "Fear & Greed at 27 (Fear) but trending up from week average of 21 \u2014 improving sentiment in early stages supports mean reversion trades on quality assets."
+      },
+      {
+        "source": "CoinDesk",
+        "signal_type": "news",
+        "description": "BONK faces $20M treasury drain from malicious governance proposal \u2014 eliminated BONK as a candidate and highlights governance risk across DeFi."
+      },
+      {
+        "source": "DeFiLlama",
+        "signal_type": "onchain",
+        "description": "Ethereum TVL stable at ~$40B providing fundamental support for Lido as the dominant ETH liquid staking protocol."
       }
     ],
     "confidence": 52
@@ -133,5 +133,5 @@
     }
   },
   "trade_count": 2,
-  "last_updated": "2026-07-07T08:10:17.406123+00:00"
+  "last_updated": "2026-07-07T09:21:17.347890+00:00"
 }
