@@ -147,5 +147,27 @@
       "ZRO"
     ],
     "alert": "Low data quality across all swing candidates \u2014 most lack RSI, MACD, volume, and chart analysis. Trade with reduced position size."
+  },
+  {
+    "ts": "2026-07-07T21:10:26.347948+00:00",
+    "coin": "BTC",
+    "price": 63734,
+    "signal": "HOLD",
+    "confidence": 25,
+    "score": -0.3,
+    "fg": 27,
+    "btc_price": 63734,
+    "btc_dominance": 56.1,
+    "candidates": [
+      "LAB",
+      "VVV",
+      "MON",
+      "GRASS",
+      "GWEI",
+      "LDO",
+      "FET",
+      "ZRO"
+    ],
+    "alert": "No tradeable setups among current candidates. All positions are either crashing, overextended, or have terrible risk/reward. Wait for better entries."
   }
 ]
