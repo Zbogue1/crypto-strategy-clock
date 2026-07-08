@@ -124,5 +124,27 @@
       "ZRO"
     ],
     "alert": "Geopolitical risk elevated \u2014 U.S.-Iran escalation could trigger sudden broad selloffs. Use strict stop-losses."
+  },
+  {
+    "ts": "2026-07-08T08:09:10.939616+00:00",
+    "coin": "ZRO",
+    "price": 0.954024,
+    "signal": "BUY",
+    "confidence": 58,
+    "score": 0.45,
+    "fg": 20,
+    "btc_price": 62785,
+    "btc_dominance": 56.1,
+    "candidates": [
+      "LAB",
+      "MON",
+      "VVV",
+      "JTO",
+      "XPL",
+      "LIT",
+      "LDO",
+      "ZRO"
+    ],
+    "alert": "U.S.-Iran escalation could trigger sudden risk-off moves \u2014 keep stop-losses tight and position sizes small."
   }
 ]
