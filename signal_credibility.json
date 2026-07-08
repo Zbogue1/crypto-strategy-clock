@@ -1,32 +1,32 @@
 {
   "open_trade": {
-    "coin": "ETHFI",
-    "entry_time": "2026-07-08T20:13:41.367421+00:00",
+    "coin": "ZRO",
+    "entry_time": "2026-07-08T21:14:05.388565+00:00",
     "key_signals": [
       {
         "source": "Fear_Greed",
         "signal_type": "sentiment",
-        "description": "Fear & Greed Index at 20 (Extreme Fear) with improving trend \u2014 our most reliable signal with 75% win rate and +5.9% avg return historically."
+        "description": "Extreme Fear at 20/100 with improving trend (up from 22.3 weekly avg) \u2014 this signal has a 75% win rate and +5.9% avg return in our credibility data, making it the strongest conviction driver."
       },
       {
         "source": "RSI",
         "signal_type": "technical",
-        "description": "ETHFI RSI at 54 is neutral and not overbought, leaving significant room to run unlike other candidates at 62-66 RSI \u2014 our second most reliable signal (67% win rate)."
-      },
-      {
-        "source": "Blockworks",
-        "signal_type": "news",
-        "description": "ETH derivatives reset reported, suggesting fresh positioning cycles that could benefit ETH ecosystem tokens like ETHFI."
+        "description": "ZRO RSI at 30.83 is near oversold territory \u2014 RSI signals have a 67% win rate and +3.9% avg return per our credibility data, supporting the mean-reversion thesis."
       },
       {
         "source": "CoinTelegraph",
         "signal_type": "news",
-        "description": "Bitcoin pullback to $62K attributed to Fed-wary futures traders cutting risk \u2014 likely a temporary deleveraging event rather than structural breakdown."
+        "description": "Bitcoin pulling back to $62K as Fed-wary futures traders cut risk \u2014 this suggests the dip is driven by macro caution rather than structural breakdown, supporting a bounce setup."
       },
       {
         "source": "volume_breakout",
         "signal_type": "technical",
-        "description": "ETHFI showing bullish engulfing and marubozu candlestick patterns with chart bias score of +1.30 \u2014 the strongest bullish chart setup among all candidates."
+        "description": "ZRO's Morning Star candlestick pattern at $0.90 support with a 2.93x risk/reward ratio is the cleanest reversal signal among all candidates."
+      },
+      {
+        "source": "Blockworks",
+        "signal_type": "news",
+        "description": "ETH derivatives reset narrative suggests the broader altcoin market is resetting leverage \u2014 a healthier base for bounces once fear subsides."
       }
     ],
     "confidence": 62
@@ -166,5 +166,5 @@
     }
   },
   "trade_count": 4,
-  "last_updated": "2026-07-08T20:13:41.367428+00:00"
+  "last_updated": "2026-07-08T21:14:05.388569+00:00"
 }
