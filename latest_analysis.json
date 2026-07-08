@@ -1,31 +1,31 @@
 {
-  "timestamp": "2026-07-07T21:10:26.347948+00:00",
-  "selected_coin": "BTC",
-  "selected_coin_name": "Bitcoin",
-  "selected_coin_price": 63734,
-  "confidence": 25,
-  "layman_headline": "Market is recovering from deep fear but these alt candidates are too risky to touch right now.",
-  "layman_explanation": "The crypto market has been in a fear zone for the past week (averaging 21 out of 100) but is slowly improving to 27 today. Bitcoin bounced 8.5% this week, and some altcoins rallied even harder \u2014 ZEC up 23%, ADA up 22%, ETH up 13%. However, the swing trade candidates available are either crashing tokens with no clear bottom (LAB down 62% today, GRASS down 20%), already-extended runners (LDO up 31%, MON up 34%), or coins with bearish chart structures and terrible risk/reward ratios (FET). None of these present a clean swing entry with defined risk.",
-  "layman_action": "Stay in cash and wait. The market is recovering but hasn't confirmed a trend reversal yet. A Fed document due Wednesday could be the real catalyst. Watch for a pullback in the stronger performers (ETH, SOL, ZEC) to create better entry points.",
-  "expert_reasoning": "The Fear & Greed Index at 27 (improving from weekly avg of 21) suggests we're exiting extreme fear, which historically precedes a relief rally \u2014 but we're not yet in a confirmed recovery. BTC dominance at 56.1% is high, meaning capital is flowing to BTC over alts, making alt swing trades riskier. Among candidates: LAB's -62% daily move screams distressed asset with unknown catalysts \u2014 catching knives is not swing trading. LDO/MON are up 30%+ in 7 days with no pullback entry. FET's chart analysis shows bearish structure below all MAs with resistance at $0.1872 and support at $0.10 \u2014 a risk/reward of 0.10x is essentially untradeable. The responsible call is to wait for either a pullback in strong performers or a confirmed technical setup with proper risk/reward.",
+  "timestamp": "2026-07-08T01:10:26.529175+00:00",
+  "selected_coin": "ZRO",
+  "selected_coin_name": "LayerZero",
+  "selected_coin_price": 0.958536,
+  "confidence": 42,
+  "layman_headline": "A beaten-down crypto infrastructure token is flashing early reversal signs in a fearful market.",
+  "layman_explanation": "The crypto market is in 'extreme fear' mode \u2014 investors are scared and selling. LayerZero (ZRO), a cross-chain messaging protocol, has dropped 87% from its all-time high but just formed a classic bottom reversal pattern on its chart. Its RSI is near oversold territory at 31, and it has a favorable risk/reward ratio of nearly 3:1. Meanwhile, major positive news \u2014 the SEC proposing friendlier crypto rules and Vanguard hiring a digital assets leader \u2014 could help sentiment recover.",
+  "layman_action": "If you're comfortable with high risk, consider a small position in ZRO near $0.925 with a strict stop-loss at $0.875. This is a speculative bounce trade, not a long-term conviction hold. Keep position size small given the uncertain environment.",
+  "expert_reasoning": "ZRO presents the best risk-adjusted setup among the candidates. The Morning Star candlestick pattern at $0.925 support is a textbook bullish reversal signal. RSI at 30.83 is approaching oversold, suggesting selling pressure is exhausted. The 2.93x risk/reward ratio (support at $0.90, resistance at $1.00) is above the 2.0 threshold for quality setups. While the 7-day +16.7% move raises extension concerns, the -17.4% 5-day momentum and -5.8% 24h decline suggest a healthy pullback within that move. The macro backdrop \u2014 extreme fear at 20/100 with an improving trend (up from yesterday's 27 label correction: was 27 yesterday, improving) \u2014 aligns with my validated rule that extreme fear can precede further short-term drops but also creates bounce opportunities. I'm assigning low confidence because data quality is poor (no funding rate, no MACD, incomplete MAs) and BTC dominance at 56.1% is unfavorable for alts.",
   "risk_factors": [
-    "Fed document on Wednesday could trigger volatility in either direction, invalidating any position taken now",
-    "Fear & Greed still in fear territory \u2014 market hasn't confirmed a bottom and could retest lows",
-    "High BTC dominance (56.1%) means alt positions face additional headwind from capital rotation to BTC"
+    "Extreme Fear at 20/100 could deepen further \u2014 my validated rule suggests BTC (and alts) may continue dropping short-term before bouncing",
+    "BTC dominance at 56.1% means capital is rotating away from altcoins, making alt bounce trades riskier",
+    "Missing critical data (funding rate, MACD, volume profile) means this trade is based on incomplete analysis"
   ],
   "watch_list": [
-    "Fed document release on Wednesday \u2014 could be the decisive catalyst for BTC's next move",
-    "ETH and SOL for pullback entries if they retrace 5-8% from current levels while maintaining weekly uptrend",
-    "ZEC continuation \u2014 up 23% weekly with strong volume ($540M); a pullback to $0.95-1.00 area could offer a clean swing entry"
+    "Fear & Greed Index movement \u2014 if it drops below 15, expect more downside and consider tightening the stop",
+    "SEC crypto rule proposal timing \u2014 any official announcement could be a major sentiment catalyst",
+    "ZRO holding $0.90 support \u2014 a break below invalidates the Morning Star pattern and the trade thesis"
   ],
-  "market_context": "Crypto is in early recovery mode after a week of extreme fear (avg 21). BTC bounced 8.5% but remains below key psychological levels. A Fed document due Wednesday is the next major catalyst that will determine if this bounce has legs.",
-  "context_banner": "Market recovering from extreme fear with BTC up 8.5% weekly, but available swing candidates lack clean setups \u2014 patience is the best trade right now.",
-  "btc_price": 63734,
+  "market_context": "The crypto market is in extreme fear (20/100) but the trend is improving from a weekly average of 22.3. BTC is at $63,462 with a solid 8.5% weekly gain, suggesting the broader market may be stabilizing despite fearful sentiment \u2014 a classic divergence that sometimes precedes recovery.",
+  "context_banner": "Extreme fear creates opportunity but demands discipline \u2014 ZRO's textbook reversal pattern offers a defined-risk bounce trade in a market searching for direction.",
+  "btc_price": 63462,
   "fear_greed": {
-    "current": 27,
-    "label": "Fear",
-    "yesterday": 24,
-    "week_avg": 21.0,
+    "current": 20,
+    "label": "Extreme Fear",
+    "yesterday": 27,
+    "week_avg": 22.3,
     "trend": "improving"
   },
   "btc_dominance": 56.1,
@@ -33,30 +33,30 @@
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Fear & Greed at 27, improving from weekly avg of 21 \u2014 exiting extreme fear but not yet confirming recovery, aligning with validated rule that extreme fear can precede further drops before a real bounce."
+      "description": "Extreme Fear reading of 20/100 with improving trend (up from weekly avg of 22.3) \u2014 my most reliable signal historically, suggesting high-risk but potential contrarian opportunity."
     },
     {
-      "source": "CryptoSlate",
-      "signal_type": "macro",
-      "description": "Bitcoin rally depends on a Fed document coming Wednesday \u2014 this creates binary event risk that makes entering new positions ahead of it inadvisable."
-    },
-    {
-      "source": "technical",
+      "source": "RSI",
       "signal_type": "technical",
-      "description": "FET chart shows bearish structure below all moving averages with a dismal 0.10x risk/reward ratio \u2014 the only candidate with chart data and it's clearly untradeable."
+      "description": "ZRO RSI at 30.83 is approaching oversold territory, indicating selling pressure may be near exhaustion and a bounce is plausible."
+    },
+    {
+      "source": "CoinDesk",
+      "signal_type": "news",
+      "description": "SEC to propose crypto-friendly rules this month and Vanguard hiring a digital assets leader \u2014 both are institutional adoption signals that could catalyze sentiment recovery."
     },
     {
       "source": "volume_breakout",
       "signal_type": "technical",
-      "description": "ZEC surged 23% on $540M volume and is the strongest performer in top 20 \u2014 worth monitoring for a pullback entry but not chasing at current levels."
+      "description": "ZRO's Morning Star candlestick pattern with 2.93x risk/reward at $0.90 support provides a textbook reversal entry with clearly defined risk."
     },
     {
-      "source": "Messari",
-      "signal_type": "macro",
-      "description": "BTC dominance at 56.1% signals capital rotation away from alts, adding structural headwind to any altcoin swing trade attempt."
+      "source": "CoinTelegraph",
+      "signal_type": "news",
+      "description": "ETH climbing toward $2K with Robinhood L2 boost and ETH derivatives reset suggests improving conditions for the broader ecosystem including cross-chain protocols like ZRO."
     }
   ],
   "_mode": "HUNTING",
-  "exit_target": null,
-  "stop_loss": null
+  "exit_target": 1.05,
+  "stop_loss": 0.875
 }
