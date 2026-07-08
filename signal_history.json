@@ -283,5 +283,28 @@
       "ZRO"
     ],
     "alert": "Geopolitical risk elevated: Iran conflict escalation + oil surge creating macro headwinds for all risk assets. Size positions conservatively."
+  },
+  {
+    "ts": "2026-07-08T15:09:10.910040+00:00",
+    "coin": "ZRO",
+    "price": 0.987133,
+    "signal": "BUY",
+    "confidence": 62,
+    "score": 1.45,
+    "fg": 20,
+    "btc_price": 61739,
+    "btc_dominance": 55.9,
+    "candidates": [
+      "LAB",
+      "GRASS",
+      "MON",
+      "JTO",
+      "VVV",
+      "FET",
+      "XPL",
+      "ZRO",
+      "LDO"
+    ],
+    "alert": "Extreme Fear at 20 \u2014 historically a strong contrarian buy zone, but geopolitical oil shock could push sentiment lower before recovery."
   }
 ]
