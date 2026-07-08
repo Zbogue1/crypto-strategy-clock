@@ -352,5 +352,27 @@
       "LDO"
     ],
     "alert": "Geopolitical risk elevated: Iran ceasefire collapse and Hormuz blockade threats driving oil to $75 \u2014 risk-off cascades possible"
+  },
+  {
+    "ts": "2026-07-08T18:09:11.085819+00:00",
+    "coin": "ZRO",
+    "price": 0.949464,
+    "signal": "BUY",
+    "confidence": 62,
+    "score": 1.3,
+    "fg": 20,
+    "btc_price": 62137,
+    "btc_dominance": 56.0,
+    "candidates": [
+      "LAB",
+      "MON",
+      "GRASS",
+      "JTO",
+      "VVV",
+      "XPL",
+      "FET",
+      "ZRO"
+    ],
+    "alert": "Bitcoin geopolitical risk elevated \u2014 Iran/Hormuz oil threats could trigger broader risk-off moves. Keep position sizes small."
   }
 ]
