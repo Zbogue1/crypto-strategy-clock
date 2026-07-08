@@ -1,35 +1,35 @@
 {
   "open_trade": {
-    "coin": "ZRO",
-    "entry_time": "2026-07-08T05:12:54.348492+00:00",
+    "coin": "LDO",
+    "entry_time": "2026-07-08T06:12:58.812371+00:00",
     "key_signals": [
       {
         "source": "Fear_Greed",
         "signal_type": "sentiment",
-        "description": "Extreme Fear at 20/100 with improving trend (up from 22.3 weekly avg) \u2014 our most reliable signal with 67% historical win rate, supporting contrarian entry."
+        "description": "Extreme Fear at 20/100 with improving trend (up from 22.3 weekly avg) \u2014 our most reliable signal with 67% win rate and +1.8% avg return, supporting contrarian entries."
+      },
+      {
+        "source": "CoinDesk",
+        "signal_type": "news",
+        "description": "U.S. SEC to propose crypto rule to ease startups and fundraising as soon as this month \u2014 a major positive catalyst for DeFi governance tokens like LDO."
       },
       {
         "source": "RSI",
         "signal_type": "technical",
-        "description": "ZRO RSI at 30.83, approaching oversold territory, indicating selling pressure is exhausting and a bounce is increasingly likely."
-      },
-      {
-        "source": "CoinDesk",
-        "signal_type": "news",
-        "description": "U.S. SEC preparing crypto rule proposal this month to ease startups and fundraising \u2014 potential positive catalyst for infrastructure tokens like LayerZero."
+        "description": "LDO RSI at 47 is neutral with ample room to rally, unlike JTO (66) and LAB (65) which face overbought correction risk."
       },
       {
         "source": "CoinDesk",
         "signal_type": "macro",
-        "description": "Bitcoin under pressure from U.S.-Iran escalation lifting oil prices \u2014 geopolitical risk remains a headwind that could trigger another leg down."
+        "description": "U.S.-Iran escalation lifting oil prices puts risk assets under pressure \u2014 a key risk to monitor that could invalidate the bullish setup."
       },
       {
-        "source": "CoinTelegraph",
-        "signal_type": "news",
-        "description": "Vanguard seeking digital assets chief signals continued institutional legitimization of crypto, supportive of longer-term recovery narrative."
+        "source": "Blockworks",
+        "signal_type": "technical",
+        "description": "ETH derivatives reset signals fresh positioning opportunity \u2014 ETH's 10% weekly rally directly drives Lido staking demand and revenue."
       }
     ],
-    "confidence": 58
+    "confidence": 62
   },
   "signal_stats": {
     "Fear_Greed__sentiment": {
@@ -155,5 +155,5 @@
     }
   },
   "trade_count": 3,
-  "last_updated": "2026-07-08T05:12:54.348502+00:00"
+  "last_updated": "2026-07-08T06:12:58.812378+00:00"
 }
