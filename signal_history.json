@@ -441,5 +441,28 @@
       "ZRO"
     ],
     "alert": "Extreme Fear at 20 \u2014 historically a strong contrarian buy zone, but position sizing should remain conservative until fear begins clearly lifting above 30."
+  },
+  {
+    "ts": "2026-07-08T22:09:10.801825+00:00",
+    "coin": "ETHFI",
+    "price": 0.387337,
+    "signal": "BUY",
+    "confidence": 62,
+    "score": 1.45,
+    "fg": 20,
+    "btc_price": 62236,
+    "btc_dominance": 56.0,
+    "candidates": [
+      "LAB",
+      "MON",
+      "VVV",
+      "JTO",
+      "GRASS",
+      "XPL",
+      "FET",
+      "ETHFI",
+      "ZRO"
+    ],
+    "alert": "BTC testing $60K support \u2014 if this level breaks, all positions should be reviewed immediately."
   }
 ]
