@@ -38,158 +38,25 @@
     "alert": null
   },
   {
-    "ts": "2026-07-07T08:00:44.701708+00:00",
-    "coin": "GRASS",
-    "price": 0.537725,
-    "signal": "BUY",
-    "confidence": 52,
-    "score": 0.35,
-    "fg": 27,
-    "btc_price": 63040,
-    "btc_dominance": 55.8,
-    "candidates": [
-      "MON",
-      "VVV",
-      "BONK",
-      "WLD",
-      "JTO",
-      "LDO",
-      "GRASS",
-      "ZRO"
-    ],
-    "alert": "BONK faces a $20M treasury drain from a governance attack \u2014 avoid BONK positions until the situation is resolved."
-  },
-  {
-    "ts": "2026-07-07T09:10:26.521891+00:00",
-    "coin": "LDO",
-    "price": 0.28456,
-    "signal": "BUY",
-    "confidence": 52,
-    "score": 0.35,
-    "fg": 27,
-    "btc_price": 63117,
-    "btc_dominance": 55.8,
-    "candidates": [
-      "MON",
-      "VVV",
-      "BONK",
-      "JTO",
-      "WLD",
-      "PYTH",
-      "LDO",
-      "ZRO",
-      "GRASS"
-    ],
-    "alert": "BONK treasury attack: $20M drain risk after malicious governance proposal \u2014 avoid BONK positions"
-  },
-  {
-    "ts": "2026-07-07T12:10:27.383858+00:00",
+    "ts": "2026-07-08T04:03:46.081700+00:00",
     "coin": "ZRO",
-    "price": 0.996684,
+    "price": 0.967887,
     "signal": "BUY",
-    "confidence": 42,
-    "score": 0.35,
-    "fg": 27,
-    "btc_price": 63678,
-    "btc_dominance": 0.0,
-    "candidates": [
-      "TAC",
-      "MON",
-      "VVV",
-      "LDO",
-      "GRASS",
-      "JTO",
-      "LIT",
-      "ZRO"
-    ],
-    "alert": "Strategy (formerly MicroStrategy) reported $8.3B Bitcoin Q2 loss and Saylor sold over $200M BTC \u2014 monitor for institutional selling pressure on BTC."
-  },
-  {
-    "ts": "2026-07-07T13:10:26.674437+00:00",
-    "coin": "ZRO",
-    "price": 0.988317,
-    "signal": "BUY",
-    "confidence": 42,
-    "score": 0.35,
-    "fg": 27,
-    "btc_price": 63308,
-    "btc_dominance": 0.0,
-    "candidates": [
-      "TAC",
-      "MON",
-      "VVV",
-      "LAB",
-      "GRASS",
-      "LIT",
-      "LDO",
-      "ZRO"
-    ],
-    "alert": "Low data quality on most swing candidates \u2014 position size conservatively and honor stop-losses strictly."
-  },
-  {
-    "ts": "2026-07-07T18:10:26.917053+00:00",
-    "coin": "ZRO",
-    "price": 0.970055,
-    "signal": "BUY",
-    "confidence": 42,
-    "score": 0.35,
-    "fg": 27,
-    "btc_price": 63984,
-    "btc_dominance": 0.0,
-    "candidates": [
-      "LAB",
-      "MON",
-      "VVV",
-      "GWEI",
-      "LDO",
-      "GRASS",
-      "SUN",
-      "ZRO"
-    ],
-    "alert": "Low data quality across all swing candidates \u2014 most lack RSI, MACD, volume, and chart analysis. Trade with reduced position size."
-  },
-  {
-    "ts": "2026-07-07T21:10:26.347948+00:00",
-    "coin": "BTC",
-    "price": 63734,
-    "signal": "HOLD",
-    "confidence": 25,
-    "score": -0.3,
-    "fg": 27,
-    "btc_price": 63734,
-    "btc_dominance": 56.1,
-    "candidates": [
-      "LAB",
-      "VVV",
-      "MON",
-      "GRASS",
-      "GWEI",
-      "LDO",
-      "FET",
-      "ZRO"
-    ],
-    "alert": "No tradeable setups among current candidates. All positions are either crashing, overextended, or have terrible risk/reward. Wait for better entries."
-  },
-  {
-    "ts": "2026-07-08T01:10:26.529175+00:00",
-    "coin": "ZRO",
-    "price": 0.958536,
-    "signal": "BUY",
-    "confidence": 42,
-    "score": 0.35,
+    "confidence": 62,
+    "score": 1.8,
     "fg": 20,
-    "btc_price": 63462,
-    "btc_dominance": 56.1,
+    "btc_price": 62715,
+    "btc_dominance": 56.0,
     "candidates": [
       "LAB",
-      "MON",
-      "VVV",
       "GRASS",
+      "VVV",
+      "MON",
       "LDO",
       "XPL",
-      "KITE",
+      "JTO",
       "ZRO"
     ],
-    "alert": "Extreme Fear at 20/100 \u2014 historically this has preceded further short-term BTC declines before recovery. Keep position sizes small and stops tight."
+    "alert": null
   }
 ]
