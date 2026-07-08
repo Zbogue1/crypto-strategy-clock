@@ -1,47 +1,47 @@
 {
   "open_trade": {
     "coin": "ZRO",
-    "entry_time": "2026-07-08T16:13:03.303993+00:00",
+    "entry_time": "2026-07-08T17:13:06.442858+00:00",
     "key_signals": [
       {
         "source": "Fear_Greed",
         "signal_type": "sentiment",
-        "description": "Extreme Fear at 20/100 with improving trend (up from 22.3 weekly avg) \u2014 historically reliable contrarian buy signal with 67% win rate in our paper trades."
+        "description": "Extreme Fear at 20/100 with an improving trend (up from 22.3 weekly avg) \u2014 historically reliable contrarian buy signal with 67% win rate in our trades."
       },
       {
         "source": "RSI",
         "signal_type": "technical",
-        "description": "ZRO RSI at 31 is approaching oversold territory, significantly lower than all other candidates, signaling exhausted selling pressure."
+        "description": "ZRO RSI at 30.83 is nearest to oversold among all candidates, indicating heavy selling pressure is potentially exhausted."
       },
       {
         "source": "CoinTelegraph",
         "signal_type": "news",
-        "description": "Report of 'textbook Bitcoin bottom' underway supports the thesis that this fear-driven dip is a buying opportunity rather than the start of a deeper selloff."
+        "description": "Analysis calling a 'textbook Bitcoin bottom' provides macro bullish backdrop, while Iran ceasefire collapse adds near-term downside risk."
       },
       {
-        "source": "CoinTelegraph",
-        "signal_type": "macro",
-        "description": "Iran ceasefire collapse and Hormuz blockade threats drove BTC down to $61.7K \u2014 geopolitical risk is the primary headwind and must be monitored."
+        "source": "CryptoSlate",
+        "signal_type": "news",
+        "description": "Bitcoin's CLARITY legislation catalyst has a 4-week window \u2014 regulatory clarity could lift the entire market including alts like ZRO."
       },
       {
         "source": "volume_breakout",
         "signal_type": "technical",
-        "description": "ZRO's Morning Star candlestick reversal pattern with 2.93x risk/reward ratio provides a high-quality entry signal with clearly defined stop-loss levels."
+        "description": "ZRO Morning Star candlestick reversal pattern at $0.90 support with 2.93x risk/reward ratio \u2014 classic bottom signal if confirmed with volume follow-through."
       }
     ],
-    "confidence": 62
+    "confidence": 58
   },
   "signal_stats": {
     "Fear_Greed__sentiment": {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "wins": 2,
+      "wins": 3,
       "losses": 1,
-      "total": 3,
-      "win_rate": 0.667,
-      "total_pct": 5.34,
-      "avg_return": 1.78,
-      "last_seen": "2026-07-07T21:21:19.201261+00:00"
+      "total": 4,
+      "win_rate": 0.75,
+      "total_pct": 23.48,
+      "avg_return": 5.87,
+      "last_seen": "2026-07-08T17:13:06.441963+00:00"
     },
     "CoinDesk__news": {
       "source": "CoinDesk",
@@ -68,13 +68,13 @@
     "volume_breakout__technical": {
       "source": "volume_breakout",
       "signal_type": "technical",
-      "wins": 1,
+      "wins": 2,
       "losses": 0,
-      "total": 1,
+      "total": 2,
       "win_rate": 1.0,
-      "total_pct": 11.82,
-      "avg_return": 11.82,
-      "last_seen": "2026-07-06T04:09:50.313794+00:00"
+      "total_pct": 29.96,
+      "avg_return": 14.98,
+      "last_seen": "2026-07-08T17:13:06.441997+00:00"
     },
     "Blockworks__macro": {
       "source": "Blockworks",
@@ -90,13 +90,13 @@
     "RSI__technical": {
       "source": "RSI",
       "signal_type": "technical",
-      "wins": 1,
+      "wins": 2,
       "losses": 1,
-      "total": 2,
-      "win_rate": 0.5,
-      "total_pct": -6.48,
-      "avg_return": -3.24,
-      "last_seen": "2026-07-07T21:21:19.201255+00:00"
+      "total": 3,
+      "win_rate": 0.667,
+      "total_pct": 11.66,
+      "avg_return": 3.8867,
+      "last_seen": "2026-07-08T17:13:06.441980+00:00"
     },
     "CoinDesk__technical": {
       "source": "CoinDesk",
@@ -123,13 +123,13 @@
     "CoinTelegraph__news": {
       "source": "CoinTelegraph",
       "signal_type": "news",
-      "wins": 1,
+      "wins": 2,
       "losses": 0,
-      "total": 1,
+      "total": 2,
       "win_rate": 1.0,
-      "total_pct": 13.84,
-      "avg_return": 13.84,
-      "last_seen": "2026-07-06T21:13:07.906141+00:00"
+      "total_pct": 31.98,
+      "avg_return": 15.99,
+      "last_seen": "2026-07-08T17:13:06.441986+00:00"
     },
     "Chart Pattern Analysis__technical": {
       "source": "Chart Pattern Analysis",
@@ -152,8 +152,19 @@
       "total_pct": -20.32,
       "avg_return": -20.32,
       "last_seen": "2026-07-07T21:21:19.201271+00:00"
+    },
+    "CoinTelegraph__macro": {
+      "source": "CoinTelegraph",
+      "signal_type": "macro",
+      "wins": 1,
+      "losses": 0,
+      "total": 1,
+      "win_rate": 1.0,
+      "total_pct": 18.14,
+      "avg_return": 18.14,
+      "last_seen": "2026-07-08T17:13:06.441992+00:00"
     }
   },
-  "trade_count": 3,
-  "last_updated": "2026-07-08T16:13:03.304013+00:00"
+  "trade_count": 4,
+  "last_updated": "2026-07-08T17:13:06.442864+00:00"
 }
