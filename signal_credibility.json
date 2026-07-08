@@ -1,35 +1,35 @@
 {
   "open_trade": {
     "coin": "ZRO",
-    "entry_time": "2026-07-08T01:19:47.694285+00:00",
+    "entry_time": "2026-07-08T04:09:02.036720+00:00",
     "key_signals": [
       {
         "source": "Fear_Greed",
         "signal_type": "sentiment",
-        "description": "Extreme Fear reading of 20/100 with improving trend (up from weekly avg of 22.3) \u2014 my most reliable signal historically, suggesting high-risk but potential contrarian opportunity."
+        "description": "Extreme Fear at 20/100 with improving trend \u2014 historically a 67% win-rate contrarian buy signal per our paper trade data."
       },
       {
         "source": "RSI",
         "signal_type": "technical",
-        "description": "ZRO RSI at 30.83 is approaching oversold territory, indicating selling pressure may be near exhaustion and a bounce is plausible."
+        "description": "ZRO RSI at 31 is approaching oversold territory, suggesting sellers are exhausting and a bounce is likely."
       },
       {
         "source": "CoinDesk",
         "signal_type": "news",
-        "description": "SEC to propose crypto-friendly rules this month and Vanguard hiring a digital assets leader \u2014 both are institutional adoption signals that could catalyze sentiment recovery."
-      },
-      {
-        "source": "volume_breakout",
-        "signal_type": "technical",
-        "description": "ZRO's Morning Star candlestick pattern with 2.93x risk/reward at $0.90 support provides a textbook reversal entry with clearly defined risk."
+        "description": "SEC expected to propose crypto-friendly rules this month to ease startups and fundraising \u2014 a macro tailwind for infrastructure protocols like LayerZero."
       },
       {
         "source": "CoinTelegraph",
         "signal_type": "news",
-        "description": "ETH climbing toward $2K with Robinhood L2 boost and ETH derivatives reset suggests improving conditions for the broader ecosystem including cross-chain protocols like ZRO."
+        "description": "Vanguard seeking a digital assets chief signals growing institutional acceptance of crypto, adding long-term bullish sentiment."
+      },
+      {
+        "source": "volume_breakout",
+        "signal_type": "technical",
+        "description": "ZRO's Morning Star candlestick reversal pattern at $0.90 support with 2.93x risk/reward ratio is the highest quality setup among all candidates."
       }
     ],
-    "confidence": 42
+    "confidence": 62
   },
   "signal_stats": {
     "Fear_Greed__sentiment": {
@@ -155,5 +155,5 @@
     }
   },
   "trade_count": 3,
-  "last_updated": "2026-07-08T01:19:47.694294+00:00"
+  "last_updated": "2026-07-08T04:09:02.036735+00:00"
 }
