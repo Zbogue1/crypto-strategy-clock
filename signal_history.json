@@ -306,5 +306,28 @@
       "LDO"
     ],
     "alert": "Extreme Fear at 20 \u2014 historically a strong contrarian buy zone, but geopolitical oil shock could push sentiment lower before recovery."
+  },
+  {
+    "ts": "2026-07-08T16:09:10.749428+00:00",
+    "coin": "ZRO",
+    "price": 0.969784,
+    "signal": "BUY",
+    "confidence": 62,
+    "score": 1.45,
+    "fg": 20,
+    "btc_price": 61727,
+    "btc_dominance": 55.9,
+    "candidates": [
+      "LAB",
+      "GRASS",
+      "MON",
+      "JTO",
+      "VVV",
+      "FET",
+      "XPL",
+      "ZRO",
+      "LDO"
+    ],
+    "alert": "Geopolitical risk elevated: Iran ceasefire collapse threatens oil markets and risk assets. Size positions conservatively."
   }
 ]
