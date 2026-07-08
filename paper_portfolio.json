@@ -1,5 +1,5 @@
 {
-  "cash": 738.3826,
+  "cash": 799.3582,
   "holdings": [
     {
       "coin_ticker": "ZRO",
@@ -16,30 +16,14 @@
       "entry_target": 0.93,
       "expected_days": 7,
       "partial_taken": false
-    },
-    {
-      "coin_ticker": "LDO",
-      "coin_id": "ldo",
-      "units": 181.2039640146191,
-      "entry_price": 0.28456,
-      "entry_date": "2026-07-07T09:21:17.347251+00:00",
-      "entry_signal": "BUY",
-      "entry_confidence": 52,
-      "allocated_usd": 51.615,
-      "fee_paid": 0.0516,
-      "exit_target": 0.335,
-      "stop_loss": 0.28456,
-      "entry_target": 0.274,
-      "expected_days": 8,
-      "partial_taken": true
     }
   ],
-  "realized_pnl": 12.4376,
+  "realized_pnl": 21.7982,
   "peak_value": 1032.0739,
-  "total_trades": 4,
-  "winning_trades": 3,
+  "total_trades": 5,
+  "winning_trades": 4,
   "losing_trades": 1,
-  "total_fees": 1.133,
+  "total_fees": 1.194,
   "trade_history": [
     {
       "trade_num": 1,
@@ -137,6 +121,32 @@
       "profit_pct": 9.78,
       "days_held": 0.5,
       "exit_target": 0.335,
+      "result": "WIN"
+    },
+    {
+      "trade_num": 5,
+      "coin_ticker": "LDO",
+      "coin_id": "ldo",
+      "entry_price": 0.28456,
+      "entry_date": "2026-07-07T09:21:17.347251+00:00",
+      "entry_signal": "BUY",
+      "entry_confidence": 52,
+      "allocated_usd": 51.615,
+      "exit_price": 0.336839,
+      "exit_date": "2026-07-08T17:13:06.441198+00:00",
+      "exit_signal": "TAKE_PROFIT",
+      "exit_reason": "take_profit",
+      "units": 181.2039640146191,
+      "gross_proceeds": 61.0366,
+      "fees_total": 0.1126,
+      "net_proceeds": 60.9756,
+      "profit_usd": 9.3606,
+      "profit_pct": 18.14,
+      "days_held": 1.33,
+      "exit_target": 0.335,
+      "stop_loss": 0.28456,
+      "hit_target": true,
+      "hit_stop": false,
       "result": "WIN"
     }
   ],
