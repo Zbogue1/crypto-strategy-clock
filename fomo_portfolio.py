@@ -28,6 +28,15 @@ AI_MODEL           = "claude-opus-4-6"
 TELEGRAM_BOT_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN", "")
 TELEGRAM_CHAT_ID   = os.environ.get("TELEGRAM_CHAT_ID", "")
 
+# GitHub state sync -- crypto-strategy-clock (cron) and desirable-insight (webhook)
+# are separate Railway services with separate ephemeral filesystems. This is the
+# only channel they share: fomo_portfolio.json is pulled before every read/mutate
+# and pushed right after every write, so a buy/sell made on either service is
+# durable across redeploys and visible to the other service within seconds.
+GITHUB_TOKEN       = os.environ.get("GITHUB_TOKEN", "").strip()
+GITHUB_REPO        = "Zbogue1/crypto-strategy-clock"
+GITHUB_DATA_BRANCH = "data"
+
 # ─── CONSTANTS ────────────────────────────────────────────────────────────────
 
 FOMO_PORTFOLIO_FILE  = "fomo_portfolio.json"
@@ -95,6 +104,79 @@ def save_fomo_lessons(lessons: dict):
         json.dump(lessons, f, indent=2, default=str)
 
 
+# ─── GITHUB STATE SYNC ────────────────────────────────────────────────────────
+
+def _github_pull_file(filename: str) -> bool:
+    """Pull one file from the data branch, overwriting the local copy if found."""
+    if not GITHUB_TOKEN:
+        return False
+    import base64
+    gh_headers = {
+        "Authorization": f"token {GITHUB_TOKEN}",
+        "Accept": "application/vnd.github.v3+json",
+    }
+    base_url = f"https://api.github.com/repos/{GITHUB_REPO}/contents"
+    try:
+        r = requests.get(f"{base_url}/{filename}?ref={GITHUB_DATA_BRANCH}", headers=gh_headers, timeout=10)
+        if r.status_code == 200:
+            content = base64.b64decode(r.json()["content"]).decode()
+            with open(filename, "w") as f:
+                f.write(content)
+            log.info(f"FOMO GitHub: restored {filename} from data branch")
+            return True
+        elif r.status_code == 404:
+            log.info(f"FOMO GitHub: {filename} not on GitHub yet")
+        else:
+            log.warning(f"FOMO GitHub pull {filename}: {r.status_code}")
+    except Exception as e:
+        log.warning(f"FOMO GitHub pull error ({filename}): {e}")
+    return False
+
+
+def _github_push_file(filename: str):
+    """Push one local file to the data branch."""
+    if not GITHUB_TOKEN or not os.path.exists(filename):
+        return
+    import base64
+    gh_headers = {
+        "Authorization": f"token {GITHUB_TOKEN}",
+        "Accept": "application/vnd.github.v3+json",
+    }
+    base_url = f"https://api.github.com/repos/{GITHUB_REPO}/contents"
+    try:
+        with open(filename) as f:
+            content = f.read()
+        r = requests.get(f"{base_url}/{filename}?ref={GITHUB_DATA_BRANCH}", headers=gh_headers, timeout=10)
+        sha = r.json().get("sha") if r.status_code == 200 else None
+        payload = {
+            "message": f"[fomo-bot] {filename} update",
+            "branch":  GITHUB_DATA_BRANCH,
+            "content": base64.b64encode(content.encode("utf-8")).decode("ascii"),
+        }
+        if sha:
+            payload["sha"] = sha
+        pr = requests.put(f"{base_url}/{filename}", headers=gh_headers, json=payload, timeout=20)
+        if pr.status_code in (200, 201):
+            log.info(f"FOMO GitHub: pushed {filename}")
+        else:
+            log.warning(f"FOMO GitHub push {filename}: {pr.status_code} {pr.text[:120]}")
+    except Exception as e:
+        log.warning(f"FOMO GitHub push error ({filename}): {e}")
+
+
+def sync_fomo_state_from_github():
+    """Pull the latest state before reading/mutating -- this is what lets a buy
+    made via the webhook service become visible to the cron service's auto-exit
+    checks, and what survives a redeploy wiping the local filesystem."""
+    _github_pull_file(FOMO_PORTFOLIO_FILE)
+    _github_pull_file(FOMO_LESSONS_FILE)
+
+
+def sync_fomo_state_to_github():
+    """Push current local state back right after a mutation."""
+    _github_push_file(FOMO_PORTFOLIO_FILE)
+
+
 # ─── PORTFOLIO VALUE ──────────────────────────────────────────────────────────
 
 def get_fomo_value(current_price: float = None) -> dict:
@@ -147,6 +229,7 @@ def execute_fomo_buy(
     amount_usd:       float = None,  # human-selected $ from Telegram button; overrides auto-sizing
 ) -> Optional[dict]:
     """Execute a FOMO copy trade buy. Returns holding dict or None if skipped."""
+    sync_fomo_state_from_github()
     state = load_fomo_portfolio()
 
     if state.get("holding"):
@@ -197,6 +280,7 @@ def execute_fomo_buy(
     state["cash"]    -= spend
     state["holding"] = holding
     save_fomo_portfolio(state)
+    sync_fomo_state_to_github()
 
     log.info(f"FOMO BUY: {token_ticker} @ ${entry_price:.8f} | "
              f"${spend:.2f} | following {wallet_alias} | catalyst: {catalyst or 'none'}")
@@ -210,6 +294,7 @@ def execute_fomo_sell(
     exit_lag_minutes:  float = None,   # how many minutes after trader sold did we sell
 ) -> Optional[dict]:
     """Exit the active FOMO quick trade."""
+    sync_fomo_state_from_github()
     state   = load_fomo_portfolio()
     holding = state.get("holding")
     if not holding:
@@ -256,6 +341,7 @@ def execute_fomo_sell(
 
     state["holding"] = None
     save_fomo_portfolio(state)
+    sync_fomo_state_to_github()
 
     outcome = "WIN" if profit > 0 else "LOSS"
     log.info(f"FOMO SELL: {holding['token_ticker']} @ ${current_price:.8f} | "
@@ -306,6 +392,7 @@ def check_fomo_auto_exits(price_map: dict = None) -> Optional[dict]:
     Checks hard stop, take-profit target, and 24h time limit.
     Returns trade record if exited, None otherwise.
     """
+    sync_fomo_state_from_github()
     state   = load_fomo_portfolio()
     holding = state.get("holding")
     if not holding:
@@ -704,6 +791,7 @@ def get_fomo_graduation_status() -> dict:
 
 def get_fomo_stats() -> dict:
     """Full stats including per-wallet breakdown — used in 4-hour agent output."""
+    sync_fomo_state_from_github()
     state   = load_fomo_portfolio()
     history = state.get("trade_history", [])
     n       = state.get("total_trades", 0)
