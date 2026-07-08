@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-07-08T17:09:11.107686+00:00",
+  "timestamp": "2026-07-08T18:09:11.085819+00:00",
   "selected_coin": "ZRO",
   "selected_coin_name": "LayerZero",
-  "selected_coin_price": 0.967695,
-  "confidence": 58,
-  "layman_headline": "Extreme fear in crypto creates a potential bounce opportunity in LayerZero.",
-  "layman_explanation": "The entire crypto market is in 'Extreme Fear' territory at 20/100, which historically has been a good time to buy. LayerZero (ZRO) is showing a classic reversal pattern on its chart called a 'Morning Star' \u2014 essentially three candles that signal sellers are exhausted and buyers are stepping in. Its RSI near 31 shows it's been beaten down hard, sitting near oversold levels, which often precedes a snap-back rally. Meanwhile, Bitcoin is getting positive press about a potential bottom forming, which could lift the whole market.",
-  "layman_action": "Consider a small position in ZRO near $0.93, with a strict stop-loss at $0.87. If it bounces toward $1.08, take profits. This is a higher-risk contrarian play during extreme fear \u2014 size accordingly.",
-  "expert_reasoning": "ZRO presents the cleanest swing setup among candidates. The RSI at 30.83 is the closest to oversold territory of any viable candidate, and the Morning Star candlestick pattern at the $0.90 support zone is a textbook bullish reversal signal. The risk/reward to nearest support/resistance levels is 2.93x, the best among candidates with confirmed chart patterns. While the 7-day gain of +16.7% raises concerns about extension, the 5-day momentum of -17.4% shows a pullback is already underway, which could provide a better entry near $0.93. The Extreme Fear reading of 20 \u2014 a signal that has proven reliable with a 67% win rate in our paper trades \u2014 adds conviction to this contrarian buy. BTC dominance at 55.9% is a headwind for alts, but the improving fear trend (from 22.3 weekly avg to current 20, with yesterday at 27) suggests sentiment may be bottoming.",
+  "selected_coin_price": 0.949464,
+  "confidence": 62,
+  "layman_headline": "Extreme fear in crypto markets creates a potential bounce opportunity in LayerZero.",
+  "layman_explanation": "The crypto market is in 'extreme fear' territory with a score of 20 out of 100, which historically has been a good time to buy. LayerZero (ZRO) is showing a classic bottoming pattern on its chart called a 'Morning Star' \u2014 basically three candles that signal sellers are exhausted and buyers are stepping in. The coin's RSI is near oversold at 31, meaning it's been beaten down significantly and could be due for a relief rally. Bitcoin itself is actually up 3.3% for the week despite today's dip, suggesting the broader market still has underlying support.",
+  "layman_action": "Consider a small position in ZRO near $0.92-0.95, but set a strict stop-loss at $0.87. This is a high-risk environment so keep position sizes modest \u2014 the market fear could deepen before it improves.",
+  "expert_reasoning": "ZRO presents the cleanest swing setup among the candidates. RSI at 30.83 is approaching oversold territory \u2014 our historical data shows RSI-based entries have a 67% win rate with +3.9% avg return. The Morning Star candlestick pattern at the $0.90 support level is a textbook reversal signal. The risk/reward ratio of 2.93x (support at $0.90, resistance at $1.00) is the best among candidates with clear technical setups. Fear & Greed at 20 with an improving trend (from 22.3 weekly avg, yesterday at 27) aligns with our highest-confidence signal source at 75% win rate. The main concern is that price is below all major moving averages in a downtrend, so this is a counter-trend trade that requires strict risk management. BTC's geopolitical headline risk (Iran/oil) adds uncertainty but the 7-day BTC performance (+3.3%) suggests dip-buying appetite remains.",
   "risk_factors": [
-    "BTC dominance at 55.9% is high \u2014 capital continues flowing to Bitcoin over alts, which could suppress ZRO's recovery",
-    "Iran-related geopolitical risk (oil at $75, Hormuz blockade threats) could trigger a broader risk-off selloff dragging all crypto lower",
-    "ZRO is below all major moving averages with a downtrend structure \u2014 the Morning Star pattern could fail if broader selling resumes"
+    "Bitcoin geopolitical risk from Iran ceasefire collapse and Hormuz blockade threats could trigger another leg down across all crypto",
+    "ZRO is in a structural downtrend below all moving averages \u2014 the Morning Star could fail if selling pressure resumes",
+    "High BTC dominance at 56% means capital is flowing away from alts, making alt-coin recoveries harder to sustain"
   ],
   "watch_list": [
-    "BTC price action around $60,000 support \u2014 a break below invalidates most alt setups",
-    "Fear & Greed Index trajectory \u2014 if it falls below 15 this could be capitulation, if it rises above 25 the bounce thesis strengthens",
-    "ZRO holding $0.90 support \u2014 a daily close below this level invalidates the Morning Star pattern and triggers the stop-loss"
+    "BTC price action around $60,000 support \u2014 a break below could drag all alts down including ZRO",
+    "ZRO holding the $0.90 support level \u2014 a daily close below invalidates the Morning Star pattern",
+    "Fear & Greed index trajectory \u2014 continued improvement toward 30+ would confirm sentiment bottoming"
   ],
-  "market_context": "The crypto market is in Extreme Fear (20/100) with BTC down 3% today to $62K amid Iran geopolitical escalation. However, multiple analysts are flagging a 'textbook Bitcoin bottom' and the CLARITY legislation catalyst has a 4-week window, providing potential upside catalysts.",
-  "context_banner": "Extreme Fear at 20/100 with an improving trend creates contrarian buying conditions \u2014 LayerZero's Morning Star reversal at oversold RSI offers the best risk/reward setup among candidates.",
-  "btc_price": 62056,
+  "market_context": "The crypto market is in extreme fear (20/100) with BTC at $62K after sliding on Iran geopolitical headlines, but the weekly trend is actually positive (+3.3% for BTC, +7% for ETH), suggesting this may be a fear-driven dip within a recovering market rather than the start of a new downleg.",
+  "context_banner": "Extreme fear with improving weekly momentum creates selective buying opportunities in technically oversold alts with clear reversal signals.",
+  "btc_price": 62137,
   "fear_greed": {
     "current": 20,
     "label": "Extreme Fear",
@@ -28,32 +28,32 @@
     "week_avg": 22.3,
     "trend": "improving"
   },
-  "btc_dominance": 55.9,
+  "btc_dominance": 56.0,
   "key_signals": [
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Extreme Fear at 20/100 with an improving trend (up from 22.3 weekly avg) \u2014 historically reliable contrarian buy signal with 67% win rate in our trades."
+      "description": "Extreme Fear at 20/100 with improving trend \u2014 historically our most reliable buy signal with 75% win rate and +5.9% avg return."
     },
     {
       "source": "RSI",
       "signal_type": "technical",
-      "description": "ZRO RSI at 30.83 is nearest to oversold among all candidates, indicating heavy selling pressure is potentially exhausted."
+      "description": "ZRO RSI at 30.83, near oversold threshold of 30, signaling exhausted selling pressure \u2014 our second-most reliable signal at 67% win rate."
     },
     {
       "source": "CoinTelegraph",
       "signal_type": "news",
-      "description": "Analysis calling a 'textbook Bitcoin bottom' provides macro bullish backdrop, while Iran ceasefire collapse adds near-term downside risk."
-    },
-    {
-      "source": "CryptoSlate",
-      "signal_type": "news",
-      "description": "Bitcoin's CLARITY legislation catalyst has a 4-week window \u2014 regulatory clarity could lift the entire market including alts like ZRO."
+      "description": "Bitcoin sliding on Iran ceasefire collapse and Hormuz blockade threats creating fear-driven dip, but weekly BTC trend remains positive at +3.3%."
     },
     {
       "source": "volume_breakout",
       "signal_type": "technical",
-      "description": "ZRO Morning Star candlestick reversal pattern at $0.90 support with 2.93x risk/reward ratio \u2014 classic bottom signal if confirmed with volume follow-through."
+      "description": "Morning Star candlestick reversal pattern on ZRO at $0.90 support provides a defined reversal entry with 2.93x risk/reward ratio."
+    },
+    {
+      "source": "CryptoSlate",
+      "signal_type": "macro",
+      "description": "Bitcoin's CLARITY Act catalyst has a 4-week window \u2014 regulatory clarity could provide a macro tailwind for the entire crypto market."
     }
   ],
   "_mode": "HUNTING",
