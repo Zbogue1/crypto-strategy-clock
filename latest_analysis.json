@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-07-08T08:09:10.939616+00:00",
+  "timestamp": "2026-07-08T09:09:11.041179+00:00",
   "selected_coin": "ZRO",
   "selected_coin_name": "LayerZero",
-  "selected_coin_price": 0.954024,
+  "selected_coin_price": 0.95063,
   "confidence": 58,
-  "layman_headline": "Extreme Fear creates a buying window for oversold LayerZero as crypto markets stabilize.",
-  "layman_explanation": "The crypto market is gripped by Extreme Fear (20/100), which historically tends to be a good time to buy. LayerZero (ZRO) has been beaten down nearly 87% from its all-time high and its RSI is near oversold territory at 31, suggesting sellers may be exhausted. The chart is showing a classic Morning Star reversal pattern \u2014 a signal that buyers are stepping back in. Meanwhile, BTC is up 7% on the week, which often pulls alts higher once fear subsides.",
-  "layman_action": "Consider a small, measured position in ZRO near $0.925, with a strict stop-loss at $0.875. If it bounces to $1.08 (about 15% gain), take profits. Don't risk more than you can afford to lose \u2014 the market is still fearful.",
-  "expert_reasoning": "ZRO presents the cleanest swing setup: RSI at 30.83 is near oversold, a Morning Star reversal pattern has formed, and risk/reward to nearest levels is 2.93x \u2014 the best among all candidates. The -17.4% 5-day momentum pullback within a 7-day +17.5% move suggests a healthy retracement to support near $0.90. Fear & Greed at 20 with an improving trend (up from yesterday's 27 reading and week avg of 22.3) is a reliable bullish contrarian signal per our signal intelligence. The key risk is BTC dominance at 56.1% suppressing altcoin flows, but if BTC holds above $62K, alts should stabilize. Stop at $0.875 limits downside to ~8% while targeting $1.08 for ~15% upside.",
+  "layman_headline": "Extreme Fear creates a cautious buying window in LayerZero after a sharp pullback.",
+  "layman_explanation": "The entire crypto market is in 'Extreme Fear' mode \u2014 Bitcoin dropped on geopolitical news about Iran and the yen strengthening. In this fearful environment, LayerZero (ZRO) has pulled back 17% over 5 days and is showing a classic bottom reversal pattern on its chart called a 'Morning Star.' Its RSI is near oversold territory at 31, meaning sellers may be running out of steam. The risk-reward ratio to the nearest support and resistance levels is nearly 3:1, which is attractive for a swing trade.",
+  "layman_action": "Consider a small position in ZRO near $0.92 with a strict stop-loss at $0.855. This is a higher-risk contrarian play during market fear \u2014 only risk what you can afford to lose.",
+  "expert_reasoning": "ZRO presents the cleanest swing setup among candidates. RSI at 31 is approaching oversold, while a Morning Star pattern \u2014 a high-reliability three-candle reversal \u2014 has formed at the $0.90 support zone. The risk/reward to nearest levels is 2.93x, well above the 2.0x threshold. While the broader trend is still downtrend and price is below major MAs (bearish structure), the combination of extreme market fear (F&G = 20, a historically reliable contrarian signal per our track record) and a textbook reversal candle pattern at support justifies a measured entry. The 5-day momentum of -17.4% creates mean-reversion potential. Stop-loss is set below the $0.90 support at $0.855 to limit downside to ~10%.",
   "risk_factors": [
-    "BTC dominance at 56.1% continues to suppress altcoin capital rotation \u2014 alts could underperform even if BTC holds",
-    "U.S.-Iran escalation lifting oil could trigger broader risk-off selling across crypto",
-    "ZRO is below all major moving averages in a bearish structure \u2014 the Morning Star could be a false signal in a continued downtrend"
+    "BTC remains under macro pressure from Iran ceasefire collapse and yen strength \u2014 further BTC drops would drag ZRO lower",
+    "BTC dominance at 55.9% signals capital flowing away from alts \u2014 ZRO could underperform even if BTC stabilizes",
+    "Price is below all major moving averages in a confirmed downtrend \u2014 the Morning Star could fail if selling volume intensifies"
   ],
   "watch_list": [
-    "Whether ZRO holds $0.90 support \u2014 a breakdown below invalidates the Morning Star reversal",
-    "BTC price action around $62K-$63K \u2014 a breakdown here would drag all alts lower",
-    "SEC crypto rule proposal timing \u2014 if announced this month, could be a major sentiment catalyst"
+    "BTC price action around $60,000 support \u2014 a break below could trigger broader alt liquidations",
+    "ZRO holding the $0.90 support level over the next 48 hours to confirm the Morning Star reversal",
+    "Fear & Greed trend \u2014 currently improving from 22.3 weekly avg to potential recovery above 25"
   ],
-  "market_context": "Crypto markets are in Extreme Fear (20/100) but improving, with BTC up 7% on the week at $62.8K. Geopolitical tension (U.S.-Iran) is creating headwinds, but potential SEC regulatory clarity and strong ETH/SOL weekly gains suggest underlying demand persists.",
-  "context_banner": "Extreme Fear with improving trend creates a classic contrarian buying window \u2014 the best setups emerge when fear peaks and technicals show reversal signals.",
-  "btc_price": 62785,
+  "market_context": "Bitcoin is under pressure at $61,949 amid geopolitical concerns (Iran ceasefire collapse) and yen strength, dragging the market into Extreme Fear at 20/100. However, the Fear & Greed trend is improving from last week's average of 22.3, and ETH's 10% weekly gain suggests some resilience beneath the surface.",
+  "context_banner": "Extreme Fear at 20/100 with an improving trend historically marks favorable contrarian entry points \u2014 ZRO's Morning Star reversal at support offers a disciplined risk/reward setup.",
+  "btc_price": 61949,
   "fear_greed": {
     "current": 20,
     "label": "Extreme Fear",
@@ -28,35 +28,35 @@
     "week_avg": 22.3,
     "trend": "improving"
   },
-  "btc_dominance": 56.1,
+  "btc_dominance": 55.9,
   "key_signals": [
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Extreme Fear at 20/100 with improving trend (up from 27 yesterday) \u2014 historically reliable buy signal per our track record (67% win rate, +1.8% avg return)."
+      "description": "Extreme Fear at 20/100 with an improving trend (up from 22.3 weekly avg) \u2014 our most reliable signal at 67% win rate historically supports contrarian buying."
     },
     {
       "source": "RSI",
       "signal_type": "technical",
-      "description": "ZRO RSI at 30.83 is approaching oversold territory, suggesting sellers are nearly exhausted and a bounce is likely."
+      "description": "ZRO RSI at 31 is approaching oversold territory, suggesting sellers are exhausting and a bounce is increasingly probable."
     },
     {
       "source": "CoinDesk",
       "signal_type": "news",
-      "description": "U.S. SEC reportedly preparing crypto-friendly rule proposal this month \u2014 a positive regulatory catalyst that could lift sentiment across altcoins."
+      "description": "Bitcoin dropped on Iran ceasefire collapse and yen strength \u2014 creating the fear-driven pullback that makes this entry possible at depressed prices."
     },
     {
       "source": "volume_breakout",
       "signal_type": "technical",
-      "description": "ZRO chart shows Morning Star reversal pattern with 2.93x risk/reward ratio to nearest support/resistance \u2014 the best technical setup among all candidates."
+      "description": "Morning Star three-candle reversal pattern confirmed on ZRO chart at the $0.90 support level \u2014 a classic high-reliability bottom signal."
     },
     {
-      "source": "CoinDesk",
-      "signal_type": "macro",
-      "description": "U.S.-Iran escalation lifting oil prices creates risk-off headwinds for crypto \u2014 warrants tight stop-losses and cautious position sizing."
+      "source": "Blockworks",
+      "signal_type": "news",
+      "description": "ETH derivatives reset noted by Blockworks suggests a healthier futures market positioning, which could support an alt recovery wave."
     }
   ],
   "_mode": "HUNTING",
   "exit_target": 1.08,
-  "stop_loss": 0.875
+  "stop_loss": 0.855
 }
