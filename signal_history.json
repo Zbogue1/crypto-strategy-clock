@@ -146,5 +146,28 @@
       "ZRO"
     ],
     "alert": "U.S.-Iran escalation could trigger sudden risk-off moves \u2014 keep stop-losses tight and position sizes small."
+  },
+  {
+    "ts": "2026-07-08T09:09:11.041179+00:00",
+    "coin": "ZRO",
+    "price": 0.95063,
+    "signal": "BUY",
+    "confidence": 58,
+    "score": 0.45,
+    "fg": 20,
+    "btc_price": 61949,
+    "btc_dominance": 55.9,
+    "candidates": [
+      "LAB",
+      "JTO",
+      "MON",
+      "VVV",
+      "XPL",
+      "FET",
+      "WLD",
+      "ZRO",
+      "LDO"
+    ],
+    "alert": "Market in Extreme Fear with active geopolitical headwinds \u2014 position sizing should be conservative."
   }
 ]
