@@ -418,5 +418,28 @@
       "ZRO"
     ],
     "alert": "Fear & Greed at 20 \u2014 historically a strong contrarian buy zone. Trend is improving."
+  },
+  {
+    "ts": "2026-07-08T21:09:10.982140+00:00",
+    "coin": "ZRO",
+    "price": 0.924624,
+    "signal": "BUY",
+    "confidence": 62,
+    "score": 1.8,
+    "fg": 20,
+    "btc_price": 62018,
+    "btc_dominance": 55.9,
+    "candidates": [
+      "LAB",
+      "MON",
+      "VVV",
+      "GRASS",
+      "JTO",
+      "XPL",
+      "FET",
+      "ETHFI",
+      "ZRO"
+    ],
+    "alert": "Extreme Fear at 20 \u2014 historically a strong contrarian buy zone, but position sizing should remain conservative until fear begins clearly lifting above 30."
   }
 ]
