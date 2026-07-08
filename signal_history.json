@@ -374,5 +374,27 @@
       "ZRO"
     ],
     "alert": "Bitcoin geopolitical risk elevated \u2014 Iran/Hormuz oil threats could trigger broader risk-off moves. Keep position sizes small."
+  },
+  {
+    "ts": "2026-07-08T19:09:11.252705+00:00",
+    "coin": "ZRO",
+    "price": 0.94617,
+    "signal": "BUY",
+    "confidence": 62,
+    "score": 1.35,
+    "fg": 20,
+    "btc_price": 62109,
+    "btc_dominance": 56.0,
+    "candidates": [
+      "LAB",
+      "MON",
+      "GRASS",
+      "JTO",
+      "VVV",
+      "USDG",
+      "XPL",
+      "ZRO"
+    ],
+    "alert": null
   }
 ]
