@@ -261,5 +261,27 @@
       "LDO"
     ],
     "alert": "Geopolitical risk elevated: Iran strikes and oil price surge could trigger further sell-off. Use strict stop-losses."
+  },
+  {
+    "ts": "2026-07-08T14:09:10.957117+00:00",
+    "coin": "ZRO",
+    "price": 0.977155,
+    "signal": "BUY",
+    "confidence": 58,
+    "score": 0.55,
+    "fg": 20,
+    "btc_price": 61929,
+    "btc_dominance": 55.9,
+    "candidates": [
+      "LAB",
+      "GRASS",
+      "JTO",
+      "MON",
+      "VVV",
+      "LDO",
+      "LIT",
+      "ZRO"
+    ],
+    "alert": "Geopolitical risk elevated: Iran conflict escalation + oil surge creating macro headwinds for all risk assets. Size positions conservatively."
   }
 ]
