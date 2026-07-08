@@ -102,5 +102,27 @@
       "ZRO"
     ],
     "alert": "Extreme Fear at 20 \u2014 historically a reliable contrarian buy signal based on our track record. But geopolitical risk from U.S.-Iran tensions could override sentiment indicators."
+  },
+  {
+    "ts": "2026-07-08T07:09:10.947905+00:00",
+    "coin": "ZRO",
+    "price": 0.963568,
+    "signal": "BUY",
+    "confidence": 58,
+    "score": 0.55,
+    "fg": 20,
+    "btc_price": 62523,
+    "btc_dominance": 56.0,
+    "candidates": [
+      "LAB",
+      "VVV",
+      "MON",
+      "JTO",
+      "WLD",
+      "XPL",
+      "LDO",
+      "ZRO"
+    ],
+    "alert": "Geopolitical risk elevated \u2014 U.S.-Iran escalation could trigger sudden broad selloffs. Use strict stop-losses."
   }
 ]
