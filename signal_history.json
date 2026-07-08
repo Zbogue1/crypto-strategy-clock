@@ -238,5 +238,28 @@
       "LDO"
     ],
     "alert": "Iran ceasefire collapse is driving oil up 5% and broad risk-off selling \u2014 position sizing should be conservative until geopolitical clarity emerges."
+  },
+  {
+    "ts": "2026-07-08T13:09:11.004661+00:00",
+    "coin": "ZRO",
+    "price": 0.967627,
+    "signal": "BUY",
+    "confidence": 62,
+    "score": 1.4,
+    "fg": 20,
+    "btc_price": 61833,
+    "btc_dominance": 55.9,
+    "candidates": [
+      "LAB",
+      "MON",
+      "JTO",
+      "VVV",
+      "XPL",
+      "FET",
+      "ETHFI",
+      "ZRO",
+      "LDO"
+    ],
+    "alert": "Geopolitical risk elevated: Iran strikes and oil price surge could trigger further sell-off. Use strict stop-losses."
   }
 ]
