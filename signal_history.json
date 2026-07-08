@@ -169,5 +169,27 @@
       "ZRO"
     ],
     "alert": "No tradeable setups among current candidates. All positions are either crashing, overextended, or have terrible risk/reward. Wait for better entries."
+  },
+  {
+    "ts": "2026-07-08T01:10:26.529175+00:00",
+    "coin": "ZRO",
+    "price": 0.958536,
+    "signal": "BUY",
+    "confidence": 42,
+    "score": 0.35,
+    "fg": 20,
+    "btc_price": 63462,
+    "btc_dominance": 56.1,
+    "candidates": [
+      "LAB",
+      "MON",
+      "VVV",
+      "GRASS",
+      "LDO",
+      "XPL",
+      "KITE",
+      "ZRO"
+    ],
+    "alert": "Extreme Fear at 20/100 \u2014 historically this has preceded further short-term BTC declines before recovery. Keep position sizes small and stops tight."
   }
 ]
