@@ -1,35 +1,35 @@
 {
   "open_trade": {
-    "coin": "LDO",
-    "entry_time": "2026-07-08T06:12:58.812371+00:00",
+    "coin": "ZRO",
+    "entry_time": "2026-07-08T07:12:55.634764+00:00",
     "key_signals": [
       {
         "source": "Fear_Greed",
         "signal_type": "sentiment",
-        "description": "Extreme Fear at 20/100 with improving trend (up from 22.3 weekly avg) \u2014 our most reliable signal with 67% win rate and +1.8% avg return, supporting contrarian entries."
-      },
-      {
-        "source": "CoinDesk",
-        "signal_type": "news",
-        "description": "U.S. SEC to propose crypto rule to ease startups and fundraising as soon as this month \u2014 a major positive catalyst for DeFi governance tokens like LDO."
+        "description": "Extreme Fear at 20/100 with improving trend (from 27 yesterday) \u2014 historically a reliable buy signal with 67% win rate in our tracked trades."
       },
       {
         "source": "RSI",
         "signal_type": "technical",
-        "description": "LDO RSI at 47 is neutral with ample room to rally, unlike JTO (66) and LAB (65) which face overbought correction risk."
+        "description": "ZRO RSI at 30.83, approaching oversold territory, suggesting selling pressure is exhausted and a bounce is likely."
+      },
+      {
+        "source": "CoinDesk",
+        "signal_type": "news",
+        "description": "U.S. SEC to propose crypto-friendly rules this month to ease startups \u2014 potential positive macro catalyst for the space."
       },
       {
         "source": "CoinDesk",
         "signal_type": "macro",
-        "description": "U.S.-Iran escalation lifting oil prices puts risk assets under pressure \u2014 a key risk to monitor that could invalidate the bullish setup."
+        "description": "Bitcoin under pressure from U.S.-Iran escalation lifting oil prices \u2014 geopolitical headwind creating the fear but also the opportunity."
       },
       {
-        "source": "Blockworks",
+        "source": "volume_breakout",
         "signal_type": "technical",
-        "description": "ETH derivatives reset signals fresh positioning opportunity \u2014 ETH's 10% weekly rally directly drives Lido staking demand and revenue."
+        "description": "Morning Star candlestick reversal pattern on ZRO at $0.90 support with 2.93x risk/reward ratio \u2014 highest quality chart setup among candidates."
       }
     ],
-    "confidence": 62
+    "confidence": 58
   },
   "signal_stats": {
     "Fear_Greed__sentiment": {
@@ -155,5 +155,5 @@
     }
   },
   "trade_count": 3,
-  "last_updated": "2026-07-08T06:12:58.812378+00:00"
+  "last_updated": "2026-07-08T07:12:55.634769+00:00"
 }
