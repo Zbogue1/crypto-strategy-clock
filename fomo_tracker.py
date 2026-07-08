@@ -40,6 +40,7 @@ from fomo_portfolio import (
     get_wallet_lessons,
     get_fomo_stats,
     sync_fomo_state_from_github,
+    FOMO_MAX_CONCURRENT_POSITIONS,
 )
 
 # ─── CONFIG ───────────────────────────────────────────────────────────────────
@@ -82,6 +83,19 @@ QUOTE_MINTS = {
     "Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB": "USDT",
 }
 _SOLANA_ADDR_RE = re.compile(r"\b[1-9A-HJ-NP-Za-km-z]{32,44}\b")
+
+
+def _find_holding(holdings: list, contract_address: str) -> Optional[dict]:
+    """Find an open position by contract address (case-insensitive). Multiple
+    positions can be open at once, so lookups always go by contract address
+    rather than assuming there's only one."""
+    if not contract_address:
+        return None
+    target = contract_address.lower()
+    for h in holdings:
+        if (h.get("contract_address") or "").lower() == target:
+            return h
+    return None
 
 
 # ─── WALLET REGISTRY ─────────────────────────────────────────────────────────
@@ -450,13 +464,19 @@ def handle_relayed_text_message(message: dict):
 
     sync_fomo_state_from_github()
     portfolio = load_fomo_portfolio()
-    holding   = portfolio.get("holding")
+    holdings  = portfolio.get("holdings", [])
 
     if action == "BUY":
-        if holding:
+        if len(holdings) >= FOMO_MAX_CONCURRENT_POSITIONS:
             send_telegram(
-                f"\u26a0\ufe0f Already holding {holding['token_ticker']} -- "
+                f"\u26a0\ufe0f At max concurrent positions -- "
                 f"skipping relayed buy signal for {token_data['symbol']}."
+            )
+            return
+        if _find_holding(holdings, contract):
+            send_telegram(
+                f"\u26a0\ufe0f Already holding {token_data['symbol']} -- "
+                f"skipping duplicate relayed buy signal."
             )
             return
         catalyst_data = scan_catalyst(token_data["symbol"], contract)
@@ -502,7 +522,8 @@ def handle_relayed_text_message(message: dict):
         )
 
     elif action == "SELL":
-        if not holding or (holding.get("contract_address") or "") != contract:
+        holding = _find_holding(holdings, contract)
+        if not holding:
             send_telegram(
                 f"\u2139\ufe0f Not currently holding {token_data['symbol']} -- "
                 f"nothing to exit on this relayed sell signal."
@@ -1005,8 +1026,9 @@ def telegram_webhook():
                 edit("\u23f1 Signal expired -- no longer valid.")
             else:
                 portfolio = load_fomo_portfolio()
-                holding   = portfolio.get("holding")
-                if not holding or (holding.get("contract_address") or "") != alert.get("contract_address"):
+                holdings  = portfolio.get("holdings", [])
+                holding   = _find_holding(holdings, alert.get("contract_address"))
+                if not holding:
                     consume_pending_alert(alert_id)
                     edit("\u26a0\ufe0f Position already closed (an auto-exit likely already fired) -- nothing to execute.")
                 else:
@@ -1021,6 +1043,7 @@ def telegram_webhook():
                     exit_lag_min = (datetime.now(timezone.utc) - created_at).total_seconds() / 60
 
                     result = execute_fomo_sell(
+                        holding["contract_address"],
                         current_price,
                         reason="tracker_sell_" + alert["wallet_alias"],
                         trader_held_hours=held_hrs,
@@ -1099,31 +1122,32 @@ def helius_webhook():
         alias       = wallet_info["alias"]
         wallet_addr = wallet_info["wallet"]
         portfolio   = load_fomo_portfolio()
-        holding     = portfolio.get("holding")
+        holdings    = portfolio.get("holdings", [])
         parsed      = parse_helius_activity(tx, wallet_addr)
         if not parsed:
             continue
 
-        if parsed["type"] == "SELL" and holding:
-            held_contract = (holding.get("contract_address") or "").lower()
-            if held_contract == parsed["contract"].lower():
-                log.info("FOMO Solana: %s sold %s - awaiting human confirm", alias, holding["token_ticker"])
-                token_data = validate_token(parsed["contract"])
-                price_at_signal = token_data.get("price") or holding["entry_price"]
-                alert_id = create_pending_sell_alert({
-                    "token_ticker":     holding["token_ticker"],
-                    "wallet_alias":     alias,
-                    "contract_address": holding.get("contract_address"),
-                    "price_at_signal":  price_at_signal,
-                })
-                send_telegram_button(
-                    "\U0001f514 <b>" + alias + " sold " + holding["token_ticker"] + "</b>\n"
-                    + "Tap to confirm your exit.",
-                    "EXECUTE",
-                    f"sell_exec:{alert_id}",
-                )
+        held_match = _find_holding(holdings, parsed.get("contract")) if parsed["type"] == "SELL" else None
+        if parsed["type"] == "SELL" and held_match:
+            holding = held_match
+            log.info("FOMO Solana: %s sold %s - awaiting human confirm", alias, holding["token_ticker"])
+            token_data = validate_token(parsed["contract"])
+            price_at_signal = token_data.get("price") or holding["entry_price"]
+            alert_id = create_pending_sell_alert({
+                "token_ticker":     holding["token_ticker"],
+                "wallet_alias":     alias,
+                "contract_address": holding.get("contract_address"),
+                "price_at_signal":  price_at_signal,
+            })
+            send_telegram_button(
+                "\U0001f514 <b>" + alias + " sold " + holding["token_ticker"] + "</b>\n"
+                + "Tap to confirm your exit.",
+                "EXECUTE",
+                f"sell_exec:{alert_id}",
+            )
 
-        elif parsed["type"] == "BUY" and not holding:
+        elif (parsed["type"] == "BUY" and len(holdings) < FOMO_MAX_CONCURRENT_POSITIONS
+              and not _find_holding(holdings, parsed.get("contract"))):
             contract   = parsed["contract"]
             token_data = validate_token(contract)
             if not token_data["valid"]:
@@ -1212,32 +1236,34 @@ def alchemy_webhook():
             continue
 
         portfolio = load_fomo_portfolio()
-        holding   = portfolio.get("holding")
+        holdings  = portfolio.get("holdings", [])
 
         # ── SELL: tracked wallet selling a token we're holding ────────────────
-        if parsed["type"] == "SELL" and holding:
-            if (holding.get("contract_address") or "").lower() == parsed["contract"].lower():
-                log.info(f"FOMO: {alias} sold {holding['token_ticker']} — awaiting human confirm")
+        held_match = _find_holding(holdings, parsed.get("contract")) if parsed["type"] == "SELL" else None
+        if parsed["type"] == "SELL" and held_match:
+            holding = held_match
+            log.info(f"FOMO: {alias} sold {holding['token_ticker']} — awaiting human confirm")
 
-                # Get a reference price now; re-checked again at the moment of execution
-                token_data = validate_token(parsed["contract"])
-                price_at_signal = token_data.get("price") or holding["entry_price"]
+            # Get a reference price now; re-checked again at the moment of execution
+            token_data = validate_token(parsed["contract"])
+            price_at_signal = token_data.get("price") or holding["entry_price"]
 
-                alert_id = create_pending_sell_alert({
-                    "token_ticker":     holding["token_ticker"],
-                    "wallet_alias":     alias,
-                    "contract_address": holding.get("contract_address"),
-                    "price_at_signal":  price_at_signal,
-                })
-                send_telegram_button(
-                    f"🔔 <b>{alias} sold {holding['token_ticker']}</b>\n"
-                    f"Tap to confirm your exit.",
-                    "EXECUTE",
-                    f"sell_exec:{alert_id}",
-                )
+            alert_id = create_pending_sell_alert({
+                "token_ticker":     holding["token_ticker"],
+                "wallet_alias":     alias,
+                "contract_address": holding.get("contract_address"),
+                "price_at_signal":  price_at_signal,
+            })
+            send_telegram_button(
+                f"🔔 <b>{alias} sold {holding['token_ticker']}</b>\n"
+                f"Tap to confirm your exit.",
+                "EXECUTE",
+                f"sell_exec:{alert_id}",
+            )
 
         # ── BUY: tracked wallet buying something new ──────────────────────────
-        elif parsed["type"] == "BUY" and not holding:
+        elif (parsed["type"] == "BUY" and len(holdings) < FOMO_MAX_CONCURRENT_POSITIONS
+              and not _find_holding(holdings, parsed.get("contract"))):
             contract = parsed["contract"]
 
             # Validate the token

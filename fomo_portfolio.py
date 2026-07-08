@@ -15,6 +15,7 @@ Architecture:
 import json
 import logging
 import os
+import uuid
 from datetime import datetime, timezone, timedelta
 from typing import Optional
 
@@ -46,6 +47,7 @@ FOMO_MAX_POSITION_PCT = 0.30   # max 30% of FOMO cash per trade
 FOMO_TAKER_FEE       = 0.001   # 0.1% per side
 FOMO_AUTO_EXIT_HOURS = 24      # auto-exit if original trader hasn't sold
 FOMO_HARD_STOP_PCT   = -0.15   # -15% hard stop
+FOMO_MAX_CONCURRENT_POSITIONS = 5   # cap on simultaneously open positions
 
 # Graduation thresholds
 GRAD_MIN_TRADES      = 20
@@ -61,7 +63,7 @@ def _default_state() -> dict:
     return {
         "cash":           FOMO_STARTING_CASH,
         "starting_cash":  FOMO_STARTING_CASH,
-        "holding":        None,
+        "holdings":       [],
         "trade_history":  [],
         "total_trades":   0,
         "winning_trades": 0,
@@ -72,11 +74,22 @@ def _default_state() -> dict:
     }
 
 
+def _migrate_to_multi_position(state: dict) -> dict:
+    """One-time migration: the old schema had a single `holding` dict (or
+    None). The new schema uses a `holdings` list so multiple positions can be
+    open at once. Safe to call repeatedly -- a no-op once already migrated,
+    so any existing live position is preserved rather than lost."""
+    if "holdings" not in state:
+        old = state.pop("holding", None)
+        state["holdings"] = [old] if old else []
+    return state
+
+
 def load_fomo_portfolio() -> dict:
     if os.path.exists(FOMO_PORTFOLIO_FILE):
         try:
             with open(FOMO_PORTFOLIO_FILE) as f:
-                return json.load(f)
+                return _migrate_to_multi_position(json.load(f))
         except Exception:
             pass
     return _default_state()
@@ -180,16 +193,15 @@ def sync_fomo_state_to_github():
 # ─── PORTFOLIO VALUE ──────────────────────────────────────────────────────────
 
 def get_fomo_value(current_price: float = None) -> dict:
-    state   = load_fomo_portfolio()
-    cash    = state["cash"]
-    holding = state.get("holding")
+    """current_price is accepted for backward compatibility but no longer
+    determines valuation -- with multiple concurrent holdings across
+    different tokens, each is valued at its own entry_price (matches
+    get_fomo_stats)."""
+    state    = load_fomo_portfolio()
+    cash     = state["cash"]
+    holdings = state.get("holdings", [])
 
-    position_value = 0.0
-    unrealized_pct = 0.0
-    if holding:
-        price          = current_price or holding["entry_price"]
-        position_value = holding["units"] * price
-        unrealized_pct = (price - holding["entry_price"]) / holding["entry_price"] * 100
+    position_value = sum(h["units"] * h["entry_price"] for h in holdings)
 
     total            = cash + position_value
     total_return_pct = (total - FOMO_STARTING_CASH) / FOMO_STARTING_CASH * 100
@@ -201,8 +213,8 @@ def get_fomo_value(current_price: float = None) -> dict:
         "position_value":   round(position_value, 2),
         "total_value":      round(total, 2),
         "total_return_pct": round(total_return_pct, 2),
-        "unrealized_pct":   round(unrealized_pct, 2),
-        "holding":          holding,
+        "holdings":         holdings,
+        "holding":          holdings[0] if holdings else None,  # backward compat
         "total_trades":     n,
         "win_rate":         round(wins / n * 100, 1) if n > 0 else 0.0,
         "winning_trades":   wins,
@@ -228,12 +240,19 @@ def execute_fomo_buy(
     volume_spike_pct: float = None,  # % volume increase in last 10 min
     amount_usd:       float = None,  # human-selected $ from Telegram button; overrides auto-sizing
 ) -> Optional[dict]:
-    """Execute a FOMO copy trade buy. Returns holding dict or None if skipped."""
+    """Execute a FOMO copy trade buy. Returns holding dict or None if skipped.
+    Multiple positions can be open at once (up to FOMO_MAX_CONCURRENT_POSITIONS),
+    as long as they're in different tokens."""
     sync_fomo_state_from_github()
-    state = load_fomo_portfolio()
+    state    = load_fomo_portfolio()
+    holdings = state.setdefault("holdings", [])
 
-    if state.get("holding"):
-        log.warning(f"FOMO: Already holding {state['holding']['token_ticker']} — skip buy")
+    if len(holdings) >= FOMO_MAX_CONCURRENT_POSITIONS:
+        log.warning(f"FOMO: At max concurrent positions ({FOMO_MAX_CONCURRENT_POSITIONS}) — skip buy")
+        return None
+
+    if contract_address and any((h.get("contract_address") or "") == contract_address for h in holdings):
+        log.warning(f"FOMO: Already holding {token_ticker} — skip duplicate buy")
         return None
 
     cash = state["cash"]
@@ -253,6 +272,7 @@ def execute_fomo_buy(
     exit_target = round(entry_price * 1.30, 8)   # 30% target
 
     holding = {
+        "position_id":      uuid.uuid4().hex[:8],
         "token_ticker":     token_ticker,
         "token_name":       token_name,
         "entry_price":      entry_price,
@@ -277,28 +297,32 @@ def execute_fomo_buy(
         "partial_taken":    False,
     }
 
-    state["cash"]    -= spend
-    state["holding"] = holding
+    state["cash"] -= spend
+    holdings.append(holding)
     save_fomo_portfolio(state)
     sync_fomo_state_to_github()
 
     log.info(f"FOMO BUY: {token_ticker} @ ${entry_price:.8f} | "
-             f"${spend:.2f} | following {wallet_alias} | catalyst: {catalyst or 'none'}")
+             f"${spend:.2f} | following {wallet_alias} | catalyst: {catalyst or 'none'} | "
+             f"{len(holdings)}/{FOMO_MAX_CONCURRENT_POSITIONS} positions open")
     return holding
 
 
 def execute_fomo_sell(
-    current_price: float,
-    reason:        str = "tracker_exit",
+    contract_address:  str,             # which open position to close
+    current_price:     float,
+    reason:             str = "tracker_exit",
     trader_held_hours: float = None,   # how long the original trader held
     exit_lag_minutes:  float = None,   # how many minutes after trader sold did we sell
 ) -> Optional[dict]:
-    """Exit the active FOMO quick trade."""
+    """Exit one specific FOMO position, identified by contract_address."""
     sync_fomo_state_from_github()
-    state   = load_fomo_portfolio()
-    holding = state.get("holding")
+    state    = load_fomo_portfolio()
+    holdings = state.setdefault("holdings", [])
+    holding  = next((h for h in holdings if (h.get("contract_address") or "") == contract_address), None)
     if not holding:
         return None
+    holdings.remove(holding)
 
     proceeds   = holding["units"] * current_price
     fee        = proceeds * FOMO_TAKER_FEE
@@ -312,8 +336,8 @@ def execute_fomo_sell(
 
     state["cash"] += net
 
-    # Update peak / drawdown
-    total_val = state["cash"]
+    # Update peak / drawdown -- includes any other positions still open
+    total_val = state["cash"] + sum(h["units"] * h["entry_price"] for h in holdings)
     if total_val > state.get("peak_value", FOMO_STARTING_CASH):
         state["peak_value"] = total_val
     else:
@@ -339,13 +363,12 @@ def execute_fomo_sell(
     if profit > 0:
         state["winning_trades"] += 1
 
-    state["holding"] = None
     save_fomo_portfolio(state)
     sync_fomo_state_to_github()
 
     outcome = "WIN" if profit > 0 else "LOSS"
     log.info(f"FOMO SELL: {holding['token_ticker']} @ ${current_price:.8f} | "
-             f"{profit_pct:+.1f}% | {outcome} | {reason}")
+             f"{profit_pct:+.1f}% | {outcome} | {reason} | {len(holdings)} position(s) remaining")
     return trade_record
 
 
@@ -386,50 +409,51 @@ def _notify_auto_exit(result: dict):
         log.warning(f"FOMO: auto-exit Telegram notify failed: {e}")
 
 
-def check_fomo_auto_exits(price_map: dict = None) -> Optional[dict]:
+def check_fomo_auto_exits(price_map: dict = None) -> list:
     """
-    Called during every 4-hour cycle and by the webhook server.
-    Checks hard stop, take-profit target, and 24h time limit.
-    Returns trade record if exited, None otherwise.
+    Called during every cron cycle and by the webhook server.
+    Checks hard stop, take-profit target, and 24h time limit for EVERY open
+    position (multiple can be open at once). Returns a list of trade records
+    for any positions that were exited (empty list if none fired).
     """
     sync_fomo_state_from_github()
-    state   = load_fomo_portfolio()
-    holding = state.get("holding")
-    if not holding:
-        return None
+    state    = load_fomo_portfolio()
+    holdings = state.get("holdings", [])
+    if not holdings:
+        return []
 
-    ticker        = holding["token_ticker"]
-    current_price = (price_map or {}).get(ticker, holding["entry_price"])
-    now           = datetime.now(timezone.utc)
+    now   = datetime.now(timezone.utc)
+    exits = []
 
-    # Time exit — 24h limit
-    auto_exit_at = datetime.fromisoformat(holding["auto_exit_at"].replace("Z", "+00:00"))
-    if now >= auto_exit_at:
-        log.warning(f"FOMO: Auto-exit {ticker} — 24h time limit reached")
-        result = execute_fomo_sell(current_price, reason="time_exit_24h")
-        if result:
-            _notify_auto_exit(result)
-        return result
+    # Snapshot what to check up front -- execute_fomo_sell reloads state itself
+    # on each call (and mutates the holdings list), so iterate over a fixed
+    # copy rather than the live list.
+    to_check = [(h["contract_address"], h["token_ticker"], h["entry_price"],
+                 h["exit_target"], h["auto_exit_at"]) for h in holdings]
 
-    if current_price > 0:
-        # Take profit — hit exit_target
-        if current_price >= holding["exit_target"]:
-            log.warning(f"FOMO: Take-profit {ticker} — target ${holding['exit_target']:.8f} reached")
-            result = execute_fomo_sell(current_price, reason="take_profit")
+    for contract_address, ticker, entry_price, exit_target, auto_exit_at_str in to_check:
+        current_price = (price_map or {}).get(ticker, entry_price)
+        reason = None
+
+        auto_exit_at = datetime.fromisoformat(auto_exit_at_str.replace("Z", "+00:00"))
+        if now >= auto_exit_at:
+            reason = "time_exit_24h"
+        elif current_price > 0:
+            if current_price >= exit_target:
+                reason = "take_profit"
+            else:
+                pct = (current_price - entry_price) / entry_price * 100
+                if pct <= FOMO_HARD_STOP_PCT * 100:
+                    reason = "hard_stop"
+
+        if reason:
+            log.warning(f"FOMO: Auto-exit {ticker} — {reason}")
+            result = execute_fomo_sell(contract_address, current_price, reason=reason)
             if result:
                 _notify_auto_exit(result)
-            return result
+                exits.append(result)
 
-        # Hard stop — -15%
-        pct = (current_price - holding["entry_price"]) / holding["entry_price"] * 100
-        if pct <= FOMO_HARD_STOP_PCT * 100:
-            log.warning(f"FOMO: Hard stop {ticker} — {pct:.1f}%")
-            result = execute_fomo_sell(current_price, reason="hard_stop")
-            if result:
-                _notify_auto_exit(result)
-            return result
-
-    return None
+    return exits
 
 
 # ─── POST-MORTEM & LESSONS ────────────────────────────────────────────────────
@@ -820,11 +844,9 @@ def get_fomo_stats() -> dict:
         ws["win_rate"]   = round(ws["wins"] / ws["trades"] * 100, 1) if ws["trades"] > 0 else 0.0
         ws["avg_return"] = round(ws["total_pct"] / ws["trades"], 2) if ws["trades"] > 0 else 0.0
 
-    holding    = state.get("holding")
-    pos_value  = 0.0
-    if holding:
-        pos_value = holding["units"] * holding["entry_price"]
-    total_val  = cash + pos_value
+    holdings  = state.get("holdings", [])
+    pos_value = sum(h["units"] * h["entry_price"] for h in holdings)
+    total_val = cash + pos_value
 
     return {
         "total_value":      round(total_val, 2),
@@ -835,7 +857,9 @@ def get_fomo_stats() -> dict:
         "avg_return":       round(sum(t.get("profit_pct", 0) for t in history) / len(history), 2) if history else 0.0,
         "max_drawdown":     state.get("max_drawdown", 0.0),
         "wallet_stats":     wallet_stats,
-        "holding":          holding,
+        "holdings":         holdings,
+        "holding":          holdings[0] if holdings else None,  # backward compat
+        "open_positions":   len(holdings),
     }
 
 
