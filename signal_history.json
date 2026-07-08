@@ -169,5 +169,28 @@
       "LDO"
     ],
     "alert": "Market in Extreme Fear with active geopolitical headwinds \u2014 position sizing should be conservative."
+  },
+  {
+    "ts": "2026-07-08T10:09:10.894734+00:00",
+    "coin": "ZRO",
+    "price": 0.944017,
+    "signal": "BUY",
+    "confidence": 58,
+    "score": 1.2,
+    "fg": 20,
+    "btc_price": 61864,
+    "btc_dominance": 56.0,
+    "candidates": [
+      "LAB",
+      "MON",
+      "JTO",
+      "VVV",
+      "FET",
+      "XPL",
+      "BONK",
+      "ZRO",
+      "LDO"
+    ],
+    "alert": "Bitcoin under pressure from Iran ceasefire collapse \u2014 monitor closely for further downside that could invalidate alt setups."
   }
 ]
