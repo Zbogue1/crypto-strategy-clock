@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-07-08T04:03:46.081700+00:00",
+  "timestamp": "2026-07-08T05:09:10.828884+00:00",
   "selected_coin": "ZRO",
   "selected_coin_name": "LayerZero",
-  "selected_coin_price": 0.967887,
-  "confidence": 62,
-  "layman_headline": "Extreme Fear in the market could mean a buying window for a beaten-down cross-chain protocol.",
-  "layman_explanation": "The crypto market is in 'Extreme Fear' territory at 20 out of 100, which historically has been a good time to buy. LayerZero (ZRO) is a cross-chain messaging protocol that's been hammered down 87% from its all-time high, but its chart is showing a classic bottom reversal pattern called a 'Morning Star.' The RSI at 31 suggests it's nearly oversold, meaning sellers may be exhausted. Meanwhile, Bitcoin has bounced 6% this week, and positive regulatory news from the SEC could lift the broader market.",
-  "layman_action": "Consider a small position in ZRO around $0.93 with a clear stop-loss at $0.87. If it drops below that level, exit to limit losses. Target a 16% gain near $1.08.",
-  "expert_reasoning": "ZRO presents the cleanest swing setup: RSI at 31 is approaching oversold, a Morning Star candlestick pattern is forming at the $0.90 support zone, and the risk/reward to nearest support/resistance is 2.93x \u2014 well above the 2.0 threshold. While the broader trend is still a downtrend and price is below both MAs, the chart bias score is slightly bullish (+0.30) driven by the reversal pattern. The Extreme Fear reading of 20 has historically been a reliable contrarian buy signal (67% win rate in our paper trades). High BTC dominance at 56% is a headwind for alts, but the improving fear trend (from 22.3 weekly avg to today's improving reading) and SEC regulatory tailwinds provide macro support for a mean-reversion bounce.",
+  "selected_coin_price": 0.959228,
+  "confidence": 58,
+  "layman_headline": "Extreme Fear creates a buying window for oversold LayerZero with a classic reversal pattern forming.",
+  "layman_explanation": "The crypto market is in 'Extreme Fear' mode \u2014 most people are scared to buy, which historically has been a good time to enter. LayerZero (ZRO) is a cross-chain messaging protocol that's been beaten down nearly 87% from its all-time high and is showing early signs of bottoming out. Its chart is flashing a 'Morning Star' pattern, which is a classic signal that sellers are exhausted and buyers are stepping in. Bitcoin itself is recovering (+6% this week), which could lift quality altcoins if the rebound continues.",
+  "layman_action": "Consider a small position in ZRO near $0.93. Set a stop-loss at $0.86 to limit downside to about 7.5%, and aim to take profits around $1.10 for roughly 18% upside. Only risk money you can afford to lose \u2014 the market is still fearful for good reason.",
+  "expert_reasoning": "ZRO presents the most balanced swing setup among the candidates. RSI at 30.83 is approaching oversold territory, creating a favorable entry zone. The Morning Star candlestick pattern on the chart \u2014 a three-candle bullish reversal \u2014 adds pattern confirmation to the oversold reading. Support at $0.90 is only 2.8% below current price while resistance at $1.00 offers 8.1% upside, yielding a 2.93x risk/reward ratio. The Fear & Greed index at 20 (Extreme Fear, improving trend from 22.3 weekly avg) has been our most reliable signal historically with a 67% win rate. While BTC dominance at 56% is headwind for alts, BTC's own +6.2% weekly recovery suggests the worst of the selloff may be over, and infrastructure-layer tokens like ZRO could benefit from the SEC's upcoming crypto rule proposals aimed at easing startups and fundraising.",
   "risk_factors": [
-    "BTC dominance at 56% means capital is flowing to Bitcoin over altcoins \u2014 ZRO could underperform even if BTC rallies",
-    "Price is below all major moving averages in a confirmed downtrend \u2014 the Morning Star could fail if broader selling resumes",
-    "No funding rate data available, so we cannot assess leverage positioning or squeeze potential"
+    "U.S.-Iran geopolitical escalation pressuring risk assets \u2014 Bitcoin under pressure from oil spike could drag alts further",
+    "BTC dominance at 56% means capital is flowing to Bitcoin over alts, limiting altcoin upside potential",
+    "ZRO is below all major moving averages in a structural downtrend \u2014 the Morning Star could fail if broader market deteriorates"
   ],
   "watch_list": [
-    "BTC holding above $62,000 support \u2014 a breakdown would drag all alts including ZRO lower",
-    "SEC crypto rule proposal timing \u2014 any concrete announcement this month would be a major catalyst",
-    "ZRO price action at $0.90 support \u2014 if this level breaks on volume, exit immediately"
+    "ZRO price action around $0.90 support \u2014 a break below invalidates the reversal thesis",
+    "Fear & Greed Index trajectory \u2014 continuing improvement above 25 would confirm sentiment recovery",
+    "SEC crypto rule announcement timing this month \u2014 could be a major catalyst for infrastructure tokens"
   ],
-  "market_context": "The crypto market is in Extreme Fear (20/100) but improving from last week's 22.3 average. BTC is up 6% on the week at $62.7K, and positive SEC regulatory signals and Vanguard's crypto pivot are providing institutional tailwinds, though high BTC dominance at 56% is suppressing altcoin performance.",
-  "context_banner": "Extreme Fear with improving momentum and pro-crypto SEC signals create a contrarian buying window for oversold altcoins with strong reversal patterns.",
-  "btc_price": 62715,
+  "market_context": "The crypto market sits in Extreme Fear (20/100) but is improving from last week. BTC is recovering (+6.2% weekly) while geopolitical risks from U.S.-Iran tensions create headwinds, and high BTC dominance at 56% suggests alts need a broader risk-on shift to rally meaningfully.",
+  "context_banner": "Extreme Fear with improving trend and SEC regulatory clarity on the horizon creates selective buying opportunities in oversold quality altcoins.",
+  "btc_price": 62768,
   "fear_greed": {
     "current": 20,
     "label": "Extreme Fear",
@@ -33,30 +33,30 @@
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Extreme Fear at 20/100 with improving trend \u2014 historically a 67% win-rate contrarian buy signal per our paper trade data."
+      "description": "Extreme Fear at 20/100 with improving trend (up from 22.3 weekly avg) \u2014 our most reliable signal with 67% historical win rate, supporting contrarian entry."
     },
     {
       "source": "RSI",
       "signal_type": "technical",
-      "description": "ZRO RSI at 31 is approaching oversold territory, suggesting sellers are exhausting and a bounce is likely."
+      "description": "ZRO RSI at 30.83, approaching oversold territory, indicating selling pressure is exhausting and a bounce is increasingly likely."
     },
     {
       "source": "CoinDesk",
       "signal_type": "news",
-      "description": "SEC expected to propose crypto-friendly rules this month to ease startups and fundraising \u2014 a macro tailwind for infrastructure protocols like LayerZero."
+      "description": "U.S. SEC preparing crypto rule proposal this month to ease startups and fundraising \u2014 potential positive catalyst for infrastructure tokens like LayerZero."
+    },
+    {
+      "source": "CoinDesk",
+      "signal_type": "macro",
+      "description": "Bitcoin under pressure from U.S.-Iran escalation lifting oil prices \u2014 geopolitical risk remains a headwind that could trigger another leg down."
     },
     {
       "source": "CoinTelegraph",
       "signal_type": "news",
-      "description": "Vanguard seeking a digital assets chief signals growing institutional acceptance of crypto, adding long-term bullish sentiment."
-    },
-    {
-      "source": "volume_breakout",
-      "signal_type": "technical",
-      "description": "ZRO's Morning Star candlestick reversal pattern at $0.90 support with 2.93x risk/reward ratio is the highest quality setup among all candidates."
+      "description": "Vanguard seeking digital assets chief signals continued institutional legitimization of crypto, supportive of longer-term recovery narrative."
     }
   ],
   "_mode": "HUNTING",
-  "exit_target": 1.08,
-  "stop_loss": 0.87
+  "exit_target": 1.1,
+  "stop_loss": 0.86
 }
