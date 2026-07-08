@@ -80,5 +80,27 @@
       "ZRO"
     ],
     "alert": null
+  },
+  {
+    "ts": "2026-07-08T06:09:10.694203+00:00",
+    "coin": "LDO",
+    "price": 0.324509,
+    "signal": "BUY",
+    "confidence": 62,
+    "score": 1.2,
+    "fg": 20,
+    "btc_price": 62567,
+    "btc_dominance": 56.0,
+    "candidates": [
+      "LAB",
+      "MON",
+      "VVV",
+      "LDO",
+      "JTO",
+      "XPL",
+      "KITE",
+      "ZRO"
+    ],
+    "alert": "Extreme Fear at 20 \u2014 historically a reliable contrarian buy signal based on our track record. But geopolitical risk from U.S.-Iran tensions could override sentiment indicators."
   }
 ]
