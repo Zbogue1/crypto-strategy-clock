@@ -1,5 +1,5 @@
 {
-  "cash": 449.90005,
+  "cash": 499.80010000000004,
   "starting_cash": 500.0,
   "trade_history": [
     {
@@ -33,15 +33,7 @@
       "exit_lag_minutes": null,
       "exited_at": "2026-07-09T02:13:04.933211+00:00",
       "postmortem_done": false
-    }
-  ],
-  "total_trades": 1,
-  "winning_trades": 0,
-  "peak_value": 500.0,
-  "max_drawdown": 0.03,
-  "started_at": "2026-07-08T01:39:50.388535+00:00",
-  "last_updated": "2026-07-09T02:13:04.933224+00:00",
-  "holdings": [
+    },
     {
       "position_id": "01b39ec9",
       "token_ticker": "ANSEM",
@@ -64,7 +56,23 @@
       "entered_at": "2026-07-08T12:12:51.814199+00:00",
       "auto_exit_at": "2026-07-09T12:12:51.814214+00:00",
       "source": "fomo_copy",
-      "partial_taken": false
+      "partial_taken": false,
+      "exit_price": 0.2786,
+      "exit_reason": "time_exit_24h",
+      "profit": -0.09995,
+      "profit_pct": -0.2,
+      "held_minutes": 1440.5,
+      "trader_held_hours": null,
+      "exit_lag_minutes": null,
+      "exited_at": "2026-07-09T12:13:21.629581+00:00",
+      "postmortem_done": false
     }
-  ]
+  ],
+  "total_trades": 2,
+  "winning_trades": 0,
+  "peak_value": 500.0,
+  "max_drawdown": 0.04,
+  "started_at": "2026-07-08T01:39:50.388535+00:00",
+  "last_updated": "2026-07-09T12:13:21.629594+00:00",
+  "holdings": []
 }
