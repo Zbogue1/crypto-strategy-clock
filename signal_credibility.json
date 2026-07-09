@@ -1,32 +1,32 @@
 {
   "open_trade": {
     "coin": "ETHFI",
-    "entry_time": "2026-07-09T01:13:06.424177+00:00",
+    "entry_time": "2026-07-09T02:13:03.797960+00:00",
     "key_signals": [
       {
         "source": "Fear_Greed",
         "signal_type": "sentiment",
-        "description": "Extreme Fear at 22/100 with an improving trend \u2014 our most reliable signal with a 75% historical win rate and +5.9% average return."
+        "description": "Extreme Fear at 22 with improving trend (from 20 yesterday) \u2014 historically a 75% win rate signal for contrarian entries."
       },
       {
         "source": "RSI",
         "signal_type": "technical",
-        "description": "ETHFI RSI at 54 is neutral with room to run upward, unlike JTO (66) and GRASS (62) which carry overbought correction risk. RSI is our second most reliable signal at 67% win rate."
-      },
-      {
-        "source": "CoinTelegraph",
-        "signal_type": "news",
-        "description": "Bitcoin peeling back to $62K as Fed-wary futures traders cut risk \u2014 this broad market fear is creating discounted entry points in quality alts like ETHFI."
-      },
-      {
-        "source": "volume_breakout",
-        "signal_type": "technical",
-        "description": "ETHFI's Bullish Marubozu and Bullish Engulfing candle patterns indicate pure buying conviction with strong volume, the most bullish chart setup among all candidates at +1.30 bias."
+        "description": "ETHFI RSI at 54 is neutral, leaving significant room for upside before becoming overbought \u2014 unlike JTO and LAB which are already at 65+."
       },
       {
         "source": "Blockworks",
         "signal_type": "news",
-        "description": "ETH derivatives reset narrative suggests Ethereum ecosystem assets are re-pricing after a correction, supporting recovery in ETH-adjacent protocols like Ether.fi."
+        "description": "ETH derivatives reset reported by Blockworks suggests positioning has been cleared, creating room for fresh longs to drive ETH-ecosystem tokens higher."
+      },
+      {
+        "source": "CoinTelegraph",
+        "signal_type": "news",
+        "description": "Bitcoin back at $60K support with Fed-wary traders cutting risk \u2014 creates both a risk (breakdown) and opportunity (bounce) backdrop for the trade."
+      },
+      {
+        "source": "volume_breakout",
+        "signal_type": "technical",
+        "description": "Bullish Engulfing + Bullish Marubozu candlestick patterns on ETHFI indicate strong volume-backed buying conviction at current levels, the strongest chart signal among all candidates."
       }
     ],
     "confidence": 62
@@ -166,5 +166,5 @@
     }
   },
   "trade_count": 4,
-  "last_updated": "2026-07-09T01:13:06.424183+00:00"
+  "last_updated": "2026-07-09T02:13:03.797967+00:00"
 }
