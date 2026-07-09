@@ -1,14 +1,7 @@
 {
-  "cash": 400.0,
+  "cash": 449.90005,
   "starting_cash": 500.0,
-  "trade_history": [],
-  "total_trades": 0,
-  "winning_trades": 0,
-  "peak_value": 500.0,
-  "max_drawdown": 0.0,
-  "started_at": "2026-07-08T01:39:50.388535+00:00",
-  "last_updated": "2026-07-08T12:12:51.814226+00:00",
-  "holdings": [
+  "trade_history": [
     {
       "token_ticker": "memecoin",
       "token_name": "just a memecoin",
@@ -30,8 +23,25 @@
       "entered_at": "2026-07-08T01:39:50.388578+00:00",
       "auto_exit_at": "2026-07-09T01:39:50.388580+00:00",
       "source": "fomo_copy",
-      "partial_taken": false
-    },
+      "partial_taken": false,
+      "exit_price": 0.004337,
+      "exit_reason": "time_exit_24h",
+      "profit": -0.09995,
+      "profit_pct": -0.2,
+      "held_minutes": 1473.2,
+      "trader_held_hours": null,
+      "exit_lag_minutes": null,
+      "exited_at": "2026-07-09T02:13:04.933211+00:00",
+      "postmortem_done": false
+    }
+  ],
+  "total_trades": 1,
+  "winning_trades": 0,
+  "peak_value": 500.0,
+  "max_drawdown": 0.03,
+  "started_at": "2026-07-08T01:39:50.388535+00:00",
+  "last_updated": "2026-07-09T02:13:04.933224+00:00",
+  "holdings": [
     {
       "position_id": "01b39ec9",
       "token_ticker": "ANSEM",
