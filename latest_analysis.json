@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-07-09T08:09:10.922035+00:00",
-  "selected_coin": "ETHFI",
-  "selected_coin_name": "Ether.fi",
-  "selected_coin_price": 0.415742,
-  "confidence": 62,
-  "layman_headline": "Ether.fi flashes strong buying signals in a fearful market \u2014 time to pounce cautiously.",
-  "layman_explanation": "The crypto market is in 'Extreme Fear' mode, which historically has been one of the better times to buy. Ether.fi, a liquid staking protocol tied to Ethereum, is showing strong bullish chart patterns \u2014 buyers are clearly stepping in with conviction. While it's already bounced 25% this week, the chart structure suggests more room to run toward the $0.47-0.48 zone before hitting real resistance.",
-  "layman_action": "Consider a small position in ETHFI with a tight stop-loss at $0.388. If the price dips below that level, exit quickly. If it runs toward $0.475, take profits.",
-  "expert_reasoning": "ETHFI stands out with a chart bias score of +1.30, the highest among all candidates. It displays both a Bullish Marubozu and Bullish Engulfing pattern \u2014 two strong momentum signals rarely seen together. RSI at 54 is neutral, meaning the rally has room before becoming overbought. Support at $0.40 provides a clean stop-loss level at ~6.3% below current price, while resistance at $0.477 offers ~14.3% upside \u2014 a solid R:R for a swing trade. The Extreme Fear reading of 22 (a historically reliable signal per our credibility data at 75% win rate) adds macro tailwind. The concern is the +24.8% weekly move, but the candlestick patterns suggest this is accumulation rather than exhaustion.",
+  "timestamp": "2026-07-09T09:09:11.421788+00:00",
+  "selected_coin": "BTC",
+  "selected_coin_name": "Bitcoin",
+  "selected_coin_price": 62789,
+  "confidence": 25,
+  "layman_headline": "Extreme fear grips the market, but none of today's candidates are worth the risk.",
+  "layman_explanation": "The crypto market is in 'Extreme Fear' mode with a score of just 22 out of 100. While fear often creates buying opportunities, the coins available today are either ultra-low-liquidity tokenized stocks, brand-new tokens with no chart history, or coins that have already pumped massively. U.S.-Iran tensions and Bank of Japan rate hike warnings are adding macro uncertainty. Bitcoin itself is showing some recovery (+4.5% over 7 days), but the altcoin candidates are simply too risky with no reliable technical data to define proper entries and stop-losses.",
+  "layman_action": "Stay in cash and wait for a higher-quality setup. The fear in the market is real and driven by geopolitical events \u2014 patience here protects your capital until a clear opportunity emerges.",
+  "expert_reasoning": "The candidate pool is exceptionally poor this cycle. ARROW is up 250% in 24h with zero 7-day data and no chart analysis \u2014 classic pump with no definable stop-loss. SNDKB and MUB are tokenized stocks with negligible crypto-native volume. TRIA has the most data but is down 73.7% from ATH, below all moving averages, and the Morning Star pattern on the chart conflicts with bearish price structure (price below all MAs). NES already ran 31.6% in 7 days and is likely extended. ZEST and UMXM lack any technical indicators. The Fear & Greed index at 22 is a historically reliable contrarian signal (75% win rate in our data), but it needs to be paired with a quality setup \u2014 which doesn't exist here. Geopolitical risk from U.S.-Iran tensions and BOJ rate hike warnings add macro headwinds.",
   "risk_factors": [
-    "Already up 24.8% in 7 days \u2014 potential for a pullback or consolidation before continuing higher",
-    "BTC dominance at 56.1% means capital is flowing to Bitcoin, not altcoins \u2014 ETHFI could underperform",
-    "Bitcoin ETF outflows and BOJ rate hike warnings could trigger broader market sell-off dragging alts down"
+    "U.S.-Iran geopolitical escalation could trigger broader market sell-off and push fear even lower",
+    "Bank of Japan rate hike acceleration could strengthen yen carry trade unwind, pressuring all risk assets",
+    "All swing candidates have zero or negligible trading volume, creating extreme slippage and exit risk"
   ],
   "watch_list": [
-    "ETHFI holding $0.40 support \u2014 a break below invalidates the bullish thesis",
-    "BTC price action around $63K \u2014 a rejection here could drag the entire alt market",
-    "ETH performance this week \u2014 ETHFI is highly correlated to Ethereum ecosystem momentum"
+    "Fear & Greed index movement \u2014 if it drops below 15, a major capitulation bounce setup may form in BTC or ETH",
+    "U.S.-Iran conflict resolution or escalation \u2014 this is the primary macro driver right now",
+    "BTC price action around $60,000 support \u2014 a hold there with volume would signal a safer entry for large-caps"
   ],
-  "market_context": "The crypto market is in Extreme Fear at 22/100 with BTC stabilizing around $62.9K after a 4.5% weekly recovery. BTC ETFs are seeing outflows while ETH funds continue inflows \u2014 a divergence that could benefit ETH ecosystem tokens like ETHFI.",
-  "context_banner": "Extreme Fear conditions with ETH ecosystem tokens showing bullish reversal patterns create a contrarian buying opportunity in ETHFI.",
-  "btc_price": 62913,
+  "market_context": "The market is in Extreme Fear (22/100) driven by U.S.-Iran tensions and BOJ rate hike warnings. BTC is recovering modestly (+4.5% weekly) but altcoins are under heavy pressure with BTC dominance extremely elevated.",
+  "context_banner": "Extreme Fear creates opportunity, but today's candidate pool lacks the liquidity and technical structure needed for a responsible swing trade entry.",
+  "btc_price": 62789,
   "fear_greed": {
     "current": 22,
     "label": "Extreme Fear",
@@ -28,35 +28,35 @@
     "week_avg": 22.7,
     "trend": "improving"
   },
-  "btc_dominance": 56.1,
+  "btc_dominance": 7297.1,
   "key_signals": [
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Extreme Fear at 22/100 with improving trend \u2014 historically our most reliable signal (75% win rate), supporting contrarian buying."
-    },
-    {
-      "source": "RSI",
-      "signal_type": "technical",
-      "description": "ETHFI RSI at 54 is neutral \u2014 unlike GRASS (62) and LAB (65) which carry overbought correction risk. Plenty of runway before overheating."
+      "description": "Extreme Fear at 22/100 with improving trend (up from 20 yesterday) \u2014 historically a reliable contrarian buy signal (75% win rate), but requires a quality coin to pair with."
     },
     {
       "source": "CoinDesk",
       "signal_type": "news",
-      "description": "ETH funds extending their inflow streak while BTC ETFs see outflows \u2014 capital rotation favoring Ethereum ecosystem tokens."
+      "description": "U.S.-Iran conflict entering second day, keeping markets volatile; Bitcoin and ether steady but risk-off sentiment dominates."
     },
     {
       "source": "Blockworks",
       "signal_type": "news",
-      "description": "ETH derivatives reset signals fresh positioning cycle, which could drive renewed interest in ETH-adjacent protocols like Ether.fi."
+      "description": "ETH derivatives reset noted, suggesting positioning is being unwound \u2014 could precede a cleaner setup in coming days."
+    },
+    {
+      "source": "CoinDesk",
+      "signal_type": "macro",
+      "description": "Bank of Japan may accelerate rate hikes above 2%, creating headwinds for all risk assets through yen carry trade unwind pressure."
     },
     {
       "source": "volume_breakout",
       "signal_type": "technical",
-      "description": "Bullish Engulfing + Bullish Marubozu double confirmation on ETHFI chart \u2014 strong buyer conviction with minimal selling pressure, the highest quality candlestick setup among all candidates."
+      "description": "No swing candidate shows meaningful volume data \u2014 all have null volume_vs_avg, making any entry a blind trade with no confirmation."
     }
   ],
   "_mode": "HUNTING",
-  "exit_target": 0.475,
-  "stop_loss": 0.388
+  "exit_target": null,
+  "stop_loss": null
 }
