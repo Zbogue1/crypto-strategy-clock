@@ -694,5 +694,26 @@
       "ZRO"
     ],
     "alert": null
+  },
+  {
+    "ts": "2026-07-09T09:09:11.421788+00:00",
+    "coin": "BTC",
+    "price": 62789,
+    "signal": "HOLD",
+    "confidence": 25,
+    "score": -0.5,
+    "fg": 22,
+    "btc_price": 62789,
+    "btc_dominance": 7297.1,
+    "candidates": [
+      "ARROW",
+      "SNDKB",
+      "ZEST",
+      "TRIA",
+      "MUB",
+      "UMXM",
+      "NES"
+    ],
+    "alert": "Market in Extreme Fear with active geopolitical risk \u2014 capital preservation is priority until quality setups emerge."
   }
 ]
