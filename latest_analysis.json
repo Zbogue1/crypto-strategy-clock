@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-07-09T17:09:11.195074+00:00",
-  "selected_coin": "ZRO",
-  "selected_coin_name": "LayerZero",
-  "selected_coin_price": 0.937236,
+  "timestamp": "2026-07-09T18:09:21.464030+00:00",
+  "selected_coin": "ETHFI",
+  "selected_coin_name": "Ether.fi",
+  "selected_coin_price": 0.40285,
   "confidence": 62,
-  "layman_headline": "LayerZero shows classic bottom reversal pattern during extreme market fear \u2014 a contrarian swing setup.",
-  "layman_explanation": "The crypto market is in 'Extreme Fear' territory at 22/100, which historically has been a good time to find buying opportunities. LayerZero (ZRO) has been beaten down nearly 88% from its all-time high and its RSI at 31 shows it's nearly oversold \u2014 meaning sellers may be exhausted. The chart is printing a Morning Star reversal pattern right near the $0.90 support level, and the risk/reward ratio to the next resistance at $1.00 is nearly 3:1, which is excellent for a swing trade.",
-  "layman_action": "Consider a small position in ZRO near $0.925 with a strict stop-loss at $0.87. Take profits around $1.05. This is a contrarian bet during fear \u2014 size accordingly and don't risk more than you can afford to lose.",
-  "expert_reasoning": "ZRO presents the cleanest swing setup in this cycle. RSI at 30.83 is approaching oversold territory \u2014 a historically reliable signal per our credibility data (67% win rate). The Morning Star candlestick pattern at the $0.90 support zone is a classic three-candle reversal signal. While the broader trend is a downtrend and price sits below all major MAs, this is a mean-reversion bounce play, not a trend-following trade. The CoinDesk news about $7.2B migration to CCIP is bearish long-term but appears fully priced in given the -87.6% drawdown from ATH. Fear & Greed at 22 (Extreme Fear, 75% historical win rate) adds conviction to contrarian entries. The R:R of ~2.93x with support at $0.90 and resistance at $1.00+ makes this a well-defined, asymmetric setup.",
+  "layman_headline": "Extreme fear in crypto markets creates a buying window for a liquid staking token with strong chart momentum.",
+  "layman_explanation": "The overall crypto market is deeply fearful right now (score 22 out of 100), which historically has been a good time to buy. Ether.fi is a liquid staking protocol tied to Ethereum that has shown strong buying pressure over the last few days with powerful bullish candle patterns. While it's already bounced about 22% this week, the chart structure shows buyers are firmly in control with clear support underneath, and there's room to run toward the next resistance level around $0.477.",
+  "layman_action": "Consider a small position in ETHFI around $0.40-0.41, with a firm stop-loss at $0.375. If it reaches $0.477, take profits. This is a higher-risk trade in a fearful market, so keep position size conservative.",
+  "expert_reasoning": "ETHFI stands out with a chart bias of +1.30 \u2014 the highest among all candidates \u2014 supported by a Bullish Marubozu and Bullish Engulfing pattern on the daily, indicating strong and accelerating buy-side conviction. RSI at 54 is neutral, meaning there's significant headroom before overbought conditions, unlike JTO and LAB which are already in the mid-60s. The risk/reward to nearest support/resistance is 1.86x, which is acceptable. The key concern is the +21.9% 7-day move, but the candle patterns suggest this is trend establishment rather than exhaustion, especially given the broader extreme fear environment (F&G at 22) which our signal credibility data shows is a 75% reliable buy indicator. Ethereum ecosystem TVL remains dominant at ~$39B, providing fundamental backing for ETH-adjacent protocols like Ether.fi.",
   "risk_factors": [
-    "LayerZero losing $7.2B in cross-chain volume to Chainlink CCIP signals fundamental deterioration that could lead to further declines",
-    "BTC dominance at 56.1% continues to pressure altcoins \u2014 if BTC corrects ahead of Friday's $1.4B options expiry, alts will suffer disproportionately",
-    "Price is below all major moving averages in a confirmed downtrend \u2014 this bounce trade fights the trend and could fail at resistance"
+    "Already up 22% in 7 days \u2014 could be chasing momentum into a pullback",
+    "BTC dominance at 56.2% means capital is flowing away from altcoins toward Bitcoin, pressuring smaller tokens",
+    "No funding rate data available to gauge leverage positioning \u2014 hidden liquidation risk"
   ],
   "watch_list": [
-    "BTC price action around $62-63K ahead of Friday's $1.4B options expiry \u2014 a breakdown would drag all alts lower",
-    "ZRO holding the $0.90 support level \u2014 a break below invalidates the Morning Star pattern",
-    "Fear & Greed index trajectory \u2014 currently improving from 20 to 22, continued improvement supports risk-on positioning"
+    "BTC holding $62K support ahead of Friday's $1.4B options expiry \u2014 a break below could drag all alts down",
+    "ETHFI volume and whether it sustains above the $0.40 support level over the next 48 hours",
+    "Fear & Greed Index trend \u2014 currently improving from 20 to 22, a continued uptick would validate the contrarian entry"
   ],
-  "market_context": "The crypto market sits in Extreme Fear at 22/100, with BTC stabilizing around $62.7K and dominance at 56.1% compressing altcoin valuations. Friday's $1.4B BTC options expiry is the key near-term event that could catalyze volatility in either direction.",
-  "context_banner": "Extreme Fear conditions create asymmetric opportunities in oversold altcoins with strong technical reversal setups.",
-  "btc_price": 62711,
+  "market_context": "Crypto markets are in Extreme Fear (22/100) with BTC barely holding above $63K ahead of a large options expiry. BTC dominance at 56.2% is pressuring altcoins, but the fear environment historically presents contrarian buying opportunities for quality setups.",
+  "context_banner": "Extreme Fear creates selective buying opportunities \u2014 ETHFI's bullish chart structure amid broad market weakness makes it the strongest risk/reward setup on the board.",
+  "btc_price": 63337,
   "fear_greed": {
     "current": 22,
     "label": "Extreme Fear",
@@ -28,35 +28,35 @@
     "week_avg": 22.7,
     "trend": "improving"
   },
-  "btc_dominance": 56.1,
+  "btc_dominance": 56.2,
   "key_signals": [
-    {
-      "source": "RSI",
-      "signal_type": "technical",
-      "description": "ZRO RSI at 30.83 approaching oversold territory, historically a 67% reliable buy signal in our paper trading data with +3.9% average return."
-    },
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Extreme Fear at 22/100 with improving trend \u2014 our most reliable signal at 75% win rate and +5.9% average return, supporting contrarian entries."
+      "description": "Extreme Fear at 22/100 with improving trend (up from 20 yesterday) \u2014 historically a 75% reliable buy signal in our track record, providing contrarian entry confidence."
+    },
+    {
+      "source": "RSI",
+      "signal_type": "technical",
+      "description": "ETHFI RSI at 54 is neutral with room to run, unlike JTO (66) and LAB (65) which are already elevated \u2014 our 67% win rate RSI signal favors entries with headroom."
     },
     {
       "source": "CoinDesk",
       "signal_type": "news",
-      "description": "$7.2B migration from LayerZero to Chainlink CCIP is bearish fundamental news, but likely already priced into the -87.6% ATH drawdown, creating a 'sell the rumor, buy the news' dynamic."
+      "description": "Aave launching yield vaults for fintech investors signals growing institutional DeFi adoption, directly benefiting ETH staking protocols like Ether.fi."
+    },
+    {
+      "source": "Blockworks",
+      "signal_type": "news",
+      "description": "ETH derivatives reset reported by Blockworks suggests a fresh positioning cycle in Ethereum-linked assets, supporting the ETHFI momentum thesis."
     },
     {
       "source": "CoinTelegraph",
       "signal_type": "macro",
-      "description": "BTC facing $1.4B options expiry Friday \u2014 key risk event that could trigger volatility and impact all altcoin positions."
-    },
-    {
-      "source": "volume_breakout",
-      "signal_type": "technical",
-      "description": "Morning Star candlestick reversal pattern at $0.90 support with 2.93x risk/reward ratio \u2014 the best defined setup among all candidates."
+      "description": "BTC testing $63K with $1.4B options expiry Friday creates a binary risk event \u2014 if BTC holds, relief rally lifts quality alts; if it breaks, stop-loss protects capital."
     }
   ],
   "_mode": "HUNTING",
-  "exit_target": 1.05,
-  "stop_loss": 0.87
+  "exit_target": 0.477,
+  "stop_loss": 0.375
 }
