@@ -671,5 +671,28 @@
       "ZRO"
     ],
     "alert": null
+  },
+  {
+    "ts": "2026-07-09T08:09:10.922035+00:00",
+    "coin": "ETHFI",
+    "price": 0.415742,
+    "signal": "BUY",
+    "confidence": 62,
+    "score": 1.35,
+    "fg": 22,
+    "btc_price": 62913,
+    "btc_dominance": 56.1,
+    "candidates": [
+      "LAB",
+      "MON",
+      "VVV",
+      "GRASS",
+      "JTO",
+      "ARB",
+      "USDG",
+      "ETHFI",
+      "ZRO"
+    ],
+    "alert": null
   }
 ]
