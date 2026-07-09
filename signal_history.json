@@ -1,27 +1,5 @@
 [
   {
-    "ts": "2026-07-08T05:09:10.828884+00:00",
-    "coin": "ZRO",
-    "price": 0.959228,
-    "signal": "BUY",
-    "confidence": 58,
-    "score": 0.55,
-    "fg": 20,
-    "btc_price": 62768,
-    "btc_dominance": 56.0,
-    "candidates": [
-      "LAB",
-      "GRASS",
-      "MON",
-      "VVV",
-      "LDO",
-      "JTO",
-      "WLD",
-      "ZRO"
-    ],
-    "alert": null
-  },
-  {
     "ts": "2026-07-08T06:09:10.694203+00:00",
     "coin": "LDO",
     "price": 0.324509,
@@ -908,5 +886,28 @@
       "ZRO"
     ],
     "alert": "Market in Extreme Fear \u2014 contrarian setups carry elevated risk but historically reward patient buyers."
+  },
+  {
+    "ts": "2026-07-09T21:09:22.675784+00:00",
+    "coin": "ETHFI",
+    "price": 0.396396,
+    "signal": "BUY",
+    "confidence": 62,
+    "score": 1.35,
+    "fg": 22,
+    "btc_price": 63319,
+    "btc_dominance": 56.3,
+    "candidates": [
+      "LAB",
+      "MON",
+      "ARB",
+      "GRASS",
+      "JTO",
+      "FET",
+      "VVV",
+      "ETHFI",
+      "ZRO"
+    ],
+    "alert": null
   }
 ]
