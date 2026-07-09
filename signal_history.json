@@ -625,5 +625,28 @@
       "ZRO"
     ],
     "alert": "BTC is testing critical $60K support per CoinTelegraph \u2014 a breakdown would invalidate all alt-coin long setups. Monitor closely."
+  },
+  {
+    "ts": "2026-07-09T06:09:11.088292+00:00",
+    "coin": "ETHFI",
+    "price": 0.402733,
+    "signal": "BUY",
+    "confidence": 62,
+    "score": 1.3,
+    "fg": 22,
+    "btc_price": 62530,
+    "btc_dominance": 56.0,
+    "candidates": [
+      "LAB",
+      "MON",
+      "VVV",
+      "GRASS",
+      "JTO",
+      "ARB",
+      "USDG",
+      "ETHFI",
+      "ZRO"
+    ],
+    "alert": null
   }
 ]
