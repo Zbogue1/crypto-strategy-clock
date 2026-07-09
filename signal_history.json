@@ -1,27 +1,5 @@
 [
   {
-    "ts": "2026-07-08T04:03:46.081700+00:00",
-    "coin": "ZRO",
-    "price": 0.967887,
-    "signal": "BUY",
-    "confidence": 62,
-    "score": 1.8,
-    "fg": 20,
-    "btc_price": 62715,
-    "btc_dominance": 56.0,
-    "candidates": [
-      "LAB",
-      "GRASS",
-      "VVV",
-      "MON",
-      "LDO",
-      "XPL",
-      "JTO",
-      "ZRO"
-    ],
-    "alert": null
-  },
-  {
     "ts": "2026-07-08T05:09:10.828884+00:00",
     "coin": "ZRO",
     "price": 0.959228,
@@ -907,5 +885,28 @@
       "ZRO"
     ],
     "alert": "BTC faces $1.4B options expiry Friday \u2014 volatility spike could test all altcoin positions. Keep stops tight."
+  },
+  {
+    "ts": "2026-07-09T20:09:16.518684+00:00",
+    "coin": "ZRO",
+    "price": 0.91954,
+    "signal": "BUY",
+    "confidence": 62,
+    "score": 1.35,
+    "fg": 22,
+    "btc_price": 63183,
+    "btc_dominance": 56.2,
+    "candidates": [
+      "LAB",
+      "MON",
+      "GRASS",
+      "ARB",
+      "VVV",
+      "JTO",
+      "FET",
+      "ETHFI",
+      "ZRO"
+    ],
+    "alert": "Market in Extreme Fear \u2014 contrarian setups carry elevated risk but historically reward patient buyers."
   }
 ]
