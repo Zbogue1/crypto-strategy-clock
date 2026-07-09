@@ -1,32 +1,32 @@
 {
   "open_trade": {
     "coin": "ETHFI",
-    "entry_time": "2026-07-08T23:13:12.296548+00:00",
+    "entry_time": "2026-07-09T00:13:04.564330+00:00",
     "key_signals": [
       {
         "source": "Fear_Greed",
         "signal_type": "sentiment",
-        "description": "Extreme Fear at 20/100 with improving trend (from 22.3 weekly avg) \u2014 historically our most reliable signal with 75% win rate and +5.9% avg return."
+        "description": "Extreme Fear at 22/100 with improving trend (up from 20 yesterday) \u2014 historically our most reliable signal with 75% win rate and +5.9% avg return, strongly favoring contrarian buys."
       },
       {
         "source": "RSI",
         "signal_type": "technical",
-        "description": "ETHFI RSI at 54 is neutral \u2014 far safer entry than overbought candidates like JTO (66) and LAB (65). Our second most reliable signal at 67% win rate."
+        "description": "ETHFI RSI at 54 is neutral, offering significant upside runway before overbought conditions \u2014 our second most reliable signal at 67% win rate."
       },
       {
         "source": "CoinTelegraph",
         "signal_type": "news",
-        "description": "BTC peeling back to $62K as futures traders cut risk \u2014 this deleveraging event creates cleaner market structure for a subsequent move higher."
+        "description": "Bitcoin peeling back to $62K on Fed-wary futures traders cutting risk \u2014 creates the fear backdrop that makes this a contrarian opportunity."
       },
       {
         "source": "Blockworks",
         "signal_type": "news",
-        "description": "'ETH derivatives reset and the next retail trade' article signals clearing of leveraged ETH positions, setting up ETHFI for the next leg as a direct ETH ecosystem beneficiary."
+        "description": "'ETH derivatives reset and the next retail trade' suggests Ethereum ecosystem tokens like ETHFI could be the next leg of rotation."
       },
       {
         "source": "volume_breakout",
         "signal_type": "technical",
-        "description": "ETHFI's Bullish Engulfing + Bullish Marubozu dual pattern on chart analysis indicates strong volume-backed buyer conviction, yielding the highest chart bias score (+1.30) among all candidates."
+        "description": "ETHFI's bullish engulfing + bullish marubozu double-confirmation pattern on chart indicates strong buying conviction and potential trend reversal."
       }
     ],
     "confidence": 62
@@ -166,5 +166,5 @@
     }
   },
   "trade_count": 4,
-  "last_updated": "2026-07-08T23:13:12.296552+00:00"
+  "last_updated": "2026-07-09T00:13:04.564336+00:00"
 }
