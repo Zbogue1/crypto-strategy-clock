@@ -761,5 +761,28 @@
       "ZRO"
     ],
     "alert": null
+  },
+  {
+    "ts": "2026-07-09T12:09:11.224532+00:00",
+    "coin": "ETHFI",
+    "price": 0.415473,
+    "signal": "BUY",
+    "confidence": 62,
+    "score": 1.45,
+    "fg": 22,
+    "btc_price": 62717,
+    "btc_dominance": 56.1,
+    "candidates": [
+      "LAB",
+      "MON",
+      "GRASS",
+      "VVV",
+      "JTO",
+      "ARB",
+      "FET",
+      "ETHFI",
+      "ZRO"
+    ],
+    "alert": "Extreme Fear at 22 \u2014 historically our most reliable bullish signal (75% win rate). Selective buying warranted but position sizing should be conservative given geopolitical risks."
   }
 ]
