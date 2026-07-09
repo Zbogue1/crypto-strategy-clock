@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-07-09T00:09:10.852448+00:00",
+  "timestamp": "2026-07-09T01:09:10.929155+00:00",
   "selected_coin": "ETHFI",
   "selected_coin_name": "Ether.fi",
-  "selected_coin_price": 0.38699,
+  "selected_coin_price": 0.383247,
   "confidence": 62,
-  "layman_headline": "Extreme fear in crypto markets creates a buying window for Ethereum's top liquid staking play.",
-  "layman_explanation": "The entire crypto market is in 'Extreme Fear' mode \u2014 Bitcoin dropped back to $62K and most altcoins are bleeding. However, Ether.fi (ETHFI) is showing strong bullish chart patterns with aggressive buying candles, even as the broader market sells off. It's closely tied to Ethereum's staking ecosystem, which remains a $39 billion TVL powerhouse. When fear is this extreme, assets showing relative strength often rally hardest when sentiment recovers.",
-  "layman_action": "Consider a small position in ETHFI around $0.39. Set a stop-loss at $0.355 (about 9% downside risk) to protect against further market weakness, and look to take profits near $0.47 for roughly 20% upside.",
-  "expert_reasoning": "ETHFI stands out with the highest chart_bias_score (+1.30) among all candidates. It shows a bullish marubozu followed by a bullish engulfing pattern, which is a strong two-candle reversal confirmation. Price is above both short-term MAs despite an overall downtrend, suggesting a trend reversal is forming. RSI at 54 is neutral, meaning there's substantial room for upward movement before hitting overbought territory. The 20.15% weekly gain might seem extended, but the -6.55% 24h pullback offers a dip entry. Ethereum's $39B TVL underpins fundamental demand for liquid staking/restaking protocols like Ether.fi. The extreme fear environment (22/100, improving trend) historically correlates with strong subsequent bounces \u2014 our signal credibility data shows Fear_Greed has a 75% win rate with +5.9% avg return.",
+  "layman_headline": "Extreme Fear in crypto markets creates a buying window for a recovering Ethereum staking play.",
+  "layman_explanation": "The crypto market is in 'Extreme Fear' territory at 22/100, which historically has been a good time to buy. Bitcoin dropped back toward $62K as traders cut risk ahead of potential Fed moves, dragging everything down. Ether.fi (ETHFI) is a liquid staking protocol tied to Ethereum that has shown strong buying momentum this week \u2014 up 19% in 7 days \u2014 and just printed bullish reversal candle patterns on its chart despite today's 7% pullback. That pullback actually creates a better entry point.",
+  "layman_action": "Consider a small position in ETHFI around $0.39 with a strict stop-loss at $0.355. If it bounces back toward $0.47, that's roughly a 20% gain. Only risk what you can afford to lose \u2014 this is a fearful market and further drops are possible.",
+  "expert_reasoning": "ETHFI stands out with the highest chart bias score (+1.30) driven by consecutive Bullish Marubozu and Bullish Engulfing patterns, signaling sustained buying conviction. The RSI at 54 is comfortably neutral, avoiding the overbought risk present in JTO (66) and GRASS (62). The 7-day gain of 19% is a concern for extension, but today's 7.4% pullback provides a better entry near the $0.40 support level. The risk/reward to nearest support/resistance levels is 1.86x, which is acceptable. With Fear & Greed at 22 and improving (up from 20 yesterday), this is a historically reliable contrarian buy signal per our credibility data (75% win rate). The Ethereum ecosystem context is supportive \u2014 ETH itself is up 8% on the week and Ethereum TVL remains dominant at $39B.",
   "risk_factors": [
-    "Bitcoin dropping below $60K support would likely drag all alts including ETHFI significantly lower",
-    "High BTC dominance at 55.9% signals capital rotation away from altcoins \u2014 ETHFI could underperform even if BTC stabilizes",
-    "ETHFI already moved +20% in 7 days; a deeper retracement to $0.35 range is possible before the next leg up"
+    "BTC dominance at 55.9% means capital is flowing to Bitcoin over alts \u2014 ETHFI could underperform even if BTC stabilizes",
+    "The 19% weekly gain may already be extended, and today's 7.4% drop could be the start of a larger correction rather than a pullback",
+    "Bitcoin headlines suggest further sell pressure toward $60K which would drag all alts down significantly"
   ],
   "watch_list": [
-    "Bitcoin's $60K support level \u2014 CoinTelegraph flagged this as the key level; a break below invalidates the trade",
-    "Fear & Greed Index trajectory \u2014 currently improving from 20 to 22; continued improvement strengthens the setup",
-    "ETHFI holding $0.40 support on the chart \u2014 a close below $0.38 on high volume would be an early exit signal"
+    "Bitcoin's reaction at the $60,000 support level \u2014 a breakdown would invalidate all alt setups",
+    "ETHFI holding above $0.40 support on the chart \u2014 a close below signals more downside",
+    "Fear & Greed Index trajectory \u2014 continued improvement above 25 would confirm sentiment bottoming"
   ],
-  "market_context": "The crypto market is in Extreme Fear (22/100) with BTC at $62K testing key support. Bitcoin dominance remains elevated at 55.9%, making alt selection critical \u2014 only the strongest setups deserve capital in this environment.",
-  "context_banner": "Extreme Fear at 22 with an improving trend creates a contrarian buying window \u2014 ETHFI's bullish reversal candles signal institutional accumulation in the Ethereum staking ecosystem.",
-  "btc_price": 62149,
+  "market_context": "Bitcoin is under pressure near $62K with traders de-risking ahead of potential Fed policy signals, pushing Fear & Greed to Extreme Fear at 22. However, the improving trend (up from 20 yesterday) and strong 7-day performance across major alts (+4-8%) suggest this is a fearful pullback within a recovering market rather than a capitulation.",
+  "context_banner": "Extreme Fear at 22 with improving trajectory creates a historically reliable contrarian entry window \u2014 ETHFI's bullish chart patterns make it the strongest candidate.",
+  "btc_price": 62192,
   "fear_greed": {
     "current": 22,
     "label": "Extreme Fear",
@@ -33,27 +33,27 @@
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Extreme Fear at 22/100 with improving trend (up from 20 yesterday) \u2014 historically our most reliable signal with 75% win rate and +5.9% avg return, strongly favoring contrarian buys."
+      "description": "Extreme Fear at 22/100 with an improving trend \u2014 our most reliable signal with a 75% historical win rate and +5.9% average return."
     },
     {
       "source": "RSI",
       "signal_type": "technical",
-      "description": "ETHFI RSI at 54 is neutral, offering significant upside runway before overbought conditions \u2014 our second most reliable signal at 67% win rate."
+      "description": "ETHFI RSI at 54 is neutral with room to run upward, unlike JTO (66) and GRASS (62) which carry overbought correction risk. RSI is our second most reliable signal at 67% win rate."
     },
     {
       "source": "CoinTelegraph",
       "signal_type": "news",
-      "description": "Bitcoin peeling back to $62K on Fed-wary futures traders cutting risk \u2014 creates the fear backdrop that makes this a contrarian opportunity."
-    },
-    {
-      "source": "Blockworks",
-      "signal_type": "news",
-      "description": "'ETH derivatives reset and the next retail trade' suggests Ethereum ecosystem tokens like ETHFI could be the next leg of rotation."
+      "description": "Bitcoin peeling back to $62K as Fed-wary futures traders cut risk \u2014 this broad market fear is creating discounted entry points in quality alts like ETHFI."
     },
     {
       "source": "volume_breakout",
       "signal_type": "technical",
-      "description": "ETHFI's bullish engulfing + bullish marubozu double-confirmation pattern on chart indicates strong buying conviction and potential trend reversal."
+      "description": "ETHFI's Bullish Marubozu and Bullish Engulfing candle patterns indicate pure buying conviction with strong volume, the most bullish chart setup among all candidates at +1.30 bias."
+    },
+    {
+      "source": "Blockworks",
+      "signal_type": "news",
+      "description": "ETH derivatives reset narrative suggests Ethereum ecosystem assets are re-pricing after a correction, supporting recovery in ETH-adjacent protocols like Ether.fi."
     }
   ],
   "_mode": "HUNTING",
