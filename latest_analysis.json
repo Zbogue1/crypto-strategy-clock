@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-07-09T05:09:10.768830+00:00",
-  "selected_coin": "GRASS",
-  "selected_coin_name": "Grass",
-  "selected_coin_price": 0.380991,
+  "timestamp": "2026-07-09T06:09:11.088292+00:00",
+  "selected_coin": "ETHFI",
+  "selected_coin_name": "Ether.fi",
+  "selected_coin_price": 0.402733,
   "confidence": 62,
-  "layman_headline": "Extreme fear is creating a buying window in a beaten-down DePIN token with strong chart structure.",
-  "layman_explanation": "The overall crypto market is gripped by extreme fear, which historically has been one of the best times to buy. Grass, a decentralized data network token, has dropped over 20% in the past week but its chart shows it's still holding an uptrend with support near $0.50 on the chart level. The risk-to-reward ratio is very attractive at over 6:1, meaning the potential upside is much larger than the downside to our stop-loss. We're looking to ride a mean-reversion bounce as fear subsides.",
-  "layman_action": "A cautious investor could consider a small position in GRASS at current prices, with a strict stop-loss at $0.345 to limit downside to about 9%. Take profits near $0.48 for a potential 26% gain.",
-  "expert_reasoning": "GRASS presents the strongest risk-adjusted setup among candidates. The chart analysis shows an uptrend with 5-day momentum of +11.4%, price above two moving averages (moderately bullish structure), and an exceptional 6.24x risk/reward ratio to nearest support/resistance levels. The 20.6% weekly drawdown has created a mean-reversion opportunity while the RSI at 62 is elevated but not dangerously overbought. The Fear & Greed index at 22 (Extreme Fear, improving trend) is a historically reliable signal per our backtested data (75% win rate, +5.9% avg return). The DePIN narrative aligns with broader AI/infrastructure themes highlighted in current news (Paradigm's $1.2B AI fund, BNB Chain AI push). High BTC dominance at 56% is a headwind for alts, which tempers confidence.",
+  "layman_headline": "Ether.fi flashes strong bullish candle patterns amid extreme market fear \u2014 a contrarian swing opportunity.",
+  "layman_explanation": "The overall crypto market is in 'Extreme Fear' territory, which historically has been a good time to look for buying opportunities. Ether.fi has shown powerful bullish candlestick patterns (a Bullish Marubozu and Bullish Engulfing) suggesting strong buyer conviction after a massive drawdown from its all-time high. ETH itself is up 7.5% on the week, which tends to lift the ETH ecosystem including liquid staking/restaking protocols like Ether.fi. The chart structure is the most bullish of all candidates today.",
+  "layman_action": "Consider a small position in ETHFI with a tight stop-loss at $0.375. This is a higher-risk altcoin play, so keep position size modest and be ready to cut losses if support breaks.",
+  "expert_reasoning": "ETHFI stands out with a chart bias score of +1.30, far above all other candidates. The Bullish Marubozu (pure buying conviction) combined with a Bullish Engulfing pattern on the daily chart is a textbook reversal setup. RSI at 54 is neutral \u2014 not overbought \u2014 which means the +20% weekly move hasn't exhausted momentum indicators yet. Support sits at $0.40 (6.3% below) with resistance at $0.477 (11.7% above), giving a risk/reward of ~1.86x. The Extreme Fear reading of 22 (a proven reliable signal at 75% win rate from our paper trades) adds contrarian conviction. The main risk is high BTC dominance at 56% suppressing alt performance, but ETH's 7.5% weekly gain suggests capital is rotating into ETH ecosystem specifically.",
   "risk_factors": [
-    "BTC dominance at 56% means capital is flowing to Bitcoin over alts \u2014 any further BTC surge could drain GRASS liquidity",
-    "RSI at 62 is not oversold; combined with a recent bounce, there may be more downside before a sustained recovery",
-    "Low-cap alt with -90% from ATH could continue bleeding in a prolonged fear environment if BTC breaks below $60K support"
+    "BTC dominance at 56% is headwind for altcoins \u2014 if BTC dumps, ETHFI could fall harder",
+    "Already up 20% in 7 days \u2014 could be extended and due for a pullback before continuing",
+    "Down 95.3% from ATH indicates structural weakness and low liquidity risk"
   ],
   "watch_list": [
-    "Bitcoin's ability to hold the $60,000 support level \u2014 a breakdown here would drag all alts including GRASS significantly lower",
-    "Fear & Greed index trajectory \u2014 continued improvement from 22 toward 30+ would confirm the fear is bottoming",
-    "GRASS holding the $0.50 chart support level and maintaining position above its 20-day moving average"
+    "ETH price action \u2014 ETHFI is highly correlated; if ETH breaks below $2,300 watch closely",
+    "Fear & Greed Index \u2014 improving from 20 to 22; continued improvement strengthens the contrarian buy thesis",
+    "ETHFI volume and whether it holds above $0.40 support over the next 48 hours"
   ],
-  "market_context": "The crypto market is in Extreme Fear (22/100) with BTC holding near $62,400 and testing key levels amid US-Iran geopolitical tensions. ETH and alts showed resilience with 6-7% weekly gains despite the fear, suggesting accumulation may be underway beneath the surface.",
-  "context_banner": "Extreme Fear at 22 with an improving trend creates a contrarian buying window \u2014 history shows this is when the best swing entries emerge.",
-  "btc_price": 62356,
+  "market_context": "The crypto market is in Extreme Fear (22/100) with BTC consolidating around $62,500 and high dominance at 56%. ETH is showing relative strength with a 7.5% weekly gain, and geopolitical tensions (US-Iran) are keeping sentiment suppressed but haven't triggered a breakdown.",
+  "context_banner": "Extreme Fear conditions with ETH ecosystem strength create a contrarian swing opportunity in ETHFI's confirmed bullish reversal pattern.",
+  "btc_price": 62530,
   "fear_greed": {
     "current": 22,
     "label": "Extreme Fear",
@@ -33,30 +33,30 @@
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Extreme Fear at 22/100 with improving trend (up from 20) \u2014 our most reliable signal with 75% win rate and +5.9% avg return from backtesting."
+      "description": "Extreme Fear at 22/100 with improving trend (from 20 yesterday) \u2014 historically a 75% win rate buy signal in our paper trading history, avg +5.9% return."
     },
     {
       "source": "RSI",
       "signal_type": "technical",
-      "description": "GRASS RSI at 62 is neutral-to-slightly-elevated, not ideal, but the 20.6% weekly dip suggests the RSI is resetting from a deeper oversold condition. RSI has 67% win rate in our track record."
-    },
-    {
-      "source": "CoinTelegraph",
-      "signal_type": "news",
-      "description": "Bitcoin tumbling to $60K support is the macro risk, but analysts note crypto could benefit if Fed steps in to backstop markets \u2014 a potential positive catalyst."
-    },
-    {
-      "source": "volume_breakout",
-      "signal_type": "technical",
-      "description": "GRASS chart shows 6.24x risk/reward ratio with price above two moving averages and 5-day momentum of +11.4%, indicating buyers are stepping in at these levels."
+      "description": "ETHFI RSI at 54 is neutral with room to run, unlike JTO (66) and GRASS (62) which are approaching overbought \u2014 our second most reliable signal at 67% win rate."
     },
     {
       "source": "CoinDesk",
       "signal_type": "news",
-      "description": "Paradigm's $1.2B AI fund signals institutional capital flowing into AI/infrastructure narratives, which supports DePIN tokens like GRASS."
+      "description": "Bitcoin and ether holding steady despite US-Iran escalation suggests underlying resilience; ETH's 7.5% weekly gain provides ecosystem tailwind for ETHFI."
+    },
+    {
+      "source": "Blockworks",
+      "signal_type": "news",
+      "description": "'ETH derivatives reset and the next retail trade' article signals renewed institutional and retail interest in ETH ecosystem tokens."
+    },
+    {
+      "source": "volume_breakout",
+      "signal_type": "technical",
+      "description": "Bullish Marubozu and Bullish Engulfing candle patterns on ETHFI indicate strong volume-backed buying conviction \u2014 the strongest chart signal among all candidates (bias +1.30)."
     }
   ],
   "_mode": "HUNTING",
-  "exit_target": 0.48,
-  "stop_loss": 0.345
+  "exit_target": 0.477,
+  "stop_loss": 0.375
 }
