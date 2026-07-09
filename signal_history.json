@@ -715,5 +715,28 @@
       "NES"
     ],
     "alert": "Market in Extreme Fear with active geopolitical risk \u2014 capital preservation is priority until quality setups emerge."
+  },
+  {
+    "ts": "2026-07-09T10:09:11.023242+00:00",
+    "coin": "ETHFI",
+    "price": 0.413328,
+    "signal": "BUY",
+    "confidence": 62,
+    "score": 0.55,
+    "fg": 22,
+    "btc_price": 62938,
+    "btc_dominance": 56.1,
+    "candidates": [
+      "LAB",
+      "MON",
+      "VVV",
+      "GRASS",
+      "ARB",
+      "JTO",
+      "FET",
+      "ETHFI",
+      "ZRO"
+    ],
+    "alert": null
   }
 ]
