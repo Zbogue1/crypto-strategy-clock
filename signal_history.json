@@ -853,5 +853,28 @@
       "ZRO"
     ],
     "alert": "LayerZero facing fundamental headwind: $7.2B migrated to competitor Chainlink CCIP \u2014 trade is purely technical/contrarian"
+  },
+  {
+    "ts": "2026-07-09T16:09:11.582050+00:00",
+    "coin": "ZRO",
+    "price": 0.926822,
+    "signal": "BUY",
+    "confidence": 62,
+    "score": 1.8,
+    "fg": 22,
+    "btc_price": 62835,
+    "btc_dominance": 56.2,
+    "candidates": [
+      "LAB",
+      "MON",
+      "VVV",
+      "GRASS",
+      "ARB",
+      "JTO",
+      "FET",
+      "ETHFI",
+      "ZRO"
+    ],
+    "alert": "CoinDesk reports $7.2B migration away from LayerZero \u2014 monitor for further protocol-level deterioration that could negate this technical setup."
   }
 ]
