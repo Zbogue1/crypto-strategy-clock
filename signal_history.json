@@ -807,5 +807,28 @@
       "ZRO"
     ],
     "alert": "Geopolitical risk (US-Iran) is elevated \u2014 monitor for escalation that could trigger broad crypto sell-off"
+  },
+  {
+    "ts": "2026-07-09T14:09:11.105269+00:00",
+    "coin": "ETHFI",
+    "price": 0.413824,
+    "signal": "BUY",
+    "confidence": 62,
+    "score": 1.45,
+    "fg": 22,
+    "btc_price": 62911,
+    "btc_dominance": 56.2,
+    "candidates": [
+      "LAB",
+      "MON",
+      "VVV",
+      "GRASS",
+      "JTO",
+      "ARB",
+      "USDG",
+      "ETHFI",
+      "ZRO"
+    ],
+    "alert": null
   }
 ]
