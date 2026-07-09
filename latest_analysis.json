@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-07-09T10:09:11.023242+00:00",
-  "selected_coin": "ETHFI",
-  "selected_coin_name": "Ether.fi",
-  "selected_coin_price": 0.413328,
+  "timestamp": "2026-07-09T11:09:11.177427+00:00",
+  "selected_coin": "ZRO",
+  "selected_coin_name": "LayerZero",
+  "selected_coin_price": 0.925509,
   "confidence": 62,
-  "layman_headline": "Ether.fi shows strong buying momentum during extreme market fear \u2014 a contrarian opportunity.",
-  "layman_explanation": "The entire crypto market is gripped by extreme fear (22/100), which historically has been a good time to buy quality assets at a discount. Ether.fi, a liquid restaking protocol tied to Ethereum, is showing the strongest chart signals among all candidates \u2014 with powerful bullish candle patterns and price reclaiming key moving averages. While it's already bounced 24% this week, the chart structure and broader ETH ecosystem momentum (ETH itself up 8% this week) suggest more upside is possible before resistance near $0.477.",
-  "layman_action": "Consider a small position in ETHFI around $0.41 with a strict stop-loss at $0.385. Take profits near $0.477. This is a higher-risk altcoin trade, so keep position size modest.",
-  "expert_reasoning": "ETHFI stands out with a chart bias score of +1.30 \u2014 far above every other candidate. The Bullish Marubozu and Bullish Engulfing patterns on consecutive candles indicate strong institutional-level buying pressure. RSI at 54 is neutral, meaning there's room to run before overbought territory. The risk/reward to nearest support/resistance is 1.86x, and with the stop at $0.385 (just below $0.40 support) and target at $0.477, we get approximately 2.6:1 reward-to-risk. The main concern is the +23.7% weekly move suggesting extension, but the candlestick patterns indicate fresh momentum rather than exhaustion. Extreme Fear at 22 has historically been a reliable buy signal per our signal credibility data (75% win rate).",
+  "layman_headline": "Buying a beaten-down crypto infrastructure token showing early reversal signs amid extreme market fear.",
+  "layman_explanation": "The entire crypto market is in 'Extreme Fear' mode with a score of just 22 out of 100. Historically, this is when the best buying opportunities appear. LayerZero (ZRO) is a cross-chain messaging protocol that's been hammered down 87% from its all-time high, but its chart is now forming a classic bottoming pattern called a 'Morning Star.' Its momentum indicator (RSI) is near oversold territory at 31, which often precedes a bounce.",
+  "layman_action": "Consider a small position in ZRO with a strict stop-loss at $0.865 (about 6.5% below current price). The target is $1.05, roughly 13.5% upside, giving a roughly 2:1 reward-to-risk ratio. Don't bet more than you can afford to lose \u2014 the market is fearful for reasons.",
+  "expert_reasoning": "ZRO presents a classic oversold bounce setup. RSI at 30.83 is approaching the key 30 oversold threshold \u2014 our signal credibility data shows RSI has a 67% win rate with +3.9% avg return. The Morning Star candlestick pattern on the chart is a high-reliability three-candle bullish reversal formation, occurring right at the $0.90 support level. The 5-day momentum of -17.4% creates mean-reversion potential. Fear & Greed at 22 (Extreme Fear, our most reliable signal at 75% win rate, +5.9% avg return) with an improving trend from 20 yesterday adds strong contrarian conviction. The risk/reward to nearest S/R levels is 2.93x, well above the 2.0x minimum threshold. Price below all MAs keeps me cautious on sizing, hence moderate confidence.",
   "risk_factors": [
-    "Already up 23.7% in 7 days \u2014 could be extended and vulnerable to a pullback before continuing higher",
-    "BTC dominance at 56.1% means capital is flowing to Bitcoin over alts \u2014 alt rallies may be short-lived",
-    "US-Iran geopolitical tensions (per CoinDesk) could trigger broader risk-off selloffs that drag all alts down"
+    "Price is below all major moving averages indicating persistent bearish structure \u2014 the Morning Star could fail if broader selling resumes",
+    "BTC ETFs just experienced a massive $2.7B sell-off; continued institutional outflows could drag all altcoins lower",
+    "ZRO already moved +10.2% over 7 days so some of the bounce may already be priced in, limiting further upside"
   ],
   "watch_list": [
-    "ETH price action \u2014 if ETH loses its 7-day gains, ETHFI will likely follow down sharply",
-    "BTC holding above $62,000 \u2014 a breakdown would reset the entire market",
-    "Fear & Greed index trajectory \u2014 currently improving from 20 to 22, continued improvement would support the trade"
+    "BTC holding above $62,000 support \u2014 a breakdown would invalidate altcoin bounce setups",
+    "ZRO holding the $0.90 support level \u2014 a close below invalidates the Morning Star pattern",
+    "Fear & Greed index trajectory \u2014 continued improvement from 22 toward 30+ would confirm risk appetite returning"
   ],
-  "market_context": "The market is in Extreme Fear (22/100) with BTC at $62,938 showing modest recovery (+4.15% weekly). Geopolitical tensions between the US and Iran are keeping markets volatile, but ETH is outperforming BTC with an 8% weekly gain, suggesting a potential rotation into the ETH ecosystem.",
-  "context_banner": "Extreme Fear conditions with ETH ecosystem outperformance create a contrarian opportunity in ETHFI, which shows the strongest bullish chart structure among all swing candidates.",
-  "btc_price": 62938,
+  "market_context": "The crypto market is in Extreme Fear (22/100) but showing signs of stabilization with BTC up 2.6% over 7 days. Macro headwinds from Middle East tensions and Bitcoin ETF outflows are counterbalanced by positive institutional developments like SWIFT's blockchain ledger pilot and Sony's stablecoin bank approval.",
+  "context_banner": "Extreme Fear markets reward disciplined contrarian entries \u2014 ZRO's oversold RSI and Morning Star reversal pattern offer a textbook mean-reversion setup with defined risk.",
+  "btc_price": 62739,
   "fear_greed": {
     "current": 22,
     "label": "Extreme Fear",
@@ -28,35 +28,35 @@
     "week_avg": 22.7,
     "trend": "improving"
   },
-  "btc_dominance": 56.1,
+  "btc_dominance": 0.0,
   "key_signals": [
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Extreme Fear at 22/100 with improving trend (up from 20 yesterday) \u2014 historically a 75% win-rate buy signal per our credibility data."
+      "description": "Extreme Fear at 22 with improving trend (up from 20 yesterday) \u2014 our highest-confidence signal with 75% win rate historically, strongly supports contrarian buying."
     },
     {
       "source": "RSI",
       "signal_type": "technical",
-      "description": "ETHFI RSI at 54 is neutral with room to run, unlike LAB (65) and GRASS (62) which are approaching overbought \u2014 our second most reliable signal at 67% win rate."
+      "description": "ZRO RSI at 30.83, near oversold threshold \u2014 our second most reliable signal (67% win rate), indicating selling pressure is exhausted."
+    },
+    {
+      "source": "CoinTelegraph",
+      "signal_type": "news",
+      "description": "Bitcoin ETFs ended a massive $2.7B sell-off with another $85M outflow \u2014 selling pressure may be exhausting, which could mark a local bottom for the broader market."
     },
     {
       "source": "CoinDesk",
       "signal_type": "news",
-      "description": "US-Iran conflict headlines are driving extreme fear, but Bitcoin's exchange reserves narrative weakening suggests supply dynamics are shifting \u2014 classic contrarian backdrop."
-    },
-    {
-      "source": "Blockworks",
-      "signal_type": "news",
-      "description": "'ETH derivatives reset' article signals fresh positioning in ETH ecosystem \u2014 directly supports ETHFI as a liquid restaking protocol benefiting from renewed ETH interest."
+      "description": "SWIFT's blockchain ledger launch with 17 global banks and Sony's stablecoin trust bank approval signal continued institutional adoption, supporting the broader crypto infrastructure narrative that benefits cross-chain protocols like LayerZero."
     },
     {
       "source": "volume_breakout",
       "signal_type": "technical",
-      "description": "ETHFI's dual Bullish Marubozu + Bullish Engulfing candle patterns with +26.4% 5-day momentum indicate aggressive accumulation and high-conviction buying."
+      "description": "ZRO's Morning Star candlestick pattern at $0.90 support with 2.93x risk/reward ratio provides a well-defined technical entry with clear invalidation levels."
     }
   ],
   "_mode": "HUNTING",
-  "exit_target": 0.477,
-  "stop_loss": 0.385
+  "exit_target": 1.05,
+  "stop_loss": 0.865
 }
