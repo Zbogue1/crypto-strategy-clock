@@ -602,5 +602,28 @@
       "ZRO"
     ],
     "alert": "Bitcoin is testing critical $60,000 support \u2014 a breakdown would invalidate most altcoin setups. Monitor closely."
+  },
+  {
+    "ts": "2026-07-09T05:09:10.768830+00:00",
+    "coin": "GRASS",
+    "price": 0.380991,
+    "signal": "BUY",
+    "confidence": 62,
+    "score": 1.45,
+    "fg": 22,
+    "btc_price": 62356,
+    "btc_dominance": 56.0,
+    "candidates": [
+      "LAB",
+      "MON",
+      "VVV",
+      "JTO",
+      "GRASS",
+      "FET",
+      "ARB",
+      "ETHFI",
+      "ZRO"
+    ],
+    "alert": "BTC is testing critical $60K support per CoinTelegraph \u2014 a breakdown would invalidate all alt-coin long setups. Monitor closely."
   }
 ]
