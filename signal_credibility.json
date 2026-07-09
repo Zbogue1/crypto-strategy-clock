@@ -1,32 +1,32 @@
 {
   "open_trade": {
     "coin": "ETHFI",
-    "entry_time": "2026-07-09T03:13:01.649943+00:00",
+    "entry_time": "2026-07-09T04:13:04.574663+00:00",
     "key_signals": [
       {
         "source": "Fear_Greed",
         "signal_type": "sentiment",
-        "description": "Extreme Fear at 22/100 with improving trend \u2014 historically a 75% win rate contrarian buy signal in our trading history."
+        "description": "Extreme Fear at 22/100 with improving trend (up from 20 yesterday) \u2014 historically reliable contrarian buy signal with 75% win rate in our track record."
       },
       {
         "source": "RSI",
         "signal_type": "technical",
-        "description": "ETHFI RSI at 54 is neutral, giving room to run \u2014 unlike JTO (66), GRASS (62), and LAB (65) which carry elevated correction risk."
-      },
-      {
-        "source": "Blockworks",
-        "signal_type": "news",
-        "description": "ETH derivatives reset article suggests clearing of overleveraged positions, creating a healthier foundation for ETH-ecosystem rallies."
-      },
-      {
-        "source": "volume_breakout",
-        "signal_type": "technical",
-        "description": "ETHFI chart shows Bullish Engulfing + Marubozu patterns \u2014 two confirmed bullish formations indicating strong buying conviction at current levels."
+        "description": "ETHFI RSI at 54 is neutral despite a +22% weekly move, indicating the rally isn't overextended and has room to continue \u2014 RSI has a 67% win rate in our signal history."
       },
       {
         "source": "CoinTelegraph",
         "signal_type": "news",
-        "description": "Bitcoin tumbling to $60K key support while ETH shows relative weekly strength (+6.5% vs +2.2%) signals potential rotation into ETH-aligned assets."
+        "description": "Bitcoin tumbling to $60K support creates fear but also highlights ETH's relative strength at +5.7% weekly, benefiting ETH-ecosystem tokens like ETHFI."
+      },
+      {
+        "source": "Blockworks",
+        "signal_type": "news",
+        "description": "ETH derivatives reset signals positioning is being cleared, which historically precedes fresh directional moves \u2014 bullish for ETH-linked protocols."
+      },
+      {
+        "source": "volume_breakout",
+        "signal_type": "technical",
+        "description": "ETHFI's dual bullish candle patterns (Marubozu + Engulfing) on consecutive sessions indicate aggressive accumulation with no selling pushback, the strongest chart signal among all candidates."
       }
     ],
     "confidence": 62
@@ -166,5 +166,5 @@
     }
   },
   "trade_count": 4,
-  "last_updated": "2026-07-09T03:13:01.649948+00:00"
+  "last_updated": "2026-07-09T04:13:04.574669+00:00"
 }
