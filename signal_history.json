@@ -510,5 +510,28 @@
       "ZRO"
     ],
     "alert": "Bitcoin testing critical $60K support \u2014 all alt positions carry elevated risk if this level breaks."
+  },
+  {
+    "ts": "2026-07-09T01:09:10.929155+00:00",
+    "coin": "ETHFI",
+    "price": 0.383247,
+    "signal": "BUY",
+    "confidence": 62,
+    "score": 1.45,
+    "fg": 22,
+    "btc_price": 62192,
+    "btc_dominance": 55.9,
+    "candidates": [
+      "LAB",
+      "MON",
+      "JTO",
+      "VVV",
+      "GRASS",
+      "FET",
+      "BONK",
+      "ETHFI",
+      "ZRO"
+    ],
+    "alert": "Bitcoin testing critical $60K-$62K zone \u2014 if it breaks below $60K, all alt positions face significant downside risk."
   }
 ]
