@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-07-09T07:09:11.567878+00:00",
+  "timestamp": "2026-07-09T08:09:10.922035+00:00",
   "selected_coin": "ETHFI",
   "selected_coin_name": "Ether.fi",
-  "selected_coin_price": 0.414351,
+  "selected_coin_price": 0.415742,
   "confidence": 62,
-  "layman_headline": "Ether.fi flashes strong buying signals amid a fearful market \u2014 time to hunt for a bounce.",
-  "layman_explanation": "The overall crypto market is in 'Extreme Fear' mode, which historically has been a good time to buy. Ether.fi, a liquid restaking protocol tied to Ethereum, is showing the strongest chart setup among our candidates \u2014 multiple bullish candle patterns, price reclaiming key moving averages, and an RSI that's still neutral (not overbought). While it's already bounced 24% this week, the chart structure suggests more room to run toward the $0.47-0.48 resistance zone.",
-  "layman_action": "Consider a small position in ETHFI around $0.41 with a strict stop-loss at $0.385. This is a tactical bounce trade, not a long-term hold. Take profits near $0.475.",
-  "expert_reasoning": "ETHFI stands out with a chart bias score of +1.30 (bullish), driven by a Bullish Marubozu and Bullish Engulfing pattern on the daily chart. Price is above two major MAs, confirming a moderately bullish structure despite the broader downtrend context. RSI at 54 is the sweet spot \u2014 not overbought like JTO (66) or GRASS (62), leaving room for continuation. The risk/reward to nearest support/resistance is 1.86x, which is acceptable. ETH itself is showing relative strength (+7.9% weekly), which provides a tailwind for ETH ecosystem tokens. Extreme Fear at 22 is a historically reliable contrarian buy signal (75% win rate in our track record). The main concern is the +24% move already realized this week, but the candle patterns suggest fresh momentum rather than exhaustion.",
+  "layman_headline": "Ether.fi flashes strong buying signals in a fearful market \u2014 time to pounce cautiously.",
+  "layman_explanation": "The crypto market is in 'Extreme Fear' mode, which historically has been one of the better times to buy. Ether.fi, a liquid staking protocol tied to Ethereum, is showing strong bullish chart patterns \u2014 buyers are clearly stepping in with conviction. While it's already bounced 25% this week, the chart structure suggests more room to run toward the $0.47-0.48 zone before hitting real resistance.",
+  "layman_action": "Consider a small position in ETHFI with a tight stop-loss at $0.388. If the price dips below that level, exit quickly. If it runs toward $0.475, take profits.",
+  "expert_reasoning": "ETHFI stands out with a chart bias score of +1.30, the highest among all candidates. It displays both a Bullish Marubozu and Bullish Engulfing pattern \u2014 two strong momentum signals rarely seen together. RSI at 54 is neutral, meaning the rally has room before becoming overbought. Support at $0.40 provides a clean stop-loss level at ~6.3% below current price, while resistance at $0.477 offers ~14.3% upside \u2014 a solid R:R for a swing trade. The Extreme Fear reading of 22 (a historically reliable signal per our credibility data at 75% win rate) adds macro tailwind. The concern is the +24.8% weekly move, but the candlestick patterns suggest this is accumulation rather than exhaustion.",
   "risk_factors": [
-    "ETHFI has already moved +24% this week \u2014 a pullback or consolidation could occur before further upside",
-    "BTC dominance at 56.1% is compressing altcoin performance; a further BTC dominance spike could drag ETHFI down",
-    "US-Iran tensions and BOJ rate hike warnings create macro headwinds that could trigger risk-off selling across crypto"
+    "Already up 24.8% in 7 days \u2014 potential for a pullback or consolidation before continuing higher",
+    "BTC dominance at 56.1% means capital is flowing to Bitcoin, not altcoins \u2014 ETHFI could underperform",
+    "Bitcoin ETF outflows and BOJ rate hike warnings could trigger broader market sell-off dragging alts down"
   ],
   "watch_list": [
-    "ETH price action around key levels \u2014 ETHFI tracks ETH sentiment closely",
-    "Fear & Greed index trajectory \u2014 improving from 20 to 22, watch for continued recovery above 25",
-    "BTC ETF flow direction \u2014 outflows resuming could pressure the entire market lower"
+    "ETHFI holding $0.40 support \u2014 a break below invalidates the bullish thesis",
+    "BTC price action around $63K \u2014 a rejection here could drag the entire alt market",
+    "ETH performance this week \u2014 ETHFI is highly correlated to Ethereum ecosystem momentum"
   ],
-  "market_context": "The crypto market sits in Extreme Fear (22/100) with BTC at $62.8K showing modest recovery (+4% weekly). BTC dominance at 56.1% remains elevated, suppressing altcoin performance, but ETH's relative outperformance (+7.9% weekly) suggests rotation into the ETH ecosystem may be starting.",
-  "context_banner": "Extreme Fear with improving trend and strong ETH ecosystem technicals creates a tactical buying window for ETHFI before broader sentiment catches up.",
-  "btc_price": 62866,
+  "market_context": "The crypto market is in Extreme Fear at 22/100 with BTC stabilizing around $62.9K after a 4.5% weekly recovery. BTC ETFs are seeing outflows while ETH funds continue inflows \u2014 a divergence that could benefit ETH ecosystem tokens like ETHFI.",
+  "context_banner": "Extreme Fear conditions with ETH ecosystem tokens showing bullish reversal patterns create a contrarian buying opportunity in ETHFI.",
+  "btc_price": 62913,
   "fear_greed": {
     "current": 22,
     "label": "Extreme Fear",
@@ -33,30 +33,30 @@
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Extreme Fear at 22 with improving trend (up from 20 yesterday) \u2014 historically a 75% reliable contrarian buy signal in our track record."
+      "description": "Extreme Fear at 22/100 with improving trend \u2014 historically our most reliable signal (75% win rate), supporting contrarian buying."
     },
     {
       "source": "RSI",
       "signal_type": "technical",
-      "description": "ETHFI RSI at 54 is neutral, providing room for upside \u2014 unlike JTO (66) and GRASS (62) which are approaching overbought."
-    },
-    {
-      "source": "Blockworks",
-      "signal_type": "news",
-      "description": "ETH derivatives reset coverage suggests leveraged positions have been flushed, creating a cleaner setup for the next move higher."
-    },
-    {
-      "source": "volume_breakout",
-      "signal_type": "technical",
-      "description": "Bullish Engulfing and Bullish Marubozu candle patterns on ETHFI indicate strong buying conviction with institutional-grade price action."
+      "description": "ETHFI RSI at 54 is neutral \u2014 unlike GRASS (62) and LAB (65) which carry overbought correction risk. Plenty of runway before overheating."
     },
     {
       "source": "CoinDesk",
       "signal_type": "news",
-      "description": "ETH funds extending their inflow streak while BTC ETFs see outflows signals capital rotation into Ethereum ecosystem \u2014 directly bullish for ETHFI."
+      "description": "ETH funds extending their inflow streak while BTC ETFs see outflows \u2014 capital rotation favoring Ethereum ecosystem tokens."
+    },
+    {
+      "source": "Blockworks",
+      "signal_type": "news",
+      "description": "ETH derivatives reset signals fresh positioning cycle, which could drive renewed interest in ETH-adjacent protocols like Ether.fi."
+    },
+    {
+      "source": "volume_breakout",
+      "signal_type": "technical",
+      "description": "Bullish Engulfing + Bullish Marubozu double confirmation on ETHFI chart \u2014 strong buyer conviction with minimal selling pressure, the highest quality candlestick setup among all candidates."
     }
   ],
   "_mode": "HUNTING",
   "exit_target": 0.475,
-  "stop_loss": 0.385
+  "stop_loss": 0.388
 }
