@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-08T16:09:10.749428+00:00",
-    "coin": "ZRO",
-    "price": 0.969784,
-    "signal": "BUY",
-    "confidence": 62,
-    "score": 1.45,
-    "fg": 20,
-    "btc_price": 61727,
-    "btc_dominance": 55.9,
-    "candidates": [
-      "LAB",
-      "GRASS",
-      "MON",
-      "JTO",
-      "VVV",
-      "FET",
-      "XPL",
-      "ZRO",
-      "LDO"
-    ],
-    "alert": "Geopolitical risk elevated: Iran ceasefire collapse threatens oil markets and risk assets. Size positions conservatively."
-  },
-  {
     "ts": "2026-07-08T17:09:11.107686+00:00",
     "coin": "ZRO",
     "price": 0.967695,
@@ -913,5 +890,28 @@
       "ZRO"
     ],
     "alert": null
+  },
+  {
+    "ts": "2026-07-10T08:09:19.671461+00:00",
+    "coin": "ZRO",
+    "price": 0.894285,
+    "signal": "BUY",
+    "confidence": 52,
+    "score": 0.35,
+    "fg": 23,
+    "btc_price": 63983,
+    "btc_dominance": 56.4,
+    "candidates": [
+      "LAB",
+      "MON",
+      "GRASS",
+      "VVV",
+      "ARB",
+      "AAVE",
+      "DEXE",
+      "ETHFI",
+      "ZRO"
+    ],
+    "alert": "Extreme Fear (23) with improving trend \u2014 historically a 75% win-rate buy signal. Proceed with tight risk management."
   }
 ]
