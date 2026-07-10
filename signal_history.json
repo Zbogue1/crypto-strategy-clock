@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-08T23:09:10.791812+00:00",
-    "coin": "ETHFI",
-    "price": 0.38491,
-    "signal": "BUY",
-    "confidence": 62,
-    "score": 1.45,
-    "fg": 20,
-    "btc_price": 62277,
-    "btc_dominance": 56.0,
-    "candidates": [
-      "LAB",
-      "MON",
-      "VVV",
-      "JTO",
-      "GRASS",
-      "XPL",
-      "FET",
-      "ETHFI",
-      "ZRO"
-    ],
-    "alert": "BTC testing critical $60K support zone per CoinTelegraph \u2014 a breakdown would invalidate all alt long setups"
-  },
-  {
     "ts": "2026-07-09T00:09:10.852448+00:00",
     "coin": "ETHFI",
     "price": 0.38699,
@@ -916,5 +893,28 @@
       "ZRO"
     ],
     "alert": null
+  },
+  {
+    "ts": "2026-07-10T15:09:11.192092+00:00",
+    "coin": "ZRO",
+    "price": 0.903656,
+    "signal": "BUY",
+    "confidence": 52,
+    "score": 0.35,
+    "fg": 23,
+    "btc_price": 63985,
+    "btc_dominance": 56.3,
+    "candidates": [
+      "LAB",
+      "MON",
+      "GRASS",
+      "DEXE",
+      "VVV",
+      "USDG",
+      "XPL",
+      "ETHFI",
+      "ZRO"
+    ],
+    "alert": "Extreme Fear (23/100) \u2014 historically a reliable buy signal in our data (75% win rate), but alt headwinds from high BTC dominance warrant small position sizes."
   }
 ]
