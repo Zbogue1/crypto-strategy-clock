@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-08T12:09:10.969354+00:00",
-    "coin": "ZRO",
-    "price": 0.95845,
-    "signal": "BUY",
-    "confidence": 52,
-    "score": 0.35,
-    "fg": 20,
-    "btc_price": 62314,
-    "btc_dominance": 55.9,
-    "candidates": [
-      "LAB",
-      "MON",
-      "JTO",
-      "VVV",
-      "XPL",
-      "FET",
-      "LIT",
-      "ZRO",
-      "LDO"
-    ],
-    "alert": "Iran ceasefire collapse is driving oil up 5% and broad risk-off selling \u2014 position sizing should be conservative until geopolitical clarity emerges."
-  },
-  {
     "ts": "2026-07-08T13:09:11.004661+00:00",
     "coin": "ZRO",
     "price": 0.967627,
@@ -912,5 +889,28 @@
       "ZRO"
     ],
     "alert": null
+  },
+  {
+    "ts": "2026-07-10T04:09:11.444645+00:00",
+    "coin": "ZRO",
+    "price": 0.899206,
+    "signal": "BUY",
+    "confidence": 52,
+    "score": 0.35,
+    "fg": 23,
+    "btc_price": 63919,
+    "btc_dominance": 56.3,
+    "candidates": [
+      "LAB",
+      "MON",
+      "GRASS",
+      "ARB",
+      "JTO",
+      "VVV",
+      "FET",
+      "ETHFI",
+      "ZRO"
+    ],
+    "alert": "Extreme Fear environment \u2014 position sizing should be conservative. Only high-conviction, tight-stop setups."
   }
 ]
