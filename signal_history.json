@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-09T07:09:11.567878+00:00",
-    "coin": "ETHFI",
-    "price": 0.414351,
-    "signal": "BUY",
-    "confidence": 62,
-    "score": 1.45,
-    "fg": 22,
-    "btc_price": 62866,
-    "btc_dominance": 56.1,
-    "candidates": [
-      "LAB",
-      "MON",
-      "VVV",
-      "GRASS",
-      "JTO",
-      "ARB",
-      "USDG",
-      "ETHFI",
-      "ZRO"
-    ],
-    "alert": null
-  },
-  {
     "ts": "2026-07-09T08:09:10.922035+00:00",
     "coin": "ETHFI",
     "price": 0.415742,
@@ -916,5 +893,28 @@
       "ZRO"
     ],
     "alert": null
+  },
+  {
+    "ts": "2026-07-10T23:09:12.654706+00:00",
+    "coin": "ZRO",
+    "price": 0.924232,
+    "signal": "BUY",
+    "confidence": 52,
+    "score": 0.35,
+    "fg": 23,
+    "btc_price": 63994,
+    "btc_dominance": 56.3,
+    "candidates": [
+      "LAB",
+      "MON",
+      "GRASS",
+      "VIRTUAL",
+      "LIT",
+      "BONK",
+      "XPL",
+      "ETHFI",
+      "ZRO"
+    ],
+    "alert": "Extreme Fear at 23 \u2014 historically a contrarian buying zone, but high BTC dominance warns against aggressive alt positioning."
   }
 ]
