@@ -1,49 +1,5 @@
 [
   {
-    "ts": "2026-07-08T18:09:11.085819+00:00",
-    "coin": "ZRO",
-    "price": 0.949464,
-    "signal": "BUY",
-    "confidence": 62,
-    "score": 1.3,
-    "fg": 20,
-    "btc_price": 62137,
-    "btc_dominance": 56.0,
-    "candidates": [
-      "LAB",
-      "MON",
-      "GRASS",
-      "JTO",
-      "VVV",
-      "XPL",
-      "FET",
-      "ZRO"
-    ],
-    "alert": "Bitcoin geopolitical risk elevated \u2014 Iran/Hormuz oil threats could trigger broader risk-off moves. Keep position sizes small."
-  },
-  {
-    "ts": "2026-07-08T19:09:11.252705+00:00",
-    "coin": "ZRO",
-    "price": 0.94617,
-    "signal": "BUY",
-    "confidence": 62,
-    "score": 1.35,
-    "fg": 20,
-    "btc_price": 62109,
-    "btc_dominance": 56.0,
-    "candidates": [
-      "LAB",
-      "MON",
-      "GRASS",
-      "JTO",
-      "VVV",
-      "USDG",
-      "XPL",
-      "ZRO"
-    ],
-    "alert": null
-  },
-  {
     "ts": "2026-07-08T20:09:10.917957+00:00",
     "coin": "ETHFI",
     "price": 0.389182,
@@ -909,6 +865,52 @@
       "VVV",
       "ARB",
       "USDG",
+      "ETHFI",
+      "ZRO"
+    ],
+    "alert": null
+  },
+  {
+    "ts": "2026-07-10T10:09:15.272963+00:00",
+    "coin": "ZRO",
+    "price": 0.905142,
+    "signal": "BUY",
+    "confidence": 52,
+    "score": 0.35,
+    "fg": 23,
+    "btc_price": 64279,
+    "btc_dominance": 56.4,
+    "candidates": [
+      "LAB",
+      "VELVET",
+      "DEXE",
+      "MON",
+      "GRASS",
+      "VVV",
+      "AAVE",
+      "ETHFI",
+      "ZRO"
+    ],
+    "alert": "Extreme Fear at 23 \u2014 historically one of the most reliable buy signals in our data (75% win rate, +5.9% avg return). Proceed with discipline."
+  },
+  {
+    "ts": "2026-07-10T11:09:15.944029+00:00",
+    "coin": "ZRO",
+    "price": 0.914353,
+    "signal": "BUY",
+    "confidence": 58,
+    "score": 0.35,
+    "fg": 23,
+    "btc_price": 64381,
+    "btc_dominance": 56.4,
+    "candidates": [
+      "LAB",
+      "VELVET",
+      "DEXE",
+      "MON",
+      "GRASS",
+      "VVV",
+      "ARB",
       "ETHFI",
       "ZRO"
     ],
