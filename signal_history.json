@@ -1,27 +1,5 @@
 [
   {
-    "ts": "2026-07-08T08:09:10.939616+00:00",
-    "coin": "ZRO",
-    "price": 0.954024,
-    "signal": "BUY",
-    "confidence": 58,
-    "score": 0.45,
-    "fg": 20,
-    "btc_price": 62785,
-    "btc_dominance": 56.1,
-    "candidates": [
-      "LAB",
-      "MON",
-      "VVV",
-      "JTO",
-      "XPL",
-      "LIT",
-      "LDO",
-      "ZRO"
-    ],
-    "alert": "U.S.-Iran escalation could trigger sudden risk-off moves \u2014 keep stop-losses tight and position sizes small."
-  },
-  {
     "ts": "2026-07-08T09:09:11.041179+00:00",
     "coin": "ZRO",
     "price": 0.95063,
@@ -911,5 +889,28 @@
       "ZRO"
     ],
     "alert": null
+  },
+  {
+    "ts": "2026-07-10T00:09:10.910102+00:00",
+    "coin": "ARB",
+    "price": 0.087216,
+    "signal": "BUY",
+    "confidence": 52,
+    "score": 0.35,
+    "fg": 23,
+    "btc_price": 63131,
+    "btc_dominance": 56.3,
+    "candidates": [
+      "LAB",
+      "MON",
+      "GRASS",
+      "ARB",
+      "VVV",
+      "JTO",
+      "FET",
+      "ETHFI",
+      "ZRO"
+    ],
+    "alert": "Market in Extreme Fear with ETF outflows \u2014 position sizing should be conservative despite catalyst quality."
   }
 ]
