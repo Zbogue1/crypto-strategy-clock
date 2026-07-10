@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-08T21:09:10.982140+00:00",
-    "coin": "ZRO",
-    "price": 0.924624,
-    "signal": "BUY",
-    "confidence": 62,
-    "score": 1.8,
-    "fg": 20,
-    "btc_price": 62018,
-    "btc_dominance": 55.9,
-    "candidates": [
-      "LAB",
-      "MON",
-      "VVV",
-      "GRASS",
-      "JTO",
-      "XPL",
-      "FET",
-      "ETHFI",
-      "ZRO"
-    ],
-    "alert": "Extreme Fear at 20 \u2014 historically a strong contrarian buy zone, but position sizing should remain conservative until fear begins clearly lifting above 30."
-  },
-  {
     "ts": "2026-07-08T22:09:10.801825+00:00",
     "coin": "ETHFI",
     "price": 0.387337,
@@ -912,6 +889,29 @@
       "DEXE",
       "ARB",
       "AAVE",
+      "ETHFI",
+      "ZRO"
+    ],
+    "alert": null
+  },
+  {
+    "ts": "2026-07-10T13:09:12.504128+00:00",
+    "coin": "ZRO",
+    "price": 0.913385,
+    "signal": "BUY",
+    "confidence": 52,
+    "score": 0.35,
+    "fg": 23,
+    "btc_price": 64243,
+    "btc_dominance": 56.4,
+    "candidates": [
+      "LAB",
+      "DEXE",
+      "MON",
+      "GRASS",
+      "VVV",
+      "USDG",
+      "XPL",
       "ETHFI",
       "ZRO"
     ],
