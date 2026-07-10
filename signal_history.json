@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-09T06:09:11.088292+00:00",
-    "coin": "ETHFI",
-    "price": 0.402733,
-    "signal": "BUY",
-    "confidence": 62,
-    "score": 1.3,
-    "fg": 22,
-    "btc_price": 62530,
-    "btc_dominance": 56.0,
-    "candidates": [
-      "LAB",
-      "MON",
-      "VVV",
-      "GRASS",
-      "JTO",
-      "ARB",
-      "USDG",
-      "ETHFI",
-      "ZRO"
-    ],
-    "alert": null
-  },
-  {
     "ts": "2026-07-09T07:09:11.567878+00:00",
     "coin": "ETHFI",
     "price": 0.414351,
@@ -912,6 +889,29 @@
       "XPL",
       "VIRTUAL",
       "VVV",
+      "ETHFI",
+      "ZRO"
+    ],
+    "alert": null
+  },
+  {
+    "ts": "2026-07-10T22:09:24.708983+00:00",
+    "coin": "ZRO",
+    "price": 0.933873,
+    "signal": "BUY",
+    "confidence": 52,
+    "score": 0.35,
+    "fg": 23,
+    "btc_price": 63973,
+    "btc_dominance": 56.3,
+    "candidates": [
+      "LAB",
+      "MON",
+      "GRASS",
+      "USDG",
+      "VIRTUAL",
+      "LIT",
+      "XPL",
       "ETHFI",
       "ZRO"
     ],
