@@ -1,27 +1,5 @@
 [
   {
-    "ts": "2026-07-08T20:09:10.917957+00:00",
-    "coin": "ETHFI",
-    "price": 0.389182,
-    "signal": "BUY",
-    "confidence": 62,
-    "score": 1.45,
-    "fg": 20,
-    "btc_price": 62225,
-    "btc_dominance": 56.0,
-    "candidates": [
-      "LAB",
-      "MON",
-      "GRASS",
-      "VVV",
-      "JTO",
-      "XPL",
-      "ETHFI",
-      "ZRO"
-    ],
-    "alert": "Fear & Greed at 20 \u2014 historically a strong contrarian buy zone. Trend is improving."
-  },
-  {
     "ts": "2026-07-08T21:09:10.982140+00:00",
     "coin": "ZRO",
     "price": 0.924624,
@@ -911,6 +889,29 @@
       "GRASS",
       "VVV",
       "ARB",
+      "ETHFI",
+      "ZRO"
+    ],
+    "alert": null
+  },
+  {
+    "ts": "2026-07-10T12:09:14.190687+00:00",
+    "coin": "ZRO",
+    "price": 0.915965,
+    "signal": "BUY",
+    "confidence": 52,
+    "score": 0.35,
+    "fg": 23,
+    "btc_price": 64305,
+    "btc_dominance": 56.4,
+    "candidates": [
+      "LAB",
+      "MON",
+      "GRASS",
+      "USDG",
+      "DEXE",
+      "ARB",
+      "AAVE",
       "ETHFI",
       "ZRO"
     ],
