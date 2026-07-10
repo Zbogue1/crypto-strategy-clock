@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-08T10:09:10.894734+00:00",
-    "coin": "ZRO",
-    "price": 0.944017,
-    "signal": "BUY",
-    "confidence": 58,
-    "score": 1.2,
-    "fg": 20,
-    "btc_price": 61864,
-    "btc_dominance": 56.0,
-    "candidates": [
-      "LAB",
-      "MON",
-      "JTO",
-      "VVV",
-      "FET",
-      "XPL",
-      "BONK",
-      "ZRO",
-      "LDO"
-    ],
-    "alert": "Bitcoin under pressure from Iran ceasefire collapse \u2014 monitor closely for further downside that could invalidate alt setups."
-  },
-  {
     "ts": "2026-07-08T11:09:11.122690+00:00",
     "coin": "ZRO",
     "price": 0.949054,
@@ -912,5 +889,28 @@
       "ZRO"
     ],
     "alert": "Market in Extreme Fear \u2014 position sizing should be conservative (50% of normal allocation)"
+  },
+  {
+    "ts": "2026-07-10T02:09:10.919290+00:00",
+    "coin": "ARB",
+    "price": 0.08962,
+    "signal": "BUY",
+    "confidence": 62,
+    "score": 0.45,
+    "fg": 23,
+    "btc_price": 63705,
+    "btc_dominance": 56.3,
+    "candidates": [
+      "LAB",
+      "MON",
+      "GRASS",
+      "ARB",
+      "VVV",
+      "JTO",
+      "FET",
+      "ETHFI",
+      "ZRO"
+    ],
+    "alert": "Extreme Fear at 23 \u2014 historically a strong contrarian buy zone, but high BTC dominance warns that only catalyst-driven alts will outperform."
   }
 ]
