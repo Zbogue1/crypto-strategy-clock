@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-09T00:09:10.852448+00:00",
-    "coin": "ETHFI",
-    "price": 0.38699,
-    "signal": "BUY",
-    "confidence": 62,
-    "score": 1.45,
-    "fg": 22,
-    "btc_price": 62149,
-    "btc_dominance": 55.9,
-    "candidates": [
-      "LAB",
-      "MON",
-      "VVV",
-      "JTO",
-      "GRASS",
-      "FET",
-      "XPL",
-      "ETHFI",
-      "ZRO"
-    ],
-    "alert": "Bitcoin testing critical $60K support \u2014 all alt positions carry elevated risk if this level breaks."
-  },
-  {
     "ts": "2026-07-09T01:09:10.929155+00:00",
     "coin": "ETHFI",
     "price": 0.383247,
@@ -916,5 +893,28 @@
       "ZRO"
     ],
     "alert": "Extreme Fear (23/100) \u2014 historically a reliable buy signal in our data (75% win rate), but alt headwinds from high BTC dominance warrant small position sizes."
+  },
+  {
+    "ts": "2026-07-10T16:09:11.719739+00:00",
+    "coin": "ZRO",
+    "price": 0.902016,
+    "signal": "BUY",
+    "confidence": 52,
+    "score": 0.35,
+    "fg": 23,
+    "btc_price": 63959,
+    "btc_dominance": 56.3,
+    "candidates": [
+      "LAB",
+      "MON",
+      "GRASS",
+      "DEXE",
+      "USDG",
+      "VVV",
+      "XPL",
+      "ETHFI",
+      "ZRO"
+    ],
+    "alert": null
   }
 ]
