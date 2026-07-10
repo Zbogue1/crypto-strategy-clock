@@ -1,62 +1,62 @@
 {
-  "timestamp": "2026-07-09T23:09:11.100021+00:00",
-  "selected_coin": "ETHFI",
-  "selected_coin_name": "Ether.fi",
-  "selected_coin_price": 0.391652,
-  "confidence": 62,
-  "layman_headline": "Extreme fear is creating a buying window in a liquid staking token with strong chart momentum.",
-  "layman_explanation": "The overall crypto market is deeply fearful \u2014 a reading of 22 out of 100, which historically has been a good time to buy. Ether.fi, a liquid restaking protocol tied to Ethereum, has been showing strong buying pressure with bullish candlestick patterns (engulfing and marubozu) and is one of the few altcoins sitting above its key short-term moving averages. While it has already bounced 18% this week, the chart structure suggests it has room to push toward $0.47 resistance. Bitcoin is stabilizing around $63K which provides a less volatile backdrop.",
-  "layman_action": "Consider a small position in ETHFI around $0.39-$0.40 with a hard stop at $0.355 to limit losses to about 10%. Target selling near $0.465 for roughly 18% profit.",
-  "expert_reasoning": "ETHFI stands out with a chart bias of +1.30, the strongest among all candidates. The Bullish Marubozu and Bullish Engulfing patterns on consecutive candles signal strong institutional buying conviction. RSI at 54 is neutral, meaning the 18% weekly gain hasn't pushed it into overbought territory yet \u2014 unlike JTO and LAB which sit at 65+. Price is above the SMA20 with 5-day momentum of +26.4%, indicating fresh momentum. The risk/reward to nearest support ($0.40) vs resistance ($0.477) is 1.86x, which is acceptable. The Extreme Fear environment (22) has been a historically reliable contrarian signal per our signal credibility data (75% win rate). High BTC dominance at 56.2% is the main headwind for altcoins, keeping confidence moderate.",
+  "timestamp": "2026-07-10T00:09:10.910102+00:00",
+  "selected_coin": "ARB",
+  "selected_coin_name": "Arbitrum",
+  "selected_coin_price": 0.087216,
+  "confidence": 52,
+  "layman_headline": "Arbitrum gets a jolt from Robinhood's half-billion-dollar trading surge \u2014 worth a careful nibble in extreme fear.",
+  "layman_explanation": "The crypto market is in 'Extreme Fear' territory, which historically has been a decent time to start buying. Arbitrum, an Ethereum scaling network, just jumped ~13% after news that Robinhood is driving over $568 million in on-chain trading through it. While the chart is still technically bearish and most altcoins are struggling, this is the kind of real-world adoption catalyst that can spark a sustained move. We're sizing this carefully with a tight stop-loss because the broader environment is hostile to altcoins.",
+  "layman_action": "Consider a small position in Arbitrum around $0.084-0.088, but keep it modest \u2014 the market is fearful and altcoins remain under pressure. Set a firm stop-loss at $0.0735 and look to take profits near $0.10.",
+  "expert_reasoning": "ARB presents the best risk-adjusted setup among the candidates for several reasons. First, the Robinhood on-chain trading catalyst is fundamentally significant \u2014 $568M in trading volume validates Arbitrum's L2 infrastructure and could attract follow-on institutional attention. Second, despite the 13% 7-day move, RSI at 44.5 is still neutral, not overbought, suggesting the rally has legs. The chart bias is only mildly bearish (-0.70) with support at $0.0746 and resistance at $0.10 giving a reasonable 0.96 R/R to nearest levels, but a breakout above $0.10 targets $0.12+. The Extreme Fear reading (23) is a proven reliable signal in our track record (75% win rate), adding conviction. Main concern is BTC dominance at 56.3% suppressing alts and the overall bearish structure below moving averages \u2014 hence the moderate confidence level and tight stop.",
   "risk_factors": [
-    "BTC dominance at 56.2% continues to compress altcoin performance \u2014 if BTC sells off, ETHFI could drop disproportionately",
-    "Already up 18% in 7 days \u2014 a pullback before further upside is possible, and chasing momentum in extreme fear markets can whipsaw",
-    "Billions flowing out of Bitcoin ETFs per CoinDesk suggests broader risk-off sentiment that could drag all crypto lower"
+    "BTC dominance at 56.3% continues to drain capital from altcoins \u2014 ARB could fade even with strong fundamentals",
+    "ARB already ran 13% in 7 days; the Robinhood catalyst may be largely priced in, leading to a 'sell the news' pullback",
+    "Billions flowing out of Bitcoin ETFs (per CoinDesk) signals broader risk-off sentiment that could drag all crypto lower"
   ],
   "watch_list": [
-    "BTC price action around $63K \u2014 a breakdown below $60K would invalidate most altcoin longs",
-    "Ethereum TVL trends and whether ETH derivatives reset translates into renewed ETH ecosystem buying",
-    "Whether the Crypto Clarity Act news next week provides a positive regulatory catalyst for DeFi tokens"
+    "Whether ARB holds $0.080 support and maintains volume above average over the next 48 hours",
+    "Bitcoin's ability to hold $62,000 \u2014 a breakdown below would crush all alt setups",
+    "Follow-up Robinhood on-chain volume data \u2014 if Arbitrum trading volume sustains, the catalyst has legs"
   ],
-  "market_context": "The market is in Extreme Fear (22/100) with BTC stabilizing around $63K after outflows from Bitcoin ETFs. BTC dominance at 56.2% is high, meaning altcoins are underperforming, but selective DeFi plays tied to onchain activity surges are bucking the trend.",
-  "context_banner": "Extreme Fear at 22 combined with bullish chart structure in ETHFI creates a contrarian swing opportunity with defined risk.",
-  "btc_price": 63160,
+  "market_context": "The market sits at Extreme Fear (23/100) with BTC relatively stable around $63K but billions flowing out of ETFs signaling institutional caution. High BTC dominance at 56.3% means altcoins face headwinds, making selective, catalyst-driven entries the only sensible approach.",
+  "context_banner": "Extreme Fear market with a rare fundamental catalyst in Arbitrum via Robinhood's massive on-chain trading integration \u2014 a cautious contrarian entry.",
+  "btc_price": 63131,
   "fear_greed": {
-    "current": 22,
+    "current": 23,
     "label": "Extreme Fear",
-    "yesterday": 20,
-    "week_avg": 22.7,
+    "yesterday": 22,
+    "week_avg": 23.0,
     "trend": "improving"
   },
-  "btc_dominance": 56.2,
+  "btc_dominance": 56.3,
   "key_signals": [
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Extreme Fear at 22/100 with improving trend (up from 20 yesterday) \u2014 historically a 75% win-rate contrarian buy signal per our track record."
+      "description": "Extreme Fear at 23/100 (75% historical win rate in our trades) \u2014 contrarian buy conditions present but require strong catalysts to act on."
     },
     {
       "source": "CoinDesk",
       "signal_type": "news",
-      "description": "Arbitrum jumps 19% on Robinhood's $568M onchain trading surge, signaling renewed DeFi and L2 ecosystem enthusiasm that benefits adjacent protocols like Ether.fi."
+      "description": "Arbitrum jumped 19% after Robinhood drove $568M in on-chain trading, providing concrete adoption validation for the L2 network."
     },
     {
       "source": "RSI",
       "signal_type": "technical",
-      "description": "ETHFI RSI at 54 is neutral despite an 18% weekly gain, indicating momentum has room to extend before becoming overbought \u2014 unlike JTO and LAB at 65+."
+      "description": "ARB RSI at 44.5 remains neutral despite the 13% rally, indicating the move is not yet overextended and has room to continue."
     },
     {
-      "source": "Blockworks",
-      "signal_type": "news",
-      "description": "ETH derivatives are resetting per Blockworks analysis, which could catalyze fresh positioning in ETH ecosystem tokens including liquid restaking protocols."
+      "source": "DeFiLlama",
+      "signal_type": "onchain",
+      "description": "Arbitrum TVL at $1.23B provides fundamental backing \u2014 real capital locked in the ecosystem supports the network's value proposition."
     },
     {
-      "source": "volume_breakout",
-      "signal_type": "technical",
-      "description": "ETHFI's Bullish Marubozu and Bullish Engulfing candlestick patterns signal strong buying conviction with no seller pushback, the strongest chart setup among all candidates."
+      "source": "CoinDesk",
+      "signal_type": "macro",
+      "description": "Billions flowing out of Bitcoin ETFs and private credit funds signals rising macro risk \u2014 demands conservative position sizing across all trades."
     }
   ],
   "_mode": "HUNTING",
-  "exit_target": 0.465,
-  "stop_loss": 0.355
+  "exit_target": 0.0985,
+  "stop_loss": 0.0735
 }
