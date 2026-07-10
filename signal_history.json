@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-09T02:09:10.797782+00:00",
-    "coin": "ETHFI",
-    "price": 0.38841,
-    "signal": "BUY",
-    "confidence": 62,
-    "score": 1.45,
-    "fg": 22,
-    "btc_price": 61969,
-    "btc_dominance": 55.9,
-    "candidates": [
-      "LAB",
-      "MON",
-      "VVV",
-      "JTO",
-      "USDG",
-      "GRASS",
-      "FET",
-      "ETHFI",
-      "ZRO"
-    ],
-    "alert": "BTC testing critical $60K support \u2014 if broken, all alt positions should be reassessed immediately."
-  },
-  {
     "ts": "2026-07-09T03:09:10.799314+00:00",
     "coin": "ETHFI",
     "price": 0.392176,
@@ -912,6 +889,29 @@
       "USDG",
       "VVV",
       "XPL",
+      "ETHFI",
+      "ZRO"
+    ],
+    "alert": null
+  },
+  {
+    "ts": "2026-07-10T18:09:11.964690+00:00",
+    "coin": "ZRO",
+    "price": 0.905479,
+    "signal": "BUY",
+    "confidence": 52,
+    "score": 0.35,
+    "fg": 23,
+    "btc_price": 63871,
+    "btc_dominance": 56.3,
+    "candidates": [
+      "LAB",
+      "DEXE",
+      "MON",
+      "USDG",
+      "GRASS",
+      "XPL",
+      "VVV",
       "ETHFI",
       "ZRO"
     ],
