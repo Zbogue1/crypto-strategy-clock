@@ -1,27 +1,5 @@
 [
   {
-    "ts": "2026-07-08T14:09:10.957117+00:00",
-    "coin": "ZRO",
-    "price": 0.977155,
-    "signal": "BUY",
-    "confidence": 58,
-    "score": 0.55,
-    "fg": 20,
-    "btc_price": 61929,
-    "btc_dominance": 55.9,
-    "candidates": [
-      "LAB",
-      "GRASS",
-      "JTO",
-      "MON",
-      "VVV",
-      "LDO",
-      "LIT",
-      "ZRO"
-    ],
-    "alert": "Geopolitical risk elevated: Iran conflict escalation + oil surge creating macro headwinds for all risk assets. Size positions conservatively."
-  },
-  {
     "ts": "2026-07-08T15:09:10.910040+00:00",
     "coin": "ZRO",
     "price": 0.987133,
@@ -912,5 +890,28 @@
       "ZRO"
     ],
     "alert": null
+  },
+  {
+    "ts": "2026-07-10T06:09:11.987313+00:00",
+    "coin": "ZRO",
+    "price": 0.899329,
+    "signal": "BUY",
+    "confidence": 52,
+    "score": 0.35,
+    "fg": 23,
+    "btc_price": 64012,
+    "btc_dominance": 56.3,
+    "candidates": [
+      "LAB",
+      "MON",
+      "GRASS",
+      "VVV",
+      "USDG",
+      "ARB",
+      "FET",
+      "ETHFI",
+      "ZRO"
+    ],
+    "alert": "Extreme Fear at 23 \u2014 historically a reliable contrarian buy signal, but alt headwinds from high BTC dominance warrant small position sizing."
   }
 ]
