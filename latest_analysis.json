@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-07-11T10:09:11.430995+00:00",
+  "timestamp": "2026-07-11T11:09:11.712583+00:00",
   "selected_coin": "ZRO",
   "selected_coin_name": "LayerZero",
-  "selected_coin_price": 0.937222,
-  "confidence": 35,
-  "layman_headline": "Fearful market with no clear setups \u2014 patience is the best trade right now.",
-  "layman_explanation": "The crypto market is in a 'Fear' state with Bitcoin sitting around $64K and dominating the market at 56.3%. Altcoins are getting crushed across the board \u2014 most candidates are in downtrends, below their key moving averages, and showing bearish chart patterns. While ZRO (LayerZero) has an attractive near-oversold RSI at 31 and an exceptional risk/reward ratio on paper, the overall bearish structure and high BTC dominance make it risky to jump into any altcoin position right now.",
-  "layman_action": "Stay in cash and wait. The market is fearful but not yet showing clear reversal signals on altcoins. Watch for ZRO to confirm a bounce off the $0.90 support level before considering an entry. Don't force a trade in this environment.",
-  "expert_reasoning": "Across all 9 swing candidates, no coin presents a compelling entry right now. LAB has crashed 92.8% in 7 days \u2014 a classic knife-catching trap with strongly bearish chart bias (-1.6). GRASS bounced 11% today but the chart shows a bearish engulfing pattern and poor R/R (0.48x). ETHFI has the best chart bias (+0.6) but has already rallied 13.5% in 5 days with resistance only 2.5% away \u2014 terrible R/R (0.11x). ZRO is the most interesting: RSI at 31 is approaching oversold (our proven reliable signal with 67% win rate), risk/reward is outstanding at 16.5x, and it's sitting exactly at $0.90 support. However, the chart bias is bearish (-0.7) with price below all MAs in a downtrend. The Fear & Greed index at 26 is improving (up from 23 yesterday), which is a historically reliable signal for us (75% win rate), but Fear alone doesn't justify entering a bearish-structure altcoin. BTC dominance at 56.3% is headwind for all alts. The prudent move is to wait for ZRO to either confirm a bounce off $0.90 with a bullish candle pattern, or for Fear & Greed to drop further into Extreme Fear (<20) for a higher-conviction contrarian entry.",
+  "selected_coin_price": 0.92183,
+  "confidence": 32,
+  "layman_headline": "Market fear is high but no clean swing trade setup stands out right now \u2014 patience is the play.",
+  "layman_explanation": "The crypto market is in a fearful state with a Fear & Greed score of 26. Bitcoin is holding around $64K but altcoins are getting beaten down, with Bitcoin dominance at 56.3% sucking capital away from smaller coins. Every candidate on our watchlist has bearish chart structure \u2014 prices below key moving averages with sellers in control. While some coins like ZRO are approaching oversold territory, none have given a clear reversal signal yet, so jumping in now would be catching a falling knife.",
+  "layman_action": "Stay in cash and wait. The market is fearful but hasn't bottomed yet \u2014 when fear turns to capitulation and charts show actual reversal patterns (like a hammer candle or bullish engulfing at support), that's when to act. Keep ZRO on your radar if it holds $0.90 support and forms a bounce.",
+  "expert_reasoning": "All nine swing candidates present bearish or neutral chart structures. LAB is in freefall (-91.7% weekly) with strongly bearish candle patterns \u2014 a clear avoid. GRASS bounced 10% today but its chart shows bearish engulfing with a terrible 0.48x risk/reward ratio. VIRTUAL has a nice 9.3x R/R but already moved +12.3% in 24h suggesting the easy money is gone. ZRO is the most interesting: RSI at 31 is approaching oversold (our signal credibility data shows RSI has a 67% win rate), and it's sitting right at $0.90 support with 16.5x R/R. However, the chart bias is -0.70 (bearish), price is below all MAs, and BTC dominance at 56.3% continues to pressure alts. The Fear & Greed index at 26 with an improving trend from 23 is encouraging (75% win rate historically), but the improving trend hasn't yet translated into alt strength. The prudent move is to wait for ZRO to confirm a bounce off $0.90 with a bullish candle pattern before committing capital.",
   "risk_factors": [
-    "BTC dominance at 56.3% is actively suppressing altcoin performance \u2014 capital is flowing to BTC not alts",
-    "CryptoSlate warns BTC's $64K rebound faces a major challenge in 3 days \u2014 a BTC breakdown would crush all alt setups",
-    "Every swing candidate is below key moving averages \u2014 the entire alt market is in a bearish structure"
+    "BTC dominance at 56.3% continues to drain capital from altcoins \u2014 alt setups can fail even with good technicals",
+    "BTC faces a 'big challenge' in 3 days per CryptoSlate \u2014 if BTC breaks down from $64K, all alts will dump harder",
+    "No confirmed reversal patterns on any candidate \u2014 entering now means catching falling knives"
   ],
   "watch_list": [
-    "ZRO price action at $0.90 support \u2014 a confirmed bounce with bullish candle could trigger a BUY next cycle",
-    "Fear & Greed index trajectory \u2014 if it drops below 20 (Extreme Fear), contrarian buying becomes higher conviction",
-    "BTC's 3-day challenge mentioned by CryptoSlate \u2014 a BTC move above $65K would give alts room to breathe"
+    "ZRO holding $0.90 support and forming a bullish reversal candle (hammer or bullish engulfing) in the next 48 hours",
+    "BTC price action around $64K \u2014 CryptoSlate warns of a challenge in 3 days that could break momentum",
+    "Fear & Greed index trajectory \u2014 if it continues improving from 23\u219226 toward 30+, alt sentiment may shift"
   ],
-  "market_context": "Bitcoin is consolidating at $64K with high dominance (56.3%), squeezing altcoins. The market is in Fear (26/100) but improving from last week's 23.6 average \u2014 not yet extreme enough for high-conviction contrarian entries.",
-  "context_banner": "Market fear is improving but altcoin structures remain broadly bearish \u2014 discipline demands patience over forced entries.",
-  "btc_price": 64105,
+  "market_context": "The crypto market is in a Fear state (26/100) with BTC holding $64K but altcoins bleeding as Bitcoin dominance sits at 56.3%. A critical BTC test is expected within 3 days, making this a poor time to take on new alt risk.",
+  "context_banner": "Fear is improving but alt charts remain universally bearish \u2014 discipline demands waiting for confirmed reversal signals before deploying capital.",
+  "btc_price": 64139,
   "fear_greed": {
     "current": 26,
     "label": "Fear",
@@ -33,30 +33,30 @@
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Fear at 26 is improving from 23 yesterday \u2014 historically reliable signal (75% win rate) but not yet at extreme levels to warrant aggressive action."
+      "description": "Fear at 26 improving from 23 suggests sentiment may be bottoming, but hasn't reached extreme fear (sub-20) where contrarian buys have highest conviction. Historically 75% reliable."
     },
     {
       "source": "RSI",
       "signal_type": "technical",
-      "description": "ZRO RSI at 31 is the only candidate approaching oversold \u2014 our second most reliable signal (67% win rate) \u2014 but bearish chart structure (-0.7) requires confirmation before entry."
+      "description": "ZRO RSI at 31 is the only candidate approaching oversold, but lacks confirmation candle. RSI has 67% historical win rate in our trades."
     },
     {
       "source": "CryptoSlate",
       "signal_type": "news",
-      "description": "BTC's $64K rebound faces a critical test in 3 days \u2014 outcome will determine whether alts get breathing room or face further downside."
+      "description": "Bitcoin's $64K rebound faces its 'next big challenge' in 3 days \u2014 this macro risk event could cascade into alt weakness and invalidate any early entries."
     },
     {
       "source": "volume_breakout",
       "signal_type": "technical",
-      "description": "No volume breakout signals detected across any candidate \u2014 none are showing the accumulation patterns needed for high-quality swing entries."
+      "description": "No volume breakouts detected among candidates. GRASS had a 10.4% daily bounce but bearish engulfing pattern suggests it was a dead cat bounce rather than sustained buying."
     },
     {
-      "source": "Blockworks",
-      "signal_type": "news",
-      "description": "ETH derivatives reset noted \u2014 could set up a cleaner alt entry in coming days once positioning resets, but not actionable yet."
+      "source": "on_chain",
+      "signal_type": "onchain",
+      "description": "BTC dominance at 56.3% signals capital rotation away from alts \u2014 this structural headwind makes alt swing trades lower probability until dominance peaks and reverses."
     }
   ],
   "_mode": "HUNTING",
-  "exit_target": 1.05,
+  "exit_target": 1.02,
   "stop_loss": 0.84
 }
