@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-09T20:09:16.518684+00:00",
-    "coin": "ZRO",
-    "price": 0.91954,
-    "signal": "BUY",
-    "confidence": 62,
-    "score": 1.35,
-    "fg": 22,
-    "btc_price": 63183,
-    "btc_dominance": 56.2,
-    "candidates": [
-      "LAB",
-      "MON",
-      "GRASS",
-      "ARB",
-      "VVV",
-      "JTO",
-      "FET",
-      "ETHFI",
-      "ZRO"
-    ],
-    "alert": "Market in Extreme Fear \u2014 contrarian setups carry elevated risk but historically reward patient buyers."
-  },
-  {
     "ts": "2026-07-09T21:09:22.675784+00:00",
     "coin": "ETHFI",
     "price": 0.396396,
@@ -918,5 +895,28 @@
       "ZRO"
     ],
     "alert": "All swing candidates show bearish chart structure. No actionable setup meets minimum quality standards this cycle."
+  },
+  {
+    "ts": "2026-07-11T12:09:11.342788+00:00",
+    "coin": "ZRO",
+    "price": 0.925301,
+    "signal": "HOLD",
+    "confidence": 32,
+    "score": -0.15,
+    "fg": 26,
+    "btc_price": 64127,
+    "btc_dominance": 56.3,
+    "candidates": [
+      "LAB",
+      "MON",
+      "GRASS",
+      "VVV",
+      "USDG",
+      "VIRTUAL",
+      "XPL",
+      "ETHFI",
+      "ZRO"
+    ],
+    "alert": "No actionable swing trade setups meet minimum quality standards this cycle. All candidates have bearish chart structures or poor risk/reward."
   }
 ]
