@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-10T07:09:16.519657+00:00",
-    "coin": "ZRO",
-    "price": 0.894964,
-    "signal": "BUY",
-    "confidence": 52,
-    "score": 0.35,
-    "fg": 23,
-    "btc_price": 63794,
-    "btc_dominance": 56.3,
-    "candidates": [
-      "LAB",
-      "MON",
-      "GRASS",
-      "VVV",
-      "ARB",
-      "USDG",
-      "XLM",
-      "ETHFI",
-      "ZRO"
-    ],
-    "alert": null
-  },
-  {
     "ts": "2026-07-10T08:09:19.671461+00:00",
     "coin": "ZRO",
     "price": 0.894285,
@@ -918,5 +895,29 @@
       "ZRO"
     ],
     "alert": "No high-conviction setups available. All oversold candidates lack reversal confirmation. Staying disciplined in cash."
+  },
+  {
+    "ts": "2026-07-11T23:09:12.661025+00:00",
+    "coin": "ZRO",
+    "price": 0.925745,
+    "signal": "HOLD",
+    "confidence": 35,
+    "score": -0.15,
+    "fg": 26,
+    "btc_price": 64164,
+    "btc_dominance": 56.2,
+    "candidates": [
+      "MON",
+      "USDG",
+      "VVV",
+      "XPL",
+      "WLD",
+      "TRUMP",
+      "BONK",
+      "ETHFI",
+      "ZRO",
+      "GRASS"
+    ],
+    "alert": "No high-conviction setups available. All candidates lack confirmed reversal signals despite some approaching oversold levels."
   }
 ]
