@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-09T19:09:11.906473+00:00",
-    "coin": "ZRO",
-    "price": 0.931267,
-    "signal": "BUY",
-    "confidence": 62,
-    "score": 1.8,
-    "fg": 22,
-    "btc_price": 63161,
-    "btc_dominance": 56.2,
-    "candidates": [
-      "LAB",
-      "MON",
-      "VVV",
-      "ARB",
-      "GRASS",
-      "FET",
-      "JTO",
-      "ETHFI",
-      "ZRO"
-    ],
-    "alert": "BTC faces $1.4B options expiry Friday \u2014 volatility spike could test all altcoin positions. Keep stops tight."
-  },
-  {
     "ts": "2026-07-09T20:09:16.518684+00:00",
     "coin": "ZRO",
     "price": 0.91954,
@@ -918,5 +895,28 @@
       "ZRO"
     ],
     "alert": "No quality setups meet swing trading criteria this cycle. All candidates have bearish chart structures, poor risk/reward, or are already extended. Staying in cash."
+  },
+  {
+    "ts": "2026-07-11T11:09:11.712583+00:00",
+    "coin": "ZRO",
+    "price": 0.92183,
+    "signal": "HOLD",
+    "confidence": 32,
+    "score": -0.3,
+    "fg": 26,
+    "btc_price": 64139,
+    "btc_dominance": 56.3,
+    "candidates": [
+      "LAB",
+      "MON",
+      "GRASS",
+      "VVV",
+      "USDG",
+      "XPL",
+      "VIRTUAL",
+      "ETHFI",
+      "ZRO"
+    ],
+    "alert": "All swing candidates show bearish chart structure. No actionable setup meets minimum quality standards this cycle."
   }
 ]
