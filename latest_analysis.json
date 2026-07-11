@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-07-11T20:09:14.926189+00:00",
+  "timestamp": "2026-07-11T21:09:15.209628+00:00",
   "selected_coin": "ZRO",
   "selected_coin_name": "LayerZero",
-  "selected_coin_price": 0.920412,
-  "confidence": 32,
-  "layman_headline": "Fear grips the crypto market \u2014 patience beats impulsiveness right now.",
-  "layman_explanation": "The crypto market is in a 'Fear' state with most altcoins bleeding against Bitcoin. BTC dominance at 56.2% means money is flowing out of smaller coins and into Bitcoin. While a few candidates like ZRO are approaching oversold territory, none of them have strong enough chart setups or clear catalysts to justify risking capital right now. The smart move is to wait for cleaner entries.",
-  "layman_action": "Stay in cash and watch. The market hasn't given a clear buy signal yet. Wait for fear to deepen further or for a strong reversal pattern to form before committing money.",
-  "expert_reasoning": "No candidate presents a compelling swing setup this cycle. ZRO is the closest with RSI at 31 and sitting on $0.90 support, but chart bias is -0.70 (bearish), price is below all MAs, and there's no bullish candlestick reversal pattern or volume breakout to confirm a bounce. GRASS dropped 28% in 7 days but has a bearish engulfing candle and -0.90 chart bias \u2014 classic falling knife. LDO rallied 20% in 7 days making it extended. BTC dominance at 56.2% is hostile to alt positions. The Fear & Greed improving from 23 to 26 is encouraging but insufficient to call a bottom. Discipline demands we wait for confirmation rather than catch knives.",
+  "selected_coin_price": 0.921011,
+  "confidence": 28,
+  "layman_headline": "Fear grips the market \u2014 no clear swing trade setup worth the risk right now.",
+  "layman_explanation": "The crypto market is in a 'Fear' mood with Bitcoin dominance high at 56%, meaning money is flowing away from smaller coins (altcoins) and into Bitcoin for safety. While several altcoins have pulled back sharply, none of them are showing the kind of strong reversal signals \u2014 like a volume breakout or clear bullish pattern \u2014 that historically lead to profitable trades. The best candidate, LayerZero (ZRO), has an RSI near oversold territory, but its chart structure is bearish and it's sitting right on support with no confirmed bounce yet.",
+  "layman_action": "Stay in cash and wait. The market hasn't given a clear buy signal yet. Watch for a confirmed bounce in ZRO around $0.90 support or a broader market sentiment shift above 35 on the Fear & Greed index before committing capital.",
+  "expert_reasoning": "No candidate presents a compelling risk-adjusted entry. ZRO's RSI at 31 is the most oversold of the group and it's perched on $0.90 support with $1.00 resistance offering ~10% upside, but the chart bias is -0.70 (bearish), price is below all MAs, and there's no volume confirmation or bullish MACD cross. GRASS dropped 27.7% in 7 days (mean-reversion candidate), but it printed a bearish engulfing candle with a -0.90 chart bias \u2014 classic falling knife. LDO has a bullish marubozu and decent R/R (1.79x), but it's already up 19% in 7 days and still below all MAs, suggesting the bounce may be a dead cat. High BTC dominance (56.2%) is actively hostile to altcoin positions. Our signal credibility data strongly favors volume_breakout signals (100% win rate, +13.4% avg return), and none of these candidates show confirmed volume breakouts.",
   "risk_factors": [
-    "BTC dominance at 56.2% continues to crush altcoin performance \u2014 any new alt position faces this structural headwind",
-    "Fear & Greed at 26 is improving but could easily deteriorate if BTC loses $64K support, dragging alts down further",
-    "All swing candidates are below key moving averages with bearish chart structures \u2014 no confirmed reversals yet"
+    "BTC dominance at 56.2% is crushing altcoin performance \u2014 entering any alt position fights the dominant trend",
+    "Fear & Greed at 26 is improving but could easily reverse back to extreme fear on any negative macro headline",
+    "No candidate shows a confirmed volume breakout or bullish MACD cross \u2014 the highest-conviction signal types from our track record are absent"
   ],
   "watch_list": [
-    "ZRO holding $0.90 support \u2014 a bounce with volume would create a clean entry setup",
-    "BTC price action around $64K \u2014 a break above $66K could ease selling pressure on alts",
-    "Fear & Greed index trajectory \u2014 if it climbs above 30, sentiment shift could trigger alt rotation"
+    "ZRO holding $0.90 support and printing a bullish reversal candle (hammer or morning star) with increased volume",
+    "Fear & Greed index crossing above 35, which would signal genuine sentiment recovery rather than a dead cat bounce",
+    "BTC dominance dropping below 55% \u2014 that would signal capital rotation back into altcoins"
   ],
-  "market_context": "Bitcoin is consolidating near $64.2K with modest gains, but altcoins remain under pressure as BTC dominance holds at 56.2%. The Fear & Greed index at 26 is improving slowly from last week's 23.6 average, but hasn't signaled a definitive sentiment bottom yet.",
-  "context_banner": "Market fear is improving but no swing candidate has both oversold conditions AND a confirmed reversal pattern \u2014 discipline says wait.",
-  "btc_price": 64244,
+  "market_context": "The crypto market is in a fear-driven environment with BTC dominance at 56.2%, indicating capital is consolidating into Bitcoin while altcoins bleed. Bitcoin itself is range-bound near $64.4K with modest positive momentum, but the broader altcoin market lacks conviction for swing trades.",
+  "context_banner": "High Bitcoin dominance and persistent fear sentiment make altcoin swing trades unfavorable \u2014 patience is the highest-conviction play right now.",
+  "btc_price": 64364,
   "fear_greed": {
     "current": 26,
     "label": "Fear",
@@ -33,30 +33,30 @@
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Fear & Greed at 26 improving from 23 weekly average \u2014 trend is positive but still firmly in Fear territory, historically a zone where patience is rewarded over impulsiveness."
+      "description": "Fear & Greed at 26 (Fear) is improving from 23 but still signals broad risk aversion \u2014 historically a zone where patience pays off before entries."
     },
     {
       "source": "RSI",
       "signal_type": "technical",
-      "description": "ZRO RSI at 31 is the most oversold among candidates, approaching the 30 threshold that historically triggers bounce setups \u2014 but no confirmation candle yet."
+      "description": "ZRO RSI at 31 is the most oversold candidate, but our 75% win rate with RSI signals requires confirmation from other indicators which are absent here."
+    },
+    {
+      "source": "volume_breakout",
+      "signal_type": "technical",
+      "description": "No candidate shows a volume breakout \u2014 our most reliable signal (100% win rate, +13.4% avg return) \u2014 making any entry lower conviction."
     },
     {
       "source": "CoinTelegraph",
       "signal_type": "news",
-      "description": "Bitcoin described as 'nearing late stages of bear market' by Jamie Coutts \u2014 if BTC bottoms and rallies, alt rotation typically follows with a lag."
-    },
-    {
-      "source": "Chart Pattern Analysis",
-      "signal_type": "technical",
-      "description": "Every swing candidate is below key moving averages with bearish or neutral chart bias scores \u2014 no confirmed bullish reversals anywhere on the board."
+      "description": "Jamie Coutts notes Bitcoin is in late stages of a bear market, and ETH is climbing on tokenization narrative \u2014 but neither translates to an actionable altcoin catalyst today."
     },
     {
       "source": "Blockworks",
       "signal_type": "news",
-      "description": "ETH derivatives reset noted alongside DePIN/gaming rebound narrative \u2014 could signal early rotation but needs price confirmation before acting."
+      "description": "ETH derivatives reset and DePIN/gaming rebound narrative is developing, but these are longer-term themes not yet reflected in swing candidate charts."
     }
   ],
   "_mode": "HUNTING",
   "exit_target": 1.0,
-  "stop_loss": 0.845
+  "stop_loss": 0.84
 }
