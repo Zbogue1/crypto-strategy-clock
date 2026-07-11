@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-10T02:09:10.919290+00:00",
-    "coin": "ARB",
-    "price": 0.08962,
-    "signal": "BUY",
-    "confidence": 62,
-    "score": 0.45,
-    "fg": 23,
-    "btc_price": 63705,
-    "btc_dominance": 56.3,
-    "candidates": [
-      "LAB",
-      "MON",
-      "GRASS",
-      "ARB",
-      "VVV",
-      "JTO",
-      "FET",
-      "ETHFI",
-      "ZRO"
-    ],
-    "alert": "Extreme Fear at 23 \u2014 historically a strong contrarian buy zone, but high BTC dominance warns that only catalyst-driven alts will outperform."
-  },
-  {
     "ts": "2026-07-10T03:09:11.763171+00:00",
     "coin": "ZRO",
     "price": 0.905917,
@@ -918,5 +895,28 @@
       "ZRO"
     ],
     "alert": "All altcoin candidates show bearish chart structures below key moving averages. High BTC dominance (56.2%) is actively hostile to alt positions. Wait for reversal confirmation."
+  },
+  {
+    "ts": "2026-07-11T18:09:12.270151+00:00",
+    "coin": "ZRO",
+    "price": 0.918788,
+    "signal": "HOLD",
+    "confidence": 38,
+    "score": -0.15,
+    "fg": 26,
+    "btc_price": 64258,
+    "btc_dominance": 56.2,
+    "candidates": [
+      "MON",
+      "USDG",
+      "GRASS",
+      "VVV",
+      "XPL",
+      "WLD",
+      "TRUMP",
+      "ETHFI",
+      "ZRO"
+    ],
+    "alert": "All swing candidates show bearish or neutral chart structures with high BTC dominance headwind \u2014 no actionable setups this cycle."
   }
 ]
