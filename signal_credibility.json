@@ -1,58 +1,27 @@
 {
-  "open_trade": {
-    "coin": "GRASS",
-    "entry_time": "2026-07-09T05:13:07.481981+00:00",
-    "key_signals": [
-      {
-        "source": "Fear_Greed",
-        "signal_type": "sentiment",
-        "description": "Extreme Fear at 22/100 with improving trend (up from 20) \u2014 our most reliable signal with 75% win rate and +5.9% avg return from backtesting."
-      },
-      {
-        "source": "RSI",
-        "signal_type": "technical",
-        "description": "GRASS RSI at 62 is neutral-to-slightly-elevated, not ideal, but the 20.6% weekly dip suggests the RSI is resetting from a deeper oversold condition. RSI has 67% win rate in our track record."
-      },
-      {
-        "source": "CoinTelegraph",
-        "signal_type": "news",
-        "description": "Bitcoin tumbling to $60K support is the macro risk, but analysts note crypto could benefit if Fed steps in to backstop markets \u2014 a potential positive catalyst."
-      },
-      {
-        "source": "volume_breakout",
-        "signal_type": "technical",
-        "description": "GRASS chart shows 6.24x risk/reward ratio with price above two moving averages and 5-day momentum of +11.4%, indicating buyers are stepping in at these levels."
-      },
-      {
-        "source": "CoinDesk",
-        "signal_type": "news",
-        "description": "Paradigm's $1.2B AI fund signals institutional capital flowing into AI/infrastructure narratives, which supports DePIN tokens like GRASS."
-      }
-    ],
-    "confidence": 62
-  },
+  "open_trade": null,
   "signal_stats": {
     "Fear_Greed__sentiment": {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "wins": 3,
+      "wins": 4,
       "losses": 1,
-      "total": 4,
-      "win_rate": 0.75,
-      "total_pct": 23.48,
-      "avg_return": 5.87,
-      "last_seen": "2026-07-08T17:13:06.441963+00:00"
+      "total": 5,
+      "win_rate": 0.8,
+      "total_pct": 33.7,
+      "avg_return": 6.74,
+      "last_seen": "2026-07-11T17:13:11.963544+00:00"
     },
     "CoinDesk__news": {
       "source": "CoinDesk",
       "signal_type": "news",
-      "wins": 1,
+      "wins": 2,
       "losses": 1,
-      "total": 2,
-      "win_rate": 0.5,
-      "total_pct": -8.5,
-      "avg_return": -4.25,
-      "last_seen": "2026-07-07T21:21:19.201266+00:00"
+      "total": 3,
+      "win_rate": 0.667,
+      "total_pct": 1.72,
+      "avg_return": 0.5733,
+      "last_seen": "2026-07-11T17:13:11.963561+00:00"
     },
     "CoinTelegraph__onchain": {
       "source": "CoinTelegraph",
@@ -68,13 +37,13 @@
     "volume_breakout__technical": {
       "source": "volume_breakout",
       "signal_type": "technical",
-      "wins": 2,
+      "wins": 3,
       "losses": 0,
-      "total": 2,
+      "total": 3,
       "win_rate": 1.0,
-      "total_pct": 29.96,
-      "avg_return": 14.98,
-      "last_seen": "2026-07-08T17:13:06.441997+00:00"
+      "total_pct": 40.18,
+      "avg_return": 13.3933,
+      "last_seen": "2026-07-11T17:13:11.963558+00:00"
     },
     "Blockworks__macro": {
       "source": "Blockworks",
@@ -90,13 +59,13 @@
     "RSI__technical": {
       "source": "RSI",
       "signal_type": "technical",
-      "wins": 2,
+      "wins": 3,
       "losses": 1,
-      "total": 3,
-      "win_rate": 0.667,
-      "total_pct": 11.66,
-      "avg_return": 3.8867,
-      "last_seen": "2026-07-08T17:13:06.441980+00:00"
+      "total": 4,
+      "win_rate": 0.75,
+      "total_pct": 21.88,
+      "avg_return": 5.47,
+      "last_seen": "2026-07-11T17:13:11.963552+00:00"
     },
     "CoinDesk__technical": {
       "source": "CoinDesk",
@@ -123,13 +92,13 @@
     "CoinTelegraph__news": {
       "source": "CoinTelegraph",
       "signal_type": "news",
-      "wins": 2,
+      "wins": 3,
       "losses": 0,
-      "total": 2,
+      "total": 3,
       "win_rate": 1.0,
-      "total_pct": 31.98,
-      "avg_return": 15.99,
-      "last_seen": "2026-07-08T17:13:06.441986+00:00"
+      "total_pct": 42.2,
+      "avg_return": 14.0667,
+      "last_seen": "2026-07-11T17:13:11.963555+00:00"
     },
     "Chart Pattern Analysis__technical": {
       "source": "Chart Pattern Analysis",
@@ -165,6 +134,6 @@
       "last_seen": "2026-07-08T17:13:06.441992+00:00"
     }
   },
-  "trade_count": 4,
-  "last_updated": "2026-07-09T05:13:07.481990+00:00"
+  "trade_count": 5,
+  "last_updated": "2026-07-11T17:13:11.963595+00:00"
 }
