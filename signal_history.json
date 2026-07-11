@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-09T21:09:22.675784+00:00",
-    "coin": "ETHFI",
-    "price": 0.396396,
-    "signal": "BUY",
-    "confidence": 62,
-    "score": 1.35,
-    "fg": 22,
-    "btc_price": 63319,
-    "btc_dominance": 56.3,
-    "candidates": [
-      "LAB",
-      "MON",
-      "ARB",
-      "GRASS",
-      "JTO",
-      "FET",
-      "VVV",
-      "ETHFI",
-      "ZRO"
-    ],
-    "alert": null
-  },
-  {
     "ts": "2026-07-09T22:09:16.407457+00:00",
     "coin": "ZRO",
     "price": 0.8996,
@@ -918,5 +895,28 @@
       "ZRO"
     ],
     "alert": "No actionable swing trade setups meet minimum quality standards this cycle. All candidates have bearish chart structures or poor risk/reward."
+  },
+  {
+    "ts": "2026-07-11T13:09:11.419490+00:00",
+    "coin": "ZRO",
+    "price": 0.923109,
+    "signal": "HOLD",
+    "confidence": 35,
+    "score": -0.3,
+    "fg": 26,
+    "btc_price": 64140,
+    "btc_dominance": 56.3,
+    "candidates": [
+      "LAB",
+      "MON",
+      "VVV",
+      "GRASS",
+      "USDG",
+      "VIRTUAL",
+      "XPL",
+      "ETHFI",
+      "ZRO"
+    ],
+    "alert": "Bitcoin faces key resistance test within 72 hours \u2014 outcome will likely dictate next altcoin move"
   }
 ]
