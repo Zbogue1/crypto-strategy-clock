@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-09T23:09:11.100021+00:00",
-    "coin": "ETHFI",
-    "price": 0.391652,
-    "signal": "BUY",
-    "confidence": 62,
-    "score": 1.3,
-    "fg": 22,
-    "btc_price": 63160,
-    "btc_dominance": 56.2,
-    "candidates": [
-      "LAB",
-      "MON",
-      "GRASS",
-      "ARB",
-      "JTO",
-      "VVV",
-      "FET",
-      "ETHFI",
-      "ZRO"
-    ],
-    "alert": null
-  },
-  {
     "ts": "2026-07-10T00:09:10.910102+00:00",
     "coin": "ARB",
     "price": 0.087216,
@@ -918,5 +895,28 @@
       "ZRO"
     ],
     "alert": "Fear & Greed improving from 23 to 26 \u2014 monitor for acceleration above 30 which historically triggers strong alt bounces."
+  },
+  {
+    "ts": "2026-07-11T15:09:11.480972+00:00",
+    "coin": "ZRO",
+    "price": 0.92602,
+    "signal": "BUY",
+    "confidence": 52,
+    "score": 0.35,
+    "fg": 26,
+    "btc_price": 64312,
+    "btc_dominance": 56.3,
+    "candidates": [
+      "LAB",
+      "MON",
+      "GRASS",
+      "VVV",
+      "USDG",
+      "VIRTUAL",
+      "XPL",
+      "ETHFI",
+      "ZRO"
+    ],
+    "alert": null
   }
 ]
