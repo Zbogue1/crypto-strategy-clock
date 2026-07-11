@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-09T16:09:11.582050+00:00",
-    "coin": "ZRO",
-    "price": 0.926822,
-    "signal": "BUY",
-    "confidence": 62,
-    "score": 1.8,
-    "fg": 22,
-    "btc_price": 62835,
-    "btc_dominance": 56.2,
-    "candidates": [
-      "LAB",
-      "MON",
-      "VVV",
-      "GRASS",
-      "ARB",
-      "JTO",
-      "FET",
-      "ETHFI",
-      "ZRO"
-    ],
-    "alert": "CoinDesk reports $7.2B migration away from LayerZero \u2014 monitor for further protocol-level deterioration that could negate this technical setup."
-  },
-  {
     "ts": "2026-07-09T17:09:11.195074+00:00",
     "coin": "ZRO",
     "price": 0.937236,
@@ -914,6 +891,29 @@
       "VIRTUAL",
       "VVV",
       "XPL",
+      "ETHFI",
+      "ZRO"
+    ],
+    "alert": null
+  },
+  {
+    "ts": "2026-07-11T08:09:16.055110+00:00",
+    "coin": "ZRO",
+    "price": 0.931759,
+    "signal": "BUY",
+    "confidence": 52,
+    "score": 0.35,
+    "fg": 26,
+    "btc_price": 64115,
+    "btc_dominance": 56.3,
+    "candidates": [
+      "LAB",
+      "MON",
+      "GRASS",
+      "VIRTUAL",
+      "VVV",
+      "XPL",
+      "BONK",
       "ETHFI",
       "ZRO"
     ],
