@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-10T01:09:10.903107+00:00",
-    "coin": "ARB",
-    "price": 0.087079,
-    "signal": "BUY",
-    "confidence": 52,
-    "score": 0.35,
-    "fg": 23,
-    "btc_price": 62959,
-    "btc_dominance": 56.2,
-    "candidates": [
-      "LAB",
-      "MON",
-      "GRASS",
-      "ARB",
-      "VVV",
-      "LDO",
-      "FET",
-      "ETHFI",
-      "ZRO"
-    ],
-    "alert": "Market in Extreme Fear \u2014 position sizing should be conservative (50% of normal allocation)"
-  },
-  {
     "ts": "2026-07-10T02:09:10.919290+00:00",
     "coin": "ARB",
     "price": 0.08962,
@@ -918,5 +895,28 @@
       "ZRO"
     ],
     "alert": "Market in Fear territory with rising BTC dominance \u2014 altcoin entries are high-risk until sentiment stabilizes or reversal patterns confirm."
+  },
+  {
+    "ts": "2026-07-11T17:09:13.706707+00:00",
+    "coin": "ZRO",
+    "price": 0.922899,
+    "signal": "HOLD",
+    "confidence": 35,
+    "score": -0.15,
+    "fg": 26,
+    "btc_price": 64171,
+    "btc_dominance": 56.2,
+    "candidates": [
+      "MON",
+      "VVV",
+      "USDG",
+      "GRASS",
+      "VIRTUAL",
+      "XPL",
+      "WLD",
+      "ETHFI",
+      "ZRO"
+    ],
+    "alert": "All altcoin candidates show bearish chart structures below key moving averages. High BTC dominance (56.2%) is actively hostile to alt positions. Wait for reversal confirmation."
   }
 ]
