@@ -1,5 +1,5 @@
 {
-  "cash": 449.6382,
+  "cash": 559.772,
   "holdings": [
     {
       "coin_ticker": "ZRO",
@@ -20,18 +20,18 @@
     {
       "coin_ticker": "ETHFI",
       "coin_id": "ethfi",
-      "units": 512.9738785452565,
+      "units": 256.48693927262826,
       "entry_price": 0.389182,
       "entry_date": "2026-07-08T20:13:41.366731+00:00",
       "entry_signal": "BUY",
       "entry_confidence": 62,
-      "allocated_usd": 199.84,
-      "fee_paid": 0.1998,
+      "allocated_usd": 99.92,
+      "fee_paid": 0.0999,
       "exit_target": 0.47,
-      "stop_loss": 0.355,
+      "stop_loss": 0.389182,
       "entry_target": 0.39,
       "expected_days": 7,
-      "partial_taken": false
+      "partial_taken": true
     },
     {
       "coin_ticker": "GRASS",
@@ -50,12 +50,12 @@
       "partial_taken": false
     }
   ],
-  "realized_pnl": 21.7982,
+  "realized_pnl": 32.012,
   "peak_value": 1032.0739,
-  "total_trades": 5,
-  "winning_trades": 4,
+  "total_trades": 6,
+  "winning_trades": 5,
   "losing_trades": 1,
-  "total_fees": 1.5437,
+  "total_fees": 1.6539,
   "trade_history": [
     {
       "trade_num": 1,
@@ -179,6 +179,29 @@
       "stop_loss": 0.28456,
       "hit_target": true,
       "hit_stop": false,
+      "result": "WIN"
+    },
+    {
+      "trade_num": 6,
+      "coin_ticker": "ETHFI",
+      "coin_id": "ethfi",
+      "entry_price": 0.389182,
+      "entry_date": "2026-07-08T20:13:41.366731+00:00",
+      "entry_signal": "BUY",
+      "entry_confidence": 62,
+      "allocated_usd": 99.92,
+      "exit_price": 0.429823,
+      "exit_date": "2026-07-11T17:13:11.963001+00:00",
+      "exit_signal": "PARTIAL",
+      "exit_reason": "partial_take_50pct",
+      "units": 256.48693927262826,
+      "gross_proceeds": 110.244,
+      "fees_total": 0.2101,
+      "net_proceeds": 110.1338,
+      "profit_usd": 10.2138,
+      "profit_pct": 10.22,
+      "days_held": 2.87,
+      "exit_target": 0.47,
       "result": "WIN"
     }
   ],
