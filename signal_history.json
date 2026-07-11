@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-10T04:09:11.444645+00:00",
-    "coin": "ZRO",
-    "price": 0.899206,
-    "signal": "BUY",
-    "confidence": 52,
-    "score": 0.35,
-    "fg": 23,
-    "btc_price": 63919,
-    "btc_dominance": 56.3,
-    "candidates": [
-      "LAB",
-      "MON",
-      "GRASS",
-      "ARB",
-      "JTO",
-      "VVV",
-      "FET",
-      "ETHFI",
-      "ZRO"
-    ],
-    "alert": "Extreme Fear environment \u2014 position sizing should be conservative. Only high-conviction, tight-stop setups."
-  },
-  {
     "ts": "2026-07-10T05:09:11.053458+00:00",
     "coin": "ZRO",
     "price": 0.900674,
@@ -918,5 +895,28 @@
       "ZRO"
     ],
     "alert": "Market fear improving (23\u219226) \u2014 watch for sentiment crossover above 30 as potential entry trigger for oversold alts"
+  },
+  {
+    "ts": "2026-07-11T20:09:14.926189+00:00",
+    "coin": "ZRO",
+    "price": 0.920412,
+    "signal": "HOLD",
+    "confidence": 32,
+    "score": -0.15,
+    "fg": 26,
+    "btc_price": 64244,
+    "btc_dominance": 56.2,
+    "candidates": [
+      "MON",
+      "USDG",
+      "VVV",
+      "GRASS",
+      "WLD",
+      "XPL",
+      "LDO",
+      "ETHFI",
+      "ZRO"
+    ],
+    "alert": "High BTC dominance and bearish alt structures across all candidates \u2014 avoid forcing trades in this environment."
   }
 ]
