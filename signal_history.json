@@ -1,26 +1,5 @@
 [
   {
-    "ts": "2026-07-09T09:09:11.421788+00:00",
-    "coin": "BTC",
-    "price": 62789,
-    "signal": "HOLD",
-    "confidence": 25,
-    "score": -0.5,
-    "fg": 22,
-    "btc_price": 62789,
-    "btc_dominance": 7297.1,
-    "candidates": [
-      "ARROW",
-      "SNDKB",
-      "ZEST",
-      "TRIA",
-      "MUB",
-      "UMXM",
-      "NES"
-    ],
-    "alert": "Market in Extreme Fear with active geopolitical risk \u2014 capital preservation is priority until quality setups emerge."
-  },
-  {
     "ts": "2026-07-09T10:09:11.023242+00:00",
     "coin": "ETHFI",
     "price": 0.413328,
@@ -912,6 +891,29 @@
       "BONK",
       "LIT",
       "XPL",
+      "ETHFI",
+      "ZRO"
+    ],
+    "alert": null
+  },
+  {
+    "ts": "2026-07-11T01:09:11.331883+00:00",
+    "coin": "ZRO",
+    "price": 0.947438,
+    "signal": "BUY",
+    "confidence": 52,
+    "score": 0.35,
+    "fg": 26,
+    "btc_price": 64074,
+    "btc_dominance": 56.3,
+    "candidates": [
+      "LAB",
+      "MON",
+      "USDG",
+      "VIRTUAL",
+      "GRASS",
+      "BONK",
+      "LIT",
       "ETHFI",
       "ZRO"
     ],
