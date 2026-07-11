@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-07-11T02:09:15.073384+00:00",
+  "timestamp": "2026-07-11T03:09:11.316079+00:00",
   "selected_coin": "ZRO",
   "selected_coin_name": "LayerZero",
-  "selected_coin_price": 0.952412,
+  "selected_coin_price": 0.941696,
   "confidence": 52,
-  "layman_headline": "LayerZero looks oversold and ready for a bounce in a fearful market.",
-  "layman_explanation": "The crypto market is in a fearful state with a Fear & Greed reading of 26, which historically has been a reliable contrarian buy signal for us. LayerZero (ZRO) has been beaten down 87% from its all-time high and its RSI is at 31, right at the edge of oversold territory. It's already showing signs of life with a 4.9% bounce today and a favorable risk/reward ratio at current levels near strong support.",
-  "layman_action": "Consider a small position in ZRO near $0.92 with a strict stop-loss at $0.85. This is a contrarian bounce play in a fearful market \u2014 keep the position size modest given the overall bearish environment for altcoins.",
-  "expert_reasoning": "ZRO presents the cleanest swing setup among candidates. RSI at 30.83 is approaching oversold territory \u2014 a signal category with 67% historical win rate in our paper trades. The chart shows tight support at $0.90 with resistance at $1.00, yielding a 16.5x risk/reward ratio to nearest levels. The Fear & Greed index at 26 (improving from 23) has been our most reliable signal with a 75% win rate and +5.9% average return. While the overall chart bias is bearish (-0.70) and BTC dominance at 56.3% is unfavorable for alts, the combination of near-oversold RSI plus improving fear sentiment at a key support level creates a tactical bounce opportunity. The tight stop at $0.85 limits downside to ~8% while targeting ~17% upside to $1.08.",
+  "layman_headline": "Fearful market offers a cautious entry on oversold LayerZero near key support.",
+  "layman_explanation": "The crypto market is in a 'Fear' zone at 26/100, which historically has been a decent time to start building positions. LayerZero (ZRO) has been beaten down heavily \u2014 it's 87% off its all-time high \u2014 and its RSI is at 31, right near the oversold threshold where bounces tend to happen. The coin is sitting just above a $0.90 support level with a potential 10%+ move to $1.00 resistance, giving a very favorable risk/reward ratio of over 16:1 on the chart. However, the overall chart structure is still bearish and Bitcoin dominance is high, so this is a measured, smaller-sized bet rather than a high-conviction slam dunk.",
+  "layman_action": "Consider a small position in ZRO near $0.91 with a tight stop-loss at $0.845. This is a calculated bounce play, not a long-term hold \u2014 take profits around $1.00-$1.05 if it materializes.",
+  "expert_reasoning": "ZRO at RSI 31 is the closest to oversold among all candidates with available data, and RSI has been a reliable signal historically (67% win rate, +3.9% avg return). The $0.90 support level is very close (-0.6%), creating a tight invalidation point and exceptional risk/reward. The Fear & Greed index at 26 is improving from 23, which aligns with our most reliable signal (75% win rate, +5.9% avg return). While the bearish chart bias (-0.7) and BTC dominance at 56.3% are headwinds, the entry near well-defined support with a clear stop-loss at $0.845 (below $0.90 support with buffer) limits downside to ~7.5% while targeting 10-15% upside to the $1.00 psychological resistance and beyond. This is a disciplined risk/reward trade in a fearful market.",
   "risk_factors": [
-    "BTC dominance at 56.3% is actively suppressing altcoin performance \u2014 capital rotation into alts hasn't started",
-    "Chart structure remains bearish with price below all major moving averages \u2014 this is a counter-trend trade",
-    "If $0.90 support breaks, the next support level is unclear and could lead to accelerated downside"
+    "BTC dominance at 56.3% continues to crush altcoins \u2014 ZRO could break below $0.90 support if BTC siphons more capital",
+    "Chart structure is bearish with price below all major moving averages \u2014 this is a counter-trend trade that could fail",
+    "Low volume and no clear MACD bullish cross yet \u2014 the bounce signal hasn't fully confirmed"
   ],
   "watch_list": [
-    "ZRO holding above $0.90 support \u2014 a break below invalidates the trade thesis",
-    "Fear & Greed index continuing to improve above 26 \u2014 if it drops back below 23, risk-off accelerates",
-    "BTC price action at $64,000 \u2014 a BTC breakdown would drag all alts including ZRO lower"
+    "ZRO price action around $0.90 support \u2014 a clean bounce with volume confirms the trade, a break below invalidates it",
+    "Fear & Greed index trajectory \u2014 continued improvement above 30 would boost all altcoin bounce plays",
+    "BTC dominance \u2014 any decline below 55% would be a strong tailwind for altcoin recovery"
   ],
-  "market_context": "The crypto market is in a fear state (26/100) but improving from last week's average of 23.6. BTC is relatively stable at $64K with modest gains, but high BTC dominance at 56.3% signals capital is rotating away from altcoins, making alt swing trades riskier than usual.",
-  "context_banner": "Fear is improving from extreme lows \u2014 historically our best contrarian entry signal \u2014 but high BTC dominance demands smaller position sizes on alt trades.",
-  "btc_price": 63996,
+  "market_context": "The crypto market is in Fear (26/100) but improving from last week's 23.6 average. BTC is stable around $64K with 56.3% dominance, creating a challenging but not hostile environment for selective altcoin plays near oversold extremes.",
+  "context_banner": "Fear is improving and ZRO sits at oversold levels on clean support \u2014 a disciplined bounce trade with defined risk in a cautious market.",
+  "btc_price": 64107,
   "fear_greed": {
     "current": 26,
     "label": "Fear",
@@ -31,32 +31,32 @@
   "btc_dominance": 56.3,
   "key_signals": [
     {
-      "source": "Fear_Greed",
-      "signal_type": "sentiment",
-      "description": "Fear & Greed at 26 and improving from 23 \u2014 our most reliable signal with 75% win rate and +5.9% avg return in past trades. Contrarian buy conditions are present."
-    },
-    {
       "source": "RSI",
       "signal_type": "technical",
-      "description": "ZRO RSI at 30.83 is near oversold \u2014 our second most reliable signal (67% win rate, +3.9% avg return). Oversold RSI at support is a classic bounce setup."
+      "description": "ZRO RSI at 31 is near oversold territory, historically a 67% reliable buy signal with +3.9% avg returns in our paper trades."
+    },
+    {
+      "source": "Fear_Greed",
+      "signal_type": "sentiment",
+      "description": "Fear & Greed at 26 and improving from 23 \u2014 our most reliable signal (75% win rate, +5.9% avg return) supports buying in fear."
     },
     {
       "source": "CoinDesk",
       "signal_type": "news",
-      "description": "Circle securing U.S. trust bank approval and Japan's pro-crypto investment stance provide positive macro tailwinds for crypto infrastructure projects like LayerZero."
+      "description": "Circle's trust bank approval and stablecoin adoption news (Hyundai) signal continued crypto infrastructure growth, supportive of cross-chain protocols like LayerZero."
     },
     {
       "source": "Blockworks",
       "signal_type": "news",
-      "description": "'ETH derivatives reset and the next retail trade' suggests Ethereum ecosystem (where ZRO operates) may be setting up for a recovery, supporting infra tokens."
+      "description": "ETH derivatives reset and DePIN/gaming rebound narrative suggests altcoin sector rotation may be starting, beneficial for infrastructure plays."
     },
     {
       "source": "volume_breakout",
       "signal_type": "technical",
-      "description": "ZRO's 4.9% daily bounce at $0.90 support with chart showing 16.5x risk/reward suggests buyers are defending this level \u2014 early sign of reversal."
+      "description": "ZRO chart shows exceptional 16.5:1 risk/reward ratio to nearest support/resistance levels, the best setup structure among all candidates."
     }
   ],
   "_mode": "HUNTING",
-  "exit_target": 1.08,
-  "stop_loss": 0.85
+  "exit_target": 1.05,
+  "stop_loss": 0.845
 }
