@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-09T17:09:11.195074+00:00",
-    "coin": "ZRO",
-    "price": 0.937236,
-    "signal": "BUY",
-    "confidence": 62,
-    "score": 1.45,
-    "fg": 22,
-    "btc_price": 62711,
-    "btc_dominance": 56.1,
-    "candidates": [
-      "LAB",
-      "MON",
-      "VVV",
-      "GRASS",
-      "ARB",
-      "TIA",
-      "LDO",
-      "ETHFI",
-      "ZRO"
-    ],
-    "alert": "BTC $1.4B options expiry on Friday could trigger significant volatility \u2014 manage position sizes carefully."
-  },
-  {
     "ts": "2026-07-09T18:09:21.464030+00:00",
     "coin": "ETHFI",
     "price": 0.40285,
@@ -914,6 +891,29 @@
       "VVV",
       "XPL",
       "BONK",
+      "ETHFI",
+      "ZRO"
+    ],
+    "alert": null
+  },
+  {
+    "ts": "2026-07-11T09:09:10.961988+00:00",
+    "coin": "ZRO",
+    "price": 0.938734,
+    "signal": "BUY",
+    "confidence": 52,
+    "score": 0.35,
+    "fg": 26,
+    "btc_price": 64212,
+    "btc_dominance": 56.3,
+    "candidates": [
+      "LAB",
+      "MON",
+      "GRASS",
+      "VVV",
+      "VIRTUAL",
+      "XPL",
+      "PENGU",
       "ETHFI",
       "ZRO"
     ],
