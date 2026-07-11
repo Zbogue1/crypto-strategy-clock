@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-07-11T13:09:11.419490+00:00",
+  "timestamp": "2026-07-11T14:09:11.216695+00:00",
   "selected_coin": "ZRO",
   "selected_coin_name": "LayerZero",
-  "selected_coin_price": 0.923109,
-  "confidence": 35,
-  "layman_headline": "Market fear is thick \u2014 no clean setups worth risking capital on today.",
-  "layman_explanation": "The crypto market is sitting in 'Fear' territory with Bitcoin dominance high at 56.3%, which means money is flowing away from smaller coins and into Bitcoin. All of today's swing trade candidates have bearish chart structures \u2014 prices below their key moving averages with sellers in control. While a few coins like ZRO are approaching oversold levels, none have confirmed a reversal yet. Jumping in now would be catching a falling knife rather than buying a confirmed bounce.",
-  "layman_action": "Stay patient and keep cash ready. Wait for a confirmed bounce or a Fear & Greed reading below 20 (extreme fear) which historically marks better buying opportunities. No rush to deploy capital when charts are still pointing down.",
-  "expert_reasoning": "Every candidate on this watchlist is trading below major moving averages \u2014 a universal bearish structure signal. BTC dominance at 56.3% actively suppresses altcoin performance, and Fear & Greed at 26 (improving from 23) suggests we're not yet at the capitulation extreme that produces the highest-probability mean-reversion entries. ZRO's RSI at 31 is the closest to oversold among candidates and its chart shows a 16.5x R/R ratio, but the bearish chart bias (-0.7) and absence of a bullish reversal candle (hammer, morning star, bullish engulfing) mean the downtrend hasn't signaled exhaustion. LAB's -92% weekly decline is a catastrophic collapse, not a swing trade setup. VIRTUAL's +14.6% daily pop looks like a dead cat bounce in a downtrend. Discipline demands waiting for confirmation.",
+  "selected_coin_price": 0.93401,
+  "confidence": 32,
+  "layman_headline": "Fear grips the crypto market \u2014 no clean swing trade setups available right now.",
+  "layman_explanation": "The crypto market is sitting in a 'Fear' zone at 26/100, with Bitcoin hovering around $64,200. Most altcoins on our watchlist are in bearish chart structures with prices below their key moving averages. While a few coins like ZRO are approaching oversold territory, none have confirmed a reversal with volume or a bullish pattern yet. Jumping in too early during fear-driven selling can lead to catching a falling knife.",
+  "layman_action": "Stay patient and keep cash ready. Wait for a confirmed bounce or bullish pattern before entering any new position. The market is showing fear, which could eventually create great buying opportunities, but the timing isn't right yet.",
+  "expert_reasoning": "Every candidate on the watchlist has significant issues. LAB is in freefall (-93.8% in 7 days) with a strongly bearish chart bias of -1.60 \u2014 classic falling knife. GRASS dropped 30% in a week but has a bearish engulfing candle and terrible 0.48x risk/reward. VIRTUAL surged 14.6% today but its chart bias is -0.70 and it may already be extended. ETHFI has the best chart bias at +0.60 with a bullish marubozu, but its risk/reward is only 0.11x \u2014 essentially already at resistance with no room to run. ZRO is the most interesting with RSI at 31 and excellent theoretical R/R, but price is below all moving averages in a downtrend. With BTC dominance at 56.3% continuing to squeeze alts, and Fear & Greed at 26 (a reliable signal per our track record showing 75% win rate), I want to wait for the fear to capitulate further or for a confirmed reversal before deploying capital. The improving trend in Fear & Greed (23 \u2192 26) suggests we may be near a bottom, but confirmation is needed.",
   "risk_factors": [
-    "BTC dominance continues rising, further draining altcoin liquidity and extending alt drawdowns",
-    "Fear & Greed could deteriorate back below 20, triggering another wave of panic selling across alts",
-    "Bitcoin's $64K rebound faces a key test in 3 days per CryptoSlate \u2014 a rejection could drag the entire market down"
+    "BTC dominance at 56.3% continues to drain liquidity from altcoins \u2014 any alt position faces headwinds",
+    "Fear & Greed at 26 is improving but could easily reverse lower if BTC breaks below $63K support",
+    "All swing candidates show bearish chart structures below key moving averages \u2014 no confirmed reversals yet"
   ],
   "watch_list": [
-    "ZRO price action at $0.90 support \u2014 a bounce with volume confirmation would trigger a BUY",
-    "Bitcoin's reaction at its 3-day upcoming resistance test \u2014 a breakout above $65K would lift alt sentiment",
-    "Fear & Greed trend \u2014 if it drops below 15-20 (extreme fear), contrarian buy setups become much higher conviction"
+    "ZRO price action at $0.90 support \u2014 a confirmed bounce with volume here would trigger a BUY signal",
+    "Fear & Greed index trajectory \u2014 a move above 30 combined with declining BTC dominance would favor alt entries",
+    "ETHFI breaking above $0.40 resistance with volume \u2014 the only candidate with a bullish chart bias (+0.60)"
   ],
-  "market_context": "Bitcoin holds $64K with modest weekly gains but faces a critical resistance test in 3 days. High BTC dominance (56.3%) and Fear at 26 create a hostile environment for altcoin swing trades \u2014 patience is the edge here.",
-  "context_banner": "All altcoin candidates show bearish chart structures under high BTC dominance \u2014 no confirmed reversal setups exist today, making cash the best position.",
-  "btc_price": 64140,
+  "market_context": "The crypto market is in a fear regime (26/100) with BTC dominance elevated at 56.3%, creating a hostile environment for altcoin swing trades. BTC itself is relatively stable (+2.5% weekly) but mixed analyst sentiment \u2014 some calling late-stage bear, others predicting eventual six-figure prices \u2014 reflects deep uncertainty.",
+  "context_banner": "Market fear is improving but no altcoin has confirmed a reversal \u2014 patience is the highest-conviction trade right now.",
+  "btc_price": 64210,
   "fear_greed": {
     "current": 26,
     "label": "Fear",
@@ -33,30 +33,30 @@
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Fear at 26 is improving from 23 but not yet at extreme levels (sub-20) that historically produce the best contrarian entries \u2014 our most reliable signal at 75% win rate says wait for deeper fear."
+      "description": "Fear & Greed at 26 and improving from 23 \u2014 our most reliable signal (75% win rate) suggests a bounce is building but not yet confirmed."
     },
     {
       "source": "RSI",
       "signal_type": "technical",
-      "description": "ZRO's RSI at 31 is the only candidate approaching oversold territory, but without a bullish reversal candle it's a falling knife rather than a confirmed setup."
-    },
-    {
-      "source": "CryptoSlate",
-      "signal_type": "news",
-      "description": "Bitcoin's $64K rebound faces a critical challenge in 3 days \u2014 this binary event could invalidate or unlock altcoin entries."
+      "description": "ZRO RSI at 31 is the only candidate approaching oversold territory \u2014 our second-most reliable signal (67% win rate) \u2014 but needs confirmation."
     },
     {
       "source": "CoinTelegraph",
       "signal_type": "news",
-      "description": "BTC traders still see 2022 bear market parallels despite July gains, suggesting caution is warranted before deploying into risk-on alts."
+      "description": "Bitcoin described as 'nearing late stages of bear market' by Jamie Coutts at Real Vision, suggesting macro bottom may be forming."
     },
     {
       "source": "Blockworks",
-      "signal_type": "macro",
-      "description": "ETH derivatives reset signals a potential positioning shift, but hasn't translated into alt strength yet with BTC dominance still climbing."
+      "signal_type": "news",
+      "description": "ETH derivatives reset noted, indicating leverage washout that typically precedes healthier price recovery."
+    },
+    {
+      "source": "on_chain",
+      "signal_type": "onchain",
+      "description": "BTC dominance at 56.3% remains elevated, signaling capital rotation away from alts \u2014 a headwind for any altcoin swing trade entry."
     }
   ],
   "_mode": "HUNTING",
-  "exit_target": 1.0,
-  "stop_loss": 0.84
+  "exit_target": 1.03,
+  "stop_loss": 0.845
 }
