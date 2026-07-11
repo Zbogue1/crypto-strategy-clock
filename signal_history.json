@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-09T12:09:11.224532+00:00",
-    "coin": "ETHFI",
-    "price": 0.415473,
-    "signal": "BUY",
-    "confidence": 62,
-    "score": 1.45,
-    "fg": 22,
-    "btc_price": 62717,
-    "btc_dominance": 56.1,
-    "candidates": [
-      "LAB",
-      "MON",
-      "GRASS",
-      "VVV",
-      "JTO",
-      "ARB",
-      "FET",
-      "ETHFI",
-      "ZRO"
-    ],
-    "alert": "Extreme Fear at 22 \u2014 historically our most reliable bullish signal (75% win rate). Selective buying warranted but position sizing should be conservative given geopolitical risks."
-  },
-  {
     "ts": "2026-07-09T13:09:11.218877+00:00",
     "coin": "ETHFI",
     "price": 0.417826,
@@ -914,6 +891,29 @@
       "GRASS",
       "BONK",
       "XPL",
+      "ETHFI",
+      "ZRO"
+    ],
+    "alert": null
+  },
+  {
+    "ts": "2026-07-11T04:09:16.948842+00:00",
+    "coin": "ZRO",
+    "price": 0.932117,
+    "signal": "BUY",
+    "confidence": 52,
+    "score": 0.35,
+    "fg": 26,
+    "btc_price": 64057,
+    "btc_dominance": 56.3,
+    "candidates": [
+      "LAB",
+      "B",
+      "MON",
+      "USDG",
+      "VIRTUAL",
+      "GRASS",
+      "BONK",
       "ETHFI",
       "ZRO"
     ],
