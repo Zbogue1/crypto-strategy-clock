@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-07-11T17:09:13.706707+00:00",
+  "timestamp": "2026-07-11T18:09:12.270151+00:00",
   "selected_coin": "ZRO",
   "selected_coin_name": "LayerZero",
-  "selected_coin_price": 0.922899,
-  "confidence": 35,
-  "layman_headline": "The crypto market is fearful and altcoins are bleeding \u2014 patience is the best trade right now.",
-  "layman_explanation": "The overall crypto market is in a 'Fear' zone at 26 out of 100, meaning most people are scared and selling. Bitcoin is holding up relatively well but is sucking value away from smaller coins (56.2% dominance). Almost every altcoin candidate we reviewed is below its key moving averages with bearish chart structures. While a few coins like ZRO show oversold readings that could lead to bounces, there's no clean setup with a good risk-reward ratio and a clear catalyst to justify pulling the trigger right now.",
-  "layman_action": "Stay on the sidelines and keep your cash ready. Wait for fear to either deepen into extreme fear (below 15) for a high-conviction contrarian entry, or wait for a clear technical reversal with volume confirmation before entering any new position.",
-  "expert_reasoning": "No candidate presents a compelling risk-reward setup for immediate entry. ZRO's RSI at 30.83 is the strongest oversold signal, and the 16.5x R/R to nearest levels is attractive on paper, but the -0.70 chart bias, price below all MAs, and persistent downtrend structure argue against catching this knife. ETHFI has the best chart bias (+0.60) with a bullish marubozu candle, but its R/R to nearest resistance is only 0.11x \u2014 terrible. Fear & Greed at 26 (improving from 23) is a reliable signal per our credibility data (75% win rate), but it's suggesting 'approaching opportunity' not 'buy now' \u2014 we want sub-20 for high-conviction contrarian entries. BTC dominance at 56.2% continues to punish alts. The smart play is patience.",
+  "selected_coin_price": 0.918788,
+  "confidence": 38,
+  "layman_headline": "Crypto market is fearful and altcoins are bleeding \u2014 patience is the best trade right now.",
+  "layman_explanation": "The overall crypto market is in a 'Fear' mood, with Bitcoin dominance at 56.2%, meaning money is flowing out of smaller coins and into Bitcoin. Most altcoin candidates on our watchlist are in downtrends with bearish chart structures. While a few coins like ZRO and TRUMP are approaching oversold territory, none of them have confirmed a reversal yet. Jumping in now would be catching a falling knife.",
+  "layman_action": "Stay in cash and wait. The best swing trades come when fear peaks and prices show confirmed signs of bouncing \u2014 we're not there yet.",
+  "expert_reasoning": "No candidate presents a compelling entry right now. ZRO is the most interesting with RSI at 31 and a 16.5x R/R ratio, but the chart bias is -0.70 (bearish), price is below all major MAs, and there's no bullish candlestick reversal pattern or MACD cross to confirm a bottom. TRUMP is deeply oversold (RSI 29) but the chart is equally bearish (-0.70) and the coin is down 97.8% from ATH \u2014 this is a structural decline, not a dip. ETHFI has the best chart bias (+0.60) with a Bullish Marubozu, but at $0.43 it's already very close to $0.40 resistance with only 0.11x R/R \u2014 terrible setup. The Fear & Greed improving from 23 to 26 is encouraging but not yet actionable. BTC dominance at 56.2% actively suppresses alt rallies.",
   "risk_factors": [
-    "BTC dominance at 56.2% means capital continues flowing away from alts \u2014 any alt position is swimming against the tide",
-    "Fear & Greed at 26 is improving but could easily reverse if macro news deteriorates (crypto IPO stall, CoreWeave liquidity competition)",
-    "Every single alt candidate is below key moving averages with bearish structures \u2014 there is no confirmed trend reversal anywhere"
+    "BTC dominance at 56.2% means capital is rotating away from altcoins \u2014 any alt position faces structural headwinds",
+    "Fear & Greed at 26 is improving but could easily reverse if BTC drops below $63K",
+    "No swing candidate shows a confirmed bullish reversal pattern \u2014 all entries would be catching falling knives"
   ],
   "watch_list": [
-    "ZRO price action at $0.90 support \u2014 a bounce with volume here could trigger a BUY signal next cycle",
-    "Fear & Greed index \u2014 if it drops below 15-20, that's historically been our best entry signal (75% win rate)",
-    "BTC price action around $64-65K \u2014 a decisive breakout above $65K could finally rotate some capital back to alts"
+    "ZRO holding $0.90 support and forming a bullish reversal candle (hammer, morning star) \u2014 would trigger a BUY",
+    "Fear & Greed index crossing above 30 with BTC dominance declining below 55% \u2014 would signal alt-friendly conditions",
+    "BTC price action around $65K resistance \u2014 a breakout could lift the entire market and create alt opportunities"
   ],
-  "market_context": "The crypto market is in a fear-driven consolidation with BTC holding $64K while alts bleed. High BTC dominance (56.2%) and bearish analyst sentiment comparing current conditions to 2022 bear market patterns make this a dangerous time for alt entries without clear catalysts.",
-  "context_banner": "Market fear is improving but not yet at contrarian-buy extremes \u2014 disciplined patience will be rewarded with better entries.",
-  "btc_price": 64171,
+  "market_context": "The crypto market is in a fear-driven consolidation phase with BTC at $64.3K and dominance at 56.2%. Altcoins are broadly underperforming with most candidates down 5-28% over 7 days, and no clear reversal signals have emerged yet.",
+  "context_banner": "Market fear is improving but altcoin charts remain bearish \u2014 discipline demands waiting for confirmed reversal signals before deploying capital.",
+  "btc_price": 64258,
   "fear_greed": {
     "current": 26,
     "label": "Fear",
@@ -33,27 +33,27 @@
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Fear & Greed at 26 (improving from 23 weekly avg) is our most reliable signal with 75% win rate \u2014 it says opportunity is building but not yet at extreme fear levels that historically produce the best entries."
+      "description": "Fear & Greed at 26 improving from 23 suggests bottoming sentiment, but not yet at levels that historically produce strong bounces (sub-20)."
     },
     {
       "source": "RSI",
       "signal_type": "technical",
-      "description": "ZRO RSI at 30.83 is the only near-oversold reading among candidates (67% win rate signal), but without trend reversal confirmation it's premature to act on alone."
+      "description": "ZRO RSI at 31 and TRUMP RSI at 29 are approaching oversold, but neither has confirmed a reversal with a bullish candlestick pattern."
     },
     {
       "source": "CoinTelegraph",
       "signal_type": "news",
-      "description": "Bitcoin analysts comparing current price action to 2022 bear market and traders cautious despite 10% July gains \u2014 sentiment remains fragile and could reverse quickly."
+      "description": "Bitcoin described as 'nearing late stages of bear market' by Jamie Coutts \u2014 suggests macro bottom forming but not yet confirmed, supporting patience."
     },
     {
-      "source": "CoinDesk",
-      "signal_type": "macro",
-      "description": "Crypto IPO market stalling as capital rotates to AI sector signals broader risk-off positioning for crypto assets, particularly smaller alts."
+      "source": "Chart Pattern Analysis",
+      "signal_type": "technical",
+      "description": "ETHFI is the only candidate with a bullish chart bias (+0.60) and Bullish Marubozu candle, but its 0.11x risk/reward ratio at current price makes it a poor swing entry."
     },
     {
       "source": "Blockworks",
-      "signal_type": "technical",
-      "description": "ETH derivatives reset noted \u2014 could signal incoming volatility or positioning shift that may benefit ETH-adjacent protocols like ETHFI if confirmed."
+      "signal_type": "news",
+      "description": "ETH derivatives reset narrative and Friday charts finding good news suggest institutional positioning for a reversal \u2014 worth monitoring for follow-through next week."
     }
   ],
   "_mode": "HUNTING",
