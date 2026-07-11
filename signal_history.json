@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-10T03:09:11.763171+00:00",
-    "coin": "ZRO",
-    "price": 0.905917,
-    "signal": "BUY",
-    "confidence": 52,
-    "score": 0.35,
-    "fg": 23,
-    "btc_price": 63860,
-    "btc_dominance": 56.3,
-    "candidates": [
-      "LAB",
-      "MON",
-      "ARB",
-      "GRASS",
-      "VVV",
-      "JTO",
-      "USDG",
-      "ETHFI",
-      "ZRO"
-    ],
-    "alert": null
-  },
-  {
     "ts": "2026-07-10T04:09:11.444645+00:00",
     "coin": "ZRO",
     "price": 0.899206,
@@ -918,5 +895,28 @@
       "ZRO"
     ],
     "alert": "All swing candidates show bearish or neutral chart structures with high BTC dominance headwind \u2014 no actionable setups this cycle."
+  },
+  {
+    "ts": "2026-07-11T19:09:12.865878+00:00",
+    "coin": "ZRO",
+    "price": 0.919553,
+    "signal": "HOLD",
+    "confidence": 35,
+    "score": -0.15,
+    "fg": 26,
+    "btc_price": 64261,
+    "btc_dominance": 56.2,
+    "candidates": [
+      "MON",
+      "USDG",
+      "VVV",
+      "GRASS",
+      "XPL",
+      "TRUMP",
+      "ARB",
+      "ETHFI",
+      "ZRO"
+    ],
+    "alert": "Market fear improving (23\u219226) \u2014 watch for sentiment crossover above 30 as potential entry trigger for oversold alts"
   }
 ]
