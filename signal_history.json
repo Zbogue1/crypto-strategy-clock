@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-09T13:09:11.218877+00:00",
-    "coin": "ETHFI",
-    "price": 0.417826,
-    "signal": "BUY",
-    "confidence": 62,
-    "score": 1.45,
-    "fg": 22,
-    "btc_price": 62768,
-    "btc_dominance": 56.1,
-    "candidates": [
-      "LAB",
-      "MON",
-      "VVV",
-      "GRASS",
-      "JTO",
-      "ARB",
-      "USDG",
-      "ETHFI",
-      "ZRO"
-    ],
-    "alert": "Geopolitical risk (US-Iran) is elevated \u2014 monitor for escalation that could trigger broad crypto sell-off"
-  },
-  {
     "ts": "2026-07-09T14:09:11.105269+00:00",
     "coin": "ETHFI",
     "price": 0.413824,
@@ -912,6 +889,29 @@
       "MON",
       "USDG",
       "VIRTUAL",
+      "GRASS",
+      "BONK",
+      "ETHFI",
+      "ZRO"
+    ],
+    "alert": null
+  },
+  {
+    "ts": "2026-07-11T05:09:11.906446+00:00",
+    "coin": "ZRO",
+    "price": 0.926269,
+    "signal": "BUY",
+    "confidence": 52,
+    "score": 0.35,
+    "fg": 26,
+    "btc_price": 64115,
+    "btc_dominance": 56.3,
+    "candidates": [
+      "LAB",
+      "B",
+      "MON",
+      "VIRTUAL",
+      "USDG",
       "GRASS",
       "BONK",
       "ETHFI",
