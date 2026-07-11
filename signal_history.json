@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-09T14:09:11.105269+00:00",
-    "coin": "ETHFI",
-    "price": 0.413824,
-    "signal": "BUY",
-    "confidence": 62,
-    "score": 1.45,
-    "fg": 22,
-    "btc_price": 62911,
-    "btc_dominance": 56.2,
-    "candidates": [
-      "LAB",
-      "MON",
-      "VVV",
-      "GRASS",
-      "JTO",
-      "ARB",
-      "USDG",
-      "ETHFI",
-      "ZRO"
-    ],
-    "alert": null
-  },
-  {
     "ts": "2026-07-09T15:09:11.255847+00:00",
     "coin": "ZRO",
     "price": 0.936397,
@@ -918,5 +895,28 @@
       "ZRO"
     ],
     "alert": null
+  },
+  {
+    "ts": "2026-07-11T06:09:16.708139+00:00",
+    "coin": "ZRO",
+    "price": 0.915056,
+    "signal": "HOLD",
+    "confidence": 32,
+    "score": -0.15,
+    "fg": 26,
+    "btc_price": 64128,
+    "btc_dominance": 56.3,
+    "candidates": [
+      "LAB",
+      "B",
+      "MON",
+      "VIRTUAL",
+      "GRASS",
+      "BONK",
+      "XPL",
+      "ETHFI",
+      "ZRO"
+    ],
+    "alert": "All swing candidates show bearish or neutral chart structures \u2014 no high-conviction entries available this cycle."
   }
 ]
