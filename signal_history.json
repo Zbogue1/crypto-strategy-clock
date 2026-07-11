@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-09T22:09:16.407457+00:00",
-    "coin": "ZRO",
-    "price": 0.8996,
-    "signal": "BUY",
-    "confidence": 62,
-    "score": 1.8,
-    "fg": 22,
-    "btc_price": 63267,
-    "btc_dominance": 56.3,
-    "candidates": [
-      "LAB",
-      "MON",
-      "GRASS",
-      "ARB",
-      "VVV",
-      "JTO",
-      "FET",
-      "ETHFI",
-      "ZRO"
-    ],
-    "alert": null
-  },
-  {
     "ts": "2026-07-09T23:09:11.100021+00:00",
     "coin": "ETHFI",
     "price": 0.391652,
@@ -918,5 +895,28 @@
       "ZRO"
     ],
     "alert": "Bitcoin faces key resistance test within 72 hours \u2014 outcome will likely dictate next altcoin move"
+  },
+  {
+    "ts": "2026-07-11T14:09:11.216695+00:00",
+    "coin": "ZRO",
+    "price": 0.93401,
+    "signal": "HOLD",
+    "confidence": 32,
+    "score": -0.15,
+    "fg": 26,
+    "btc_price": 64210,
+    "btc_dominance": 56.3,
+    "candidates": [
+      "LAB",
+      "MON",
+      "VVV",
+      "GRASS",
+      "USDG",
+      "VIRTUAL",
+      "XPL",
+      "ETHFI",
+      "ZRO"
+    ],
+    "alert": "Fear & Greed improving from 23 to 26 \u2014 monitor for acceleration above 30 which historically triggers strong alt bounces."
   }
 ]
