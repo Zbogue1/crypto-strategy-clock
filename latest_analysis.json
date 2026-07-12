@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-07-12T00:09:23.525061+00:00",
-  "selected_coin": "ZRO",
-  "selected_coin_name": "LayerZero",
-  "selected_coin_price": 0.911403,
+  "timestamp": "2026-07-12T01:09:12.073930+00:00",
+  "selected_coin": "ETHFI",
+  "selected_coin_name": "Ether.fi",
+  "selected_coin_price": 0.423577,
   "confidence": 35,
-  "layman_headline": "Fear grips the crypto market \u2014 patience is the smartest play right now.",
-  "layman_explanation": "The overall crypto market is in a fearful state with most altcoins bleeding heavily over the past week. Bitcoin dominance at 56.3% means money is flowing out of smaller coins and into Bitcoin, which makes it a tough environment to buy altcoins. While a few coins like TRUMP and ZRO are hitting oversold levels that could trigger a bounce, the chart structures are bearish across the board with no clear catalyst to reverse the trend yet. Waiting for clearer signs of a bottom is the disciplined move.",
-  "layman_action": "Stay in cash for now. The market is showing fear but hasn't shown a convincing reversal signal yet. Watch for oversold bounces in the next 48-72 hours before committing capital.",
-  "expert_reasoning": "Every swing candidate shows bearish chart structure with prices below key moving averages. The Fear & Greed index at 26 is improving from 24 weekly average, which is a historically reliable signal per our track record (80% win rate), but fear alone isn't enough \u2014 we need a technical trigger. ZRO at RSI 31 near $0.90 support offers the cleanest potential bounce setup with 16.5x R/R, but the bearish Marubozu and downtrend momentum suggest the knife is still falling. BTC dominance at 56.3% is actively punishing alts. ETHFI has the best chart bias (+0.60) with bullish Marubozu, but its R/R of 0.11x is terrible \u2014 resistance at $0.40 is right above current price. The prudent approach is to wait for ZRO to confirm a hold of $0.90 support or for broader market fear to push toward extreme levels (sub-20) which historically precede stronger bounces.",
+  "layman_headline": "Fear grips the crypto market \u2014 patience beats impulse right now.",
+  "layman_explanation": "The overall crypto market is in a fearful state with most altcoins bleeding heavily over the past week. Bitcoin dominance is high at 56.3%, meaning money is flowing out of smaller coins and into Bitcoin for safety. While there are some oversold coins that could bounce, none of the setups are clean enough to justify risking capital. The best candidate is Ether.fi, which has bullish chart structure and momentum, but the broader market headwinds are too strong to pull the trigger today.",
+  "layman_action": "Stay in cash and wait for clearer signals. The market is in fear mode and most altcoins are in downtrends. Better entry opportunities will come when fear peaks and reversal signals confirm.",
+  "expert_reasoning": "No candidate presents a compelling risk/reward for a new swing entry. ETHFI has the best chart structure (bullish bias +0.60, Bullish Marubozu, above 2 MAs) but the risk/reward to nearest levels is only 0.11x \u2014 abysmal for swing trading. TRUMP and ZRO have deeply oversold RSIs (29 and 31) but are in confirmed downtrends with bearish chart bias scores of -0.70 each, making them knife-catch trades. BONK is the worst setup with a -1.40 chart bias and Bearish Marubozu candle. High BTC dominance at 56.3% is actively crushing altcoin performance. The Fear & Greed index at 26 is improving from last week's 24 average, but hasn't reached the extreme fear levels (sub-15) that historically produce the best bounce trades. CoinTelegraph reports Bitcoin may be in late bear market stages, which if true means we should be patient for capitulation before deploying capital.",
   "risk_factors": [
-    "BTC dominance at 56.3% continues to drain capital from altcoins, potentially extending the alt selloff",
-    "No volume breakout signals detected on any candidate \u2014 our most reliable technical signal (100% win rate) is absent",
-    "Bitcoin analysts citing potential 2022 bear market repeat could trigger further risk-off sentiment across all alts"
+    "BTC dominance at 56.3% continues to drain capital from altcoins \u2014 any alt position faces structural headwinds",
+    "Fear & Greed at 26 is fearful but not extreme \u2014 could drop further before a meaningful reversal",
+    "Multiple news items suggest bear market conditions and macro uncertainty (crypto IPO stalls, BTC treasury selling)"
   ],
   "watch_list": [
-    "ZRO price action at $0.90 support \u2014 a hold and bounce with volume would trigger a BUY",
-    "Fear & Greed index movement toward extreme fear (<20) which historically marks better entry points",
-    "BTC dominance \u2014 any reversal below 55% would signal rotation back into alts"
+    "Fear & Greed index dropping below 15 (extreme fear) which historically marks swing trade entry zones",
+    "ETHFI pulling back to $0.38-0.39 support zone with RSI dropping to 40 or below for a proper entry",
+    "BTC dominance starting to roll over below 55% which would signal rotation back into alts"
   ],
-  "market_context": "The crypto market is in a fear regime with BTC flat near $63,774 while altcoins bleed 10-25% weekly. Bitcoin dominance at 56.3% confirms capital is hiding in BTC, making this a hostile environment for altcoin swing trades.",
-  "context_banner": "Market fear is building but no oversold bounce has confirmed \u2014 discipline demands patience over premature entry.",
-  "btc_price": 63774,
+  "market_context": "The crypto market is in a fear phase with BTC dominance elevated at 56.3%, punishing altcoins. BTC itself is range-bound near $63.8K with analysts debating whether this is a late-stage bear market or early recovery.",
+  "context_banner": "Market fear is elevated but not extreme \u2014 the best swing trade setups emerge from deeper capitulation, not from catching falling knives in a high-dominance environment.",
+  "btc_price": 63871,
   "fear_greed": {
     "current": 26,
     "label": "Fear",
@@ -33,30 +33,30 @@
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Fear at 26 improving from 24 weekly avg \u2014 historically 80% reliable but not yet at extreme levels that produce the strongest bounces."
+      "description": "Fear & Greed at 26 (Fear) with improving trend from 24 avg \u2014 fearful but not at extreme levels that produce the highest-probability bounce trades."
     },
     {
       "source": "RSI",
       "signal_type": "technical",
-      "description": "ZRO RSI at 31 and TRUMP RSI at 29 are approaching oversold, but neither has confirmed a reversal candle yet."
+      "description": "TRUMP RSI at 29 and ZRO RSI at 31 are oversold, but both have bearish chart structures (-0.70 bias) making them low-conviction bounce plays."
     },
     {
       "source": "CoinTelegraph",
       "signal_type": "news",
-      "description": "Bitcoin described as nearing 'late stages of bear market' by Jamie Coutts \u2014 if correct, current fear may be the setup for a broader recovery, but timing remains uncertain."
+      "description": "Bitcoin described as nearing 'late stages of bear market' by Real Vision's Jamie Coutts \u2014 suggests patience for capitulation rather than early entries."
     },
     {
       "source": "CoinDesk",
       "signal_type": "news",
-      "description": "Crypto IPO market stalling and Bitcoin treasury companies selling BTC signal institutional caution that weighs on risk appetite."
+      "description": "Crypto IPO market stalling and BTC treasury companies selling holdings signals institutional caution and potential further downside."
     },
     {
-      "source": "volume_breakout",
+      "source": "Chart Pattern Analysis",
       "signal_type": "technical",
-      "description": "No volume breakout detected on any candidate \u2014 our highest-conviction signal (100% win rate, +13.4% avg return) is completely absent this cycle."
+      "description": "ETHFI is the only candidate with a bullish chart bias (+0.60) and Bullish Marubozu candle, but its 0.11x risk/reward to nearest resistance makes it a poor entry at current levels."
     }
   ],
   "_mode": "HUNTING",
-  "exit_target": 1.0,
-  "stop_loss": 0.83
+  "exit_target": 0.48,
+  "stop_loss": 0.35
 }
