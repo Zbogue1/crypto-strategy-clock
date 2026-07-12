@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-07-12T06:09:19.073055+00:00",
+  "timestamp": "2026-07-12T07:09:22.052086+00:00",
   "selected_coin": "ZRO",
   "selected_coin_name": "LayerZero",
-  "selected_coin_price": 0.900227,
-  "confidence": 32,
-  "layman_headline": "Crypto market stuck in fear mode \u2014 no clean entry worth the risk right now.",
-  "layman_explanation": "The overall crypto market is in a fearful state with Bitcoin dominance high at 56.3%, meaning money is flowing away from smaller coins (altcoins) and into Bitcoin. All of the potential trade candidates are either in downtrends, have already bounced too far too fast, or lack clear chart confirmation for a reversal. While a few coins like ZRO and TRUMP are near oversold levels, their charts are still bearish with no sign of buyers stepping in convincingly. It's better to wait for a clearer setup than to force a trade in these conditions.",
-  "layman_action": "Stay in cash and wait. Don't chase anything here. If ZRO holds the $0.90 support and forms a bullish reversal candle in the next 1-2 days, that could become actionable. Otherwise, patience is the best trade right now.",
-  "expert_reasoning": "Reviewing all 9 swing candidates, the environment is hostile for altcoin longs: BTC dominance at 56.3% is compressing alt valuations, Fear & Greed at 26 is improving but still fearful, and most candidates show bearish chart structures. TRUMP and ZRO have the best RSI readings (29 and 31 respectively \u2014 historically reliable bounce zones per our signal credibility data showing RSI with 75% win rate). However, both are below all major moving averages with bearish chart bias scores of -0.70. ARB's +25% weekly gain makes it overextended. JTO's RSI at 59 suggests it's already mid-move. Without a volume breakout signal (our most reliable indicator at 100% win rate) or a confirming news catalyst from CoinTelegraph (also 100% win rate), entering here lacks the edge our historical data demands. The CoinTelegraph headline about Bitcoin being in 'late stages of bear market' is notable but not actionable for altcoin entries yet.",
+  "selected_coin_price": 0.906741,
+  "confidence": 35,
+  "layman_headline": "Crypto market is fearful and weak \u2014 no compelling trade setup right now.",
+  "layman_explanation": "The overall crypto market is in a 'Fear' state with Bitcoin dominance high at 56.3%, meaning money is flowing out of smaller coins and into Bitcoin. All the swing trade candidates have significant problems \u2014 either their charts are bearish, they've already bounced too much, or they lack clear catalysts. The best candidate on the watchlist is LayerZero (ZRO), which has an RSI approaching oversold territory and a fantastic risk/reward ratio near its $0.90 support, but its chart structure is still bearish and there's no news catalyst to trigger a reversal.",
+  "layman_action": "Stay patient and keep cash ready. The market is scared and altcoins are bleeding. Wait for a clearer setup \u2014 either a confirmed bounce off support with volume, or a shift in market sentiment. Don't chase falling knives.",
+  "expert_reasoning": "Every candidate in this cycle has material flaws. GRASS (-24.8% 7d) has a bearish engulfing pattern and poor R/R of 0.48x. BONK has the worst chart bias at -1.40 with bearish marubozu \u2014 pure selling pressure. JTO's RSI at 59 after a -20% drop is contradictory and suggests the bounce may have already played out. ETHFI has the best chart bias (+0.60) but resistance is only 2.5% away with R/R of 0.11x \u2014 terrible swing setup. ZRO stands out with RSI 31 near oversold and exceptional R/R (16.5x to resistance at $1.00 vs $0.90 support), but the overall bearish structure (below all MAs, downtrend) and high BTC dominance crushing alts makes entry premature. The prudent move is to wait for ZRO to confirm a bounce off $0.90 with volume before entering.",
   "risk_factors": [
-    "BTC dominance at 56.3% continues to crush altcoin relative performance \u2014 any further BTC dominance expansion would drag all candidates lower",
-    "No volume breakout signals detected on any candidate, which is our most reliable entry confirmation",
-    "Fear & Greed at 26 could deteriorate further if BTC loses the $63K level, triggering another leg down in alts"
+    "BTC dominance at 56.3% is actively suppressing altcoin performance \u2014 alts could continue bleeding",
+    "Fear & Greed at 26 with no clear catalyst to reverse \u2014 sentiment could deteriorate further toward extreme fear",
+    "U.S. launching fresh Iran strikes creates geopolitical uncertainty that typically pressures risk assets"
   ],
   "watch_list": [
-    "ZRO holding $0.90 support with a bullish reversal candle (hammer or morning star) in the next 48 hours",
-    "Bitcoin price action around $63K-$64K \u2014 a breakout above $65K could ease BTC dominance and help alts",
-    "Fear & Greed index \u2014 a move above 30 would confirm the improving trend and make alt entries safer"
+    "ZRO price action around $0.90 support \u2014 a confirmed bounce with volume spike would trigger a BUY",
+    "Fear & Greed index movement \u2014 a drop below 20 (extreme fear) often marks excellent contrarian entry points",
+    "BTC price stability above $63,000 \u2014 if BTC breaks lower, alts will get crushed further"
   ],
-  "market_context": "The crypto market is in a fearful but slowly improving state, with BTC holding near $63.8K and dominance at a cycle high of 56.3%. Altcoins are broadly suffering with most candidates down 10-25% on the week, but no clear capitulation bottom or reversal confirmation is visible yet.",
-  "context_banner": "High BTC dominance and fearful sentiment make this a patience trade \u2014 the best setup is no setup until confirmation arrives.",
-  "btc_price": 63797,
+  "market_context": "The crypto market is in a fearful state (F&G 26) with BTC relatively stable but altcoins bleeding heavily. Geopolitical tension from U.S.-Iran strikes and macro uncertainty around crypto IPOs stalling add headwinds, while high BTC dominance at 56.3% signals capital rotation away from alts.",
+  "context_banner": "Fear dominates the market with alts in capitulation mode \u2014 patience is the highest-conviction trade right now.",
+  "btc_price": 63759,
   "fear_greed": {
     "current": 26,
     "label": "Fear",
@@ -33,30 +33,30 @@
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Fear & Greed at 26 ('Fear') with an improving trend from week average of 24 \u2014 historically an 80% reliable signal but not yet at extreme levels that trigger strongest bounces."
+      "description": "Fear & Greed at 26 (Fear) with weekly average of 24 \u2014 sentiment is poor but slowly improving, suggesting we may be approaching a bottom but aren't there yet."
     },
     {
       "source": "RSI",
       "signal_type": "technical",
-      "description": "ZRO RSI at 31 and TRUMP RSI at 29 are near oversold territory \u2014 historically a 75% reliable bounce signal, but both lack chart confirmation to act on."
-    },
-    {
-      "source": "CoinTelegraph",
-      "signal_type": "news",
-      "description": "CoinTelegraph reports Bitcoin may be in 'late stages of bear market' per Jamie Coutts \u2014 a macro-bullish narrative but not yet confirmed by price action or altcoin recovery."
-    },
-    {
-      "source": "volume_breakout",
-      "signal_type": "technical",
-      "description": "No volume breakout detected on any candidate \u2014 our most reliable signal (100% win rate) is absent, which is a strong reason to wait."
+      "description": "ZRO RSI at 31 is the lowest among candidates and approaching oversold territory, but hasn't crossed below 30 for a confirmed oversold signal."
     },
     {
       "source": "CoinDesk",
       "signal_type": "news",
-      "description": "BIP 110 fork deadline nearing with zero miner support and Empery Digital selling half its BTC stack create headline uncertainty that suppresses risk appetite."
+      "description": "U.S. launching fresh Iran strikes creates geopolitical risk headwind, and crypto IPO market stalling signals institutional caution."
+    },
+    {
+      "source": "CoinTelegraph",
+      "signal_type": "news",
+      "description": "Bitcoin described as 'nearing late stages of bear market' by Real Vision analyst \u2014 suggests potential macro bottom forming but not confirmed."
+    },
+    {
+      "source": "Chart Pattern Analysis",
+      "signal_type": "technical",
+      "description": "All altcoin candidates show bearish or neutral chart structures with poor risk/reward ratios, except ZRO which has exceptional R/R but bearish trend confirmation."
     }
   ],
   "_mode": "HUNTING",
   "exit_target": 1.0,
-  "stop_loss": 0.82
+  "stop_loss": 0.83
 }
