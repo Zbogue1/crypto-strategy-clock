@@ -1,51 +1,5 @@
 [
   {
-    "ts": "2026-07-10T10:09:15.272963+00:00",
-    "coin": "ZRO",
-    "price": 0.905142,
-    "signal": "BUY",
-    "confidence": 52,
-    "score": 0.35,
-    "fg": 23,
-    "btc_price": 64279,
-    "btc_dominance": 56.4,
-    "candidates": [
-      "LAB",
-      "VELVET",
-      "DEXE",
-      "MON",
-      "GRASS",
-      "VVV",
-      "AAVE",
-      "ETHFI",
-      "ZRO"
-    ],
-    "alert": "Extreme Fear at 23 \u2014 historically one of the most reliable buy signals in our data (75% win rate, +5.9% avg return). Proceed with discipline."
-  },
-  {
-    "ts": "2026-07-10T11:09:15.944029+00:00",
-    "coin": "ZRO",
-    "price": 0.914353,
-    "signal": "BUY",
-    "confidence": 58,
-    "score": 0.35,
-    "fg": 23,
-    "btc_price": 64381,
-    "btc_dominance": 56.4,
-    "candidates": [
-      "LAB",
-      "VELVET",
-      "DEXE",
-      "MON",
-      "GRASS",
-      "VVV",
-      "ARB",
-      "ETHFI",
-      "ZRO"
-    ],
-    "alert": null
-  },
-  {
     "ts": "2026-07-10T12:09:14.190687+00:00",
     "coin": "ZRO",
     "price": 0.915965,
@@ -920,5 +874,51 @@
       "ZRO"
     ],
     "alert": "All swing candidates show poor risk/reward ratios or confirmed downtrends \u2014 capital preservation is the priority."
+  },
+  {
+    "ts": "2026-07-12T02:09:19.374187+00:00",
+    "coin": "ZRO",
+    "price": 0.90877,
+    "signal": "HOLD",
+    "confidence": 35,
+    "score": -0.15,
+    "fg": 26,
+    "btc_price": 64051,
+    "btc_dominance": 56.3,
+    "candidates": [
+      "MON",
+      "USDG",
+      "VVV",
+      "BONK",
+      "TRUMP",
+      "GRASS",
+      "XPL",
+      "ETHFI",
+      "ZRO"
+    ],
+    "alert": "No high-conviction setups available. All candidates lack the volume breakout or MACD cross signals that have historically driven our best trades (100% win rate). Staying in cash."
+  },
+  {
+    "ts": "2026-07-12T03:09:16.031361+00:00",
+    "coin": "ZRO",
+    "price": 0.905176,
+    "signal": "HOLD",
+    "confidence": 32,
+    "score": -0.3,
+    "fg": 26,
+    "btc_price": 64039,
+    "btc_dominance": 56.3,
+    "candidates": [
+      "USDG",
+      "MON",
+      "BONK",
+      "VVV",
+      "TRUMP",
+      "XPL",
+      "GRASS",
+      "ETHFI",
+      "ZRO"
+    ],
+    "alert": "All swing candidates show bearish chart structures \u2014 wait for reversal confirmation before deploying capital."
   }
 ]
