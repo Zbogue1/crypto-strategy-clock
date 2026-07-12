@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-10T18:09:11.964690+00:00",
-    "coin": "ZRO",
-    "price": 0.905479,
-    "signal": "BUY",
-    "confidence": 52,
-    "score": 0.35,
-    "fg": 23,
-    "btc_price": 63871,
-    "btc_dominance": 56.3,
-    "candidates": [
-      "LAB",
-      "DEXE",
-      "MON",
-      "USDG",
-      "GRASS",
-      "XPL",
-      "VVV",
-      "ETHFI",
-      "ZRO"
-    ],
-    "alert": null
-  },
-  {
     "ts": "2026-07-10T19:09:11.260210+00:00",
     "coin": "ZRO",
     "price": 0.902702,
@@ -923,5 +900,29 @@
       "GRASS"
     ],
     "alert": "Market in Fear zone with high BTC dominance \u2014 avoid forcing alt entries until conditions improve or a clear catalyst emerges."
+  },
+  {
+    "ts": "2026-07-12T10:09:17.164460+00:00",
+    "coin": "ZRO",
+    "price": 0.888775,
+    "signal": "HOLD",
+    "confidence": 35,
+    "score": -0.15,
+    "fg": 26,
+    "btc_price": 63876,
+    "btc_dominance": 56.3,
+    "candidates": [
+      "MON",
+      "USDG",
+      "VVV",
+      "HTX",
+      "XPL",
+      "PENGU",
+      "TRUMP",
+      "ETHFI",
+      "ZRO",
+      "GRASS"
+    ],
+    "alert": "Market in fear territory with geopolitical escalation risk \u2014 avoid aggressive alt entries until sentiment stabilizes."
   }
 ]
