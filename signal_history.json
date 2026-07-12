@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-10T09:09:12.275408+00:00",
-    "coin": "ZRO",
-    "price": 0.896816,
-    "signal": "BUY",
-    "confidence": 52,
-    "score": 0.35,
-    "fg": 23,
-    "btc_price": 64162,
-    "btc_dominance": 56.4,
-    "candidates": [
-      "LAB",
-      "MON",
-      "VELVET",
-      "GRASS",
-      "VVV",
-      "ARB",
-      "USDG",
-      "ETHFI",
-      "ZRO"
-    ],
-    "alert": null
-  },
-  {
     "ts": "2026-07-10T10:09:15.272963+00:00",
     "coin": "ZRO",
     "price": 0.905142,
@@ -920,5 +897,28 @@
       "GRASS"
     ],
     "alert": "High BTC dominance (56.3%) and universal bearish alt structures \u2014 avoid catching falling knives without volume confirmation."
+  },
+  {
+    "ts": "2026-07-12T01:09:12.073930+00:00",
+    "coin": "ETHFI",
+    "price": 0.423577,
+    "signal": "HOLD",
+    "confidence": 35,
+    "score": -0.15,
+    "fg": 26,
+    "btc_price": 63871,
+    "btc_dominance": 56.3,
+    "candidates": [
+      "MON",
+      "USDG",
+      "VVV",
+      "TRUMP",
+      "BONK",
+      "GRASS",
+      "XPL",
+      "ETHFI",
+      "ZRO"
+    ],
+    "alert": "All swing candidates show poor risk/reward ratios or confirmed downtrends \u2014 capital preservation is the priority."
   }
 ]
