@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-11T07:09:12.210328+00:00",
-    "coin": "ZRO",
-    "price": 0.919457,
-    "signal": "BUY",
-    "confidence": 52,
-    "score": 0.35,
-    "fg": 26,
-    "btc_price": 64136,
-    "btc_dominance": 56.3,
-    "candidates": [
-      "LAB",
-      "MON",
-      "GRASS",
-      "USDG",
-      "VIRTUAL",
-      "VVV",
-      "XPL",
-      "ETHFI",
-      "ZRO"
-    ],
-    "alert": null
-  },
-  {
     "ts": "2026-07-11T08:09:16.055110+00:00",
     "coin": "ZRO",
     "price": 0.931759,
@@ -933,5 +910,29 @@
       "GRASS"
     ],
     "alert": "No high-conviction setups available. All candidates show bearish chart structures or lack volume confirmation. Maintaining cash position for better entry."
+  },
+  {
+    "ts": "2026-07-12T23:09:11.472813+00:00",
+    "coin": "TRUMP",
+    "price": 1.55,
+    "signal": "HOLD",
+    "confidence": 32,
+    "score": -0.15,
+    "fg": 26,
+    "btc_price": 63785,
+    "btc_dominance": 56.3,
+    "candidates": [
+      "MON",
+      "XPL",
+      "PENGU",
+      "HTX",
+      "TRUMP",
+      "USDG",
+      "VIRTUAL",
+      "ETHFI",
+      "ZRO",
+      "GRASS"
+    ],
+    "alert": "All altcoin candidates show bearish chart structures with no volume confirmation \u2014 avoid forced entries in this environment."
   }
 ]
