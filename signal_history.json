@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-11T05:09:11.906446+00:00",
-    "coin": "ZRO",
-    "price": 0.926269,
-    "signal": "BUY",
-    "confidence": 52,
-    "score": 0.35,
-    "fg": 26,
-    "btc_price": 64115,
-    "btc_dominance": 56.3,
-    "candidates": [
-      "LAB",
-      "B",
-      "MON",
-      "VIRTUAL",
-      "USDG",
-      "GRASS",
-      "BONK",
-      "ETHFI",
-      "ZRO"
-    ],
-    "alert": null
-  },
-  {
     "ts": "2026-07-11T06:09:16.708139+00:00",
     "coin": "ZRO",
     "price": 0.915056,
@@ -931,5 +908,29 @@
       "GRASS"
     ],
     "alert": "No actionable swing trade setup found. All candidates lack the combination of oversold technicals, bullish chart structure, and catalysts needed for high-conviction entries."
+  },
+  {
+    "ts": "2026-07-12T21:09:16.523339+00:00",
+    "coin": "ZRO",
+    "price": 0.87103,
+    "signal": "HOLD",
+    "confidence": 32,
+    "score": -0.15,
+    "fg": 26,
+    "btc_price": 64166,
+    "btc_dominance": 56.2,
+    "candidates": [
+      "XPL",
+      "MON",
+      "USDG",
+      "HTX",
+      "PENGU",
+      "TRUMP",
+      "ARB",
+      "ETHFI",
+      "ZRO",
+      "GRASS"
+    ],
+    "alert": "No actionable swing trade setups detected. All candidates lack the convergence of reliable signals (volume breakout + RSI oversold + catalyst) needed for high-conviction entries."
   }
 ]
