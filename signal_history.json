@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-10T22:09:24.708983+00:00",
-    "coin": "ZRO",
-    "price": 0.933873,
-    "signal": "BUY",
-    "confidence": 52,
-    "score": 0.35,
-    "fg": 23,
-    "btc_price": 63973,
-    "btc_dominance": 56.3,
-    "candidates": [
-      "LAB",
-      "MON",
-      "GRASS",
-      "USDG",
-      "VIRTUAL",
-      "LIT",
-      "XPL",
-      "ETHFI",
-      "ZRO"
-    ],
-    "alert": null
-  },
-  {
     "ts": "2026-07-10T23:09:12.654706+00:00",
     "coin": "ZRO",
     "price": 0.924232,
@@ -925,5 +902,29 @@
       "ZRO"
     ],
     "alert": "No compelling swing trade setups available. All candidates show either bearish charts, poor risk/reward, or lack of catalyst. Staying in cash."
+  },
+  {
+    "ts": "2026-07-12T14:09:20.400261+00:00",
+    "coin": "TRUMP",
+    "price": 1.57,
+    "signal": "HOLD",
+    "confidence": 32,
+    "score": -0.15,
+    "fg": 26,
+    "btc_price": 63956,
+    "btc_dominance": 56.2,
+    "candidates": [
+      "USDG",
+      "HTX",
+      "MON",
+      "XPL",
+      "PENGU",
+      "TRUMP",
+      "VVV",
+      "ETHFI",
+      "ZRO",
+      "GRASS"
+    ],
+    "alert": "Market in Fear territory with high BTC dominance \u2014 all swing candidates show weak setups. Patience recommended."
   }
 ]
