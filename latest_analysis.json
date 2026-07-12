@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-07-12T12:09:10.829638+00:00",
+  "timestamp": "2026-07-12T13:09:14.207538+00:00",
   "selected_coin": "ZRO",
   "selected_coin_name": "LayerZero",
-  "selected_coin_price": 0.884128,
+  "selected_coin_price": 0.883453,
   "confidence": 32,
-  "layman_headline": "Crypto market is fearful and alts are bleeding \u2014 patience is the best trade right now.",
-  "layman_explanation": "The overall crypto market is in a 'Fear' state with Bitcoin dominance at 56.2%, meaning money is flowing into Bitcoin and away from smaller coins. None of the swing candidates present a compelling setup \u2014 most are in downtrends with bearish chart structures. While a few coins like ZRO are approaching oversold levels, the bearish market backdrop and high BTC dominance make it risky to buy altcoins right now. The best move is to wait for clearer setups.",
-  "layman_action": "Stay on the sidelines and keep your powder dry. Wait for fear to stabilize and for altcoins to show clear reversal signals (like a bullish MACD cross or volume breakout at support) before committing capital.",
-  "expert_reasoning": "Surveying all 9 candidates, the market environment is hostile to altcoin swing trades: BTC dominance at 56.2% is compressing alt performance, Fear & Greed at 26 is improving but still fearful, and most candidates show bearish chart structures (below key MAs). ZRO at RSI 31 near $0.90 support has the best potential mean-reversion setup with a theoretical 16.5x risk/reward ratio, but the chart bias is -0.70 (bearish) with no MACD cross, no volume breakout, and no news catalyst. HTX has the best chart bias (+1.10) but RSI at 58 is already extended and it's a micro-cap with minimal liquidity. GRASS dropped 27% in a week but shows a bearish engulfing pattern \u2014 catching a falling knife. Without a confirmed reversal signal from our most reliable indicators (volume_breakout, bullish MACD cross), entering any position carries elevated risk of further drawdown.",
+  "layman_headline": "Fear grips crypto markets \u2014 no clear setup worth the risk right now.",
+  "layman_explanation": "The overall crypto market is in a fearful state with Bitcoin dominance high at 56.2%, which means money is flowing out of smaller coins and into Bitcoin. None of the coins on the watchlist present a compelling enough setup to justify opening a new position. Some coins like ZRO are approaching oversold territory, but their charts are still bearish with no signs of a reversal yet. Patience is the play here.",
+  "layman_action": "Stay on the sidelines and wait. The market mood is fearful and altcoins are getting beaten down. A better entry will come when we see actual reversal signals, not just cheap prices.",
+  "expert_reasoning": "Scanning all candidates reveals a weak opportunity set. GRASS has the sharpest 7-day pullback (-24.4%) but shows a bearish engulfing candle and chart bias of -0.9 \u2014 classic falling knife. ZRO's RSI at 31 is the most interesting signal given our track record shows RSI-based entries have a 75% win rate, but the chart is in a confirmed downtrend with price below all MAs. HTX has the strongest chart bias (+1.1) with a bullish Marubozu, but RSI at 58 flags overbought risk and the token's micro-cap nature and already-extended 5.2% weekly gain reduce conviction. ETHFI shows bullish momentum (+13.5% 5-day) but resistance is only 2.5% away with poor R/R of 0.11x. With Fear & Greed at 26 (improving trend) and BTC dominance at 56.2%, this is an environment that punishes altcoin entries. Better to wait for ZRO to confirm a base near $0.85-0.88 support or for Fear & Greed to cross above 30.",
   "risk_factors": [
-    "BTC dominance at 56.2% continues to drain capital from altcoins \u2014 any further BTC dominance expansion crushes alt positions",
-    "Fear & Greed at 26 could deteriorate further given Iran strike headlines and crypto IPO market stalling",
-    "No candidates show volume breakouts or MACD bullish crosses \u2014 our most reliable signals are absent"
+    "BTC dominance at 56.2% continues to drain liquidity from altcoins \u2014 any further rise would crush alt positions",
+    "Fear & Greed at 26 could deteriorate further if U.S.-Iran conflict escalates, triggering broader risk-off moves",
+    "Stablecoin market cap shrinking by $10B since May signals capital leaving the crypto ecosystem entirely"
   ],
   "watch_list": [
-    "ZRO price action at $0.90 support \u2014 a bounce with volume confirmation would trigger a BUY next cycle",
-    "Fear & Greed index \u2014 a move above 30 with BTC stabilizing above $64K would improve the alt outlook",
-    "ZEC momentum \u2014 up 14% on the week, watching for continuation or exhaustion as a potential late entry"
+    "ZRO RSI dropping below 30 could signal a capitulation bottom \u2014 watch for RSI divergence or a hammer candle at $0.85 support",
+    "Fear & Greed index trend \u2014 currently improving from weekly avg of 24 to 26; a move above 30 would signal safer entry conditions",
+    "Bitcoin's test of Fidelity's power law support line \u2014 a bounce here could lift the entire market and create alt opportunities"
   ],
-  "market_context": "The crypto market is in a fear-driven consolidation phase with BTC near $64K and dominance at 56.2%. Geopolitical tensions (Iran strikes), BIP-110 uncertainty, and stalled crypto IPOs are weighing on sentiment, though news of Bitcoin nearing power law support and ETH tokenization momentum provide some floor.",
-  "context_banner": "Fear-driven market with high BTC dominance makes altcoin entries premature \u2014 discipline and patience will outperform forced trades.",
-  "btc_price": 63938,
+  "market_context": "Bitcoin is holding near $64K but the broader market is fearful (F&G 26) with high BTC dominance at 56.2%. Stablecoin outflows and geopolitical tensions from U.S.-Iran strikes are keeping risk appetite suppressed, making this a poor environment for new altcoin entries.",
+  "context_banner": "Market fear and high BTC dominance create a hostile environment for altcoins \u2014 discipline demands patience over action.",
+  "btc_price": 64002,
   "fear_greed": {
     "current": 26,
     "label": "Fear",
@@ -33,30 +33,30 @@
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Fear & Greed at 26 ('Fear') with an improving trend from weekly average of 24 \u2014 market is fearful but not yet at extreme levels that historically trigger strong bounces."
+      "description": "Fear & Greed at 26 ('Fear') with improving trend from 24 weekly average \u2014 not yet at levels that historically produce reliable bounce entries."
     },
     {
       "source": "RSI",
       "signal_type": "technical",
-      "description": "ZRO RSI at 31 is the lowest among candidates and approaching oversold territory, but hasn't confirmed a reversal \u2014 our 75% win rate with RSI signals requires patience for confirmation."
+      "description": "ZRO RSI at 31 is the most oversold candidate, but needs confirmation of a reversal (hammer candle, RSI divergence) before entry is warranted."
     },
     {
       "source": "CoinDesk",
       "signal_type": "news",
-      "description": "Bitcoin nearing Fidelity's power law support line since 2015 and U.S.-Iran strikes creating macro uncertainty \u2014 mixed signals that keep risk elevated."
+      "description": "Stablecoin market cap shrinking $10B since May and Bitcoin nearing power law support both signal macro uncertainty that keeps altcoin risk elevated."
     },
     {
       "source": "CoinTelegraph",
       "signal_type": "news",
-      "description": "Bitcoin described as in 'late stages of bear market' by Jamie Coutts at Real Vision, and ETH climbing on tokenization boom \u2014 potential macro bottoming narrative forming but not yet confirmed."
+      "description": "Bitcoin nearing 'late stages of bear market' per Jamie Coutts suggests a macro bottom may be forming, but timing an entry is premature without technical confirmation."
     },
     {
-      "source": "volume_breakout",
+      "source": "Chart Pattern Analysis",
       "signal_type": "technical",
-      "description": "No volume breakout detected on any candidate \u2014 our most reliable signal (100% win rate, +13.4% avg return) is completely absent this cycle, supporting a HOLD decision."
+      "description": "Best chart bias is HTX at +1.1, but the majority of candidates show bearish or neutral chart structures \u2014 the market is not offering clean setups."
     }
   ],
   "_mode": "HUNTING",
   "exit_target": 0.98,
-  "stop_loss": 0.78
+  "stop_loss": 0.79
 }
