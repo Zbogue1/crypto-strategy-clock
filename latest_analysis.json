@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-07-12T10:09:17.164460+00:00",
+  "timestamp": "2026-07-12T11:09:11.864110+00:00",
   "selected_coin": "ZRO",
   "selected_coin_name": "LayerZero",
-  "selected_coin_price": 0.888775,
-  "confidence": 35,
-  "layman_headline": "Crypto market is fearful and altcoins are bleeding \u2014 patience beats FOMO right now.",
-  "layman_explanation": "The overall crypto market is gripped by fear, with Bitcoin dominance at 56.3% meaning money is flowing out of smaller coins and into Bitcoin. Most altcoin candidates on our watchlist are in downtrends with bearish chart structures. While a few coins like ZRO and TRUMP are approaching oversold territory, none present a clean enough setup with both technical confirmation and a strong catalyst to justify risking capital today.",
-  "layman_action": "Stay in cash and wait for a clearer setup. The market is in fear mode and altcoins are underperforming. Better entries will come when we see actual reversal confirmation rather than trying to catch a falling knife.",
-  "expert_reasoning": "None of the 10 candidates present a compelling risk-adjusted entry. ZRO and TRUMP both show oversold RSI readings (31 and 29 respectively), which historically correlate with bounces per our signal credibility data (RSI has a 75% win rate). However, both have bearish chart bias scores (-0.7), are below all major moving averages, and lack any volume breakout signal \u2014 our most reliable indicator at 100% win rate. ETHFI shows the strongest bullish chart bias (+0.6) with a Marubozu candle, but resistance is only 2.5% away with a terrible 0.11x risk/reward. HTX has the highest chart bias (+1.1) but RSI at 58 suggests it's already extended. With BTC dominance at 56.3% crushing altcoin flows and Fear & Greed stuck at 26, the macro environment actively works against alt entries. The prudent move is to wait for either a volume breakout confirmation on ZRO near $0.85 or broader market sentiment improvement.",
+  "selected_coin_price": 0.885791,
+  "confidence": 32,
+  "layman_headline": "Fear grips the market \u2014 patience is the best trade right now.",
+  "layman_explanation": "The crypto market is in a fearful state with most altcoins bleeding against Bitcoin, which continues to dominate at 56.3%. None of the swing candidates present a compelling risk-reward setup today. Several coins like TRUMP and ZRO are approaching oversold levels, but their charts remain bearish with no confirmed reversal signals. The smartest move is to stay on the sidelines and wait for a clearer entry.",
+  "layman_action": "Keep your cash ready. Don't chase falling knives. Wait for a confirmed bounce or a strong news catalyst before entering any new position.",
+  "expert_reasoning": "Across all 10 swing candidates, none present a high-conviction setup. ZRO and TRUMP have deeply oversold RSIs (31 and 29 respectively), but both sit below all major moving averages with bearish chart bias scores (-0.70). HTX has the best chart bias (+1.10) with a bullish Marubozu candle, but its RSI at 58 is already elevated after a 7% weekly gain, and the micro-cap token carries extreme liquidity risk. ETHFI shows some promise with a +0.60 chart bias and bullish Marubozu, but it's already up 5.8% today with resistance just 2.5% away \u2014 terrible entry timing. With BTC dominance at 56.3% and Fear & Greed at 26, altcoins face a hostile macro environment. High BTC dominance means capital is flowing away from alts. The prudent strategy is HOLD and wait for either a BTC dominance reversal or confirmed oversold bounces with volume confirmation.",
   "risk_factors": [
-    "U.S.-Iran military escalation could trigger a broader risk-off move, sending alts down another 10-20%",
-    "BTC dominance at 56.3% and rising means capital continues flowing away from altcoins",
-    "All oversold candidates (ZRO, TRUMP) have bearish chart structures \u2014 oversold can stay oversold in downtrends"
+    "BTC dominance at 56.3% creates persistent headwinds for all altcoin positions",
+    "Fear & Greed at 26 with geopolitical risk (U.S.-Iran strikes) could push sentiment lower",
+    "No confirmed reversal patterns on any oversold candidate \u2014 catching falling knives is high-risk"
   ],
   "watch_list": [
-    "ZRO price action at $0.88-0.90 support \u2014 a volume-confirmed bounce here would be actionable",
-    "Fear & Greed index movement \u2014 a shift above 30 with improving trend would signal safer alt entries",
-    "BTC dominance \u2014 a reversal below 55% would unlock altcoin rotation and improve all candidate setups"
+    "ZRO holding $0.90 support \u2014 a bounce with volume here could trigger a buy signal",
+    "BTC price action around $64K \u2014 a decisive move above could shift market sentiment",
+    "Fear & Greed index \u2014 improving trend from 24 weekly avg to 26 current, watch for move above 30"
   ],
-  "market_context": "Crypto markets are in a fear state (26/100) with BTC flat near $63.9K and high dominance at 56.3% crushing altcoin performance. Geopolitical tension from U.S.-Iran strikes and stalled crypto IPO activity add macro headwinds.",
-  "context_banner": "Fear dominates the market with no clean altcoin setups \u2014 capital preservation is the highest-conviction trade today.",
-  "btc_price": 63876,
+  "market_context": "The market is in a fear regime with BTC consolidating near $63.8K while altcoins bleed. U.S. strikes on Iran add geopolitical uncertainty, and the crypto IPO market is stalling as capital rotates to AI \u2014 not a favorable environment for aggressive altcoin entries.",
+  "context_banner": "Fear dominates crypto markets amid geopolitical tension and high BTC dominance \u2014 capital preservation is the priority until a clear reversal signal emerges.",
+  "btc_price": 63858,
   "fear_greed": {
     "current": 26,
     "label": "Fear",
@@ -33,30 +33,30 @@
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Fear & Greed at 26 ('Fear') with weekly average at 24 \u2014 improving but still dangerous for alt entries. Our 80% win rate with this signal suggests waiting for neutral territory."
+      "description": "Fear & Greed at 26 ('Fear') with improving trend from 24 weekly average \u2014 not yet at extreme fear levels (below 20) where contrarian buys historically work best."
     },
     {
       "source": "RSI",
       "signal_type": "technical",
-      "description": "ZRO RSI at 31 and TRUMP at 29 are approaching oversold, historically a bounce zone per our 75% win rate data, but neither has volume confirmation yet."
+      "description": "TRUMP RSI at 29 and ZRO RSI at 31 show oversold conditions, but neither has confirmed a reversal with a bullish candle pattern or MACD cross."
     },
     {
       "source": "CoinDesk",
       "signal_type": "news",
-      "description": "U.S. launches fresh Iran strikes creating macro risk-off pressure; crypto IPO market stalling signals institutional caution."
+      "description": "U.S. launches fresh Iran strikes creating macro uncertainty \u2014 risk-off sentiment likely to persist, weighing on crypto risk appetite."
     },
     {
       "source": "CoinTelegraph",
       "signal_type": "news",
-      "description": "Bitcoin analysts suggest we're in late-stage bear market conditions, and ETH gaining on tokenization narrative \u2014 potential rotation catalyst if confirmed."
+      "description": "Bitcoin nearing late stages of bear market per Jamie Coutts \u2014 suggests patience will be rewarded as a bottom formation takes shape over coming weeks."
     },
     {
-      "source": "volume_breakout",
-      "signal_type": "technical",
-      "description": "No volume breakout detected on any candidate \u2014 our most reliable signal (100% win rate, +13.4% avg return) is absent, supporting a wait-and-see approach."
+      "source": "Blockworks",
+      "signal_type": "macro",
+      "description": "ETH derivatives reset noted alongside DePIN/gaming rebound \u2014 suggests selective sector rotation rather than broad alt rally, further supporting patience."
     }
   ],
   "_mode": "HUNTING",
   "exit_target": 1.0,
-  "stop_loss": 0.79
+  "stop_loss": 0.78
 }
