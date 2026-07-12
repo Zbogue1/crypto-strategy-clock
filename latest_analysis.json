@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-07-12T22:09:11.059103+00:00",
+  "timestamp": "2026-07-12T23:09:11.472813+00:00",
   "selected_coin": "TRUMP",
   "selected_coin_name": "Official Trump",
   "selected_coin_price": 1.55,
-  "confidence": 35,
-  "layman_headline": "Crypto market is fearful and alts are bleeding \u2014 patience is the play right now.",
-  "layman_explanation": "The overall crypto market is in a 'Fear' state with most alternative coins (altcoins) dropping 5-20% over the past week while Bitcoin holds relatively steady. This means money is flowing out of smaller coins and into Bitcoin or to the sidelines. None of the swing trade candidates present a clean, high-conviction setup \u2014 most have bearish chart structures, poor risk/reward ratios, or have already bounced significantly. Jumping in now would be catching a falling knife without a clear catalyst to reverse the trend.",
-  "layman_action": "Stay on the sidelines with cash ready. Wait for the Fear & Greed index to bottom and start turning, or for a clear oversold bounce with volume confirmation before entering any new position.",
-  "expert_reasoning": "Across all 10 candidates, the macro environment is hostile to altcoins: BTC dominance at 56.2% is squeezing alt liquidity, Fear & Greed at 26 suggests capitulation hasn't fully played out, and no volume breakout signals (our most reliable indicator at 100% win rate) are present. TRUMP has the strongest oversold RSI reading at 29.04, which historically signals bounce zones (RSI is 75% reliable in our track record), but the chart bias is -0.70 (bearish), price is below all major MAs, and there's no bullish candlestick confirmation. HTX has the best chart bias (+1.10) with a Bullish Marubozu, but its RSI at 58 suggests it may be overextended, and it's a micro-cap DAO token with minimal liquidity. The Blockworks note about 'ETH derivatives reset' and CoinDesk's observation about Bitcoin nearing power law support suggest we may be near a broader market inflection, but it hasn't triggered yet. Discipline demands we wait for confirmation.",
+  "confidence": 32,
+  "layman_headline": "The crypto market is fearful and weak \u2014 no high-conviction trade exists right now.",
+  "layman_explanation": "The overall crypto market is in a 'Fear' zone with most altcoins declining 6-12% over the past week while Bitcoin holds relatively steady. This means money is flowing out of smaller coins and into Bitcoin or stablecoins. None of the candidates on our watchlist present a clean setup with strong enough technical or news backing to justify risking capital. The best candidate, TRUMP, has an oversold RSI of 29 which historically signals bounces, but the chart structure is bearish with no supporting catalyst.",
+  "layman_action": "Stay in cash and wait. The market is weak and there's no clear edge right now. Better setups will emerge when fear peaks and reversal signals appear with volume confirmation.",
+  "expert_reasoning": "I evaluated all 10 swing candidates and found no setup meeting our quality threshold. TRUMP's RSI at 29 is the strongest individual signal (RSI has a 75% win rate in our signal credibility data), but the chart bias is -0.70 (bearish), price is below all major MAs, and there's no volume breakout (our most reliable signal at 100% win rate). BTC dominance at 56.3% is crushing altcoins, and Fear & Greed at 26 is improving but hasn't reached extreme fear levels where contrarian entries historically work best. HTX has the best chart bias (+1.10) but RSI is already at 58 and the token has minimal liquidity. Without a volume breakout or strong news catalyst from CoinTelegraph (100% win rate), entering any position here would be catching a falling knife.",
   "risk_factors": [
-    "BTC dominance at 56.2% continues to drain altcoin liquidity \u2014 any further BTC strength crushes alt positions",
-    "Fear & Greed at 26 with only marginal improvement suggests further downside is possible before a true bottom",
-    "No volume breakout signals detected across any candidate \u2014 our highest-conviction indicator is silent"
+    "BTC dominance at 56.3% continues to drain capital from altcoins \u2014 any alt position faces structural headwinds",
+    "Fear & Greed at 26 is improving but hasn't reached capitulation levels (sub-15) where bounces are most reliable",
+    "No volume breakouts detected on any candidate \u2014 our highest-reliability signal is absent"
   ],
   "watch_list": [
-    "TRUMP RSI dropping below 25 or a bullish reversal candle (hammer/morning star) on elevated volume \u2014 would trigger a BUY",
-    "Fear & Greed index breaking above 30 with BTC holding $63,000 support \u2014 signals risk appetite returning",
-    "ZEC momentum (+15.5% 7d) \u2014 if it pulls back to support with volume confirmation, could become a strong entry"
+    "TRUMP RSI dropping below 25 with a bullish divergence or volume spike \u2014 would upgrade to a BUY",
+    "Fear & Greed index dropping below 20 (extreme fear) which historically precedes broader market bounces",
+    "BTC reclaiming $65,000+ which could signal risk-on rotation back into altcoins"
   ],
-  "market_context": "The crypto market is in a fear-driven consolidation phase with BTC dominance rising and altcoins broadly selling off. Bitcoin is testing power law support near $63,700 while stablecoin market cap contraction signals reduced overall crypto liquidity.",
-  "context_banner": "Market fear at 26/100 with rising BTC dominance creates a hostile environment for altcoin entries \u2014 discipline requires waiting for volume-confirmed reversals.",
-  "btc_price": 63744,
+  "market_context": "The crypto market is in a mild fear regime with BTC flat near $63,800 while altcoins bleed 5-12% weekly. High BTC dominance (56.3%) signals capital rotation away from alts, making this a poor environment for altcoin swing trades.",
+  "context_banner": "Market fear is elevated but not extreme \u2014 patience is the highest-probability play until a volume-confirmed reversal or catalyst emerges.",
+  "btc_price": 63785,
   "fear_greed": {
     "current": 26,
     "label": "Fear",
@@ -28,32 +28,32 @@
     "week_avg": 24.0,
     "trend": "improving"
   },
-  "btc_dominance": 56.2,
+  "btc_dominance": 56.3,
   "key_signals": [
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Fear & Greed at 26 (Fear) with only marginal week-over-week improvement from 24 \u2014 not yet signaling capitulation bottom, but approaching levels where contrarian entries historically work (80% win rate in our track record)."
+      "description": "Fear & Greed at 26 (Fear) is improving from 24 weekly average but hasn't reached capitulation levels that produce reliable bounce entries."
     },
     {
       "source": "RSI",
       "signal_type": "technical",
-      "description": "TRUMP RSI at 29 is the only truly oversold reading among candidates, historically a bounce zone, but lacks confirmation via bullish candle or volume spike."
-    },
-    {
-      "source": "CoinDesk",
-      "signal_type": "news",
-      "description": "Bitcoin nearing Fidelity's power law support line tracked since 2015 \u2014 if this holds, it could catalyze a broader market bounce including alts."
-    },
-    {
-      "source": "Blockworks",
-      "signal_type": "news",
-      "description": "ETH derivatives reset and DePIN/gaming rebound narrative suggest potential rotation back into alts, but timing remains uncertain."
+      "description": "TRUMP RSI at 29 is the most oversold candidate and our RSI signal has a 75% win rate, but without volume confirmation the bounce probability is insufficient."
     },
     {
       "source": "volume_breakout",
       "signal_type": "technical",
-      "description": "Zero volume breakout signals detected across all candidates \u2014 our most reliable indicator (100% win rate, +13.4% avg return) is completely silent, strongly supporting a HOLD decision."
+      "description": "No volume breakout detected on any candidate \u2014 this is our most reliable signal (100% win rate) and its absence is a strong reason to stay sidelined."
+    },
+    {
+      "source": "CoinDesk",
+      "signal_type": "news",
+      "description": "Bitcoin nearing Fidelity's power law support line and stablecoin market cap shrinking by $10B suggest caution but no imminent crash \u2014 sideways chop likely continues."
+    },
+    {
+      "source": "Blockworks",
+      "signal_type": "news",
+      "description": "ETH derivatives reset and DePIN/gaming rebound hints suggest sector rotation may create opportunities soon, but no actionable catalyst for current candidates."
     }
   ],
   "_mode": "HUNTING",
