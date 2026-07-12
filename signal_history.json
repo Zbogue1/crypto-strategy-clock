@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-11T04:09:16.948842+00:00",
-    "coin": "ZRO",
-    "price": 0.932117,
-    "signal": "BUY",
-    "confidence": 52,
-    "score": 0.35,
-    "fg": 26,
-    "btc_price": 64057,
-    "btc_dominance": 56.3,
-    "candidates": [
-      "LAB",
-      "B",
-      "MON",
-      "USDG",
-      "VIRTUAL",
-      "GRASS",
-      "BONK",
-      "ETHFI",
-      "ZRO"
-    ],
-    "alert": null
-  },
-  {
     "ts": "2026-07-11T05:09:11.906446+00:00",
     "coin": "ZRO",
     "price": 0.926269,
@@ -930,5 +907,29 @@
       "ZRO"
     ],
     "alert": "Market in fear with no actionable setups \u2014 patience is the edge right now."
+  },
+  {
+    "ts": "2026-07-12T20:09:21.161685+00:00",
+    "coin": "BTC",
+    "price": 64174,
+    "signal": "HOLD",
+    "confidence": 28,
+    "score": -0.35,
+    "fg": 26,
+    "btc_price": 64174,
+    "btc_dominance": 56.2,
+    "candidates": [
+      "MON",
+      "USDG",
+      "HTX",
+      "XPL",
+      "PENGU",
+      "TRUMP",
+      "WLD",
+      "ETHFI",
+      "ZRO",
+      "GRASS"
+    ],
+    "alert": "No actionable swing trade setup found. All candidates lack the combination of oversold technicals, bullish chart structure, and catalysts needed for high-conviction entries."
   }
 ]
