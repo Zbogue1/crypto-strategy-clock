@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-10T19:09:11.260210+00:00",
-    "coin": "ZRO",
-    "price": 0.902702,
-    "signal": "BUY",
-    "confidence": 52,
-    "score": 0.35,
-    "fg": 23,
-    "btc_price": 63809,
-    "btc_dominance": 56.3,
-    "candidates": [
-      "LAB",
-      "DEXE",
-      "MON",
-      "USDG",
-      "VVV",
-      "GRASS",
-      "XPL",
-      "ETHFI",
-      "ZRO"
-    ],
-    "alert": "Extreme Fear at 23 \u2014 historically a reliable buy signal (75% win rate in our data). Exercise discipline with stop-losses as bearish structure persists."
-  },
-  {
     "ts": "2026-07-10T20:09:18.184234+00:00",
     "coin": "ZRO",
     "price": 0.907671,
@@ -924,5 +901,29 @@
       "GRASS"
     ],
     "alert": "Market in fear territory with geopolitical escalation risk \u2014 avoid aggressive alt entries until sentiment stabilizes."
+  },
+  {
+    "ts": "2026-07-12T11:09:11.864110+00:00",
+    "coin": "ZRO",
+    "price": 0.885791,
+    "signal": "HOLD",
+    "confidence": 32,
+    "score": -0.15,
+    "fg": 26,
+    "btc_price": 63858,
+    "btc_dominance": 56.3,
+    "candidates": [
+      "USDG",
+      "VVV",
+      "HTX",
+      "XPL",
+      "MON",
+      "PENGU",
+      "TRUMP",
+      "ETHFI",
+      "ZRO",
+      "GRASS"
+    ],
+    "alert": "No swing candidates meet minimum quality threshold. All setups have conflicting signals or poor risk/reward. Staying in cash."
   }
 ]
