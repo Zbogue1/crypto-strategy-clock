@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-07-12T17:09:11.205578+00:00",
+  "timestamp": "2026-07-12T18:09:16.360802+00:00",
   "selected_coin": "BTC",
   "selected_coin_name": "Bitcoin",
-  "selected_coin_price": 64098,
-  "confidence": 30,
-  "layman_headline": "Fear grips the crypto market \u2014 no clear swing trade setup emerges from a weak candidate pool.",
-  "layman_explanation": "The crypto market is in a fearful state with Bitcoin dominance at 56%, meaning money is flowing away from altcoins and into Bitcoin. All ten swing candidates today are altcoins, and most show bearish chart structures, poor risk/reward ratios, or have already moved too far too fast. Bitcoin itself is stabilizing near $64,000 but the overall environment is hostile to altcoin trades. It's better to stay on the sidelines than force a trade with bad odds.",
-  "layman_action": "Keep your cash ready and wait. The market is fearful but hasn't offered a high-conviction entry point yet. Watch for Bitcoin to either break convincingly above $65,000 or for a deeper altcoin flush that creates genuine oversold bounces.",
-  "expert_reasoning": "I evaluated all 10 candidates systematically. ZRO (RSI 31) was the most interesting oversold bounce candidate, but its chart bias is -0.70 with price below all MAs \u2014 catching a falling knife in a high BTC dominance environment. GRASS dropped 25% in 7 days which could mean-revert, but it printed a bearish engulfing candle with a -0.90 chart bias \u2014 the selling isn't done. HTX has the best chart bias (+1.10) but has no volume data, no MA data, and is a micro-cap token at $0.0000018 \u2014 far too risky. ETHFI has a decent chart (+0.60) but resistance is only 2.5% away with a 0.11x risk/reward \u2014 terrible setup. With Fear & Greed at 26, BTC dominance at 56.2%, and no volume breakout signals (our most reliable indicator at 100% win rate), discipline demands we wait.",
+  "selected_coin_price": 64027,
+  "confidence": 28,
+  "layman_headline": "Fear grips the crypto market \u2014 no quality swing trade setups available right now.",
+  "layman_explanation": "The crypto market is in a fearful state with a Fear & Greed score of 26, and Bitcoin dominance is high at 56.2%, which means money is flowing away from smaller coins toward Bitcoin. Most altcoin candidates on our watchlist are in downtrends with bearish chart structures and poor risk/reward ratios. While a couple of coins like TRUMP show oversold readings that could bounce, their overall charts are too ugly to justify risking capital. The smart move is to stay patient and wait for better setups.",
+  "layman_action": "Stay in cash. The market is fearful and most altcoins are bleeding. Wait for clearer reversal signals before committing capital \u2014 patience here protects your portfolio.",
+  "expert_reasoning": "Systematically evaluated all 10 candidates against swing trading criteria. TRUMP (RSI 29, oversold) is the closest to a buy signal but its chart bias is -0.70, below all MAs, in a persistent downtrend with -13% 5-day momentum \u2014 classic falling knife. HTX has the strongest chart bias (+1.10) but RSI at 58 flags correction risk and at a price of $0.00000185 with no funding rate or volume data, execution risk is extreme. GRASS dropped 25.5% in 7 days which could mean-revert, but a bearish engulfing pattern and -0.90 chart bias suggest further downside. ETHFI shows bullish marubozu and +0.60 bias but resistance at $0.40 is only 2.5% away \u2014 terrible risk/reward at 0.11x. High BTC dominance (56.2%) is hostile to alt positions. The Fear & Greed improving trend (24\u219226) is slightly constructive but not enough to override the lack of quality setups.",
   "risk_factors": [
-    "BTC dominance at 56.2% actively suppresses altcoin performance \u2014 any alt position faces structural headwinds",
-    "Fear & Greed at 26 is improving but still in fear territory \u2014 sentiment could deteriorate further on geopolitical events (Iran strikes mentioned in news)",
-    "Stablecoin market cap shrinking by $10B since May signals capital leaving the ecosystem"
+    "BTC dominance at 56.2% continues to crush altcoin performance \u2014 any further BTC strength drains alt liquidity",
+    "Stablecoin market cap shrinking by $10B since May signals capital leaving crypto entirely, reducing buy-side support",
+    "Geopolitical escalation (U.S.-Iran strikes) could trigger sudden risk-off selling across all crypto assets"
   ],
   "watch_list": [
-    "ZRO if RSI drops below 30 and finds support at $0.85 \u2014 could become a genuine oversold bounce play",
-    "Bitcoin's reaction to $65,000 resistance \u2014 a breakout could rotate capital into alts and create opportunities",
-    "Fear & Greed index trend \u2014 currently improving from 24 weekly average; a move above 30 would signal improving conditions"
+    "BTC behavior at the Fidelity power law support line \u2014 a bounce here would lift all boats and create alt entry points",
+    "TRUMP RSI approaching deeply oversold territory \u2014 if RSI drops below 25 with a hammer candle, could be a mean-reversion play",
+    "Fear & Greed index trend \u2014 currently improving from 24 to 26; a move above 30 would signal sentiment recovery and safer alt entries"
   ],
-  "market_context": "Bitcoin is consolidating near $64,000 with high dominance (56.2%) in a fearful market (F&G: 26). Geopolitical tension from U.S.-Iran strikes and shrinking stablecoin supply create an uncertain backdrop that favors patience over aggressive positioning.",
-  "context_banner": "High BTC dominance and persistent fear make this a capital preservation environment \u2014 no altcoin candidate offers a risk/reward setup worth deploying capital into today.",
-  "btc_price": 64098,
+  "market_context": "The crypto market is in a fearful consolidation phase with BTC flat around $64K and high dominance squeezing altcoins. Macro headwinds including stablecoin outflows and geopolitical tensions are keeping risk appetite suppressed.",
+  "context_banner": "Market fear and high BTC dominance create a hostile environment for alt swing trades \u2014 capital preservation is the optimal strategy.",
+  "btc_price": 64027,
   "fear_greed": {
     "current": 26,
     "label": "Fear",
@@ -33,27 +33,27 @@
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Fear & Greed at 26 (Fear) with weekly average of 24 \u2014 improving but still signaling caution. Historically 80% reliable in our trades."
+      "description": "Fear & Greed at 26 ('Fear') with improving trend from 24 \u2014 not yet sufficient for contrarian alt entries but worth monitoring for inflection above 30."
     },
     {
       "source": "RSI",
       "signal_type": "technical",
-      "description": "Only ZRO (31) approached oversold territory, but its bearish chart structure (-0.70) makes it a falling knife rather than a bounce setup."
+      "description": "TRUMP RSI at 29 is oversold, historically a bounce zone per our 75% win rate on RSI signals, but bearish chart structure (-0.70 bias) invalidates the setup."
     },
     {
       "source": "CoinDesk",
       "signal_type": "news",
-      "description": "Stablecoin market cap shrunk $10B since May and Bitcoin faces BIP-110 fork uncertainty \u2014 macro headwinds for risk assets."
+      "description": "Stablecoin market cap shrinking by $10B since May signals capital outflows from crypto, reducing buy-side liquidity for swing trades."
     },
     {
       "source": "CoinTelegraph",
       "signal_type": "news",
-      "description": "Jamie Coutts (Real Vision) says Bitcoin is in late stages of bear market \u2014 suggests patience as a bottom formation may not be complete."
+      "description": "Bitcoin nearing late stages of bear market per Jamie Coutts suggests potential macro bottom forming, but not yet confirmed \u2014 premature to front-run."
     },
     {
-      "source": "volume_breakout",
+      "source": "Chart Pattern Analysis",
       "signal_type": "technical",
-      "description": "No volume breakout signals detected across any candidate \u2014 our most reliable signal (100% win rate) is absent, confirming no high-conviction setup exists."
+      "description": "Best chart bias among candidates is HTX at +1.10, but most actionable candidates show bearish structures (GRASS -0.90, TRUMP -0.70, VIRTUAL -0.70) making entries high-risk."
     }
   ],
   "_mode": "HUNTING",
