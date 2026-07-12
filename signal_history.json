@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-11T02:09:15.073384+00:00",
-    "coin": "ZRO",
-    "price": 0.952412,
-    "signal": "BUY",
-    "confidence": 52,
-    "score": 0.35,
-    "fg": 26,
-    "btc_price": 63996,
-    "btc_dominance": 56.3,
-    "candidates": [
-      "LAB",
-      "MON",
-      "USDG",
-      "VIRTUAL",
-      "VVV",
-      "BONK",
-      "GRASS",
-      "ETHFI",
-      "ZRO"
-    ],
-    "alert": null
-  },
-  {
     "ts": "2026-07-11T03:09:11.316079+00:00",
     "coin": "ZRO",
     "price": 0.941696,
@@ -929,5 +906,29 @@
       "GRASS"
     ],
     "alert": "Market in Fear zone with shrinking stablecoin supply \u2014 exercise heightened caution on all altcoin entries."
+  },
+  {
+    "ts": "2026-07-12T18:09:16.360802+00:00",
+    "coin": "BTC",
+    "price": 64027,
+    "signal": "HOLD",
+    "confidence": 28,
+    "score": -0.3,
+    "fg": 26,
+    "btc_price": 64027,
+    "btc_dominance": 56.2,
+    "candidates": [
+      "USDG",
+      "MON",
+      "HTX",
+      "XPL",
+      "PENGU",
+      "TRUMP",
+      "VIRTUAL",
+      "ETHFI",
+      "ZRO",
+      "GRASS"
+    ],
+    "alert": "No quality swing trade setups identified. All candidates fail risk/reward or chart structure requirements. Staying in cash."
   }
 ]
