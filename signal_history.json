@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-10T15:09:11.192092+00:00",
-    "coin": "ZRO",
-    "price": 0.903656,
-    "signal": "BUY",
-    "confidence": 52,
-    "score": 0.35,
-    "fg": 23,
-    "btc_price": 63985,
-    "btc_dominance": 56.3,
-    "candidates": [
-      "LAB",
-      "MON",
-      "GRASS",
-      "DEXE",
-      "VVV",
-      "USDG",
-      "XPL",
-      "ETHFI",
-      "ZRO"
-    ],
-    "alert": "Extreme Fear (23/100) \u2014 historically a reliable buy signal in our data (75% win rate), but alt headwinds from high BTC dominance warrant small position sizes."
-  },
-  {
     "ts": "2026-07-10T16:09:11.719739+00:00",
     "coin": "ZRO",
     "price": 0.902016,
@@ -922,5 +899,28 @@
       "ZRO"
     ],
     "alert": "All swing candidates show bearish or neutral chart structures with no volume confirmation \u2014 forcing entries here risks catching falling knives."
+  },
+  {
+    "ts": "2026-07-12T07:09:22.052086+00:00",
+    "coin": "ZRO",
+    "price": 0.906741,
+    "signal": "HOLD",
+    "confidence": 35,
+    "score": -0.15,
+    "fg": 26,
+    "btc_price": 63759,
+    "btc_dominance": 56.3,
+    "candidates": [
+      "GRASS",
+      "USDG",
+      "MON",
+      "VVV",
+      "BONK",
+      "XPL",
+      "JTO",
+      "ETHFI",
+      "ZRO"
+    ],
+    "alert": "High BTC dominance and fearful sentiment make altcoin entries high-risk. Wait for confirmed reversal signals before deploying capital."
   }
 ]
