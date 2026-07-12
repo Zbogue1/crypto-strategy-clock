@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-10T14:09:10.971429+00:00",
-    "coin": "ZRO",
-    "price": 0.913287,
-    "signal": "BUY",
-    "confidence": 52,
-    "score": 0.35,
-    "fg": 23,
-    "btc_price": 64271,
-    "btc_dominance": 56.4,
-    "candidates": [
-      "LAB",
-      "MON",
-      "GRASS",
-      "VVV",
-      "DEXE",
-      "USDG",
-      "ARB",
-      "ETHFI",
-      "ZRO"
-    ],
-    "alert": null
-  },
-  {
     "ts": "2026-07-10T15:09:11.192092+00:00",
     "coin": "ZRO",
     "price": 0.903656,
@@ -922,5 +899,28 @@
       "GRASS"
     ],
     "alert": null
+  },
+  {
+    "ts": "2026-07-12T06:09:19.073055+00:00",
+    "coin": "ZRO",
+    "price": 0.900227,
+    "signal": "HOLD",
+    "confidence": 32,
+    "score": -0.15,
+    "fg": 26,
+    "btc_price": 63797,
+    "btc_dominance": 56.3,
+    "candidates": [
+      "GRASS",
+      "BONK",
+      "JTO",
+      "MON",
+      "XPL",
+      "ARB",
+      "TRUMP",
+      "ETHFI",
+      "ZRO"
+    ],
+    "alert": "All swing candidates show bearish or neutral chart structures with no volume confirmation \u2014 forcing entries here risks catching falling knives."
   }
 ]
