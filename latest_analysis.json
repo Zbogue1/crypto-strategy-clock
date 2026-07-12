@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-07-12T15:09:12.668025+00:00",
-  "selected_coin": "BTC",
-  "selected_coin_name": "Bitcoin",
-  "selected_coin_price": 64173,
-  "confidence": 25,
-  "layman_headline": "Fear grips the crypto market but no clean swing trade setup exists right now.",
-  "layman_explanation": "The crypto market is in a fearful state with a Fear & Greed score of 26, and Bitcoin dominance is high at 56.2%, meaning altcoins are getting crushed relative to BTC. The swing trade candidates available are either in clear downtrends with bearish chart structures, or have already pumped hard this week and look extended. While a couple of coins like TRUMP and ZRO show oversold RSI readings, their charts are firmly bearish with price below all moving averages \u2014 catching a falling knife without a confirmed reversal signal is not a high-probability trade.",
-  "layman_action": "Stay in cash and wait. The market is fearful but hasn't shown a clear bounce signal yet. Better setups will emerge once selling pressure exhausts and we see volume-confirmed reversals.",
-  "expert_reasoning": "I evaluated all 10 candidates systematically. TRUMP (RSI 29) and ZRO (RSI 31) are the most oversold, but both have chart_bias_score of -0.70, price below all MAs, and are in confirmed downtrends \u2014 classic falling knives. GRASS dropped 24.8% in 7 days which could trigger a mean-reversion bounce, but the bearish engulfing pattern and -0.90 chart bias score warn against entry. VELVET surged 36% in 24h but has a poor risk/reward ratio of 0.26x and a slightly bearish chart bias. High BTC dominance (56.2%) is hostile to alt positions. My signal credibility data shows volume_breakout signals have a 100% win rate \u2014 none of these candidates show volume breakout confirmation. Without that, entering any of these is speculation, not a high-probability setup.",
+  "timestamp": "2026-07-12T16:09:15.649320+00:00",
+  "selected_coin": "ZRO",
+  "selected_coin_name": "LayerZero",
+  "selected_coin_price": 0.878585,
+  "confidence": 35,
+  "layman_headline": "The crypto market is stuck in fear mode with no clear swing trade setups right now.",
+  "layman_explanation": "Bitcoin is hovering around $64,000 and the overall market mood is fearful, with the Fear & Greed Index at 26. Most altcoins are bleeding while Bitcoin holds relatively stable, which means Bitcoin is sucking money away from smaller coins. None of the candidates on our watchlist have a strong enough combination of oversold technicals, bullish chart structure, and a clear catalyst to justify putting money at risk today.",
+  "layman_action": "Stay patient and keep cash ready. The market is in a fear phase where many coins are falling, but none have reached the sweet spot of being oversold enough with a clear bounce setup. Wait for better setups to emerge in the coming days.",
+  "expert_reasoning": "I evaluated all 10 candidates and found no high-conviction setup. ZRO and TRUMP show oversold RSI readings (31 and 29 respectively), which historically are bounce zones per our signal credibility data (RSI has 75% win rate). However, both have bearish chart structures with price below all major MAs, and neither has a volume breakout or news catalyst \u2014 the two most reliable signals in our track record (100% win rates each). ETHFI has a bullish chart bias (+0.60) with a Marubozu candle, but resistance is only 2.5% away with poor R/R of 0.11x. HTX has the highest chart bias (+1.10) but is a micro-cap with no fundamental thesis. High BTC dominance at 56.2% is actively hostile to alt positions. The prudent move is to wait for a volume breakout or specific catalyst before deploying capital.",
   "risk_factors": [
-    "High BTC dominance (56.2%) continues to drain capital from altcoins, making alt swing trades higher risk",
-    "Geopolitical tensions (U.S.-Iran strikes) could trigger sudden risk-off moves across all crypto",
-    "Stablecoin market cap shrinking by $10B since May suggests capital is leaving the crypto ecosystem"
+    "BTC dominance at 56.2% continues to compress altcoin valuations \u2014 any alt position swims against the tide",
+    "Fear & Greed at 26 could deteriorate further if macro events (Iran strikes mentioned in news) escalate",
+    "Stablecoin market cap shrinking by $10B since May signals capital leaving the crypto ecosystem entirely"
   ],
   "watch_list": [
-    "TRUMP and ZRO for RSI reversal confirmation \u2014 if RSI bounces off oversold with a bullish candle pattern and volume spike, these become actionable",
-    "Bitcoin's behavior at $64K \u2014 a decisive move above $66K or below $62K will set the tone for altcoin direction",
-    "Fear & Greed index \u2014 currently 26 and improving; a move below 20 could mark capitulation and a high-conviction buy zone"
+    "ZRO breaking below $0.85 support (would invalidate bounce thesis) or a volume spike above $0.95 (would confirm reversal)",
+    "Bitcoin's behavior at Fidelity's power law support line \u2014 a bounce here could lift altcoin sentiment broadly",
+    "Fear & Greed Index trend \u2014 currently improving from 24 weekly avg to 26; a move above 30 would signal sentiment shift favorable for alt entries"
   ],
-  "market_context": "Bitcoin is holding near $64K in a fearful market (F&G: 26) with high dominance at 56.2%. Altcoins are broadly weak, and the stablecoin market shrinkage suggests cautious capital flows \u2014 not the environment for aggressive alt swing trades.",
-  "context_banner": "Market fear is elevated but not yet at capitulation levels \u2014 patience is the highest-conviction trade right now.",
-  "btc_price": 64173,
+  "market_context": "The crypto market is in a fear-driven consolidation with BTC near $64K and high dominance at 56.2%, creating a hostile environment for altcoin swing trades. Stablecoin outflows and geopolitical uncertainty (Iran strikes) add headwinds, though Bitcoin approaching key power law support could set up a broader bounce.",
+  "context_banner": "Market fear and high BTC dominance create poor alt conditions \u2014 discipline means staying in cash until a volume breakout or catalyst aligns with oversold technicals.",
+  "btc_price": 64124,
   "fear_greed": {
     "current": 26,
     "label": "Fear",
@@ -33,30 +33,30 @@
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Fear & Greed at 26 ('Fear') and improving from weekly avg of 24 \u2014 market is fearful but not yet at capitulation levels where blind buying becomes profitable."
+      "description": "Fear & Greed at 26 (Fear) with improving trend from 24 weekly avg \u2014 contrarian bullish longer-term but not yet at extreme fear levels (sub-20) that historically trigger strong bounces."
     },
     {
       "source": "RSI",
       "signal_type": "technical",
-      "description": "TRUMP RSI at 29 (oversold) and ZRO at 31 (near-oversold) are the strongest technical signals, but both lack volume confirmation and have bearish chart structures."
+      "description": "ZRO RSI at 31 and TRUMP RSI at 29 are the only near-oversold readings among candidates, but both lack confirming bullish chart structure to act on."
     },
     {
       "source": "CoinDesk",
       "signal_type": "news",
-      "description": "Bitcoin nearing Fidelity's power law support line tracked since 2015 suggests BTC may find a floor, but the U.S.-Iran strikes add geopolitical risk that could override technicals."
+      "description": "Bitcoin nearing Fidelity's power law support line tracked since 2015 \u2014 a historically significant level that could trigger a bounce, but hasn't been confirmed yet."
     },
     {
       "source": "CryptoSlate",
       "signal_type": "news",
-      "description": "Bitcoin's $64K rebound is outrunning ETF demand despite $197M inflow \u2014 suggesting the rally lacks institutional conviction and could fade."
+      "description": "Bitcoin's $64K rebound is outrunning ETF demand despite only $197M inflow, suggesting the rally lacks institutional conviction and may stall."
     },
     {
-      "source": "Blockworks",
-      "signal_type": "news",
-      "description": "ETH derivatives reset noted by Blockworks suggests positioning has been cleaned up, which could set up a healthier move once direction is confirmed."
+      "source": "volume_breakout",
+      "signal_type": "technical",
+      "description": "No volume breakout detected on any candidate \u2014 our most reliable signal (100% win rate, +13.4% avg return) is absent, reinforcing the decision to wait."
     }
   ],
   "_mode": "HUNTING",
-  "exit_target": null,
-  "stop_loss": null
+  "exit_target": 0.98,
+  "stop_loss": 0.78
 }
