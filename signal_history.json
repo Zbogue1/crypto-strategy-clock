@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-12T06:09:19.073055+00:00",
-    "coin": "ZRO",
-    "price": 0.900227,
-    "signal": "HOLD",
-    "confidence": 32,
-    "score": -0.15,
-    "fg": 26,
-    "btc_price": 63797,
-    "btc_dominance": 56.3,
-    "candidates": [
-      "GRASS",
-      "BONK",
-      "JTO",
-      "MON",
-      "XPL",
-      "ARB",
-      "TRUMP",
-      "ETHFI",
-      "ZRO"
-    ],
-    "alert": "All swing candidates show bearish or neutral chart structures with no volume confirmation \u2014 forcing entries here risks catching falling knives."
-  },
-  {
     "ts": "2026-07-12T07:09:22.052086+00:00",
     "coin": "ZRO",
     "price": 0.906741,
@@ -925,5 +902,26 @@
       "BONK"
     ],
     "alert": "BTC testing $62K with geopolitical headwinds \u2014 alt positions carry elevated risk. Wait for stabilization."
+  },
+  {
+    "ts": "2026-07-13T22:09:10.937829+00:00",
+    "coin": "BTC",
+    "price": 62102,
+    "signal": "HOLD",
+    "confidence": 25,
+    "score": -0.6,
+    "fg": 28,
+    "btc_price": 62102,
+    "btc_dominance": 56.0,
+    "candidates": [
+      "KITE",
+      "MON",
+      "GRASS",
+      "VELVET",
+      "LIT",
+      "BONK",
+      "USDG"
+    ],
+    "alert": "No quality swing setups available \u2014 all candidates fail risk/reward or technical filters. Staying in cash."
   }
 ]
