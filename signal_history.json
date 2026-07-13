@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-11T14:09:11.216695+00:00",
-    "coin": "ZRO",
-    "price": 0.93401,
-    "signal": "HOLD",
-    "confidence": 32,
-    "score": -0.15,
-    "fg": 26,
-    "btc_price": 64210,
-    "btc_dominance": 56.3,
-    "candidates": [
-      "LAB",
-      "MON",
-      "VVV",
-      "GRASS",
-      "USDG",
-      "VIRTUAL",
-      "XPL",
-      "ETHFI",
-      "ZRO"
-    ],
-    "alert": "Fear & Greed improving from 23 to 26 \u2014 monitor for acceleration above 30 which historically triggers strong alt bounces."
-  },
-  {
     "ts": "2026-07-11T15:09:11.480972+00:00",
     "coin": "ZRO",
     "price": 0.92602,
@@ -938,5 +915,28 @@
       "GRASS"
     ],
     "alert": "No swing candidates meet minimum quality thresholds \u2014 all show poor risk/reward ratios or bearish chart structures. Waiting for better setups."
+  },
+  {
+    "ts": "2026-07-13T06:09:20.621076+00:00",
+    "coin": "JTO",
+    "price": 0.650394,
+    "signal": "HOLD",
+    "confidence": 32,
+    "score": -0.15,
+    "fg": 28,
+    "btc_price": 62775,
+    "btc_dominance": 56.0,
+    "candidates": [
+      "KITE",
+      "MON",
+      "VELVET",
+      "JTO",
+      "XPL",
+      "USDG",
+      "LIT",
+      "ETHFI",
+      "GRASS"
+    ],
+    "alert": "No swing candidates meet minimum quality bar \u2014 all show poor risk/reward ratios or bearish chart structures. Preserving capital."
   }
 ]
