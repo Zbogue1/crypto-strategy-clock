@@ -1,29 +1,5 @@
 [
   {
-    "ts": "2026-07-12T00:09:23.525061+00:00",
-    "coin": "ZRO",
-    "price": 0.911403,
-    "signal": "HOLD",
-    "confidence": 35,
-    "score": -0.15,
-    "fg": 26,
-    "btc_price": 63774,
-    "btc_dominance": 56.3,
-    "candidates": [
-      "MON",
-      "USDG",
-      "VVV",
-      "BONK",
-      "TRUMP",
-      "XPL",
-      "PENGU",
-      "ETHFI",
-      "ZRO",
-      "GRASS"
-    ],
-    "alert": "High BTC dominance (56.3%) and universal bearish alt structures \u2014 avoid catching falling knives without volume confirmation."
-  },
-  {
     "ts": "2026-07-12T01:09:12.073930+00:00",
     "coin": "ETHFI",
     "price": 0.423577,
@@ -937,5 +913,27 @@
       "GRASS"
     ],
     "alert": null
+  },
+  {
+    "ts": "2026-07-13T16:09:14.860297+00:00",
+    "coin": "DCR",
+    "price": 13.58,
+    "signal": "HOLD",
+    "confidence": 32,
+    "score": -0.3,
+    "fg": 28,
+    "btc_price": 62502,
+    "btc_dominance": 56.0,
+    "candidates": [
+      "KITE",
+      "MON",
+      "DCR",
+      "GRASS",
+      "DEXE",
+      "LIT",
+      "XPL",
+      "ETHFI"
+    ],
+    "alert": "BTC threatening $62K breakdown on Hormuz Strait geopolitical escalation \u2014 risk-off conditions make new alt entries dangerous."
   }
 ]
