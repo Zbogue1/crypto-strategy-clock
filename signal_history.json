@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-12T07:09:22.052086+00:00",
-    "coin": "ZRO",
-    "price": 0.906741,
-    "signal": "HOLD",
-    "confidence": 35,
-    "score": -0.15,
-    "fg": 26,
-    "btc_price": 63759,
-    "btc_dominance": 56.3,
-    "candidates": [
-      "GRASS",
-      "USDG",
-      "MON",
-      "VVV",
-      "BONK",
-      "XPL",
-      "JTO",
-      "ETHFI",
-      "ZRO"
-    ],
-    "alert": "High BTC dominance and fearful sentiment make altcoin entries high-risk. Wait for confirmed reversal signals before deploying capital."
-  },
-  {
     "ts": "2026-07-12T08:09:11.791507+00:00",
     "coin": "ZEC",
     "price": 0.0,
@@ -923,5 +900,26 @@
       "USDG"
     ],
     "alert": "No quality swing setups available \u2014 all candidates fail risk/reward or technical filters. Staying in cash."
+  },
+  {
+    "ts": "2026-07-13T23:09:10.875343+00:00",
+    "coin": "MON",
+    "price": 0.02205008,
+    "signal": "HOLD",
+    "confidence": 30,
+    "score": -0.3,
+    "fg": 28,
+    "btc_price": 61919,
+    "btc_dominance": 55.9,
+    "candidates": [
+      "GRASS",
+      "MON",
+      "LIT",
+      "BONK",
+      "VELVET",
+      "JTO",
+      "ETHFI"
+    ],
+    "alert": "BTC threatening $62K support with geopolitical headwinds \u2014 avoid new altcoin entries until BTC stabilizes."
   }
 ]
