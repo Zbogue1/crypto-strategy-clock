@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-12T01:09:12.073930+00:00",
-    "coin": "ETHFI",
-    "price": 0.423577,
-    "signal": "HOLD",
-    "confidence": 35,
-    "score": -0.15,
-    "fg": 26,
-    "btc_price": 63871,
-    "btc_dominance": 56.3,
-    "candidates": [
-      "MON",
-      "USDG",
-      "VVV",
-      "TRUMP",
-      "BONK",
-      "GRASS",
-      "XPL",
-      "ETHFI",
-      "ZRO"
-    ],
-    "alert": "All swing candidates show poor risk/reward ratios or confirmed downtrends \u2014 capital preservation is the priority."
-  },
-  {
     "ts": "2026-07-12T02:09:19.374187+00:00",
     "coin": "ZRO",
     "price": 0.90877,
@@ -935,5 +912,27 @@
       "ETHFI"
     ],
     "alert": "BTC threatening $62K breakdown on Hormuz Strait geopolitical escalation \u2014 risk-off conditions make new alt entries dangerous."
+  },
+  {
+    "ts": "2026-07-13T17:09:13.243903+00:00",
+    "coin": "DCR",
+    "price": 12.99,
+    "signal": "HOLD",
+    "confidence": 32,
+    "score": -0.3,
+    "fg": 28,
+    "btc_price": 62263,
+    "btc_dominance": 55.9,
+    "candidates": [
+      "KITE",
+      "MON",
+      "GRASS",
+      "DEXE",
+      "LIT",
+      "DCR",
+      "XPL",
+      "ETHFI"
+    ],
+    "alert": "BTC testing $62K support amid Hormuz Strait geopolitical risk \u2014 monitor for breakdown that could accelerate alt sell-off."
   }
 ]
