@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-07-13T17:09:13.243903+00:00",
-  "selected_coin": "DCR",
-  "selected_coin_name": "Decred",
-  "selected_coin_price": 12.99,
+  "timestamp": "2026-07-13T18:09:11.096517+00:00",
+  "selected_coin": "JTO",
+  "selected_coin_name": "Jito",
+  "selected_coin_price": 0.631883,
   "confidence": 32,
-  "layman_headline": "Market fear is rising and no swing candidates look clean enough to justify a new bet right now.",
-  "layman_explanation": "The overall crypto market is in a fearful state with Bitcoin dropping below $62,300 and most altcoins bleeding harder. None of the coins on our watchlist present a high-confidence entry: some are overbought after big runs (DEXE, LIT), others are in strong downtrends with bearish chart patterns (KITE, GRASS), and the rest lack sufficient data. Decred (DCR) has the most interesting oversold RSI reading at 19.6, but its chart structure is still bearish, and the 15% rally already this week means the easy bounce may have already happened. Patience is the best trade right now.",
-  "layman_action": "Stay in cash and wait. The market hasn't found a bottom yet, and jumping in during broad fear without a clean setup risks catching a falling knife. Watch for DCR to pull back and stabilize near $11 for a potential entry.",
-  "expert_reasoning": "Scanning all 8 candidates: DEXE and LIT are overbought (RSI 77 and 72) after massive runs and are already correcting hard (-17% and -10.5% today). KITE has a bearish Marubozu on a -1.4 chart bias. GRASS is down 29% in a week with a bearish engulfing candle and poor R/R of 0.48x. MON and ETHFI lack chart data entirely. XPL has terrible R/R (0.13x). DCR's RSI of 19.6 is genuinely compelling, but the chart bias is -0.7 (bearish), it's below all MAs, and today's 14.6% spike may be a dead cat bounce rather than a sustained reversal. With BTC dominance at 55.9% crushing alts and Fear & Greed at 28, the environment is hostile for alt entries. The CoinTelegraph headline about BTC threatening $62K amid geopolitical risk (Hormuz Strait) suggests more downside pressure. Better to wait for capitulation or a confirmed reversal pattern.",
+  "layman_headline": "The whole crypto market is bleeding \u2014 patience is the best trade right now.",
+  "layman_explanation": "Bitcoin dropped below $62,000 and dragged nearly every altcoin down with it. The market mood is fearful at 28/100, and Bitcoin dominance at 55.9% means money is flowing out of smaller coins and into Bitcoin. Every candidate on the watchlist has significant technical problems \u2014 bearish charts, poor risk/reward ratios, or overbought conditions after recent spikes. None of the setups offer a clean entry with a favorable risk/reward.",
+  "layman_action": "Stay on the sidelines and keep your cash ready. Wait for the fear to deepen further (below 20) or for a clear reversal signal like a volume breakout or bullish MACD cross. The best trades come from patience during selloffs like this.",
+  "expert_reasoning": "Across all 8 swing candidates, not a single one presents a high-confidence setup. DEXE is overbought at RSI 77 after a 37% weekly rally with an 18% single-day reversal \u2014 classic blow-off top. KITE has a -1.40 chart bias with a bearish Marubozu. GRASS dropped 31% in a week but shows a bearish engulfing pattern with poor 0.48x R/R. ETHFI has the best chart bias (+0.60) but terrible 0.11x R/R with resistance at $0.40 only 2.5% away. JTO is the most balanced candidate but entering longs against a fearful, BTC-dominant market with no volume breakout confirmation contradicts our highest-reliability signal types. Fear & Greed at 28 is improving from 24.6 weekly average, but hasn't reached extreme fear levels that historically mark bottoms. I'd rather wait for a capitulation flush or a volume-confirmed reversal.",
   "risk_factors": [
-    "BTC could break below $62K on geopolitical escalation (Hormuz Strait tensions), dragging all alts further down",
-    "High BTC dominance at 55.9% continues to siphon capital from altcoins, making alt swing trades riskier",
-    "Fear & Greed at 28 is improving but hasn't reached extreme fear levels (sub-15) that historically mark reliable bottoms"
+    "BTC could break below $60K on geopolitical escalation (Hormuz Strait), dragging all alts down another 10-20%",
+    "BTC dominance at 55.9% and rising means alt season is nowhere near \u2014 capital continues rotating out of altcoins",
+    "No volume breakout signals detected on any candidate \u2014 our most reliable signal type (100% win rate) is absent"
   ],
   "watch_list": [
-    "BTC price action around $60K-$62K support \u2014 a breakdown would signal deeper alt pain",
-    "DCR price behavior: watch for a pullback to $11-$11.50 with RSI remaining oversold for a higher-conviction entry",
-    "Fear & Greed Index movement \u2014 a drop below 20 would signal extreme fear and better mean-reversion odds"
+    "BTC price action around $60,000 support \u2014 a break below could trigger cascading liquidations",
+    "Fear & Greed index \u2014 watch for a drop below 15 (extreme fear) which historically marks buying opportunities",
+    "JTO and ETHFI for volume breakouts if BTC stabilizes above $60K in the next 48 hours"
   ],
-  "market_context": "Broad risk-off environment with BTC down 2.9% to $62.3K amid geopolitical tensions. Altcoins are bleeding harder with most top-20 down 5-11% weekly, and BTC dominance at 55.9% signals continued rotation away from alts.",
-  "context_banner": "Market fear is deepening but hasn't reached extreme levels \u2014 patience trumps aggression until a clear capitulation or reversal signal emerges.",
-  "btc_price": 62263,
+  "market_context": "The crypto market is in a broad risk-off mode with BTC down 3.2% in 24 hours threatening $62K. Geopolitical tensions, Strategy pausing BTC purchases, and high BTC dominance create a hostile environment for altcoin swing trades.",
+  "context_banner": "Market-wide sell-off with no reliable entry signals \u2014 capital preservation is the priority until a volume-confirmed reversal appears.",
+  "btc_price": 61965,
   "fear_greed": {
     "current": 28,
     "label": "Fear",
@@ -33,30 +33,30 @@
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Fear & Greed at 28 ('Fear') is improving from 24.6 weekly average, but not yet at extreme levels that historically mark reliable bounce opportunities."
-    },
-    {
-      "source": "RSI",
-      "signal_type": "technical",
-      "description": "DCR RSI at 19.6 is deeply oversold \u2014 our most reliable technical signal (75% win rate) \u2014 but bearish chart structure and a 14.6% daily spike suggest the initial bounce may already be priced in."
+      "description": "Fear & Greed at 28 (Fear) is improving from last week's 24.6 average but hasn't reached extreme fear levels that historically mark high-confidence contrarian entries."
     },
     {
       "source": "CoinTelegraph",
       "signal_type": "news",
-      "description": "Bitcoin threatened $62K as Trump geopolitical rhetoric around Hormuz Strait spooked risk assets, adding macro headwinds for any long entry."
+      "description": "Bitcoin threatens $62K amid geopolitical risk (Hormuz Strait) \u2014 macro headwinds creating downside pressure across all crypto assets."
     },
     {
       "source": "CoinDesk",
       "signal_type": "news",
-      "description": "Bitcoin panic-selling may be ending as sellers' profit margins disappear \u2014 suggests BTC approaching a local bottom but not confirmed yet."
+      "description": "Strategy paused Bitcoin buying to hoard $3B cash, removing a key demand source and signaling institutional caution."
     },
     {
-      "source": "Chart Pattern Analysis",
+      "source": "RSI",
       "signal_type": "technical",
-      "description": "All candidates with chart data show bearish to neutral bias scores (-1.4 to +0.4), with no clean bullish reversal patterns forming across the watchlist."
+      "description": "No candidates are in true oversold territory (below 30). Best candidate JTO sits at RSI 59 which is already slightly elevated, while DEXE at 77 is dangerously overbought."
+    },
+    {
+      "source": "volume_breakout",
+      "signal_type": "technical",
+      "description": "Zero volume breakout signals detected across all candidates \u2014 our highest-reliability indicator (100% win rate, +13.4% avg return) is completely absent this cycle."
     }
   ],
   "_mode": "HUNTING",
-  "exit_target": 14.5,
-  "stop_loss": 9.8
+  "exit_target": 0.687,
+  "stop_loss": 0.555
 }
