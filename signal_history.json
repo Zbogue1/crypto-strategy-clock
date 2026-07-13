@@ -1,29 +1,5 @@
 [
   {
-    "ts": "2026-07-12T04:09:26.210025+00:00",
-    "coin": "ZRO",
-    "price": 0.905099,
-    "signal": "HOLD",
-    "confidence": 35,
-    "score": -0.3,
-    "fg": 26,
-    "btc_price": 64145,
-    "btc_dominance": 56.3,
-    "candidates": [
-      "USDG",
-      "MON",
-      "VVV",
-      "BONK",
-      "ARB",
-      "TRUMP",
-      "XPL",
-      "ETHFI",
-      "ZRO",
-      "GRASS"
-    ],
-    "alert": "No actionable swing setup found this cycle. All candidates lack the combination of bullish chart structure, volume confirmation, and clear catalyst needed for a high-confidence entry."
-  },
-  {
     "ts": "2026-07-12T05:09:17.890740+00:00",
     "coin": "ZRO",
     "price": 0.906642,
@@ -931,5 +907,26 @@
       "PENGU"
     ],
     "alert": "BTC testing critical $60K support zone \u2014 a breakdown could trigger significant alt selling pressure"
+  },
+  {
+    "ts": "2026-07-13T20:09:11.237030+00:00",
+    "coin": "BTC",
+    "price": 62192,
+    "signal": "HOLD",
+    "confidence": 30,
+    "score": -0.35,
+    "fg": 28,
+    "btc_price": 62192,
+    "btc_dominance": 55.9,
+    "candidates": [
+      "MON",
+      "LIT",
+      "GRASS",
+      "VELVET",
+      "USDG",
+      "JTO",
+      "XPL"
+    ],
+    "alert": "Broad market selloff in progress \u2014 avoid new entries until selling pressure subsides and a reversal is confirmed."
   }
 ]
