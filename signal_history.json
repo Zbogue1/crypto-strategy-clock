@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-11T12:09:11.342788+00:00",
-    "coin": "ZRO",
-    "price": 0.925301,
-    "signal": "HOLD",
-    "confidence": 32,
-    "score": -0.15,
-    "fg": 26,
-    "btc_price": 64127,
-    "btc_dominance": 56.3,
-    "candidates": [
-      "LAB",
-      "MON",
-      "GRASS",
-      "VVV",
-      "USDG",
-      "VIRTUAL",
-      "XPL",
-      "ETHFI",
-      "ZRO"
-    ],
-    "alert": "No actionable swing trade setups meet minimum quality standards this cycle. All candidates have bearish chart structures or poor risk/reward."
-  },
-  {
     "ts": "2026-07-11T13:09:11.419490+00:00",
     "coin": "ZRO",
     "price": 0.923109,
@@ -938,5 +915,28 @@
       "GRASS"
     ],
     "alert": "High BTC dominance and fear environment \u2014 altcoin entries carry elevated risk. Wait for clearer setups."
+  },
+  {
+    "ts": "2026-07-13T04:09:11.332395+00:00",
+    "coin": "JTO",
+    "price": 0.635358,
+    "signal": "HOLD",
+    "confidence": 32,
+    "score": -0.3,
+    "fg": 28,
+    "btc_price": 62731,
+    "btc_dominance": 56.0,
+    "candidates": [
+      "KITE",
+      "MON",
+      "XPL",
+      "JTO",
+      "PENGU",
+      "USDG",
+      "ARB",
+      "ETHFI",
+      "GRASS"
+    ],
+    "alert": null
   }
 ]
