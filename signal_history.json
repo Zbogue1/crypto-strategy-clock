@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-12T03:09:16.031361+00:00",
-    "coin": "ZRO",
-    "price": 0.905176,
-    "signal": "HOLD",
-    "confidence": 32,
-    "score": -0.3,
-    "fg": 26,
-    "btc_price": 64039,
-    "btc_dominance": 56.3,
-    "candidates": [
-      "USDG",
-      "MON",
-      "BONK",
-      "VVV",
-      "TRUMP",
-      "XPL",
-      "GRASS",
-      "ETHFI",
-      "ZRO"
-    ],
-    "alert": "All swing candidates show bearish chart structures \u2014 wait for reversal confirmation before deploying capital."
-  },
-  {
     "ts": "2026-07-12T04:09:26.210025+00:00",
     "coin": "ZRO",
     "price": 0.905099,
@@ -933,5 +910,26 @@
       "ETHFI"
     ],
     "alert": "BTC threatening $60K support amid geopolitical escalation. Avoid new alt positions until BTC stabilizes."
+  },
+  {
+    "ts": "2026-07-13T19:09:11.301847+00:00",
+    "coin": "BTC",
+    "price": 61959,
+    "signal": "HOLD",
+    "confidence": 25,
+    "score": -0.6,
+    "fg": 28,
+    "btc_price": 61959,
+    "btc_dominance": 55.9,
+    "candidates": [
+      "KITE",
+      "MON",
+      "GRASS",
+      "LIT",
+      "VELVET",
+      "USDG",
+      "PENGU"
+    ],
+    "alert": "BTC testing critical $60K support zone \u2014 a breakdown could trigger significant alt selling pressure"
   }
 ]
