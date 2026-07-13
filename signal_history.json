@@ -1,29 +1,5 @@
 [
   {
-    "ts": "2026-07-11T23:09:12.661025+00:00",
-    "coin": "ZRO",
-    "price": 0.925745,
-    "signal": "HOLD",
-    "confidence": 35,
-    "score": -0.15,
-    "fg": 26,
-    "btc_price": 64164,
-    "btc_dominance": 56.2,
-    "candidates": [
-      "MON",
-      "USDG",
-      "VVV",
-      "XPL",
-      "WLD",
-      "TRUMP",
-      "BONK",
-      "ETHFI",
-      "ZRO",
-      "GRASS"
-    ],
-    "alert": "No high-conviction setups available. All candidates lack confirmed reversal signals despite some approaching oversold levels."
-  },
-  {
     "ts": "2026-07-12T00:09:23.525061+00:00",
     "coin": "ZRO",
     "price": 0.911403,
@@ -938,5 +914,28 @@
       "GRASS"
     ],
     "alert": "All swing candidates fail quality filters. Volume breakout (our most reliable signal at 100% win rate) is absent across the board. Wait for better setups."
+  },
+  {
+    "ts": "2026-07-13T15:09:29.473677+00:00",
+    "coin": "DCR",
+    "price": 13.13,
+    "signal": "HOLD",
+    "confidence": 32,
+    "score": -0.15,
+    "fg": 28,
+    "btc_price": 62688,
+    "btc_dominance": 56.0,
+    "candidates": [
+      "KITE",
+      "MON",
+      "DCR",
+      "DEXE",
+      "JTO",
+      "XPL",
+      "LIT",
+      "ETHFI",
+      "GRASS"
+    ],
+    "alert": null
   }
 ]
