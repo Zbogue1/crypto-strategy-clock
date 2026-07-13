@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-11T18:09:12.270151+00:00",
-    "coin": "ZRO",
-    "price": 0.918788,
-    "signal": "HOLD",
-    "confidence": 38,
-    "score": -0.15,
-    "fg": 26,
-    "btc_price": 64258,
-    "btc_dominance": 56.2,
-    "candidates": [
-      "MON",
-      "USDG",
-      "GRASS",
-      "VVV",
-      "XPL",
-      "WLD",
-      "TRUMP",
-      "ETHFI",
-      "ZRO"
-    ],
-    "alert": "All swing candidates show bearish or neutral chart structures with high BTC dominance headwind \u2014 no actionable setups this cycle."
-  },
-  {
     "ts": "2026-07-11T19:09:12.865878+00:00",
     "coin": "ZRO",
     "price": 0.919553,
@@ -938,5 +915,28 @@
       "GRASS"
     ],
     "alert": "BTC $60K support level is being tested amid geopolitical oil shock \u2014 a breakdown would cascade across altcoins"
+  },
+  {
+    "ts": "2026-07-13T10:09:23.457127+00:00",
+    "coin": "DCR",
+    "price": 15.06,
+    "signal": "HOLD",
+    "confidence": 28,
+    "score": -0.35,
+    "fg": 28,
+    "btc_price": 63029,
+    "btc_dominance": 56.1,
+    "candidates": [
+      "KITE",
+      "VELVET",
+      "MON",
+      "DCR",
+      "JTO",
+      "DEXE",
+      "XPL",
+      "ETHFI",
+      "GRASS"
+    ],
+    "alert": "No high-conviction swing trades available this cycle. All candidates fail risk/reward or technical quality checks."
   }
 ]
