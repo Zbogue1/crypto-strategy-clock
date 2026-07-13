@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-11T19:09:12.865878+00:00",
-    "coin": "ZRO",
-    "price": 0.919553,
-    "signal": "HOLD",
-    "confidence": 35,
-    "score": -0.15,
-    "fg": 26,
-    "btc_price": 64261,
-    "btc_dominance": 56.2,
-    "candidates": [
-      "MON",
-      "USDG",
-      "VVV",
-      "GRASS",
-      "XPL",
-      "TRUMP",
-      "ARB",
-      "ETHFI",
-      "ZRO"
-    ],
-    "alert": "Market fear improving (23\u219226) \u2014 watch for sentiment crossover above 30 as potential entry trigger for oversold alts"
-  },
-  {
     "ts": "2026-07-11T20:09:14.926189+00:00",
     "coin": "ZRO",
     "price": 0.920412,
@@ -938,5 +915,28 @@
       "GRASS"
     ],
     "alert": "No high-conviction swing trades available this cycle. All candidates fail risk/reward or technical quality checks."
+  },
+  {
+    "ts": "2026-07-13T11:09:23.850925+00:00",
+    "coin": "DCR",
+    "price": 13.71,
+    "signal": "HOLD",
+    "confidence": 32,
+    "score": -0.3,
+    "fg": 28,
+    "btc_price": 63015,
+    "btc_dominance": 56.1,
+    "candidates": [
+      "KITE",
+      "VELVET",
+      "MON",
+      "JTO",
+      "DEXE",
+      "XPL",
+      "DCR",
+      "ETHFI",
+      "GRASS"
+    ],
+    "alert": "No high-conviction entries available. All candidates show either overextended moves, bearish chart structures, or poor risk/reward ratios."
   }
 ]
