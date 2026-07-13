@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-07-13T09:09:18.601264+00:00",
-  "selected_coin": "JTO",
-  "selected_coin_name": "Jito",
-  "selected_coin_price": 0.662245,
+  "timestamp": "2026-07-13T10:09:23.457127+00:00",
+  "selected_coin": "DCR",
+  "selected_coin_name": "Decred",
+  "selected_coin_price": 15.06,
   "confidence": 28,
-  "layman_headline": "Crypto market gripped by fear \u2014 no safe entries yet, staying patient for a better setup.",
-  "layman_explanation": "The overall crypto market is in a fearful state with Bitcoin slipping below $63,000 amid geopolitical tensions and a leverage flush. Most altcoins are bleeding, and the candidates on our watchlist are either wildly overextended after massive pumps (like DCR up 43% and DEXE up 77% in a week) or stuck in downtrends with poor risk/reward ratios. The few coins showing some technical promise, like JTO and ETHFI, don't yet offer clean enough setups with the right combination of oversold conditions, volume confirmation, and favorable chart structure to justify risking capital right now.",
-  "layman_action": "Stay in cash and wait. The market is fearful and most coins are either extended after big moves or still falling. A better buying opportunity is likely coming in the next few days as fear deepens or a clear bounce pattern forms.",
-  "expert_reasoning": "Every candidate has significant red flags. DEXE (RSI 77, +77% in 7 days) and DCR (+43.5% in 7 days) are classic overextended chaser traps. KITE has a bearish chart bias of -1.40 with a Bearish Marubozu pattern. VELVET's risk/reward at 0.26x is terrible. ETHFI has the highest chart bias (+0.60) but resistance at $0.40 is only 2.5% away with risk/reward of 0.11x \u2014 unacceptable. JTO offers the most balanced setup but its RSI at 59 after an 11.65% daily pump suggests it just bounced and we'd be buying into strength rather than weakness. BTC dominance at 56.1% continues to suppress altcoin performance. The Fear & Greed index at 28 is improving (from 24.6 weekly average) but not yet at the extreme fear levels (sub-20) where contrarian buys have the highest conviction based on our signal credibility data showing Fear_Greed as an 80% reliable indicator.",
+  "layman_headline": "The market is fearful and no coin is screaming 'buy me' \u2014 patience is the best trade right now.",
+  "layman_explanation": "The overall crypto market is in a fearful state with Bitcoin slipping below $63K amid geopolitical tensions and a leverage flush. All the coins on our watchlist have significant problems: some have already surged 30-60% and are likely overextended, while others have bearish chart patterns with sellers firmly in control. High Bitcoin dominance at 56% means money is flowing out of altcoins and into Bitcoin, making alt trades riskier than usual.",
+  "layman_action": "Wait on the sidelines. Don't chase coins that have already pumped (DCR +37%, DEXE +62%, VELVET +18%). Let the fear settle and watch for a cleaner setup where technicals, news, and chart structure all align. Capital preservation is key right now.",
+  "expert_reasoning": "Every candidate fails the composite test. DCR's RSI of 19.6 is extremely oversold (high-confidence signal per our track record), but this is contradicted by a +36.6% 7-day move \u2014 the RSI hasn't caught up to the spike, making the oversold reading misleading. The chart bias is -0.70 with price below all MAs. DEXE is up 61.7% in a week with no chart data \u2014 pure momentum chase. JTO has the best chart bias (+0.40) but RSI at 59 is overbought-leaning and risk/reward is only 1.26x. ETHFI has a +0.60 chart bias with bullish marubozu, but resistance is only 2.5% away with terrible R:R of 0.11x. BTC dominance at 56.1% is a headwind for all alts. Fear & Greed at 28 is improving (from 24.6 weekly avg), which per our track record is a reliable signal \u2014 but it supports waiting for the turn to complete rather than front-running it.",
   "risk_factors": [
-    "BTC holding $60K is now back in play per CryptoSlate \u2014 a breakdown below would drag all alts significantly lower",
-    "High BTC dominance (56.1%) means capital continues to flow away from altcoins into Bitcoin",
-    "Geopolitical Hormuz oil shock headlines creating macro risk-off environment that could intensify"
+    "BTC dominance at 56.1% creates persistent headwinds for all altcoin positions",
+    "Geopolitical risks (Hormuz oil shock) could trigger another broad risk-off selloff taking BTC below $60K",
+    "All swing candidates show either overextended rallies or bearish chart structures \u2014 no clean setups exist"
   ],
   "watch_list": [
-    "BTC price action around $60,000-$63,000 \u2014 a decisive bounce or breakdown will set the tone for all alts",
-    "JTO pullback toward $0.60 support \u2014 if it holds with declining volume, that would be an ideal entry",
-    "Fear & Greed index \u2014 if it drops below 20 (extreme fear), that's historically been our strongest contrarian buy signal"
+    "BTC price action around $60,000 support \u2014 a break below would invalidate all alt setups",
+    "Fear & Greed index crossing above 35 \u2014 would confirm improving sentiment trend and give stronger entry signals",
+    "DCR price action near $11 support \u2014 if it pulls back and holds there, the oversold RSI bounce thesis becomes valid"
   ],
-  "market_context": "Bitcoin is testing $63K support after an Asian-session leverage flush, with geopolitical Hormuz oil tensions creating macro headwinds. The market is in 'Fear' territory at 28/100 but improving from last week's 24.6 average \u2014 not yet at extreme fear levels that historically offer the best swing entries.",
-  "context_banner": "Market fear is building but hasn't reached capitulation levels \u2014 disciplined patience now sets up higher-conviction entries later.",
-  "btc_price": 63098,
+  "market_context": "Bitcoin is under pressure near $63K after an Asian-session leverage flush, with geopolitical risks from the Hormuz oil situation providing a bearish overhang. The stablecoin market has shrunk $10B since May, but BTC ETFs just snapped an 8-week outflow streak with $197M inflows \u2014 mixed signals that warrant patience.",
+  "context_banner": "Fear is improving but hasn't turned \u2014 with all altcoin candidates either overextended or technically broken, disciplined patience beats forced entries.",
+  "btc_price": 63029,
   "fear_greed": {
     "current": 28,
     "label": "Fear",
@@ -33,30 +33,30 @@
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Fear & Greed at 28 (Fear) improving from 24.6 weekly average \u2014 trending toward contrarian territory but not yet at extreme fear levels where our 80% win rate historical signal triggers."
-    },
-    {
-      "source": "CryptoSlate",
-      "signal_type": "news",
-      "description": "Bitcoin's $60K floor is back in play due to Hormuz oil shock \u2014 this macro risk creates downside tail risk for all positions."
-    },
-    {
-      "source": "CoinTelegraph",
-      "signal_type": "news",
-      "description": "Bitcoin ETFs drew $197M snapping an 8-week outflow streak \u2014 a positive institutional signal, but not yet confirmed as a trend reversal."
+      "description": "Fear at 28 improving from weekly avg of 24.6 \u2014 trend is positive but hasn't reached the inflection point that historically precedes strong alt rallies."
     },
     {
       "source": "RSI",
       "signal_type": "technical",
-      "description": "No swing candidate is in genuinely oversold territory (sub-35 RSI). Best candidate JTO at 59 is neutral-to-warm, and DEXE at 77 is dangerously overbought."
+      "description": "DCR RSI at 19.6 is deeply oversold (our most reliable technical signal at 75% win rate), but the 37% weekly pump already occurred \u2014 the oversold reading is lagging, not predictive."
     },
     {
       "source": "CoinDesk",
       "signal_type": "news",
-      "description": "Bitcoin nearing Fidelity's power law support line tracked since 2015 \u2014 if this holds, it could form the floor for a broader market recovery."
+      "description": "Bitcoin leverage flush below $63K and Hormuz oil shock headlines create risk-off environment unfavorable for new alt positions."
+    },
+    {
+      "source": "CoinTelegraph",
+      "signal_type": "news",
+      "description": "Bitcoin ETFs drew $197M snapping 8-week outflows \u2014 bullish for BTC but flows aren't reaching alts yet with dominance at 56.1%."
+    },
+    {
+      "source": "Chart Pattern Analysis",
+      "signal_type": "technical",
+      "description": "Best chart bias among candidates is ETHFI at +0.60, but its risk/reward ratio of 0.11x makes it untradeable \u2014 resistance is just 2.5% away."
     }
   ],
   "_mode": "HUNTING",
-  "exit_target": 0.69,
-  "stop_loss": 0.55
+  "exit_target": 14.0,
+  "stop_loss": 9.8
 }
