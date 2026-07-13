@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-07-13T11:09:23.850925+00:00",
+  "timestamp": "2026-07-13T12:09:18.102255+00:00",
   "selected_coin": "DCR",
   "selected_coin_name": "Decred",
-  "selected_coin_price": 13.71,
+  "selected_coin_price": 13.89,
   "confidence": 32,
-  "layman_headline": "Fearful market with no clean setups \u2014 patience is the best trade right now.",
-  "layman_explanation": "The crypto market is in a fear phase with Bitcoin slipping below $63,000 amid Middle East tensions and profit-taking. Most altcoins are weak, with Bitcoin dominance at 56% meaning money is flowing out of smaller coins. Every candidate on our watchlist has significant flaws \u2014 some are overbought after huge runs, others are in clear downtrends. Rather than force a trade in poor conditions, we're waiting for a better setup.",
-  "layman_action": "Stay in cash for now. The market is fearful but not yet at the extreme panic levels that produce the best buying opportunities. Watch for Fear & Greed to drop below 20 or for Bitcoin to establish a clear support level before committing capital.",
-  "expert_reasoning": "None of the candidates present a compelling risk/reward setup right now. DEXE is massively overbought (RSI 77, +61.6% in 7 days) \u2014 chasing is dangerous. VELVET and KITE had huge 24h moves but poor chart structures. DCR's RSI of 19.6 is the most interesting signal (our data shows RSI has a 75% win rate), but the chart bias is -0.7 (bearish), price is below all MAs, and the risk/reward at current levels is only 1.0x \u2014 well below the 2.0x minimum for a quality swing entry. ETHFI has the best chart bias (+0.6) but the risk/reward to resistance is only 0.11x, making it a terrible entry point. BTC dominance at 56.1% continues to punish altcoins. The Fear & Greed improving trend (24.6 weekly avg \u2192 28 today) is mildly constructive but not yet at contrarian buy levels. Best to wait for either a deeper flush creating better entries or a clear reversal confirmation.",
+  "layman_headline": "Market fear and geopolitical tensions make this a bad time to chase \u2014 staying on the sidelines.",
+  "layman_explanation": "The crypto market is pulling back due to U.S.-Iran tensions near the Strait of Hormuz, and most altcoins are in clear downtrends. The Fear & Greed Index sits at 28 (Fear), which is improving from last week's 24.6, but not yet at the extreme levels that historically produce reliable bounce trades. The candidates on our watchlist either already ran up 20-30% and look extended, or have bearish chart structures with poor risk/reward ratios.",
+  "layman_action": "Wait patiently. Do not buy into this weakness yet. If Fear & Greed drops below 20 or we see a clear capitulation flush, that would be a much better entry point. Keep cash ready for that moment.",
+  "expert_reasoning": "Every candidate fails the quality filter for different reasons: KITE and VELVET have run 17-26% in 7 days and are extended with bearish chart bias (-1.4 and -0.3). LIT is RSI 72 overbought after a 55% 5-day ramp. JTO has decent structure (bias +0.4) but RSI 59 is elevated and R/R is only 1.26x. ETHFI has the best chart bias (+0.6) but resistance is only 2.5% away making R/R a terrible 0.11x. GRASS is down 21% in 7 days but shows a bearish engulfing pattern and -0.9 bias. DCR's RSI 19 is compelling but the bounce already started and price is below all MAs. With BTC dominance at 56.1% (hostile to alts), geopolitical risk dragging BTC below $63K, and no volume breakout signals among candidates, the highest-probability play is patience.",
   "risk_factors": [
-    "Middle East hostilities (Hormuz strait tensions) could trigger further risk-off selling across all crypto",
-    "BTC dominance at 56.1% means altcoins will continue to underperform even if BTC stabilizes",
-    "Fear & Greed at 28 is fearful but not extreme \u2014 further downside is possible before a true capitulation bottom"
+    "U.S.-Iran Hormuz tensions could escalate further, pushing BTC below $60K and dragging all alts down 15-25%",
+    "BTC dominance at 56.1% means capital is flowing away from altcoins \u2014 any alt position faces structural headwinds",
+    "Fear & Greed at 28 is improving but not yet at extreme fear (<15) where contrarian entries have the highest win rates"
   ],
   "watch_list": [
-    "BTC price action around $62,000-$63,000 support \u2014 a break below could trigger cascading liquidations",
-    "Fear & Greed index \u2014 a drop below 15-20 would signal extreme fear and better contrarian entry opportunities",
-    "DCR price action \u2014 if it holds above $11 support and RSI stays oversold, a confirmed reversal candle would be actionable"
+    "BTC price action around $62K support \u2014 a break below $60K would create deeper alt capitulation and better entries",
+    "Fear & Greed Index \u2014 watch for a drop below 20 which would signal extreme fear and a higher-probability bounce zone",
+    "DCR and ETHFI \u2014 if DCR retests $11 support with RSI still oversold, or ETHFI breaks above $0.40 resistance with volume, those become actionable setups"
   ],
-  "market_context": "Bitcoin is under pressure from Middle East geopolitical tensions and post-rally profit-taking, with BTC dominance at 56.1% creating a hostile environment for altcoins. The Fear & Greed index at 28 is improving from last week's 24.6 but remains in fear territory \u2014 not yet extreme enough for high-conviction contrarian plays.",
-  "context_banner": "Geopolitical risk and high BTC dominance make this a cash-preservation environment \u2014 quality setups require patience.",
-  "btc_price": 63015,
+  "market_context": "Crypto markets are under pressure from U.S.-Iran geopolitical tensions near the Strait of Hormuz, with BTC falling below $63K despite continued ETF inflows. High BTC dominance (56.1%) signals that altcoins are particularly vulnerable in this risk-off environment.",
+  "context_banner": "Geopolitical risk and high BTC dominance create hostile conditions for altcoin swing trades \u2014 patience is the highest-conviction play right now.",
+  "btc_price": 62821,
   "fear_greed": {
     "current": 28,
     "label": "Fear",
@@ -31,29 +31,29 @@
   "btc_dominance": 56.1,
   "key_signals": [
     {
+      "source": "CoinDesk",
+      "signal_type": "news",
+      "description": "Resurgent U.S.-Iran hostilities are the primary driver of crypto weakness, with markets pricing in only 3% chance of Hormuz traffic normalizing by August \u2014 a persistent overhang."
+    },
+    {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Fear & Greed at 28 (Fear) is improving from 24.6 weekly average, but not yet at extreme levels (sub-15) that historically produce the best swing entries."
+      "description": "Fear & Greed at 28 (Fear) is improving from 24.6 weekly average, but hasn't reached extreme fear levels (<20) where our 80% win-rate contrarian entries historically trigger."
     },
     {
       "source": "RSI",
       "signal_type": "technical",
-      "description": "DCR RSI at 19.6 is deeply oversold \u2014 our most reliable technical signal (75% win rate) \u2014 but bearish chart structure (-0.7 bias) prevents a high-confidence entry."
-    },
-    {
-      "source": "CoinDesk",
-      "signal_type": "news",
-      "description": "Middle East hostilities and profit-taking are dragging crypto lower; Bitcoin slipped below $63,000 in an Asian-session leverage flush, signaling fragile market conditions."
+      "description": "DCR's RSI of 19.6 is deeply oversold (strongest signal among candidates), but the 23% bounce already in progress reduces the remaining upside from current levels."
     },
     {
       "source": "CoinTelegraph",
       "signal_type": "news",
-      "description": "BTC bull market may not begin until September per multiple analysts, suggesting patience is warranted and current weakness could persist."
+      "description": "BTC bull market potentially delayed to September per analysis, and institutional tokenization momentum (UK taskforce, SBI/Solana) is constructive long-term but doesn't help short-term alt trades."
     },
     {
-      "source": "CryptoSlate",
-      "signal_type": "news",
-      "description": "Markets pricing only 3% chance of Hormuz strait normalization by August \u2014 ongoing geopolitical overhang will suppress risk appetite in the near term."
+      "source": "Chart Pattern Analysis",
+      "signal_type": "technical",
+      "description": "No candidate showed positive chart bias above +0.6, and the best-structured coins (JTO, ETHFI) had poor risk/reward ratios (1.26x and 0.11x respectively) \u2014 no clean setups available."
     }
   ],
   "_mode": "HUNTING",
