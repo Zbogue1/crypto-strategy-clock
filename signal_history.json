@@ -1,29 +1,5 @@
 [
   {
-    "ts": "2026-07-12T05:09:17.890740+00:00",
-    "coin": "ZRO",
-    "price": 0.906642,
-    "signal": "BUY",
-    "confidence": 52,
-    "score": 0.35,
-    "fg": 26,
-    "btc_price": 63967,
-    "btc_dominance": 56.3,
-    "candidates": [
-      "USDG",
-      "MON",
-      "ARB",
-      "BONK",
-      "TRUMP",
-      "XPL",
-      "VVV",
-      "ETHFI",
-      "ZRO",
-      "GRASS"
-    ],
-    "alert": null
-  },
-  {
     "ts": "2026-07-12T06:09:19.073055+00:00",
     "coin": "ZRO",
     "price": 0.900227,
@@ -928,5 +904,26 @@
       "XPL"
     ],
     "alert": "Broad market selloff in progress \u2014 avoid new entries until selling pressure subsides and a reversal is confirmed."
+  },
+  {
+    "ts": "2026-07-13T21:09:10.841060+00:00",
+    "coin": "MON",
+    "price": 0.02188442,
+    "signal": "HOLD",
+    "confidence": 28,
+    "score": -0.3,
+    "fg": 28,
+    "btc_price": 62126,
+    "btc_dominance": 56.0,
+    "candidates": [
+      "KITE",
+      "GRASS",
+      "MON",
+      "LIT",
+      "VELVET",
+      "ETHFI",
+      "BONK"
+    ],
+    "alert": "BTC testing $62K with geopolitical headwinds \u2014 alt positions carry elevated risk. Wait for stabilization."
   }
 ]
