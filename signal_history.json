@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-11T20:09:14.926189+00:00",
-    "coin": "ZRO",
-    "price": 0.920412,
-    "signal": "HOLD",
-    "confidence": 32,
-    "score": -0.15,
-    "fg": 26,
-    "btc_price": 64244,
-    "btc_dominance": 56.2,
-    "candidates": [
-      "MON",
-      "USDG",
-      "VVV",
-      "GRASS",
-      "WLD",
-      "XPL",
-      "LDO",
-      "ETHFI",
-      "ZRO"
-    ],
-    "alert": "High BTC dominance and bearish alt structures across all candidates \u2014 avoid forcing trades in this environment."
-  },
-  {
     "ts": "2026-07-11T21:09:15.209628+00:00",
     "coin": "ZRO",
     "price": 0.921011,
@@ -938,5 +915,28 @@
       "GRASS"
     ],
     "alert": "No high-conviction entries available. All candidates show either overextended moves, bearish chart structures, or poor risk/reward ratios."
+  },
+  {
+    "ts": "2026-07-13T12:09:18.102255+00:00",
+    "coin": "DCR",
+    "price": 13.89,
+    "signal": "HOLD",
+    "confidence": 32,
+    "score": -0.3,
+    "fg": 28,
+    "btc_price": 62821,
+    "btc_dominance": 56.1,
+    "candidates": [
+      "KITE",
+      "MON",
+      "VELVET",
+      "DCR",
+      "JTO",
+      "LIT",
+      "XPL",
+      "ETHFI",
+      "GRASS"
+    ],
+    "alert": "U.S.-Iran tensions dragging crypto lower \u2014 avoid new alt positions until geopolitical situation stabilizes or extreme fear emerges."
   }
 ]
