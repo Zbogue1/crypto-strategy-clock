@@ -1,22 +1,6 @@
 {
-  "cash": 748.2481,
+  "cash": 846.6247,
   "holdings": [
-    {
-      "coin_ticker": "ETHFI",
-      "coin_id": "ethfi",
-      "units": 256.48693927262826,
-      "entry_price": 0.389182,
-      "entry_date": "2026-07-08T20:13:41.366731+00:00",
-      "entry_signal": "BUY",
-      "entry_confidence": 62,
-      "allocated_usd": 99.92,
-      "fee_paid": 0.0999,
-      "exit_target": 0.47,
-      "stop_loss": 0.389182,
-      "entry_target": 0.39,
-      "expected_days": 7,
-      "partial_taken": true
-    },
     {
       "coin_ticker": "GRASS",
       "coin_id": "grass",
@@ -34,12 +18,12 @@
       "partial_taken": false
     }
   ],
-  "realized_pnl": -1.9519,
+  "realized_pnl": -3.4953,
   "peak_value": 1032.0739,
-  "total_trades": 7,
+  "total_trades": 8,
   "winning_trades": 5,
-  "losing_trades": 2,
-  "total_fees": 1.8426,
+  "losing_trades": 3,
+  "total_fees": 1.9411,
   "trade_history": [
     {
       "trade_num": 1,
@@ -210,6 +194,32 @@
       "days_held": 6.46,
       "exit_target": 1.1,
       "stop_loss": 0.85,
+      "hit_target": false,
+      "hit_stop": true,
+      "result": "LOSS"
+    },
+    {
+      "trade_num": 8,
+      "coin_ticker": "ETHFI",
+      "coin_id": "ethfi",
+      "entry_price": 0.389182,
+      "entry_date": "2026-07-08T20:13:41.366731+00:00",
+      "entry_signal": "BUY",
+      "entry_confidence": 62,
+      "allocated_usd": 99.92,
+      "exit_price": 0.383938,
+      "exit_date": "2026-07-13T18:12:57.292077+00:00",
+      "exit_signal": "STOP_LOSS",
+      "exit_reason": "stop_loss",
+      "units": 256.48693927262826,
+      "gross_proceeds": 98.4751,
+      "fees_total": 0.1984,
+      "net_proceeds": 98.3766,
+      "profit_usd": -1.5434,
+      "profit_pct": -1.54,
+      "days_held": 4.92,
+      "exit_target": 0.47,
+      "stop_loss": 0.389182,
       "hit_target": false,
       "hit_stop": true,
       "result": "LOSS"
