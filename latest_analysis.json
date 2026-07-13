@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-07-13T07:09:22.495118+00:00",
+  "timestamp": "2026-07-13T08:09:18.462344+00:00",
   "selected_coin": "JTO",
   "selected_coin_name": "Jito",
-  "selected_coin_price": 0.652204,
+  "selected_coin_price": 0.658124,
   "confidence": 32,
-  "layman_headline": "Crypto markets are scared and bleeding \u2014 no clear setup worth risking capital on right now.",
-  "layman_explanation": "The overall crypto market is in a 'Fear' state with Bitcoin slipping below $63,000 and Bitcoin dominance at 56%, which means money is flowing out of smaller coins and into Bitcoin. All of the coins on our watchlist have significant problems \u2014 some are overbought after huge runs, others are in clear downtrends with bearish chart patterns. None of them offer a clean entry with good risk-reward right now. The smartest move is to sit on the sidelines and wait for a better setup.",
-  "layman_action": "Do nothing right now. Keep your cash ready. Wait for the fear to peak and for a coin to show a clear reversal signal with strong volume before jumping in.",
-  "expert_reasoning": "Every candidate has disqualifying issues. DEXE and LIT are deeply overbought (RSI 77 and 72) after 84% and 55% 5-day runs respectively \u2014 chasing here is high-risk. KITE and GRASS have bearish chart structures with bearish engulfing/marubozu patterns. VELVET's risk/reward is terrible at 0.26x. ETHFI has the best chart bias (+0.60) but resistance is only 2.5% away with R/R of 0.11x \u2014 there's no trade there. JTO offers the most balanced profile with a pullback into support, above SMA20, and RSI in the middle zone, but the broader macro headwinds (high BTC dominance at 56%, Fear sentiment, leverage flush) make this a low-conviction environment for alt entries. Discipline says wait.",
+  "layman_headline": "Crypto market is in fear mode \u2014 no quality setups worth risking money on right now.",
+  "layman_explanation": "The overall crypto market is gripped by fear, with Bitcoin slipping below $63,000 and most altcoins bleeding. The candidates on our watchlist are either already pumped hard (DCR up 37%, LIT up 56% in 5 days) making them risky to chase, or they're in clear downtrends with bearish chart patterns. None of the setups offer a compelling risk-reward ratio with a clear catalyst to justify entering a new position today.",
+  "layman_action": "Stay patient and keep cash ready. The fear index is improving from extreme lows, which historically can precede good buying opportunities \u2014 but we're not there yet. Wait for a cleaner setup with better chart structure.",
+  "expert_reasoning": "This cycle presents no actionable swing trade. DCR's RSI of 19.6 screams oversold (a historically reliable signal), but it's already bounced 37% in 7 days with a bearish chart structure \u2014 classic dead cat bounce risk. LIT is overbought at RSI 72 with a 56% 5-day run, making it a sell candidate, not a buy. VELVET surged 30% in 24h but has terrible 0.26x risk/reward near resistance. GRASS has a sharp dip for mean-reversion but bearish engulfing pattern and below all MAs. BTC dominance at 56.1% continues to crush altcoin performance. The Fear & Greed improving from 24.6 weekly average to 28 is a positive sign but hasn't confirmed a reversal. Better to wait for fear to bottom and catch the first clean breakout with volume confirmation.",
   "risk_factors": [
-    "BTC dominance at 56% is crushing altcoin performance \u2014 capital rotation into alts hasn't begun",
-    "Asian session leverage flush signals continued deleveraging that could cascade into alts",
-    "No volume breakout signals present in any candidate \u2014 our highest-reliability signal type is absent"
+    "BTC dominance at 56.1% is actively suppressing altcoin performance \u2014 any further BTC weakness will cascade harder into alts",
+    "Geopolitical tension (Iran strikes, war-driven selloffs) creating unpredictable macro risk that can override technicals",
+    "All swing candidates lack volume confirmation data and funding rate data, reducing signal reliability"
   ],
   "watch_list": [
-    "BTC holding $62,000 support \u2014 a breakdown here would drag all alts significantly lower",
-    "Fear & Greed reaching 20 or below (extreme fear) would signal a stronger contrarian buy opportunity",
-    "JTO price action at the $0.60 support level \u2014 a bounce with volume confirmation there would be actionable"
+    "Bitcoin ETF flow direction \u2014 the $197M inflow snapping 8 weeks of outflows is a potential trend change signal worth monitoring",
+    "Fear & Greed index \u2014 if it crosses above 30 with sustained improvement, it historically marks the beginning of recovery rallies",
+    "DCR and JTO price action \u2014 if DCR holds $11 support and JTO pulls back to $0.62 with volume, either could become actionable"
   ],
-  "market_context": "Bitcoin is consolidating near $62,700 after a leverage flush, with Fear & Greed at 28 and improving from a weekly low of 24.6. BTC dominance at 56% signals a risk-off environment for altcoins, though Bitcoin ETF inflows of $197M breaking an 8-week streak hint at potential stabilization.",
-  "context_banner": "Market fear is improving but unconfirmed \u2014 discipline demands waiting for volume-confirmed setups rather than catching falling knives in a high-dominance BTC environment.",
-  "btc_price": 62761,
+  "market_context": "Bitcoin is holding near $63K amid geopolitical stress and a leverage flush, with the Fear & Greed index at 28 (Fear) but improving from last week's 24.6. BTC dominance at 56.1% continues to squeeze altcoins, though Bitcoin ETF inflows just snapped an 8-week outflow streak \u2014 a potential early signal of institutional sentiment shift.",
+  "context_banner": "Market fear is improving but hasn't confirmed a bottom \u2014 discipline demands waiting for a cleaner entry rather than forcing a trade in hostile conditions.",
+  "btc_price": 62968,
   "fear_greed": {
     "current": 28,
     "label": "Fear",
@@ -28,35 +28,35 @@
     "week_avg": 24.6,
     "trend": "improving"
   },
-  "btc_dominance": 56.0,
+  "btc_dominance": 56.1,
   "key_signals": [
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Fear & Greed at 28 and improving from 24.6 weekly average \u2014 fear is elevated but starting to lift, suggesting we're approaching but haven't reached a capitulation bottom."
-    },
-    {
-      "source": "CoinTelegraph",
-      "signal_type": "news",
-      "description": "Bitcoin ETFs drew $197M snapping an 8-week outflow streak \u2014 institutional interest returning is a positive macro signal but hasn't translated to alt strength yet."
+      "description": "Fear & Greed at 28 (Fear) improving from weekly average of 24.6 \u2014 trend improving but not yet at the capitulation-to-recovery inflection that produces the best swing entries."
     },
     {
       "source": "RSI",
       "signal_type": "technical",
-      "description": "DEXE (77) and LIT (72) are overbought \u2014 our reliable RSI signal says these are correction risks, not entries. JTO at 59 is the most balanced."
+      "description": "DCR RSI at 19.6 is deeply oversold but the 37% weekly surge suggests the bounce already happened; LIT RSI at 72 is overbought and dangerous to enter."
+    },
+    {
+      "source": "CoinTelegraph",
+      "signal_type": "news",
+      "description": "Bitcoin ETFs drew $197M snapping an 8-week outflow streak \u2014 a reliable bullish source reporting early signs of institutional re-engagement, but hasn't yet translated to altcoin strength."
     },
     {
       "source": "CoinDesk",
       "signal_type": "news",
-      "description": "Bitcoin slipped below $63K in an Asian leverage flush \u2014 forced liquidations indicate fragile market positioning that could extend to alts."
+      "description": "BTC leverage flush in Asian session and geopolitical strikes creating volatility \u2014 risk-off environment that punishes speculative altcoin positions."
     },
     {
-      "source": "volume_breakout",
+      "source": "Chart Pattern Analysis",
       "signal_type": "technical",
-      "description": "No volume breakout signals detected across any candidate \u2014 our most reliable signal type (100% win rate, +13.4% avg return) is completely absent this cycle."
+      "description": "Best chart bias among candidates is JTO at +0.40 (slightly bullish) \u2014 every other candidate is neutral to bearish, with KITE at -1.40 and GRASS at -0.90 being the worst."
     }
   ],
   "_mode": "HUNTING",
-  "exit_target": 0.72,
-  "stop_loss": 0.565
+  "exit_target": 0.69,
+  "stop_loss": 0.58
 }
