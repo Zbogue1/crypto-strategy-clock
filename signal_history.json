@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-11T09:09:10.961988+00:00",
-    "coin": "ZRO",
-    "price": 0.938734,
-    "signal": "BUY",
-    "confidence": 52,
-    "score": 0.35,
-    "fg": 26,
-    "btc_price": 64212,
-    "btc_dominance": 56.3,
-    "candidates": [
-      "LAB",
-      "MON",
-      "GRASS",
-      "VVV",
-      "VIRTUAL",
-      "XPL",
-      "PENGU",
-      "ETHFI",
-      "ZRO"
-    ],
-    "alert": null
-  },
-  {
     "ts": "2026-07-11T10:09:11.430995+00:00",
     "coin": "ZRO",
     "price": 0.937222,
@@ -935,5 +912,29 @@
       "GRASS"
     ],
     "alert": "No swing candidates meet minimum risk/reward and chart quality thresholds. All positions cash."
+  },
+  {
+    "ts": "2026-07-13T01:09:11.272969+00:00",
+    "coin": "BTC",
+    "price": 63901,
+    "signal": "HOLD",
+    "confidence": 25,
+    "score": -0.3,
+    "fg": 28,
+    "btc_price": 63901,
+    "btc_dominance": 56.2,
+    "candidates": [
+      "MON",
+      "XPL",
+      "USDG",
+      "PENGU",
+      "HTX",
+      "WLD",
+      "DEXE",
+      "ETHFI",
+      "ZRO",
+      "GRASS"
+    ],
+    "alert": "All altcoin candidates show poor risk/reward or bearish structure. Capital preservation mode until clearer setups emerge."
   }
 ]
