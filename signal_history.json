@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-11T13:09:11.419490+00:00",
-    "coin": "ZRO",
-    "price": 0.923109,
-    "signal": "HOLD",
-    "confidence": 35,
-    "score": -0.3,
-    "fg": 26,
-    "btc_price": 64140,
-    "btc_dominance": 56.3,
-    "candidates": [
-      "LAB",
-      "MON",
-      "VVV",
-      "GRASS",
-      "USDG",
-      "VIRTUAL",
-      "XPL",
-      "ETHFI",
-      "ZRO"
-    ],
-    "alert": "Bitcoin faces key resistance test within 72 hours \u2014 outcome will likely dictate next altcoin move"
-  },
-  {
     "ts": "2026-07-11T14:09:11.216695+00:00",
     "coin": "ZRO",
     "price": 0.93401,
@@ -938,5 +915,28 @@
       "GRASS"
     ],
     "alert": null
+  },
+  {
+    "ts": "2026-07-13T05:09:13.126805+00:00",
+    "coin": "JTO",
+    "price": 0.642201,
+    "signal": "HOLD",
+    "confidence": 32,
+    "score": -0.15,
+    "fg": 28,
+    "btc_price": 62728,
+    "btc_dominance": 56.0,
+    "candidates": [
+      "KITE",
+      "MON",
+      "VELVET",
+      "XPL",
+      "JTO",
+      "USDG",
+      "PENGU",
+      "ETHFI",
+      "GRASS"
+    ],
+    "alert": "No swing candidates meet minimum quality thresholds \u2014 all show poor risk/reward ratios or bearish chart structures. Waiting for better setups."
   }
 ]
