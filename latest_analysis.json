@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-07-13T18:09:11.096517+00:00",
-  "selected_coin": "JTO",
-  "selected_coin_name": "Jito",
-  "selected_coin_price": 0.631883,
-  "confidence": 32,
-  "layman_headline": "The whole crypto market is bleeding \u2014 patience is the best trade right now.",
-  "layman_explanation": "Bitcoin dropped below $62,000 and dragged nearly every altcoin down with it. The market mood is fearful at 28/100, and Bitcoin dominance at 55.9% means money is flowing out of smaller coins and into Bitcoin. Every candidate on the watchlist has significant technical problems \u2014 bearish charts, poor risk/reward ratios, or overbought conditions after recent spikes. None of the setups offer a clean entry with a favorable risk/reward.",
-  "layman_action": "Stay on the sidelines and keep your cash ready. Wait for the fear to deepen further (below 20) or for a clear reversal signal like a volume breakout or bullish MACD cross. The best trades come from patience during selloffs like this.",
-  "expert_reasoning": "Across all 8 swing candidates, not a single one presents a high-confidence setup. DEXE is overbought at RSI 77 after a 37% weekly rally with an 18% single-day reversal \u2014 classic blow-off top. KITE has a -1.40 chart bias with a bearish Marubozu. GRASS dropped 31% in a week but shows a bearish engulfing pattern with poor 0.48x R/R. ETHFI has the best chart bias (+0.60) but terrible 0.11x R/R with resistance at $0.40 only 2.5% away. JTO is the most balanced candidate but entering longs against a fearful, BTC-dominant market with no volume breakout confirmation contradicts our highest-reliability signal types. Fear & Greed at 28 is improving from 24.6 weekly average, but hasn't reached extreme fear levels that historically mark bottoms. I'd rather wait for a capitulation flush or a volume-confirmed reversal.",
+  "timestamp": "2026-07-13T19:09:11.301847+00:00",
+  "selected_coin": "BTC",
+  "selected_coin_name": "Bitcoin",
+  "selected_coin_price": 61959,
+  "confidence": 25,
+  "layman_headline": "The market is bleeding \u2014 no good swing trade setups right now, staying in cash.",
+  "layman_explanation": "Almost every cryptocurrency is down today, with Bitcoin falling over 3% and many altcoins down even more. The overall market mood is fearful (28/100), and Bitcoin dominance is high at 55.9%, meaning money is flowing away from smaller coins. None of the swing trade candidates have a convincing combination of technical strength and catalyst to justify risking capital right now.",
+  "layman_action": "Keep your cash on the sidelines. Wait for the market to stabilize and for clearer buy signals to emerge before entering any new positions.",
+  "expert_reasoning": "In a Fear environment (28) with BTC dropping -3.4% in 24h and dominance at 55.9%, altcoin entries carry elevated risk. GRASS shows the sharpest 7-day decline (-31%) suggesting potential mean reversion, but the bearish engulfing candle and -0.9 chart bias indicate selling pressure isn't exhausted. LIT's RSI of 72 after a +55.8% 5-day run is a classic overbought rejection setup \u2014 not a buy. MON and PENGU lack catalysts and have bearish structures. The CoinDesk signal about Bitcoin panic-selling margins disappearing could indicate a BTC bottom forming, but we need confirmation before committing capital to alts. Prudent to wait for either RSI oversold readings or volume breakouts with confirmed support holds.",
   "risk_factors": [
-    "BTC could break below $60K on geopolitical escalation (Hormuz Strait), dragging all alts down another 10-20%",
-    "BTC dominance at 55.9% and rising means alt season is nowhere near \u2014 capital continues rotating out of altcoins",
-    "No volume breakout signals detected on any candidate \u2014 our most reliable signal type (100% win rate) is absent"
+    "BTC could break below $60K support triggering cascading alt liquidations",
+    "Geopolitical escalation (Hormuz Strait) creating broader risk-off moves across all assets",
+    "High BTC dominance trend may continue squeezing altcoin valuations further"
   ],
   "watch_list": [
-    "BTC price action around $60,000 support \u2014 a break below could trigger cascading liquidations",
-    "Fear & Greed index \u2014 watch for a drop below 15 (extreme fear) which historically marks buying opportunities",
-    "JTO and ETHFI for volume breakouts if BTC stabilizes above $60K in the next 48 hours"
+    "BTC price action around $60,000 support \u2014 a hold here could trigger alt recovery",
+    "GRASS stabilization near $0.30 support after -31% weekly drop \u2014 potential mean-reversion if selling exhausts",
+    "Fear & Greed index trend \u2014 currently improving from 24.6 weekly avg to 28, a move above 35 would improve entry conditions"
   ],
-  "market_context": "The crypto market is in a broad risk-off mode with BTC down 3.2% in 24 hours threatening $62K. Geopolitical tensions, Strategy pausing BTC purchases, and high BTC dominance create a hostile environment for altcoin swing trades.",
-  "context_banner": "Market-wide sell-off with no reliable entry signals \u2014 capital preservation is the priority until a volume-confirmed reversal appears.",
-  "btc_price": 61965,
+  "market_context": "Broad risk-off environment with BTC threatening $60K, elevated geopolitical tensions, and Strategy pausing its Bitcoin buying program. Fear is dominant but improving slightly from extreme levels, suggesting a potential bottom could be forming over the next few days.",
+  "context_banner": "Market in fear-driven correction with no high-conviction swing setups \u2014 capital preservation is the priority.",
+  "btc_price": 61959,
   "fear_greed": {
     "current": 28,
     "label": "Fear",
@@ -33,30 +33,30 @@
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Fear & Greed at 28 (Fear) is improving from last week's 24.6 average but hasn't reached extreme fear levels that historically mark high-confidence contrarian entries."
-    },
-    {
-      "source": "CoinTelegraph",
-      "signal_type": "news",
-      "description": "Bitcoin threatens $62K amid geopolitical risk (Hormuz Strait) \u2014 macro headwinds creating downside pressure across all crypto assets."
+      "description": "Fear & Greed at 28 (Fear) with improving trend from 24.6 weekly average \u2014 not yet signaling extreme fear capitulation that typically marks reliable bottoms."
     },
     {
       "source": "CoinDesk",
       "signal_type": "news",
-      "description": "Strategy paused Bitcoin buying to hoard $3B cash, removing a key demand source and signaling institutional caution."
+      "description": "Bitcoin panic-selling margins disappearing suggests sellers are running out of profitable exits, which could indicate a bottom forming but needs price confirmation."
+    },
+    {
+      "source": "CoinTelegraph",
+      "signal_type": "news",
+      "description": "Trump invoking geopolitical pressure on Hormuz Strait is creating risk-off sentiment across crypto, pushing BTC toward $62K and dragging alts lower."
     },
     {
       "source": "RSI",
       "signal_type": "technical",
-      "description": "No candidates are in true oversold territory (below 30). Best candidate JTO sits at RSI 59 which is already slightly elevated, while DEXE at 77 is dangerously overbought."
+      "description": "No candidate shows oversold RSI \u2014 best reading is MON at 41 which is approaching but not at oversold levels, while LIT at 72 is overbought and risky."
     },
     {
-      "source": "volume_breakout",
+      "source": "Chart Pattern Analysis",
       "signal_type": "technical",
-      "description": "Zero volume breakout signals detected across all candidates \u2014 our highest-reliability indicator (100% win rate, +13.4% avg return) is completely absent this cycle."
+      "description": "All candidates show bearish or neutral chart bias scores ranging from -1.4 (KITE) to +0.4 (LIT), with no volume-confirmed breakout setups present."
     }
   ],
   "_mode": "HUNTING",
-  "exit_target": 0.687,
-  "stop_loss": 0.555
+  "exit_target": null,
+  "stop_loss": null
 }
