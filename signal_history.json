@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-11T10:09:11.430995+00:00",
-    "coin": "ZRO",
-    "price": 0.937222,
-    "signal": "HOLD",
-    "confidence": 35,
-    "score": -0.15,
-    "fg": 26,
-    "btc_price": 64105,
-    "btc_dominance": 56.3,
-    "candidates": [
-      "LAB",
-      "MON",
-      "GRASS",
-      "VVV",
-      "USDG",
-      "VIRTUAL",
-      "XPL",
-      "ETHFI",
-      "ZRO"
-    ],
-    "alert": "No quality setups meet swing trading criteria this cycle. All candidates have bearish chart structures, poor risk/reward, or are already extended. Staying in cash."
-  },
-  {
     "ts": "2026-07-11T11:09:11.712583+00:00",
     "coin": "ZRO",
     "price": 0.92183,
@@ -936,5 +913,29 @@
       "GRASS"
     ],
     "alert": "All altcoin candidates show poor risk/reward or bearish structure. Capital preservation mode until clearer setups emerge."
+  },
+  {
+    "ts": "2026-07-13T02:09:19.708287+00:00",
+    "coin": "MON",
+    "price": 0.02248244,
+    "signal": "HOLD",
+    "confidence": 28,
+    "score": -0.15,
+    "fg": 28,
+    "btc_price": 63258,
+    "btc_dominance": 56.1,
+    "candidates": [
+      "MON",
+      "XPL",
+      "PENGU",
+      "KITE",
+      "USDG",
+      "TRUMP",
+      "DEXE",
+      "ETHFI",
+      "ZRO",
+      "GRASS"
+    ],
+    "alert": "All swing candidates show weak chart structures or overextended conditions. Capital preservation mode until a high-quality setup emerges."
   }
 ]
