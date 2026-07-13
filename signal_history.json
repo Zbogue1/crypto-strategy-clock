@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-11T22:09:23.609522+00:00",
-    "coin": "ZRO",
-    "price": 0.925935,
-    "signal": "HOLD",
-    "confidence": 35,
-    "score": -0.15,
-    "fg": 26,
-    "btc_price": 64305,
-    "btc_dominance": 56.2,
-    "candidates": [
-      "MON",
-      "VVV",
-      "USDG",
-      "GRASS",
-      "XPL",
-      "WLD",
-      "TRUMP",
-      "ETHFI",
-      "ZRO"
-    ],
-    "alert": "No high-conviction setups available. All oversold candidates lack reversal confirmation. Staying disciplined in cash."
-  },
-  {
     "ts": "2026-07-11T23:09:12.661025+00:00",
     "coin": "ZRO",
     "price": 0.925745,
@@ -938,5 +915,28 @@
       "GRASS"
     ],
     "alert": "U.S.-Iran Hormuz tensions driving risk-off across crypto. Markets pricing only 3% chance of Hormuz traffic normalizing by August. Watch for escalation."
+  },
+  {
+    "ts": "2026-07-13T14:09:18.563529+00:00",
+    "coin": "BTC",
+    "price": 62262,
+    "signal": "HOLD",
+    "confidence": 30,
+    "score": -0.4,
+    "fg": 28,
+    "btc_price": 62262,
+    "btc_dominance": 55.9,
+    "candidates": [
+      "KITE",
+      "MON",
+      "DCR",
+      "VELVET",
+      "JTO",
+      "DEXE",
+      "LIT",
+      "ETHFI",
+      "GRASS"
+    ],
+    "alert": "All swing candidates fail quality filters. Volume breakout (our most reliable signal at 100% win rate) is absent across the board. Wait for better setups."
   }
 ]
