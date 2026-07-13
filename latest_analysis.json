@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-07-13T19:09:11.301847+00:00",
+  "timestamp": "2026-07-13T20:09:11.237030+00:00",
   "selected_coin": "BTC",
   "selected_coin_name": "Bitcoin",
-  "selected_coin_price": 61959,
-  "confidence": 25,
-  "layman_headline": "The market is bleeding \u2014 no good swing trade setups right now, staying in cash.",
-  "layman_explanation": "Almost every cryptocurrency is down today, with Bitcoin falling over 3% and many altcoins down even more. The overall market mood is fearful (28/100), and Bitcoin dominance is high at 55.9%, meaning money is flowing away from smaller coins. None of the swing trade candidates have a convincing combination of technical strength and catalyst to justify risking capital right now.",
-  "layman_action": "Keep your cash on the sidelines. Wait for the market to stabilize and for clearer buy signals to emerge before entering any new positions.",
-  "expert_reasoning": "In a Fear environment (28) with BTC dropping -3.4% in 24h and dominance at 55.9%, altcoin entries carry elevated risk. GRASS shows the sharpest 7-day decline (-31%) suggesting potential mean reversion, but the bearish engulfing candle and -0.9 chart bias indicate selling pressure isn't exhausted. LIT's RSI of 72 after a +55.8% 5-day run is a classic overbought rejection setup \u2014 not a buy. MON and PENGU lack catalysts and have bearish structures. The CoinDesk signal about Bitcoin panic-selling margins disappearing could indicate a BTC bottom forming, but we need confirmation before committing capital to alts. Prudent to wait for either RSI oversold readings or volume breakouts with confirmed support holds.",
+  "selected_coin_price": 62192,
+  "confidence": 30,
+  "layman_headline": "The market is bleeding red \u2014 patience is the smartest play right now.",
+  "layman_explanation": "Nearly every cryptocurrency is down today, with Bitcoin dropping 3% and many altcoins falling much harder. The Fear & Greed index sits at 28, meaning most investors are scared. While fear can eventually create buying opportunities, none of the candidates on the watchlist present a clean, high-confidence setup with good risk/reward right now. The best move is to wait for the selling to exhaust itself and pounce when a clear setup emerges.",
+  "layman_action": "Stay in cash and wait. Do not chase falling knives. A better entry point with clearer signals should emerge in the coming days as the market stabilizes.",
+  "expert_reasoning": "Every candidate was evaluated and found lacking: LIT has strong 5-day momentum (+55.8%) but RSI at 72.35 signals overbought conditions with a 12.5% single-day drop \u2014 classic blow-off top risk. GRASS dropped 31% in 7 days but shows a bearish engulfing candle with chart bias at -0.90 and risk/reward of only 0.48x. VELVET surged 22% today but the chart bias is slightly bearish (-0.30) with terrible risk/reward (0.26x) near resistance. MON's risk/reward is 0.46x with price below all MAs. BTC dominance at 55.9% continues to pressure altcoins. The Fear & Greed improving trend (24.6 weekly avg \u2192 28 today) suggests we're approaching a capitulation bottom, but we're not there yet. Best strategy is to wait for confirmed reversal signals.",
   "risk_factors": [
-    "BTC could break below $60K support triggering cascading alt liquidations",
-    "Geopolitical escalation (Hormuz Strait) creating broader risk-off moves across all assets",
-    "High BTC dominance trend may continue squeezing altcoin valuations further"
+    "Geopolitical escalation (Trump/Hormuz Strait) could trigger further risk-asset selloffs",
+    "BTC breaking below $60K would likely drag all alts down another 10-20%",
+    "High BTC dominance (55.9%) means capital is rotating out of alts \u2014 fighting the trend"
   ],
   "watch_list": [
-    "BTC price action around $60,000 support \u2014 a hold here could trigger alt recovery",
-    "GRASS stabilization near $0.30 support after -31% weekly drop \u2014 potential mean-reversion if selling exhausts",
-    "Fear & Greed index trend \u2014 currently improving from 24.6 weekly avg to 28, a move above 35 would improve entry conditions"
+    "BTC price action around $60K-$62K support \u2014 a bounce here could signal the bottom",
+    "Fear & Greed index crossing above 30 as a sign of sentiment stabilization",
+    "GRASS at $0.30 support level \u2014 if it holds after a 31% weekly drop, could be a strong mean-reversion play"
   ],
-  "market_context": "Broad risk-off environment with BTC threatening $60K, elevated geopolitical tensions, and Strategy pausing its Bitcoin buying program. Fear is dominant but improving slightly from extreme levels, suggesting a potential bottom could be forming over the next few days.",
-  "context_banner": "Market in fear-driven correction with no high-conviction swing setups \u2014 capital preservation is the priority.",
-  "btc_price": 61959,
+  "market_context": "Broad crypto selloff with BTC down 3% threatening $62K, driven by geopolitical fears around the Hormuz Strait. Fear & Greed at 28 is improving from weekly average of 24.6, suggesting we may be approaching peak fear but haven't confirmed a bottom yet.",
+  "context_banner": "Market-wide fear selloff with no clean altcoin setups \u2014 disciplined patience will be rewarded when capitulation completes.",
+  "btc_price": 62192,
   "fear_greed": {
     "current": 28,
     "label": "Fear",
@@ -33,27 +33,27 @@
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Fear & Greed at 28 (Fear) with improving trend from 24.6 weekly average \u2014 not yet signaling extreme fear capitulation that typically marks reliable bottoms."
+      "description": "Fear & Greed at 28 (Fear) with improving trend from weekly avg of 24.6 \u2014 approaching potential capitulation zone but not yet confirmed as a bottom."
     },
     {
       "source": "CoinDesk",
       "signal_type": "news",
-      "description": "Bitcoin panic-selling margins disappearing suggests sellers are running out of profitable exits, which could indicate a bottom forming but needs price confirmation."
+      "description": "Bitcoin panic-selling may be ending as sellers' profit margins disappear \u2014 suggests we're nearing exhaustion but BTC still dropping 3% today."
     },
     {
       "source": "CoinTelegraph",
       "signal_type": "news",
-      "description": "Trump invoking geopolitical pressure on Hormuz Strait is creating risk-off sentiment across crypto, pushing BTC toward $62K and dragging alts lower."
+      "description": "Bitcoin threatens $62K amid geopolitical risk as Trump discusses controlling Hormuz Strait \u2014 adding macro uncertainty to an already weak market."
     },
     {
       "source": "RSI",
       "signal_type": "technical",
-      "description": "No candidate shows oversold RSI \u2014 best reading is MON at 41 which is approaching but not at oversold levels, while LIT at 72 is overbought and risky."
+      "description": "No candidate has RSI in deep oversold territory (<30); LIT is actually overbought at 72.35, making it dangerous to enter despite the pullback."
     },
     {
       "source": "Chart Pattern Analysis",
       "signal_type": "technical",
-      "description": "All candidates show bearish or neutral chart bias scores ranging from -1.4 (KITE) to +0.4 (LIT), with no volume-confirmed breakout setups present."
+      "description": "GRASS bearish engulfing (-0.90 bias), VELVET bearish marubozu (-0.30 bias), MON/XPL below key MAs \u2014 no chart is giving a clear buy signal with favorable risk/reward."
     }
   ],
   "_mode": "HUNTING",
