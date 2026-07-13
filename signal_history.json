@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-11T15:09:11.480972+00:00",
-    "coin": "ZRO",
-    "price": 0.92602,
-    "signal": "BUY",
-    "confidence": 52,
-    "score": 0.35,
-    "fg": 26,
-    "btc_price": 64312,
-    "btc_dominance": 56.3,
-    "candidates": [
-      "LAB",
-      "MON",
-      "GRASS",
-      "VVV",
-      "USDG",
-      "VIRTUAL",
-      "XPL",
-      "ETHFI",
-      "ZRO"
-    ],
-    "alert": null
-  },
-  {
     "ts": "2026-07-11T16:09:10.823513+00:00",
     "coin": "ZRO",
     "price": 0.921366,
@@ -938,5 +915,28 @@
       "GRASS"
     ],
     "alert": "No swing candidates meet minimum quality bar \u2014 all show poor risk/reward ratios or bearish chart structures. Preserving capital."
+  },
+  {
+    "ts": "2026-07-13T07:09:22.495118+00:00",
+    "coin": "JTO",
+    "price": 0.652204,
+    "signal": "HOLD",
+    "confidence": 32,
+    "score": -0.15,
+    "fg": 28,
+    "btc_price": 62761,
+    "btc_dominance": 56.0,
+    "candidates": [
+      "KITE",
+      "DEXE",
+      "VELVET",
+      "MON",
+      "JTO",
+      "XPL",
+      "LIT",
+      "ETHFI",
+      "GRASS"
+    ],
+    "alert": "No high-conviction setups available. All candidates either overbought, bearish structure, or poor risk/reward. Staying in cash."
   }
 ]
