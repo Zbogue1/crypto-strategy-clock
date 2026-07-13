@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-12T02:09:19.374187+00:00",
-    "coin": "ZRO",
-    "price": 0.90877,
-    "signal": "HOLD",
-    "confidence": 35,
-    "score": -0.15,
-    "fg": 26,
-    "btc_price": 64051,
-    "btc_dominance": 56.3,
-    "candidates": [
-      "MON",
-      "USDG",
-      "VVV",
-      "BONK",
-      "TRUMP",
-      "GRASS",
-      "XPL",
-      "ETHFI",
-      "ZRO"
-    ],
-    "alert": "No high-conviction setups available. All candidates lack the volume breakout or MACD cross signals that have historically driven our best trades (100% win rate). Staying in cash."
-  },
-  {
     "ts": "2026-07-12T03:09:16.031361+00:00",
     "coin": "ZRO",
     "price": 0.905176,
@@ -934,5 +911,27 @@
       "ETHFI"
     ],
     "alert": "BTC testing $62K support amid Hormuz Strait geopolitical risk \u2014 monitor for breakdown that could accelerate alt sell-off."
+  },
+  {
+    "ts": "2026-07-13T18:09:11.096517+00:00",
+    "coin": "JTO",
+    "price": 0.631883,
+    "signal": "HOLD",
+    "confidence": 32,
+    "score": -0.15,
+    "fg": 28,
+    "btc_price": 61965,
+    "btc_dominance": 55.9,
+    "candidates": [
+      "KITE",
+      "MON",
+      "GRASS",
+      "DEXE",
+      "LIT",
+      "JTO",
+      "PENGU",
+      "ETHFI"
+    ],
+    "alert": "BTC threatening $60K support amid geopolitical escalation. Avoid new alt positions until BTC stabilizes."
   }
 ]
