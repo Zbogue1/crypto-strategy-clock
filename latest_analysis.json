@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-07-13T00:09:17.016855+00:00",
+  "timestamp": "2026-07-13T01:09:11.272969+00:00",
   "selected_coin": "BTC",
   "selected_coin_name": "Bitcoin",
-  "selected_coin_price": 63936,
+  "selected_coin_price": 63901,
   "confidence": 25,
-  "layman_headline": "Market fear is thick and no alt setup is clean enough to pull the trigger.",
-  "layman_explanation": "The overall crypto market is in a 'Fear' zone at 28/100, and Bitcoin dominance is high at 56.2%, meaning money is flowing out of smaller coins and into Bitcoin. Every altcoin candidate we screened has significant problems: DEXE doubled in a week and is extremely overbought, ETHFI has strong chart structure but almost zero room before hitting resistance, GRASS just printed a bearish engulfing candle despite a big dip, and the rest lack reliable data or clear setups. In this environment, the best move is patience \u2014 waiting for a cleaner entry rather than forcing a trade.",
-  "layman_action": "Stay in cash and wait. The market is fearful and altcoins are underperforming. A better buying opportunity will likely emerge in the coming days as fear reaches extremes or a clear technical setup develops.",
-  "expert_reasoning": "I evaluated all 10 candidates systematically. DEXE (chart bias +0.40, RSI 77.18, +100.7% in 7 days) is the strongest mover but is textbook overbought \u2014 chasing here contradicts swing discipline. ETHFI (chart bias +0.60, bullish marubozu, RSI 51) has the best chart structure, but resistance at $0.40 is only 2.5% above current price, yielding a 0.11x R:R ratio which is unacceptable. GRASS dropped 22% in 7 days which could be a mean-reversion play, but the bearish engulfing candle and -0.90 chart bias score say sellers are still in control. MON shows a bullish marubozu but sits below all moving averages with a 0.46x R:R. BTC dominance at 56.2% actively suppresses alt performance. Fear & Greed at 28 is improving (was 24.6 avg last week) but not yet at extreme fear levels (sub-20) where contrarian buys have the best historical edge. Preserving capital is the correct call.",
+  "layman_headline": "The market is fearful and altcoins look weak \u2014 patience is the best trade right now.",
+  "layman_explanation": "The crypto market is in a 'Fear' phase with a reading of 28 out of 100. Bitcoin is dominating at 56.2%, which means money is flowing away from smaller coins (altcoins) and into Bitcoin for safety. None of the swing trade candidates offer a compelling setup \u2014 some are too overbought (DEXE up 101% in a week), others are in confirmed downtrends with bearish chart patterns (GRASS, ZRO, PENGU), and the rest lack sufficient data or conviction. This is a classic environment where sitting on the sidelines preserves capital.",
+  "layman_action": "Wait for clearer setups. The fear reading is improving (trending up from 24.6 weekly average to 28), which could set up better entries in coming days. Keep powder dry and watch for oversold bounces with volume confirmation.",
+  "expert_reasoning": "Systematic review of all 10 candidates reveals no high-conviction swing entry. DEXE (+101% 7d, RSI 77) is wildly overbought and chasing here violates risk management. ZRO (RSI 31) is the closest to an oversold bounce play but price is below all MAs with a -0.7 chart bias and no bullish candlestick reversal pattern \u2014 entering before confirmation risks catching a falling knife. GRASS (-21% 7d) shows a bearish engulfing candle contradicting any mean-reversion thesis. HTX has the best chart bias (+1.1) but is a micro-cap with negligible volume and RSI already at 58. ETHFI has a decent chart (+0.6) but resistance is only 2.5% away with poor R/R of 0.11x. BTC dominance at 56.2% actively suppresses alt performance. The improving Fear & Greed trend (24.6\u219228) suggests we may get better setups in 2-5 days as sentiment recovers further.",
   "risk_factors": [
-    "High BTC dominance (56.2%) continues to drain alt liquidity \u2014 any alt position swims against the current",
-    "Stablecoin market cap shrinking by $10B since May signals capital leaving crypto entirely",
-    "Geopolitical escalation (US-Iran strikes) could trigger a broader risk-off move"
+    "BTC dominance at 56.2% is actively crushing altcoin performance \u2014 any alt entry faces structural headwind",
+    "Iran strikes creating geopolitical uncertainty could trigger another leg down across risk assets",
+    "Stablecoin market cap shrinking by $10B since May signals capital leaving the crypto ecosystem"
   ],
   "watch_list": [
-    "Fear & Greed dropping below 20 (extreme fear) \u2014 historically signals high-probability contrarian buy zones",
-    "ETHFI breaking above $0.40 resistance with volume \u2014 would confirm bullish chart structure and open upside",
-    "BTC dominance peaking and reversing below 55% \u2014 would signal alt season rotation beginning"
+    "ZRO: watch for RSI to drop below 30 with a bullish reversal candle (hammer/morning star) at $0.90 support \u2014 that would create a high-quality oversold bounce setup",
+    "Fear & Greed index: if it crosses above 30-35 in the next 48 hours, altcoin entries become more favorable",
+    "BTC price action around $63,000-64,000: a decisive move above $65K could rotate capital back into alts"
   ],
-  "market_context": "Bitcoin is consolidating around $64K with low volatility while Fear & Greed sits at 28 (Fear, but improving from 24.6 weekly average). High BTC dominance at 56.2% and shrinking stablecoin supply create a hostile environment for altcoin swing trades.",
-  "context_banner": "Market fear is improving but altcoin setups remain too weak to justify capital deployment \u2014 disciplined patience is the edge here.",
-  "btc_price": 63936,
+  "market_context": "The market is in a Fear phase (28/100) with BTC flat and dominance elevated at 56.2%, creating a hostile environment for altcoin swing trades. Geopolitical tensions (Iran strikes) and shrinking stablecoin supply add macro headwinds, though the improving fear trend suggests conditions may improve soon.",
+  "context_banner": "No swing candidates pass the quality filter \u2014 elevated BTC dominance and fearful sentiment demand patience over action.",
+  "btc_price": 63901,
   "fear_greed": {
     "current": 28,
     "label": "Fear",
@@ -33,27 +33,27 @@
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Fear & Greed at 28 (Fear) is improving from 24.6 weekly average but hasn't reached extreme fear levels where contrarian buys historically perform best."
+      "description": "Fear at 28/100 with improving trend (up from 24.6 weekly avg) \u2014 conditions are getting better but not yet favorable enough for alt entries."
     },
     {
       "source": "RSI",
       "signal_type": "technical",
-      "description": "DEXE RSI at 77 is overbought and dangerous for entry; no other candidate shows oversold RSI conditions that would signal a high-probability bounce."
+      "description": "ZRO RSI at 31 is the most oversold candidate but lacks bullish reversal confirmation on the chart, making it premature to enter."
     },
     {
       "source": "CoinDesk",
       "signal_type": "news",
-      "description": "Stablecoin market cap shrunk $10B since May and US-Iran strikes add macro uncertainty \u2014 both bearish for risk assets and alt deployment."
+      "description": "Stablecoin market cap shrinking by $10B since May signals capital outflows from crypto, reducing fuel for new rallies."
+    },
+    {
+      "source": "CoinDesk",
+      "signal_type": "news",
+      "description": "Bitcoin nearing Fidelity's power law support line tracked since 2015 \u2014 a bounce here could eventually benefit alts, but hasn't triggered yet."
     },
     {
       "source": "CoinTelegraph",
       "signal_type": "news",
-      "description": "Robinhood L2 sparking ETH optimism is a medium-term positive for ETH ecosystem (ETHFI), but not yet translating into strong alt price action."
-    },
-    {
-      "source": "volume_breakout",
-      "signal_type": "technical",
-      "description": "No volume breakout detected on any candidate \u2014 the most reliable signal in our track record (100% win rate) is absent, reinforcing the HOLD decision."
+      "description": "Robinhood L2 sparking ETH optimism and ETH derivatives reset noted by Blockworks could create future opportunities in ETH-ecosystem plays like ETHFI once technicals confirm."
     }
   ],
   "_mode": "HUNTING",
