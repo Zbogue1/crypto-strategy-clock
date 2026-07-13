@@ -1,22 +1,6 @@
 {
-  "cash": 559.772,
+  "cash": 748.2481,
   "holdings": [
-    {
-      "coin_ticker": "ZRO",
-      "coin_id": "zro",
-      "units": 222.92449356910765,
-      "entry_price": 0.996829,
-      "entry_date": "2026-07-06T16:13:05.916225+00:00",
-      "entry_signal": "BUY",
-      "entry_confidence": 62,
-      "allocated_usd": 222.44,
-      "fee_paid": 0.2224,
-      "exit_target": 1.1,
-      "stop_loss": 0.85,
-      "entry_target": 0.93,
-      "expected_days": 7,
-      "partial_taken": false
-    },
     {
       "coin_ticker": "ETHFI",
       "coin_id": "ethfi",
@@ -50,12 +34,12 @@
       "partial_taken": false
     }
   ],
-  "realized_pnl": 32.012,
+  "realized_pnl": -1.9519,
   "peak_value": 1032.0739,
-  "total_trades": 6,
+  "total_trades": 7,
   "winning_trades": 5,
-  "losing_trades": 1,
-  "total_fees": 1.6539,
+  "losing_trades": 2,
+  "total_fees": 1.8426,
   "trade_history": [
     {
       "trade_num": 1,
@@ -203,6 +187,32 @@
       "days_held": 2.87,
       "exit_target": 0.47,
       "result": "WIN"
+    },
+    {
+      "trade_num": 7,
+      "coin_ticker": "ZRO",
+      "coin_id": "zro",
+      "entry_price": 0.996829,
+      "entry_date": "2026-07-06T16:13:05.916225+00:00",
+      "entry_signal": "BUY",
+      "entry_confidence": 62,
+      "allocated_usd": 222.44,
+      "exit_price": 0.846317,
+      "exit_date": "2026-07-13T03:13:14.844825+00:00",
+      "exit_signal": "STOP_LOSS",
+      "exit_reason": "stop_loss",
+      "units": 222.92449356910765,
+      "gross_proceeds": 188.6648,
+      "fees_total": 0.4111,
+      "net_proceeds": 188.4761,
+      "profit_usd": -33.9639,
+      "profit_pct": -15.27,
+      "days_held": 6.46,
+      "exit_target": 1.1,
+      "stop_loss": 0.85,
+      "hit_target": false,
+      "hit_stop": true,
+      "result": "LOSS"
     }
   ],
   "started_at": "2026-06-27T00:00:00+00:00",
