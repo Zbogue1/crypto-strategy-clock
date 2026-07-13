@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-11T16:09:10.823513+00:00",
-    "coin": "ZRO",
-    "price": 0.921366,
-    "signal": "HOLD",
-    "confidence": 35,
-    "score": -0.15,
-    "fg": 26,
-    "btc_price": 64065,
-    "btc_dominance": 56.2,
-    "candidates": [
-      "LAB",
-      "MON",
-      "VVV",
-      "USDG",
-      "VIRTUAL",
-      "GRASS",
-      "XPL",
-      "ETHFI",
-      "ZRO"
-    ],
-    "alert": "Market in Fear territory with rising BTC dominance \u2014 altcoin entries are high-risk until sentiment stabilizes or reversal patterns confirm."
-  },
-  {
     "ts": "2026-07-11T17:09:13.706707+00:00",
     "coin": "ZRO",
     "price": 0.922899,
@@ -938,5 +915,28 @@
       "GRASS"
     ],
     "alert": "No high-conviction setups available. All candidates either overbought, bearish structure, or poor risk/reward. Staying in cash."
+  },
+  {
+    "ts": "2026-07-13T08:09:18.462344+00:00",
+    "coin": "JTO",
+    "price": 0.658124,
+    "signal": "HOLD",
+    "confidence": 32,
+    "score": -0.15,
+    "fg": 28,
+    "btc_price": 62968,
+    "btc_dominance": 56.1,
+    "candidates": [
+      "KITE",
+      "MON",
+      "VELVET",
+      "JTO",
+      "DCR",
+      "XPL",
+      "LIT",
+      "ETHFI",
+      "GRASS"
+    ],
+    "alert": "All swing candidates have significant flaws: either overextended rallies, bearish chart structures, or poor risk/reward ratios. Capital preservation is the priority."
   }
 ]
