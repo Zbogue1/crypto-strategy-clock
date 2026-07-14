@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-07-14T21:09:10.904850+00:00",
-  "selected_coin": "ETH",
-  "selected_coin_name": "Ethereum",
-  "selected_coin_price": 1876.78,
-  "confidence": 68,
-  "layman_headline": "Ethereum looks beaten-down enough to bounce as extreme market fear creates opportunity.",
-  "layman_explanation": "The entire crypto market is gripped by extreme fear (22/100), which historically has been a great time to buy quality assets at a discount. Ethereum is down 62% from its all-time high and has an RSI near oversold territory at 35, yet it just posted a strong 6.5% daily bounce with a powerful bullish candle showing pure buying conviction. Major stablecoin news (Circle partnerships in Japan, US-UK tokenization alignment) strengthens Ethereum's core use case as the backbone of DeFi and stablecoins.",
-  "layman_action": "Consider a cautious entry into Ethereum around $1,830 with a strict stop-loss at $1,690. If BTC holds above $64,000 and fear starts fading, ETH could rally 10-15% from here. Only risk what you can afford to lose.",
-  "expert_reasoning": "ETH RSI at 35 is approaching oversold and our RSI signal has an 80% win rate historically. The Bullish Marubozu candle on the daily shows pure buying conviction with minimal wicks, suggesting institutional accumulation at these levels. Fear & Greed at 22 (extreme fear with improving trend from 23.9 weekly avg) aligns with our 71% win-rate Fear_Greed signal. The CoinTelegraph news cluster around stablecoins (JCB/Circle Japan, US-UK tokenization rules, Velocity $38M raise) directly benefits ETH's $41B TVL ecosystem. The key risk is that ETH remains below all major moving averages in a bearish structure, so a tight stop at $1,690 (below $1,700 support) limits downside to ~7.5% while targeting $2,050 for a 2.0x risk/reward ratio.",
+  "timestamp": "2026-07-14T22:09:10.922701+00:00",
+  "selected_coin": "ENA",
+  "selected_coin_name": "Ethena",
+  "selected_coin_price": 0.084241,
+  "confidence": 62,
+  "layman_headline": "Extreme fear in crypto markets creates a contrarian buying window in Ethena.",
+  "layman_explanation": "The entire crypto market is in 'Extreme Fear' mode with a score of just 22 out of 100, which historically has been a good time to buy. Ethena (ENA) has been beaten down 94% from its all-time high but is now showing strong buying momentum with a nearly 10% bounce today and a bullish candlestick pattern. The risk-to-reward ratio on this trade is nearly 3-to-1, meaning the potential upside is about three times the potential downside if the stop-loss is hit.",
+  "layman_action": "Consider a small position in ENA around $0.08. Set a stop-loss at $0.069 to limit downside, and look to take profits near $0.099. This is a higher-risk trade on a beaten-down token, so position size accordingly.",
+  "expert_reasoning": "ENA presents the strongest swing setup among candidates. RSI at 40.75 is approaching oversold territory (reliable signal with 80% win rate historically), while the Bullish Marubozu candlestick on a downtrend suggests potential reversal. The risk/reward to key levels is 2.76x \u2014 the best among all candidates by a wide margin. Support at $0.0705 provides a clear stop-loss level, while resistance at $0.0996 gives a 27% upside target. The stablecoin narrative is receiving significant news flow today (CoinTelegraph reports on Velocity raise, JCB-Circle, US-UK alignment), which directly supports Ethena's positioning as a stablecoin yield protocol. The Extreme Fear reading of 22 (improving trend) adds a reliable contrarian buy signal.",
   "risk_factors": [
-    "ETH is below all major moving averages \u2014 bearish structure could drag price lower if BTC fails to hold $64,000",
-    "BTC dominance at 56.3% means capital is flowing to Bitcoin over altcoins \u2014 ETH could underperform",
-    "Circle downgrade by Mizuho on Open USD threat could weigh on stablecoin/ETH sentiment"
+    "High BTC dominance at 56.3% means capital is flowing to Bitcoin over alts \u2014 ENA could underperform even if BTC rallies",
+    "ENA is 94.5% below ATH with a bearish macro structure \u2014 below all major moving averages \u2014 this bounce could be a dead cat bounce",
+    "Stablecoin regulatory uncertainty (CLARITY Act opposition, Mizuho downgrading Circle) could create negative sentiment spillover for Ethena"
   ],
   "watch_list": [
-    "BTC holding above $64,000 support \u2014 if it breaks down, ETH will follow sharply",
-    "ETH reclaiming $1,800 resistance on the chart \u2014 needs to flip this to support for continuation",
-    "Fear & Greed index trajectory \u2014 currently improving from 22, watch if it crosses 30 for confirmation of sentiment shift"
+    "Whether ENA can break and hold above the $0.085-$0.09 zone to confirm the reversal",
+    "BTC behavior around $65,000 resistance \u2014 a rejection could drag alts down sharply",
+    "CLARITY Act vote outcome and any regulatory developments affecting stablecoins"
   ],
-  "market_context": "The crypto market is in extreme fear (22/100) but showing signs of a relief bounce with BTC pushing toward $65K on US inflation data. High BTC dominance (56.3%) means altcoin recovery may lag, but ETH as the largest alt with massive DeFi TVL ($41B) is best positioned to capture rotation when fear subsides.",
-  "context_banner": "Extreme fear creates opportunity: ETH near oversold with strong bounce candle and institutional stablecoin catalysts converging.",
-  "btc_price": 64548,
+  "market_context": "Bitcoin is pushing toward $65,000 on US inflation relief but the broader market remains in Extreme Fear at 22/100. BTC dominance at 56.3% suggests capital is concentrated in Bitcoin, creating headwinds for altcoins but also setting up bigger altcoin rebounds when sentiment shifts.",
+  "context_banner": "Extreme Fear at 22 with an improving trend and heavy stablecoin news flow create a contrarian entry window for oversold DeFi protocols like Ethena.",
+  "btc_price": 64570,
   "fear_greed": {
     "current": 22,
     "label": "Extreme Fear",
@@ -33,30 +33,30 @@
     {
       "source": "RSI",
       "signal_type": "technical",
-      "description": "ETH RSI at 35 is near oversold territory \u2014 our most reliable signal with 80% historical win rate, suggesting a bounce is probable."
+      "description": "ENA RSI at 40.75 approaching oversold zone \u2014 historically an 80% reliable buy signal in our track record, combined with a Bullish Marubozu candle confirming buying conviction."
     },
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Market at 22 (Extreme Fear) with improving trend \u2014 historically 71% win rate when buying during extreme fear conditions."
+      "description": "Extreme Fear at 22/100 with an improving trend (up from 23.9 weekly average) \u2014 our most-tested reliable contrarian indicator at 71% win rate."
     },
     {
       "source": "CoinTelegraph",
       "signal_type": "news",
-      "description": "Multiple stablecoin adoption catalysts (JCB/Circle Japan, US-UK tokenization alignment, Velocity $38M raise) directly benefit Ethereum's DeFi ecosystem \u2014 80% historical win rate source."
+      "description": "Multiple stablecoin catalysts today \u2014 Velocity $38M raise, JCB-Circle MOU for Japan, US-UK tokenization alignment \u2014 directly supporting Ethena's stablecoin yield narrative."
+    },
+    {
+      "source": "CryptoSlate",
+      "signal_type": "news",
+      "description": "Bitcoin pushing toward $65K on US inflation relief provides a macro tailwind, though the relief may be temporary."
     },
     {
       "source": "volume_breakout",
       "signal_type": "technical",
-      "description": "ETH 24h volume at $12.5B with +6.45% daily move and Bullish Marubozu candle pattern indicates strong institutional buying conviction at current levels."
-    },
-    {
-      "source": "Blockworks",
-      "signal_type": "news",
-      "description": "ETH derivatives reset reported \u2014 clearing of overleveraged positions creates cleaner market structure for a sustained move higher."
+      "description": "ENA's 8.46% 24h surge with a Bullish Marubozu pattern and 2.76x risk/reward ratio represents the highest quality setup among all swing candidates."
     }
   ],
   "_mode": "HUNTING",
-  "exit_target": 2050.0,
-  "stop_loss": 1690.0
+  "exit_target": 0.099,
+  "stop_loss": 0.069
 }
