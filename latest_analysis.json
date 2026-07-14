@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-07-14T10:09:11.079372+00:00",
-  "selected_coin": "BTC",
-  "selected_coin_name": "Bitcoin",
-  "selected_coin_price": 62629,
-  "confidence": 25,
-  "layman_headline": "Extreme fear grips crypto as geopolitical tensions and inflation fears keep traders on the sidelines.",
-  "layman_explanation": "The crypto market is in 'Extreme Fear' mode right now, with a score of just 22 out of 100. Bitcoin is holding around $62,600 but faces major headwinds: the Iran/Hormuz conflict is flaring up again, a U.S. CPI inflation report is imminent, and spot Bitcoin ETFs just saw $425 million in outflows. The altcoins on our watchlist are all in downtrends with poor chart structures \u2014 none of them offer a clean enough setup to risk capital on right now.",
-  "layman_action": "Stay in cash and wait. The market is under heavy pressure from geopolitics and macro uncertainty. When fear is this extreme, bounces can be violent \u2014 but so can further drops. Wait for a confirmed reversal signal or a clear catalyst before committing money.",
-  "expert_reasoning": "Every swing candidate fails critical filters. GRASS is down 32% in 7 days but has a risk/reward of only 0.69x with no support confirmation \u2014 a falling knife. KITE has an attractive 2.38x R/R and a bullish engulfing candle, but is in a hard downtrend with -20% 5-day momentum and no volume data to confirm the reversal. JTO has the best chart bias (+0.40) but RSI at 59 is already elevated after a recent run, and the doji signals indecision \u2014 not conviction. MON's bullish marubozu is interesting but R/R at 0.79x is insufficient. XPL is deeply bearish (-0.70 bias). The macro backdrop is hostile: $425M ETF outflows, Iran conflict escalation with an 8-hour deadline per CryptoSlate, pending CPI data, and the U.S. government just moved $288M in seized crypto to Coinbase Prime (potential sell pressure). Our signal credibility data shows volume_breakout signals have 100% win rate \u2014 none of these candidates show that signal. Discipline demands we wait.",
+  "timestamp": "2026-07-14T11:09:11.012233+00:00",
+  "selected_coin": "MON",
+  "selected_coin_name": "Monad",
+  "selected_coin_price": 0.02248503,
+  "confidence": 32,
+  "layman_headline": "Extreme fear grips crypto \u2014 patience is the best play right now.",
+  "layman_explanation": "The crypto market is in 'Extreme Fear' territory at 22/100, Bitcoin is sliding around $62,600, and almost every altcoin is bleeding. While fear often creates great buying opportunities, none of the current candidates have the combination of strong chart structure, clear catalysts, and good risk/reward needed for a high-conviction swing trade. The best approach right now is to wait for either a confirmed bounce or a deeper flush to better support levels before committing capital.",
+  "layman_action": "Stay on the sidelines with cash ready. Wait for a confirmed reversal signal \u2014 a strong bounce off support with volume \u2014 before entering any new positions. Don't try to catch a falling knife.",
+  "expert_reasoning": "In Extreme Fear environments, the reliable Fear_Greed signal (80% win rate, +6.7% avg return) suggests this zone eventually produces winners \u2014 but timing matters. None of the candidates offer compelling setups: MON has a Bullish Marubozu but bearish MA structure and sub-1.0 risk/reward. GRASS dropped 31.9% in 7 days but has zero chart data and no RSI reading \u2014 a knife-catch without a handle. JTO has the best chart bias (+0.40) but RSI at 59 is already elevated after a recent run, and its 1.05x R/R is mediocre. KITE's Bullish Engulfing is interesting with 2.38x R/R, but -20.3% 5-day momentum in a downtrend with -14% daily move suggests panic selling, not accumulation. BTC ETF outflows of $425M and looming CPI/geopolitical risks argue for patience. High BTC dominance at 56% confirms capital is rotating away from alts.",
   "risk_factors": [
-    "Iran/Hormuz conflict escalation could trigger a broad risk-off crash, sending BTC below $60K and alts down 20%+",
-    "CPI report could come in hot, boosting July rate hike bets and crushing crypto further",
-    "U.S. government's $288M crypto transfer to Coinbase Prime could signal imminent selling pressure"
+    "Iran conflict escalation + CPI data release could trigger another leg down across all crypto assets",
+    "BTC dominance at 56% actively suppresses altcoin performance \u2014 alts may continue to bleed even if BTC stabilizes",
+    "ETF outflows of $425M signal institutional sellers are active, removing a key support pillar for the market"
   ],
   "watch_list": [
-    "CPI inflation report release \u2014 hot print could send BTC below $60K support",
-    "Iran/Hormuz conflict developments in next 8-24 hours \u2014 de-escalation would be bullish",
-    "Bitcoin ETF flow data \u2014 need to see outflow reversal before alts can recover"
+    "BTC reaction to CPI data and Iran situation \u2014 a hold above $61,000 support is critical for any alt recovery",
+    "Fear & Greed index trajectory \u2014 currently at 22 and improving; a move below 15 could signal capitulation bottom",
+    "MON price behavior at $0.0185 support \u2014 a bounce with volume there would be a legitimate entry signal"
   ],
-  "market_context": "Crypto is in Extreme Fear (22/100) with heavy macro headwinds. BTC dominance at 56.1% signals capital fleeing alts to Bitcoin, and even Bitcoin is struggling to hold $62.6K amid geopolitical risk and upcoming inflation data.",
-  "context_banner": "Multiple macro risks converging \u2014 geopolitical conflict, CPI uncertainty, and ETF outflows demand patience over action.",
-  "btc_price": 62629,
+  "market_context": "The crypto market is in Extreme Fear (22/100) with BTC struggling at $62,600 amid $425M ETF outflows, geopolitical uncertainty from Iran, and pending CPI data. High BTC dominance at 56% indicates a hostile environment for altcoins.",
+  "context_banner": "Extreme Fear creates opportunity, but with ETF outflows, geopolitical risk, and CPI ahead, the smart move is to wait for confirmation rather than front-run a bottom.",
+  "btc_price": 62665,
   "fear_greed": {
     "current": 22,
     "label": "Extreme Fear",
@@ -28,35 +28,35 @@
     "week_avg": 23.9,
     "trend": "improving"
   },
-  "btc_dominance": 56.1,
+  "btc_dominance": 56.0,
   "key_signals": [
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Extreme Fear at 22/100 suggests market is near capitulation, but improving trend (from 23.9 weekly avg) is not yet confirmed \u2014 too early to buy the fear."
+      "description": "Extreme Fear at 22/100 historically produces good buying opportunities (80% win rate in past trades), but the improving trend from 28 to 22 suggests fear is still deepening, not reversing."
     },
     {
       "source": "CoinTelegraph",
       "signal_type": "news",
-      "description": "US spot Bitcoin ETFs posted $425M outflow after a brief rebound, indicating institutional selling pressure is resuming \u2014 bearish for near-term price action."
-    },
-    {
-      "source": "CryptoSlate",
-      "signal_type": "news",
-      "description": "Bitcoin has less than 8 hours to hold $60K before Hormuz conflict escalation takes over \u2014 imminent binary event risk."
+      "description": "US spot Bitcoin ETFs posted $425M outflow after a brief rebound, signaling institutional selling pressure that removes a key demand pillar."
     },
     {
       "source": "CoinDesk",
       "signal_type": "news",
-      "description": "U.S. government moved $288M in seized BTC/ETH to Coinbase Prime, signaling potential government selling that could add supply pressure."
+      "description": "Bitcoin steadies at $62,600 as Iran conflict reignites and CPI looms \u2014 two macro catalysts that could drive further volatility in either direction."
     },
     {
       "source": "RSI",
       "signal_type": "technical",
-      "description": "No swing candidate has RSI below 35 (true oversold). MON at 37 and XPL at 39 are approaching but not yet at levels that historically produce reliable bounces."
+      "description": "MON RSI at 37 and XPL/PENGU near 39 are approaching oversold but haven't reached the sub-30 extreme levels that produce the highest conviction bounce trades."
+    },
+    {
+      "source": "CoinDesk",
+      "signal_type": "news",
+      "description": "XRP and ETH bulls getting louder as prices fall is flagged as a contrarian warning \u2014 sentiment divergence from price action often signals more downside ahead."
     }
   ],
   "_mode": "HUNTING",
-  "exit_target": null,
-  "stop_loss": null
+  "exit_target": 0.0252,
+  "stop_loss": 0.018
 }
