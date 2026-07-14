@@ -1,29 +1,5 @@
 [
   {
-    "ts": "2026-07-12T22:09:11.059103+00:00",
-    "coin": "TRUMP",
-    "price": 1.55,
-    "signal": "HOLD",
-    "confidence": 35,
-    "score": -0.15,
-    "fg": 26,
-    "btc_price": 63744,
-    "btc_dominance": 56.2,
-    "candidates": [
-      "MON",
-      "XPL",
-      "PENGU",
-      "HTX",
-      "TRUMP",
-      "USDG",
-      "ARB",
-      "ETHFI",
-      "ZRO",
-      "GRASS"
-    ],
-    "alert": "No high-conviction setups available. All candidates show bearish chart structures or lack volume confirmation. Maintaining cash position for better entry."
-  },
-  {
     "ts": "2026-07-12T23:09:11.472813+00:00",
     "coin": "TRUMP",
     "price": 1.55,
@@ -883,5 +859,26 @@
       "CRV"
     ],
     "alert": "Bitcoin ETFs lost $424M wiping out last week's gains; U.S.-Iran tensions adding sell pressure \u2014 wait for clarity before deploying capital."
+  },
+  {
+    "ts": "2026-07-14T14:09:10.895306+00:00",
+    "coin": "ETH",
+    "price": 63652,
+    "signal": "HOLD",
+    "confidence": 35,
+    "score": -0.1,
+    "fg": 22,
+    "btc_price": 63652,
+    "btc_dominance": 56.0,
+    "candidates": [
+      "MON",
+      "USDG",
+      "\u5e01\u5b89\u4eba\u751f",
+      "JTO",
+      "GRASS",
+      "XPL",
+      "LIT"
+    ],
+    "alert": "Bitcoin ETF outflows of $424M and geopolitical escalation creating hostile environment for new alt entries. Wait for stabilization."
   }
 ]
