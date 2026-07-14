@@ -1,29 +1,5 @@
 [
   {
-    "ts": "2026-07-13T01:09:11.272969+00:00",
-    "coin": "BTC",
-    "price": 63901,
-    "signal": "HOLD",
-    "confidence": 25,
-    "score": -0.3,
-    "fg": 28,
-    "btc_price": 63901,
-    "btc_dominance": 56.2,
-    "candidates": [
-      "MON",
-      "XPL",
-      "USDG",
-      "PENGU",
-      "HTX",
-      "WLD",
-      "DEXE",
-      "ETHFI",
-      "ZRO",
-      "GRASS"
-    ],
-    "alert": "All altcoin candidates show poor risk/reward or bearish structure. Capital preservation mode until clearer setups emerge."
-  },
-  {
     "ts": "2026-07-13T02:09:19.708287+00:00",
     "coin": "MON",
     "price": 0.02248244,
@@ -875,5 +851,27 @@
       "ETH"
     ],
     "alert": "Extreme Fear + strong macro catalyst = classic contrarian entry window. Fear & Greed improving from 28 to 22 (trend: improving)."
+  },
+  {
+    "ts": "2026-07-14T17:09:11.201745+00:00",
+    "coin": "ETH",
+    "price": 1866.88,
+    "signal": "BUY",
+    "confidence": 62,
+    "score": 1.2,
+    "fg": 22,
+    "btc_price": 64587,
+    "btc_dominance": 56.3,
+    "candidates": [
+      "MON",
+      "\u5e01\u5b89\u4eba\u751f",
+      "USDG",
+      "GRASS",
+      "XPL",
+      "JTO",
+      "KITE",
+      "ETH"
+    ],
+    "alert": "Extreme Fear (22/100) with improving trend and macro catalyst \u2014 historically strong contrarian buy zone"
   }
 ]
