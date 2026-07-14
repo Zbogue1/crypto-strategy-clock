@@ -1,29 +1,5 @@
 [
   {
-    "ts": "2026-07-13T00:09:17.016855+00:00",
-    "coin": "BTC",
-    "price": 63936,
-    "signal": "HOLD",
-    "confidence": 25,
-    "score": -0.3,
-    "fg": 28,
-    "btc_price": 63936,
-    "btc_dominance": 56.2,
-    "candidates": [
-      "MON",
-      "XPL",
-      "HTX",
-      "PENGU",
-      "USDG",
-      "DEXE",
-      "WLD",
-      "ETHFI",
-      "ZRO",
-      "GRASS"
-    ],
-    "alert": "No swing candidates meet minimum risk/reward and chart quality thresholds. All positions cash."
-  },
-  {
     "ts": "2026-07-13T01:09:11.272969+00:00",
     "coin": "BTC",
     "price": 63901,
@@ -877,5 +853,27 @@
       "KITE"
     ],
     "alert": "Extreme Fear combined with favorable CPI data creates a classic contrarian buying window \u2014 but stay disciplined with stops."
+  },
+  {
+    "ts": "2026-07-14T16:09:10.939983+00:00",
+    "coin": "ETH",
+    "price": 1872.39,
+    "signal": "BUY",
+    "confidence": 68,
+    "score": 1.45,
+    "fg": 22,
+    "btc_price": 64747,
+    "btc_dominance": 56.4,
+    "candidates": [
+      "MON",
+      "USDG",
+      "\u5e01\u5b89\u4eba\u751f",
+      "GRASS",
+      "JTO",
+      "XPL",
+      "KITE",
+      "ETH"
+    ],
+    "alert": "Extreme Fear + strong macro catalyst = classic contrarian entry window. Fear & Greed improving from 28 to 22 (trend: improving)."
   }
 ]
