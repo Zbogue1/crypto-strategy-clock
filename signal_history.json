@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-13T04:09:11.332395+00:00",
-    "coin": "JTO",
-    "price": 0.635358,
-    "signal": "HOLD",
-    "confidence": 32,
-    "score": -0.3,
-    "fg": 28,
-    "btc_price": 62731,
-    "btc_dominance": 56.0,
-    "candidates": [
-      "KITE",
-      "MON",
-      "XPL",
-      "JTO",
-      "PENGU",
-      "USDG",
-      "ARB",
-      "ETHFI",
-      "GRASS"
-    ],
-    "alert": null
-  },
-  {
     "ts": "2026-07-13T05:09:13.126805+00:00",
     "coin": "JTO",
     "price": 0.642201,
@@ -869,5 +846,27 @@
       "ETH"
     ],
     "alert": "Extreme Fear at 22 with improving trend and macro tailwind \u2014 high-conviction contrarian zone"
+  },
+  {
+    "ts": "2026-07-14T20:09:10.977202+00:00",
+    "coin": "ETH",
+    "price": 1874.76,
+    "signal": "BUY",
+    "confidence": 68,
+    "score": 1.45,
+    "fg": 22,
+    "btc_price": 64442,
+    "btc_dominance": 56.3,
+    "candidates": [
+      "MON",
+      "USDG",
+      "\u5e01\u5b89\u4eba\u751f",
+      "GRASS",
+      "XPL",
+      "PUMP",
+      "JTO",
+      "ETH"
+    ],
+    "alert": "Extreme Fear at 22 \u2014 historically one of the best buying windows, but discipline on stop-loss is critical"
   }
 ]
