@@ -1,32 +1,32 @@
 {
   "open_trade": {
     "coin": "ETH",
-    "entry_time": "2026-07-14T15:12:52.659803+00:00",
+    "entry_time": "2026-07-14T16:13:59.367448+00:00",
     "key_signals": [
       {
         "source": "Fear_Greed",
         "signal_type": "sentiment",
-        "description": "Extreme Fear at 22/100 with improving trend (from 28 yesterday) \u2014 historically a reliable buy signal with 83% win rate in our data."
+        "description": "Extreme Fear at 22/100 with improving trend \u2014 our most reliable sentiment signal with 83% historical win rate and +6.6% avg return."
       },
       {
         "source": "CoinTelegraph",
         "signal_type": "news",
-        "description": "Bitcoin jumps on lowest US CPI since 2020 \u2014 this macro catalyst is driving the broad market bounce and ETH's 5.5% surge. CoinTelegraph signals have 100% win rate."
+        "description": "Bitcoin jumps on lowest US CPI since 2020 \u2014 this macro catalyst has 100% win rate in our signal history with +12% avg returns."
       },
       {
         "source": "CoinDesk",
         "signal_type": "news",
-        "description": "U.S. June CPI fell 0.4%, removing near-term rate hike risk and supporting risk assets. CoinDesk signals have 75% win rate."
+        "description": "U.S. June CPI fell 0.4%, cooling rate hike fears \u2014 directly supportive of risk assets; CoinDesk signals have 75% historical win rate."
       },
       {
         "source": "volume_breakout",
         "signal_type": "technical",
-        "description": "ETH trading $12.4B in 24h volume while leading top-20 gains \u2014 volume-confirmed momentum is our highest-reliability signal at 100% win rate."
+        "description": "ETH 24h volume at $13.4B with +5.4% price move represents the strongest volume-confirmed bounce among all candidates \u2014 our highest-conviction signal type at 100% win rate."
       },
       {
         "source": "Blockworks",
         "signal_type": "news",
-        "description": "ETH derivatives reset coverage suggests positioning is cleaner after recent selloff, reducing overhang risk for a sustained bounce."
+        "description": "'ETH derivatives reset and the next retail trade' \u2014 confirms leveraged positions have been flushed, creating a cleaner setup for upside."
       }
     ],
     "confidence": 68
@@ -36,23 +36,23 @@
       "source": "Fear_Greed",
       "signal_type": "sentiment",
       "wins": 5,
-      "losses": 1,
-      "total": 6,
-      "win_rate": 0.833,
-      "total_pct": 39.56,
-      "avg_return": 6.5933,
-      "last_seen": "2026-07-14T13:12:44.876984+00:00"
+      "losses": 2,
+      "total": 7,
+      "win_rate": 0.714,
+      "total_pct": 14.91,
+      "avg_return": 2.13,
+      "last_seen": "2026-07-14T16:13:59.366339+00:00"
     },
     "CoinDesk__news": {
       "source": "CoinDesk",
       "signal_type": "news",
       "wins": 3,
-      "losses": 1,
-      "total": 4,
-      "win_rate": 0.75,
-      "total_pct": 7.58,
-      "avg_return": 1.895,
-      "last_seen": "2026-07-14T13:12:44.877002+00:00"
+      "losses": 2,
+      "total": 5,
+      "win_rate": 0.6,
+      "total_pct": -17.07,
+      "avg_return": -3.414,
+      "last_seen": "2026-07-14T16:13:59.366357+00:00"
     },
     "CoinTelegraph__onchain": {
       "source": "CoinTelegraph",
@@ -69,12 +69,12 @@
       "source": "volume_breakout",
       "signal_type": "technical",
       "wins": 3,
-      "losses": 0,
-      "total": 3,
-      "win_rate": 1.0,
-      "total_pct": 40.18,
-      "avg_return": 13.3933,
-      "last_seen": "2026-07-11T17:13:11.963558+00:00"
+      "losses": 1,
+      "total": 4,
+      "win_rate": 0.75,
+      "total_pct": 15.53,
+      "avg_return": 3.8825,
+      "last_seen": "2026-07-14T16:13:59.366361+00:00"
     },
     "Blockworks__macro": {
       "source": "Blockworks",
@@ -124,12 +124,12 @@
       "source": "CoinTelegraph",
       "signal_type": "news",
       "wins": 4,
-      "losses": 0,
-      "total": 4,
-      "win_rate": 1.0,
-      "total_pct": 48.06,
-      "avg_return": 12.015,
-      "last_seen": "2026-07-14T13:12:44.877006+00:00"
+      "losses": 1,
+      "total": 5,
+      "win_rate": 0.8,
+      "total_pct": 23.41,
+      "avg_return": 4.682,
+      "last_seen": "2026-07-14T16:13:59.366352+00:00"
     },
     "Chart Pattern Analysis__technical": {
       "source": "Chart Pattern Analysis",
@@ -163,8 +163,19 @@
       "total_pct": 18.14,
       "avg_return": 18.14,
       "last_seen": "2026-07-08T17:13:06.441992+00:00"
+    },
+    "Blockworks__news": {
+      "source": "Blockworks",
+      "signal_type": "news",
+      "wins": 0,
+      "losses": 1,
+      "total": 1,
+      "win_rate": 0.0,
+      "total_pct": -24.65,
+      "avg_return": -24.65,
+      "last_seen": "2026-07-14T16:13:59.366365+00:00"
     }
   },
-  "trade_count": 6,
-  "last_updated": "2026-07-14T15:12:52.659812+00:00"
+  "trade_count": 7,
+  "last_updated": "2026-07-14T16:13:59.367452+00:00"
 }
