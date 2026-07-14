@@ -1,5 +1,36 @@
 {
-  "open_trade": null,
+  "open_trade": {
+    "coin": "MON",
+    "entry_time": "2026-07-14T00:12:45.100730+00:00",
+    "key_signals": [
+      {
+        "source": "Fear_Greed",
+        "signal_type": "sentiment",
+        "description": "Extreme Fear at 22/100 with improving trend (up from yesterday's 28\u219222 reading error, weekly avg 23.9) \u2014 historically our most reliable contrarian buy signal with 80% win rate."
+      },
+      {
+        "source": "RSI",
+        "signal_type": "technical",
+        "description": "MON RSI at 36.85 approaching oversold territory, our second most reliable signal with 75% win rate and +5.5% average return."
+      },
+      {
+        "source": "CoinDesk",
+        "signal_type": "news",
+        "description": "Bitcoin panic-selling may be ending as sellers' profit margins disappear \u2014 suggests capitulation is nearing completion."
+      },
+      {
+        "source": "CoinTelegraph",
+        "signal_type": "news",
+        "description": "Bitcoin threatens $62K as Trump says US will 'run' Hormuz Strait \u2014 geopolitical catalyst adding downside pressure but may be priced in."
+      },
+      {
+        "source": "Chart Pattern Analysis",
+        "signal_type": "technical",
+        "description": "Bullish Marubozu candlestick on MON with 5-day momentum turning positive (+10.6%) despite weekly decline, indicating potential trend reversal."
+      }
+    ],
+    "confidence": 52
+  },
   "signal_stats": {
     "Fear_Greed__sentiment": {
       "source": "Fear_Greed",
@@ -135,5 +166,5 @@
     }
   },
   "trade_count": 5,
-  "last_updated": "2026-07-11T17:13:11.963595+00:00"
+  "last_updated": "2026-07-14T00:12:45.100736+00:00"
 }
