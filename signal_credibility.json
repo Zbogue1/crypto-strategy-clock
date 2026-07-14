@@ -1,58 +1,27 @@
 {
-  "open_trade": {
-    "coin": "MON",
-    "entry_time": "2026-07-14T00:12:45.100730+00:00",
-    "key_signals": [
-      {
-        "source": "Fear_Greed",
-        "signal_type": "sentiment",
-        "description": "Extreme Fear at 22/100 with improving trend (up from yesterday's 28\u219222 reading error, weekly avg 23.9) \u2014 historically our most reliable contrarian buy signal with 80% win rate."
-      },
-      {
-        "source": "RSI",
-        "signal_type": "technical",
-        "description": "MON RSI at 36.85 approaching oversold territory, our second most reliable signal with 75% win rate and +5.5% average return."
-      },
-      {
-        "source": "CoinDesk",
-        "signal_type": "news",
-        "description": "Bitcoin panic-selling may be ending as sellers' profit margins disappear \u2014 suggests capitulation is nearing completion."
-      },
-      {
-        "source": "CoinTelegraph",
-        "signal_type": "news",
-        "description": "Bitcoin threatens $62K as Trump says US will 'run' Hormuz Strait \u2014 geopolitical catalyst adding downside pressure but may be priced in."
-      },
-      {
-        "source": "Chart Pattern Analysis",
-        "signal_type": "technical",
-        "description": "Bullish Marubozu candlestick on MON with 5-day momentum turning positive (+10.6%) despite weekly decline, indicating potential trend reversal."
-      }
-    ],
-    "confidence": 52
-  },
+  "open_trade": null,
   "signal_stats": {
     "Fear_Greed__sentiment": {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "wins": 4,
+      "wins": 5,
       "losses": 1,
-      "total": 5,
-      "win_rate": 0.8,
-      "total_pct": 33.7,
-      "avg_return": 6.74,
-      "last_seen": "2026-07-11T17:13:11.963544+00:00"
+      "total": 6,
+      "win_rate": 0.833,
+      "total_pct": 39.56,
+      "avg_return": 6.5933,
+      "last_seen": "2026-07-14T13:12:44.876984+00:00"
     },
     "CoinDesk__news": {
       "source": "CoinDesk",
       "signal_type": "news",
-      "wins": 2,
+      "wins": 3,
       "losses": 1,
-      "total": 3,
-      "win_rate": 0.667,
-      "total_pct": 1.72,
-      "avg_return": 0.5733,
-      "last_seen": "2026-07-11T17:13:11.963561+00:00"
+      "total": 4,
+      "win_rate": 0.75,
+      "total_pct": 7.58,
+      "avg_return": 1.895,
+      "last_seen": "2026-07-14T13:12:44.877002+00:00"
     },
     "CoinTelegraph__onchain": {
       "source": "CoinTelegraph",
@@ -90,13 +59,13 @@
     "RSI__technical": {
       "source": "RSI",
       "signal_type": "technical",
-      "wins": 3,
+      "wins": 4,
       "losses": 1,
-      "total": 4,
-      "win_rate": 0.75,
-      "total_pct": 21.88,
-      "avg_return": 5.47,
-      "last_seen": "2026-07-11T17:13:11.963552+00:00"
+      "total": 5,
+      "win_rate": 0.8,
+      "total_pct": 27.74,
+      "avg_return": 5.548,
+      "last_seen": "2026-07-14T13:12:44.876997+00:00"
     },
     "CoinDesk__technical": {
       "source": "CoinDesk",
@@ -123,24 +92,24 @@
     "CoinTelegraph__news": {
       "source": "CoinTelegraph",
       "signal_type": "news",
-      "wins": 3,
+      "wins": 4,
       "losses": 0,
-      "total": 3,
+      "total": 4,
       "win_rate": 1.0,
-      "total_pct": 42.2,
-      "avg_return": 14.0667,
-      "last_seen": "2026-07-11T17:13:11.963555+00:00"
+      "total_pct": 48.06,
+      "avg_return": 12.015,
+      "last_seen": "2026-07-14T13:12:44.877006+00:00"
     },
     "Chart Pattern Analysis__technical": {
       "source": "Chart Pattern Analysis",
       "signal_type": "technical",
-      "wins": 0,
+      "wins": 1,
       "losses": 1,
-      "total": 1,
-      "win_rate": 0.0,
-      "total_pct": -20.32,
-      "avg_return": -20.32,
-      "last_seen": "2026-07-07T21:21:19.201233+00:00"
+      "total": 2,
+      "win_rate": 0.5,
+      "total_pct": -14.46,
+      "avg_return": -7.23,
+      "last_seen": "2026-07-14T13:12:44.877011+00:00"
     },
     "DeFiLlama__onchain": {
       "source": "DeFiLlama",
@@ -165,6 +134,6 @@
       "last_seen": "2026-07-08T17:13:06.441992+00:00"
     }
   },
-  "trade_count": 5,
-  "last_updated": "2026-07-14T00:12:45.100736+00:00"
+  "trade_count": 6,
+  "last_updated": "2026-07-14T13:12:44.877076+00:00"
 }
