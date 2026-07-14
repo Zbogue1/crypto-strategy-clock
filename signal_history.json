@@ -1,29 +1,5 @@
 [
   {
-    "ts": "2026-07-12T11:09:11.864110+00:00",
-    "coin": "ZRO",
-    "price": 0.885791,
-    "signal": "HOLD",
-    "confidence": 32,
-    "score": -0.15,
-    "fg": 26,
-    "btc_price": 63858,
-    "btc_dominance": 56.3,
-    "candidates": [
-      "USDG",
-      "VVV",
-      "HTX",
-      "XPL",
-      "MON",
-      "PENGU",
-      "TRUMP",
-      "ETHFI",
-      "ZRO",
-      "GRASS"
-    ],
-    "alert": "No swing candidates meet minimum quality threshold. All setups have conflicting signals or poor risk/reward. Staying in cash."
-  },
-  {
     "ts": "2026-07-12T12:09:10.829638+00:00",
     "coin": "ZRO",
     "price": 0.884128,
@@ -913,5 +889,26 @@
       "USDG"
     ],
     "alert": "Market in Extreme Fear (22/100) \u2014 all alt candidates in downtrends with no confirmed reversals. Avoid catching falling knives."
+  },
+  {
+    "ts": "2026-07-14T03:09:11.190774+00:00",
+    "coin": "MON",
+    "price": 0.02194249,
+    "signal": "HOLD",
+    "confidence": 32,
+    "score": 0.15,
+    "fg": 22,
+    "btc_price": 62442,
+    "btc_dominance": 56.1,
+    "candidates": [
+      "MON",
+      "KITE",
+      "GRASS",
+      "BONK",
+      "XPL",
+      "JTO",
+      "LIT"
+    ],
+    "alert": "Inflation report imminent \u2014 could trigger either capitulation (buy opportunity) or further selloff. Stay liquid."
   }
 ]
