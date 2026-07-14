@@ -1,29 +1,5 @@
 [
   {
-    "ts": "2026-07-12T18:09:16.360802+00:00",
-    "coin": "BTC",
-    "price": 64027,
-    "signal": "HOLD",
-    "confidence": 28,
-    "score": -0.3,
-    "fg": 26,
-    "btc_price": 64027,
-    "btc_dominance": 56.2,
-    "candidates": [
-      "USDG",
-      "MON",
-      "HTX",
-      "XPL",
-      "PENGU",
-      "TRUMP",
-      "VIRTUAL",
-      "ETHFI",
-      "ZRO",
-      "GRASS"
-    ],
-    "alert": "No quality swing trade setups identified. All candidates fail risk/reward or chart structure requirements. Staying in cash."
-  },
-  {
     "ts": "2026-07-12T19:09:11.392872+00:00",
     "coin": "ZRO",
     "price": 0.874205,
@@ -894,5 +870,26 @@
       "XPL"
     ],
     "alert": "Critical macro events imminent: CPI data release and Iran-Hormuz escalation could drive BTC below $60K. Avoid new entries until clarity emerges."
+  },
+  {
+    "ts": "2026-07-14T10:09:11.079372+00:00",
+    "coin": "BTC",
+    "price": 62629,
+    "signal": "HOLD",
+    "confidence": 25,
+    "score": -0.3,
+    "fg": 22,
+    "btc_price": 62629,
+    "btc_dominance": 56.1,
+    "candidates": [
+      "GRASS",
+      "MON",
+      "KITE",
+      "USDG",
+      "JTO",
+      "PENGU",
+      "XPL"
+    ],
+    "alert": "Iran/Hormuz conflict and CPI report create elevated crash risk in next 24 hours \u2014 avoid new positions until clarity emerges."
   }
 ]
