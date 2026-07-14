@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-07-14T05:09:10.951134+00:00",
-  "selected_coin": "MON",
-  "selected_coin_name": "Monad",
-  "selected_coin_price": 0.0220446,
+  "timestamp": "2026-07-14T06:09:11.127408+00:00",
+  "selected_coin": "JTO",
+  "selected_coin_name": "Jito",
+  "selected_coin_price": 0.641894,
   "confidence": 32,
-  "layman_headline": "Extreme fear grips the crypto market \u2014 patience is the best play right now.",
-  "layman_explanation": "The crypto market is deep in 'Extreme Fear' territory at 22/100, and nearly every altcoin is bleeding. Bitcoin is flat while altcoins are dropping 10-30% over the past week. While fear this extreme historically creates buying opportunities, none of the current candidates show strong enough technical setups \u2014 most are in confirmed downtrends with bearish chart structures. The best approach is to wait for a clear reversal signal before committing capital.",
-  "layman_action": "Stay in cash and watch the market. The fear is real but no coin is flashing a clean buy signal yet. Wait for a bounce confirmation before jumping in \u2014 catching a falling knife in this environment is risky.",
-  "expert_reasoning": "Every swing candidate suffers from bearish structure: all are below their major MAs, BTC dominance at 56.1% is squeezing altcoins, and the macro backdrop is risk-off with Fed rate hike fears. DEXE has momentum but RSI at 85 with a -16.7% drop today screams blow-off top reversal. GRASS dropped 32.6% in a week but has negative chart bias and poor risk/reward (0.69x). BONK's chart is strongly bearish (-1.40 score) with a bearish Marubozu confirming continued selling pressure. MON is the least bad option with a neutral chart bias and approaching oversold RSI, but the downtrend structure and unfavorable risk/reward ratio (0.79x) don't justify capital deployment. The Fear & Greed at 22 with an improving trend suggests we're near a bottom, but 'near' can mean days more of pain. Better to wait for confirmation.",
+  "layman_headline": "Extreme fear grips crypto \u2014 patience is the best trade right now.",
+  "layman_explanation": "The overall crypto market is in 'Extreme Fear' mode with a score of just 22 out of 100, and most altcoins have been selling off hard over the past week. Bitcoin is holding relatively flat around $62,600 but dominance is high at 56%, meaning money is flowing out of smaller coins and into Bitcoin. None of the swing trade candidates present a compelling enough setup with clear technical confirmation to justify risking capital today.",
+  "layman_action": "Stay on the sidelines and wait. Keep watching for altcoins that form clear bottoms with rising volume. The fear will eventually create real opportunities, but we're not there yet.",
+  "expert_reasoning": "Every candidate has significant flaws: DEXE is massively overbought (RSI 85) with a -17% single-day reversal \u2014 classic blow-off top risk. GRASS has dropped 32% in a week but RSI is only 47, meaning it hasn't reached true oversold territory and the risk/reward ratio is poor at 0.69x. BONK has a strongly bearish chart (-1.40 bias) with bearish marubozu candles and no identifiable support. MON is in a downtrend below all MAs with only a neutral chart bias. JTO is the best relative setup but RSI at 59 is actually slightly elevated, and the 7-day -16.7% drop without volume confirmation suggests further downside is possible. With BTC dominance at 56.1% and extreme fear persisting, altcoins face continued headwinds. The prudent move is to wait for a clearer reversal signal \u2014 ideally RSI dropping below 30 with a bullish candlestick pattern on volume.",
   "risk_factors": [
-    "US government moving $297M in seized crypto to Coinbase could trigger further sell pressure across the market",
-    "BTC dominance at 56.1% and rising means capital continues rotating out of alts \u2014 altcoin entries face structural headwinds",
-    "No volume breakout signals detected on any candidate \u2014 without volume confirmation, any bounce attempt is likely to fail"
+    "US government transferring $297M in seized crypto to Coinbase Prime could trigger significant sell pressure on BTC and cascade to alts",
+    "Rising Fed rate hike expectations ahead of inflation data could push risk assets lower",
+    "BTC dominance at 56.1% signals ongoing rotation out of altcoins \u2014 fighting this trend is dangerous"
   ],
   "watch_list": [
-    "BTC price action around $62,000 support \u2014 a breakdown below could trigger another wave of alt selling",
-    "Fear & Greed index movement \u2014 a sustained climb above 30 would signal improving conditions for entry",
-    "MON price approaching $0.019-0.020 support zone with RSI below 30 would create a much cleaner entry setup"
+    "Upcoming US inflation report \u2014 a hot print could accelerate the selloff while a cool print could spark relief rally",
+    "Whether JTO holds $0.60 support \u2014 a bounce here with volume would create a proper entry",
+    "Fear & Greed index trend \u2014 currently improving from 23.9 weekly average, watch for sustained recovery above 30"
   ],
-  "market_context": "The market is in Extreme Fear (22/100) with BTC flat at $62.7K while alts bleed heavily. High BTC dominance (56.1%) confirms capital is fleeing alts, and upcoming inflation data plus Fed rate hike fears are keeping risk appetite suppressed.",
-  "context_banner": "Extreme Fear creates opportunity, but without confirmed reversal signals on any candidate, discipline demands patience over premature entries.",
-  "btc_price": 62729,
+  "market_context": "Crypto markets are in Extreme Fear (22/100) with BTC flat around $62.6K and altcoins bleeding heavily. High BTC dominance at 56.1% and rising Fed rate hike bets create a hostile environment for altcoin swing trades.",
+  "context_banner": "Extreme Fear across crypto markets demands patience \u2014 no candidate offers a high-conviction entry with proper risk/reward today.",
+  "btc_price": 62599,
   "fear_greed": {
     "current": 22,
     "label": "Extreme Fear",
@@ -33,30 +33,30 @@
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Fear & Greed at 22 (Extreme Fear) with improving trend from 23.9 weekly avg \u2014 historically a contrarian buy zone but too early without technical confirmation."
+      "description": "Extreme Fear at 22/100 with improving trend suggests we're approaching a buying zone, but not yet at capitulation levels where contrarian entries have highest conviction."
     },
     {
       "source": "CoinTelegraph",
       "signal_type": "news",
-      "description": "US government moving $297M in seized BTC/ETH to Coinbase Prime creates overhang sell pressure and negative sentiment across the market."
-    },
-    {
-      "source": "RSI",
-      "signal_type": "technical",
-      "description": "Best candidates (MON 36.85, BONK 33.09) are approaching oversold but haven't reached extreme levels that historically trigger reliable bounces."
+      "description": "US government moved $297M in seized Bitcoin and Ether to Coinbase Prime, creating potential sell-side pressure that could push prices lower before any recovery."
     },
     {
       "source": "CoinDesk",
       "signal_type": "news",
-      "description": "Bitcoin slipping on rising July Fed rate hike bets ahead of inflation report \u2014 macro headwind suppressing risk appetite for crypto."
+      "description": "Bitcoin slipping as traders increase July Fed rate hike bets ahead of inflation report \u2014 macro headwind for all risk assets including crypto."
     },
     {
-      "source": "volume_breakout",
+      "source": "RSI",
       "signal_type": "technical",
-      "description": "No volume breakout signals detected on any candidate \u2014 absence of this historically 100% reliable signal argues against forcing an entry."
+      "description": "No candidate is truly oversold (RSI <30) except BONK at 33 which has terrible chart structure; best candidate JTO has RSI at 59 which is actually slightly elevated."
+    },
+    {
+      "source": "Chart Pattern Analysis",
+      "signal_type": "technical",
+      "description": "All candidates show bearish or neutral chart structures except DEXE (overbought blow-off) and JTO (slight bullish but with poor risk/reward ratio of 1.05x)."
     }
   ],
   "_mode": "HUNTING",
-  "exit_target": 0.025,
-  "stop_loss": 0.018
+  "exit_target": 0.69,
+  "stop_loss": 0.55
 }
