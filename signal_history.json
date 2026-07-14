@@ -1,29 +1,5 @@
 [
   {
-    "ts": "2026-07-13T03:09:13.874416+00:00",
-    "coin": "JTO",
-    "price": 0.63319,
-    "signal": "HOLD",
-    "confidence": 32,
-    "score": -0.15,
-    "fg": 28,
-    "btc_price": 63091,
-    "btc_dominance": 56.1,
-    "candidates": [
-      "MON",
-      "XPL",
-      "JTO",
-      "KITE",
-      "USDG",
-      "PENGU",
-      "TRUMP",
-      "ETHFI",
-      "ZRO",
-      "GRASS"
-    ],
-    "alert": "High BTC dominance and fear environment \u2014 altcoin entries carry elevated risk. Wait for clearer setups."
-  },
-  {
     "ts": "2026-07-13T04:09:11.332395+00:00",
     "coin": "JTO",
     "price": 0.635358,
@@ -871,5 +847,27 @@
       "ETH"
     ],
     "alert": null
+  },
+  {
+    "ts": "2026-07-14T19:09:10.961200+00:00",
+    "coin": "ETH",
+    "price": 1874.06,
+    "signal": "BUY",
+    "confidence": 68,
+    "score": 1.45,
+    "fg": 22,
+    "btc_price": 64528,
+    "btc_dominance": 56.3,
+    "candidates": [
+      "MON",
+      "USDG",
+      "\u5e01\u5b89\u4eba\u751f",
+      "GRASS",
+      "JTO",
+      "PUMP",
+      "XPL",
+      "ETH"
+    ],
+    "alert": "Extreme Fear at 22 with improving trend and macro tailwind \u2014 high-conviction contrarian zone"
   }
 ]
