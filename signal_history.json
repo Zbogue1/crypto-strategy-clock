@@ -1,29 +1,5 @@
 [
   {
-    "ts": "2026-07-12T14:09:20.400261+00:00",
-    "coin": "TRUMP",
-    "price": 1.57,
-    "signal": "HOLD",
-    "confidence": 32,
-    "score": -0.15,
-    "fg": 26,
-    "btc_price": 63956,
-    "btc_dominance": 56.2,
-    "candidates": [
-      "USDG",
-      "HTX",
-      "MON",
-      "XPL",
-      "PENGU",
-      "TRUMP",
-      "VVV",
-      "ETHFI",
-      "ZRO",
-      "GRASS"
-    ],
-    "alert": "Market in Fear territory with high BTC dominance \u2014 all swing candidates show weak setups. Patience recommended."
-  },
-  {
     "ts": "2026-07-12T15:09:12.668025+00:00",
     "coin": "BTC",
     "price": 64173,
@@ -906,5 +882,26 @@
       "XPL"
     ],
     "alert": "Market in Extreme Fear with government crypto transfers to Coinbase \u2014 elevated volatility expected. Wait for stabilization before deploying capital."
+  },
+  {
+    "ts": "2026-07-14T06:09:11.127408+00:00",
+    "coin": "JTO",
+    "price": 0.641894,
+    "signal": "HOLD",
+    "confidence": 32,
+    "score": 0.15,
+    "fg": 22,
+    "btc_price": 62599,
+    "btc_dominance": 56.1,
+    "candidates": [
+      "GRASS",
+      "DEXE",
+      "MON",
+      "BONK",
+      "USDG",
+      "XPL",
+      "JTO"
+    ],
+    "alert": "US government moved $297M in seized BTC/ETH to Coinbase Prime \u2014 potential large-scale sell pressure incoming. Fed rate hike expectations rising ahead of inflation data."
   }
 ]
