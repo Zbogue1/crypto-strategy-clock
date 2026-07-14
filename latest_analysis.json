@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-07-14T14:09:10.895306+00:00",
+  "timestamp": "2026-07-14T15:09:11.165102+00:00",
   "selected_coin": "ETH",
   "selected_coin_name": "Ethereum",
-  "selected_coin_price": 63652,
-  "confidence": 35,
-  "layman_headline": "Extreme fear grips crypto markets \u2014 patience beats impulse right now.",
-  "layman_explanation": "The crypto market is in 'Extreme Fear' mode with a score of just 22/100, meaning most people are scared and selling. Bitcoin just lost $424 million from ETFs and geopolitical tensions between the U.S. and Iran are adding pressure. While fear can create buying opportunities, none of the coins on our watchlist present a clean, high-conviction setup with good risk/reward right now. The best candidates are either already overbought (LIT at RSI 70), have weak chart structures (GRASS, MON below all moving averages), or lack sufficient data (XPL).",
-  "layman_action": "Stay in cash and wait. The market is fearful but hasn't shown a clear reversal signal yet. Watch for ETH or a quality alt to form a proper bottom with volume confirmation before entering.",
-  "expert_reasoning": "I evaluated all 7 swing candidates and found no high-confidence setup. MON (RSI 36.8) is the most oversold but has a neutral chart bias, is below all MAs, and the risk/reward to nearest support/resistance is only 0.79x \u2014 below our 2x threshold. GRASS dropped 27% in 7 days which is a mean-reversion signal, but its chart bias is bearish (-0.45) and it's below all MAs with poor R/R of 0.69x. LIT has strong 5-day momentum (+53%) but RSI at 70 is overbought \u2014 chasing here violates our discipline. JTO's RSI at 59 contradicts its -17% weekly drop, suggesting the bounce may already be priced in. BTC dominance at 56% continues to crush alts. With ETF outflows of $424M and U.S.-Iran escalation creating macro headwinds, the prudent move is to wait for a cleaner setup.",
+  "selected_coin_price": 2480.0,
+  "confidence": 68,
+  "layman_headline": "Ethereum surges 5.5% as cooling inflation data sparks hope \u2014 time to ride the bounce.",
+  "layman_explanation": "The crypto market is in 'Extreme Fear' territory at 22/100, which historically has been a great time to buy. Ethereum just posted the strongest 24-hour gain among major coins at +5.5%, fueled by a surprisingly low U.S. CPI print that eases fears of rate hikes. While the smaller altcoin candidates on the watchlist have weaker charts and less liquidity, ETH has $12.4 billion in daily volume and the largest DeFi ecosystem backing it up.",
+  "layman_action": "Consider a modest position in Ethereum around $2,450 with a clear stop-loss at $2,300. If it reaches $2,750, take profits. Don't go all-in \u2014 the market is still nervous.",
+  "expert_reasoning": "None of the seven swing candidates offer a compelling risk/reward: MON and XPL are in downtrends below all MAs, KITE just dumped 8% today, GRASS has no chart data, JTO's RSI at 59 contradicts its -16% weekly drop suggesting distribution, and BinanceLife is already extended at +11% daily. ETH stands out from the top-20 overview with the strongest momentum (+5.5% 24h, +6.1% 7d), and the CPI print is a high-reliability catalyst per our CoinTelegraph and CoinDesk signal credibility data. Extreme Fear at 22 with an improving trend (up from 28 yesterday) adds conviction. The $40.8B ETH DeFi TVL provides fundamental support. Entry near $2,450 targets the $2,750 area for ~12% upside against a $2,300 stop for roughly 2:1 risk/reward.",
   "risk_factors": [
-    "U.S.-Iran geopolitical escalation could trigger a broader risk-off sell-off across crypto",
-    "Bitcoin ETF outflows of $424M signal institutional distribution that may continue",
-    "BTC dominance at 56% continues to squeeze altcoin valuations \u2014 entering alts prematurely is a capital trap"
+    "BTC dominance at 56.2% is high and rising \u2014 capital may continue flowing to BTC over alts including ETH",
+    "A large 2018 Bitcoin whale reportedly moving $188M could trigger sell pressure across the market",
+    "CPI relief rally could be short-lived if Fed officials push back on rate cut expectations"
   ],
   "watch_list": [
-    "ETH price action \u2014 if it holds above its 20-day SMA after today's 5.4% surge, it could signal a legitimate reversal worth entering",
-    "Fear & Greed Index trend \u2014 currently improving from 28 to 22 (wait, actually declining). Watch for a bottoming pattern below 20 or a sharp reversal above 30",
-    "BTC reaction to $65,000 resistance \u2014 a breakout could lift the entire market and create clean alt setups"
+    "Fed officials' commentary in the next 48 hours responding to the CPI print \u2014 hawkish pushback would reverse the rally",
+    "BTC price action at $65,000 resistance \u2014 failure there caps ETH upside",
+    "ETH/BTC ratio \u2014 if ETH continues outperforming BTC, confirms rotation into alts is beginning"
   ],
-  "market_context": "Crypto markets are gripped by extreme fear (22/100) amid U.S.-Iran tensions and $424M in Bitcoin ETF outflows. BTC holds $63.6K but altcoins are bleeding with high BTC dominance at 56%.",
-  "context_banner": "Extreme fear without a clear technical bottom \u2014 capital preservation is the highest-edge play right now.",
-  "btc_price": 63652,
+  "market_context": "The market is in Extreme Fear (22/100) but showing early signs of recovery after a cooler-than-expected CPI print. BTC bounced to $64,191 (+2.4%) while ETH leads with +5.5%, suggesting risk appetite is cautiously returning.",
+  "context_banner": "Cooling U.S. inflation data ignites a risk-on bounce in Extreme Fear conditions \u2014 ETH leads the recovery with the strongest momentum among majors.",
+  "btc_price": 64191,
   "fear_greed": {
     "current": 22,
     "label": "Extreme Fear",
@@ -28,35 +28,35 @@
     "week_avg": 23.9,
     "trend": "improving"
   },
-  "btc_dominance": 56.0,
+  "btc_dominance": 56.2,
   "key_signals": [
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Extreme Fear at 22/100 suggests potential contrarian opportunity, but the trend is still deteriorating from last week's 23.9 average \u2014 not yet bottomed."
+      "description": "Extreme Fear at 22/100 with improving trend (from 28 yesterday) \u2014 historically a reliable buy signal with 83% win rate in our data."
     },
     {
-      "source": "CryptoSlate",
+      "source": "CoinTelegraph",
       "signal_type": "news",
-      "description": "Bitcoin ETFs lost $424M in outflows, wiping out last week's gains \u2014 institutional money is exiting, removing a key bid from the market."
+      "description": "Bitcoin jumps on lowest US CPI since 2020 \u2014 this macro catalyst is driving the broad market bounce and ETH's 5.5% surge. CoinTelegraph signals have 100% win rate."
     },
     {
       "source": "CoinDesk",
       "signal_type": "news",
-      "description": "U.S.-Iran escalation is weighing on bitcoin and stocks as oil climbs, adding macro headwinds to an already fragile market."
+      "description": "U.S. June CPI fell 0.4%, removing near-term rate hike risk and supporting risk assets. CoinDesk signals have 75% win rate."
     },
     {
-      "source": "RSI",
+      "source": "volume_breakout",
       "signal_type": "technical",
-      "description": "Best candidate MON has RSI 36.8 (approaching oversold) but chart structure is bearish with price below all MAs and poor 0.79x risk/reward ratio."
+      "description": "ETH trading $12.4B in 24h volume while leading top-20 gains \u2014 volume-confirmed momentum is our highest-reliability signal at 100% win rate."
     },
     {
-      "source": "CoinDesk",
-      "signal_type": "macro",
-      "description": "U.S. June CPI fell 0.4%, which is moderately positive for risk assets but not enough to offset geopolitical headwinds in the near term."
+      "source": "Blockworks",
+      "signal_type": "news",
+      "description": "ETH derivatives reset coverage suggests positioning is cleaner after recent selloff, reducing overhang risk for a sustained bounce."
     }
   ],
   "_mode": "HUNTING",
-  "exit_target": null,
-  "stop_loss": null
+  "exit_target": 2750.0,
+  "stop_loss": 2300.0
 }
