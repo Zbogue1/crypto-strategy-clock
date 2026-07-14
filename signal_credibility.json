@@ -1,5 +1,36 @@
 {
-  "open_trade": null,
+  "open_trade": {
+    "coin": "ETH",
+    "entry_time": "2026-07-14T15:12:52.659803+00:00",
+    "key_signals": [
+      {
+        "source": "Fear_Greed",
+        "signal_type": "sentiment",
+        "description": "Extreme Fear at 22/100 with improving trend (from 28 yesterday) \u2014 historically a reliable buy signal with 83% win rate in our data."
+      },
+      {
+        "source": "CoinTelegraph",
+        "signal_type": "news",
+        "description": "Bitcoin jumps on lowest US CPI since 2020 \u2014 this macro catalyst is driving the broad market bounce and ETH's 5.5% surge. CoinTelegraph signals have 100% win rate."
+      },
+      {
+        "source": "CoinDesk",
+        "signal_type": "news",
+        "description": "U.S. June CPI fell 0.4%, removing near-term rate hike risk and supporting risk assets. CoinDesk signals have 75% win rate."
+      },
+      {
+        "source": "volume_breakout",
+        "signal_type": "technical",
+        "description": "ETH trading $12.4B in 24h volume while leading top-20 gains \u2014 volume-confirmed momentum is our highest-reliability signal at 100% win rate."
+      },
+      {
+        "source": "Blockworks",
+        "signal_type": "news",
+        "description": "ETH derivatives reset coverage suggests positioning is cleaner after recent selloff, reducing overhang risk for a sustained bounce."
+      }
+    ],
+    "confidence": 68
+  },
   "signal_stats": {
     "Fear_Greed__sentiment": {
       "source": "Fear_Greed",
@@ -135,5 +166,5 @@
     }
   },
   "trade_count": 6,
-  "last_updated": "2026-07-14T13:12:44.877076+00:00"
+  "last_updated": "2026-07-14T15:12:52.659812+00:00"
 }
