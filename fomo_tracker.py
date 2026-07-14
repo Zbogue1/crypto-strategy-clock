@@ -363,6 +363,26 @@ def _parse_relayed_signal_fallback(raw_text: str) -> dict:
     }
 
 
+def _lookup_contract_by_symbol(symbol: str) -> Optional[str]:
+    """Search DexScreener for a Solana token by symbol; return the highest-liquidity mint address."""
+    try:
+        r = requests.get(
+            f"https://api.dexscreener.com/latest/dex/search/?q={symbol}",
+            timeout=8, headers=HEADERS,
+        )
+        if r.status_code != 200:
+            return None
+        pairs = r.json().get("pairs") or []
+        sol_pairs = [p for p in pairs if (p.get("chainId") or "").lower() == "solana"]
+        if not sol_pairs:
+            return None
+        best = sorted(sol_pairs, key=lambda p: (p.get("liquidity") or {}).get("usd", 0) or 0, reverse=True)[0]
+        return (best.get("baseToken") or {}).get("address")
+    except Exception as e:
+        log.debug(f"DexScreener symbol lookup failed for {symbol}: {e}")
+        return None
+
+
 def parse_relayed_signal(raw_text: str) -> dict:
     """
     Interpret a manually-relayed message (pasted/forwarded email like a Solscan
@@ -381,25 +401,37 @@ def parse_relayed_signal(raw_text: str) -> dict:
         if w.get("alias"):
             known_aliases.append(w["alias"])
 
-    system = ("You extract a structured Solana trading signal from a message a user "
-              "pasted into Telegram -- usually a forwarded wallet-alert email (e.g. from "
-              "Solscan) showing balance changes, or sometimes just a quick note in their "
-              "own words. Identify which wallet/trader is involved, which token was bought "
-              "or sold, and the direction. In balance-change style emails, a green/positive "
-              "entry is a token received and a red/negative entry is a token sent; SOL, "
-              "USDC, and USDT are quote currencies, not the token being traded -- the "
-              "actual token is whichever side is NOT one of those. Respond ONLY with valid JSON.")
+    system = (
+        "You extract a structured Solana trading signal from a message a user pasted into "
+        "Telegram -- usually a forwarded wallet-alert email (e.g. from Solscan or Helius) "
+        "showing balance changes, or sometimes just a quick note in their own words.\n\n"
+        "KEY RULES:\n"
+        "- In balance-change emails, a green/positive entry means tokens RECEIVED (BUY), "
+        "a red/negative entry means tokens SENT (SELL).\n"
+        "- SOL, USDC, and USDT are QUOTE currencies -- they are never the token being traded. "
+        "The actual token is whichever balance change is NOT one of those.\n"
+        "- If the ONLY balance changes are SOL/USDC/USDT (a pure transfer with no other token), "
+        'set is_noise to true and action to "UNCLEAR".\n'
+        "- If a token symbol is visible but the mint address is not, put the symbol in "
+        "token_symbol and leave contract_address null.\n"
+        "- Look for Solana mint addresses: base58 strings of 32-44 characters that are NOT "
+        "in the quote mint list. Common quote mints: So111...112 (SOL), EPjFW...Dt1v (USDC), "
+        "Es9vM...NYB (USDT).\n"
+        "Respond ONLY with valid JSON."
+    )
 
     prompt = (
         f"Known wallet aliases already tracked: {', '.join(known_aliases) or 'none'}\n\n"
         f"Message to parse:\n---\n{raw_text}\n---\n\n"
         "Respond with this JSON structure:\n"
         "{\n"
-        '  "wallet_alias": "closest matching known alias, or the name mentioned if not in the known list, or null if no wallet/trader is identifiable",\n'
+        '  "wallet_alias": "closest matching known alias, or name mentioned, or null",\n'
         '  "action": "BUY" or "SELL" or "UNCLEAR",\n'
-        '  "contract_address": "the base58 Solana mint address of the token being bought/sold (not SOL/USDC/USDT), or null if not identifiable",\n'
+        '  "contract_address": "base58 Solana mint address of the non-quote token, or null",\n'
+        '  "token_symbol": "token ticker/symbol if visible but no mint address found, or null",\n'
+        '  "is_noise": true if this is a pure SOL/USDC/USDT transfer with no trading token,\n'
         '  "confidence": "high" or "low",\n'
-        '  "notes": "one short sentence on anything ambiguous or worth flagging"\n'
+        '  "notes": "one short sentence on anything ambiguous"\n'
         "}"
     )
 
@@ -440,8 +472,29 @@ def handle_relayed_text_message(message: dict):
     alias      = parsed.get("wallet_alias")
     action     = (parsed.get("action") or "UNCLEAR").upper()
     contract   = parsed.get("contract_address")
+    symbol     = parsed.get("token_symbol")
     confidence = parsed.get("confidence", "low")
     notes      = parsed.get("notes", "")
+    is_noise   = parsed.get("is_noise", False)
+
+    # Pure SOL/USDC/USDT transfer — not a trade, silently ignore
+    if is_noise or (action == "UNCLEAR" and not contract and not symbol):
+        log.info("FOMO: relayed message is noise (pure quote transfer), ignoring silently")
+        return
+
+    # Symbol known but no contract — try DexScreener lookup
+    if not contract and symbol:
+        log.info(f"FOMO: no contract in relayed message, trying DexScreener lookup for {symbol}")
+        contract = _lookup_contract_by_symbol(symbol)
+        if contract:
+            log.info(f"FOMO: resolved {symbol} → {contract}")
+        else:
+            send_telegram(
+                f"\U0001f914 <b>Couldn't find contract for {symbol}.</b>\n"
+                + (f"Notes: {notes}\n" if notes else "")
+                + f"Forward the Solscan tx or paste the mint address directly."
+            )
+            return
 
     if action == "UNCLEAR" or not contract:
         send_telegram(
@@ -1357,7 +1410,7 @@ def register_alchemy_webhook(wallet_address: str, webhook_url: str) -> Optional[
         )
         if r.status_code in (200, 201):
             webhook_id = r.json().get("data", {}).get("id")
-            log.info(f"Alchemy webhook registered: {wallet_address[:10]}... → {webhook_id}")
+            log.info("Alchemy webhook registered: %s... -> %s", wallet_address[:10], webhook_id)
             return webhook_id
         else:
             log.warning(f"Alchemy webhook registration failed: {r.status_code} {r.text[:120]}")
