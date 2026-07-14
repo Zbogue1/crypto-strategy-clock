@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-07-14T17:09:11.201745+00:00",
+  "timestamp": "2026-07-14T18:09:10.950879+00:00",
   "selected_coin": "ETH",
   "selected_coin_name": "Ethereum",
-  "selected_coin_price": 1866.88,
-  "confidence": 62,
-  "layman_headline": "Extreme fear in crypto markets creates a buying window for Ethereum as BTC bounces on cool inflation data.",
-  "layman_explanation": "The crypto market is in 'Extreme Fear' mode with a score of just 22 out of 100 \u2014 historically one of the best times to buy. Bitcoin just jumped on a CPI inflation print that was the lowest since 2020, which is very bullish for risk assets. Ethereum is up over 5% today and leading the major altcoins higher, with strong volume and institutional news flow around tokenization and DeFi. With $41 billion locked in Ethereum's DeFi ecosystem and major banks moving toward tokenized finance on Ethereum rails, the fundamental story is solid.",
-  "layman_action": "Consider a cautious entry into Ethereum around $1,850-$1,870. Set a stop-loss at $1,740 (about 6% downside) and look to take profits near $2,050 (about 10% upside). This is a risk-managed bet that fear is overdone.",
-  "expert_reasoning": "In extreme fear environments (F&G=22), large-cap assets like ETH offer the best risk-adjusted bounce potential. ETH is 62% off ATH, meaning significant upside exists on any sentiment normalization. Today's CPI-driven rally is the first clear macro catalyst in weeks \u2014 CoinTelegraph reports (80% win rate signal) confirm BTC jumped on the data. The Blockworks 'ETH derivatives reset' headline suggests short positioning is being unwound, which could fuel further upside. The other swing candidates \u2014 MON, GRASS, XPL, KITE \u2014 all have bearish chart structures (below all MAs), poor risk/reward ratios (<1.0x), and are small-cap tokens that underperform during high BTC dominance periods (56.3%). JTO has RSI at 59 already. ETH's massive TVL ($41B) and institutional adoption news (EthSystems targeting banks, tokenization momentum) provide a fundamental floor.",
+  "selected_coin_price": 1869.07,
+  "confidence": 68,
+  "layman_headline": "Ethereum looks beaten down enough to buy during extreme market fear.",
+  "layman_explanation": "The entire crypto market is gripped by extreme fear (22/100), which historically has been a good time to buy quality assets. Ethereum just bounced 6.3% in 24 hours after weeks of selling, and its RSI at 35 shows it's near oversold territory. Bitcoin jumped on the lowest US CPI reading since 2020, which is bullish for all risk assets. Ethereum is the safest large-cap altcoin play to catch a relief rally from these depressed levels.",
+  "layman_action": "Consider a small position in Ethereum around $1,830, with a firm stop-loss at $1,700. If it reaches $2,050, take profits. Don't go all-in \u2014 the market is still fearful for a reason.",
+  "expert_reasoning": "ETH RSI at 35.01 is approaching oversold territory \u2014 a signal type with 80% historical win rate in our tracked trades. The Bullish Marubozu candle pattern shows strong buying conviction with no upper/lower wick pushback. Fear & Greed at 22 (Extreme Fear) with an improving trend from 23.9 weekly average aligns with contrarian entry timing \u2014 another historically reliable signal at 71% win rate. The CPI catalyst provides macro tailwind, and ETH derivatives reset (Blockworks) suggests the leverage overhang has cleared. Support at $1,700 provides a clean stop-loss level with ~7% downside risk vs ~12% upside to $2,050 target, offering acceptable risk/reward. High BTC dominance at 56.3% is a headwind for alts, but ETH's massive TVL moat and institutional-grade liquidity make it the best risk-adjusted alt play.",
   "risk_factors": [
-    "BTC dominance at 56.3% means capital is flowing to Bitcoin over alts \u2014 ETH could lag if this trend persists",
-    "BTC failing to hold $64K (as CoinTelegraph warns) could trigger another leg down across all crypto",
-    "Macro uncertainty remains \u2014 one good CPI print doesn't guarantee a sustained risk-on environment"
+    "BTC dominance at 56.3% continues to compress altcoin performance \u2014 ETH could underperform even if BTC rallies",
+    "Chart structure remains bearish (below all major MAs) \u2014 this bounce could be a dead cat bounce in a larger downtrend",
+    "Mizuho downgrade of Circle and JPMorgan concerns about Hyperliquid threatening USDC economics could create negative sentiment spillover for the broader ETH ecosystem"
   ],
   "watch_list": [
-    "BTC price action at $64,000-$65,000 resistance \u2014 failure here invalidates the rally thesis",
-    "Fear & Greed index trend \u2014 currently improving from 28 to 22 weekly, needs to continue recovering above 30",
-    "ETH/BTC ratio \u2014 if ETH continues outperforming BTC, it confirms alt rotation is beginning"
+    "Whether ETH can reclaim and hold the $1,800 resistance level on daily close \u2014 failure here invalidates the bounce thesis",
+    "BTC price action around $64,500-$65,000 \u2014 rejection here could drag all alts back down",
+    "Fear & Greed index movement over next 48h \u2014 continued improvement toward 30+ would confirm sentiment turning"
   ],
-  "market_context": "Crypto is in Extreme Fear (22/100) but showing the first signs of recovery after a lowest-since-2020 US CPI print sparked a broad rally. BTC dominance remains elevated at 56.3%, meaning alts need a strong catalyst to outperform \u2014 today's ETH outperformance (+5.4% vs BTC's +3.7%) is an encouraging start.",
-  "context_banner": "Lowest US CPI since 2020 sparks a crypto relief rally in extreme fear \u2014 Ethereum leads with 5.4% gains as institutional tokenization momentum accelerates.",
-  "btc_price": 64587,
+  "market_context": "The crypto market is in Extreme Fear (22/100) but showing early signs of recovery after the lowest US CPI print since 2020 sparked a broad risk-on move. BTC is up 4.1% and ETH up 6.3% in 24h, suggesting a potential relief rally from deeply oversold conditions.",
+  "context_banner": "Extreme Fear combined with a macro-bullish CPI catalyst and oversold RSI creates a textbook contrarian entry opportunity in Ethereum.",
+  "btc_price": 64508,
   "fear_greed": {
     "current": 22,
     "label": "Extreme Fear",
@@ -31,32 +31,32 @@
   "btc_dominance": 56.3,
   "key_signals": [
     {
+      "source": "RSI",
+      "signal_type": "technical",
+      "description": "ETH RSI at 35.01 approaching oversold \u2014 historically an 80% win-rate signal in our tracked trades, indicating high probability of a bounce."
+    },
+    {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Extreme Fear at 22 with improving trend from weekly average of 23.9 \u2014 historically among the best contrarian entry windows with 71% win rate in our data."
+      "description": "Market at Extreme Fear (22/100) with improving trend \u2014 historically a 71% win-rate contrarian buy signal when paired with quality assets."
     },
     {
       "source": "CoinTelegraph",
       "signal_type": "news",
-      "description": "Bitcoin jumped on lowest US CPI since 2020 \u2014 strong macro catalyst for risk assets. CoinTelegraph signals carry 80% win rate in our tracking."
+      "description": "Bitcoin jumped on lowest US CPI since 2020 \u2014 macro tailwind that could sustain a multi-day relief rally across crypto, especially ETH."
     },
     {
-      "source": "RSI",
+      "source": "Blockworks",
+      "signal_type": "macro",
+      "description": "ETH derivatives reset reported \u2014 suggests leverage overhang has cleared, creating cleaner conditions for a genuine price move higher."
+    },
+    {
+      "source": "volume_breakout",
       "signal_type": "technical",
-      "description": "ETH is rallying hard (+5.4% 24h) from depressed levels, 62% below ATH \u2014 significant mean-reversion upside. RSI signals carry 80% win rate."
-    },
-    {
-      "source": "CoinDesk",
-      "signal_type": "news",
-      "description": "Multiple institutional adoption stories \u2014 EthSystems targeting banks with blockchain privacy, Fidelity on tokenization for pension funds, US/UK aligning rules for tokenized finance \u2014 all bullish for ETH ecosystem."
-    },
-    {
-      "source": "DeFiLlama",
-      "signal_type": "onchain",
-      "description": "Ethereum DeFi TVL stable at $41B \u2014 by far the largest ecosystem, providing a strong fundamental floor and institutional relevance that smaller candidates lack."
+      "description": "ETH 24h volume at $13.2B with a 6.3% surge and Bullish Marubozu candle \u2014 strong volume-confirmed buying conviction on the daily."
     }
   ],
   "_mode": "HUNTING",
   "exit_target": 2050.0,
-  "stop_loss": 1740.0
+  "stop_loss": 1700.0
 }
