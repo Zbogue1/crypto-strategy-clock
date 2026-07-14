@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-12T08:09:11.791507+00:00",
-    "coin": "ZEC",
-    "price": 0.0,
-    "signal": "HOLD",
-    "confidence": 25,
-    "score": -0.3,
-    "fg": 26,
-    "btc_price": 63958,
-    "btc_dominance": 56.3,
-    "candidates": [
-      "USDG",
-      "GRASS",
-      "VVV",
-      "XPL",
-      "JTO",
-      "MON",
-      "BONK",
-      "ETHFI",
-      "ZRO"
-    ],
-    "alert": "No quality swing setups available. All candidates fail risk/reward or chart structure criteria. Staying in cash."
-  },
-  {
     "ts": "2026-07-12T09:09:13.004754+00:00",
     "coin": "ZRO",
     "price": 0.89044,
@@ -921,5 +898,26 @@
       "ETHFI"
     ],
     "alert": "BTC threatening $62K support with geopolitical headwinds \u2014 avoid new altcoin entries until BTC stabilizes."
+  },
+  {
+    "ts": "2026-07-14T00:09:10.908408+00:00",
+    "coin": "MON",
+    "price": 0.02216017,
+    "signal": "BUY",
+    "confidence": 52,
+    "score": 0.45,
+    "fg": 22,
+    "btc_price": 62226,
+    "btc_dominance": 56.0,
+    "candidates": [
+      "MON",
+      "KITE",
+      "GRASS",
+      "LIT",
+      "BONK",
+      "VELVET",
+      "JTO"
+    ],
+    "alert": "Geopolitical risk elevated \u2014 Trump's Hormuz Strait comments adding volatility. Use tight stops."
   }
 ]
