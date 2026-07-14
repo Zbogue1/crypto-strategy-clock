@@ -1,5 +1,5 @@
 {
-  "cash": 719.6347,
+  "cash": 786.8481,
   "holdings": [
     {
       "coin_ticker": "GRASS",
@@ -20,26 +20,26 @@
     {
       "coin_ticker": "MON",
       "coin_id": "mon",
-      "units": 5724.820703090274,
+      "units": 2862.410351545137,
       "entry_price": 0.02216017,
       "entry_date": "2026-07-14T00:12:45.100157+00:00",
       "entry_signal": "BUY",
       "entry_confidence": 52,
-      "allocated_usd": 126.99,
-      "fee_paid": 0.127,
+      "allocated_usd": 63.495,
+      "fee_paid": 0.0635,
       "exit_target": 0.0248,
-      "stop_loss": 0.0183,
+      "stop_loss": 0.02216017,
       "entry_target": 0.0215,
       "expected_days": 7,
-      "partial_taken": false
+      "partial_taken": true
     }
   ],
-  "realized_pnl": -3.4953,
+  "realized_pnl": 0.2231,
   "peak_value": 1032.0739,
-  "total_trades": 8,
-  "winning_trades": 5,
+  "total_trades": 9,
+  "winning_trades": 6,
   "losing_trades": 3,
-  "total_fees": 2.0681,
+  "total_fees": 2.1354,
   "trade_history": [
     {
       "trade_num": 1,
@@ -239,6 +239,29 @@
       "hit_target": false,
       "hit_stop": true,
       "result": "LOSS"
+    },
+    {
+      "trade_num": 9,
+      "coin_ticker": "MON",
+      "coin_id": "mon",
+      "entry_price": 0.02216017,
+      "entry_date": "2026-07-14T00:12:45.100157+00:00",
+      "entry_signal": "BUY",
+      "entry_confidence": 52,
+      "allocated_usd": 63.495,
+      "exit_price": 0.02350492,
+      "exit_date": "2026-07-14T13:12:44.876189+00:00",
+      "exit_signal": "PARTIAL",
+      "exit_reason": "partial_take_50pct",
+      "units": 2862.410351545137,
+      "gross_proceeds": 67.2807,
+      "fees_total": 0.1308,
+      "net_proceeds": 67.2134,
+      "profit_usd": 3.7184,
+      "profit_pct": 5.86,
+      "days_held": 0.54,
+      "exit_target": 0.0248,
+      "result": "WIN"
     }
   ],
   "started_at": "2026-06-27T00:00:00+00:00",
