@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-12T12:09:10.829638+00:00",
-    "coin": "ZRO",
-    "price": 0.884128,
-    "signal": "HOLD",
-    "confidence": 32,
-    "score": -0.15,
-    "fg": 26,
-    "btc_price": 63938,
-    "btc_dominance": 56.2,
-    "candidates": [
-      "MON",
-      "USDG",
-      "GRASS",
-      "HTX",
-      "XPL",
-      "VVV",
-      "PENGU",
-      "ETHFI",
-      "ZRO"
-    ],
-    "alert": "No high-conviction setups detected. All candidates lack confirmed reversal signals. Staying in cash."
-  },
-  {
     "ts": "2026-07-12T13:09:14.207538+00:00",
     "coin": "ZRO",
     "price": 0.883453,
@@ -910,5 +887,26 @@
       "LIT"
     ],
     "alert": "Inflation report imminent \u2014 could trigger either capitulation (buy opportunity) or further selloff. Stay liquid."
+  },
+  {
+    "ts": "2026-07-14T04:09:11.086505+00:00",
+    "coin": "MON",
+    "price": 0.02202126,
+    "signal": "HOLD",
+    "confidence": 32,
+    "score": -0.15,
+    "fg": 22,
+    "btc_price": 62521,
+    "btc_dominance": 56.1,
+    "candidates": [
+      "KITE",
+      "GRASS",
+      "MON",
+      "BONK",
+      "XPL",
+      "USDG",
+      "JTO"
+    ],
+    "alert": "US government moved $297M in seized BTC/ETH to Coinbase Prime \u2014 potential sell pressure overhang. Monitor closely."
   }
 ]
