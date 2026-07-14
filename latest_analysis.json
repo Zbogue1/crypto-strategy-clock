@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-07-14T13:09:11.087657+00:00",
+  "timestamp": "2026-07-14T14:09:10.895306+00:00",
   "selected_coin": "ETH",
   "selected_coin_name": "Ethereum",
-  "selected_coin_price": 0.0,
-  "confidence": 28,
-  "layman_headline": "Extreme fear grips the market \u2014 patience is the best trade right now.",
-  "layman_explanation": "The crypto market is deeply fearful with a Fear & Greed score of just 22, and Bitcoin just lost $424M from ETFs. While BTC is showing a small bounce today, most altcoins are still in downtrends with bearish chart structures. None of the swing candidates present a clean setup with good risk/reward and confirmed technical signals. Jumping in now without a strong catalyst would be catching a falling knife.",
-  "layman_action": "Stay in cash and wait. The market is fearful but hasn't shown clear reversal signals yet. Watch for a confirmed bounce with volume before committing capital.",
-  "expert_reasoning": "Scanning all seven candidates reveals no high-conviction setup. JTO has the best chart structure (slightly bullish, above SMA20) but RSI at 59 is elevated and the doji candle signals indecision \u2014 not a strong entry. CRV's 3.86x risk/reward is attractive but the strong downtrend (bias -0.95, below all MAs) makes it a knife-catch. GRASS's 29% weekly decline could mean-revert but chart bias is -0.45 with poor R/R at 0.69x. MON shows a bullish marubozu but R/R is only 0.79x and the overall structure is bearish. With BTC ETFs losing $424M, U.S.-Iran tensions escalating, and BTC dominance at 56.1% crushing alts, the macro backdrop does not support aggressive alt entries. Extreme Fear at 22 is historically a buy zone but requires confirmation \u2014 the trend is still 'improving' from lower levels, suggesting we're not at capitulation yet.",
+  "selected_coin_price": 63652,
+  "confidence": 35,
+  "layman_headline": "Extreme fear grips crypto markets \u2014 patience beats impulse right now.",
+  "layman_explanation": "The crypto market is in 'Extreme Fear' mode with a score of just 22/100, meaning most people are scared and selling. Bitcoin just lost $424 million from ETFs and geopolitical tensions between the U.S. and Iran are adding pressure. While fear can create buying opportunities, none of the coins on our watchlist present a clean, high-conviction setup with good risk/reward right now. The best candidates are either already overbought (LIT at RSI 70), have weak chart structures (GRASS, MON below all moving averages), or lack sufficient data (XPL).",
+  "layman_action": "Stay in cash and wait. The market is fearful but hasn't shown a clear reversal signal yet. Watch for ETH or a quality alt to form a proper bottom with volume confirmation before entering.",
+  "expert_reasoning": "I evaluated all 7 swing candidates and found no high-confidence setup. MON (RSI 36.8) is the most oversold but has a neutral chart bias, is below all MAs, and the risk/reward to nearest support/resistance is only 0.79x \u2014 below our 2x threshold. GRASS dropped 27% in 7 days which is a mean-reversion signal, but its chart bias is bearish (-0.45) and it's below all MAs with poor R/R of 0.69x. LIT has strong 5-day momentum (+53%) but RSI at 70 is overbought \u2014 chasing here violates our discipline. JTO's RSI at 59 contradicts its -17% weekly drop, suggesting the bounce may already be priced in. BTC dominance at 56% continues to crush alts. With ETF outflows of $424M and U.S.-Iran escalation creating macro headwinds, the prudent move is to wait for a cleaner setup.",
   "risk_factors": [
-    "U.S.-Iran escalation could trigger further risk-off selling across all crypto assets",
-    "Bitcoin ETF outflows of $424M signal institutional de-risking that could accelerate",
-    "BTC dominance at 56.1% and rising means alt capital rotation is unlikely near-term"
+    "U.S.-Iran geopolitical escalation could trigger a broader risk-off sell-off across crypto",
+    "Bitcoin ETF outflows of $424M signal institutional distribution that may continue",
+    "BTC dominance at 56% continues to squeeze altcoin valuations \u2014 entering alts prematurely is a capital trap"
   ],
   "watch_list": [
-    "Bitcoin reaction to CPI data and Warsh testimony \u2014 a dovish surprise could flip sentiment quickly",
-    "ETH strength (+4.9% 24h, +4.4% 7d) \u2014 if ETH confirms a breakout it could lead an alt rotation",
-    "Fear & Greed index \u2014 watch for a move above 30 to confirm sentiment turning"
+    "ETH price action \u2014 if it holds above its 20-day SMA after today's 5.4% surge, it could signal a legitimate reversal worth entering",
+    "Fear & Greed Index trend \u2014 currently improving from 28 to 22 (wait, actually declining). Watch for a bottoming pattern below 20 or a sharp reversal above 30",
+    "BTC reaction to $65,000 resistance \u2014 a breakout could lift the entire market and create clean alt setups"
   ],
-  "market_context": "The market is in Extreme Fear (22/100) with BTC at $63,767 showing modest recovery but facing macro headwinds from geopolitical tensions and massive ETF outflows. High BTC dominance at 56.1% continues to suppress altcoin performance.",
-  "context_banner": "Extreme Fear reigns with no confirmed reversal \u2014 disciplined patience outperforms forced entries.",
-  "btc_price": 63767,
+  "market_context": "Crypto markets are gripped by extreme fear (22/100) amid U.S.-Iran tensions and $424M in Bitcoin ETF outflows. BTC holds $63.6K but altcoins are bleeding with high BTC dominance at 56%.",
+  "context_banner": "Extreme fear without a clear technical bottom \u2014 capital preservation is the highest-edge play right now.",
+  "btc_price": 63652,
   "fear_greed": {
     "current": 22,
     "label": "Extreme Fear",
@@ -28,32 +28,32 @@
     "week_avg": 23.9,
     "trend": "improving"
   },
-  "btc_dominance": 56.1,
+  "btc_dominance": 56.0,
   "key_signals": [
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Extreme Fear at 22/100 with improving trend suggests we're in a potential accumulation zone, but no capitulation spike yet to confirm a bottom."
+      "description": "Extreme Fear at 22/100 suggests potential contrarian opportunity, but the trend is still deteriorating from last week's 23.9 average \u2014 not yet bottomed."
     },
     {
       "source": "CryptoSlate",
       "signal_type": "news",
-      "description": "Bitcoin ETFs lost $424M, completely wiping out prior week's inflows \u2014 institutional money is leaving, a major bearish headwind."
+      "description": "Bitcoin ETFs lost $424M in outflows, wiping out last week's gains \u2014 institutional money is exiting, removing a key bid from the market."
     },
     {
       "source": "CoinDesk",
-      "signal_type": "macro",
-      "description": "U.S.-Iran escalation weighing on bitcoin and stocks as oil climbs, adding geopolitical risk premium to an already fragile market."
-    },
-    {
-      "source": "CoinDesk",
-      "signal_type": "macro",
-      "description": "U.S. June CPI fell 0.4%, potentially easing hawkish Fed pressure \u2014 a positive longer-term signal but not yet priced in."
+      "signal_type": "news",
+      "description": "U.S.-Iran escalation is weighing on bitcoin and stocks as oil climbs, adding macro headwinds to an already fragile market."
     },
     {
       "source": "RSI",
       "signal_type": "technical",
-      "description": "Most swing candidates show neutral RSI (45-59 range) \u2014 no deep oversold readings to trigger high-probability mean-reversion entries."
+      "description": "Best candidate MON has RSI 36.8 (approaching oversold) but chart structure is bearish with price below all MAs and poor 0.79x risk/reward ratio."
+    },
+    {
+      "source": "CoinDesk",
+      "signal_type": "macro",
+      "description": "U.S. June CPI fell 0.4%, which is moderately positive for risk assets but not enough to offset geopolitical headwinds in the near term."
     }
   ],
   "_mode": "HUNTING",
