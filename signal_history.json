@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-13T05:09:13.126805+00:00",
-    "coin": "JTO",
-    "price": 0.642201,
-    "signal": "HOLD",
-    "confidence": 32,
-    "score": -0.15,
-    "fg": 28,
-    "btc_price": 62728,
-    "btc_dominance": 56.0,
-    "candidates": [
-      "KITE",
-      "MON",
-      "VELVET",
-      "XPL",
-      "JTO",
-      "USDG",
-      "PENGU",
-      "ETHFI",
-      "GRASS"
-    ],
-    "alert": "No swing candidates meet minimum quality thresholds \u2014 all show poor risk/reward ratios or bearish chart structures. Waiting for better setups."
-  },
-  {
     "ts": "2026-07-13T06:09:20.621076+00:00",
     "coin": "JTO",
     "price": 0.650394,
@@ -868,5 +845,27 @@
       "ETH"
     ],
     "alert": "Extreme Fear at 22 \u2014 historically one of the best buying windows, but discipline on stop-loss is critical"
+  },
+  {
+    "ts": "2026-07-14T21:09:10.904850+00:00",
+    "coin": "ETH",
+    "price": 1876.78,
+    "signal": "BUY",
+    "confidence": 68,
+    "score": 1.85,
+    "fg": 22,
+    "btc_price": 64548,
+    "btc_dominance": 56.3,
+    "candidates": [
+      "MON",
+      "USDG",
+      "\u5e01\u5b89\u4eba\u751f",
+      "XPL",
+      "JTO",
+      "GRASS",
+      "PUMP",
+      "ETH"
+    ],
+    "alert": "Extreme Fear environment \u2014 high-conviction contrarian setups available but position size conservatively"
   }
 ]
