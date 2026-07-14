@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-12T19:09:11.392872+00:00",
-    "coin": "ZRO",
-    "price": 0.874205,
-    "signal": "HOLD",
-    "confidence": 32,
-    "score": -0.15,
-    "fg": 26,
-    "btc_price": 64144,
-    "btc_dominance": 56.2,
-    "candidates": [
-      "MON",
-      "USDG",
-      "XPL",
-      "HTX",
-      "PENGU",
-      "TRUMP",
-      "GRASS",
-      "ETHFI",
-      "ZRO"
-    ],
-    "alert": "Market in fear with no actionable setups \u2014 patience is the edge right now."
-  },
-  {
     "ts": "2026-07-12T20:09:21.161685+00:00",
     "coin": "BTC",
     "price": 64174,
@@ -891,5 +868,26 @@
       "XPL"
     ],
     "alert": "Iran/Hormuz conflict and CPI report create elevated crash risk in next 24 hours \u2014 avoid new positions until clarity emerges."
+  },
+  {
+    "ts": "2026-07-14T11:09:11.012233+00:00",
+    "coin": "MON",
+    "price": 0.02248503,
+    "signal": "HOLD",
+    "confidence": 32,
+    "score": 0.15,
+    "fg": 22,
+    "btc_price": 62665,
+    "btc_dominance": 56.0,
+    "candidates": [
+      "MON",
+      "GRASS",
+      "USDG",
+      "KITE",
+      "JTO",
+      "PENGU",
+      "XPL"
+    ],
+    "alert": "Multiple macro headwinds converging \u2014 Iran tensions, CPI data imminent, and $425M BTC ETF outflows. Risk of further downside before any sustainable bounce."
   }
 ]
