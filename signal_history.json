@@ -1,29 +1,5 @@
 [
   {
-    "ts": "2026-07-13T02:09:19.708287+00:00",
-    "coin": "MON",
-    "price": 0.02248244,
-    "signal": "HOLD",
-    "confidence": 28,
-    "score": -0.15,
-    "fg": 28,
-    "btc_price": 63258,
-    "btc_dominance": 56.1,
-    "candidates": [
-      "MON",
-      "XPL",
-      "PENGU",
-      "KITE",
-      "USDG",
-      "TRUMP",
-      "DEXE",
-      "ETHFI",
-      "ZRO",
-      "GRASS"
-    ],
-    "alert": "All swing candidates show weak chart structures or overextended conditions. Capital preservation mode until a high-quality setup emerges."
-  },
-  {
     "ts": "2026-07-13T03:09:13.874416+00:00",
     "coin": "JTO",
     "price": 0.63319,
@@ -873,5 +849,27 @@
       "ETH"
     ],
     "alert": "Extreme Fear (22/100) with improving trend and macro catalyst \u2014 historically strong contrarian buy zone"
+  },
+  {
+    "ts": "2026-07-14T18:09:10.950879+00:00",
+    "coin": "ETH",
+    "price": 1869.07,
+    "signal": "BUY",
+    "confidence": 68,
+    "score": 0.62,
+    "fg": 22,
+    "btc_price": 64508,
+    "btc_dominance": 56.3,
+    "candidates": [
+      "MON",
+      "USDG",
+      "\u5e01\u5b89\u4eba\u751f",
+      "GRASS",
+      "XPL",
+      "JTO",
+      "PUMP",
+      "ETH"
+    ],
+    "alert": null
   }
 ]
