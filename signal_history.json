@@ -1,29 +1,5 @@
 [
   {
-    "ts": "2026-07-12T09:09:13.004754+00:00",
-    "coin": "ZRO",
-    "price": 0.89044,
-    "signal": "HOLD",
-    "confidence": 32,
-    "score": -0.15,
-    "fg": 26,
-    "btc_price": 63926,
-    "btc_dominance": 56.3,
-    "candidates": [
-      "MON",
-      "USDG",
-      "XPL",
-      "VVV",
-      "PENGU",
-      "TRUMP",
-      "HTX",
-      "ETHFI",
-      "ZRO",
-      "GRASS"
-    ],
-    "alert": "Market in Fear zone with high BTC dominance \u2014 avoid forcing alt entries until conditions improve or a clear catalyst emerges."
-  },
-  {
     "ts": "2026-07-12T10:09:17.164460+00:00",
     "coin": "ZRO",
     "price": 0.888775,
@@ -919,5 +895,26 @@
       "JTO"
     ],
     "alert": "Geopolitical risk elevated \u2014 Trump's Hormuz Strait comments adding volatility. Use tight stops."
+  },
+  {
+    "ts": "2026-07-14T01:09:11.767152+00:00",
+    "coin": "JTO",
+    "price": 0.647439,
+    "signal": "HOLD",
+    "confidence": 32,
+    "score": -0.15,
+    "fg": 22,
+    "btc_price": 62423,
+    "btc_dominance": 56.0,
+    "candidates": [
+      "KITE",
+      "GRASS",
+      "MON",
+      "BONK",
+      "JTO",
+      "LIT",
+      "VELVET"
+    ],
+    "alert": "Market in Extreme Fear with geopolitical risk escalation \u2014 avoid chasing oversold alts until BTC stabilizes above $60K support."
   }
 ]
