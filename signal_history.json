@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-13T07:09:22.495118+00:00",
-    "coin": "JTO",
-    "price": 0.652204,
-    "signal": "HOLD",
-    "confidence": 32,
-    "score": -0.15,
-    "fg": 28,
-    "btc_price": 62761,
-    "btc_dominance": 56.0,
-    "candidates": [
-      "KITE",
-      "DEXE",
-      "VELVET",
-      "MON",
-      "JTO",
-      "XPL",
-      "LIT",
-      "ETHFI",
-      "GRASS"
-    ],
-    "alert": "No high-conviction setups available. All candidates either overbought, bearish structure, or poor risk/reward. Staying in cash."
-  },
-  {
     "ts": "2026-07-13T08:09:18.462344+00:00",
     "coin": "JTO",
     "price": 0.658124,
@@ -866,5 +843,27 @@
       "ETH"
     ],
     "alert": null
+  },
+  {
+    "ts": "2026-07-14T23:09:10.753348+00:00",
+    "coin": "ETH",
+    "price": 1882.61,
+    "signal": "BUY",
+    "confidence": 62,
+    "score": 0.55,
+    "fg": 22,
+    "btc_price": 64822,
+    "btc_dominance": 56.3,
+    "candidates": [
+      "MON",
+      "USDG",
+      "\u5e01\u5b89\u4eba\u751f",
+      "XPL",
+      "BONK",
+      "GRASS",
+      "INJ",
+      "ETH"
+    ],
+    "alert": "Extreme Fear index at 22 \u2014 historically among the best buying windows for quality crypto assets. However, set strict stop-losses as fear can deepen before reversing."
   }
 ]
