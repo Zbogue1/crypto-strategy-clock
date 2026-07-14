@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-07-14T03:09:11.190774+00:00",
+  "timestamp": "2026-07-14T04:09:11.086505+00:00",
   "selected_coin": "MON",
   "selected_coin_name": "Monad",
-  "selected_coin_price": 0.02194249,
+  "selected_coin_price": 0.02202126,
   "confidence": 32,
-  "layman_headline": "Extreme fear grips crypto \u2014 patience is the play, not panic buying.",
-  "layman_explanation": "The crypto market is deep in 'Extreme Fear' territory at 22/100, with Bitcoin slipping below $62,500 as traders worry about a potential Fed rate hike and an upcoming inflation report. Altcoins are getting hit even harder, with most candidates down 10-30% in a week. While extreme fear historically creates buying opportunities, none of the current setups have strong enough technical confirmation \u2014 no clear volume breakouts, no MACD bullish crosses, and most coins are below all their moving averages with poor risk/reward ratios.",
-  "layman_action": "Stay in cash and wait. The fear is real but the setups aren't clean yet. Watch for a stabilization in Bitcoin and oversold bounces with volume confirmation before committing capital.",
-  "expert_reasoning": "In a market with Fear & Greed at 22 and BTC dominance at 56.1%, altcoins face a double headwind: macro fear and capital rotation to Bitcoin. While MON shows early signs of a reversal (bullish Marubozu, 5-day momentum turning up), it remains below all major moving averages with a neutral chart bias score of 0.0 and an unfavorable 0.79x risk/reward. GRASS had the sharpest 7-day drop (-32.6%) suggesting mean reversion potential, but its chart bias is slightly bearish (-0.45) and RSI at 47 isn't oversold enough. BONK is approaching oversold RSI (33) but has a strongly bearish chart (-1.40) with a bearish Marubozu \u2014 classic falling knife. The CoinDesk headline about traders lifting Fed rate hike bets is the key macro signal suppressing risk appetite. No volume breakout signals exist among any candidates, and our track record shows volume breakouts have a 100% win rate \u2014 waiting for that signal is the disciplined approach.",
+  "layman_headline": "Extreme Fear grips crypto \u2014 patience beats impulse in this environment.",
+  "layman_explanation": "The crypto market is in 'Extreme Fear' territory at 22/100, with Bitcoin sliding below $63K and most altcoins bleeding 10-30% over the past week. The US government just moved $297M in seized crypto to Coinbase, which often spooks traders worried about sell pressure. While fear often creates buying opportunities, none of the current candidates show strong enough technical setups \u2014 most are in confirmed downtrends with bearish chart structures and poor risk/reward ratios.",
+  "layman_action": "Stay in cash and wait. The market hasn't shown a clear reversal signal yet. Watch for a stabilization in Bitcoin and oversold bounces with volume confirmation before committing capital.",
+  "expert_reasoning": "I evaluated all seven candidates and none meet swing trading entry criteria. BONK (RSI 33) is deeply oversold but has a -1.40 chart bias with bearish Marubozu \u2014 pure selling conviction, don't catch that knife. GRASS dropped 33.7% in a week but risk/reward is only 0.69x with a bearish chart bias. KITE shows a bullish engulfing but is in a downtrend with -20.3% 5-day momentum. MON is the closest to actionable with RSI 36.85, bullish Marubozu, and slight positive 5-day momentum, but R/R at 0.79x and all MAs bearish means the setup isn't high-quality enough. JTO has the only positive chart bias (+0.40) and is above its SMA20, but RSI at 59 is already elevated after a bounce. The US government moving $297M BTC/ETH to Coinbase Prime is a near-term overhang. BTC dominance at 56.1% continues to squeeze altcoins. I'm waiting for volume-confirmed breakouts \u2014 my strongest reliable signal at 100% win rate \u2014 before deploying capital.",
   "risk_factors": [
-    "Inflation report could come in hot, triggering further risk-off selling across all crypto",
-    "BTC dominance at 56.1% means altcoins could continue bleeding even if BTC stabilizes",
-    "All candidates are below key moving averages with no confirmed MACD bullish crosses \u2014 catching falling knives"
+    "US government $297M crypto transfer to Coinbase could trigger selling pressure across the market",
+    "BTC dominance at 56.1% and rising actively suppresses altcoin performance",
+    "All swing candidates are below key moving averages with bearish market structure \u2014 catching a falling knife risk is elevated"
   ],
   "watch_list": [
-    "Upcoming US inflation report \u2014 hot print could push Fear & Greed below 20 and create capitulation entry",
-    "BTC price action around $60,000 major support \u2014 a hold there could signal altcoin bottom",
-    "MON price action near $0.0185 support \u2014 a bounce with volume would be a quality entry signal"
+    "MON price action around $0.0185 support \u2014 a bounce with volume here would create a proper entry",
+    "Bitcoin reaction to upcoming inflation report and whether $60K support holds",
+    "Fear & Greed index \u2014 currently improving from 23.9 weekly avg to 22 daily; a move toward 15-18 would signal capitulation bottoming"
   ],
-  "market_context": "Crypto is in Extreme Fear (22/100) with BTC down to $62,442 as traders price in higher odds of a July Fed rate hike ahead of a key inflation report. Altcoins are underperforming with high BTC dominance at 56.1% \u2014 not the environment for aggressive alt entries.",
-  "context_banner": "Extreme Fear creates opportunity, but discipline demands waiting for technical confirmation before deploying capital into a market facing macro headwinds.",
-  "btc_price": 62442,
+  "market_context": "Crypto market is in Extreme Fear (22/100) with Bitcoin at $62.5K facing headwinds from Fed rate hike expectations and a $297M government crypto transfer to Coinbase. High BTC dominance at 56.1% signals capital rotation away from altcoins, making alt entries particularly risky right now.",
+  "context_banner": "Extreme Fear creates opportunity, but discipline demands waiting for volume-confirmed reversals rather than catching falling knives in a bearish alt environment.",
+  "btc_price": 62521,
   "fear_greed": {
     "current": 22,
     "label": "Extreme Fear",
@@ -33,27 +33,27 @@
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Extreme Fear at 22/100 with improving trend (up from yesterday's 28) \u2014 historically a contrarian buy zone but needs technical confirmation."
-    },
-    {
-      "source": "CoinDesk",
-      "signal_type": "news",
-      "description": "Bitcoin slipping as traders raise July Fed rate hike bets ahead of inflation report \u2014 macro uncertainty is the primary driver of risk-off sentiment."
-    },
-    {
-      "source": "RSI",
-      "signal_type": "technical",
-      "description": "MON RSI at 36.85 and BONK at 33.09 are approaching oversold, but neither has confirmed a reversal bounce with supporting volume."
+      "description": "Extreme Fear at 22/100 with improving trend suggests we're approaching a bottoming zone, but not yet confirmed \u2014 historically a precondition for bounces."
     },
     {
       "source": "CoinTelegraph",
       "signal_type": "news",
-      "description": "Stablecoin adoption news (Bolivia USDT, Hyundai USDT settlement) is constructive for crypto long-term but not an immediate catalyst for altcoin recovery."
+      "description": "US government moved $297M in seized Bitcoin and Ether to Coinbase Prime, creating near-term sell pressure overhang across the market."
+    },
+    {
+      "source": "CoinDesk",
+      "signal_type": "news",
+      "description": "Bitcoin slipping as traders increase July Fed rate hike bets ahead of inflation report \u2014 macro headwind keeping risk assets under pressure."
+    },
+    {
+      "source": "RSI",
+      "signal_type": "technical",
+      "description": "MON (36.85) and BONK (33.09) approaching oversold territory, but neither shows volume confirmation or bullish cross to trigger entry."
     },
     {
       "source": "volume_breakout",
       "signal_type": "technical",
-      "description": "No volume breakout signals detected across any candidates \u2014 our highest-confidence signal (100% win rate) is absent, supporting a HOLD decision."
+      "description": "No volume breakout detected on any candidate \u2014 this highest-reliability signal (100% win rate) is absent, supporting a HOLD decision."
     }
   ],
   "_mode": "HUNTING",
