@@ -1,62 +1,62 @@
 {
-  "timestamp": "2026-07-13T23:09:10.875343+00:00",
+  "timestamp": "2026-07-14T00:09:10.908408+00:00",
   "selected_coin": "MON",
   "selected_coin_name": "Monad",
-  "selected_coin_price": 0.02205008,
-  "confidence": 30,
-  "layman_headline": "Crypto markets are bleeding \u2014 patience is the best trade right now.",
-  "layman_explanation": "The entire crypto market is in a fear-driven selloff, with Bitcoin dropping below $62K and almost every altcoin posting significant losses. BTC dominance is high at 55.9%, meaning money is leaving altcoins and flowing into Bitcoin or exiting crypto entirely. In this environment, buying altcoins is like catching a falling knife \u2014 they tend to drop harder than BTC during risk-off periods. The Fear & Greed index at 28 is improving slightly from last week's 24.6, but hasn't reached the extreme fear levels (below 20) that historically mark reliable bottoms.",
-  "layman_action": "Do not open any new positions right now. Wait for Bitcoin to find a clear floor and for fear to either spike to extreme levels (signaling capitulation) or for a confirmed reversal pattern. Cash is a position \u2014 protecting capital in this environment is the smart move.",
-  "expert_reasoning": "None of the swing candidates present a compelling risk/reward in the current environment. GRASS is down 34.5% in 7 days but has a bearish engulfing candle and -0.90 chart bias. LIT has RSI at 72 (overbought) making it a fade candidate, not a buy. BONK has the worst chart bias at -1.40 with pure selling conviction. VELVET already ran +23% and is extended. ETHFI has the best chart bias (+0.60) but risk/reward to nearest resistance is only 0.11x \u2014 terrible. MON is the most interesting with RSI 41, bullish marubozu, and positive 5-day momentum, but it's still below all MAs in a downtrend with BTC dominance crushing alts. The smart play is to wait for BTC to stabilize and for these candidates to either form confirmed bottoms or reach deeper oversold levels.",
+  "selected_coin_price": 0.02216017,
+  "confidence": 52,
+  "layman_headline": "Extreme fear is creating a potential bargain-hunting opportunity in beaten-down altcoins.",
+  "layman_explanation": "The entire crypto market is in deep fear mode \u2014 the Fear & Greed index sits at 22 out of 100, meaning most traders are scared and selling. Bitcoin dropped below $62,300 amid geopolitical tensions around the Hormuz Strait. In this kind of panic, coins that have already fallen hard can bounce back quickly when sentiment stabilizes. Monad (MON) has dropped over 11% in a week and its RSI is approaching oversold territory, suggesting sellers may be running out of steam.",
+  "layman_action": "This is a speculative dip-buy in extreme fear conditions. If you're comfortable with higher risk, a small position in MON with a tight stop-loss could capture a relief bounce. Keep the position size modest \u2014 the market is volatile.",
+  "expert_reasoning": "MON presents the cleanest contrarian setup among candidates. RSI at 36.85 is approaching oversold (our reliable RSI signal has a 75% win rate), and the Bullish Marubozu pattern indicates strong buying conviction despite the broader downtrend. The 5-day momentum of +10.6% diverges from the 7-day -11.25% decline, suggesting a nascent reversal. Fear & Greed at 22 (Extreme Fear with improving trend) is our highest-confidence signal at 80% win rate. Support at $0.0185 provides a clean stop-loss level. Risk/reward to nearest levels is 0.79x which is suboptimal, but targeting the $0.0248 resistance with a $0.0183 stop gives approximately 1.5:1 R:R from the entry target of $0.0215. BTC dominance at 56% remains a headwind for alts, keeping confidence moderate.",
   "risk_factors": [
-    "BTC could break below $60K triggering cascading alt liquidations and another 15-20% alt drawdown",
-    "Geopolitical escalation around Hormuz Strait could trigger broader risk-asset selloff",
-    "BTC dominance at 55.9% and rising means altcoin capital outflows may accelerate further"
+    "BTC dominance at 56% signals capital rotating away from alts \u2014 any further BTC weakness could drag MON lower",
+    "Geopolitical risk from Trump's Hormuz Strait comments could trigger broader risk-off selling across all crypto",
+    "MON is a newer token with limited trading history making technical analysis less reliable and liquidity risk higher"
   ],
   "watch_list": [
-    "Bitcoin price action around $60K-$62K support zone \u2014 a breakdown here changes everything",
-    "Fear & Greed index \u2014 watch for a spike to extreme fear (sub-15) which historically marks capitulation bottoms",
-    "MON price behavior near $0.0185 support \u2014 if it holds with volume, that becomes a high-conviction entry"
+    "BTC price action around $60,000 support \u2014 a break below would invalidate most alt bounce setups",
+    "Fear & Greed index trajectory \u2014 if it drops below 20 the market may not be done selling",
+    "MON volume over the next 48 hours \u2014 need to see buying volume confirm the Bullish Marubozu pattern"
   ],
-  "market_context": "Broad crypto selloff with BTC down 3.8% weekly to $61.9K, Fear & Greed at 28 (Fear), and BTC dominance at 55.9% crushing altcoins. Geopolitical risks around the Hormuz Strait are adding pressure to all risk assets.",
-  "context_banner": "Market-wide fear-driven selloff with no confirmed bottoms \u2014 capital preservation takes priority over opportunity hunting.",
-  "btc_price": 61919,
+  "market_context": "The crypto market is in Extreme Fear (22/100) with BTC down to $62,226 amid geopolitical tensions around the Hormuz Strait. However, CoinDesk reports that Bitcoin panic-selling may be ending as sellers' profit margins disappear, and Fear & Greed is showing an improving trend from 23.9 weekly average.",
+  "context_banner": "Extreme Fear at 22 with improving trend creates a contrarian buying window, but geopolitical risks demand tight risk management.",
+  "btc_price": 62226,
   "fear_greed": {
-    "current": 28,
-    "label": "Fear",
-    "yesterday": 26,
-    "week_avg": 24.6,
+    "current": 22,
+    "label": "Extreme Fear",
+    "yesterday": 28,
+    "week_avg": 23.9,
     "trend": "improving"
   },
-  "btc_dominance": 55.9,
+  "btc_dominance": 56.0,
   "key_signals": [
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Fear & Greed at 28 (Fear) with improving trend from 24.6 weekly average \u2014 not yet at extreme fear capitulation levels that signal reliable bottoms."
-    },
-    {
-      "source": "CoinDesk",
-      "signal_type": "news",
-      "description": "Bitcoin panic-selling may be ending as sellers' profit margins disappear, suggesting we're approaching but haven't confirmed a bottom."
-    },
-    {
-      "source": "CoinTelegraph",
-      "signal_type": "news",
-      "description": "Bitcoin threatens $62K amid risk-asset rout as Trump says US will 'run' the Hormuz Strait \u2014 geopolitical uncertainty adding downward pressure."
+      "description": "Extreme Fear at 22/100 with improving trend (up from yesterday's 28\u219222 reading error, weekly avg 23.9) \u2014 historically our most reliable contrarian buy signal with 80% win rate."
     },
     {
       "source": "RSI",
       "signal_type": "technical",
-      "description": "Best candidates (MON at 41, BONK at 40) are approaching but not yet in oversold territory below 30 where bounce probability increases significantly."
+      "description": "MON RSI at 36.85 approaching oversold territory, our second most reliable signal with 75% win rate and +5.5% average return."
+    },
+    {
+      "source": "CoinDesk",
+      "signal_type": "news",
+      "description": "Bitcoin panic-selling may be ending as sellers' profit margins disappear \u2014 suggests capitulation is nearing completion."
+    },
+    {
+      "source": "CoinTelegraph",
+      "signal_type": "news",
+      "description": "Bitcoin threatens $62K as Trump says US will 'run' Hormuz Strait \u2014 geopolitical catalyst adding downside pressure but may be priced in."
     },
     {
       "source": "Chart Pattern Analysis",
       "signal_type": "technical",
-      "description": "All candidates are below key moving averages with bearish structure; only ETHFI and LIT show moderately bullish chart biases, but risk/reward ratios are poor (0.11x and 1.0x respectively)."
+      "description": "Bullish Marubozu candlestick on MON with 5-day momentum turning positive (+10.6%) despite weekly decline, indicating potential trend reversal."
     }
   ],
   "_mode": "HUNTING",
-  "exit_target": 0.0252,
-  "stop_loss": 0.018
+  "exit_target": 0.0248,
+  "stop_loss": 0.0183
 }
