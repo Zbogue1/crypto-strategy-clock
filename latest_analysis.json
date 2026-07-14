@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-07-14T08:09:11.086600+00:00",
-  "selected_coin": "JTO",
-  "selected_coin_name": "Jito",
-  "selected_coin_price": 0.642,
-  "confidence": 32,
-  "layman_headline": "Crypto market is gripped by extreme fear \u2014 patience beats impulse right now.",
-  "layman_explanation": "The entire crypto market is in 'Extreme Fear' territory at 22/100, with Bitcoin sliding below $62,500 amid geopolitical tensions with Iran and an upcoming U.S. inflation report. Altcoins are getting hit even harder, with most swing candidates down 10-33% over the past week. While fear often creates buying opportunities, none of the candidates today have a convincing technical setup \u2014 charts are mostly bearish, risk/reward ratios are poor, and Bitcoin dominance at 56% means money is flowing out of altcoins into Bitcoin.",
-  "layman_action": "Stay in cash and wait. The market hasn't found a bottom yet \u2014 better entries will appear once the CPI data drops and geopolitical uncertainty settles. Don't try to catch a falling knife.",
-  "expert_reasoning": "The macro backdrop is hostile for altcoin entries: BTC dominance at 56% signals capital rotation away from alts, the Iran conflict is reigniting risk-off behavior, and a CPI report is imminent which could trigger further volatility. Among candidates, GRASS (-33% 7d) looks like a capitulation play but has bearish chart structure and poor R/R (0.69x). BONK has deeply bearish charts (-1.40 bias) with a bearish marubozu \u2014 classic avoid signal. MON has a bullish marubozu candle but is in a downtrend below all MAs. JTO is the strongest candidate with an uptrend, moderately bullish MA structure, and 1.05x R/R, but RSI at 59 is elevated and the $288M government BTC/ETH transfer to Coinbase creates overhang risk across the market. The prudent play is to wait for either JTO to pull back to $0.60 support or for the CPI catalyst to resolve before deploying capital.",
+  "timestamp": "2026-07-14T09:09:10.987163+00:00",
+  "selected_coin": "MON",
+  "selected_coin_name": "Monad",
+  "selected_coin_price": 0.02261747,
+  "confidence": 28,
+  "layman_headline": "Crypto markets are gripped by fear \u2014 patience is the smartest move right now.",
+  "layman_explanation": "The crypto market is in 'Extreme Fear' mode at 22/100, driven by geopolitical tensions in the Strait of Hormuz, a looming U.S. inflation report, and $425 million flowing out of Bitcoin ETFs. Bitcoin is holding around $62,600 but could easily slip below $60,000. In this environment, most altcoins are bleeding heavily and none of the candidates offer a compelling risk-reward setup with clear technical confirmation.",
+  "layman_action": "Stay in cash and wait. The fear index is extreme, which historically precedes good buying opportunities \u2014 but the catalysts driving fear (Iran conflict, CPI data, government Bitcoin sales) haven't resolved yet. Watch for stabilization before committing capital.",
+  "expert_reasoning": "Every candidate has significant headwinds. MON (RSI 36.85, bullish marubozu) is the closest to a setup but trades below all MAs with R:R of only 0.79x \u2014 insufficient for a swing entry. KITE shows a bullish engulfing but just crashed 14.9% in 24h and is in a steep downtrend. BONK has a -1.4 chart bias with bearish marubozu \u2014 a falling knife. JTO has the highest chart bias (+0.40) but RSI is already at 59 after an 18.5% weekly drop, suggesting the bounce may be exhausted. The macro backdrop is hostile: $425M ETF outflows, U.S. government selling $297M in seized crypto to Coinbase Prime, and the Iran-Hormuz conflict threatening risk assets broadly. Fear & Greed at 22 is a reliable contrarian indicator historically (80% win rate in our data), but the unresolved geopolitical and macro catalysts mean the fear may deepen before bottoming.",
   "risk_factors": [
-    "Iran conflict escalation could trigger a broader risk-off selloff pushing BTC below $60K and dragging all alts further down",
-    "U.S. CPI report could come in hot, fueling July Fed rate hike bets and crushing crypto prices",
-    "U.S. government moving $288M in seized crypto to Coinbase suggests potential selling pressure on BTC and ETH"
+    "Iran-Hormuz conflict escalation could trigger a broader risk-off selloff pushing BTC below $60K",
+    "CPI report within hours could spike rate hike expectations further, pressuring all crypto",
+    "U.S. government selling $297M in seized BTC/ETH to Coinbase Prime adds direct sell pressure"
   ],
   "watch_list": [
-    "U.S. CPI inflation data release \u2014 hot print could crash markets, cool print could spark relief rally",
-    "JTO price action around $0.60 support \u2014 a bounce there with volume would be an actionable entry",
-    "Fear & Greed index trend \u2014 currently improving from 23.9 weekly avg; a move above 30 would signal sentiment stabilization"
+    "BTC price action around the $60,000 support level \u2014 a break below invalidates alt setups",
+    "U.S. CPI report release and market reaction in the next 8 hours",
+    "Iran-Hormuz situation developments and impact on global risk sentiment"
   ],
-  "market_context": "The crypto market is in Extreme Fear (22/100) with Bitcoin at $62,450, pressured by geopolitical tensions and pre-CPI anxiety. High BTC dominance at 56% makes this a hostile environment for altcoin swing trades.",
-  "context_banner": "Extreme Fear with macro catalysts pending \u2014 capital preservation trumps opportunity hunting until the CPI dust settles.",
-  "btc_price": 62453,
+  "market_context": "Bitcoin is clinging to $62,600 amid extreme fear (22/100), geopolitical tensions, $425M ETF outflows, and government crypto liquidations. BTC dominance at 56.1% signals capital rotation away from alts \u2014 a hostile environment for altcoin swing trades.",
+  "context_banner": "Multiple unresolved risk events demand patience \u2014 extreme fear creates opportunity but only after catalysts resolve.",
+  "btc_price": 62609,
   "fear_greed": {
     "current": 22,
     "label": "Extreme Fear",
@@ -28,35 +28,35 @@
     "week_avg": 23.9,
     "trend": "improving"
   },
-  "btc_dominance": 56.0,
+  "btc_dominance": 56.1,
   "key_signals": [
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Extreme Fear at 22/100 with improving trend suggests we're near a bottom, but not yet confirmed \u2014 contrarian signal to watch but not act on prematurely."
+      "description": "Extreme Fear at 22/100 with improving trend \u2014 historically a reliable contrarian buy zone (80% win rate), but unresolved catalysts suggest fear may deepen first."
     },
     {
       "source": "CoinDesk",
       "signal_type": "news",
-      "description": "Bitcoin holding $62,600 amid Iran conflict and looming CPI report creates binary event risk that makes new entries inadvisable before resolution."
+      "description": "U.S. government moved $288M in seized BTC/ETH to Coinbase Prime, creating direct sell pressure on the market."
     },
     {
-      "source": "CoinDesk",
+      "source": "CoinTelegraph",
       "signal_type": "news",
-      "description": "U.S. government moved $288M in seized BTC/ETH to Coinbase Prime, creating potential sell-side overhang across the entire market."
+      "description": "US spot Bitcoin ETFs posted $425M outflow after a brief rebound, signaling institutional risk-off positioning."
+    },
+    {
+      "source": "CryptoSlate",
+      "signal_type": "news",
+      "description": "Bitcoin has less than 8 hours to hold $60K before Hormuz conflict escalation takes over \u2014 binary risk event imminent."
     },
     {
       "source": "RSI",
       "signal_type": "technical",
-      "description": "No candidate has RSI below 30 (truly oversold) \u2014 BONK at 33 is closest but its bearish marubozu and -1.40 chart bias make it a falling knife rather than a bounce candidate."
-    },
-    {
-      "source": "Chart Pattern Analysis",
-      "signal_type": "technical",
-      "description": "JTO is the only candidate with positive chart bias (+0.40) and bullish MA structure, but doji indecision and 59 RSI suggest waiting for a better entry near $0.60 support."
+      "description": "Best candidate MON has RSI at 36.85 approaching oversold, but below all moving averages with inadequate risk/reward ratio of 0.79x."
     }
   ],
   "_mode": "HUNTING",
-  "exit_target": 0.685,
-  "stop_loss": 0.575
+  "exit_target": 0.0252,
+  "stop_loss": 0.018
 }
