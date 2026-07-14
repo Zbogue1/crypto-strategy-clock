@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-07-14T22:09:10.922701+00:00",
-  "selected_coin": "ENA",
-  "selected_coin_name": "Ethena",
-  "selected_coin_price": 0.084241,
+  "timestamp": "2026-07-14T23:09:10.753348+00:00",
+  "selected_coin": "ETH",
+  "selected_coin_name": "Ethereum",
+  "selected_coin_price": 1882.61,
   "confidence": 62,
-  "layman_headline": "Extreme fear in crypto markets creates a contrarian buying window in Ethena.",
-  "layman_explanation": "The entire crypto market is in 'Extreme Fear' mode with a score of just 22 out of 100, which historically has been a good time to buy. Ethena (ENA) has been beaten down 94% from its all-time high but is now showing strong buying momentum with a nearly 10% bounce today and a bullish candlestick pattern. The risk-to-reward ratio on this trade is nearly 3-to-1, meaning the potential upside is about three times the potential downside if the stop-loss is hit.",
-  "layman_action": "Consider a small position in ENA around $0.08. Set a stop-loss at $0.069 to limit downside, and look to take profits near $0.099. This is a higher-risk trade on a beaten-down token, so position size accordingly.",
-  "expert_reasoning": "ENA presents the strongest swing setup among candidates. RSI at 40.75 is approaching oversold territory (reliable signal with 80% win rate historically), while the Bullish Marubozu candlestick on a downtrend suggests potential reversal. The risk/reward to key levels is 2.76x \u2014 the best among all candidates by a wide margin. Support at $0.0705 provides a clear stop-loss level, while resistance at $0.0996 gives a 27% upside target. The stablecoin narrative is receiving significant news flow today (CoinTelegraph reports on Velocity raise, JCB-Circle, US-UK alignment), which directly supports Ethena's positioning as a stablecoin yield protocol. The Extreme Fear reading of 22 (improving trend) adds a reliable contrarian buy signal.",
+  "layman_headline": "Ethereum shows signs of a fear-driven bounce with strong buying conviction.",
+  "layman_explanation": "The entire crypto market is in 'Extreme Fear' territory \u2014 historically one of the best times to buy. Ethereum has been beaten down over 60% from its all-time high but just posted a 7% daily surge with a bullish candle showing pure buying pressure. Bitcoin is pushing toward $65,000 on encouraging inflation data, and when Bitcoin stabilizes, Ethereum typically catches up with outsized gains. The stablecoin and tokenization news flow is fundamentally positive for Ethereum's ecosystem.",
+  "layman_action": "Consider placing a limit buy order for Ethereum around $1,850 with a firm stop-loss at $1,700. If it bounces, look to take profits near $2,050. Only risk what you can afford to lose \u2014 the market is still fearful and volatile.",
+  "expert_reasoning": "ETH RSI at 35 is approaching oversold territory \u2014 our most reliable signal historically (80% win rate). The Bullish Marubozu candle pattern on the daily confirms strong buyer dominance with zero seller resistance. Fear & Greed at 22 (Extreme Fear) with an improving trend from 28 yesterday aligns with our second-best signal (71% win rate). The 7-day +6.2% move suggests momentum is turning, but the price remains below all major moving averages, meaning there's substantial room to run before hitting overhead resistance. ETH derivatives reset per Blockworks removes leverage overhang, making this rally more organic. The $41B TVL is stable, confirming no fundamental deterioration.",
   "risk_factors": [
-    "High BTC dominance at 56.3% means capital is flowing to Bitcoin over alts \u2014 ENA could underperform even if BTC rallies",
-    "ENA is 94.5% below ATH with a bearish macro structure \u2014 below all major moving averages \u2014 this bounce could be a dead cat bounce",
-    "Stablecoin regulatory uncertainty (CLARITY Act opposition, Mizuho downgrading Circle) could create negative sentiment spillover for Ethena"
+    "BTC dominance at 56.3% means capital is flowing to Bitcoin over alts \u2014 ETH could underperform if this trend continues",
+    "Price below all major moving averages means the broader trend is still bearish \u2014 this could be a dead cat bounce",
+    "US regulatory uncertainty (CLARITY Act opposition, CFTC actions) could trigger another risk-off wave across crypto"
   ],
   "watch_list": [
-    "Whether ENA can break and hold above the $0.085-$0.09 zone to confirm the reversal",
-    "BTC behavior around $65,000 resistance \u2014 a rejection could drag alts down sharply",
-    "CLARITY Act vote outcome and any regulatory developments affecting stablecoins"
+    "BTC ability to hold above $64,000 \u2014 if it breaks down, ETH will follow harder",
+    "ETH reclaiming the 20-day SMA as support \u2014 would confirm trend reversal",
+    "CLARITY Act Senate vote outcome \u2014 negative result could spook crypto markets broadly"
   ],
-  "market_context": "Bitcoin is pushing toward $65,000 on US inflation relief but the broader market remains in Extreme Fear at 22/100. BTC dominance at 56.3% suggests capital is concentrated in Bitcoin, creating headwinds for altcoins but also setting up bigger altcoin rebounds when sentiment shifts.",
-  "context_banner": "Extreme Fear at 22 with an improving trend and heavy stablecoin news flow create a contrarian entry window for oversold DeFi protocols like Ethena.",
-  "btc_price": 64570,
+  "market_context": "The crypto market is in Extreme Fear (22/100) but showing early signs of recovery with BTC up 4.7% and ETH up 7.1% in 24 hours. Bitcoin is testing $65K resistance on favorable US inflation data, though sustainability of this relief rally remains uncertain.",
+  "context_banner": "Extreme Fear with a strong buying candle on oversold ETH creates a classic contrarian swing trade opportunity, backed by our highest-confidence signals.",
+  "btc_price": 64822,
   "fear_greed": {
     "current": 22,
     "label": "Extreme Fear",
@@ -33,30 +33,30 @@
     {
       "source": "RSI",
       "signal_type": "technical",
-      "description": "ENA RSI at 40.75 approaching oversold zone \u2014 historically an 80% reliable buy signal in our track record, combined with a Bullish Marubozu candle confirming buying conviction."
+      "description": "ETH RSI at 35 is approaching oversold territory \u2014 our most reliable signal with 80% historical win rate, suggesting a bounce is probable."
     },
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Extreme Fear at 22/100 with an improving trend (up from 23.9 weekly average) \u2014 our most-tested reliable contrarian indicator at 71% win rate."
-    },
-    {
-      "source": "CoinTelegraph",
-      "signal_type": "news",
-      "description": "Multiple stablecoin catalysts today \u2014 Velocity $38M raise, JCB-Circle MOU for Japan, US-UK tokenization alignment \u2014 directly supporting Ethena's stablecoin yield narrative."
+      "description": "Fear & Greed at 22 (Extreme Fear) with improving trend \u2014 our second most reliable contrarian signal (71% win rate) supports buying into fear."
     },
     {
       "source": "CryptoSlate",
       "signal_type": "news",
-      "description": "Bitcoin pushing toward $65K on US inflation relief provides a macro tailwind, though the relief may be temporary."
+      "description": "Bitcoin pushing toward $65K on US inflation relief provides the macro catalyst lifting the entire market and giving ETH room to outperform."
     },
     {
-      "source": "volume_breakout",
-      "signal_type": "technical",
-      "description": "ENA's 8.46% 24h surge with a Bullish Marubozu pattern and 2.76x risk/reward ratio represents the highest quality setup among all swing candidates."
+      "source": "Blockworks",
+      "signal_type": "news",
+      "description": "ETH derivatives reset signals clearing of overleveraged positions, providing a healthier foundation for sustained price recovery."
+    },
+    {
+      "source": "CoinTelegraph",
+      "signal_type": "news",
+      "description": "Multiple stablecoin and tokenization headlines (JCB/Circle Japan, US/UK transatlantic tokenization rules) reinforce Ethereum ecosystem demand \u2014 80% win rate source."
     }
   ],
   "_mode": "HUNTING",
-  "exit_target": 0.099,
-  "stop_loss": 0.069
+  "exit_target": 2050.0,
+  "stop_loss": 1700.0
 }
