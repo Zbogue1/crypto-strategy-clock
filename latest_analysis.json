@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-07-14T09:09:10.987163+00:00",
-  "selected_coin": "MON",
-  "selected_coin_name": "Monad",
-  "selected_coin_price": 0.02261747,
-  "confidence": 28,
-  "layman_headline": "Crypto markets are gripped by fear \u2014 patience is the smartest move right now.",
-  "layman_explanation": "The crypto market is in 'Extreme Fear' mode at 22/100, driven by geopolitical tensions in the Strait of Hormuz, a looming U.S. inflation report, and $425 million flowing out of Bitcoin ETFs. Bitcoin is holding around $62,600 but could easily slip below $60,000. In this environment, most altcoins are bleeding heavily and none of the candidates offer a compelling risk-reward setup with clear technical confirmation.",
-  "layman_action": "Stay in cash and wait. The fear index is extreme, which historically precedes good buying opportunities \u2014 but the catalysts driving fear (Iran conflict, CPI data, government Bitcoin sales) haven't resolved yet. Watch for stabilization before committing capital.",
-  "expert_reasoning": "Every candidate has significant headwinds. MON (RSI 36.85, bullish marubozu) is the closest to a setup but trades below all MAs with R:R of only 0.79x \u2014 insufficient for a swing entry. KITE shows a bullish engulfing but just crashed 14.9% in 24h and is in a steep downtrend. BONK has a -1.4 chart bias with bearish marubozu \u2014 a falling knife. JTO has the highest chart bias (+0.40) but RSI is already at 59 after an 18.5% weekly drop, suggesting the bounce may be exhausted. The macro backdrop is hostile: $425M ETF outflows, U.S. government selling $297M in seized crypto to Coinbase Prime, and the Iran-Hormuz conflict threatening risk assets broadly. Fear & Greed at 22 is a reliable contrarian indicator historically (80% win rate in our data), but the unresolved geopolitical and macro catalysts mean the fear may deepen before bottoming.",
+  "timestamp": "2026-07-14T10:09:11.079372+00:00",
+  "selected_coin": "BTC",
+  "selected_coin_name": "Bitcoin",
+  "selected_coin_price": 62629,
+  "confidence": 25,
+  "layman_headline": "Extreme fear grips crypto as geopolitical tensions and inflation fears keep traders on the sidelines.",
+  "layman_explanation": "The crypto market is in 'Extreme Fear' mode right now, with a score of just 22 out of 100. Bitcoin is holding around $62,600 but faces major headwinds: the Iran/Hormuz conflict is flaring up again, a U.S. CPI inflation report is imminent, and spot Bitcoin ETFs just saw $425 million in outflows. The altcoins on our watchlist are all in downtrends with poor chart structures \u2014 none of them offer a clean enough setup to risk capital on right now.",
+  "layman_action": "Stay in cash and wait. The market is under heavy pressure from geopolitics and macro uncertainty. When fear is this extreme, bounces can be violent \u2014 but so can further drops. Wait for a confirmed reversal signal or a clear catalyst before committing money.",
+  "expert_reasoning": "Every swing candidate fails critical filters. GRASS is down 32% in 7 days but has a risk/reward of only 0.69x with no support confirmation \u2014 a falling knife. KITE has an attractive 2.38x R/R and a bullish engulfing candle, but is in a hard downtrend with -20% 5-day momentum and no volume data to confirm the reversal. JTO has the best chart bias (+0.40) but RSI at 59 is already elevated after a recent run, and the doji signals indecision \u2014 not conviction. MON's bullish marubozu is interesting but R/R at 0.79x is insufficient. XPL is deeply bearish (-0.70 bias). The macro backdrop is hostile: $425M ETF outflows, Iran conflict escalation with an 8-hour deadline per CryptoSlate, pending CPI data, and the U.S. government just moved $288M in seized crypto to Coinbase Prime (potential sell pressure). Our signal credibility data shows volume_breakout signals have 100% win rate \u2014 none of these candidates show that signal. Discipline demands we wait.",
   "risk_factors": [
-    "Iran-Hormuz conflict escalation could trigger a broader risk-off selloff pushing BTC below $60K",
-    "CPI report within hours could spike rate hike expectations further, pressuring all crypto",
-    "U.S. government selling $297M in seized BTC/ETH to Coinbase Prime adds direct sell pressure"
+    "Iran/Hormuz conflict escalation could trigger a broad risk-off crash, sending BTC below $60K and alts down 20%+",
+    "CPI report could come in hot, boosting July rate hike bets and crushing crypto further",
+    "U.S. government's $288M crypto transfer to Coinbase Prime could signal imminent selling pressure"
   ],
   "watch_list": [
-    "BTC price action around the $60,000 support level \u2014 a break below invalidates alt setups",
-    "U.S. CPI report release and market reaction in the next 8 hours",
-    "Iran-Hormuz situation developments and impact on global risk sentiment"
+    "CPI inflation report release \u2014 hot print could send BTC below $60K support",
+    "Iran/Hormuz conflict developments in next 8-24 hours \u2014 de-escalation would be bullish",
+    "Bitcoin ETF flow data \u2014 need to see outflow reversal before alts can recover"
   ],
-  "market_context": "Bitcoin is clinging to $62,600 amid extreme fear (22/100), geopolitical tensions, $425M ETF outflows, and government crypto liquidations. BTC dominance at 56.1% signals capital rotation away from alts \u2014 a hostile environment for altcoin swing trades.",
-  "context_banner": "Multiple unresolved risk events demand patience \u2014 extreme fear creates opportunity but only after catalysts resolve.",
-  "btc_price": 62609,
+  "market_context": "Crypto is in Extreme Fear (22/100) with heavy macro headwinds. BTC dominance at 56.1% signals capital fleeing alts to Bitcoin, and even Bitcoin is struggling to hold $62.6K amid geopolitical risk and upcoming inflation data.",
+  "context_banner": "Multiple macro risks converging \u2014 geopolitical conflict, CPI uncertainty, and ETF outflows demand patience over action.",
+  "btc_price": 62629,
   "fear_greed": {
     "current": 22,
     "label": "Extreme Fear",
@@ -33,30 +33,30 @@
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Extreme Fear at 22/100 with improving trend \u2014 historically a reliable contrarian buy zone (80% win rate), but unresolved catalysts suggest fear may deepen first."
-    },
-    {
-      "source": "CoinDesk",
-      "signal_type": "news",
-      "description": "U.S. government moved $288M in seized BTC/ETH to Coinbase Prime, creating direct sell pressure on the market."
+      "description": "Extreme Fear at 22/100 suggests market is near capitulation, but improving trend (from 23.9 weekly avg) is not yet confirmed \u2014 too early to buy the fear."
     },
     {
       "source": "CoinTelegraph",
       "signal_type": "news",
-      "description": "US spot Bitcoin ETFs posted $425M outflow after a brief rebound, signaling institutional risk-off positioning."
+      "description": "US spot Bitcoin ETFs posted $425M outflow after a brief rebound, indicating institutional selling pressure is resuming \u2014 bearish for near-term price action."
     },
     {
       "source": "CryptoSlate",
       "signal_type": "news",
-      "description": "Bitcoin has less than 8 hours to hold $60K before Hormuz conflict escalation takes over \u2014 binary risk event imminent."
+      "description": "Bitcoin has less than 8 hours to hold $60K before Hormuz conflict escalation takes over \u2014 imminent binary event risk."
+    },
+    {
+      "source": "CoinDesk",
+      "signal_type": "news",
+      "description": "U.S. government moved $288M in seized BTC/ETH to Coinbase Prime, signaling potential government selling that could add supply pressure."
     },
     {
       "source": "RSI",
       "signal_type": "technical",
-      "description": "Best candidate MON has RSI at 36.85 approaching oversold, but below all moving averages with inadequate risk/reward ratio of 0.79x."
+      "description": "No swing candidate has RSI below 35 (true oversold). MON at 37 and XPL at 39 are approaching but not yet at levels that historically produce reliable bounces."
     }
   ],
   "_mode": "HUNTING",
-  "exit_target": 0.0252,
-  "stop_loss": 0.018
+  "exit_target": null,
+  "stop_loss": null
 }
