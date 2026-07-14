@@ -1,29 +1,5 @@
 [
   {
-    "ts": "2026-07-12T17:09:11.205578+00:00",
-    "coin": "BTC",
-    "price": 64098,
-    "signal": "HOLD",
-    "confidence": 30,
-    "score": -0.15,
-    "fg": 26,
-    "btc_price": 64098,
-    "btc_dominance": 56.2,
-    "candidates": [
-      "HTX",
-      "MON",
-      "USDG",
-      "XPL",
-      "PENGU",
-      "TRUMP",
-      "WLD",
-      "ETHFI",
-      "ZRO",
-      "GRASS"
-    ],
-    "alert": "Market in Fear zone with shrinking stablecoin supply \u2014 exercise heightened caution on all altcoin entries."
-  },
-  {
     "ts": "2026-07-12T18:09:16.360802+00:00",
     "coin": "BTC",
     "price": 64027,
@@ -897,5 +873,26 @@
       "KITE"
     ],
     "alert": "U.S. government transferred $288M in seized crypto to Coinbase Prime \u2014 potential sell pressure incoming. CPI report imminent."
+  },
+  {
+    "ts": "2026-07-14T09:09:10.987163+00:00",
+    "coin": "MON",
+    "price": 0.02261747,
+    "signal": "HOLD",
+    "confidence": 28,
+    "score": -0.15,
+    "fg": 22,
+    "btc_price": 62609,
+    "btc_dominance": 56.1,
+    "candidates": [
+      "MON",
+      "USDG",
+      "KITE",
+      "JTO",
+      "BONK",
+      "PENGU",
+      "XPL"
+    ],
+    "alert": "Critical macro events imminent: CPI data release and Iran-Hormuz escalation could drive BTC below $60K. Avoid new entries until clarity emerges."
   }
 ]
