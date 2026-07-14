@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-07-14T19:09:10.961200+00:00",
+  "timestamp": "2026-07-14T20:09:10.977202+00:00",
   "selected_coin": "ETH",
   "selected_coin_name": "Ethereum",
-  "selected_coin_price": 1874.06,
+  "selected_coin_price": 1874.76,
   "confidence": 68,
-  "layman_headline": "Ethereum flashes oversold signals during extreme market fear \u2014 a classic contrarian setup.",
-  "layman_explanation": "The crypto market is in 'Extreme Fear' territory (22/100), which historically has been one of the better times to buy. Ethereum just bounced 6.2% in 24 hours after being beaten down 62% from its all-time high, and its RSI indicator shows it's near oversold levels. Bitcoin jumped on the lowest US CPI data since 2020, which is bullish for all of crypto, and Ethereum tends to follow BTC rallies with amplified moves. Meanwhile, institutional news like stablecoin expansion and tokenized finance alignment between the US and UK support ETH's long-term ecosystem.",
-  "layman_action": "Consider buying Ethereum near $1,830 with a stop-loss at $1,690. If it reaches $2,050 (roughly 10-12% gain), take profits. Only risk what you can afford to lose \u2014 the market is still fearful for a reason.",
-  "expert_reasoning": "ETH RSI at 35.01 is approaching oversold territory \u2014 a signal with an 80% historical win rate in our tracking. The Bullish Marubozu candlestick pattern shows pure buying conviction on the latest candle, suggesting institutional accumulation. The 6.24% 24h bounce with $12.5B volume confirms genuine demand, not just a dead cat bounce. The macro backdrop is supportive: lowest US CPI since 2020 reduces hawkish Fed risk, and US/UK tokenized finance regulatory alignment is directly bullish for Ethereum's DeFi ecosystem. The $41.2B TVL remains stable, confirming no capital flight. Key risk is that price remains below all major moving averages, so this is a counter-trend trade requiring strict stop discipline at $1,690 (below the $1,700 support level).",
+  "layman_headline": "Ethereum looks deeply oversold in extreme market fear \u2014 a classic buy-the-dip setup.",
+  "layman_explanation": "The entire crypto market is gripped by extreme fear (22/100), which historically has been a good time to buy strong assets at a discount. Ethereum is down 62% from its all-time high and its RSI is near oversold territory at 35, meaning sellers are running out of steam. Today's 5.8% bounce with strong buying conviction (a 'Marubozu' candle with no selling pushback) suggests buyers are stepping in. Major news catalysts include US-UK alignment on tokenization rules and stablecoin regulation, which directly benefits Ethereum's ecosystem.",
+  "layman_action": "Consider buying Ethereum around $1,840 with a stop-loss at $1,690. If the bounce continues, look to take profits near $2,050. Only risk what you can afford to lose \u2014 the market is still fearful for a reason.",
+  "expert_reasoning": "ETH RSI at 35.01 is approaching oversold territory, a signal with 80% historical win rate in our tracking. The Bullish Marubozu candle on the daily chart shows pure buying conviction with no upper/lower wicks, indicating strong demand at these levels. Fear & Greed at 22 (Extreme Fear) with an improving trend adds confluence \u2014 another 71% win rate signal. While the chart bias is neutral and price remains below all major MAs (bearish structure), the 5-day momentum of +6.5% shows early trend reversal. The $1,700 support is only 4.2% below current price, giving us a defined risk level, while the macro catalyst of US-UK tokenization alignment directly benefits Ethereum's institutional narrative. Volume at $13.1B is massive, confirming this isn't a low-liquidity bounce.",
   "risk_factors": [
-    "Price remains below all major moving averages \u2014 bearish macro structure means this is a counter-trend trade that could fail",
-    "BTC dominance at 56.3% suggests capital is rotating into Bitcoin, not alts \u2014 ETH may underperform even if BTC rallies",
-    "Senate Democrats opposing the Clarity Act and Mizuho downgrading Circle could create regulatory headwinds for the broader crypto ecosystem"
+    "BTC dominance at 56.3% means capital is flowing to Bitcoin over alts \u2014 ETH could underperform even if crypto broadly recovers",
+    "Price remains below all major moving averages \u2014 bearish structure could reassert and break the $1,700 support",
+    "Circle downgrade by Mizuho and Open USD threat could create stablecoin instability that negatively impacts Ethereum DeFi ecosystem"
   ],
   "watch_list": [
-    "ETH ability to hold above $1,800 support and break through $1,875 resistance in the next 48 hours",
-    "Fear & Greed Index movement \u2014 improving from 22 toward 30+ would confirm sentiment bottoming",
-    "BTC price action at $65,000 resistance \u2014 rejection there could drag ETH back down"
+    "BTC price action around $65,000 resistance \u2014 a rejection here could drag ETH back down",
+    "Fear & Greed index trend \u2014 if it continues improving from 22 toward 30+, the bounce has legs",
+    "ETH daily close relative to $1,800 \u2014 holding above this level confirms the Marubozu signal"
   ],
-  "market_context": "The crypto market is in Extreme Fear (22/100) but showing signs of improvement, with BTC rallying 4.1% on dovish CPI data. This is a classic fear-driven dislocation where quality assets get oversold \u2014 exactly the environment where contrarian swing trades have the highest expected value.",
-  "context_banner": "Extreme Fear with a macro catalyst (lowest CPI since 2020) creates a textbook contrarian entry window for Ethereum at oversold RSI levels.",
-  "btc_price": 64528,
+  "market_context": "Crypto markets are in Extreme Fear (22/100) but showing signs of a relief rally with BTC pushing toward $65K on US inflation relief. High BTC dominance at 56.3% suggests risk-off positioning, but today's broad green across top-20 assets hints at a potential sentiment inflection.",
+  "context_banner": "Extreme Fear conditions with ETH near oversold and strong bullish candle formation create a textbook mean-reversion opportunity on the most liquid altcoin.",
+  "btc_price": 64442,
   "fear_greed": {
     "current": 22,
     "label": "Extreme Fear",
@@ -33,27 +33,27 @@
     {
       "source": "RSI",
       "signal_type": "technical",
-      "description": "ETH RSI at 35.01 approaching oversold \u2014 this indicator has an 80% win rate in our signal tracking, making it the highest-confidence technical signal available."
+      "description": "ETH RSI at 35.01 approaching oversold territory \u2014 this signal has an 80% win rate in our tracking with avg +5.5% returns."
     },
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Extreme Fear at 22/100 with an improving trend (up from week avg of 23.9). This contrarian indicator has a 71% win rate in our tracking."
+      "description": "Market Fear & Greed at 22 (Extreme Fear) with improving trend \u2014 71% historical win rate, classic contrarian buy signal."
     },
     {
       "source": "CoinTelegraph",
       "signal_type": "news",
-      "description": "Bitcoin jumped on lowest US CPI since 2020, a macro catalyst that lifts the entire crypto complex. CoinTelegraph signals carry an 80% win rate in our tracking."
+      "description": "US-UK treasuries aligning on tokenization and stablecoin rules provides a direct institutional catalyst for Ethereum's ecosystem \u2014 CoinTelegraph signals have 80% win rate."
     },
     {
-      "source": "Blockworks",
+      "source": "CryptoSlate",
       "signal_type": "news",
-      "description": "ETH derivatives have reset per Blockworks analysis, clearing leveraged positions and creating a cleaner setup for organic price recovery."
+      "description": "Bitcoin pushing toward $65K on US inflation relief sets a supportive macro backdrop for ETH to follow with higher beta."
     },
     {
-      "source": "CoinDesk",
-      "signal_type": "news",
-      "description": "US and UK moving to align rules for tokenized finance is directly bullish for Ethereum's DeFi ecosystem and institutional adoption."
+      "source": "volume_breakout",
+      "signal_type": "technical",
+      "description": "ETH 24h volume at $13.1B with a Bullish Marubozu candle confirms strong buyer conviction \u2014 volume-confirmed moves have 75% win rate."
     }
   ],
   "_mode": "HUNTING",
