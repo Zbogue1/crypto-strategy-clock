@@ -1,29 +1,5 @@
 [
   {
-    "ts": "2026-07-12T10:09:17.164460+00:00",
-    "coin": "ZRO",
-    "price": 0.888775,
-    "signal": "HOLD",
-    "confidence": 35,
-    "score": -0.15,
-    "fg": 26,
-    "btc_price": 63876,
-    "btc_dominance": 56.3,
-    "candidates": [
-      "MON",
-      "USDG",
-      "VVV",
-      "HTX",
-      "XPL",
-      "PENGU",
-      "TRUMP",
-      "ETHFI",
-      "ZRO",
-      "GRASS"
-    ],
-    "alert": "Market in fear territory with geopolitical escalation risk \u2014 avoid aggressive alt entries until sentiment stabilizes."
-  },
-  {
     "ts": "2026-07-12T11:09:11.864110+00:00",
     "coin": "ZRO",
     "price": 0.885791,
@@ -916,5 +892,26 @@
       "VELVET"
     ],
     "alert": "Market in Extreme Fear with geopolitical risk escalation \u2014 avoid chasing oversold alts until BTC stabilizes above $60K support."
+  },
+  {
+    "ts": "2026-07-14T02:09:11.686002+00:00",
+    "coin": "BTC",
+    "price": 62520,
+    "signal": "HOLD",
+    "confidence": 30,
+    "score": -0.3,
+    "fg": 22,
+    "btc_price": 62520,
+    "btc_dominance": 56.0,
+    "candidates": [
+      "KITE",
+      "GRASS",
+      "MON",
+      "BONK",
+      "JTO",
+      "XPL",
+      "USDG"
+    ],
+    "alert": "Market in Extreme Fear (22/100) \u2014 all alt candidates in downtrends with no confirmed reversals. Avoid catching falling knives."
   }
 ]
