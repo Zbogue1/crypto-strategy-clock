@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-07-14T07:09:10.991920+00:00",
-  "selected_coin": "BTC",
-  "selected_coin_name": "Bitcoin",
-  "selected_coin_price": 62535,
-  "confidence": 28,
-  "layman_headline": "Extreme fear grips crypto as geopolitical tensions and inflation fears keep traders on the sidelines.",
-  "layman_explanation": "The crypto market is in 'Extreme Fear' mode with a score of just 22 out of 100. Bitcoin is wobbling around $62,500 while Iran conflict headlines and an upcoming inflation report are making everyone nervous. The U.S. government just moved nearly $300 million in seized crypto to Coinbase, which often spooks markets. None of the altcoin candidates show a clean enough setup to justify risking money right now \u2014 most are in downtrends with bearish chart structures and high BTC dominance is crushing alt performance.",
-  "layman_action": "Stay in cash and wait. The market is fearful for good reasons \u2014 geopolitical risk and inflation uncertainty. A better entry will come once we see fear stabilize or a clear reversal pattern form. Patience here protects your capital.",
-  "expert_reasoning": "Every candidate has significant flaws: GRASS is down 32% in 7 days but RSI is only 47 (not oversold enough for a bounce trade) with a -0.45 chart bias and poor 0.69x R/R. BONK has RSI 33 approaching oversold but a -1.40 bearish chart bias with a Bearish Marubozu \u2014 pure selling pressure, no support identified. DEXE has the best chart (+1.10 bias, Three White Soldiers) but RSI at 85 screams overbought after a 43% weekly run and the -13.5% daily drop suggests the reversal may already be underway with only 0.33x R/R. JTO is the most balanced candidate but the doji candle signals indecision and 1.05x R/R is below our 2x threshold. BTC dominance at 56.1% is actively suppressing alt performance. With Fear & Greed at 22 and trending down from 28 yesterday, the market hasn't found a floor yet. The Iran conflict and CPI report represent binary risk events that could push prices lower. Better to wait for capitulation washout or a confirmed reversal.",
+  "timestamp": "2026-07-14T08:09:11.086600+00:00",
+  "selected_coin": "JTO",
+  "selected_coin_name": "Jito",
+  "selected_coin_price": 0.642,
+  "confidence": 32,
+  "layman_headline": "Crypto market is gripped by extreme fear \u2014 patience beats impulse right now.",
+  "layman_explanation": "The entire crypto market is in 'Extreme Fear' territory at 22/100, with Bitcoin sliding below $62,500 amid geopolitical tensions with Iran and an upcoming U.S. inflation report. Altcoins are getting hit even harder, with most swing candidates down 10-33% over the past week. While fear often creates buying opportunities, none of the candidates today have a convincing technical setup \u2014 charts are mostly bearish, risk/reward ratios are poor, and Bitcoin dominance at 56% means money is flowing out of altcoins into Bitcoin.",
+  "layman_action": "Stay in cash and wait. The market hasn't found a bottom yet \u2014 better entries will appear once the CPI data drops and geopolitical uncertainty settles. Don't try to catch a falling knife.",
+  "expert_reasoning": "The macro backdrop is hostile for altcoin entries: BTC dominance at 56% signals capital rotation away from alts, the Iran conflict is reigniting risk-off behavior, and a CPI report is imminent which could trigger further volatility. Among candidates, GRASS (-33% 7d) looks like a capitulation play but has bearish chart structure and poor R/R (0.69x). BONK has deeply bearish charts (-1.40 bias) with a bearish marubozu \u2014 classic avoid signal. MON has a bullish marubozu candle but is in a downtrend below all MAs. JTO is the strongest candidate with an uptrend, moderately bullish MA structure, and 1.05x R/R, but RSI at 59 is elevated and the $288M government BTC/ETH transfer to Coinbase creates overhang risk across the market. The prudent play is to wait for either JTO to pull back to $0.60 support or for the CPI catalyst to resolve before deploying capital.",
   "risk_factors": [
-    "Iran conflict escalation could trigger a broader risk-off selloff across all crypto assets",
-    "CPI report could come in hot, pushing Fed rate hike expectations higher and crushing risk assets",
-    "U.S. government moving $288M in seized crypto to Coinbase Prime could signal upcoming selling pressure"
+    "Iran conflict escalation could trigger a broader risk-off selloff pushing BTC below $60K and dragging all alts further down",
+    "U.S. CPI report could come in hot, fueling July Fed rate hike bets and crushing crypto prices",
+    "U.S. government moving $288M in seized crypto to Coinbase suggests potential selling pressure on BTC and ETH"
   ],
   "watch_list": [
-    "CPI inflation report release \u2014 hot print would be bearish, cool print could trigger relief rally",
-    "Fear & Greed index \u2014 watch for sub-15 capitulation level as potential contrarian buy signal",
-    "BTC price action at $60,000 psychological support \u2014 a bounce there could set up alt entries"
+    "U.S. CPI inflation data release \u2014 hot print could crash markets, cool print could spark relief rally",
+    "JTO price action around $0.60 support \u2014 a bounce there with volume would be an actionable entry",
+    "Fear & Greed index trend \u2014 currently improving from 23.9 weekly avg; a move above 30 would signal sentiment stabilization"
   ],
-  "market_context": "Crypto markets are in Extreme Fear (22/100) with BTC at $62.5K facing dual headwinds from Iran geopolitical tensions and an imminent U.S. inflation report. BTC dominance at 56.1% signals capital is fleeing alts for relative safety in Bitcoin.",
-  "context_banner": "Extreme Fear with multiple macro risk events ahead \u2014 capital preservation is the highest-conviction trade right now.",
-  "btc_price": 62535,
+  "market_context": "The crypto market is in Extreme Fear (22/100) with Bitcoin at $62,450, pressured by geopolitical tensions and pre-CPI anxiety. High BTC dominance at 56% makes this a hostile environment for altcoin swing trades.",
+  "context_banner": "Extreme Fear with macro catalysts pending \u2014 capital preservation trumps opportunity hunting until the CPI dust settles.",
+  "btc_price": 62453,
   "fear_greed": {
     "current": 22,
     "label": "Extreme Fear",
@@ -28,35 +28,35 @@
     "week_avg": 23.9,
     "trend": "improving"
   },
-  "btc_dominance": 56.1,
+  "btc_dominance": 56.0,
   "key_signals": [
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Extreme Fear at 22 and dropping from 28 yesterday indicates the market hasn't bottomed yet \u2014 historically reliable signal says wait for stabilization before buying."
+      "description": "Extreme Fear at 22/100 with improving trend suggests we're near a bottom, but not yet confirmed \u2014 contrarian signal to watch but not act on prematurely."
     },
     {
       "source": "CoinDesk",
       "signal_type": "news",
-      "description": "U.S. government moving $288M in seized BTC/ETH to Coinbase Prime creates potential sell-side overhang and market anxiety."
+      "description": "Bitcoin holding $62,600 amid Iran conflict and looming CPI report creates binary event risk that makes new entries inadvisable before resolution."
     },
     {
       "source": "CoinDesk",
-      "signal_type": "macro",
-      "description": "Iran conflict reigniting and CPI report looming are creating binary risk events that make new entries reckless."
+      "signal_type": "news",
+      "description": "U.S. government moved $288M in seized BTC/ETH to Coinbase Prime, creating potential sell-side overhang across the entire market."
     },
     {
       "source": "RSI",
       "signal_type": "technical",
-      "description": "No candidate is deeply oversold enough to warrant a contrarian entry \u2014 BONK at 33 is closest but chart structure is actively bearish with no support."
+      "description": "No candidate has RSI below 30 (truly oversold) \u2014 BONK at 33 is closest but its bearish marubozu and -1.40 chart bias make it a falling knife rather than a bounce candidate."
     },
     {
-      "source": "CoinTelegraph",
-      "signal_type": "news",
-      "description": "CLARITY Act gaining law enforcement endorsement signals positive regulatory trajectory long-term but provides no near-term price catalyst."
+      "source": "Chart Pattern Analysis",
+      "signal_type": "technical",
+      "description": "JTO is the only candidate with positive chart bias (+0.40) and bullish MA structure, but doji indecision and 59 RSI suggest waiting for a better entry near $0.60 support."
     }
   ],
   "_mode": "HUNTING",
-  "exit_target": null,
-  "stop_loss": null
+  "exit_target": 0.685,
+  "stop_loss": 0.575
 }
