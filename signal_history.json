@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-12T13:09:14.207538+00:00",
-    "coin": "ZRO",
-    "price": 0.883453,
-    "signal": "HOLD",
-    "confidence": 32,
-    "score": -0.15,
-    "fg": 26,
-    "btc_price": 64002,
-    "btc_dominance": 56.2,
-    "candidates": [
-      "USDG",
-      "HTX",
-      "MON",
-      "XPL",
-      "PENGU",
-      "GRASS",
-      "VVV",
-      "ETHFI",
-      "ZRO"
-    ],
-    "alert": "No compelling swing trade setups available. All candidates show either bearish charts, poor risk/reward, or lack of catalyst. Staying in cash."
-  },
-  {
     "ts": "2026-07-12T14:09:20.400261+00:00",
     "coin": "TRUMP",
     "price": 1.57,
@@ -908,5 +885,26 @@
       "JTO"
     ],
     "alert": "US government moved $297M in seized BTC/ETH to Coinbase Prime \u2014 potential sell pressure overhang. Monitor closely."
+  },
+  {
+    "ts": "2026-07-14T05:09:10.951134+00:00",
+    "coin": "MON",
+    "price": 0.0220446,
+    "signal": "HOLD",
+    "confidence": 32,
+    "score": -0.15,
+    "fg": 22,
+    "btc_price": 62729,
+    "btc_dominance": 56.1,
+    "candidates": [
+      "MON",
+      "KITE",
+      "GRASS",
+      "BONK",
+      "DEXE",
+      "JTO",
+      "XPL"
+    ],
+    "alert": "Market in Extreme Fear with government crypto transfers to Coinbase \u2014 elevated volatility expected. Wait for stabilization before deploying capital."
   }
 ]
