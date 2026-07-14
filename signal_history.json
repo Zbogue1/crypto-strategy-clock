@@ -1,29 +1,5 @@
 [
   {
-    "ts": "2026-07-12T20:09:21.161685+00:00",
-    "coin": "BTC",
-    "price": 64174,
-    "signal": "HOLD",
-    "confidence": 28,
-    "score": -0.35,
-    "fg": 26,
-    "btc_price": 64174,
-    "btc_dominance": 56.2,
-    "candidates": [
-      "MON",
-      "USDG",
-      "HTX",
-      "XPL",
-      "PENGU",
-      "TRUMP",
-      "WLD",
-      "ETHFI",
-      "ZRO",
-      "GRASS"
-    ],
-    "alert": "No actionable swing trade setup found. All candidates lack the combination of oversold technicals, bullish chart structure, and catalysts needed for high-conviction entries."
-  },
-  {
     "ts": "2026-07-12T21:09:16.523339+00:00",
     "coin": "ZRO",
     "price": 0.87103,
@@ -889,5 +865,26 @@
       "XPL"
     ],
     "alert": "Multiple macro headwinds converging \u2014 Iran tensions, CPI data imminent, and $425M BTC ETF outflows. Risk of further downside before any sustainable bounce."
+  },
+  {
+    "ts": "2026-07-14T12:09:11.206428+00:00",
+    "coin": "BTC",
+    "price": 62731,
+    "signal": "HOLD",
+    "confidence": 30,
+    "score": -0.2,
+    "fg": 22,
+    "btc_price": 62731,
+    "btc_dominance": 56.1,
+    "candidates": [
+      "USDG",
+      "MON",
+      "KITE",
+      "GRASS",
+      "PENGU",
+      "JTO",
+      "XPL"
+    ],
+    "alert": "CPI release and Fed Warsh testimony collide today \u2014 expect elevated volatility across all crypto assets for the next 12-24 hours."
   }
 ]
