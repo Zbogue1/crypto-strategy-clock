@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-07-14T16:09:10.939983+00:00",
+  "timestamp": "2026-07-14T17:09:11.201745+00:00",
   "selected_coin": "ETH",
   "selected_coin_name": "Ethereum",
-  "selected_coin_price": 1872.39,
-  "confidence": 68,
-  "layman_headline": "Extreme fear in the market creates an opportunity to buy Ethereum on its strongest bounce day in weeks.",
-  "layman_explanation": "The entire crypto market is gripped by extreme fear \u2014 the sentiment index is at 22 out of 100, which historically is when the best buying opportunities appear. Ethereum just popped over 5% in 24 hours, leading the market with strong volume. A cooler-than-expected U.S. inflation report (lowest CPI since 2020) is fueling optimism that the Fed won't raise rates, which is good for risk assets like crypto. ETH is still 62% below its all-time high, meaning there's plenty of room to recover.",
-  "layman_action": "Consider a measured entry into Ethereum around $1,850. Set a stop-loss at $1,740 to limit downside to about 6%, and look to take profits near $2,100 for a potential 12-13% gain.",
-  "expert_reasoning": "ETH leads all top-20 assets on 24h performance (+5.4%) with the second-highest volume ($13.4B), signaling genuine demand rather than a dead-cat bounce. The CPI print is a macro catalyst that reliably lifts risk assets for multiple sessions. Extreme Fear at 22 with an improving trend (from 28 yesterday, weekly avg 23.9) aligns with our highest-confidence signal category (83% win rate historically). While we lack detailed chart technicals for ETH, the macro + sentiment + volume trifecta is compelling. BTC dominance at 56.4% is high but ETH outperforming BTC today (5.4% vs 3.6%) suggests early rotation into alts. The Blockworks headline 'ETH derivatives reset and the next retail trade' confirms positioning has been cleaned out, reducing liquidation cascade risk.",
+  "selected_coin_price": 1866.88,
+  "confidence": 62,
+  "layman_headline": "Extreme fear in crypto markets creates a buying window for Ethereum as BTC bounces on cool inflation data.",
+  "layman_explanation": "The crypto market is in 'Extreme Fear' mode with a score of just 22 out of 100 \u2014 historically one of the best times to buy. Bitcoin just jumped on a CPI inflation print that was the lowest since 2020, which is very bullish for risk assets. Ethereum is up over 5% today and leading the major altcoins higher, with strong volume and institutional news flow around tokenization and DeFi. With $41 billion locked in Ethereum's DeFi ecosystem and major banks moving toward tokenized finance on Ethereum rails, the fundamental story is solid.",
+  "layman_action": "Consider a cautious entry into Ethereum around $1,850-$1,870. Set a stop-loss at $1,740 (about 6% downside) and look to take profits near $2,050 (about 10% upside). This is a risk-managed bet that fear is overdone.",
+  "expert_reasoning": "In extreme fear environments (F&G=22), large-cap assets like ETH offer the best risk-adjusted bounce potential. ETH is 62% off ATH, meaning significant upside exists on any sentiment normalization. Today's CPI-driven rally is the first clear macro catalyst in weeks \u2014 CoinTelegraph reports (80% win rate signal) confirm BTC jumped on the data. The Blockworks 'ETH derivatives reset' headline suggests short positioning is being unwound, which could fuel further upside. The other swing candidates \u2014 MON, GRASS, XPL, KITE \u2014 all have bearish chart structures (below all MAs), poor risk/reward ratios (<1.0x), and are small-cap tokens that underperform during high BTC dominance periods (56.3%). JTO has RSI at 59 already. ETH's massive TVL ($41B) and institutional adoption news (EthSystems targeting banks, tokenization momentum) provide a fundamental floor.",
   "risk_factors": [
-    "BTC dominance at 56.4% remains elevated \u2014 if BTC stalls at $65K resistance, alt rotation could reverse quickly",
-    "No detailed ETH chart data available (RSI, MACD, MAs) \u2014 we're trading primarily on macro catalyst and sentiment, which adds uncertainty",
-    "Extreme Fear can persist and deepen \u2014 the CPI bounce could be a one-day relief rally if broader macro concerns resurface"
+    "BTC dominance at 56.3% means capital is flowing to Bitcoin over alts \u2014 ETH could lag if this trend persists",
+    "BTC failing to hold $64K (as CoinTelegraph warns) could trigger another leg down across all crypto",
+    "Macro uncertainty remains \u2014 one good CPI print doesn't guarantee a sustained risk-on environment"
   ],
   "watch_list": [
-    "BTC price action at $65,000-$66,000 resistance \u2014 failure here could drag ETH back down",
-    "Fear & Greed index trajectory over next 48 hours \u2014 need it to continue improving above 25-30 to confirm sentiment shift",
-    "ETH daily volume sustainability \u2014 if volume drops significantly tomorrow, the bounce may lack follow-through"
+    "BTC price action at $64,000-$65,000 resistance \u2014 failure here invalidates the rally thesis",
+    "Fear & Greed index trend \u2014 currently improving from 28 to 22 weekly, needs to continue recovering above 30",
+    "ETH/BTC ratio \u2014 if ETH continues outperforming BTC, it confirms alt rotation is beginning"
   ],
-  "market_context": "Crypto markets are in Extreme Fear (22/100) but showing their strongest bounce in days, catalyzed by a surprisingly cool U.S. CPI print. BTC is up 3.6% to $64.7K with ETH leading at +5.4%, suggesting a potential sentiment inflection point.",
-  "context_banner": "A cooling CPI print ignites a broad crypto bounce in the depths of Extreme Fear \u2014 historically the highest-probability setup for swing entries.",
-  "btc_price": 64747,
+  "market_context": "Crypto is in Extreme Fear (22/100) but showing the first signs of recovery after a lowest-since-2020 US CPI print sparked a broad rally. BTC dominance remains elevated at 56.3%, meaning alts need a strong catalyst to outperform \u2014 today's ETH outperformance (+5.4% vs BTC's +3.7%) is an encouraging start.",
+  "context_banner": "Lowest US CPI since 2020 sparks a crypto relief rally in extreme fear \u2014 Ethereum leads with 5.4% gains as institutional tokenization momentum accelerates.",
+  "btc_price": 64587,
   "fear_greed": {
     "current": 22,
     "label": "Extreme Fear",
@@ -28,35 +28,35 @@
     "week_avg": 23.9,
     "trend": "improving"
   },
-  "btc_dominance": 56.4,
+  "btc_dominance": 56.3,
   "key_signals": [
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Extreme Fear at 22/100 with improving trend \u2014 our most reliable sentiment signal with 83% historical win rate and +6.6% avg return."
+      "description": "Extreme Fear at 22 with improving trend from weekly average of 23.9 \u2014 historically among the best contrarian entry windows with 71% win rate in our data."
     },
     {
       "source": "CoinTelegraph",
       "signal_type": "news",
-      "description": "Bitcoin jumps on lowest US CPI since 2020 \u2014 this macro catalyst has 100% win rate in our signal history with +12% avg returns."
+      "description": "Bitcoin jumped on lowest US CPI since 2020 \u2014 strong macro catalyst for risk assets. CoinTelegraph signals carry 80% win rate in our tracking."
+    },
+    {
+      "source": "RSI",
+      "signal_type": "technical",
+      "description": "ETH is rallying hard (+5.4% 24h) from depressed levels, 62% below ATH \u2014 significant mean-reversion upside. RSI signals carry 80% win rate."
     },
     {
       "source": "CoinDesk",
       "signal_type": "news",
-      "description": "U.S. June CPI fell 0.4%, cooling rate hike fears \u2014 directly supportive of risk assets; CoinDesk signals have 75% historical win rate."
+      "description": "Multiple institutional adoption stories \u2014 EthSystems targeting banks with blockchain privacy, Fidelity on tokenization for pension funds, US/UK aligning rules for tokenized finance \u2014 all bullish for ETH ecosystem."
     },
     {
-      "source": "volume_breakout",
-      "signal_type": "technical",
-      "description": "ETH 24h volume at $13.4B with +5.4% price move represents the strongest volume-confirmed bounce among all candidates \u2014 our highest-conviction signal type at 100% win rate."
-    },
-    {
-      "source": "Blockworks",
-      "signal_type": "news",
-      "description": "'ETH derivatives reset and the next retail trade' \u2014 confirms leveraged positions have been flushed, creating a cleaner setup for upside."
+      "source": "DeFiLlama",
+      "signal_type": "onchain",
+      "description": "Ethereum DeFi TVL stable at $41B \u2014 by far the largest ecosystem, providing a strong fundamental floor and institutional relevance that smaller candidates lack."
     }
   ],
   "_mode": "HUNTING",
-  "exit_target": 2100.0,
+  "exit_target": 2050.0,
   "stop_loss": 1740.0
 }
