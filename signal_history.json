@@ -1,26 +1,5 @@
 [
   {
-    "ts": "2026-07-13T22:09:10.937829+00:00",
-    "coin": "BTC",
-    "price": 62102,
-    "signal": "HOLD",
-    "confidence": 25,
-    "score": -0.6,
-    "fg": 28,
-    "btc_price": 62102,
-    "btc_dominance": 56.0,
-    "candidates": [
-      "KITE",
-      "MON",
-      "GRASS",
-      "VELVET",
-      "LIT",
-      "BONK",
-      "USDG"
-    ],
-    "alert": "No quality swing setups available \u2014 all candidates fail risk/reward or technical filters. Staying in cash."
-  },
-  {
     "ts": "2026-07-13T23:09:10.875343+00:00",
     "coin": "MON",
     "price": 0.02205008,
@@ -870,5 +849,28 @@
       "GRASS"
     ],
     "alert": null
+  },
+  {
+    "ts": "2026-07-15T14:09:10.916957+00:00",
+    "coin": "ETH",
+    "price": 1929.93,
+    "signal": "BUY",
+    "confidence": 62,
+    "score": 0.45,
+    "fg": 25,
+    "btc_price": 65254,
+    "btc_dominance": 56.3,
+    "candidates": [
+      "USDG",
+      "MON",
+      "DEXE",
+      "PUMP",
+      "VIRTUAL",
+      "PENDLE",
+      "PENGU",
+      "ETH",
+      "GRASS"
+    ],
+    "alert": "Extreme Fear improving + ETH RSI 35 oversold bounce \u2014 high-probability contrarian window"
   }
 ]
