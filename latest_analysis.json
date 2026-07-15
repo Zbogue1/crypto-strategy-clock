@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-07-15T15:09:11.073002+00:00",
+  "timestamp": "2026-07-15T16:09:11.103978+00:00",
   "selected_coin": "ETH",
   "selected_coin_name": "Ethereum",
-  "selected_coin_price": 1932.55,
+  "selected_coin_price": 1920.61,
   "confidence": 68,
-  "layman_headline": "Ethereum bouncing hard from extreme fear \u2014 a classic contrarian setup is forming.",
-  "layman_explanation": "The entire crypto market is gripped by extreme fear (25/100), which historically has been one of the best times to buy. Ethereum just surged 11.4% in a week while its RSI is still near oversold at 35, meaning it has room to run before getting overheated. Bitcoin hit $65.5K on surprise inflation data, and ETH is riding that wave with strong buying conviction showing in its candle patterns. South Korea classifying crypto as national assets and Japan's regulatory overhaul add institutional tailwinds.",
-  "layman_action": "Consider a cautious entry into Ethereum around $1,900, setting a hard stop-loss at $1,780. If it reaches $2,150, take profits. This is a contrarian bet during extreme fear \u2014 don't risk more than you can afford to lose.",
-  "expert_reasoning": "ETH RSI at 35.01 is a high-conviction signal per our reliability data (80% win rate on RSI signals). The Bullish Marubozu candle pattern confirms strong buying conviction with zero seller pushback. While ETH is below all major MAs (bearish structure), the extreme fear environment at 25 with an improving trend from 22 yesterday suggests we're at a sentiment inflection point \u2014 Fear & Greed has a 71% win rate in our signal history. The 11.4% weekly move is aggressive but RSI hasn't caught up, suggesting this is early-stage momentum rather than exhaustion. CoinTelegraph's coverage of BTC hitting $65.5K on inflation data (80% reliable source) validates the macro catalyst. The risk is BTC dominance at 56.3% continuing to compress alts, but ETH's relative strength this week suggests capital rotation may be beginning.",
+  "layman_headline": "Ethereum looks oversold and is bouncing hard \u2014 time to catch the fear discount.",
+  "layman_explanation": "The crypto market is in 'Extreme Fear' mode, which historically has been a good time to buy quality assets. Ethereum has jumped 11% in the past week after being beaten down over 60% from its all-time high. Bitcoin just hit a 3-week high on surprise low inflation data, and ETH tends to follow BTC with higher beta. The RSI indicator shows ETH is still near oversold territory even after the bounce, suggesting there's more room to run.",
+  "layman_action": "Consider buying Ethereum around $1,880 with a safety net sell order at $1,740. If it reaches $2,150, take profits. This is a calculated bet on the fear lifting \u2014 don't risk more than you can afford to lose.",
+  "expert_reasoning": "ETH RSI at 35 is approaching oversold \u2014 a signal with 80% historical win rate in our tracking. The Extreme Fear index at 25 with an improving trend is another reliable signal (71% win rate). The Bullish Marubozu candle pattern shows pure buying conviction. While ETH is below all major MAs (bearish structure), the 11% weekly surge and BTC's inflation-driven breakout to $65.5K provide a macro tailwind. The risk/reward from current levels to $2,150 target vs $1,740 stop is approximately 1.6:1, acceptable given the confluence of oversold technicals and improving sentiment. South Korea classifying crypto as national assets adds a medium-term regulatory tailwind.",
   "risk_factors": [
-    "BTC dominance at 56.3% means capital is flowing to Bitcoin over alts \u2014 ETH could underperform if this trend continues",
-    "ETH is below all major moving averages, meaning this bounce could be a dead cat rally within a larger downtrend",
-    "11.4% weekly gain may attract profit-takers, and the nearby resistance at $1,800 (chart level) could cap upside short-term"
+    "BTC dominance at 56.3% means capital is flowing to Bitcoin over alts \u2014 ETH could underperform even if BTC rallies",
+    "ETH is still below all major moving averages in a bearish structure \u2014 the bounce could be a dead cat bounce before further decline",
+    "Ongoing DeFi exploit wave (Ostium $18M hack) could dampen confidence in Ethereum ecosystem protocols"
   ],
   "watch_list": [
     "BTC price action around $65K-$66K \u2014 a rejection here could drag ETH back down",
-    "ETH/BTC ratio \u2014 watch for sustained improvement above 0.030 to confirm alt rotation",
-    "US Senate crypto bill progress from White House meetings \u2014 regulatory clarity could be a major catalyst or headwind"
+    "White House crypto bill meeting with senators \u2014 positive outcome could boost entire market",
+    "ETH ability to reclaim and hold above SMA20 \u2014 would confirm trend reversal vs dead cat bounce"
   ],
-  "market_context": "The market is in Extreme Fear (25/100) but improving from 22 yesterday, with BTC rallying to 3-week highs on surprise inflation data. High BTC dominance at 56.3% remains a headwind for alts but ETH's 11.4% weekly surge suggests early rotation may be underway.",
-  "context_banner": "Extreme Fear with improving momentum and major regulatory catalysts from Asia create a high-conviction contrarian entry window for Ethereum.",
-  "btc_price": 65393,
+  "market_context": "The market is in Extreme Fear (25) but improving from 22 yesterday, with BTC hitting a 3-week high on low inflation data. High BTC dominance (56.3%) suggests capital prefers safety, but ETH's outsized 11% weekly move hints at a rotation starting.",
+  "context_banner": "Extreme Fear with improving momentum and a macro catalyst \u2014 classic swing trade setup on oversold Ethereum.",
+  "btc_price": 65138,
   "fear_greed": {
     "current": 25,
     "label": "Extreme Fear",
@@ -33,30 +33,30 @@
     {
       "source": "RSI",
       "signal_type": "technical",
-      "description": "ETH RSI at 35.01 is near oversold territory despite an 11.4% weekly rally, indicating the move has room to continue \u2014 RSI signals have an 80% win rate in our track record."
+      "description": "ETH RSI at 35 is approaching oversold territory \u2014 our most reliable signal at 80% win rate \u2014 suggesting a high-probability bounce entry."
     },
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Extreme Fear at 25 improving from 22 yesterday \u2014 contrarian buy signal with 71% historical win rate in our data."
+      "description": "Extreme Fear at 25 but improving from 22 yesterday \u2014 historically a 71% reliable contrarian buy signal when trend is turning."
     },
     {
       "source": "CoinTelegraph",
       "signal_type": "news",
-      "description": "BTC hitting $65.5K on surprise US inflation data is the macro catalyst lifting the entire market \u2014 CoinTelegraph signals have 80% win rate."
+      "description": "Bitcoin hit $65.5K on surprise low US inflation data \u2014 a macro catalyst lifting the entire market, with ETH showing higher beta at +11% weekly vs BTC's +5.7%."
     },
     {
-      "source": "volume_breakout",
-      "signal_type": "technical",
-      "description": "ETH 24h volume at $12.8B is exceptionally high relative to other alts, confirming institutional-grade participation in this bounce."
+      "source": "Blockworks",
+      "signal_type": "news",
+      "description": "ETH derivatives reset signals fresh positioning and potential for new directional moves, reducing overhang from old leveraged positions."
     },
     {
       "source": "CoinDesk",
       "signal_type": "news",
-      "description": "South Korea classifying crypto as national assets and Japan's regulatory overhaul provide structural bullish catalysts for institutional adoption."
+      "description": "South Korea classifying crypto as national assets under modified law is a significant medium-term regulatory tailwind for major assets like ETH."
     }
   ],
   "_mode": "HUNTING",
   "exit_target": 2150.0,
-  "stop_loss": 1780.0
+  "stop_loss": 1740.0
 }
