@@ -1,26 +1,5 @@
 [
   {
-    "ts": "2026-07-14T01:09:11.767152+00:00",
-    "coin": "JTO",
-    "price": 0.647439,
-    "signal": "HOLD",
-    "confidence": 32,
-    "score": -0.15,
-    "fg": 22,
-    "btc_price": 62423,
-    "btc_dominance": 56.0,
-    "candidates": [
-      "KITE",
-      "GRASS",
-      "MON",
-      "BONK",
-      "JTO",
-      "LIT",
-      "VELVET"
-    ],
-    "alert": "Market in Extreme Fear with geopolitical risk escalation \u2014 avoid chasing oversold alts until BTC stabilizes above $60K support."
-  },
-  {
     "ts": "2026-07-14T02:09:11.686002+00:00",
     "coin": "BTC",
     "price": 62520,
@@ -876,5 +855,28 @@
       "GRASS"
     ],
     "alert": "Extreme Fear improving + BTC inflation breakout = potential reversal window for quality assets"
+  },
+  {
+    "ts": "2026-07-15T17:09:11.090217+00:00",
+    "coin": "ETH",
+    "price": 1921.59,
+    "signal": "BUY",
+    "confidence": 62,
+    "score": 0.55,
+    "fg": 25,
+    "btc_price": 65047,
+    "btc_dominance": 56.3,
+    "candidates": [
+      "MON",
+      "USDG",
+      "DEXE",
+      "PUMP",
+      "VIRTUAL",
+      "ETHFI",
+      "JTO",
+      "ETH",
+      "GRASS"
+    ],
+    "alert": "Extreme Fear index at 25 with improving trend \u2014 historically one of the best buying windows for quality assets."
   }
 ]
