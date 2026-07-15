@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-07-15T02:09:10.797608+00:00",
+  "timestamp": "2026-07-15T03:09:10.824466+00:00",
   "selected_coin": "ETH",
   "selected_coin_name": "Ethereum",
-  "selected_coin_price": 1868.25,
+  "selected_coin_price": 1867.23,
   "confidence": 62,
-  "layman_headline": "Ethereum looks beaten down enough for a bounce trade as fear grips the market.",
-  "layman_explanation": "The crypto market is in 'Extreme Fear' mode with a score of just 25 out of 100, which historically has been a decent time to buy. Ethereum has dropped over 62% from its all-time high and its RSI indicator at 35 shows it's approaching oversold territory \u2014 meaning sellers may be running out of steam. Today's 4.6% bounce with strong buying candles suggests buyers are stepping back in. Bitcoin pushing toward $65K on inflation relief could lift the entire market including ETH.",
-  "layman_action": "Consider a small position in Ethereum near $1,830, with a strict stop-loss at $1,690 to limit downside to about 7.5%. Take profits around $2,050 for a potential 12% gain.",
-  "expert_reasoning": "ETH RSI at 35.01 is approaching oversold territory, which has been our most reliable signal at 80% win rate and +5.5% average return. The Bullish Marubozu candlestick on the daily chart shows pure buying conviction with near-zero wicks. Fear & Greed at 25 (Extreme Fear) with an improving trend from 22 yesterday adds a contrarian bullish signal \u2014 another historically reliable indicator at 71% win rate. The $41.3B TVL on Ethereum remains rock-solid, and the Blockworks report on ETH derivatives reset suggests overleveraged shorts have been cleared, creating a cleaner runway for upside. Key risk is BTC dominance at 56.3% which historically suppresses alt performance, but ETH's 5% weekly gain already outpaces BTC's 1.7%, suggesting rotation may be starting.",
+  "layman_headline": "Ethereum looks beaten down enough to bounce \u2014 buying the fear while others flee.",
+  "layman_explanation": "The crypto market is in 'Extreme Fear' mode, which historically has been one of the better times to buy. Ethereum has dropped over 60% from its all-time high and its RSI indicator shows it's near oversold territory, meaning sellers may be running out of steam. ETH just posted a strong +5% daily bounce with heavy volume, suggesting big buyers are stepping in. The stablecoin and tokenization news cycle is positive for Ethereum's ecosystem long-term.",
+  "layman_action": "Consider a cautious entry into Ethereum around $1,830 with a strict stop-loss at $1,690. This is a contrarian play \u2014 buying when sentiment is at extreme fear. Only risk what you can afford to lose if the broader market turns lower.",
+  "expert_reasoning": "ETH RSI at 35 is approaching oversold \u2014 our most reliable signal (80% win rate, +5.5% avg return). The Bullish Marubozu candle pattern shows strong buying conviction after a prolonged downtrend. Fear & Greed at 25 (improving from 22) aligns with our second-best signal (71% win rate). The $1,700 support is well-defined giving us a clear stop-loss level at $1,690, while resistance at $1,800 has already been breached on today's move, opening the path toward $2,050. Ethereum's $41B TVL remains stable, confirming no fundamental deterioration. The risk/reward from current levels to the $2,050 target vs $1,690 stop is roughly 1.3:1, which improves with a limit entry at $1,830 to approximately 1.6:1.",
   "risk_factors": [
-    "BTC dominance at 56.3% means capital is flowing to Bitcoin over alts \u2014 ETH could underperform if this trend continues",
-    "Price is below all major moving averages indicating bearish structure \u2014 this bounce could be a dead cat bounce in a larger downtrend",
-    "CryptoSlate notes the inflation relief driving BTC toward $65K 'may already be fading' \u2014 if macro reverses, the entire market drops"
+    "BTC dominance at 56.3% means capital is flowing to Bitcoin over alts \u2014 ETH could underperform even if BTC rallies",
+    "Chart structure remains bearish (below all major MAs) \u2014 this bounce could be a dead cat bounce in a larger downtrend",
+    "Mizuho downgrading Circle on Open USD threat signals potential stablecoin ecosystem disruption that could impact Ethereum DeFi"
   ],
   "watch_list": [
-    "BTC price action around $65,000 resistance \u2014 a rejection here could drag ETH back down",
-    "Fear & Greed index trend \u2014 needs to continue improving above 30 to confirm sentiment shift",
-    "US Senate vote on the CLARITY Act \u2014 regulatory clarity could be a catalyst either way for crypto"
+    "Whether ETH holds above $1,800 resistance-turned-support over the next 48 hours \u2014 failure means the bounce is rejected",
+    "BTC behavior around $65,000 \u2014 CryptoSlate notes the inflation relief may already be fading, which could reverse the rally",
+    "CLARITY Act vote outcome \u2014 if it passes with negative crypto implications, it could tank sentiment further"
   ],
-  "market_context": "Market is in Extreme Fear (25/100) but improving from 22 yesterday. BTC is pushing toward $65K on US inflation relief, and ETH is outperforming with a 5% weekly gain vs BTC's 1.7%, suggesting early rotation into large-cap alts.",
-  "context_banner": "Extreme Fear with an improving trend and oversold ETH RSI create a classic contrarian swing entry \u2014 buy when others are afraid.",
-  "btc_price": 64631,
+  "market_context": "Markets are in Extreme Fear (25/100) but improving from 22, with BTC pushing toward $65K on inflation relief. High BTC dominance at 56.3% is unfavorable for altcoins, but ETH's outsized +6.3% weekly gain versus BTC's +2.5% suggests relative strength is shifting.",
+  "context_banner": "Extreme Fear readings combined with oversold RSI on Ethereum present a high-probability contrarian swing entry \u2014 buying quality assets when the crowd is panicking.",
+  "btc_price": 64523,
   "fear_greed": {
     "current": 25,
     "label": "Extreme Fear",
@@ -33,27 +33,27 @@
     {
       "source": "RSI",
       "signal_type": "technical",
-      "description": "ETH RSI at 35.01 is approaching oversold, our most reliable signal with 80% win rate and +5.5% avg return historically."
+      "description": "ETH RSI at 35 is approaching oversold territory \u2014 our most reliable signal with 80% win rate and +5.5% average return across past trades."
     },
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Market Fear & Greed at 25 (Extreme Fear) but improving from 22 \u2014 contrarian buy signal with 71% historical win rate."
-    },
-    {
-      "source": "CryptoSlate",
-      "signal_type": "news",
-      "description": "Bitcoin pushing toward $65K on US inflation relief provides a macro tailwind for the entire crypto market including ETH."
-    },
-    {
-      "source": "Blockworks",
-      "signal_type": "news",
-      "description": "ETH derivatives reset reported, suggesting overleveraged positions have been flushed \u2014 creating cleaner conditions for upside."
+      "description": "Market Fear & Greed at 25 (Extreme Fear) improving from 22 \u2014 historically a contrarian buy signal with 71% win rate in our track record."
     },
     {
       "source": "CoinTelegraph",
       "signal_type": "news",
-      "description": "US and UK treasuries aligning transatlantic rules on tokenization and stablecoins signals growing institutional acceptance benefiting ETH's ecosystem."
+      "description": "US/UK treasuries aligning on tokenization and stablecoin rules provides a positive regulatory tailwind for Ethereum's ecosystem \u2014 CoinTelegraph signals have 80% win rate."
+    },
+    {
+      "source": "Blockworks",
+      "signal_type": "news",
+      "description": "ETH derivatives reset creating cleaner positioning \u2014 reduced overleveraging means less liquidation risk on this bounce."
+    },
+    {
+      "source": "CryptoSlate",
+      "signal_type": "news",
+      "description": "BTC pushing toward $65K on US inflation relief, but the rally driver may already be fading \u2014 important to watch for reversal signals."
     }
   ],
   "_mode": "HUNTING",
