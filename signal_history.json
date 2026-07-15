@@ -1,26 +1,5 @@
 [
   {
-    "ts": "2026-07-13T19:09:11.301847+00:00",
-    "coin": "BTC",
-    "price": 61959,
-    "signal": "HOLD",
-    "confidence": 25,
-    "score": -0.6,
-    "fg": 28,
-    "btc_price": 61959,
-    "btc_dominance": 55.9,
-    "candidates": [
-      "KITE",
-      "MON",
-      "GRASS",
-      "LIT",
-      "VELVET",
-      "USDG",
-      "PENGU"
-    ],
-    "alert": "BTC testing critical $60K support zone \u2014 a breakdown could trigger significant alt selling pressure"
-  },
-  {
     "ts": "2026-07-13T20:09:11.237030+00:00",
     "coin": "BTC",
     "price": 62192,
@@ -864,5 +843,28 @@
       "ETH"
     ],
     "alert": "Extreme Fear reading of 25 with improving trend \u2014 historically one of the strongest buy signals when combined with oversold RSI."
+  },
+  {
+    "ts": "2026-07-15T11:09:10.933076+00:00",
+    "coin": "ETH",
+    "price": 1878.89,
+    "signal": "BUY",
+    "confidence": 62,
+    "score": 0.55,
+    "fg": 25,
+    "btc_price": 64668,
+    "btc_dominance": 56.3,
+    "candidates": [
+      "MON",
+      "USDG",
+      "PUMP",
+      "DEXE",
+      "VIRTUAL",
+      "PENGU",
+      "\u5e01\u5b89\u4eba\u751f",
+      "ETH",
+      "GRASS"
+    ],
+    "alert": "Fear & Greed improving from 22 to 25 with BTC pushing $65K \u2014 early signs of sentiment inflection point."
   }
 ]
