@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-07-15T10:09:10.832229+00:00",
+  "timestamp": "2026-07-15T11:09:10.933076+00:00",
   "selected_coin": "ETH",
   "selected_coin_name": "Ethereum",
-  "selected_coin_price": 1883.88,
-  "confidence": 72,
-  "layman_headline": "Ethereum is bouncing hard off deeply oversold levels as Bitcoin nears $65K on cooling inflation data.",
-  "layman_explanation": "The entire crypto market has been in 'Extreme Fear' for over a week, which historically marks good buying opportunities. Ethereum dropped over 60% from its all-time high and is now showing strong signs of a bounce \u2014 up 8.6% this week with powerful buying candles. Bitcoin is rallying toward $65,000 because U.S. inflation is cooling, which makes rate hikes less likely and is bullish for risk assets like crypto. ETF inflows into both Bitcoin and Ethereum confirm real institutional money is coming back in.",
-  "layman_action": "Consider a cautious entry into Ethereum around $1,850, with a hard stop-loss at $1,700 to limit downside to about 8%. Target $2,100 for a roughly 13% gain. This is a contrarian bet during extreme fear \u2014 the risk/reward is favorable but position size conservatively.",
-  "expert_reasoning": "ETH RSI at 35.01 is approaching oversold territory \u2014 our backtested RSI signal has an 80% win rate across 5 trades. The Bullish Marubozu candle pattern shows pure buying conviction. The macro backdrop is strongly supportive: CoinDesk reports BTC/ETH ETF inflows, cooling U.S. inflation is removing the rate-hike overhang, and Fear & Greed at 25 (improving from 22) suggests capitulation is ending. BTC dominance at 56.3% is headwind for alts, but ETH tends to lead alt recoveries and the 5.38% daily gain already outpaces BTC's 3.42%. The $1,700 support level provides a clean stop-loss with defined risk. Blockworks noting 'ETH derivatives reset' suggests positioning is clean for a fresh leg up.",
+  "selected_coin_price": 1878.89,
+  "confidence": 62,
+  "layman_headline": "Ethereum looks ready for a fear-driven bounce as Bitcoin eyes $65K and big money flows back in.",
+  "layman_explanation": "The entire crypto market has been gripped by extreme fear for over a week, but things are starting to shift. Bitcoin is climbing toward $65,000 on the back of a cooling U.S. inflation report, and Ethereum is bouncing hard \u2014 up 8% in a week. When fear is this extreme but prices are already recovering, it often signals a good buying opportunity. Ethereum is still down 62% from its all-time high and its RSI shows it's near oversold territory, meaning sellers may be exhausted.",
+  "layman_action": "Consider a measured entry into Ethereum around $1,830 or current levels, with a firm stop-loss at $1,700. If Bitcoin continues pushing toward $65K+, ETH could ride the wave to $2,000+. Don't go all-in \u2014 the market is still fearful for a reason.",
+  "expert_reasoning": "ETH RSI at 35.01 is approaching oversold territory \u2014 our highest-confidence signal historically (80% win rate, +5.5% avg return). The Bullish Marubozu candlestick on the daily chart confirms strong buying pressure with minimal selling resistance. Fear & Greed at 25 with an improving trend from 22 aligns with contrarian entry setups that have historically worked well (71% win rate). The macro catalyst is strong: cooling U.S. inflation kills the rate-hike narrative, Bitcoin is surging toward $65K with ETF inflows confirmed by multiple sources (CoinTelegraph \u2014 80% win rate source), and Stripe's $53B PayPal bid validates crypto-adjacent payment infrastructure. The main risk is BTC dominance at 56.3% suppressing alt performance, but ETH typically leads the alt recovery when BTC stabilizes at key levels.",
   "risk_factors": [
-    "BTC dominance at 56.3% could mean capital rotates to BTC rather than flowing into ETH, capping upside",
-    "Price remains below all major moving averages \u2014 bearish structure could reassert if the bounce loses momentum",
-    "Senate Democrats opposing the Clarity Act could create regulatory uncertainty that weighs on ETH specifically"
+    "BTC dominance at 56.3% could continue rising, keeping ETH underperforming even as BTC climbs",
+    "Middle East tensions (noted by CoinDesk) could trigger a risk-off move that reverses the current bounce",
+    "ETH is still below all major moving averages \u2014 bearish structure means this bounce could be a dead cat"
   ],
   "watch_list": [
-    "BTC price action at $65,000 resistance \u2014 a rejection here could drag ETH back down",
-    "ETH ETF flow data over the next 48 hours to confirm institutional buying is sustained",
-    "Fear & Greed index trajectory \u2014 needs to continue improving above 25 to support the recovery thesis"
+    "BTC price action at $65,000 resistance \u2014 a clean break above could trigger alt rotation into ETH",
+    "Fear & Greed index progression \u2014 sustained improvement above 30 would confirm sentiment shift",
+    "ETH ability to reclaim and hold $1,800 as support on any pullback (current resistance per chart)"
   ],
-  "market_context": "Crypto markets are recovering from extreme fear as U.S. inflation cools, removing rate-hike concerns. BTC is approaching $65K with strong ETF inflows, creating a supportive backdrop for a broader market bounce.",
-  "context_banner": "Extreme Fear is fading as cooling inflation and ETF inflows create a textbook contrarian entry opportunity in Ethereum.",
-  "btc_price": 64768,
+  "market_context": "The crypto market is in Extreme Fear (25/100) but showing clear signs of recovery, with BTC up 4.15% weekly and ETH leading with 8.14%. Cooling U.S. inflation data and ETF inflows are providing fundamental tailwinds, though geopolitical risks remain a headwind.",
+  "context_banner": "Extreme Fear readings with improving momentum and macro tailwinds create a classic contrarian swing entry in oversold Ethereum.",
+  "btc_price": 64668,
   "fear_greed": {
     "current": 25,
     "label": "Extreme Fear",
@@ -33,30 +33,30 @@
     {
       "source": "RSI",
       "signal_type": "technical",
-      "description": "ETH RSI at 35 approaching oversold \u2014 our highest-reliability signal with 80% win rate across 5 prior trades, signaling high-probability bounce zone."
+      "description": "ETH RSI at 35.01 is near oversold \u2014 our most reliable signal historically with 80% win rate and +5.5% average return, strongly supporting a bounce entry."
     },
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Extreme Fear at 25, improving from 22 yesterday \u2014 71% win rate signal historically. Contrarian indicator suggesting capitulation is ending."
-    },
-    {
-      "source": "CoinDesk",
-      "signal_type": "news",
-      "description": "Bitcoin and Ethereum ETFs drawing inflows as cooling U.S. inflation guts rate-hike expectations, providing macro catalyst for sustained recovery."
+      "description": "Extreme Fear at 25 improving from 22 \u2014 contrarian buy signal with 71% historical win rate, suggesting the market is near a fear bottom."
     },
     {
       "source": "CoinTelegraph",
       "signal_type": "news",
-      "description": "ARK Invest buying Circle shares and Bitmine generating $46M from ETH staking signal institutional confidence in Ethereum ecosystem \u2014 80% reliable source."
+      "description": "New $80K August BTC target and ARK buying Circle shares signal institutional confidence returning \u2014 CoinTelegraph signals have 80% win rate in our history."
+    },
+    {
+      "source": "CoinDesk",
+      "signal_type": "news",
+      "description": "Bitcoin nearing $65K on cooling U.S. inflation report, with BTC/ETH ETFs drawing fresh inflows \u2014 strong macro catalyst for continued recovery."
     },
     {
       "source": "volume_breakout",
       "signal_type": "technical",
-      "description": "ETH 24h volume at $14.36B with +5.38% daily move shows conviction behind the bounce \u2014 volume-confirmed moves have 75% win rate in our tracking."
+      "description": "ETH 24h volume at $13.3B with a Bullish Marubozu candle pattern confirms high-conviction buying pressure during the bounce from oversold levels."
     }
   ],
   "_mode": "HUNTING",
-  "exit_target": 2100.0,
+  "exit_target": 2050.0,
   "stop_loss": 1700.0
 }
