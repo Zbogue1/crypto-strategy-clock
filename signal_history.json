@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-13T10:09:23.457127+00:00",
-    "coin": "DCR",
-    "price": 15.06,
-    "signal": "HOLD",
-    "confidence": 28,
-    "score": -0.35,
-    "fg": 28,
-    "btc_price": 63029,
-    "btc_dominance": 56.1,
-    "candidates": [
-      "KITE",
-      "VELVET",
-      "MON",
-      "DCR",
-      "JTO",
-      "DEXE",
-      "XPL",
-      "ETHFI",
-      "GRASS"
-    ],
-    "alert": "No high-conviction swing trades available this cycle. All candidates fail risk/reward or technical quality checks."
-  },
-  {
     "ts": "2026-07-13T11:09:23.850925+00:00",
     "coin": "DCR",
     "price": 13.71,
@@ -863,5 +840,27 @@
       "ETH"
     ],
     "alert": "Extreme Fear improving \u2014 historically a reliable buy signal. ETH RSI approaching oversold at 35."
+  },
+  {
+    "ts": "2026-07-15T02:09:10.797608+00:00",
+    "coin": "ETH",
+    "price": 1868.25,
+    "signal": "BUY",
+    "confidence": 62,
+    "score": 0.55,
+    "fg": 25,
+    "btc_price": 64631,
+    "btc_dominance": 56.3,
+    "candidates": [
+      "MON",
+      "USDG",
+      "\u5e01\u5b89\u4eba\u751f",
+      "GRASS",
+      "PUMP",
+      "XPL",
+      "JTO",
+      "ETH"
+    ],
+    "alert": "Extreme Fear at 25 with improving trend \u2014 historically a high-probability buy window for quality assets."
   }
 ]
