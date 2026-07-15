@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-13T12:09:18.102255+00:00",
-    "coin": "DCR",
-    "price": 13.89,
-    "signal": "HOLD",
-    "confidence": 32,
-    "score": -0.3,
-    "fg": 28,
-    "btc_price": 62821,
-    "btc_dominance": 56.1,
-    "candidates": [
-      "KITE",
-      "MON",
-      "VELVET",
-      "DCR",
-      "JTO",
-      "LIT",
-      "XPL",
-      "ETHFI",
-      "GRASS"
-    ],
-    "alert": "U.S.-Iran tensions dragging crypto lower \u2014 avoid new alt positions until geopolitical situation stabilizes or extreme fear emerges."
-  },
-  {
     "ts": "2026-07-13T13:09:12.645484+00:00",
     "coin": "BTC",
     "price": 62587,
@@ -862,5 +839,28 @@
       "GRASS"
     ],
     "alert": "Extreme Fear environment \u2014 historically favorable for entries but position size conservatively"
+  },
+  {
+    "ts": "2026-07-15T04:09:11.042693+00:00",
+    "coin": "PUMP",
+    "price": 0.00164899,
+    "signal": "BUY",
+    "confidence": 52,
+    "score": 0.35,
+    "fg": 25,
+    "btc_price": 64736,
+    "btc_dominance": 56.3,
+    "candidates": [
+      "MON",
+      "USDG",
+      "\u5e01\u5b89\u4eba\u751f",
+      "PUMP",
+      "KITE",
+      "JTO",
+      "VIRTUAL",
+      "ETH",
+      "GRASS"
+    ],
+    "alert": "Extreme Fear at 25 \u2014 historically a contrarian buy zone, but high BTC dominance warns against aggressive alt exposure"
   }
 ]
