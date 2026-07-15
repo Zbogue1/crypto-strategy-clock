@@ -1,26 +1,5 @@
 [
   {
-    "ts": "2026-07-13T20:09:11.237030+00:00",
-    "coin": "BTC",
-    "price": 62192,
-    "signal": "HOLD",
-    "confidence": 30,
-    "score": -0.35,
-    "fg": 28,
-    "btc_price": 62192,
-    "btc_dominance": 55.9,
-    "candidates": [
-      "MON",
-      "LIT",
-      "GRASS",
-      "VELVET",
-      "USDG",
-      "JTO",
-      "XPL"
-    ],
-    "alert": "Broad market selloff in progress \u2014 avoid new entries until selling pressure subsides and a reversal is confirmed."
-  },
-  {
     "ts": "2026-07-13T21:09:10.841060+00:00",
     "coin": "MON",
     "price": 0.02188442,
@@ -866,5 +845,28 @@
       "GRASS"
     ],
     "alert": "Fear & Greed improving from 22 to 25 with BTC pushing $65K \u2014 early signs of sentiment inflection point."
+  },
+  {
+    "ts": "2026-07-15T12:09:11.037547+00:00",
+    "coin": "ETH",
+    "price": 1880.03,
+    "signal": "BUY",
+    "confidence": 62,
+    "score": 0.55,
+    "fg": 25,
+    "btc_price": 64624,
+    "btc_dominance": 56.3,
+    "candidates": [
+      "MON",
+      "USDG",
+      "PUMP",
+      "DEXE",
+      "VIRTUAL",
+      "PENGU",
+      "PENDLE",
+      "ETH",
+      "GRASS"
+    ],
+    "alert": "Extreme Fear environment \u2014 position sizing should be conservative. Market could still break lower."
   }
 ]
