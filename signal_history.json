@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-13T14:09:18.563529+00:00",
-    "coin": "BTC",
-    "price": 62262,
-    "signal": "HOLD",
-    "confidence": 30,
-    "score": -0.4,
-    "fg": 28,
-    "btc_price": 62262,
-    "btc_dominance": 55.9,
-    "candidates": [
-      "KITE",
-      "MON",
-      "DCR",
-      "VELVET",
-      "JTO",
-      "DEXE",
-      "LIT",
-      "ETHFI",
-      "GRASS"
-    ],
-    "alert": "All swing candidates fail quality filters. Volume breakout (our most reliable signal at 100% win rate) is absent across the board. Wait for better setups."
-  },
-  {
     "ts": "2026-07-13T15:09:29.473677+00:00",
     "coin": "DCR",
     "price": 13.13,
@@ -858,6 +835,29 @@
       "JTO",
       "KITE",
       "VIRTUAL",
+      "ETH",
+      "GRASS"
+    ],
+    "alert": null
+  },
+  {
+    "ts": "2026-07-15T06:09:10.956977+00:00",
+    "coin": "ETH",
+    "price": 1886.68,
+    "signal": "BUY",
+    "confidence": 62,
+    "score": 0.55,
+    "fg": 25,
+    "btc_price": 64919,
+    "btc_dominance": 56.3,
+    "candidates": [
+      "MON",
+      "USDG",
+      "\u5e01\u5b89\u4eba\u751f",
+      "VELVET",
+      "PUMP",
+      "JTO",
+      "PENGU",
       "ETH",
       "GRASS"
     ],
