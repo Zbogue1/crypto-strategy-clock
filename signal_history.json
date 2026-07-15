@@ -1,27 +1,5 @@
 [
   {
-    "ts": "2026-07-13T17:09:13.243903+00:00",
-    "coin": "DCR",
-    "price": 12.99,
-    "signal": "HOLD",
-    "confidence": 32,
-    "score": -0.3,
-    "fg": 28,
-    "btc_price": 62263,
-    "btc_dominance": 55.9,
-    "candidates": [
-      "KITE",
-      "MON",
-      "GRASS",
-      "DEXE",
-      "LIT",
-      "DCR",
-      "XPL",
-      "ETHFI"
-    ],
-    "alert": "BTC testing $62K support amid Hormuz Strait geopolitical risk \u2014 monitor for breakdown that could accelerate alt sell-off."
-  },
-  {
     "ts": "2026-07-13T18:09:11.096517+00:00",
     "coin": "JTO",
     "price": 0.631883,
@@ -863,5 +841,28 @@
       "GRASS"
     ],
     "alert": "Extreme Fear with improving trend \u2014 historically a strong contrarian buy signal, but BTC dominance headwind means selectivity is critical."
+  },
+  {
+    "ts": "2026-07-15T09:09:10.882500+00:00",
+    "coin": "ETH",
+    "price": 1879.86,
+    "signal": "BUY",
+    "confidence": 68,
+    "score": 1.45,
+    "fg": 25,
+    "btc_price": 64735,
+    "btc_dominance": 56.3,
+    "candidates": [
+      "MON",
+      "USDG",
+      "\u5e01\u5b89\u4eba\u751f",
+      "PUMP",
+      "DEXE",
+      "VIRTUAL",
+      "PENGU",
+      "ETH",
+      "GRASS"
+    ],
+    "alert": "Extreme Fear reading of 25 with improving trend \u2014 historically a strong contrarian buy signal for quality assets."
   }
 ]
