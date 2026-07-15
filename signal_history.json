@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-13T15:09:29.473677+00:00",
-    "coin": "DCR",
-    "price": 13.13,
-    "signal": "HOLD",
-    "confidence": 32,
-    "score": -0.15,
-    "fg": 28,
-    "btc_price": 62688,
-    "btc_dominance": 56.0,
-    "candidates": [
-      "KITE",
-      "MON",
-      "DCR",
-      "DEXE",
-      "JTO",
-      "XPL",
-      "LIT",
-      "ETHFI",
-      "GRASS"
-    ],
-    "alert": null
-  },
-  {
     "ts": "2026-07-13T16:09:14.860297+00:00",
     "coin": "DCR",
     "price": 13.58,
@@ -862,5 +839,28 @@
       "GRASS"
     ],
     "alert": null
+  },
+  {
+    "ts": "2026-07-15T07:09:10.923959+00:00",
+    "coin": "ETH",
+    "price": 1873.75,
+    "signal": "BUY",
+    "confidence": 62,
+    "score": 0.55,
+    "fg": 25,
+    "btc_price": 64731,
+    "btc_dominance": 56.3,
+    "candidates": [
+      "MON",
+      "USDG",
+      "\u5e01\u5b89\u4eba\u751f",
+      "PUMP",
+      "JTO",
+      "VIRTUAL",
+      "PENGU",
+      "ETH",
+      "GRASS"
+    ],
+    "alert": "Extreme Fear improving + inflation relief = potential sentiment regime shift. Watch for follow-through above $1,900."
   }
 ]
