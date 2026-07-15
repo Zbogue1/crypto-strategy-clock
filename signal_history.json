@@ -1,26 +1,5 @@
 [
   {
-    "ts": "2026-07-13T21:09:10.841060+00:00",
-    "coin": "MON",
-    "price": 0.02188442,
-    "signal": "HOLD",
-    "confidence": 28,
-    "score": -0.3,
-    "fg": 28,
-    "btc_price": 62126,
-    "btc_dominance": 56.0,
-    "candidates": [
-      "KITE",
-      "GRASS",
-      "MON",
-      "LIT",
-      "VELVET",
-      "ETHFI",
-      "BONK"
-    ],
-    "alert": "BTC testing $62K with geopolitical headwinds \u2014 alt positions carry elevated risk. Wait for stabilization."
-  },
-  {
     "ts": "2026-07-13T22:09:10.937829+00:00",
     "coin": "BTC",
     "price": 62102,
@@ -868,5 +847,28 @@
       "GRASS"
     ],
     "alert": "Extreme Fear environment \u2014 position sizing should be conservative. Market could still break lower."
+  },
+  {
+    "ts": "2026-07-15T13:09:11.114180+00:00",
+    "coin": "ETH",
+    "price": 1933.03,
+    "signal": "BUY",
+    "confidence": 62,
+    "score": 0.55,
+    "fg": 25,
+    "btc_price": 65339,
+    "btc_dominance": 56.3,
+    "candidates": [
+      "MON",
+      "USDG",
+      "PUMP",
+      "DEXE",
+      "VIRTUAL",
+      "PENGU",
+      "DASH",
+      "ETH",
+      "GRASS"
+    ],
+    "alert": null
   }
 ]
