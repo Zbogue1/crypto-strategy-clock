@@ -105,5 +105,28 @@
       "GRASS"
     ],
     "alert": "Extreme Fear environment \u2014 position size conservatively and honor stop-losses strictly."
+  },
+  {
+    "ts": "2026-07-15T23:06:17.235734+00:00",
+    "coin": "ETH",
+    "price": 1924.58,
+    "signal": "BUY",
+    "confidence": 62,
+    "score": 0.55,
+    "fg": 25,
+    "btc_price": 64867,
+    "btc_dominance": 56.2,
+    "candidates": [
+      "KITE",
+      "MON",
+      "USDG",
+      "DEXE",
+      "PUMP",
+      "ETHFI",
+      "ONDO",
+      "ETH",
+      "GRASS"
+    ],
+    "alert": null
   }
 ]
