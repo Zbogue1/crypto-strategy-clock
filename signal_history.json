@@ -59,5 +59,28 @@
       "GRASS"
     ],
     "alert": "Extreme Fear improving + BTC breaking 3-week highs \u2014 historically this combination precedes 2-4 week relief rallies in ETH."
+  },
+  {
+    "ts": "2026-07-15T21:06:17.177993+00:00",
+    "coin": "ETH",
+    "price": 1923.38,
+    "signal": "BUY",
+    "confidence": 62,
+    "score": 0.55,
+    "fg": 25,
+    "btc_price": 64929,
+    "btc_dominance": 56.3,
+    "candidates": [
+      "MON",
+      "KITE",
+      "USDG",
+      "DEXE",
+      "PUMP",
+      "ETHFI",
+      "VVV",
+      "ETH",
+      "GRASS"
+    ],
+    "alert": "Extreme Fear environment \u2014 position size conservatively and honor stop-losses strictly."
   }
 ]
