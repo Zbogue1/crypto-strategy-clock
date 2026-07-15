@@ -1,27 +1,5 @@
 [
   {
-    "ts": "2026-07-13T18:09:11.096517+00:00",
-    "coin": "JTO",
-    "price": 0.631883,
-    "signal": "HOLD",
-    "confidence": 32,
-    "score": -0.15,
-    "fg": 28,
-    "btc_price": 61965,
-    "btc_dominance": 55.9,
-    "candidates": [
-      "KITE",
-      "MON",
-      "GRASS",
-      "DEXE",
-      "LIT",
-      "JTO",
-      "PENGU",
-      "ETHFI"
-    ],
-    "alert": "BTC threatening $60K support amid geopolitical escalation. Avoid new alt positions until BTC stabilizes."
-  },
-  {
     "ts": "2026-07-13T19:09:11.301847+00:00",
     "coin": "BTC",
     "price": 61959,
@@ -864,5 +842,27 @@
       "GRASS"
     ],
     "alert": "Extreme Fear reading of 25 with improving trend \u2014 historically a strong contrarian buy signal for quality assets."
+  },
+  {
+    "ts": "2026-07-15T10:09:10.832229+00:00",
+    "coin": "ETH",
+    "price": 1883.88,
+    "signal": "BUY",
+    "confidence": 72,
+    "score": 1.45,
+    "fg": 25,
+    "btc_price": 64768,
+    "btc_dominance": 56.3,
+    "candidates": [
+      "MON",
+      "USDG",
+      "PUMP",
+      "\u5e01\u5b89\u4eba\u751f",
+      "DEXE",
+      "GRASS",
+      "PENDLE",
+      "ETH"
+    ],
+    "alert": "Extreme Fear reading of 25 with improving trend \u2014 historically one of the strongest buy signals when combined with oversold RSI."
   }
 ]
