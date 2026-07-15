@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-07-15T03:09:10.824466+00:00",
-  "selected_coin": "ETH",
-  "selected_coin_name": "Ethereum",
-  "selected_coin_price": 1867.23,
-  "confidence": 62,
-  "layman_headline": "Ethereum looks beaten down enough to bounce \u2014 buying the fear while others flee.",
-  "layman_explanation": "The crypto market is in 'Extreme Fear' mode, which historically has been one of the better times to buy. Ethereum has dropped over 60% from its all-time high and its RSI indicator shows it's near oversold territory, meaning sellers may be running out of steam. ETH just posted a strong +5% daily bounce with heavy volume, suggesting big buyers are stepping in. The stablecoin and tokenization news cycle is positive for Ethereum's ecosystem long-term.",
-  "layman_action": "Consider a cautious entry into Ethereum around $1,830 with a strict stop-loss at $1,690. This is a contrarian play \u2014 buying when sentiment is at extreme fear. Only risk what you can afford to lose if the broader market turns lower.",
-  "expert_reasoning": "ETH RSI at 35 is approaching oversold \u2014 our most reliable signal (80% win rate, +5.5% avg return). The Bullish Marubozu candle pattern shows strong buying conviction after a prolonged downtrend. Fear & Greed at 25 (improving from 22) aligns with our second-best signal (71% win rate). The $1,700 support is well-defined giving us a clear stop-loss level at $1,690, while resistance at $1,800 has already been breached on today's move, opening the path toward $2,050. Ethereum's $41B TVL remains stable, confirming no fundamental deterioration. The risk/reward from current levels to the $2,050 target vs $1,690 stop is roughly 1.3:1, which improves with a limit entry at $1,830 to approximately 1.6:1.",
+  "timestamp": "2026-07-15T04:09:11.042693+00:00",
+  "selected_coin": "PUMP",
+  "selected_coin_name": "Pump.fun",
+  "selected_coin_price": 0.00164899,
+  "confidence": 52,
+  "layman_headline": "Extreme Fear across crypto creates a contrarian buy window in a beaten-down token with massive upside room.",
+  "layman_explanation": "The overall crypto market is gripped by extreme fear (25/100), but Bitcoin just bounced 3.5% in 24 hours toward $65K on cooling inflation data. This fear often marks bottoms where smart money accumulates. Pump.fun (PUMP) has been crushed 81% from its all-time high but is showing early signs of a reversal \u2014 a strong bullish candle pattern and a risk/reward ratio of over 4:1 to resistance. The setup is speculative but the math favors the trade if Bitcoin stabilizes.",
+  "layman_action": "Consider a small position in PUMP with a tight stop-loss at $0.00125. This is a high-risk, high-reward play \u2014 only allocate money you can afford to lose. If PUMP doesn't hold above $0.0013 support, exit immediately.",
+  "expert_reasoning": "PUMP presents an asymmetric setup: RSI at 41.15 is approaching oversold (reliable signal per our 80% win rate history), the Bullish Marubozu candle on the daily shows pure buying conviction with minimal wicks, and the risk/reward to nearest support/resistance is 4.12x \u2014 far superior to all other candidates. The 12.18% 24h move with chart support at $0.0013 and resistance at $0.0022 provides clear trade parameters. The main concern is the overall downtrend and bearish structure (below all MAs), but the extreme fear reading of 25 \u2014 which has a 71% win rate in our signal history \u2014 combined with BTC's stabilization toward $65K creates the macro backdrop for mean-reversion plays. I'm sizing this as a small speculative position given the elevated risk profile.",
   "risk_factors": [
-    "BTC dominance at 56.3% means capital is flowing to Bitcoin over alts \u2014 ETH could underperform even if BTC rallies",
-    "Chart structure remains bearish (below all major MAs) \u2014 this bounce could be a dead cat bounce in a larger downtrend",
-    "Mizuho downgrading Circle on Open USD threat signals potential stablecoin ecosystem disruption that could impact Ethereum DeFi"
+    "PUMP is in a confirmed downtrend below all moving averages \u2014 this is a counter-trend trade that could fail if selling resumes",
+    "BTC dominance at 56.3% means capital is flowing to Bitcoin, not alts \u2014 PUMP could underperform even if BTC rallies",
+    "81% off ATH with low liquidity means the token could gap down sharply on any negative news or broader market selloff"
   ],
   "watch_list": [
-    "Whether ETH holds above $1,800 resistance-turned-support over the next 48 hours \u2014 failure means the bounce is rejected",
-    "BTC behavior around $65,000 \u2014 CryptoSlate notes the inflation relief may already be fading, which could reverse the rally",
-    "CLARITY Act vote outcome \u2014 if it passes with negative crypto implications, it could tank sentiment further"
+    "Bitcoin holding above $64,000 \u2014 if BTC breaks below, all alt positions are at risk",
+    "PUMP daily volume trend \u2014 need sustained volume to confirm the Marubozu pattern is genuine accumulation, not a one-day spike",
+    "Fear & Greed Index trajectory \u2014 currently improving from 22 to 25; a move above 30 would confirm sentiment shift and support the trade"
   ],
-  "market_context": "Markets are in Extreme Fear (25/100) but improving from 22, with BTC pushing toward $65K on inflation relief. High BTC dominance at 56.3% is unfavorable for altcoins, but ETH's outsized +6.3% weekly gain versus BTC's +2.5% suggests relative strength is shifting.",
-  "context_banner": "Extreme Fear readings combined with oversold RSI on Ethereum present a high-probability contrarian swing entry \u2014 buying quality assets when the crowd is panicking.",
-  "btc_price": 64523,
+  "market_context": "BTC is bouncing toward $65K on US inflation relief, but the broader market remains in Extreme Fear (25/100). High BTC dominance at 56.3% is headwind for alts, though ETH's 5.2% daily gain suggests some risk-on rotation may be beginning.",
+  "context_banner": "Extreme Fear with an improving trend and BTC stabilizing near $65K creates selective contrarian opportunities in deeply oversold tokens with asymmetric risk/reward.",
+  "btc_price": 64736,
   "fear_greed": {
     "current": 25,
     "label": "Extreme Fear",
@@ -33,30 +33,30 @@
     {
       "source": "RSI",
       "signal_type": "technical",
-      "description": "ETH RSI at 35 is approaching oversold territory \u2014 our most reliable signal with 80% win rate and +5.5% average return across past trades."
+      "description": "PUMP RSI at 41 approaching oversold territory \u2014 our most reliable signal with 80% win rate and +5.5% avg return historically."
     },
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Market Fear & Greed at 25 (Extreme Fear) improving from 22 \u2014 historically a contrarian buy signal with 71% win rate in our track record."
-    },
-    {
-      "source": "CoinTelegraph",
-      "signal_type": "news",
-      "description": "US/UK treasuries aligning on tokenization and stablecoin rules provides a positive regulatory tailwind for Ethereum's ecosystem \u2014 CoinTelegraph signals have 80% win rate."
-    },
-    {
-      "source": "Blockworks",
-      "signal_type": "news",
-      "description": "ETH derivatives reset creating cleaner positioning \u2014 reduced overleveraging means less liquidation risk on this bounce."
+      "description": "Extreme Fear at 25/100 improving from 22 \u2014 contrarian indicator with 71% win rate in our track record suggesting accumulation zone."
     },
     {
       "source": "CryptoSlate",
       "signal_type": "news",
-      "description": "BTC pushing toward $65K on US inflation relief, but the rally driver may already be fading \u2014 important to watch for reversal signals."
+      "description": "Bitcoin pushing toward $65K on US inflation relief provides macro support for risk-on trades, though the relief may be fading."
+    },
+    {
+      "source": "Chart Pattern Analysis",
+      "signal_type": "technical",
+      "description": "PUMP shows Bullish Marubozu candle with 4.12x risk/reward ratio to nearest support/resistance \u2014 best asymmetric setup among all candidates."
+    },
+    {
+      "source": "CoinTelegraph",
+      "signal_type": "news",
+      "description": "Stablecoin infrastructure investment ($38M Velocity raise) and growing institutional crypto adoption signal continued sector growth despite fear."
     }
   ],
   "_mode": "HUNTING",
-  "exit_target": 2050.0,
-  "stop_loss": 1690.0
+  "exit_target": 0.00215,
+  "stop_loss": 0.00125
 }
