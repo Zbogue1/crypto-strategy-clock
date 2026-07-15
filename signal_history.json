@@ -1,26 +1,5 @@
 [
   {
-    "ts": "2026-07-13T23:09:10.875343+00:00",
-    "coin": "MON",
-    "price": 0.02205008,
-    "signal": "HOLD",
-    "confidence": 30,
-    "score": -0.3,
-    "fg": 28,
-    "btc_price": 61919,
-    "btc_dominance": 55.9,
-    "candidates": [
-      "GRASS",
-      "MON",
-      "LIT",
-      "BONK",
-      "VELVET",
-      "JTO",
-      "ETHFI"
-    ],
-    "alert": "BTC threatening $62K support with geopolitical headwinds \u2014 avoid new altcoin entries until BTC stabilizes."
-  },
-  {
     "ts": "2026-07-14T00:09:10.908408+00:00",
     "coin": "MON",
     "price": 0.02216017,
@@ -872,5 +851,28 @@
       "GRASS"
     ],
     "alert": "Extreme Fear improving + ETH RSI 35 oversold bounce \u2014 high-probability contrarian window"
+  },
+  {
+    "ts": "2026-07-15T15:09:11.073002+00:00",
+    "coin": "ETH",
+    "price": 1932.55,
+    "signal": "BUY",
+    "confidence": 68,
+    "score": 1.35,
+    "fg": 25,
+    "btc_price": 65393,
+    "btc_dominance": 56.3,
+    "candidates": [
+      "USDG",
+      "MON",
+      "DEXE",
+      "PUMP",
+      "PENDLE",
+      "ETHFI",
+      "PENGU",
+      "ETH",
+      "GRASS"
+    ],
+    "alert": "Extreme Fear at 25 with improving trend \u2014 historically one of the best entry windows for swing trades"
   }
 ]
