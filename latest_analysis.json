@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-07-15T20:00:04.412168+00:00",
+  "timestamp": "2026-07-15T21:06:17.177993+00:00",
   "selected_coin": "ETH",
   "selected_coin_name": "Ethereum",
-  "selected_coin_price": 1923.68,
-  "confidence": 68,
-  "layman_headline": "Ethereum looks ready to bounce from extreme fear levels as Bitcoin pushes toward $65K.",
-  "layman_explanation": "The crypto market is deeply fearful right now (score 25/100), but Bitcoin just hit a 3-week high near $65.5K and Ethereum has surged 11% this week. When the market is this scared but prices are already recovering, it often signals that the worst selling is over. Ethereum is still far below its moving averages and its RSI at 35 says it's close to oversold \u2014 this combination of fear plus early momentum is a classic swing trade setup.",
-  "layman_action": "Consider buying Ethereum around $1,890 with a stop-loss at $1,780. If it continues its recovery toward the $2,100-$2,150 zone, that's a 12-14% gain. Don't risk more than you can afford to lose \u2014 fear can always get worse before it gets better.",
-  "expert_reasoning": "ETH RSI at 35.01 triggers our most reliable signal (80% win rate historically). The Fear & Greed index at 25 with an improving trend (up from 22 yesterday) adds confirmation \u2014 another high-reliability signal at 71% win rate. The Bullish Marubozu candlestick pattern on the chart shows pure buying conviction. While the overall structure remains below all major MAs, the 11% weekly recovery with 5-day momentum of +6.5% suggests a trend reversal is forming. Key risk is the tight resistance at $1,800 on the chart (current price at $1,923 has already broken through), which if retested and held becomes support. The $41.5B TVL ecosystem provides fundamental backing that smaller alts lack.",
+  "selected_coin_price": 1923.38,
+  "confidence": 62,
+  "layman_headline": "Ethereum is showing signs of life after a deep selloff, and fear is at extreme levels \u2014 a classic contrarian setup.",
+  "layman_explanation": "Ethereum has dropped over 60% from its all-time high and the overall crypto market is gripped by extreme fear (25/100). However, ETH just bounced 10.6% in the past week with strong buying momentum, and its RSI at 35 suggests it's still near oversold territory. When fear is this intense and a major asset starts bouncing with conviction, it often marks a turning point \u2014 or at least a tradeable swing higher.",
+  "layman_action": "Consider a cautious entry into Ethereum around $1,900 with a strict stop-loss at $1,750. If it reaches $2,150, take profits. This is a recovery bet, not a long-term hold \u2014 manage risk tightly.",
+  "expert_reasoning": "ETH's RSI of 35 is approaching oversold \u2014 our most reliable technical signal at 80% win rate. The Bullish Marubozu candlestick on the daily chart shows pure buying conviction. While price remains below all major MAs (bearish structure), the 10.6% weekly bounce with $12.3B in volume suggests institutional accumulation at these levels. Fear & Greed at 25 with an improving trend from 22 aligns with historical contrarian buy opportunities \u2014 another signal with 71% reliability. The risk/reward to chart levels is admittedly tight (0.36x to nearest resistance at $1,800), but I'm targeting a broader move to $2,150 based on the gap to the SMA20, giving us roughly a 1.67 R:R against the $1,750 stop. Blockworks' coverage of 'ETH derivatives reset' suggests leveraged positions have been flushed, creating cleaner upside potential.",
   "risk_factors": [
-    "BTC dominance at 56.3% is high and rising \u2014 capital may continue flowing to Bitcoin over ETH, suppressing the ETH/BTC ratio",
-    "The DeFi exploit at Ostium signals ongoing oracle attack risks across DeFi, which could trigger broader ETH ecosystem selling",
-    "ETH is still below all major moving averages \u2014 this bounce could be a dead cat bounce in a larger downtrend if BTC fails to hold $65K"
+    "BTC dominance at 56.3% indicates capital is flowing to Bitcoin, not altcoins \u2014 ETH could underperform even if BTC rallies",
+    "Price is below all major moving averages \u2014 the broader trend is still bearish and this bounce could be a dead cat",
+    "DeFi exploit news (Ostium $18M oracle attack) could create contagion fear in the Ethereum ecosystem"
   ],
   "watch_list": [
-    "BTC price action around $65K-$66K \u2014 a breakout above $66K would drag ETH higher; a rejection could reverse ETH gains",
-    "Trump's meeting with senators on crypto bill ethics \u2014 positive regulatory signals would be a major tailwind for ETH",
-    "ETH/BTC ratio \u2014 if it starts trending up from current depressed levels, it confirms rotation into ETH"
+    "ETH price action at $2,000 psychological resistance \u2014 a decisive break above signals trend shift",
+    "BTC dominance \u2014 any drop below 55% would confirm capital rotating into alts and strengthen ETH thesis",
+    "Fear & Greed Index trajectory \u2014 continued improvement above 30 would confirm sentiment recovery"
   ],
-  "market_context": "The market is in Extreme Fear (25) but improving, with BTC hitting 3-week highs on cool inflation data. This is the classic contrarian buying window \u2014 fear is elevated but price action is already recovering, and institutional adoption news (DTCC, Morgan Stanley, Securitize) continues to build the fundamental case.",
-  "context_banner": "Extreme Fear with recovering prices and strong institutional catalysts creates a textbook swing trade entry for Ethereum.",
-  "btc_price": 64935,
+  "market_context": "The crypto market is in Extreme Fear (25/100) but improving from 22 yesterday. BTC is holding $64.9K with modest gains while ETH is leading the recovery with a 10.6% weekly bounce, suggesting possible early rotation into the #2 asset.",
+  "context_banner": "Ethereum is bouncing from deeply oversold conditions during peak fear \u2014 a historically reliable contrarian swing trade setup with strong volume confirmation.",
+  "btc_price": 64929,
   "fear_greed": {
     "current": 25,
     "label": "Extreme Fear",
@@ -33,30 +33,30 @@
     {
       "source": "RSI",
       "signal_type": "technical",
-      "description": "ETH RSI at 35.01 is approaching oversold territory \u2014 our most reliable signal with 80% historical win rate and +5.5% average return."
+      "description": "ETH RSI at 35 is approaching oversold territory \u2014 our most reliable signal with 80% win rate and +5.5% avg return historically."
     },
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Fear & Greed at 25 (Extreme Fear) improving from 22 yesterday \u2014 our second most reliable signal at 71% win rate, suggesting contrarian buying opportunity."
+      "description": "Fear & Greed at 25 (Extreme Fear) improving from 22 \u2014 contrarian buy signal with 71% historical win rate in our trades."
     },
     {
       "source": "CoinTelegraph",
       "signal_type": "news",
-      "description": "Bitcoin hitting $65.5K on surprise cool inflation data provides the macro tailwind; Aave V4 launching on Avalanche signals continued DeFi ecosystem expansion \u2014 CoinTelegraph signals have 80% win rate."
+      "description": "Aave V4 launch on Avalanche signals continued DeFi ecosystem growth, and broader institutional adoption news (DTCC tokenized securities, Morgan Stanley crypto custody) supports ETH fundamentals."
     },
     {
-      "source": "CoinDesk",
+      "source": "Blockworks",
       "signal_type": "news",
-      "description": "DTCC moving tokenized securities into live trading and Trump meeting senators on crypto bill signal accelerating institutional and regulatory momentum for crypto."
+      "description": "ETH derivatives reset coverage suggests leveraged positions have been flushed, creating cleaner conditions for an organic move higher."
     },
     {
       "source": "volume_breakout",
       "signal_type": "technical",
-      "description": "ETH 24h volume at $13B is elevated relative to recent activity, confirming the 11% weekly move is backed by real capital \u2014 volume-confirmed moves have 75% win rate."
+      "description": "ETH trading $12.3B daily volume with a Bullish Marubozu candle \u2014 pure buying conviction with 10.6% weekly gain confirms volume-backed momentum."
     }
   ],
   "_mode": "HUNTING",
   "exit_target": 2150.0,
-  "stop_loss": 1780.0
+  "stop_loss": 1750.0
 }
