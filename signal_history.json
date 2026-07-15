@@ -1,26 +1,5 @@
 [
   {
-    "ts": "2026-07-14T00:09:10.908408+00:00",
-    "coin": "MON",
-    "price": 0.02216017,
-    "signal": "BUY",
-    "confidence": 52,
-    "score": 0.45,
-    "fg": 22,
-    "btc_price": 62226,
-    "btc_dominance": 56.0,
-    "candidates": [
-      "MON",
-      "KITE",
-      "GRASS",
-      "LIT",
-      "BONK",
-      "VELVET",
-      "JTO"
-    ],
-    "alert": "Geopolitical risk elevated \u2014 Trump's Hormuz Strait comments adding volatility. Use tight stops."
-  },
-  {
     "ts": "2026-07-14T01:09:11.767152+00:00",
     "coin": "JTO",
     "price": 0.647439,
@@ -874,5 +853,28 @@
       "GRASS"
     ],
     "alert": "Extreme Fear at 25 with improving trend \u2014 historically one of the best entry windows for swing trades"
+  },
+  {
+    "ts": "2026-07-15T16:09:11.103978+00:00",
+    "coin": "ETH",
+    "price": 1920.61,
+    "signal": "BUY",
+    "confidence": 68,
+    "score": 1.35,
+    "fg": 25,
+    "btc_price": 65138,
+    "btc_dominance": 56.3,
+    "candidates": [
+      "USDG",
+      "MON",
+      "PUMP",
+      "DEXE",
+      "ETHFI",
+      "ARB",
+      "PENDLE",
+      "ETH",
+      "GRASS"
+    ],
+    "alert": "Extreme Fear improving + BTC inflation breakout = potential reversal window for quality assets"
   }
 ]
