@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-13T13:09:12.645484+00:00",
-    "coin": "BTC",
-    "price": 62587,
-    "signal": "HOLD",
-    "confidence": 25,
-    "score": -0.6,
-    "fg": 28,
-    "btc_price": 62587,
-    "btc_dominance": 56.0,
-    "candidates": [
-      "KITE",
-      "MON",
-      "VELVET",
-      "DCR",
-      "JTO",
-      "LIT",
-      "DEXE",
-      "ETHFI",
-      "GRASS"
-    ],
-    "alert": "U.S.-Iran Hormuz tensions driving risk-off across crypto. Markets pricing only 3% chance of Hormuz traffic normalizing by August. Watch for escalation."
-  },
-  {
     "ts": "2026-07-13T14:09:18.563529+00:00",
     "coin": "BTC",
     "price": 62262,
@@ -862,5 +839,28 @@
       "GRASS"
     ],
     "alert": "Extreme Fear at 25 \u2014 historically a contrarian buy zone, but high BTC dominance warns against aggressive alt exposure"
+  },
+  {
+    "ts": "2026-07-15T05:09:10.992763+00:00",
+    "coin": "ETH",
+    "price": 1872.82,
+    "signal": "BUY",
+    "confidence": 62,
+    "score": 0.55,
+    "fg": 25,
+    "btc_price": 64624,
+    "btc_dominance": 56.3,
+    "candidates": [
+      "MON",
+      "USDG",
+      "\u5e01\u5b89\u4eba\u751f",
+      "PUMP",
+      "JTO",
+      "KITE",
+      "VIRTUAL",
+      "ETH",
+      "GRASS"
+    ],
+    "alert": null
   }
 ]
