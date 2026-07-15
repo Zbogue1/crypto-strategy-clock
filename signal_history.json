@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-13T08:09:18.462344+00:00",
-    "coin": "JTO",
-    "price": 0.658124,
-    "signal": "HOLD",
-    "confidence": 32,
-    "score": -0.15,
-    "fg": 28,
-    "btc_price": 62968,
-    "btc_dominance": 56.1,
-    "candidates": [
-      "KITE",
-      "MON",
-      "VELVET",
-      "JTO",
-      "DCR",
-      "XPL",
-      "LIT",
-      "ETHFI",
-      "GRASS"
-    ],
-    "alert": "All swing candidates have significant flaws: either overextended rallies, bearish chart structures, or poor risk/reward ratios. Capital preservation is the priority."
-  },
-  {
     "ts": "2026-07-13T09:09:18.601264+00:00",
     "coin": "JTO",
     "price": 0.662245,
@@ -865,5 +842,27 @@
       "ETH"
     ],
     "alert": "Extreme Fear index at 22 \u2014 historically among the best buying windows for quality crypto assets. However, set strict stop-losses as fear can deepen before reversing."
+  },
+  {
+    "ts": "2026-07-15T00:09:11.573015+00:00",
+    "coin": "ETH",
+    "price": 1889.41,
+    "signal": "BUY",
+    "confidence": 62,
+    "score": 0.55,
+    "fg": 25,
+    "btc_price": 64968,
+    "btc_dominance": 56.4,
+    "candidates": [
+      "MON",
+      "USDG",
+      "\u5e01\u5b89\u4eba\u751f",
+      "GRASS",
+      "XPL",
+      "VIRTUAL",
+      "INJ",
+      "ETH"
+    ],
+    "alert": "Extreme Fear at 25 with improving trend \u2014 historically a zone where buying has outperformed, but strict risk management is critical."
   }
 ]
