@@ -1,27 +1,5 @@
 [
   {
-    "ts": "2026-07-13T16:09:14.860297+00:00",
-    "coin": "DCR",
-    "price": 13.58,
-    "signal": "HOLD",
-    "confidence": 32,
-    "score": -0.3,
-    "fg": 28,
-    "btc_price": 62502,
-    "btc_dominance": 56.0,
-    "candidates": [
-      "KITE",
-      "MON",
-      "DCR",
-      "GRASS",
-      "DEXE",
-      "LIT",
-      "XPL",
-      "ETHFI"
-    ],
-    "alert": "BTC threatening $62K breakdown on Hormuz Strait geopolitical escalation \u2014 risk-off conditions make new alt entries dangerous."
-  },
-  {
     "ts": "2026-07-13T17:09:13.243903+00:00",
     "coin": "DCR",
     "price": 12.99,
@@ -862,5 +840,28 @@
       "GRASS"
     ],
     "alert": "Extreme Fear improving + inflation relief = potential sentiment regime shift. Watch for follow-through above $1,900."
+  },
+  {
+    "ts": "2026-07-15T08:09:10.990249+00:00",
+    "coin": "ETH",
+    "price": 1871.4,
+    "signal": "BUY",
+    "confidence": 68,
+    "score": 1.35,
+    "fg": 25,
+    "btc_price": 64550,
+    "btc_dominance": 56.3,
+    "candidates": [
+      "MON",
+      "USDG",
+      "\u5e01\u5b89\u4eba\u751f",
+      "PUMP",
+      "JTO",
+      "DEXE",
+      "VIRTUAL",
+      "ETH",
+      "GRASS"
+    ],
+    "alert": "Extreme Fear with improving trend \u2014 historically a strong contrarian buy signal, but BTC dominance headwind means selectivity is critical."
   }
 ]
