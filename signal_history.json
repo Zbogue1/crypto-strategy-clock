@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-13T09:09:18.601264+00:00",
-    "coin": "JTO",
-    "price": 0.662245,
-    "signal": "HOLD",
-    "confidence": 28,
-    "score": -0.3,
-    "fg": 28,
-    "btc_price": 63098,
-    "btc_dominance": 56.1,
-    "candidates": [
-      "KITE",
-      "VELVET",
-      "DCR",
-      "MON",
-      "JTO",
-      "DEXE",
-      "XPL",
-      "ETHFI",
-      "GRASS"
-    ],
-    "alert": "BTC $60K support level is being tested amid geopolitical oil shock \u2014 a breakdown would cascade across altcoins"
-  },
-  {
     "ts": "2026-07-13T10:09:23.457127+00:00",
     "coin": "DCR",
     "price": 15.06,
@@ -864,5 +841,27 @@
       "ETH"
     ],
     "alert": "Extreme Fear at 25 with improving trend \u2014 historically a zone where buying has outperformed, but strict risk management is critical."
+  },
+  {
+    "ts": "2026-07-15T01:09:10.844615+00:00",
+    "coin": "ETH",
+    "price": 1875.13,
+    "signal": "BUY",
+    "confidence": 62,
+    "score": 0.55,
+    "fg": 25,
+    "btc_price": 64720,
+    "btc_dominance": 56.3,
+    "candidates": [
+      "MON",
+      "USDG",
+      "\u5e01\u5b89\u4eba\u751f",
+      "KITE",
+      "GRASS",
+      "JTO",
+      "XPL",
+      "ETH"
+    ],
+    "alert": "Extreme Fear improving \u2014 historically a reliable buy signal. ETH RSI approaching oversold at 35."
   }
 ]
