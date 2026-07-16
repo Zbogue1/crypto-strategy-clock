@@ -312,5 +312,28 @@
       "GRASS"
     ],
     "alert": "BlackRock ETF driving major ETH inflows \u2014 institutional accumulation during extreme fear is a historically strong signal."
+  },
+  {
+    "ts": "2026-07-16T08:06:17.248956+00:00",
+    "coin": "ETH",
+    "price": 1908.77,
+    "signal": "BUY",
+    "confidence": 62,
+    "score": 0.55,
+    "fg": 25,
+    "btc_price": 64143,
+    "btc_dominance": 56.1,
+    "candidates": [
+      "MON",
+      "USDG",
+      "ONDO",
+      "ZRO",
+      "LDO",
+      "BONK",
+      "ETHFI",
+      "ETH",
+      "GRASS"
+    ],
+    "alert": "ETH outperforming BTC by 7x this week on ETF inflows \u2014 watch for momentum continuation or exhaustion at $1,950-$2,000 resistance zone."
   }
 ]
