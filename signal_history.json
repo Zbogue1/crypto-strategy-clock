@@ -197,5 +197,28 @@
       "GRASS"
     ],
     "alert": "Extreme Fear at 25 \u2014 historically a high-probability zone for mean-reversion trades in major assets."
+  },
+  {
+    "ts": "2026-07-16T03:06:17.094505+00:00",
+    "coin": "ETH",
+    "price": 1923.07,
+    "signal": "BUY",
+    "confidence": 62,
+    "score": 1.2,
+    "fg": 25,
+    "btc_price": 64565,
+    "btc_dominance": 56.1,
+    "candidates": [
+      "MON",
+      "USDG",
+      "ONDO",
+      "DEXE",
+      "LDO",
+      "ETHFI",
+      "ZRO",
+      "ETH",
+      "GRASS"
+    ],
+    "alert": "Extreme Fear persists \u2014 position sizing should be conservative. DeFi oracle exploits are ongoing, adding systemic risk."
   }
 ]
