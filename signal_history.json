@@ -174,5 +174,28 @@
       "GRASS"
     ],
     "alert": "Extreme Fear at 25 \u2014 historically a zone where bounces begin, but also where capitulation accelerates. Size positions conservatively."
+  },
+  {
+    "ts": "2026-07-16T02:06:17.236634+00:00",
+    "coin": "ETH",
+    "price": 1920.12,
+    "signal": "BUY",
+    "confidence": 62,
+    "score": 0.55,
+    "fg": 25,
+    "btc_price": 64638,
+    "btc_dominance": 56.2,
+    "candidates": [
+      "MON",
+      "USDG",
+      "ONDO",
+      "DEXE",
+      "ZRO",
+      "ETHFI",
+      "LDO",
+      "ETH",
+      "GRASS"
+    ],
+    "alert": "Extreme Fear at 25 \u2014 historically a high-probability zone for mean-reversion trades in major assets."
   }
 ]
