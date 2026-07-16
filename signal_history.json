@@ -450,5 +450,28 @@
       "GRASS"
     ],
     "alert": "Extreme Fear market \u2014 position sizing should be conservative (50-75% of normal) given bearish structure across most alts."
+  },
+  {
+    "ts": "2026-07-16T14:06:17.328486+00:00",
+    "coin": "ETH",
+    "price": 1882.03,
+    "signal": "BUY",
+    "confidence": 58,
+    "score": 0.35,
+    "fg": 25,
+    "btc_price": 64332,
+    "btc_dominance": 56.2,
+    "candidates": [
+      "ONDO",
+      "MON",
+      "USDG",
+      "DEXE",
+      "LDO",
+      "BONK",
+      "JTO",
+      "ETH",
+      "GRASS"
+    ],
+    "alert": "Market in Extreme Fear \u2014 position sizing should be conservative. Use tight stop-loss."
   }
 ]
