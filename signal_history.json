@@ -661,5 +661,29 @@
       "GRASS"
     ],
     "alert": null
+  },
+  {
+    "ts": "2026-07-16T23:06:17.785106+00:00",
+    "coin": "ETH",
+    "price": 1866.25,
+    "signal": "BUY",
+    "confidence": 62,
+    "score": 0.45,
+    "fg": 25,
+    "btc_price": 63895,
+    "btc_dominance": 56.3,
+    "candidates": [
+      "DEXE",
+      "USDG",
+      "JTO",
+      "MON",
+      "BONK",
+      "AAVE",
+      "PYTH",
+      "ETH",
+      "LDO",
+      "GRASS"
+    ],
+    "alert": null
   }
 ]
