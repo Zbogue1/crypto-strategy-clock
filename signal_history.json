@@ -566,5 +566,29 @@
       "GRASS"
     ],
     "alert": "Market in Extreme Fear \u2014 position sizing should be conservative; only risk capital you can afford to lose on this counter-trend setup."
+  },
+  {
+    "ts": "2026-07-16T19:06:17.500607+00:00",
+    "coin": "ETH",
+    "price": 1875.35,
+    "signal": "BUY",
+    "confidence": 62,
+    "score": 0.45,
+    "fg": 25,
+    "btc_price": 64242,
+    "btc_dominance": 56.3,
+    "candidates": [
+      "DEXE",
+      "BONK",
+      "MON",
+      "ONDO",
+      "USDG",
+      "JTO",
+      "PYTH",
+      "ETH",
+      "LDO",
+      "GRASS"
+    ],
+    "alert": "Extreme Fear (25) combined with massive institutional catalysts creates a high-probability mean reversion setup for ETH."
   }
 ]
