@@ -1,58 +1,58 @@
 {
   "open_trade": {
     "coin": "ETH",
-    "entry_time": "2026-07-14T16:13:59.367448+00:00",
+    "entry_time": "2026-07-16T04:10:06.879928+00:00",
     "key_signals": [
+      {
+        "source": "RSI",
+        "signal_type": "technical",
+        "description": "ETH RSI at 35 is approaching oversold territory \u2014 historically an 80% win rate entry signal in our track record, suggesting a near-term bounce is likely."
+      },
       {
         "source": "Fear_Greed",
         "signal_type": "sentiment",
-        "description": "Extreme Fear at 22/100 with improving trend \u2014 our most reliable sentiment signal with 83% historical win rate and +6.6% avg return."
-      },
-      {
-        "source": "CoinTelegraph",
-        "signal_type": "news",
-        "description": "Bitcoin jumps on lowest US CPI since 2020 \u2014 this macro catalyst has 100% win rate in our signal history with +12% avg returns."
+        "description": "Extreme Fear at 25/100 with improving trend \u2014 contrarian buy conditions that have yielded 71% win rate historically."
       },
       {
         "source": "CoinDesk",
         "signal_type": "news",
-        "description": "U.S. June CPI fell 0.4%, cooling rate hike fears \u2014 directly supportive of risk assets; CoinDesk signals have 75% historical win rate."
+        "description": "DTCC moving tokenized securities into live trading is a milestone for institutional blockchain adoption, directly benefiting Ethereum's smart contract ecosystem."
       },
       {
-        "source": "volume_breakout",
-        "signal_type": "technical",
-        "description": "ETH 24h volume at $13.4B with +5.4% price move represents the strongest volume-confirmed bounce among all candidates \u2014 our highest-conviction signal type at 100% win rate."
-      },
-      {
-        "source": "Blockworks",
+        "source": "CryptoSlate",
         "signal_type": "news",
-        "description": "'ETH derivatives reset and the next retail trade' \u2014 confirms leveraged positions have been flushed, creating a cleaner setup for upside."
+        "description": "Morgan Stanley planning in-house crypto custody, staking, and lending validates Ethereum's institutional use case and could drive significant capital inflows."
+      },
+      {
+        "source": "CoinTelegraph",
+        "signal_type": "news",
+        "description": "Blockworks highlighting 'ETH derivatives reset' suggests leveraged positions have been flushed, creating cleaner conditions for an upward move."
       }
     ],
-    "confidence": 68
+    "confidence": 62
   },
   "signal_stats": {
     "Fear_Greed__sentiment": {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
       "wins": 5,
-      "losses": 2,
-      "total": 7,
-      "win_rate": 0.714,
-      "total_pct": 14.91,
-      "avg_return": 2.13,
-      "last_seen": "2026-07-14T16:13:59.366339+00:00"
+      "losses": 3,
+      "total": 8,
+      "win_rate": 0.625,
+      "total_pct": 14.7,
+      "avg_return": 1.8375,
+      "last_seen": "2026-07-16T04:10:06.180556+00:00"
     },
     "CoinDesk__news": {
       "source": "CoinDesk",
       "signal_type": "news",
       "wins": 3,
-      "losses": 2,
-      "total": 5,
-      "win_rate": 0.6,
-      "total_pct": -17.07,
-      "avg_return": -3.414,
-      "last_seen": "2026-07-14T16:13:59.366357+00:00"
+      "losses": 3,
+      "total": 6,
+      "win_rate": 0.5,
+      "total_pct": -17.28,
+      "avg_return": -2.88,
+      "last_seen": "2026-07-16T04:10:06.180577+00:00"
     },
     "CoinTelegraph__onchain": {
       "source": "CoinTelegraph",
@@ -69,12 +69,12 @@
       "source": "volume_breakout",
       "signal_type": "technical",
       "wins": 3,
-      "losses": 1,
-      "total": 4,
-      "win_rate": 0.75,
-      "total_pct": 15.53,
-      "avg_return": 3.8825,
-      "last_seen": "2026-07-14T16:13:59.366361+00:00"
+      "losses": 2,
+      "total": 5,
+      "win_rate": 0.6,
+      "total_pct": 15.32,
+      "avg_return": 3.064,
+      "last_seen": "2026-07-16T04:10:06.180580+00:00"
     },
     "Blockworks__macro": {
       "source": "Blockworks",
@@ -124,12 +124,12 @@
       "source": "CoinTelegraph",
       "signal_type": "news",
       "wins": 4,
-      "losses": 1,
-      "total": 5,
-      "win_rate": 0.8,
-      "total_pct": 23.41,
-      "avg_return": 4.682,
-      "last_seen": "2026-07-14T16:13:59.366352+00:00"
+      "losses": 2,
+      "total": 6,
+      "win_rate": 0.667,
+      "total_pct": 23.2,
+      "avg_return": 3.8667,
+      "last_seen": "2026-07-16T04:10:06.180572+00:00"
     },
     "Chart Pattern Analysis__technical": {
       "source": "Chart Pattern Analysis",
@@ -168,14 +168,14 @@
       "source": "Blockworks",
       "signal_type": "news",
       "wins": 0,
-      "losses": 1,
-      "total": 1,
+      "losses": 2,
+      "total": 2,
       "win_rate": 0.0,
-      "total_pct": -24.65,
-      "avg_return": -24.65,
-      "last_seen": "2026-07-14T16:13:59.366365+00:00"
+      "total_pct": -24.86,
+      "avg_return": -12.43,
+      "last_seen": "2026-07-16T04:10:06.180583+00:00"
     }
   },
-  "trade_count": 7,
-  "last_updated": "2026-07-14T16:13:59.367452+00:00"
+  "trade_count": 8,
+  "last_updated": "2026-07-16T04:10:06.879935+00:00"
 }
