@@ -542,5 +542,29 @@
       "GRASS"
     ],
     "alert": "Extreme Fear at 25 \u2014 historically a zone where swing trade entries outperform, but position sizing should be conservative."
+  },
+  {
+    "ts": "2026-07-16T18:06:17.267471+00:00",
+    "coin": "ETH",
+    "price": 1868.82,
+    "signal": "BUY",
+    "confidence": 58,
+    "score": 0.35,
+    "fg": 25,
+    "btc_price": 64051,
+    "btc_dominance": 56.3,
+    "candidates": [
+      "DEXE",
+      "MON",
+      "ONDO",
+      "BONK",
+      "USDG",
+      "JTO",
+      "PYTH",
+      "ETH",
+      "LDO",
+      "GRASS"
+    ],
+    "alert": "Market in Extreme Fear \u2014 position sizing should be conservative; only risk capital you can afford to lose on this counter-trend setup."
   }
 ]
