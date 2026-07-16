@@ -151,5 +151,28 @@
       "GRASS"
     ],
     "alert": "Extreme Fear persists \u2014 size positions conservatively and honor stop-losses strictly."
+  },
+  {
+    "ts": "2026-07-16T01:06:17.419568+00:00",
+    "coin": "ETH",
+    "price": 1914.17,
+    "signal": "BUY",
+    "confidence": 62,
+    "score": 0.55,
+    "fg": 25,
+    "btc_price": 64561,
+    "btc_dominance": 56.2,
+    "candidates": [
+      "MON",
+      "USDG",
+      "DEXE",
+      "ETHFI",
+      "ONDO",
+      "ZRO",
+      "PUMP",
+      "ETH",
+      "GRASS"
+    ],
+    "alert": "Extreme Fear at 25 \u2014 historically a zone where bounces begin, but also where capitulation accelerates. Size positions conservatively."
   }
 ]
