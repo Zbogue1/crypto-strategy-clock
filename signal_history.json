@@ -289,5 +289,28 @@
       "GRASS"
     ],
     "alert": "ETH outperforming BTC by 3x this week on ETF inflows \u2014 potential trend shift from BTC dominance to ETH leadership"
+  },
+  {
+    "ts": "2026-07-16T07:06:17.542347+00:00",
+    "coin": "ETH",
+    "price": 1919.56,
+    "signal": "BUY",
+    "confidence": 62,
+    "score": 0.55,
+    "fg": 25,
+    "btc_price": 64690,
+    "btc_dominance": 56.2,
+    "candidates": [
+      "MON",
+      "ONDO",
+      "ZRO",
+      "GNO",
+      "LDO",
+      "DEXE",
+      "ETHFI",
+      "ETH",
+      "GRASS"
+    ],
+    "alert": "BlackRock ETF driving major ETH inflows \u2014 institutional accumulation during extreme fear is a historically strong signal."
   }
 ]
