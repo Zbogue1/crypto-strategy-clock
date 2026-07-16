@@ -1,5 +1,5 @@
 {
-  "cash": 617.1293,
+  "cash": 524.5593,
   "holdings": [
     {
       "coin_ticker": "GRASS",
@@ -32,6 +32,22 @@
       "entry_target": 1850.0,
       "expected_days": 10,
       "partial_taken": false
+    },
+    {
+      "coin_ticker": "LDO",
+      "coin_id": "ldo",
+      "units": 253.59340550857215,
+      "entry_price": 0.364668,
+      "entry_date": "2026-07-16T09:10:09.795217+00:00",
+      "entry_signal": "BUY",
+      "entry_confidence": 58,
+      "allocated_usd": 92.57,
+      "fee_paid": 0.0926,
+      "exit_target": 0.43,
+      "stop_loss": 0.295,
+      "entry_target": 0.345,
+      "expected_days": 10,
+      "partial_taken": false
     }
   ],
   "realized_pnl": -48.4007,
@@ -39,7 +55,7 @@
   "total_trades": 11,
   "winning_trades": 6,
   "losing_trades": 5,
-  "total_fees": 2.7285,
+  "total_fees": 2.8211,
   "trade_history": [
     {
       "trade_num": 1,
