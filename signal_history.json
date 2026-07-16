@@ -613,5 +613,29 @@
       "GRASS"
     ],
     "alert": null
+  },
+  {
+    "ts": "2026-07-16T21:06:17.453039+00:00",
+    "coin": "ETH",
+    "price": 1873.04,
+    "signal": "BUY",
+    "confidence": 58,
+    "score": 0.45,
+    "fg": 25,
+    "btc_price": 64091,
+    "btc_dominance": 56.3,
+    "candidates": [
+      "DEXE",
+      "MON",
+      "BONK",
+      "USDG",
+      "PYTH",
+      "PUMP",
+      "JTO",
+      "ETH",
+      "LDO",
+      "GRASS"
+    ],
+    "alert": "Market in Extreme Fear \u2014 high-conviction contrarian setups available but position sizing should be conservative."
   }
 ]
