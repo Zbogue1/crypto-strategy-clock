@@ -243,5 +243,28 @@
       "GRASS"
     ],
     "alert": null
+  },
+  {
+    "ts": "2026-07-16T05:06:17.222770+00:00",
+    "coin": "ETH",
+    "price": 1917.2,
+    "signal": "BUY",
+    "confidence": 62,
+    "score": 0.55,
+    "fg": 25,
+    "btc_price": 64581,
+    "btc_dominance": 56.2,
+    "candidates": [
+      "DEXE",
+      "MON",
+      "USDG",
+      "ONDO",
+      "ETHFI",
+      "LDO",
+      "ZRO",
+      "ETH",
+      "GRASS"
+    ],
+    "alert": "Extreme Fear at 25 \u2014 historically a zone where quality assets bottom. ETH institutional flows provide conviction."
   }
 ]
