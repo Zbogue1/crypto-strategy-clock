@@ -335,5 +335,28 @@
       "GRASS"
     ],
     "alert": "ETH outperforming BTC by 7x this week on ETF inflows \u2014 watch for momentum continuation or exhaustion at $1,950-$2,000 resistance zone."
+  },
+  {
+    "ts": "2026-07-16T09:06:17.249314+00:00",
+    "coin": "LDO",
+    "price": 0.364668,
+    "signal": "BUY",
+    "confidence": 58,
+    "score": 0.45,
+    "fg": 25,
+    "btc_price": 64089,
+    "btc_dominance": 56.2,
+    "candidates": [
+      "MON",
+      "ONDO",
+      "BONK",
+      "ZRO",
+      "LDO",
+      "ETHFI",
+      "DEXE",
+      "ETH",
+      "GRASS"
+    ],
+    "alert": null
   }
 ]
