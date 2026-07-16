@@ -519,5 +519,28 @@
       "GRASS"
     ],
     "alert": null
+  },
+  {
+    "ts": "2026-07-16T17:06:17.355455+00:00",
+    "coin": "ETH",
+    "price": 1874.84,
+    "signal": "BUY",
+    "confidence": 62,
+    "score": 0.55,
+    "fg": 25,
+    "btc_price": 64327,
+    "btc_dominance": 56.3,
+    "candidates": [
+      "DEXE",
+      "ONDO",
+      "MON",
+      "BONK",
+      "USDG",
+      "LDO",
+      "PYTH",
+      "ETH",
+      "GRASS"
+    ],
+    "alert": "Extreme Fear at 25 \u2014 historically a zone where swing trade entries outperform, but position sizing should be conservative."
   }
 ]
