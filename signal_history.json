@@ -404,5 +404,28 @@
       "GRASS"
     ],
     "alert": "Extreme Fear at 25 \u2014 historically a contrarian buy zone, but requires strict stop-loss discipline."
+  },
+  {
+    "ts": "2026-07-16T12:06:17.416256+00:00",
+    "coin": "ETH",
+    "price": 1881.08,
+    "signal": "BUY",
+    "confidence": 62,
+    "score": 0.55,
+    "fg": 25,
+    "btc_price": 64128,
+    "btc_dominance": 56.2,
+    "candidates": [
+      "USDG",
+      "ONDO",
+      "MON",
+      "BONK",
+      "LDO",
+      "ZRO",
+      "DEXE",
+      "ETH",
+      "GRASS"
+    ],
+    "alert": null
   }
 ]
