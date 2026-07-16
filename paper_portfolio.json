@@ -1,5 +1,5 @@
 {
-  "cash": 553.7664,
+  "cash": 617.1293,
   "holdings": [
     {
       "coin_ticker": "GRASS",
@@ -18,22 +18,6 @@
       "partial_taken": false
     },
     {
-      "coin_ticker": "MON",
-      "coin_id": "mon",
-      "units": 2862.410351545137,
-      "entry_price": 0.02216017,
-      "entry_date": "2026-07-14T00:12:45.100157+00:00",
-      "entry_signal": "BUY",
-      "entry_confidence": 52,
-      "allocated_usd": 63.495,
-      "fee_paid": 0.0635,
-      "exit_target": 0.0248,
-      "stop_loss": 0.02216017,
-      "entry_target": 0.0215,
-      "expected_days": 7,
-      "partial_taken": true
-    },
-    {
       "coin_ticker": "ETH",
       "coin_id": "eth",
       "units": 0.09848664006964361,
@@ -50,12 +34,12 @@
       "partial_taken": false
     }
   ],
-  "realized_pnl": -48.2686,
+  "realized_pnl": -48.4007,
   "peak_value": 1032.0739,
-  "total_trades": 10,
+  "total_trades": 11,
   "winning_trades": 6,
-  "losing_trades": 4,
-  "total_fees": 2.6651,
+  "losing_trades": 5,
+  "total_fees": 2.7285,
   "trade_history": [
     {
       "trade_num": 1,
@@ -301,6 +285,32 @@
       "days_held": 0.04,
       "exit_target": 2750.0,
       "stop_loss": 2300.0,
+      "hit_target": false,
+      "hit_stop": true,
+      "result": "LOSS"
+    },
+    {
+      "trade_num": 11,
+      "coin_ticker": "MON",
+      "coin_id": "mon",
+      "entry_price": 0.02216017,
+      "entry_date": "2026-07-14T00:12:45.100157+00:00",
+      "entry_signal": "BUY",
+      "entry_confidence": 52,
+      "allocated_usd": 63.495,
+      "exit_price": 0.02215834,
+      "exit_date": "2026-07-16T04:10:06.179742+00:00",
+      "exit_signal": "STOP_LOSS",
+      "exit_reason": "stop_loss",
+      "units": 2862.410351545137,
+      "gross_proceeds": 63.4263,
+      "fees_total": 0.1269,
+      "net_proceeds": 63.3629,
+      "profit_usd": -0.1321,
+      "profit_pct": -0.21,
+      "days_held": 2.16,
+      "exit_target": 0.0248,
+      "stop_loss": 0.02216017,
       "hit_target": false,
       "hit_stop": true,
       "result": "LOSS"
