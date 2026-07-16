@@ -590,5 +590,28 @@
       "GRASS"
     ],
     "alert": "Extreme Fear (25) combined with massive institutional catalysts creates a high-probability mean reversion setup for ETH."
+  },
+  {
+    "ts": "2026-07-16T20:06:17.327514+00:00",
+    "coin": "ETH",
+    "price": 1872.75,
+    "signal": "BUY",
+    "confidence": 62,
+    "score": 0.55,
+    "fg": 25,
+    "btc_price": 64184,
+    "btc_dominance": 56.3,
+    "candidates": [
+      "DEXE",
+      "MON",
+      "BONK",
+      "ONDO",
+      "JTO",
+      "KITE",
+      "LDO",
+      "ETH",
+      "GRASS"
+    ],
+    "alert": null
   }
 ]
