@@ -381,5 +381,28 @@
       "GRASS"
     ],
     "alert": "CryptoSlate reports $478M ETH buy signal forming on-chain while market sentiment sits at Extreme Fear \u2014 classic accumulation setup."
+  },
+  {
+    "ts": "2026-07-16T11:06:17.269143+00:00",
+    "coin": "ETH",
+    "price": 1884.58,
+    "signal": "BUY",
+    "confidence": 62,
+    "score": 0.45,
+    "fg": 25,
+    "btc_price": 64114,
+    "btc_dominance": 56.2,
+    "candidates": [
+      "USDG",
+      "ONDO",
+      "MON",
+      "BONK",
+      "DEXE",
+      "ZRO",
+      "LDO",
+      "ETH",
+      "GRASS"
+    ],
+    "alert": "Extreme Fear at 25 \u2014 historically a contrarian buy zone, but requires strict stop-loss discipline."
   }
 ]
