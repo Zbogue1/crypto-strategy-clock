@@ -473,5 +473,28 @@
       "GRASS"
     ],
     "alert": "Market in Extreme Fear \u2014 position sizing should be conservative. Use tight stop-loss."
+  },
+  {
+    "ts": "2026-07-16T15:06:17.307210+00:00",
+    "coin": "ETH",
+    "price": 1876.98,
+    "signal": "BUY",
+    "confidence": 62,
+    "score": 0.45,
+    "fg": 25,
+    "btc_price": 64427,
+    "btc_dominance": 56.3,
+    "candidates": [
+      "DEXE",
+      "MON",
+      "ONDO",
+      "LDO",
+      "USDG",
+      "BONK",
+      "JTO",
+      "ETH",
+      "GRASS"
+    ],
+    "alert": null
   }
 ]
