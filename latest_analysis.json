@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-07-16T13:06:17.363703+00:00",
+  "timestamp": "2026-07-16T14:06:17.328486+00:00",
   "selected_coin": "ETH",
   "selected_coin_name": "Ethereum",
-  "selected_coin_price": 1870.45,
-  "confidence": 62,
-  "layman_headline": "Ethereum looks beaten down enough to warrant a careful buy in this fearful market.",
-  "layman_explanation": "The crypto market is in 'Extreme Fear' mode, which historically has been a decent time to buy quality assets at a discount. Ethereum is down 62% from its all-time high and its RSI indicator shows it's approaching oversold territory at 35, meaning sellers may be running out of steam. ETH bounced 7.5% last week showing buyers are stepping in, but pulled back 3% today \u2014 potentially offering a better entry. With $41 billion locked in Ethereum's DeFi ecosystem and major institutional interest (BlackRock, tokenized assets hitting record $2.3B), the fundamental story remains strong.",
-  "layman_action": "Consider a small position in Ethereum around $1,830 with a strict stop-loss at $1,700. This is a contrarian bet during fearful times \u2014 only risk what you can afford to lose.",
-  "expert_reasoning": "ETH RSI at 35 is approaching the oversold zone that has historically produced 80% win-rate trades in our signal credibility data. The Bullish Marubozu candle pattern on the 5-day chart shows pure buying conviction, though price remains below all major moving averages indicating the broader trend is still bearish \u2014 hence the moderate confidence. The risk/reward setup is favorable: support at $1,700 (4.2% downside from chart analysis current price) vs resistance at $1,800 near-term with potential to push toward $2,050 (roughly 10% upside from entry). Extreme Fear at 25 with an improving trend supports contrarian entry. BTC dominance at 56.2% is a headwind for alts, but ETH's institutional narrative (tokenized stocks at record $2.3B, BlackRock activity, Galaxy launching DeFi vaults) provides relative strength versus smaller alts.",
+  "selected_coin_price": 1882.03,
+  "confidence": 58,
+  "layman_headline": "Ethereum looks beaten down enough to bounce in a fearful market.",
+  "layman_explanation": "The entire crypto market is in 'Extreme Fear' territory, which historically has been when the best buying opportunities appear. Ethereum has dropped over 60% from its all-time high and its RSI is near oversold levels at 35, yet it just posted a solid 7.8% weekly gain showing buyers are stepping in. The broader market pullback today is giving us a chance to enter at a discount on the week's momentum.",
+  "layman_action": "Consider a small position in Ethereum around $1,850. Set a hard stop-loss at $1,700 (about 8% downside) and look to take profits near $2,050 (about 10% upside). Only risk what you can afford to lose \u2014 the market is volatile.",
+  "expert_reasoning": "ETH RSI at 35 is approaching oversold territory \u2014 our highest-confidence signal at 80% win rate. The 7.8% weekly gain with a Bullish Marubozu candle pattern shows strong buying conviction, though today's -2.48% pullback provides an improved entry. Support at $1,700 is well-defined, giving a clear stop-loss. The risk/reward from $1,850 entry to $2,050 target vs $1,700 stop is roughly 1.3:1, acceptable given the high-probability RSI setup. BTC dominance at 56.2% is a headwind for alts, but ETH's correlation to BTC and its massive TVL ($41B) provide relative safety compared to small-cap alternatives.",
   "risk_factors": [
-    "BTC dominance at 56.2% continues to crush altcoins \u2014 if BTC drops below $62K, ETH could break $1,700 support decisively",
-    "Price is below all major moving averages \u2014 bearish structure could mean this bounce is a dead cat rally before further downside",
-    "CryptoSlate notes top traders still expect ETH to fail despite the buy signal \u2014 professional positioning may be against this trade"
+    "BTC dominance at 56.2% means capital is flowing to Bitcoin over alts \u2014 ETH could underperform even if BTC stabilizes",
+    "Price is below all major moving averages with a bearish structure \u2014 this is a counter-trend trade that could fail if selling intensifies",
+    "Extreme Fear persisting at 25 for multiple days could indicate further downside before any sustained recovery"
   ],
   "watch_list": [
-    "BTC price action around $63,000-$64,000 \u2014 if it loses $62K, exit ETH immediately",
-    "ETH ability to reclaim and hold $1,800 resistance on daily close \u2014 needed for bullish confirmation",
-    "Fear & Greed index movement \u2014 improvement above 30 would validate the contrarian thesis"
+    "BTC price action around $64,000 support \u2014 if BTC breaks below $62,000, ETH will likely follow lower",
+    "ETH RSI \u2014 watch for it to dip below 30 (deep oversold) which would strengthen the bounce thesis or signal capitulation",
+    "Fear & Greed trend \u2014 the improving trend needs to continue; a drop below 20 would signal danger"
   ],
-  "market_context": "The crypto market is in Extreme Fear at 25/100 with BTC pulling back to $63,943 after hitting a monthly high. High BTC dominance at 56.2% is suppressing altcoin performance, but this fear level has historically preceded recoveries.",
-  "context_banner": "Extreme Fear creates opportunity in quality assets \u2014 Ethereum's near-oversold RSI and institutional momentum make it the best risk-adjusted swing trade available.",
-  "btc_price": 63943,
+  "market_context": "The crypto market is in Extreme Fear (25/100) with BTC pulling back to $64,000 after hitting monthly highs. BTC dominance at 56.2% reflects a risk-off rotation favoring Bitcoin over altcoins, making this a selective market where only high-conviction setups warrant capital.",
+  "context_banner": "Extreme Fear creates contrarian opportunities \u2014 ETH's near-oversold RSI and strong weekly momentum make it the highest-probability swing setup available.",
+  "btc_price": 64332,
   "fear_greed": {
     "current": 25,
     "label": "Extreme Fear",
@@ -33,27 +33,27 @@
     {
       "source": "RSI",
       "signal_type": "technical",
-      "description": "ETH RSI at 35 is approaching oversold territory \u2014 our most reliable signal with 80% win rate and +5.5% average return historically."
+      "description": "ETH RSI at 35 approaching oversold \u2014 our most reliable signal with 80% historical win rate and +5.5% average return."
     },
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Market at Extreme Fear (25/100) with improving trend \u2014 contrarian indicator suggesting we're near a local bottom for quality assets."
+      "description": "Extreme Fear at 25/100 with improving trend suggests contrarian buying opportunity, though caution warranted given 62% historical reliability."
     },
     {
-      "source": "CryptoSlate",
+      "source": "Blockworks",
       "signal_type": "news",
-      "description": "Reported a $478M buy signal flashing on Ethereum, though noting top traders remain skeptical \u2014 mixed signal that supports cautious entry."
+      "description": "ETH derivatives reset reported, suggesting leveraged positions are being cleared \u2014 reduces liquidation cascade risk and sets up cleaner price action."
     },
     {
       "source": "CoinTelegraph",
       "signal_type": "news",
-      "description": "Tokenized stocks market cap hit record $2.3B \u2014 bullish for Ethereum as the primary infrastructure layer for real-world asset tokenization."
+      "description": "Tokenized stocks hitting $2.3B record and prediction markets seeing record Q2 volume show DeFi/crypto utility growing despite price declines."
     },
     {
-      "source": "Chart Pattern Analysis",
-      "signal_type": "technical",
-      "description": "Bullish Marubozu candle pattern on ETH showing pure buying conviction, though price remains below all MAs keeping the overall chart bias neutral."
+      "source": "CoinDesk",
+      "signal_type": "news",
+      "description": "Bitcoin pulling back to $64K after monthly high with bears taking control \u2014 provides context for the broader market weakness affecting all candidates."
     }
   ],
   "_mode": "HUNTING",
