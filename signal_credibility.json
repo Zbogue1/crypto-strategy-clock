@@ -1,35 +1,35 @@
 {
   "open_trade": {
-    "coin": "ETH",
-    "entry_time": "2026-07-16T08:10:10.663621+00:00",
+    "coin": "LDO",
+    "entry_time": "2026-07-16T09:10:09.795888+00:00",
     "key_signals": [
       {
         "source": "RSI",
         "signal_type": "technical",
-        "description": "ETH RSI at 35 is approaching oversold territory \u2014 our most reliable signal with an 80% historical win rate and +5.5% average return."
+        "description": "LDO RSI at 40.69 is approaching oversold territory while still having significant room to run \u2014 our highest-confidence signal source at 80% win rate."
       },
       {
         "source": "CoinDesk",
         "signal_type": "news",
-        "description": "Ether is outrunning Bitcoin as ETF money returns, almost entirely from BlackRock's fund \u2014 a strong institutional catalyst for continued upside."
+        "description": "Ether outrunning Bitcoin as ETF money returns, almost entirely from BlackRock's fund \u2014 directly bullish for Lido as the dominant ETH staking protocol."
       },
       {
-        "source": "CoinTelegraph",
+        "source": "CryptoSlate",
         "signal_type": "news",
-        "description": "Trump to meet with senators over CLARITY Act on Thursday, which could provide regulatory clarity and boost crypto sentiment broadly."
+        "description": "Ethereum flashing a $478 million buy signal provides fundamental backdrop supporting ETH ecosystem tokens like LDO."
       },
       {
         "source": "Fear_Greed",
         "signal_type": "sentiment",
-        "description": "Extreme Fear at 25/100 is a contrarian buy signal \u2014 historically markets tend to bounce from these levels, though the trend has been flat at 25 all week."
+        "description": "Extreme Fear at 25/100 historically creates better entry points for swing trades, though the persistent fear (unchanged week-over-week) suggests caution on position sizing."
       },
       {
-        "source": "Blockworks",
+        "source": "Chart Pattern Analysis",
         "signal_type": "technical",
-        "description": "ETH derivatives have reset according to Blockworks analysis, removing overleveraged positioning and creating a cleaner base for the next move up."
+        "description": "Bullish Marubozu candlestick with 6.51x risk/reward ratio ($0.30 support to $0.40 resistance) provides the best technical setup among all candidates."
       }
     ],
-    "confidence": 62
+    "confidence": 58
   },
   "signal_stats": {
     "Fear_Greed__sentiment": {
@@ -177,5 +177,5 @@
     }
   },
   "trade_count": 8,
-  "last_updated": "2026-07-16T08:10:10.663626+00:00"
+  "last_updated": "2026-07-16T09:10:09.795936+00:00"
 }
