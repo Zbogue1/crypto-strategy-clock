@@ -220,5 +220,28 @@
       "GRASS"
     ],
     "alert": "Extreme Fear persists \u2014 position sizing should be conservative. DeFi oracle exploits are ongoing, adding systemic risk."
+  },
+  {
+    "ts": "2026-07-16T04:06:17.159682+00:00",
+    "coin": "ETH",
+    "price": 1916.78,
+    "signal": "BUY",
+    "confidence": 62,
+    "score": 0.45,
+    "fg": 25,
+    "btc_price": 64571,
+    "btc_dominance": 56.2,
+    "candidates": [
+      "MON",
+      "USDG",
+      "DEXE",
+      "ONDO",
+      "ZRO",
+      "ETHFI",
+      "BONK",
+      "ETH",
+      "GRASS"
+    ],
+    "alert": null
   }
 ]
