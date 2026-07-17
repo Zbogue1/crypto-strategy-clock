@@ -685,5 +685,29 @@
       "GRASS"
     ],
     "alert": null
+  },
+  {
+    "ts": "2026-07-17T00:06:17.731288+00:00",
+    "coin": "ETH",
+    "price": 1862.6,
+    "signal": "BUY",
+    "confidence": 58,
+    "score": 0.35,
+    "fg": 27,
+    "btc_price": 63744,
+    "btc_dominance": 56.3,
+    "candidates": [
+      "DEXE",
+      "USDG",
+      "BONK",
+      "JTO",
+      "MON",
+      "HYPE",
+      "PYTH",
+      "ETH",
+      "LDO",
+      "GRASS"
+    ],
+    "alert": "Market fear at 27 \u2014 oversold RSI signals are historically our most reliable entry indicator (80% win rate). Proceed with tight risk management."
   }
 ]
