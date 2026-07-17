@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-07-17T10:10:00.428594+00:00",
+  "timestamp": "2026-07-17T11:10:00.420504+00:00",
   "selected_coin": "HYPE",
   "selected_coin_name": "Hyperliquid",
-  "selected_coin_price": 60.54,
+  "selected_coin_price": 60.35,
   "confidence": 62,
-  "layman_headline": "Hyperliquid pulls back sharply in a fearful market \u2014 creating a potential bounce opportunity.",
-  "layman_explanation": "The crypto market is in 'Fear' mode with Bitcoin dropping below $63K after geopolitical tensions involving Iran. Hyperliquid (HYPE), a major decentralized exchange token, has fallen about 12% in a week despite having one of the strongest chart structures among all candidates. This kind of pullback in an otherwise bullish trend can create a buying opportunity for swing traders who catch the bounce before the crowd returns.",
-  "layman_action": "Consider a small position in HYPE around $59-60 with a strict stop-loss at $55.50. If it doesn't bounce within a few days, cut losses quickly. This is a higher-risk play in a nervous market.",
-  "expert_reasoning": "HYPE stands out with a chart bias score of +1.10 (bullish), the highest among all candidates. The 5-day momentum is still positive (+2.2%) despite the -11.7% weekly drawdown, and price remains above its 20-day SMA \u2014 a moderately bullish structure. The bullish Marubozu candlestick pattern signals pure buying conviction. RSI at 59 is elevated but not dangerously overbought; per our signal intelligence, RSI has an 80% win rate and this reading combined with a pullback into support is a classic swing setup. The Fear & Greed index at 27 (improving from 25) creates a contrarian backdrop. The main risk is BTC weakness from geopolitical headlines (Iran strikes, China uncertainty), but HYPE's high volume ($639M) ensures liquidity for a clean exit.",
+  "layman_headline": "Hyperliquid takes a sharp hit in a fearful market \u2014 creating a potential bounce opportunity.",
+  "layman_explanation": "The entire crypto market is selling off due to a global tech stock rout spreading into crypto. Hyperliquid, a top decentralized exchange token, has dropped over 12% in a week and 8% just today \u2014 much harder than most coins. But its chart still shows a bullish structure with price above key moving averages, suggesting this is a pullback within an uptrend rather than a breakdown. When fear is high and a strong coin drops sharply on broad market panic rather than its own bad news, it often bounces back quickly.",
+  "layman_action": "Consider a small position in HYPE around $59-60, with a firm stop-loss at $55.50. If it bounces back toward $68, take profits. This is a higher-risk trade in a fearful market, so keep position size modest.",
+  "expert_reasoning": "HYPE presents a classic 'buy the dip in an uptrend' setup. The chart bias score of +1.1 is the joint-highest among candidates, with price above two major MAs confirming bullish structure. The 12.3% weekly decline has been driven entirely by macro contagion (chip trade unwinding, risk-off in equities spreading to crypto) rather than protocol-specific issues. RSI at 58.69 is neutral \u2014 not overbought, providing headroom for recovery. The bullish marubozu candle pattern indicates strong buying conviction even during the selloff. With Fear & Greed at 27 and improving (up from 25 yesterday), contrarian entries in quality assets tend to perform well. The key risk is that macro selling continues, but the defined stop at $55.50 limits downside to ~8% against a 12.7% upside target.",
   "risk_factors": [
-    "BTC dropping further below $63K on Iran/China geopolitical escalation would drag HYPE lower regardless of chart strength",
-    "BTC dominance at 56.1% and rising indicates capital rotating away from altcoins \u2014 headwind for any alt trade",
-    "RSI at 59 after a big run means HYPE could still have correction room to mid-$50s before finding real support"
+    "Global risk-off selling from the AI/chip stock rout could intensify and drag crypto lower, especially high-beta alts like HYPE",
+    "BTC dominance at 56.1% and rising means capital is rotating away from alts \u2014 HYPE could underperform even if BTC stabilizes",
+    "CryptoSlate reports 'buyers and bagholders both selling into the rebound below $70K' \u2014 suggesting broader crypto distribution that could deepen the correction"
   ],
   "watch_list": [
-    "BTC price action around $62K-63K support \u2014 a breakdown here invalidates most alt trades",
-    "HYPE holding $60 support zone over the next 24-48 hours",
-    "Fear & Greed index \u2014 if it drops back to 20-22, defer entry and wait for stabilization"
+    "BTC price action around $62,000-$63,000 support \u2014 a breakdown here would likely drag HYPE further down",
+    "US equity markets, especially semiconductor stocks \u2014 continued AI selloff would maintain risk-off pressure on crypto",
+    "HYPE holding above $58 support \u2014 a close below this level would invalidate the bullish structure and trigger the stop"
   ],
-  "market_context": "The crypto market is in Fear territory (27/100) with BTC under $63K following a U.S. strike on Iran and Trump's China comments adding uncertainty. Bitcoin ETFs have seen $368M in inflows over 3 days, which provides some floor, but altcoins are bleeding as BTC dominance holds above 56%.",
-  "context_banner": "Geopolitical shock drives a broad crypto pullback, but HYPE's bullish chart structure and healthy volume make it the strongest bounce candidate in a fearful market.",
-  "btc_price": 63041,
+  "market_context": "The crypto market is in a fear-driven selloff (F&G 27) triggered by a global chip/AI stock rout spreading into risk assets. BTC has slipped below $63K with high dominance at 56.1%, creating a hostile environment for alts, but fear is improving from 25 to 27 \u2014 suggesting the worst of panic selling may be fading.",
+  "context_banner": "Macro risk-off contagion is pressuring crypto broadly, but sharp pullbacks in structurally bullish assets like HYPE during broad panic historically offer the best swing entry points.",
+  "btc_price": 63064,
   "fear_greed": {
     "current": 27,
     "label": "Fear",
@@ -33,27 +33,27 @@
     {
       "source": "RSI",
       "signal_type": "technical",
-      "description": "HYPE RSI at 59 after a -12% pullback into an uptrend \u2014 our highest-confidence signal type (80% win rate) supports a bounce entry."
-    },
-    {
-      "source": "Chart Pattern Analysis",
-      "signal_type": "technical",
-      "description": "HYPE has the highest chart bias score (+1.10) of all candidates with bullish Marubozu candle and price above key moving averages."
-    },
-    {
-      "source": "Fear_Greed",
-      "signal_type": "sentiment",
-      "description": "Fear & Greed at 27 and improving from 25 \u2014 contrarian indicator suggests fear is near a local peak, supporting dip-buying."
+      "description": "HYPE RSI at 58.69 is neutral with room to rally, unlike DEXE (85, overbought) \u2014 RSI has an 80% win rate in our signal credibility data, making this a high-confidence indicator."
     },
     {
       "source": "CoinDesk",
       "signal_type": "news",
-      "description": "Bitcoin under $63K after Iran strike creates broad selloff, but HYPE-specific news (derivatives reset) suggests oversold conditions in exchange tokens."
+      "description": "Reports confirm HYPE's -10% drop and ETH falling twice as hard as BTC are driven by the global chip trade unwind \u2014 macro contagion, not protocol weakness."
     },
     {
       "source": "CoinTelegraph",
       "signal_type": "news",
-      "description": "Bitcoin ETFs adding $368M in 3-day buying streak provides a macro floor, reducing risk of a complete market collapse during this pullback."
+      "description": "Bitcoin ETFs added $368M in a three-day buying streak, signaling institutional demand persists despite the selloff \u2014 a floor for BTC that supports alt recovery."
+    },
+    {
+      "source": "Fear_Greed",
+      "signal_type": "sentiment",
+      "description": "Fear & Greed at 27 (Fear) but improving from 25 \u2014 contrarian buy signal, though mixed reliability (62% win rate) means we size conservatively."
+    },
+    {
+      "source": "Chart Pattern Analysis",
+      "signal_type": "technical",
+      "description": "HYPE chart shows bullish marubozu candle in an uptrend above two MAs with +1.1 bias score \u2014 the strongest technical chart setup among all candidates."
     }
   ],
   "_mode": "HUNTING",
