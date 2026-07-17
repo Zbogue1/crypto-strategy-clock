@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-07-17T21:10:00.383586+00:00",
+  "timestamp": "2026-07-17T22:10:00.303211+00:00",
   "selected_coin": "ETH",
   "selected_coin_name": "Ethereum",
-  "selected_coin_price": 1843.64,
+  "selected_coin_price": 1839.67,
   "confidence": 38,
-  "layman_headline": "Market fear is high but no clean setup stands out \u2014 patience is the play right now.",
-  "layman_explanation": "The crypto market is in a fearful state with Bitcoin dominance squeezing altcoins. Most candidates are either in confirmed downtrends with no reversal signals yet, or have already bounced sharply and may be overextended. Ethereum has a low RSI near oversold and is the strongest large-cap option, but its chart structure is still bearish with price below all moving averages. Jumping in now without a clearer reversal signal risks catching a falling knife.",
-  "layman_action": "Stay in cash and wait. If Ethereum pulls back to the $1,750-$1,780 zone and holds support with a bullish daily candle, that could be a much better entry. Don't force trades in a fearful, BTC-dominant market.",
-  "expert_reasoning": "Evaluating all 10 candidates: BONK is in freefall with a bearish Marubozu and -1.40 chart bias \u2014 too dangerous despite oversold RSI. LIT has RSI at 70 (overbought) after a 53% 5-day run \u2014 chasing. HYPE has the strongest chart bias (+1.10) but RSI at 59 isn't compelling and the 1:1 R/R ratio is poor. LDO surged 24% in 7 days and is likely extended despite the 6.5x R/R ratio. ETH at RSI 35 is the most promising given our 80% win rate on RSI signals, but price is below all MAs with a neutral chart bias and poor 0.36x R/R to nearest levels. The Fear & Greed at 27 is improving from 25, which is a mild positive, but BTC dominance at 56.5% creates strong headwinds for altcoins. No candidate offers a compelling risk/reward with confirmed reversal. Best strategy is to wait for ETH to test $1,700-$1,780 support and form a higher low.",
+  "layman_headline": "Market fear is high but no coin has a clean enough setup to justify pulling the trigger today.",
+  "layman_explanation": "The crypto market is in a fearful mood with most altcoins trending down while Bitcoin dominance stays elevated at 56.5%. Several coins look beaten up \u2014 BONK is down 25% in a week, and ETH's RSI is approaching oversold territory \u2014 but none of the candidates present a clean technical setup with confirmed reversal signals. Jumping in now without a clear bounce confirmation would be catching a falling knife. The best approach is to wait for a stronger entry signal.",
+  "layman_action": "Stay on the sidelines for now. Keep cash ready and watch for ETH to dip toward $1,750 with a clear bounce pattern before entering. Patience pays in fearful markets.",
+  "expert_reasoning": "While ETH's RSI at 35 is approaching oversold (a historically reliable signal per our 80% win rate on RSI trades), the chart structure is still bearish \u2014 price below all major moving averages with a risk/reward of only 0.36x to nearest levels. The Bullish Marubozu candle shows buying conviction, but BTC dominance at 56.5% is hostile territory for alt entries. LDO's +24.5% weekly surge with RSI still at 41 is intriguing but could easily retrace. BONK's -25% weekly drop with chart bias of -1.4 is pure capitulation with no reversal confirmation. The prudent play is to wait for ETH to test the $1,700-$1,750 support zone and form a higher low before deploying capital.",
   "risk_factors": [
-    "BTC dominance at 56.5% continues draining capital from altcoins \u2014 could persist for weeks",
-    "Iran strikes creating geopolitical risk that could push Fear & Greed deeper into extreme fear",
-    "ETH is below all moving averages \u2014 bearish structure could lead to further breakdown below $1,700"
+    "BTC dominance at 56.5% continues to crush altcoin performance \u2014 capital rotation into alts not yet confirmed",
+    "FTX's $900M distribution round could create sustained selling pressure across major tokens",
+    "Fear & Greed at 27 is improving from 25 but could easily reverse if macro headwinds intensify"
   ],
   "watch_list": [
-    "ETH price action at $1,700-$1,780 support zone \u2014 a bounce with volume confirmation would be actionable",
-    "Fear & Greed index trajectory \u2014 if it drops below 20 (extreme fear), contrarian buy setups become stronger",
-    "BTC dominance \u2014 any reversal below 55% would signal capital rotating back into alts"
+    "ETH price action at $1,750-$1,700 support zone \u2014 a bounce here with volume would trigger a BUY",
+    "Fear & Greed Index trajectory \u2014 if it pushes above 30 it signals sentiment recovery for alt entries",
+    "LDO momentum continuation \u2014 if it holds above $0.35 after its 24.5% weekly rally, it becomes a strong candidate"
   ],
-  "market_context": "The market is in a fear-driven environment with BTC flat and altcoins bleeding. Geopolitical tensions from Iran strikes and high BTC dominance at 56.5% create unfavorable conditions for alt swing trades.",
-  "context_banner": "Fear-driven market with BTC dominance crushing alts \u2014 discipline demands waiting for confirmed reversal setups rather than catching knives.",
-  "btc_price": 64123,
+  "market_context": "The crypto market is in a fear phase with BTC flat at $64K while alts bleed. High BTC dominance at 56.5% signals capital is not flowing into altcoins yet, making alt swing trades higher risk than normal.",
+  "context_banner": "Fear-driven market with no confirmed reversal signals \u2014 discipline demands patience over premature entries.",
+  "btc_price": 64023,
   "fear_greed": {
     "current": 27,
     "label": "Fear",
@@ -33,30 +33,30 @@
     {
       "source": "RSI",
       "signal_type": "technical",
-      "description": "ETH RSI at 35 is approaching oversold territory \u2014 our most reliable signal (80% win rate) \u2014 but needs chart confirmation before acting."
+      "description": "ETH RSI at 35 approaching oversold \u2014 historically our most reliable signal (80% win rate) \u2014 but needs confirmation of support before acting."
     },
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Fear & Greed at 27 improving from 25 suggests sentiment may be bottoming, but hasn't reached extreme fear levels that produce the best contrarian entries."
+      "description": "Fear & Greed at 27 improving from 25, suggesting sentiment may be bottoming but not yet confirming a reversal."
     },
     {
       "source": "CoinTelegraph",
       "signal_type": "news",
-      "description": "Bitcoin price sagging under $62.5K amid Iran strikes adds geopolitical risk that could push the entire market lower before any recovery."
+      "description": "FTX distributing $900M to creditors could create short-term selling pressure across the market, making it wise to wait for the impact to play out."
     },
     {
       "source": "Blockworks",
       "signal_type": "news",
-      "description": "ETH derivatives reset coverage suggests positioning is cleaning up, which could set the stage for a stronger move once the reset completes."
+      "description": "ETH derivatives reset narrative suggests clearing of overleveraged positions, which could set up a cleaner bounce once complete."
     },
     {
       "source": "Chart Pattern Analysis",
       "signal_type": "technical",
-      "description": "HYPE has the strongest chart bias at +1.10 but all other candidates show neutral or bearish chart structures \u2014 no high-conviction bullish setup exists right now."
+      "description": "No candidate showed a chart bias above +0.4, and most are in bearish structure below key moving averages \u2014 insufficient conviction for entry."
     }
   ],
   "_mode": "HUNTING",
   "exit_target": 1950.0,
-  "stop_loss": 1690.0
+  "stop_loss": 1680.0
 }
