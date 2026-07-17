@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-07-17T00:06:17.731288+00:00",
+  "timestamp": "2026-07-17T01:06:17.205002+00:00",
   "selected_coin": "ETH",
   "selected_coin_name": "Ethereum",
-  "selected_coin_price": 1862.6,
+  "selected_coin_price": 1866.57,
   "confidence": 58,
-  "layman_headline": "Ethereum looks beaten down enough to warrant a careful swing entry during market fear.",
-  "layman_explanation": "The crypto market is in a fearful state with most coins pulling back today. Ethereum has dropped significantly from its all-time high (down 62%) and its RSI is approaching oversold territory at 35, which historically has been a reliable buy signal. Major institutional news \u2014 T. Rowe Price launching a multi-token crypto ETF, Citadel investing $400M in Crypto.com, and Visa backing a new stablecoin platform \u2014 all point to growing traditional finance adoption that benefits Ethereum's ecosystem most directly. While ETH is still in a broader downtrend, the combination of oversold conditions, massive institutional tailwinds, and a 6.6% bounce last week suggest this pullback could be a decent entry point.",
-  "layman_action": "Consider a small position in Ethereum around $1,830 with a strict stop-loss at $1,690. This is a cautious trade in a fearful market \u2014 don't oversize it. Take profits near $2,050.",
-  "expert_reasoning": "ETH RSI at 35 is approaching oversold territory \u2014 our signal credibility data shows RSI has an 80% win rate with +5.5% avg return, making this the highest-conviction signal available. The 7-day +6.6% move shows nascent buying interest, while today's -3% pullback offers a better entry than yesterday. Chart shows Bullish Marubozu candle pattern with support at $1,700 (4.2% downside to support vs potential 10%+ upside to $2,050). The institutional news flow from CoinTelegraph (67% win rate source) is overwhelmingly positive for crypto infrastructure, with ETH as the largest smart contract platform capturing the lion's share of institutional DeFi activity. BTC dominance at 56.3% is headwind for alts, but ETH's correlation with BTC during fear-driven selloffs tends to be lower than smaller alts, making it a safer alt play. The $41B TVL is stable, providing fundamental floor support.",
+  "layman_headline": "Ethereum looks beaten down enough to warrant a cautious swing trade entry.",
+  "layman_explanation": "Ethereum has dropped over 62% from its all-time high and is sitting near oversold levels on the RSI, which historically has been a reliable buy signal. The broader market is fearful (Fear & Greed at 27), which often creates good entry points for patient traders. ETH just bounced nearly 7% this past week, showing buyers are stepping in, and institutional news like T. Rowe Price launching a crypto ETF and Citadel investing $400M into Crypto.com signal growing Wall Street confidence in the space.",
+  "layman_action": "Consider a small position in Ethereum around $1,830 with a stop-loss at $1,690. If it drops below that level, exit to protect capital. Target selling around $2,050 for a roughly 10-12% gain.",
+  "expert_reasoning": "ETH RSI at 35 is approaching oversold territory, which per our signal credibility data is an 80% win-rate indicator with +5.5% average return. The chart shows a Bullish Marubozu on the 5-day, indicating pure buying conviction, though price remains below major MAs \u2014 a bearish structural backdrop that tempers conviction. The 7% weekly bounce from what appears to be a local bottom around $1,700 support is encouraging. Key resistance sits at $1,800 on the chart (already reclaimed) with the next target zone around $2,000-2,050. High BTC dominance (56.2%) is a headwind for alts, but ETH tends to be the first alt to rotate into when dominance starts declining. The risk/reward with a $1,690 stop and $2,050 target gives roughly 1.3:1, which is acceptable given the RSI signal reliability.",
   "risk_factors": [
-    "BTC dominance at 56.3% continues to compress alt performance \u2014 ETH could underperform if dominance rises further",
-    "Overall downtrend structure (below all major MAs) means this is a counter-trend trade that could fail if broader selling resumes",
-    "Fear & Greed at 27 could deteriorate further toward extreme fear, dragging all assets lower before any recovery"
+    "BTC dominance at 56.2% continues to suppress altcoin performance \u2014 ETH could underperform even if BTC holds steady",
+    "Price is below all major moving averages \u2014 the bearish structure means any rally could be a dead cat bounce that fails at resistance",
+    "Fear & Greed at 27 could deteriorate further if macro headlines worsen, dragging ETH below the $1,700 support level"
   ],
   "watch_list": [
-    "BTC price action around $63,000 support \u2014 if BTC breaks below $62,000, exit ETH position immediately",
-    "ETH RSI movement \u2014 a drop below 30 would signal deeper oversold conditions and potential capitulation",
-    "Follow-through on institutional news \u2014 watch for T. Rowe Price ETF launch details and any ETH-specific fund flows"
+    "ETH price action at $1,800 resistance-turned-support \u2014 if it loses this level convincingly, the thesis weakens",
+    "BTC dominance trend \u2014 any decline below 55% would be a strong tailwind for this ETH trade",
+    "Follow-up institutional news flow \u2014 the T. Rowe Price ETF and Citadel/Crypto.com deal could catalyze further capital inflows"
   ],
-  "market_context": "Crypto market is in 'Fear' territory at 27/100 with BTC down 1.5% and most alts bleeding harder. However, the institutional news cycle is exceptionally bullish with T. Rowe Price, Citadel, Visa, and Stripe all making major crypto moves \u2014 a disconnect between price action and fundamental adoption.",
-  "context_banner": "Institutional capital is flooding into crypto infrastructure while retail fear creates discounted entry opportunities in blue-chip assets like Ethereum.",
-  "btc_price": 63744,
+  "market_context": "The crypto market is in a 'Fear' state at 27/100 but improving from 25 yesterday. BTC is consolidating around $63.9K with high dominance, while institutional capital continues flooding in through ETFs, stablecoin platforms, and direct investments.",
+  "context_banner": "Institutional capital is surging into crypto infrastructure while retail fear creates discounted entry points in fundamentally strong assets like Ethereum.",
+  "btc_price": 63893,
   "fear_greed": {
     "current": 27,
     "label": "Fear",
@@ -28,32 +28,32 @@
     "week_avg": 25.6,
     "trend": "improving"
   },
-  "btc_dominance": 56.3,
+  "btc_dominance": 56.2,
   "key_signals": [
     {
       "source": "RSI",
       "signal_type": "technical",
-      "description": "ETH RSI at 35 is approaching oversold territory \u2014 our highest-conviction signal source with 80% historical win rate and +5.5% average return."
+      "description": "ETH RSI at 35 is near oversold \u2014 this indicator has an 80% win rate and +5.5% avg return in our paper trading history, making it the highest-confidence signal available."
     },
     {
       "source": "CoinTelegraph",
       "signal_type": "news",
-      "description": "Citadel's $400M Crypto.com investment and Bitcoin outlook improvement from our second-most reliable news source (67% win rate) signal institutional confidence."
-    },
-    {
-      "source": "CoinDesk",
-      "signal_type": "news",
-      "description": "T. Rowe Price's multi-token crypto ETF and Visa's stablecoin platform represent major TradFi adoption directly benefiting Ethereum's ecosystem."
+      "description": "Citadel Securities investing $400M in Crypto.com at $20B valuation signals institutional confidence; CoinTelegraph signals carry a 67% win rate in our track record."
     },
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Fear index at 27 with improving trend (up from 25 yesterday) suggests potential sentiment bottoming \u2014 contrarian buy signal with 62% historical reliability."
+      "description": "Fear & Greed at 27 (Fear) but improving from 25 \u2014 contrarian signal suggests market pessimism is near extremes where swing entries historically perform well."
     },
     {
-      "source": "DeFiLlama",
-      "signal_type": "onchain",
-      "description": "Ethereum TVL stable at $41B despite price decline \u2014 fundamental usage holding up, indicating price is overshooting to the downside relative to network activity."
+      "source": "CoinDesk",
+      "signal_type": "news",
+      "description": "T. Rowe Price ($1.9T AUM) launching a multi-token crypto ETF and Visa backing a new stablecoin platform represent major institutional on-ramps that benefit ETH ecosystem."
+    },
+    {
+      "source": "Blockworks",
+      "signal_type": "news",
+      "description": "ETH derivatives reset noted by Blockworks suggests overleveraged positions have been flushed, creating a cleaner setup for the next directional move upward."
     }
   ],
   "_mode": "HUNTING",
