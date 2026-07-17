@@ -276,5 +276,28 @@
       "GRASS"
     ],
     "alert": "Global risk-off selling in progress \u2014 avoid catching falling knives. Wait for stabilization signals."
+  },
+  {
+    "ts": "2026-07-17T14:10:00.314316+00:00",
+    "coin": "HYPE",
+    "price": 60.7,
+    "signal": "BUY",
+    "confidence": 58,
+    "score": 0.45,
+    "fg": 27,
+    "btc_price": 63274,
+    "btc_dominance": 56.2,
+    "candidates": [
+      "BONK",
+      "DEXE",
+      "JTO",
+      "MON",
+      "LIT",
+      "HYPE",
+      "TIA",
+      "ETH",
+      "LDO"
+    ],
+    "alert": "Global risk-off contagion from AI/chip sector selloff is actively pressuring crypto markets \u2014 manage position sizes conservatively."
   }
 ]
