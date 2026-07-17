@@ -1449,6 +1449,8 @@ def sync_alchemy_webhooks(webhook_base_url: str):
         addr = w.get("wallet", "")
         if addr.startswith("FILL_IN"):
             continue   # not yet populated
+        if w.get("chain", "solana") != "base":
+            continue   # Alchemy webhooks are Base/EVM only; Solana uses Helius
         if not w.get("alchemy_webhook_id"):
             webhook_id = register_alchemy_webhook(
                 addr, f"{webhook_base_url}/webhook/alchemy"
@@ -1457,8 +1459,10 @@ def sync_alchemy_webhooks(webhook_base_url: str):
                 w["alchemy_webhook_id"] = webhook_id
                 changed = True
 
-    # Clean up demoted wallets
+    # Clean up demoted wallets (Base chain only)
     for w in data.get("tier_b", []):
+        if w.get("chain", "solana") != "base":
+            continue
         if w.get("alchemy_webhook_id"):
             deleted = delete_alchemy_webhook(w["alchemy_webhook_id"])
             if deleted:

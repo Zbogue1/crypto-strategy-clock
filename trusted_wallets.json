@@ -1,6 +1,30 @@
 {
   "tier_a": [
     {
+      "wallet": "0x221E4586A8Ba13aafD71831939fa727f17e9EB0F",
+      "alias": "inyourwalls",
+      "fomo_profile": "@inyourwalls",
+      "tier": "A",
+      "chain": "base",
+      "alchemy_webhook_id": null,
+      "notes": "Active Base chain trader on fomo.family 24h leaderboard. Buys RUSSELL (0xB20000000000000000000076A1DD6bF00003ca01) via Relay Protocol cross-chain. Wallet confirmed via 2x on-chain RUSSELL receipts ($99.46 USDC each, Jul 17 2026 00:29 UTC, blocks 48729409 and 48729416).",
+      "stats": {
+        "trades_followed": 0,
+        "wins": 0,
+        "losses": 0,
+        "win_rate_30d": null,
+        "win_rate_7d": null,
+        "avg_return": null,
+        "consecutive_losses": 0,
+        "last_trade_at": null,
+        "last_outcome": null
+      },
+      "added_at": "2026-07-17T00:00:00Z",
+      "promoted_at": null,
+      "demoted_at": null,
+      "bankroll_usd": null
+    },
+    {
       "wallet": "Dq2UkKj2bAWusWGDkuJsRRz52y3NQpYvmqgyhd8PkRzA",
       "alias": "continuity",
       "fomo_profile": "@continuity",
