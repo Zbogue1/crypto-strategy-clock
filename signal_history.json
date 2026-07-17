@@ -299,5 +299,28 @@
       "LDO"
     ],
     "alert": "Global risk-off contagion from AI/chip sector selloff is actively pressuring crypto markets \u2014 manage position sizes conservatively."
+  },
+  {
+    "ts": "2026-07-17T15:10:00.356299+00:00",
+    "coin": "ETH",
+    "price": 1816.42,
+    "signal": "HOLD",
+    "confidence": 38,
+    "score": -0.2,
+    "fg": 27,
+    "btc_price": 62974,
+    "btc_dominance": 56.2,
+    "candidates": [
+      "BONK",
+      "USDG",
+      "DEXE",
+      "LIT",
+      "HYPE",
+      "JTO",
+      "MON",
+      "ETH",
+      "LDO"
+    ],
+    "alert": "Risk-off cascade in progress: Iran tensions + AI stock selloff dragging crypto lower. Avoid catching falling knives."
   }
 ]
