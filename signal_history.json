@@ -252,5 +252,29 @@
       "GRASS"
     ],
     "alert": "Risk-off macro environment: AI stock selloff spreading into crypto. Avoid catching falling knives until a clear reversal signal forms."
+  },
+  {
+    "ts": "2026-07-17T13:10:00.348277+00:00",
+    "coin": "ETH",
+    "price": 1814.48,
+    "signal": "HOLD",
+    "confidence": 38,
+    "score": -0.15,
+    "fg": 27,
+    "btc_price": 62800,
+    "btc_dominance": 56.2,
+    "candidates": [
+      "DEXE",
+      "BONK",
+      "USDG",
+      "LIT",
+      "MON",
+      "JTO",
+      "HYPE",
+      "ETH",
+      "LDO",
+      "GRASS"
+    ],
+    "alert": "Global risk-off selling in progress \u2014 avoid catching falling knives. Wait for stabilization signals."
   }
 ]
