@@ -228,5 +228,29 @@
       "GRASS"
     ],
     "alert": "Market-wide risk-off event in progress \u2014 position sizing should be conservative until macro stabilizes."
+  },
+  {
+    "ts": "2026-07-17T12:10:00.496676+00:00",
+    "coin": "ETH",
+    "price": 1835.37,
+    "signal": "HOLD",
+    "confidence": 38,
+    "score": -0.15,
+    "fg": 27,
+    "btc_price": 63226,
+    "btc_dominance": 56.2,
+    "candidates": [
+      "USDG",
+      "BONK",
+      "DEXE",
+      "MON",
+      "LIT",
+      "JTO",
+      "HYPE",
+      "ETH",
+      "LDO",
+      "GRASS"
+    ],
+    "alert": "Risk-off macro environment: AI stock selloff spreading into crypto. Avoid catching falling knives until a clear reversal signal forms."
   }
 ]
