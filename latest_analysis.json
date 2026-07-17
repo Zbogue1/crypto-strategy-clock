@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-07-17T11:10:00.420504+00:00",
-  "selected_coin": "HYPE",
-  "selected_coin_name": "Hyperliquid",
-  "selected_coin_price": 60.35,
-  "confidence": 62,
-  "layman_headline": "Hyperliquid takes a sharp hit in a fearful market \u2014 creating a potential bounce opportunity.",
-  "layman_explanation": "The entire crypto market is selling off due to a global tech stock rout spreading into crypto. Hyperliquid, a top decentralized exchange token, has dropped over 12% in a week and 8% just today \u2014 much harder than most coins. But its chart still shows a bullish structure with price above key moving averages, suggesting this is a pullback within an uptrend rather than a breakdown. When fear is high and a strong coin drops sharply on broad market panic rather than its own bad news, it often bounces back quickly.",
-  "layman_action": "Consider a small position in HYPE around $59-60, with a firm stop-loss at $55.50. If it bounces back toward $68, take profits. This is a higher-risk trade in a fearful market, so keep position size modest.",
-  "expert_reasoning": "HYPE presents a classic 'buy the dip in an uptrend' setup. The chart bias score of +1.1 is the joint-highest among candidates, with price above two major MAs confirming bullish structure. The 12.3% weekly decline has been driven entirely by macro contagion (chip trade unwinding, risk-off in equities spreading to crypto) rather than protocol-specific issues. RSI at 58.69 is neutral \u2014 not overbought, providing headroom for recovery. The bullish marubozu candle pattern indicates strong buying conviction even during the selloff. With Fear & Greed at 27 and improving (up from 25 yesterday), contrarian entries in quality assets tend to perform well. The key risk is that macro selling continues, but the defined stop at $55.50 limits downside to ~8% against a 12.7% upside target.",
+  "timestamp": "2026-07-17T12:10:00.496676+00:00",
+  "selected_coin": "ETH",
+  "selected_coin_name": "Ethereum",
+  "selected_coin_price": 1835.37,
+  "confidence": 38,
+  "layman_headline": "Market fear is rising as a global tech selloff drags crypto down \u2014 patience is the play right now.",
+  "layman_explanation": "The entire crypto market is sliding because a massive selloff in AI and chip stocks is spreading into risk assets like Bitcoin and altcoins. Bitcoin dropped below $63,000 and most altcoins are down 5-20% this week. The Fear & Greed Index sits at 27, meaning investors are scared. While fear can create buying opportunities, the selling pressure hasn't shown clear signs of stopping yet.",
+  "layman_action": "Wait on the sidelines for now. The market is dropping due to forces outside crypto (tech stock selloff), and it's unclear when the bleeding will stop. Set alerts for Ethereum around $1,750 and Bitcoin around $61,500 \u2014 those could be strong bounce zones worth buying.",
+  "expert_reasoning": "No candidates present a compelling risk/reward for immediate entry. ETH (RSI 35) is the closest to an actionable setup \u2014 approaching oversold with a bullish candle pattern and +2.17% 7-day hold despite today's -2.3% drop. However, price is below all major MAs (bearish structure), the chart bias score is 0.0 (neutral), and the R/R to nearest levels is only 0.36x. DEXE has a strong chart (+1.1 bias) but RSI at 85 screams overbought \u2014 a classic trap. LDO's +21% weekly move with a still-bearish MA structure suggests a dead-cat bounce. The macro environment \u2014 risk-off wave from AI stock selloff spreading into crypto \u2014 argues against catching falling knives. BTC dominance at 56.2% confirms capital is rotating away from alts. Best to wait for fear to peak and see a clear reversal candle on ETH near $1,700-$1,750 support.",
   "risk_factors": [
-    "Global risk-off selling from the AI/chip stock rout could intensify and drag crypto lower, especially high-beta alts like HYPE",
-    "BTC dominance at 56.1% and rising means capital is rotating away from alts \u2014 HYPE could underperform even if BTC stabilizes",
-    "CryptoSlate reports 'buyers and bagholders both selling into the rebound below $70K' \u2014 suggesting broader crypto distribution that could deepen the correction"
+    "Global tech/AI selloff could intensify further, dragging BTC below $61,000 and crushing alts",
+    "BTC dominance at 56.2% and rising means altcoins face additional relative underperformance",
+    "Fear & Greed at 27 is improving but hasn't reached extreme fear (<20) where capitulation bottoms typically form"
   ],
   "watch_list": [
-    "BTC price action around $62,000-$63,000 support \u2014 a breakdown here would likely drag HYPE further down",
-    "US equity markets, especially semiconductor stocks \u2014 continued AI selloff would maintain risk-off pressure on crypto",
-    "HYPE holding above $58 support \u2014 a close below this level would invalidate the bullish structure and trigger the stop"
+    "Bitcoin price action around $61,500 support \u2014 a break below could trigger cascading liquidations",
+    "ETH RSI dropping below 30 (true oversold) would be the entry signal we need",
+    "Bitcoin ETF flow data over the next 48 hours \u2014 sustained inflows signal institutional bottom-fishing"
   ],
-  "market_context": "The crypto market is in a fear-driven selloff (F&G 27) triggered by a global chip/AI stock rout spreading into risk assets. BTC has slipped below $63K with high dominance at 56.1%, creating a hostile environment for alts, but fear is improving from 25 to 27 \u2014 suggesting the worst of panic selling may be fading.",
-  "context_banner": "Macro risk-off contagion is pressuring crypto broadly, but sharp pullbacks in structurally bullish assets like HYPE during broad panic historically offer the best swing entry points.",
-  "btc_price": 63064,
+  "market_context": "A risk-off wave driven by the global AI/chip stock selloff is pulling Bitcoin below $63K and hammering altcoins. Fear & Greed at 27 is improving from 25 but hasn't reached capitulation levels, while BTC dominance at 56.2% shows money fleeing alts for relative safety.",
+  "context_banner": "Global tech selloff is pressuring crypto \u2014 patience beats FOMO in a falling market.",
+  "btc_price": 63226,
   "fear_greed": {
     "current": 27,
     "label": "Fear",
@@ -28,35 +28,35 @@
     "week_avg": 25.6,
     "trend": "improving"
   },
-  "btc_dominance": 56.1,
+  "btc_dominance": 56.2,
   "key_signals": [
-    {
-      "source": "RSI",
-      "signal_type": "technical",
-      "description": "HYPE RSI at 58.69 is neutral with room to rally, unlike DEXE (85, overbought) \u2014 RSI has an 80% win rate in our signal credibility data, making this a high-confidence indicator."
-    },
     {
       "source": "CoinDesk",
       "signal_type": "news",
-      "description": "Reports confirm HYPE's -10% drop and ETH falling twice as hard as BTC are driven by the global chip trade unwind \u2014 macro contagion, not protocol weakness."
+      "description": "Risk-off wave from AI/chip stock selloff is explicitly dragging Bitcoin below $63K and hitting alts like HYPE (-10%), confirming macro headwinds are the dominant force."
     },
     {
-      "source": "CoinTelegraph",
-      "signal_type": "news",
-      "description": "Bitcoin ETFs added $368M in a three-day buying streak, signaling institutional demand persists despite the selloff \u2014 a floor for BTC that supports alt recovery."
+      "source": "RSI",
+      "signal_type": "technical",
+      "description": "ETH RSI at 35 is approaching oversold territory \u2014 our most reliable signal (80% win rate) \u2014 but hasn't crossed below 30 for a high-conviction entry."
     },
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Fear & Greed at 27 (Fear) but improving from 25 \u2014 contrarian buy signal, though mixed reliability (62% win rate) means we size conservatively."
+      "description": "Fear & Greed at 27 (Fear) improving from 25 suggests sentiment is stabilizing but hasn't reached extreme fear levels where strong bounces typically originate."
     },
     {
-      "source": "Chart Pattern Analysis",
-      "signal_type": "technical",
-      "description": "HYPE chart shows bullish marubozu candle in an uptrend above two MAs with +1.1 bias score \u2014 the strongest technical chart setup among all candidates."
+      "source": "CoinTelegraph",
+      "signal_type": "news",
+      "description": "Bitcoin ETFs added $368M in a 3-day buying streak, signaling institutional accumulation even during the selloff \u2014 a bullish undercurrent for when macro pressure eases."
+    },
+    {
+      "source": "CoinDesk",
+      "signal_type": "macro",
+      "description": "Ether falling twice as hard as Bitcoin during the selloff confirms the high BTC dominance trend and warns against premature altcoin entries."
     }
   ],
   "_mode": "HUNTING",
-  "exit_target": 68.0,
-  "stop_loss": 55.5
+  "exit_target": 1950.0,
+  "stop_loss": 1680.0
 }
