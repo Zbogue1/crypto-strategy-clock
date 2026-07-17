@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-07-17T16:10:00.258160+00:00",
+  "timestamp": "2026-07-17T17:10:00.325434+00:00",
   "selected_coin": "ETH",
   "selected_coin_name": "Ethereum",
-  "selected_coin_price": 1826.43,
-  "confidence": 58,
-  "layman_headline": "Ethereum looks oversold during a broader market fear selloff \u2014 time to nibble cautiously.",
-  "layman_explanation": "The entire crypto market is pulling back as a global tech stock selloff and geopolitical tensions (Iran strikes) are dragging risk assets down. Bitcoin dropped below $63K and most altcoins are bleeding. However, Ethereum's RSI is approaching oversold territory at 35, and it actually managed a +2% gain over the past week despite today's dip. With Fear & Greed at 27, we're in the zone where historically buying fear has paid off, though the environment remains risky.",
-  "layman_action": "Consider a small, cautious position in Ethereum around $1,790 with a strict stop-loss at $1,680. This is a contrarian play \u2014 buying during fear \u2014 so size it modestly and be prepared for more downside before any bounce.",
-  "expert_reasoning": "ETH at RSI 35 is approaching the oversold zone that has historically produced strong bounces \u2014 and RSI is our most reliable signal source (80% win rate). The chart shows a bullish marubozu candle pattern with 5-day momentum of +6.5%, suggesting buyers are stepping in despite the broader bearish structure. Price sits just above $1,700 support with resistance at $1,800 and then open air to $2,000+. The macro selloff (AI stock rout, geopolitical tension) creates the fear that produces good swing entries. Ethereum's $40B TVL is stable, providing fundamental support. The risk/reward from $1,790 entry to $2,020 target vs $1,680 stop is approximately 2.1:1, meeting our minimum threshold.",
+  "selected_coin_price": 1845.88,
+  "confidence": 42,
+  "layman_headline": "Fear grips the market \u2014 patience beats FOMO right now.",
+  "layman_explanation": "The overall crypto market is in a fearful state with Bitcoin slipping back to $63,800 and most altcoins bleeding. None of the coins on the watchlist present a clean, high-conviction swing trade entry today. DEXE surged but is dangerously overbought at RSI 85, BONK is in freefall with no sign of a bottom, and HYPE just dropped 11% in a week with mediocre risk/reward. Ethereum is the most interesting candidate with RSI near oversold and a Bullish Marubozu candle forming, but it's still below all major moving averages with no confirmed reversal yet.",
+  "layman_action": "Stay in cash and wait. Set price alerts on Ethereum around $1,780 \u2014 if it dips there and holds support at $1,700 with volume, that's a much better entry. Don't chase anything in this fearful, choppy market.",
+  "expert_reasoning": "I evaluated all 10 swing candidates and none meet the bar for a high-confidence entry. DEXE has RSI 85.45 \u2014 our strongest reliable signal (RSI at 80% win rate) screams correction risk, not entry. BONK RSI 33 is attractive but the chart bias is -1.40 with a Bearish Marubozu \u2014 catching a falling knife. HYPE has a bullish chart (score +1.10) but RSI 59 is mildly overbought and a -10.8% weekly drop in a fear market suggests further downside. ETH at RSI 35 is the most compelling setup \u2014 approaching oversold on the second-largest crypto, with a Bullish Marubozu candle and +6.5% 5-day momentum suggesting early accumulation. However, price remains below all MAs (bearish structure), the chart bias is neutral (0.0), and BTC dominance at 56.3% is crushing alts. I need to see ETH reclaim $1,800 resistance with volume confirmation before committing capital. The Iran strikes headline from CoinTelegraph adds geopolitical risk that could push BTC below $62K and drag everything lower.",
   "risk_factors": [
-    "Broader risk-off wave could intensify \u2014 Iran escalation or deeper tech selloff could push BTC below $60K and drag ETH to $1,600",
-    "BTC dominance at 56.3% and rising means capital continues flowing away from alts including ETH",
-    "ETH is below all major moving averages in a structural downtrend \u2014 this bounce could be a dead cat"
+    "Iran-related geopolitical escalation could trigger a broader risk-off selloff pushing BTC below $62K",
+    "BTC dominance at 56.3% continues to suffocate altcoin performance \u2014 no alt season signal",
+    "Fear & Greed at 27 is improving but still in Fear territory \u2014 sentiment can deteriorate quickly"
   ],
   "watch_list": [
-    "BTC price action around $62,000-63,000 support \u2014 a break below $60K would invalidate the ETH trade",
-    "Fear & Greed index trajectory \u2014 currently improving from 25 to 27, continued improvement supports the bounce thesis",
-    "Geopolitical developments (Iran situation) and US tech stock futures Monday for risk sentiment direction"
+    "ETH price action around $1,800 resistance \u2014 a close above with volume confirms the reversal",
+    "Bitcoin holding $62,500 support \u2014 a break below invalidates all alt setups",
+    "Fear & Greed index crossing above 30 \u2014 would signal sentiment shift supporting new entries"
   ],
-  "market_context": "Crypto markets are in a fear-driven selloff triggered by a global tech stock rout and geopolitical tensions. BTC is down 2% below $63K, most alts are down 3-10%, but improving Fear & Greed (25\u219227) suggests selling pressure may be peaking.",
-  "context_banner": "Risk-off selloff creates a contrarian ETH entry near oversold RSI levels, but position sizing should reflect the uncertain macro backdrop.",
-  "btc_price": 63339,
+  "market_context": "The crypto market is in a fearful, risk-off phase with BTC at $63,800 and dominance at 56.3% crushing altcoins. Geopolitical tensions from Iran strikes are adding pressure alongside an AI-related narrative shift away from crypto.",
+  "context_banner": "Market fear and geopolitical headwinds demand patience \u2014 the best swing entries emerge when clarity returns, not when chaos reigns.",
+  "btc_price": 63852,
   "fear_greed": {
     "current": 27,
     "label": "Fear",
@@ -33,30 +33,30 @@
     {
       "source": "RSI",
       "signal_type": "technical",
-      "description": "ETH RSI at 35 is approaching oversold territory \u2014 our most reliable signal source at 80% historical win rate, suggesting a bounce setup is forming."
+      "description": "ETH RSI at 35 approaching oversold territory \u2014 our most reliable signal (80% win rate) flags a potential bounce setup, but needs confirmation above resistance."
     },
     {
       "source": "CoinTelegraph",
       "signal_type": "news",
-      "description": "Reports of Bitcoin sagging under $62.5K due to Iran strikes \u2014 geopolitical fear-driven selloffs have historically been good contrarian entry points for quality assets."
+      "description": "Bitcoin sagging under $62.5K as Iran strikes add pressure \u2014 geopolitical risk is a headwind for any new long positions (CoinTelegraph 67% reliable)."
     },
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Fear & Greed at 27 (Fear) but improving from 25 \u2014 the market is fearful enough for contrarian entries but the trend is stabilizing rather than worsening."
+      "description": "Fear & Greed at 27 (Fear) improving from 25 \u2014 trend is positive but not yet at levels where contrarian buys have strong edges historically."
     },
     {
       "source": "Blockworks",
       "signal_type": "news",
-      "description": "ETH derivatives reset article suggests leveraged positions have been flushed, reducing the risk of further cascading liquidations on the downside."
+      "description": "ETH derivatives reset article signals institutional positioning may be shifting \u2014 watch for follow-through in spot markets."
     },
     {
-      "source": "CoinDesk",
-      "signal_type": "news",
-      "description": "Risk-off wave dragging BTC below $63K as AI selloff spreads \u2014 this macro headwind is the key risk factor but may be near exhaustion given the improving fear gauge."
+      "source": "Chart Pattern Analysis",
+      "signal_type": "technical",
+      "description": "DEXE and HYPE both score +1.10 chart bias but DEXE's RSI 85 makes it a trap, and HYPE's 1:1 risk/reward at tight support doesn't justify entry."
     }
   ],
   "_mode": "HUNTING",
-  "exit_target": 2020.0,
-  "stop_loss": 1680.0
+  "exit_target": 1950.0,
+  "stop_loss": 1690.0
 }
