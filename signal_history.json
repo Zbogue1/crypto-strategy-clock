@@ -394,5 +394,29 @@
       "GRASS"
     ],
     "alert": "Geopolitical risk elevated: Iran strikes pressuring BTC below $62.5K per CoinTelegraph. Watch for potential broader selloff creating better entries."
+  },
+  {
+    "ts": "2026-07-17T19:10:00.352336+00:00",
+    "coin": "HYPE",
+    "price": 60.13,
+    "signal": "BUY",
+    "confidence": 58,
+    "score": 0.55,
+    "fg": 27,
+    "btc_price": 64110,
+    "btc_dominance": 56.5,
+    "candidates": [
+      "USDG",
+      "BONK",
+      "LIT",
+      "MON",
+      "JTO",
+      "HYPE",
+      "VVV",
+      "ETH",
+      "LDO",
+      "GRASS"
+    ],
+    "alert": "Geopolitical risk elevated: Iran strikes pushing BTC below $62.5K per CoinTelegraph \u2014 size positions conservatively."
   }
 ]
