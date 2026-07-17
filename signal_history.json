@@ -466,5 +466,29 @@
       "GRASS"
     ],
     "alert": "Geopolitical escalation (Iran strikes) adding pressure \u2014 risk-off environment may intensify. Monitor closely."
+  },
+  {
+    "ts": "2026-07-17T22:10:00.303211+00:00",
+    "coin": "ETH",
+    "price": 1839.67,
+    "signal": "HOLD",
+    "confidence": 38,
+    "score": -0.15,
+    "fg": 27,
+    "btc_price": 64023,
+    "btc_dominance": 56.5,
+    "candidates": [
+      "BONK",
+      "USDG",
+      "MON",
+      "LIT",
+      "DEXE",
+      "KITE",
+      "TIA",
+      "ETH",
+      "LDO",
+      "GRASS"
+    ],
+    "alert": "Market in Fear zone (27/100) with high BTC dominance \u2014 alt entries carry elevated risk until rotation signals appear."
   }
 ]
