@@ -84,5 +84,29 @@
       "GRASS"
     ],
     "alert": "U.S. military strike on Iran triggered broad crypto sell-off. Avoid catching falling knives until BTC stabilizes above $62K."
+  },
+  {
+    "ts": "2026-07-17T06:10:00.373084+00:00",
+    "coin": "ETH",
+    "price": 1825.61,
+    "signal": "HOLD",
+    "confidence": 35,
+    "score": -0.15,
+    "fg": 27,
+    "btc_price": 62854,
+    "btc_dominance": 56.1,
+    "candidates": [
+      "USDG",
+      "BONK",
+      "JTO",
+      "LIT",
+      "HYPE",
+      "MON",
+      "TIA",
+      "ETH",
+      "LDO",
+      "GRASS"
+    ],
+    "alert": "U.S. military strike on Iran has triggered significant risk-off selling across crypto markets. Monitor for escalation."
   }
 ]
