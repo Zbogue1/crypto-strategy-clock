@@ -204,5 +204,29 @@
       "GRASS"
     ],
     "alert": "Geopolitical risk elevated \u2014 U.S. strike on Iran and China trade uncertainty could trigger further downside. Size positions conservatively."
+  },
+  {
+    "ts": "2026-07-17T11:10:00.420504+00:00",
+    "coin": "HYPE",
+    "price": 60.35,
+    "signal": "BUY",
+    "confidence": 62,
+    "score": 0.55,
+    "fg": 27,
+    "btc_price": 63064,
+    "btc_dominance": 56.1,
+    "candidates": [
+      "BONK",
+      "DEXE",
+      "MON",
+      "HYPE",
+      "JTO",
+      "LIT",
+      "TIA",
+      "ETH",
+      "LDO",
+      "GRASS"
+    ],
+    "alert": "Market-wide risk-off event in progress \u2014 position sizing should be conservative until macro stabilizes."
   }
 ]
