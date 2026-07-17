@@ -346,5 +346,29 @@
       "GRASS"
     ],
     "alert": "Geopolitical risk elevated \u2014 Iran strikes adding pressure to already fragile risk markets. Use tight stops."
+  },
+  {
+    "ts": "2026-07-17T17:10:00.325434+00:00",
+    "coin": "ETH",
+    "price": 1845.88,
+    "signal": "HOLD",
+    "confidence": 42,
+    "score": 0.15,
+    "fg": 27,
+    "btc_price": 63852,
+    "btc_dominance": 56.3,
+    "candidates": [
+      "DEXE",
+      "USDG",
+      "BONK",
+      "LIT",
+      "JTO",
+      "MON",
+      "HYPE",
+      "ETH",
+      "LDO",
+      "GRASS"
+    ],
+    "alert": "Iran strikes creating macro headwinds \u2014 monitor BTC $62,500 support level closely"
   }
 ]
