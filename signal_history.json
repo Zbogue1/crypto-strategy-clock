@@ -180,5 +180,29 @@
       "GRASS"
     ],
     "alert": "Geopolitical risk elevated: U.S. strike on Iran + Trump China comments creating macro headwinds. Use tight stops."
+  },
+  {
+    "ts": "2026-07-17T10:10:00.428594+00:00",
+    "coin": "HYPE",
+    "price": 60.54,
+    "signal": "BUY",
+    "confidence": 62,
+    "score": 0.65,
+    "fg": 27,
+    "btc_price": 63041,
+    "btc_dominance": 56.1,
+    "candidates": [
+      "USDG",
+      "BONK",
+      "LIT",
+      "DEXE",
+      "JTO",
+      "MON",
+      "HYPE",
+      "ETH",
+      "LDO",
+      "GRASS"
+    ],
+    "alert": "Geopolitical risk elevated \u2014 U.S. strike on Iran and China trade uncertainty could trigger further downside. Size positions conservatively."
   }
 ]
