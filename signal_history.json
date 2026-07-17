@@ -60,5 +60,29 @@
       "GRASS"
     ],
     "alert": "Low-confidence trade in fearful market \u2014 size position conservatively and respect the $1,680 stop-loss strictly."
+  },
+  {
+    "ts": "2026-07-17T05:10:00.230087+00:00",
+    "coin": "HYPE",
+    "price": 59.79,
+    "signal": "HOLD",
+    "confidence": 38,
+    "score": 0.15,
+    "fg": 27,
+    "btc_price": 63350,
+    "btc_dominance": 56.2,
+    "candidates": [
+      "USDG",
+      "BONK",
+      "JTO",
+      "MON",
+      "LIT",
+      "TIA",
+      "HYPE",
+      "ETH",
+      "LDO",
+      "GRASS"
+    ],
+    "alert": "U.S. military strike on Iran triggered broad crypto sell-off. Avoid catching falling knives until BTC stabilizes above $62K."
   }
 ]
