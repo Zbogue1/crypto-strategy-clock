@@ -322,5 +322,29 @@
       "LDO"
     ],
     "alert": "Risk-off cascade in progress: Iran tensions + AI stock selloff dragging crypto lower. Avoid catching falling knives."
+  },
+  {
+    "ts": "2026-07-17T16:10:00.258160+00:00",
+    "coin": "ETH",
+    "price": 1826.43,
+    "signal": "BUY",
+    "confidence": 58,
+    "score": 0.35,
+    "fg": 27,
+    "btc_price": 63339,
+    "btc_dominance": 56.3,
+    "candidates": [
+      "DEXE",
+      "BONK",
+      "USDG",
+      "LIT",
+      "JTO",
+      "HYPE",
+      "MON",
+      "ETH",
+      "LDO",
+      "GRASS"
+    ],
+    "alert": "Geopolitical risk elevated \u2014 Iran strikes adding pressure to already fragile risk markets. Use tight stops."
   }
 ]
