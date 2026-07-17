@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-07-17T19:10:00.352336+00:00",
-  "selected_coin": "HYPE",
-  "selected_coin_name": "Hyperliquid",
-  "selected_coin_price": 60.13,
-  "confidence": 58,
-  "layman_headline": "Hyperliquid pulls back 11% \u2014 the strongest chart on the board is finally on sale.",
-  "layman_explanation": "The crypto market is in a 'fear' mood right now, with most coins dipping. Hyperliquid, a high-profile decentralized exchange token, has pulled back about 11% this week after a strong run. Its chart still looks bullish with buyers stepping in on dips. This kind of pullback in an uptrend, during a fearful market, is often where swing trade opportunities emerge \u2014 buying strength on a temporary discount.",
-  "layman_action": "Consider a small position in HYPE around $59-60 with a stop-loss at $55.50. If the broader market stabilizes, this could bounce back toward $67 within a week or two. Keep position size modest given the fearful market environment.",
-  "expert_reasoning": "HYPE stands out with the strongest chart bias score at +1.10, showing a Bullish Marubozu candle pattern indicating pure buying conviction. The 5-day momentum is still positive (+2.2%) despite the 10.7% weekly pullback, suggesting this is a healthy retracement within an uptrend rather than a breakdown. RSI at 58.69 is in the sweet spot \u2014 not overbought, not oversold \u2014 giving room for upside. Price sits above two major moving averages confirming the moderately bullish structure. The Fear & Greed index at 27 with an improving trend (up from 25) provides a contrarian backdrop \u2014 buying quality setups during fear historically yields better risk-adjusted returns. The main headwind is BTC dominance at 56.5% pressuring alts, but HYPE's proximity to ATH (-21.6%) shows relative strength versus most alts which are down 50-90%+ from highs.",
+  "timestamp": "2026-07-17T20:10:00.390788+00:00",
+  "selected_coin": "ETH",
+  "selected_coin_name": "Ethereum",
+  "selected_coin_price": 1836.84,
+  "confidence": 35,
+  "layman_headline": "Crypto market is scared and no coin is screaming 'buy me' right now.",
+  "layman_explanation": "The overall crypto market is in a 'Fear' state with Bitcoin dominance high at 56.5%, meaning money is flowing away from smaller coins and into Bitcoin. All of the swing trade candidates have significant problems: some are deeply oversold but still falling hard (BONK), some have already run up too much (DEXE with RSI 85, LDO up 23% this week), and others lack enough data to make a confident call. Ethereum has a low RSI near oversold territory and is the strongest large-cap alt, but its chart structure is still bearish with price below all major moving averages. The best move right now is patience.",
+  "layman_action": "Wait for a clearer setup. Keep cash ready. If ETH drops to around $1,780 and shows a bounce with volume confirmation, that could be the entry. Don't chase anything in a fearful, Bitcoin-dominant market.",
+  "expert_reasoning": "No candidate presents a high-conviction swing entry right now. ETH (RSI 35, reliable signal per our track record) is the closest to actionable, but the chart bias is neutral with price below all MAs in a downtrend structure. The risk/reward to nearest levels is only 0.36x which is poor for entry. BTC dominance at 56.5% is a headwind for all altcoins. The Fear & Greed index at 27 is improving from 25 but not yet at extreme fear (sub-20) levels that historically mark strong bounce zones. DEXE has a bullish chart but RSI at 85 is dangerously overbought \u2014 this is a sell signal, not a buy. LDO's 23.5% weekly surge makes it extended despite the low RSI. Best to wait for ETH to test $1,700-1,780 support with a reversal candle before entering.",
   "risk_factors": [
-    "BTC dominance at 56.5% continues to suppress alt performance \u2014 if BTC breaks below $62K, alts including HYPE could see accelerated selling",
-    "CoinTelegraph reports BTC sagging under $62.5K on Iran strikes and US stocks pressure \u2014 geopolitical escalation could deepen the fear cycle",
-    "HYPE's tight support/resistance range ($63-$64 on chart) means a break below support could trigger a faster decline than expected"
+    "Iran strikes escalation could trigger broader risk-off selling, dragging crypto further down",
+    "BTC dominance at 56.5% and rising means altcoin capital is being drained \u2014 all alt trades carry extra risk",
+    "Fear & Greed at 27 is 'Fear' but not 'Extreme Fear' \u2014 we could see another leg down before a true bottom"
   ],
   "watch_list": [
-    "BTC price action around the $62,000-$64,000 range \u2014 a decisive break below $62K would invalidate most alt long setups",
-    "Fear & Greed index trend \u2014 if it continues improving above 30, risk appetite could return to alts like HYPE",
-    "HYPE daily volume and whether the Bullish Marubozu pattern gets follow-through in the next 2 trading days"
+    "ETH price action around $1,700-1,780 support zone \u2014 a bounce with volume would trigger a BUY signal",
+    "Fear & Greed index \u2014 if it drops below 20 (Extreme Fear), that historically marks better entry points",
+    "BTC price holding $62,000 \u2014 a break below could accelerate altcoin selling"
   ],
-  "market_context": "The crypto market is in a 'Fear' state (27/100) but improving from 25 earlier this week. BTC holds around $64K with high dominance at 56.5%, keeping alts under pressure while geopolitical tensions and regulatory uncertainty add headwinds.",
-  "context_banner": "Fear is improving but alts remain under BTC dominance pressure \u2014 only the strongest chart setups merit entry, and HYPE's bullish structure with an 11% pullback offers the best risk/reward on the board.",
-  "btc_price": 64110,
+  "market_context": "Crypto market is in Fear mode (27/100) with BTC dominance elevated at 56.5%, pressuring altcoins. Geopolitical tensions (Iran strikes) are adding to risk-off sentiment, and no clear reversal signals have materialized yet.",
+  "context_banner": "Market fear is rising but hasn't reached extreme levels \u2014 patience is the highest-conviction trade right now.",
+  "btc_price": 63989,
   "fear_greed": {
     "current": 27,
     "label": "Fear",
@@ -31,32 +31,32 @@
   "btc_dominance": 56.5,
   "key_signals": [
     {
-      "source": "Chart Pattern Analysis",
-      "signal_type": "technical",
-      "description": "HYPE has the highest chart bias score (+1.10) with a Bullish Marubozu candle and moderately bullish MA structure, making it the standout setup among all candidates."
-    },
-    {
       "source": "RSI",
       "signal_type": "technical",
-      "description": "HYPE RSI at 58.69 sits in neutral-to-bullish territory with room to run, unlike LIT (70, overbought) or BONK (33, catching a falling knife in a bearish chart)."
-    },
-    {
-      "source": "CoinTelegraph",
-      "signal_type": "news",
-      "description": "BTC sagging under $62.5K on Iran strikes adds near-term risk to all positions, warranting tighter stops and smaller sizing despite the bullish HYPE setup."
+      "description": "ETH RSI at 35 is approaching oversold but not yet at the 30 threshold that our track record shows as a reliable buy signal (80% win rate). Waiting for sub-30 or a confirmed bounce."
     },
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Fear index at 27 but improving from 25 creates a contrarian buying window \u2014 historically one of the better times to enter quality setups during moderate fear."
+      "description": "Fear & Greed at 27 improving from 25 suggests sentiment is bottoming but hasn't reached extreme fear levels that produce the best contrarian entries."
+    },
+    {
+      "source": "CoinTelegraph",
+      "signal_type": "news",
+      "description": "Bitcoin price sagging under $62.5K due to Iran strikes adds geopolitical overhang \u2014 a reliable news source (67% win rate) flagging bearish pressure."
     },
     {
       "source": "Blockworks",
       "signal_type": "news",
-      "description": "ETH derivatives reset narrative and DePIN/gaming rebound coverage suggest renewed institutional interest in DeFi infrastructure tokens like HYPE."
+      "description": "ETH derivatives reset article suggests leveraged positions are being cleared, which could create a cleaner setup for entry once selling exhausts."
+    },
+    {
+      "source": "Chart Pattern Analysis",
+      "signal_type": "technical",
+      "description": "No candidate has both a bullish chart bias AND favorable RSI \u2014 DEXE is bullish but RSI 85 is dangerous, ETH has good RSI but bearish structure. Conflicting signals warrant waiting."
     }
   ],
   "_mode": "HUNTING",
-  "exit_target": 67.0,
-  "stop_loss": 55.5
+  "exit_target": 1950.0,
+  "stop_loss": 1690.0
 }
