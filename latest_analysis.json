@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-07-17T09:10:00.712826+00:00",
-  "selected_coin": "ETH",
-  "selected_coin_name": "Ethereum",
-  "selected_coin_price": 1828.98,
-  "confidence": 58,
-  "layman_headline": "Ethereum looks beaten down enough to warrant a cautious swing buy in a fearful market.",
-  "layman_explanation": "The crypto market is in a 'Fear' phase with Bitcoin dropping below $63,000 amid geopolitical tensions from a new U.S. strike on Iran. Ethereum has fallen hard \u2014 down 63% from its all-time high \u2014 but is showing early signs of a bounce with a 3.2% gain over the past week and strong buying candles on the chart. Big institutional money is still flowing into crypto ETFs ($368M in 3 days), which suggests the smart money isn't panicking even if sentiment is gloomy.",
-  "layman_action": "Consider a small position in Ethereum near $1,790 with a strict stop-loss at $1,680. This is a contrarian play \u2014 buying when others are fearful \u2014 but only risk what you can afford to lose given the geopolitical uncertainty.",
-  "expert_reasoning": "ETH RSI at 35 is approaching oversold territory \u2014 our highest-confidence signal source at 80% win rate. The Bullish Marubozu candle pattern on a downtrend with 5-day momentum turning positive (+6.5%) suggests a reversal attempt is underway. While the broader structure remains bearish (below all major MAs), the risk/reward from current levels with support at $1,700 and resistance targets at $1,800-$2,000 is favorable. The $40B Ethereum DeFi TVL provides a fundamental floor that smaller altcoins lack. Key risk is the geopolitical overhang from the U.S.-Iran situation and high BTC dominance at 56.1% suppressing altcoin performance, which is why confidence is moderate at 58.",
+  "timestamp": "2026-07-17T10:10:00.428594+00:00",
+  "selected_coin": "HYPE",
+  "selected_coin_name": "Hyperliquid",
+  "selected_coin_price": 60.54,
+  "confidence": 62,
+  "layman_headline": "Hyperliquid pulls back sharply in a fearful market \u2014 creating a potential bounce opportunity.",
+  "layman_explanation": "The crypto market is in 'Fear' mode with Bitcoin dropping below $63K after geopolitical tensions involving Iran. Hyperliquid (HYPE), a major decentralized exchange token, has fallen about 12% in a week despite having one of the strongest chart structures among all candidates. This kind of pullback in an otherwise bullish trend can create a buying opportunity for swing traders who catch the bounce before the crowd returns.",
+  "layman_action": "Consider a small position in HYPE around $59-60 with a strict stop-loss at $55.50. If it doesn't bounce within a few days, cut losses quickly. This is a higher-risk play in a nervous market.",
+  "expert_reasoning": "HYPE stands out with a chart bias score of +1.10 (bullish), the highest among all candidates. The 5-day momentum is still positive (+2.2%) despite the -11.7% weekly drawdown, and price remains above its 20-day SMA \u2014 a moderately bullish structure. The bullish Marubozu candlestick pattern signals pure buying conviction. RSI at 59 is elevated but not dangerously overbought; per our signal intelligence, RSI has an 80% win rate and this reading combined with a pullback into support is a classic swing setup. The Fear & Greed index at 27 (improving from 25) creates a contrarian backdrop. The main risk is BTC weakness from geopolitical headlines (Iran strikes, China uncertainty), but HYPE's high volume ($639M) ensures liquidity for a clean exit.",
   "risk_factors": [
-    "U.S. strike on Iran and Trump China comments could escalate, triggering a broader risk-off sell-off that drags ETH below $1,700 support",
-    "BTC dominance at 56.1% and rising means capital is rotating out of alts \u2014 ETH could underperform even if crypto stabilizes",
-    "Price is still below all major moving averages \u2014 this could be a dead cat bounce rather than a true reversal"
+    "BTC dropping further below $63K on Iran/China geopolitical escalation would drag HYPE lower regardless of chart strength",
+    "BTC dominance at 56.1% and rising indicates capital rotating away from altcoins \u2014 headwind for any alt trade",
+    "RSI at 59 after a big run means HYPE could still have correction room to mid-$50s before finding real support"
   ],
   "watch_list": [
-    "BTC price action around $62,000 support \u2014 a break below could drag ETH to $1,700 or lower",
-    "Geopolitical developments: any escalation of U.S.-Iran tensions or further Trump trade comments",
-    "ETH RSI \u2014 if it dips below 30 that strengthens the oversold bounce thesis; if it rises above 50 the reversal is confirmed"
+    "BTC price action around $62K-63K support \u2014 a breakdown here invalidates most alt trades",
+    "HYPE holding $60 support zone over the next 24-48 hours",
+    "Fear & Greed index \u2014 if it drops back to 20-22, defer entry and wait for stabilization"
   ],
-  "market_context": "The crypto market is in a Fear phase (27/100) with BTC under $63K after geopolitical shocks from a U.S. strike on Iran and trade uncertainty from Trump's China comments. Despite the fear, institutional flows remain positive with $368M in Bitcoin ETF inflows over three days, suggesting this may be a buying opportunity rather than the start of a deeper correction.",
-  "context_banner": "Geopolitical fear is creating oversold conditions in ETH \u2014 institutional inflows suggest the dip may be buyable with strict risk management.",
-  "btc_price": 62853,
+  "market_context": "The crypto market is in Fear territory (27/100) with BTC under $63K following a U.S. strike on Iran and Trump's China comments adding uncertainty. Bitcoin ETFs have seen $368M in inflows over 3 days, which provides some floor, but altcoins are bleeding as BTC dominance holds above 56%.",
+  "context_banner": "Geopolitical shock drives a broad crypto pullback, but HYPE's bullish chart structure and healthy volume make it the strongest bounce candidate in a fearful market.",
+  "btc_price": 63041,
   "fear_greed": {
     "current": 27,
     "label": "Fear",
@@ -33,30 +33,30 @@
     {
       "source": "RSI",
       "signal_type": "technical",
-      "description": "ETH RSI at 35 approaching oversold \u2014 our most reliable signal source with 80% historical win rate. Near-oversold conditions in a fear market often precede bounce trades."
-    },
-    {
-      "source": "CoinTelegraph",
-      "signal_type": "news",
-      "description": "Bitcoin ETFs added $368M in a three-day buying streak, showing institutional demand persists despite the sell-off \u2014 a bullish counterweight to bearish headlines."
-    },
-    {
-      "source": "Fear_Greed",
-      "signal_type": "sentiment",
-      "description": "Fear & Greed at 27 (Fear) but improving from 25 yesterday. Contrarian indicator suggests buying when others are fearful, though conviction is moderate."
-    },
-    {
-      "source": "CoinDesk",
-      "signal_type": "news",
-      "description": "Bitcoin under $63K after U.S. strike on Iran and Trump China trade comments \u2014 explains the broad sell-off and is the primary risk factor for this trade."
+      "description": "HYPE RSI at 59 after a -12% pullback into an uptrend \u2014 our highest-confidence signal type (80% win rate) supports a bounce entry."
     },
     {
       "source": "Chart Pattern Analysis",
       "signal_type": "technical",
-      "description": "ETH showing Bullish Marubozu candle (pure buying conviction) on a downtrend with 5-day momentum turning positive at +6.5%, suggesting early reversal."
+      "description": "HYPE has the highest chart bias score (+1.10) of all candidates with bullish Marubozu candle and price above key moving averages."
+    },
+    {
+      "source": "Fear_Greed",
+      "signal_type": "sentiment",
+      "description": "Fear & Greed at 27 and improving from 25 \u2014 contrarian indicator suggests fear is near a local peak, supporting dip-buying."
+    },
+    {
+      "source": "CoinDesk",
+      "signal_type": "news",
+      "description": "Bitcoin under $63K after Iran strike creates broad selloff, but HYPE-specific news (derivatives reset) suggests oversold conditions in exchange tokens."
+    },
+    {
+      "source": "CoinTelegraph",
+      "signal_type": "news",
+      "description": "Bitcoin ETFs adding $368M in 3-day buying streak provides a macro floor, reducing risk of a complete market collapse during this pullback."
     }
   ],
   "_mode": "HUNTING",
-  "exit_target": 2010.0,
-  "stop_loss": 1680.0
+  "exit_target": 68.0,
+  "stop_loss": 55.5
 }
