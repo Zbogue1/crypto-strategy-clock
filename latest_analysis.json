@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-07-17T13:10:00.348277+00:00",
-  "selected_coin": "ETH",
-  "selected_coin_name": "Ethereum",
-  "selected_coin_price": 1814.48,
-  "confidence": 38,
-  "layman_headline": "Crypto markets are bleeding \u2014 patience is the smartest trade right now.",
-  "layman_explanation": "The entire crypto market is selling off today, dragged down by a global tech/AI stock rout that's spilling into crypto. Bitcoin dropped below $63,000 and most altcoins are down 3-10%. Fear is rising but hasn't hit extreme panic levels yet. This means prices could still fall further before a real bounce opportunity appears.",
-  "layman_action": "Wait on the sidelines. Set price alerts for Ethereum around $1,700-$1,720 \u2014 that's where a stronger buying opportunity could emerge if the selloff continues.",
-  "expert_reasoning": "No candidate presents a compelling risk-adjusted entry right now. DEXE has an RSI of 85 \u2014 dangerously overbought and a fade candidate, not a buy. HYPE dropped 13% in a week but RSI is still 59, not yet oversold enough for a bounce trade. BONK is in a confirmed downtrend with bearish chart bias of -1.4 \u2014 catching a falling knife. ETH at RSI 35 is the most interesting but it's below all major moving averages with a neutral chart bias score of 0.0, and the broader market risk-off sentiment from the AI sector collapse hasn't stabilized. BTC dominance at 56.2% continues to suppress altcoin performance. The Fear & Greed index at 27 is improving from 25 but hasn't hit the extreme fear zone (sub-20) that historically marks the best swing entry points. Better to wait for RSI to dip below 30 or for a clear reversal candle pattern.",
+  "timestamp": "2026-07-17T14:10:00.314316+00:00",
+  "selected_coin": "HYPE",
+  "selected_coin_name": "Hyperliquid",
+  "selected_coin_price": 60.7,
+  "confidence": 58,
+  "layman_headline": "Hyperliquid takes a sharp 12% weekly dip while its chart structure remains bullish \u2014 setting up a buy-the-dip opportunity.",
+  "layman_explanation": "The crypto market is in 'Fear' mode right now, with Bitcoin slipping below $63K on a global tech selloff spreading from AI stocks into crypto. Hyperliquid (HYPE), a popular decentralized exchange token, has dropped nearly 12% this week despite still being in an overall uptrend. The chart shows strong buying conviction and the price is pulling back toward support \u2014 exactly the kind of dip swing traders look for. The risk is that the broader market selloff drags everything lower, so a tight stop-loss is essential.",
+  "layman_action": "Consider a small position in HYPE around $59-61, with a strict stop-loss at $55.50. If the broader market stabilizes, a bounce toward $68 is realistic within a week. Don't overcommit \u2014 the market mood is fearful and could get worse before it gets better.",
+  "expert_reasoning": "HYPE presents the strongest risk-adjusted setup among candidates. The chart bias score of +1.10 with a Bullish Marubozu candle pattern indicates sustained buying pressure in the underlying trend. The -11.68% weekly drawdown is entirely attributable to the macro risk-off wave (AI chip trade unwinding spilling into crypto), not any Hyperliquid-specific deterioration. RSI at 58.69 is neutral \u2014 not overbought, leaving ample upside room. The coin is only 20.9% off ATH (strongest relative strength among candidates), confirming institutional interest. Key risk is continued macro contagion if the chip selloff intensifies, hence the disciplined stop at $55.50 (~8.6% downside) versus $68 target (~12% upside), giving us roughly 1.4:1 reward-to-risk.",
   "risk_factors": [
-    "Global risk-off selling from AI/tech sector could accelerate, pushing BTC below $60K and dragging all alts further",
-    "BTC dominance at 56.2% means capital is flowing away from altcoins \u2014 any alt position fights the macro trend",
-    "Fear & Greed at 27 is 'fear' but not 'extreme fear' \u2014 historically the best entries come at sub-20 readings"
+    "Global risk-off sentiment from AI/chip selloff could intensify, dragging all crypto further down",
+    "BTC dominance at 56.2% is high and rising \u2014 capital flowing to Bitcoin over alts makes alt recovery harder",
+    "Fear & Greed at 27 could drop further; fear environments can produce cascading liquidations"
   ],
   "watch_list": [
-    "BTC holding $60,000 support \u2014 a break below would trigger cascading liquidations across alts",
-    "ETH RSI approaching 30 or a bullish reversal candle at $1,700 support \u2014 would signal entry opportunity",
-    "Fear & Greed index dropping to sub-20 extreme fear \u2014 historically the best contrarian buy zone"
+    "BTC price action around $62,000-63,000 support \u2014 a breakdown below $62K would invalidate the HYPE setup",
+    "Nasdaq/semiconductor stocks over next 48 hours \u2014 continued chip selloff will pressure crypto",
+    "Fear & Greed index trend \u2014 improving from 25 to 27 is encouraging but fragile"
   ],
-  "market_context": "A global risk-off wave triggered by AI/semiconductor sector selloffs is dragging crypto lower. BTC is testing $62,800 with declining momentum, and altcoins are underperforming significantly as BTC dominance stays elevated at 56.2%.",
-  "context_banner": "Markets are in a risk-off correction driven by tech contagion \u2014 no high-conviction swing setups exist until fear deepens or a reversal confirms.",
-  "btc_price": 62800,
+  "market_context": "The crypto market is under pressure from a global risk-off rotation as the AI/chip trade unwinds, dragging Bitcoin below $63K and hitting altcoins even harder. Fear & Greed at 27 is improving slightly from 25 but remains firmly in fear territory, with BTC dominance at 56.2% signaling capital flight from alts to Bitcoin.",
+  "context_banner": "Macro-driven fear selloff creates selective dip-buying opportunities in structurally bullish altcoins \u2014 discipline and tight stops are essential.",
+  "btc_price": 63274,
   "fear_greed": {
     "current": 27,
     "label": "Fear",
@@ -31,32 +31,32 @@
   "btc_dominance": 56.2,
   "key_signals": [
     {
-      "source": "RSI",
-      "signal_type": "technical",
-      "description": "ETH RSI at 35 is approaching oversold territory but hasn't crossed below 30, which historically marks higher-probability bounce entries. Our 80% win rate on RSI signals means waiting for a cleaner setup."
-    },
-    {
       "source": "CoinDesk",
       "signal_type": "news",
-      "description": "Multiple headlines confirm a global risk-off wave: 'chip rout goes global,' 'AI selloff spreads from stocks to crypto,' and 'Ether falls twice as hard as bitcoin' \u2014 indicating contagion risk is active and not yet contained."
+      "description": "Multiple headlines confirm the selloff is macro-driven (AI chip trade unwind), not crypto-specific \u2014 HYPE's drop is contagion, not deterioration."
+    },
+    {
+      "source": "RSI",
+      "signal_type": "technical",
+      "description": "HYPE RSI at 58.69 is neutral with room to run, unlike DEXE (85, overbought) or BONK (33, falling knife in bearish structure)."
+    },
+    {
+      "source": "Chart Pattern Analysis",
+      "signal_type": "technical",
+      "description": "HYPE chart bias score +1.10 with Bullish Marubozu pattern and price above two key MAs confirms the uptrend is intact despite the pullback."
     },
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Fear & Greed at 27 (Fear) is improving from 25 but hasn't reached extreme fear territory. The trend is slightly improving but not enough to signal a contrarian buy."
+      "description": "Fear & Greed at 27 improving from 25 \u2014 fear is the time to buy, but the trend needs to continue improving for conviction."
     },
     {
       "source": "CoinTelegraph",
       "signal_type": "news",
-      "description": "'Bitcoin bottom countdown nears 50 days after BTC supply in loss passed 50%' \u2014 suggests we may be in a bottoming process but it's not yet complete, supporting patience over action."
-    },
-    {
-      "source": "Blockworks",
-      "signal_type": "news",
-      "description": "'ETH derivatives reset and the next retail trade' and 'Finding good news in spite of bad headlines' suggest institutional analysts see opportunity forming but timing remains premature."
+      "description": "Institutional adoption signals (HSBC Digital Securities Sandbox, SBI acquiring Coinhako) suggest crypto infrastructure demand remains strong beneath the surface noise."
     }
   ],
   "_mode": "HUNTING",
-  "exit_target": 1950.0,
-  "stop_loss": 1650.0
+  "exit_target": 68.0,
+  "stop_loss": 55.5
 }
