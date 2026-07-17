@@ -132,5 +132,29 @@
       "GRASS"
     ],
     "alert": "U.S. military strike on Iran has pushed Bitcoin below $63K \u2014 monitor geopolitical developments closely as further escalation could drive crypto significantly lower."
+  },
+  {
+    "ts": "2026-07-17T08:10:00.392461+00:00",
+    "coin": "ETH",
+    "price": 1828.03,
+    "signal": "HOLD",
+    "confidence": 35,
+    "score": -0.15,
+    "fg": 27,
+    "btc_price": 62807,
+    "btc_dominance": 56.1,
+    "candidates": [
+      "USDG",
+      "BONK",
+      "MON",
+      "HYPE",
+      "VVV",
+      "JTO",
+      "LIT",
+      "ETH",
+      "LDO",
+      "GRASS"
+    ],
+    "alert": "U.S. strike on Iran and Trump China trade comments driving risk-off across crypto. Monitor for escalation or de-escalation before committing capital."
   }
 ]
