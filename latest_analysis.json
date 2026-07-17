@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-07-17T06:10:00.373084+00:00",
-  "selected_coin": "ETH",
-  "selected_coin_name": "Ethereum",
-  "selected_coin_price": 1825.61,
-  "confidence": 35,
-  "layman_headline": "Market fear and a fresh geopolitical shock make it too risky to jump in right now.",
-  "layman_explanation": "Bitcoin just dropped below $63,000 after news of a U.S. strike on Iran, dragging the entire crypto market down. The Fear & Greed Index sits at 27 (Fear), and Bitcoin dominance is high at 56%, meaning altcoins are getting hit even harder. While some coins like ETH and LDO look oversold on paper, the broad market structure is bearish and there's no clear catalyst to reverse it yet. Patience here protects capital.",
-  "layman_action": "Stay on the sidelines and keep cash ready. If ETH drops to the $1,700-$1,750 range with stabilizing volume, that could be a better entry. Don't chase falling knives in a fearful market.",
-  "expert_reasoning": "The macro backdrop is decisively risk-off: BTC is down 3% on Iran strike news, altcoins are bleeding harder (HYPE -11%, BONK -9.5%, TIA -9.7%), and Fear & Greed is at 27. ETH's RSI at 35 is approaching oversold territory \u2014 a reliable signal historically (80% win rate from our data) \u2014 but the chart structure is still bearish with price below all major MAs. The Bullish Marubozu on the chart was from the prior session and today's -5.1% drop likely negates it. LDO's +18% weekly run despite bearish MA structure suggests it's a dead cat bounce rather than a sustained reversal. HYPE has the best chart bias (+1.1) but RSI at 59 and -11% daily drop signal distribution, not accumulation. I'm waiting for ETH to find support near $1,700-$1,750 where a proper RSI oversold bounce with volume confirmation would offer a high-conviction entry.",
+  "timestamp": "2026-07-17T07:10:00.374331+00:00",
+  "selected_coin": "HYPE",
+  "selected_coin_name": "Hyperliquid",
+  "selected_coin_price": 59.17,
+  "confidence": 38,
+  "layman_headline": "Market fear is rising after U.S.-Iran tensions \u2014 patience is the best trade right now.",
+  "layman_explanation": "The crypto market sold off sharply today, with Bitcoin dropping below $63,000 after news of a U.S. military strike on Iran and uncertainty around Trump's China comments. Almost every coin is deep in the red, with some altcoins down 10-18% in a week. The Fear & Greed Index sits at 27 ('Fear'), which is improving slightly but still signals caution. While fear often creates the best buying opportunities, the selling pressure hasn't shown signs of exhausting yet.",
+  "layman_action": "Wait on the sidelines for now. The best candidate is Hyperliquid (HYPE), which has the strongest chart structure among the watchlist, but it just dropped 11% today and needs to find a floor before entering. Watch for stabilization around $55-57 before considering a buy.",
+  "expert_reasoning": "The macro backdrop is hostile: U.S. strikes on Iran pushed BTC below $63K, BTC dominance is elevated at 56.1%, and Fear & Greed is at 27. High BTC dominance is a headwind for alts. HYPE stands out with a +1.10 chart bias score and bullish marubozu candle, but the -11.35% 24h drop signals capitulation selling that may not be done. RSI at 59 is not yet oversold \u2014 ideally we'd want RSI near 35-40 for a high-conviction swing entry. LDO has an exceptional 6.51x risk/reward ratio and +18% weekly move suggesting momentum, but it's below all MAs with bearish structure. ETH at RSI 35 is interesting but lacks catalyst and has poor risk/reward to nearest resistance. The best play is to wait for HYPE to find support near $55 where risk/reward improves substantially.",
   "risk_factors": [
-    "Geopolitical escalation (Iran situation) could worsen, sending BTC below $60K and dragging all alts further",
-    "BTC dominance at 56.1% and rising means alt-season is nowhere close \u2014 altcoin entries face structural headwinds",
-    "Fear & Greed at 27 is improving from 25 but could easily reverse back into Extreme Fear on another shock"
+    "Geopolitical escalation (U.S.-Iran conflict) could trigger further broad crypto selloffs",
+    "BTC dominance at 56.1% creates persistent headwinds for altcoin recovery",
+    "HYPE's 11% daily drop may signal the start of a deeper correction rather than a dip to buy"
   ],
   "watch_list": [
-    "ETH price action around $1,700-$1,750 support zone \u2014 a hold there with RSI below 30 would be a strong buy signal",
-    "BTC reaction to Iran/geopolitical developments over the next 24-48 hours",
-    "Whether Fear & Greed continues its improving trend or reverses back toward Extreme Fear"
+    "HYPE price action around $55-57 support zone \u2014 stabilization here would trigger a BUY signal",
+    "BTC holding $60,000 as macro support \u2014 a break below would signal deeper market correction",
+    "Fear & Greed Index trajectory \u2014 a move below 20 would signal extreme fear and better contrarian entry"
   ],
-  "market_context": "Crypto is in a broad risk-off mode driven by a U.S. strike on Iran and Trump's China uncertainty. BTC dominance at 56.1% is crushing altcoins disproportionately, and Fear & Greed at 27 suggests we haven't yet reached capitulation levels where contrarian entries shine.",
-  "context_banner": "Geopolitical shock drives crypto-wide sell-off \u2014 patience is the highest-conviction trade until fear peaks and support holds.",
-  "btc_price": 62854,
+  "market_context": "Broad risk-off selloff driven by U.S. strike on Iran and Trump China uncertainty. BTC dominance is high at 56.1%, punishing alts, while Fear & Greed at 27 is improving but not yet at extreme levels that historically mark bottoms.",
+  "context_banner": "Geopolitical shock has triggered a market-wide selloff \u2014 disciplined traders wait for the dust to settle before deploying capital into strong setups.",
+  "btc_price": 62838,
   "fear_greed": {
     "current": 27,
     "label": "Fear",
@@ -31,32 +31,32 @@
   "btc_dominance": 56.1,
   "key_signals": [
     {
-      "source": "RSI",
-      "signal_type": "technical",
-      "description": "ETH RSI at 35 is approaching oversold but not yet at the sub-30 level where our 80% win rate historical data kicks in \u2014 waiting for deeper oversold confirmation."
+      "source": "CoinDesk",
+      "signal_type": "news",
+      "description": "Bitcoin dropped below $63K after U.S. strike on Iran and Trump China comments, creating broad market risk-off sentiment that invalidates most swing entries."
     },
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Fear & Greed at 27 (Fear) with improving trend from 25, but geopolitical risk could easily reverse this \u2014 not yet at extreme fear capitulation levels."
+      "description": "Fear & Greed at 27 (Fear) is improving from 25 yesterday, but not yet at extreme levels (sub-20) that historically mark reliable bottoms for contrarian entries."
     },
     {
-      "source": "CoinDesk",
-      "signal_type": "news",
-      "description": "Bitcoin under $63K after U.S. strike on Iran and Trump China comments \u2014 dual macro headwinds creating broad risk-off environment across all crypto assets."
+      "source": "RSI",
+      "signal_type": "technical",
+      "description": "HYPE RSI at 59 is not yet oversold \u2014 our most reliable signal source (80% win rate) suggests waiting for RSI to drop to 35-40 range for higher probability entries."
+    },
+    {
+      "source": "Chart Pattern Analysis",
+      "signal_type": "technical",
+      "description": "HYPE has the strongest chart bias (+1.10) with bullish marubozu and above-MA structure, making it the top candidate once selling pressure exhausts."
     },
     {
       "source": "CoinTelegraph",
       "signal_type": "news",
-      "description": "Citadel Securities $400M investment in Crypto.com at $20B valuation signals long-term institutional conviction, but won't stop short-term sell pressure."
-    },
-    {
-      "source": "volume_breakout",
-      "signal_type": "technical",
-      "description": "No volume breakout signals detected on any candidate \u2014 sell-offs are broad and indiscriminate rather than showing accumulation patterns."
+      "description": "Bitcoin liquidity cluster analysis and futures flow coverage suggests institutional positioning is driving price action, with key support levels being tested."
     }
   ],
   "_mode": "HUNTING",
-  "exit_target": 1950.0,
-  "stop_loss": 1680.0
+  "exit_target": 68.0,
+  "stop_loss": 50.0
 }
