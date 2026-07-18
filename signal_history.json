@@ -538,5 +538,29 @@
       "GRASS"
     ],
     "alert": "Market in worsening Extreme Fear (25/100, trending down). All alt charts bearish. No high-conviction entries available."
+  },
+  {
+    "ts": "2026-07-18T01:10:00.217422+00:00",
+    "coin": "VVV",
+    "price": 11.31,
+    "signal": "HOLD",
+    "confidence": 32,
+    "score": -0.15,
+    "fg": 25,
+    "btc_price": 63869,
+    "btc_dominance": 0.0,
+    "candidates": [
+      "BONK",
+      "MON",
+      "DEXE",
+      "KITE",
+      "VVV",
+      "AERO",
+      "INJ",
+      "ETH",
+      "LDO",
+      "GRASS"
+    ],
+    "alert": "Market fear is intensifying (25 and falling). Multiple altcoins showing capitulation-style selling. Wait for stabilization before deploying capital."
   }
 ]
