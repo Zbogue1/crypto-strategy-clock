@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-07-18T01:10:00.217422+00:00",
-  "selected_coin": "VVV",
-  "selected_coin_name": "Venice Token",
-  "selected_coin_price": 11.31,
+  "timestamp": "2026-07-18T02:10:00.185723+00:00",
+  "selected_coin": "ETH",
+  "selected_coin_name": "Ethereum",
+  "selected_coin_price": 1840.99,
   "confidence": 32,
-  "layman_headline": "Crypto market is gripped by fear \u2014 patience is the smartest move right now.",
-  "layman_explanation": "The overall crypto market is in 'Extreme Fear' territory at 25/100, and that fear is getting worse, not better. Most coins on our watchlist are either crashing hard (BONK down 24% in a week) or have already run up too far to chase (LDO up 23%, DEXE overbought). There's no clean setup where the technicals, momentum, and risk/reward all line up favorably. Jumping in now would be catching a falling knife in a fearful market without a clear catalyst to reverse the trend.",
-  "layman_action": "Stay in cash and wait. When the market is this fearful and charts are this ugly, the best trade is no trade. Watch for stabilization signals over the next few days before committing capital.",
-  "expert_reasoning": "I evaluated all 10 candidates systematically. BONK has an appealing oversold RSI (31) which is a reliable signal per our track record (80% win rate), but the chart is strongly bearish (-2.0 bias) with Three Black Crows and Bearish Marubozu \u2014 pure capitulation selling that hasn't found a floor. DEXE and INJ are overbought (RSI 71 and 64) with poor risk/reward ratios. LDO has the best chart bias (+0.85) with Three White Soldiers, but it's already up 23% in a week and the risk/reward to resistance is only 0.38x \u2014 terrible entry timing. AERO has decent structure but 0.45x R/R. VVV is the cleanest candidate with 5.27x R/R, neutral RSI, and today's bounce, but it's still below all MAs in a fearful market. I'm choosing to HOLD because no setup offers both strong technicals AND favorable timing in this extreme fear environment.",
+  "layman_headline": "Extreme fear grips the crypto market \u2014 patience is the smartest play right now.",
+  "layman_explanation": "The crypto market is deep in 'Extreme Fear' territory at 25/100 and getting worse. Bitcoin is holding around $64K but altcoins are bleeding, with Bitcoin dominance at 56.4% meaning money is flowing out of smaller coins and into BTC. None of the swing trade candidates offer a clean setup \u2014 the best charts are already overbought from recent rallies, and the cheapest coins are still falling with no sign of a bottom. This is a time to wait for better entries rather than chase.",
+  "layman_action": "Stay in cash and wait. The market hasn't found a bottom yet and jumping in now risks catching a falling knife. Watch for fear to stabilize or reverse before committing capital.",
+  "expert_reasoning": "Reviewing all 10 candidates systematically: BONK has a strongly bearish chart (-2.0 bias) with Three Black Crows and Bearish Marubozu \u2014 catching this knife is dangerous despite RSI at 31. LDO has the best chart bias (+0.85) with Three White Soldiers, but it's already up 23.5% in 7 days with a terrible risk/reward ratio of 0.38x \u2014 classic case of chasing after the move. DEXE is overbought at RSI 71 after a 63% 5-day surge. INJ and AERO both have sub-1.0 risk/reward ratios. ETH is the most interesting at RSI 39 with massive liquidity, but its chart bias is -0.70 and it's below all MAs. High BTC dominance (56.4%) is a headwind for all alts. The Fear & Greed at 25 and worsening suggests we haven't reached capitulation yet. Discipline demands waiting for a cleaner setup.",
   "risk_factors": [
-    "Extreme Fear at 25 and worsening \u2014 market could cascade lower before any recovery materializes",
-    "No funding rate data available for any candidate, limiting our ability to gauge leveraged positioning",
-    "FTX's $900M creditor distribution could flood the market with sell pressure on altcoins"
+    "Fear & Greed index is still worsening (25, down from 27 yesterday) \u2014 capitulation flush could drag everything lower",
+    "BTC dominance at 56.4% is actively punishing altcoin positions \u2014 no signs of rotation back to alts",
+    "No candidate offers both oversold technicals AND bullish chart structure \u2014 the best setups are contradictory"
   ],
   "watch_list": [
-    "BONK RSI dropping below 25 \u2014 would signal true oversold exhaustion and a higher-probability bounce entry",
-    "Fear & Greed index stabilizing or ticking upward from 25 \u2014 first sign the sell-off is exhausting itself",
-    "VVV reclaiming its 20-day SMA \u2014 would confirm the bounce is real and provide a valid entry trigger"
+    "ETH holding $1,800 support \u2014 a decisive bounce here with volume would create a buy signal",
+    "Fear & Greed index stabilization or uptick above 30 \u2014 signals the worst selling pressure may be over",
+    "LDO pullback to $0.33-$0.34 range \u2014 would create a proper entry into the strongest chart pattern on the board"
   ],
-  "market_context": "The crypto market is in Extreme Fear (25/100) with a worsening trend. BTC is flat near $63,900 but altcoins are bleeding, with most candidates well below their major moving averages and far from all-time highs.",
-  "context_banner": "Extreme Fear dominates with no clear reversal catalyst \u2014 disciplined patience outperforms forced entries in this environment.",
-  "btc_price": 63869,
+  "market_context": "The crypto market is in Extreme Fear (25/100) with worsening sentiment and high BTC dominance squeezing alts. BTC itself is relatively flat at $63.9K, suggesting this isn't a broad panic but rather a slow bleed of confidence in altcoins.",
+  "context_banner": "Extreme Fear and rising BTC dominance create a hostile environment for alt entries \u2014 capital preservation is the priority until sentiment stabilizes.",
+  "btc_price": 63898,
   "fear_greed": {
     "current": 25,
     "label": "Extreme Fear",
@@ -28,35 +28,35 @@
     "week_avg": 25.4,
     "trend": "worsening"
   },
-  "btc_dominance": 0.0,
+  "btc_dominance": 56.4,
   "key_signals": [
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Fear & Greed at 25 (Extreme Fear) and worsening week-over-week \u2014 historically risky for new entries but eventually creates opportunity once it stabilizes."
+      "description": "Extreme Fear at 25/100 and worsening from 27 yesterday \u2014 market hasn't found a floor yet, making new entries premature."
     },
     {
       "source": "RSI",
       "signal_type": "technical",
-      "description": "BONK RSI at 31 is our most oversold candidate and RSI is our most reliable signal (80% win rate), but the chart's -2.0 bias with Three Black Crows makes it too dangerous to catch this falling knife."
+      "description": "ETH RSI at 39 is approaching oversold but not there yet; BONK at 31 is near oversold but chart structure is strongly bearish (-2.0) making it a trap."
     },
     {
       "source": "CoinTelegraph",
       "signal_type": "news",
-      "description": "FTX distributing $900M to creditors in fifth payment round \u2014 historically these distributions create altcoin sell pressure as creditors liquidate recovered assets."
+      "description": "FTX distributing $900M in fifth creditor payout could add sell pressure as recipients liquidate recovered crypto assets."
+    },
+    {
+      "source": "Blockworks",
+      "signal_type": "news",
+      "description": "'ETH derivatives reset and the next retail trade' suggests a derivatives flush may be creating conditions for a future bounce, but timing is uncertain."
     },
     {
       "source": "Chart Pattern Analysis",
       "signal_type": "technical",
-      "description": "LDO shows Three White Soldiers (+0.85 bias) but already extended +23% in 7 days with 0.38x R/R \u2014 best chart but worst entry timing."
-    },
-    {
-      "source": "CoinDesk",
-      "signal_type": "news",
-      "description": "Clarity Act passage odds at record low as Senate delays \u2014 regulatory uncertainty continues to weigh on market confidence."
+      "description": "LDO shows Three White Soldiers (+0.85 bias) but 23.5% weekly gain and 0.38x risk/reward make chasing dangerous; best charts are already extended."
     }
   ],
   "_mode": "HUNTING",
-  "exit_target": 12.5,
-  "stop_loss": 10.2
+  "exit_target": 1950.0,
+  "stop_loss": 1740.0
 }
