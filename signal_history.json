@@ -909,5 +909,28 @@
       "LDO"
     ],
     "alert": "Market in Extreme Fear (25/100) and deteriorating \u2014 avoid catching falling knives without confirmed reversal signals."
+  },
+  {
+    "ts": "2026-07-18T18:10:00.350114+00:00",
+    "coin": "ETH",
+    "price": 1849.79,
+    "signal": "HOLD",
+    "confidence": 32,
+    "score": -0.35,
+    "fg": 25,
+    "btc_price": 64425,
+    "btc_dominance": 56.5,
+    "candidates": [
+      "BONK",
+      "AAVE",
+      "KITE",
+      "AERO",
+      "MON",
+      "VIRTUAL",
+      "ONDO",
+      "ETH",
+      "LDO"
+    ],
+    "alert": "All swing candidates show bearish chart patterns during worsening extreme fear. No high-conviction entry exists this cycle."
   }
 ]
