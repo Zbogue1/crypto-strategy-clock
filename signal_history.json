@@ -1,29 +1,5 @@
 [
   {
-    "ts": "2026-07-17T05:10:00.230087+00:00",
-    "coin": "HYPE",
-    "price": 59.79,
-    "signal": "HOLD",
-    "confidence": 38,
-    "score": 0.15,
-    "fg": 27,
-    "btc_price": 63350,
-    "btc_dominance": 56.2,
-    "candidates": [
-      "USDG",
-      "BONK",
-      "JTO",
-      "MON",
-      "LIT",
-      "TIA",
-      "HYPE",
-      "ETH",
-      "LDO",
-      "GRASS"
-    ],
-    "alert": "U.S. military strike on Iran triggered broad crypto sell-off. Avoid catching falling knives until BTC stabilizes above $62K."
-  },
-  {
     "ts": "2026-07-17T06:10:00.373084+00:00",
     "coin": "ETH",
     "price": 1825.61,
@@ -938,5 +914,28 @@
       "LDO"
     ],
     "alert": "Extreme Fear at 25 and worsening \u2014 historically these levels precede either capitulation bounces or further breakdowns. Stay alert but don't force entries."
+  },
+  {
+    "ts": "2026-07-18T22:10:00.281611+00:00",
+    "coin": "TRUMP",
+    "price": 1.62,
+    "signal": "BUY",
+    "confidence": 52,
+    "score": 0.35,
+    "fg": 25,
+    "btc_price": 64724,
+    "btc_dominance": 56.6,
+    "candidates": [
+      "BONK",
+      "AAVE",
+      "MON",
+      "ONDO",
+      "PENGU",
+      "TRUMP",
+      "DEXE",
+      "ETH",
+      "LDO"
+    ],
+    "alert": "Weekend geopolitical risk: 20% of global oil supply in balance per CryptoSlate \u2014 potential for sharp market moves in either direction."
   }
 ]
