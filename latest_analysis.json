@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-07-18T00:10:00.207887+00:00",
-  "selected_coin": "ETH",
-  "selected_coin_name": "Ethereum",
-  "selected_coin_price": 1839.35,
+  "timestamp": "2026-07-18T01:10:00.217422+00:00",
+  "selected_coin": "VVV",
+  "selected_coin_name": "Venice Token",
+  "selected_coin_price": 11.31,
   "confidence": 32,
-  "layman_headline": "Extreme fear grips the crypto market \u2014 patience is the best trade right now.",
-  "layman_explanation": "The crypto market is deep in 'Extreme Fear' territory with a score of 25/100, and it's getting worse. Bitcoin dominance is high at 56.4%, which means money is flowing away from smaller coins and into Bitcoin for safety. Nearly every coin on the watchlist has bearish chart patterns, with prices sitting below key moving averages. While some coins look tempting after big drops, none of them have shown convincing signs of bottoming out yet.",
-  "layman_action": "Stay on the sidelines and keep your cash ready. Wait for fear to stabilize or reverse, and for at least one candidate to show a clear bounce off support with rising volume before committing money.",
-  "expert_reasoning": "All swing candidates present problematic setups. BONK has RSI near 31 (approaching our reliable oversold trigger) but its chart is strongly bearish (-2.0 bias) with Three Black Crows and Bearish Marubozu \u2014 classic capitulation patterns that often precede further downside before any bounce. LIT is overbought at RSI 71 with terrible risk/reward (0.25x). AERO and VVV have poor risk/reward ratios (0.45x and similar). ETH is the cleanest setup with RSI 39, but it's below all MAs with a -0.7 chart bias and only 1.41x risk/reward \u2014 not compelling enough for a new entry. The macro backdrop of worsening extreme fear (25, down from 27 yesterday) and rising BTC dominance (56.4%) creates headwinds for all altcoin trades. Better to wait for fear to stabilize and for a confirmed support bounce.",
+  "layman_headline": "Crypto market is gripped by fear \u2014 patience is the smartest move right now.",
+  "layman_explanation": "The overall crypto market is in 'Extreme Fear' territory at 25/100, and that fear is getting worse, not better. Most coins on our watchlist are either crashing hard (BONK down 24% in a week) or have already run up too far to chase (LDO up 23%, DEXE overbought). There's no clean setup where the technicals, momentum, and risk/reward all line up favorably. Jumping in now would be catching a falling knife in a fearful market without a clear catalyst to reverse the trend.",
+  "layman_action": "Stay in cash and wait. When the market is this fearful and charts are this ugly, the best trade is no trade. Watch for stabilization signals over the next few days before committing capital.",
+  "expert_reasoning": "I evaluated all 10 candidates systematically. BONK has an appealing oversold RSI (31) which is a reliable signal per our track record (80% win rate), but the chart is strongly bearish (-2.0 bias) with Three Black Crows and Bearish Marubozu \u2014 pure capitulation selling that hasn't found a floor. DEXE and INJ are overbought (RSI 71 and 64) with poor risk/reward ratios. LDO has the best chart bias (+0.85) with Three White Soldiers, but it's already up 23% in a week and the risk/reward to resistance is only 0.38x \u2014 terrible entry timing. AERO has decent structure but 0.45x R/R. VVV is the cleanest candidate with 5.27x R/R, neutral RSI, and today's bounce, but it's still below all MAs in a fearful market. I'm choosing to HOLD because no setup offers both strong technicals AND favorable timing in this extreme fear environment.",
   "risk_factors": [
-    "Fear & Greed trending lower \u2014 could indicate further capitulation ahead before any recovery",
-    "BTC dominance at 56.4% and rising actively drains capital from altcoins, suppressing recovery potential",
-    "No candidates show confirmed support bounces or bullish reversal patterns \u2014 catching falling knives"
+    "Extreme Fear at 25 and worsening \u2014 market could cascade lower before any recovery materializes",
+    "No funding rate data available for any candidate, limiting our ability to gauge leveraged positioning",
+    "FTX's $900M creditor distribution could flood the market with sell pressure on altcoins"
   ],
   "watch_list": [
-    "ETH RSI dropping below 30 \u2014 would trigger a high-confidence oversold bounce setup based on our 80% RSI win rate",
-    "Fear & Greed Index stabilizing above 25 or reversing upward \u2014 first sign the selling pressure is exhausting",
-    "BONK for a potential hammer/morning star reversal candle at current levels after extreme -26% weekly selloff"
+    "BONK RSI dropping below 25 \u2014 would signal true oversold exhaustion and a higher-probability bounce entry",
+    "Fear & Greed index stabilizing or ticking upward from 25 \u2014 first sign the sell-off is exhausting itself",
+    "VVV reclaiming its 20-day SMA \u2014 would confirm the bounce is real and provide a valid entry trigger"
   ],
-  "market_context": "The crypto market is in a risk-off environment with Extreme Fear at 25/100 and worsening. BTC is relatively stable (+0.18% 24h) but dominance at 56.4% signals capital rotation away from alts, making altcoin swing trades especially hazardous.",
-  "context_banner": "Extreme Fear is intensifying with no confirmed reversal signals \u2014 disciplined patience protects capital for better entries ahead.",
-  "btc_price": 63863,
+  "market_context": "The crypto market is in Extreme Fear (25/100) with a worsening trend. BTC is flat near $63,900 but altcoins are bleeding, with most candidates well below their major moving averages and far from all-time highs.",
+  "context_banner": "Extreme Fear dominates with no clear reversal catalyst \u2014 disciplined patience outperforms forced entries in this environment.",
+  "btc_price": 63869,
   "fear_greed": {
     "current": 25,
     "label": "Extreme Fear",
@@ -28,35 +28,35 @@
     "week_avg": 25.4,
     "trend": "worsening"
   },
-  "btc_dominance": 56.4,
+  "btc_dominance": 0.0,
   "key_signals": [
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Extreme Fear at 25/100 and worsening (down from 27 yesterday, weekly avg 25.4) \u2014 historically precedes either capitulation bottoms or further downside, but no reversal signal yet."
+      "description": "Fear & Greed at 25 (Extreme Fear) and worsening week-over-week \u2014 historically risky for new entries but eventually creates opportunity once it stabilizes."
     },
     {
       "source": "RSI",
       "signal_type": "technical",
-      "description": "ETH RSI at 39 and BONK at 31 are approaching oversold territory \u2014 our most reliable signal (80% win rate) \u2014 but neither has hit the <30 threshold that maximizes edge."
-    },
-    {
-      "source": "Chart Pattern Analysis",
-      "signal_type": "technical",
-      "description": "All candidates are below major MAs with bearish chart biases ranging from -0.2 to -2.0. No bullish reversal candlestick patterns detected on any candidate."
+      "description": "BONK RSI at 31 is our most oversold candidate and RSI is our most reliable signal (80% win rate), but the chart's -2.0 bias with Three Black Crows makes it too dangerous to catch this falling knife."
     },
     {
       "source": "CoinTelegraph",
       "signal_type": "news",
-      "description": "FTX distributing $900M to creditors could add selling pressure as recipients liquidate recovered crypto \u2014 a potential near-term headwind."
+      "description": "FTX distributing $900M to creditors in fifth payment round \u2014 historically these distributions create altcoin sell pressure as creditors liquidate recovered assets."
     },
     {
-      "source": "Blockworks",
+      "source": "Chart Pattern Analysis",
+      "signal_type": "technical",
+      "description": "LDO shows Three White Soldiers (+0.85 bias) but already extended +23% in 7 days with 0.38x R/R \u2014 best chart but worst entry timing."
+    },
+    {
+      "source": "CoinDesk",
       "signal_type": "news",
-      "description": "ETH derivatives reset noted by Blockworks suggests positioning is clearing out, which could set the stage for a cleaner move once sentiment improves."
+      "description": "Clarity Act passage odds at record low as Senate delays \u2014 regulatory uncertainty continues to weigh on market confidence."
     }
   ],
   "_mode": "HUNTING",
-  "exit_target": 1950.0,
-  "stop_loss": 1740.0
+  "exit_target": 12.5,
+  "stop_loss": 10.2
 }
