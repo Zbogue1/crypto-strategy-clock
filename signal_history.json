@@ -1,29 +1,5 @@
 [
   {
-    "ts": "2026-07-17T06:10:00.373084+00:00",
-    "coin": "ETH",
-    "price": 1825.61,
-    "signal": "HOLD",
-    "confidence": 35,
-    "score": -0.15,
-    "fg": 27,
-    "btc_price": 62854,
-    "btc_dominance": 56.1,
-    "candidates": [
-      "USDG",
-      "BONK",
-      "JTO",
-      "LIT",
-      "HYPE",
-      "MON",
-      "TIA",
-      "ETH",
-      "LDO",
-      "GRASS"
-    ],
-    "alert": "U.S. military strike on Iran has triggered significant risk-off selling across crypto markets. Monitor for escalation."
-  },
-  {
     "ts": "2026-07-17T07:10:00.374331+00:00",
     "coin": "HYPE",
     "price": 59.17,
@@ -937,5 +913,28 @@
       "LDO"
     ],
     "alert": "Weekend geopolitical risk: 20% of global oil supply in balance per CryptoSlate \u2014 potential for sharp market moves in either direction."
+  },
+  {
+    "ts": "2026-07-18T23:10:00.297472+00:00",
+    "coin": "ETH",
+    "price": 1860.76,
+    "signal": "HOLD",
+    "confidence": 35,
+    "score": -0.3,
+    "fg": 25,
+    "btc_price": 64707,
+    "btc_dominance": 56.6,
+    "candidates": [
+      "BONK",
+      "AAVE",
+      "ONDO",
+      "PENGU",
+      "MON",
+      "DEXE",
+      "TRUMP",
+      "ETH",
+      "LDO"
+    ],
+    "alert": "Market in Extreme Fear with worsening trend \u2014 all swing candidates show bearish or mixed chart structures. High-conviction entries are not available this cycle."
   }
 ]
