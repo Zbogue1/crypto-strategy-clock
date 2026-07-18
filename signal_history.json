@@ -514,5 +514,29 @@
       "GRASS"
     ],
     "alert": null
+  },
+  {
+    "ts": "2026-07-18T00:10:00.207887+00:00",
+    "coin": "ETH",
+    "price": 1839.35,
+    "signal": "HOLD",
+    "confidence": 32,
+    "score": -0.35,
+    "fg": 25,
+    "btc_price": 63863,
+    "btc_dominance": 56.4,
+    "candidates": [
+      "BONK",
+      "MON",
+      "VVV",
+      "DEXE",
+      "KITE",
+      "AERO",
+      "LIT",
+      "ETH",
+      "LDO",
+      "GRASS"
+    ],
+    "alert": "Market in worsening Extreme Fear (25/100, trending down). All alt charts bearish. No high-conviction entries available."
   }
 ]
