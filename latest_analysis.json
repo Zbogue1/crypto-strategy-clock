@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-07-18T18:10:00.350114+00:00",
-  "selected_coin": "ETH",
-  "selected_coin_name": "Ethereum",
-  "selected_coin_price": 1849.79,
-  "confidence": 32,
-  "layman_headline": "Crypto market gripped by extreme fear \u2014 no clear safe entry exists right now.",
-  "layman_explanation": "The entire crypto market is in a state of extreme fear, with the Fear & Greed index at just 25 out of 100 and worsening. Bitcoin is holding relatively steady but its dominance at 56.5% means money is flowing away from altcoins. Every swing trade candidate on the watchlist shows bearish chart patterns \u2014 selling pressure is real across the board. While extreme fear can eventually create great buying opportunities, there's no clear reversal signal yet to justify jumping in.",
-  "layman_action": "Stay in cash and be patient. Watch for a fear & greed recovery above 30 and for key support levels to hold before committing capital. The market needs to show it wants to bounce before you buy the dip.",
-  "expert_reasoning": "All nine swing candidates show bearish or strongly bearish chart structures. BONK has the most oversold RSI (30.75) but its chart is catastrophically bearish (-2.0 score) with Three Black Crows and Bearish Marubozu \u2014 catching that knife would be reckless. ONDO has the only positive chart bias (+0.40) but RSI at 62 suggests it's already extended after a 19.7% 5-day move, and the risk/reward to nearest levels is terrible at 0.38x. ETH is the best risk-adjusted candidate with RSI at 39 (approaching oversold \u2014 our highest-confidence signal type at 80% win rate), but it remains below all moving averages. The prudent play is to wait for ETH to test and hold $1,800 support, then enter on confirmation. BTC dominance at 56.5% is actively hostile to alt positions, and the worsening fear trend (25 and declining) suggests we haven't seen capitulation yet.",
+  "timestamp": "2026-07-18T19:10:00.579622+00:00",
+  "selected_coin": "LDO",
+  "selected_coin_name": "Lido DAO",
+  "selected_coin_price": 0.354669,
+  "confidence": 35,
+  "layman_headline": "Extreme fear grips the crypto market \u2014 patience is the best trade right now.",
+  "layman_explanation": "The crypto market is deep in 'Extreme Fear' territory with a score of 25/100, and it's getting worse. Most altcoins are bleeding while Bitcoin holds steady, sucking liquidity away from smaller coins. While a few candidates like Lido DAO show some bullish chart patterns, the overall environment is hostile for new swing trades. Catching a falling knife in this kind of market usually leads to losses.",
+  "layman_action": "Stay on the sidelines with cash ready. Wait for fear to stabilize or reverse before deploying capital. Watch Lido DAO for a pullback toward $0.33 as a potential entry if the broader market stops deteriorating.",
+  "expert_reasoning": "In this cycle, every candidate has significant issues. BONK is in freefall with a -2.0 chart bias \u2014 pure capitulation with no reversal signal yet. AERO and ONDO have mildly bullish charts but neutral RSI and poor risk/reward ratios (~0.4x). ETH has a near-oversold RSI (39) which is a historically reliable signal, but it's below all moving averages with -0.7 chart bias. LDO stands out with the highest chart bias (+0.85) and a Three White Soldiers pattern, but it's already extended (+51.7% in 5 days) and today's -5.9% drop could be the start of a correction. With Fear & Greed at 25 and worsening, BTC dominance at 56.5% crushing alts, and geopolitical risk headlines (oil supply concerns), the prudent move is to wait for a cleaner entry. I'll monitor LDO for a pullback to the $0.33 area where risk/reward improves significantly.",
   "risk_factors": [
-    "Extreme fear at 25 and worsening \u2014 sentiment could deteriorate further with weekend geopolitical risk around oil markets",
-    "BTC dominance at 56.5% actively draining liquidity from altcoins, making alt swing trades structurally disadvantaged",
-    "Every candidate has bearish chart structure \u2014 there is no confirmed reversal pattern anywhere on the watchlist"
+    "Extreme Fear at 25 and worsening \u2014 market could cascade lower on any negative catalyst",
+    "BTC dominance at 56.5% actively suppressing altcoin performance across the board",
+    "Geopolitical oil supply risk cited by CryptoSlate could trigger a broader risk-off event over the weekend"
   ],
   "watch_list": [
-    "ETH holding $1,800 support \u2014 a decisive break below would invalidate the oversold bounce thesis",
-    "Fear & Greed index \u2014 watch for stabilization or uptick above 30 as a potential sentiment floor signal",
-    "BTC reaction to weekend geopolitical news and whether $64K holds \u2014 massive call spreads targeting $72K suggest institutional optimism that hasn't materialized yet"
+    "LDO price action \u2014 watch for a pullback to $0.33 support with RSI cooling to ~45 for entry",
+    "Bitcoin behavior around $64,000-$65,000 \u2014 a break below $63,000 would signal further alt weakness",
+    "Fear & Greed Index \u2014 any stabilization above 30 would improve the environment for new trades"
   ],
-  "market_context": "The crypto market is in extreme fear (25/100, worsening) with BTC holding ~$64.4K while altcoins bleed. High BTC dominance at 56.5% means capital is rotating out of alts, making swing trades in anything besides BTC particularly risky right now.",
-  "context_banner": "Extreme fear dominates with universally bearish alt charts \u2014 capital preservation is the priority until a clear reversal signal emerges.",
-  "btc_price": 64425,
+  "market_context": "The crypto market is in Extreme Fear (25/100, worsening) with BTC dominance at 56.5% crushing altcoin performance. Geopolitical tensions around oil supply add macro uncertainty heading into the weekend.",
+  "context_banner": "Extreme Fear dominates the market \u2014 disciplined traders wait for fear to stabilize before deploying capital into oversold setups.",
+  "btc_price": 64489,
   "fear_greed": {
     "current": 25,
     "label": "Extreme Fear",
@@ -33,30 +33,30 @@
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Fear & Greed at 25 (Extreme Fear) and worsening from 27 yesterday \u2014 no sentiment floor established yet, which historically precedes further downside before a bounce."
+      "description": "Fear & Greed at 25 (Extreme Fear) and trending worse week-over-week, signaling high risk for new long entries."
     },
     {
       "source": "RSI",
       "signal_type": "technical",
-      "description": "ETH RSI at 39.4 is approaching oversold territory \u2014 our most reliable signal type (80% win rate) \u2014 but hasn't crossed below 30 to confirm full oversold conditions."
+      "description": "ETH RSI at 39 approaching oversold \u2014 historically reliable signal \u2014 but chart structure remains bearish with price below all MAs."
     },
     {
       "source": "Chart Pattern Analysis",
       "signal_type": "technical",
-      "description": "Every candidate except ONDO has negative chart bias scores; BONK at -2.0 with Three Black Crows confirms aggressive selling across alts."
+      "description": "LDO shows Three White Soldiers and +0.85 chart bias, the strongest bullish setup among candidates, but already extended after +51.7% in 5 days."
+    },
+    {
+      "source": "CryptoSlate",
+      "signal_type": "news",
+      "description": "Weekend geopolitical risk with 20% of global oil supply in the balance could trigger broader risk-off selling across crypto."
     },
     {
       "source": "CoinDesk",
       "signal_type": "news",
-      "description": "Massive BTC call spreads targeting $72K by month-end coinciding with Fed meeting could catalyze a broader market rally, but hasn't triggered yet."
-    },
-    {
-      "source": "CryptoSlate",
-      "signal_type": "macro",
-      "description": "Weekend geopolitical risk with 20% of global oil supply in the balance adds macro uncertainty that could deepen the fear cycle."
+      "description": "Massive BTC call spreads targeting $72,000 by month-end suggest institutional conviction in Bitcoin, reinforcing BTC dominance and alt weakness."
     }
   ],
   "_mode": "HUNTING",
-  "exit_target": 1950.0,
-  "stop_loss": 1740.0
+  "exit_target": 0.4,
+  "stop_loss": 0.295
 }
