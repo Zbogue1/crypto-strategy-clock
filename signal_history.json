@@ -1,24 +1,5 @@
 [
   {
-    "ts": "2026-06-17T23:41:34.521081+00:00",
-    "coin": "BTC",
-    "price": 64381,
-    "signal": "HOLD",
-    "confidence": 0,
-    "score": null,
-    "fg": 22,
-    "btc_price": 64381,
-    "btc_dominance": 56.1,
-    "candidates": [
-      "HYPE",
-      "ADA",
-      "ZEC",
-      "BTC",
-      "XMR"
-    ],
-    "alert": null
-  },
-  {
     "ts": "2026-06-17T23:43:36.769713+00:00",
     "coin": "BTC",
     "price": 64371,
@@ -932,5 +913,27 @@
       "LDO"
     ],
     "alert": "All swing candidates show bearish chart patterns during worsening extreme fear. No high-conviction entry exists this cycle."
+  },
+  {
+    "ts": "2026-07-18T19:10:00.579622+00:00",
+    "coin": "LDO",
+    "price": 0.354669,
+    "signal": "HOLD",
+    "confidence": 35,
+    "score": -0.15,
+    "fg": 25,
+    "btc_price": 64489,
+    "btc_dominance": 56.5,
+    "candidates": [
+      "BONK",
+      "AERO",
+      "AAVE",
+      "MON",
+      "JASMY",
+      "ONDO",
+      "LDO",
+      "ETH"
+    ],
+    "alert": "Extreme Fear worsening with weekend geopolitical risk \u2014 avoid new entries until conditions stabilize."
   }
 ]
