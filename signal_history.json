@@ -840,5 +840,28 @@
       "LDO"
     ],
     "alert": "Extreme Fear conditions (25/100) \u2014 all alt positions carry elevated risk. Size accordingly."
+  },
+  {
+    "ts": "2026-07-18T14:10:00.638357+00:00",
+    "coin": "ETH",
+    "price": 1840.77,
+    "signal": "HOLD",
+    "confidence": 35,
+    "score": -0.3,
+    "fg": 25,
+    "btc_price": 64078,
+    "btc_dominance": 56.5,
+    "candidates": [
+      "BONK",
+      "VVV",
+      "AERO",
+      "USDG",
+      "AAVE",
+      "ONDO",
+      "KITE",
+      "ETH",
+      "LDO"
+    ],
+    "alert": "Market in Extreme Fear with worsening trend \u2014 all altcoin charts showing bearish bias. Capital preservation is priority."
   }
 ]
