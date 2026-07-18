@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-07-18T05:10:00.259233+00:00",
+  "timestamp": "2026-07-18T06:10:00.297364+00:00",
   "selected_coin": "ETH",
   "selected_coin_name": "Ethereum",
-  "selected_coin_price": 1843.23,
-  "confidence": 32,
-  "layman_headline": "Extreme fear grips the market \u2014 patience is the best trade right now.",
-  "layman_explanation": "The crypto market is deep in 'Extreme Fear' territory and getting worse. Almost every coin on our watchlist is in a downtrend with bearish chart patterns. While some coins like ETH and BONK are getting close to oversold levels, none of them have shown convincing signs of a bottom yet \u2014 prices are still below their key moving averages and sellers remain in control. Catching a falling knife in this environment is high risk.",
-  "layman_action": "Stay in cash and wait. Set price alerts for ETH around $1,800 (key support) and watch for a stabilization signal before committing capital. This is a market that rewards patience, not urgency.",
-  "expert_reasoning": "I evaluated all nine candidates and found no compelling entry. BONK has the most oversold RSI (31) but its chart is strongly bearish (-2.0 bias) with Three Black Crows and Bearish Marubozu \u2014 a textbook capitulation pattern that often has further to fall. DEXE is overbought at RSI 71 after a 63% 5-day run. LDO has the best chart bias (+0.85) with Three White Soldiers, but it's already up 21% in 7 days with a terrible risk/reward ratio of 0.38x to nearest resistance \u2014 classic case of chasing. ETH is the strongest fundamental candidate with RSI approaching oversold and $1,800 support nearby, but it's still below all major MAs with a -0.70 chart bias. High BTC dominance at 56.4% signals capital rotation away from alts, making altcoin longs especially risky. The worsening Fear & Greed trend (25, down from 27 yesterday) suggests the selling isn't done.",
+  "selected_coin_price": 1844.45,
+  "confidence": 35,
+  "layman_headline": "Extreme fear grips crypto markets \u2014 patience is the best play right now.",
+  "layman_explanation": "The crypto market is in 'Extreme Fear' territory with a score of just 25 out of 100, and the mood is getting worse, not better. Bitcoin is holding around $64K but altcoins are getting hammered across the board. Most of the coins on our watchlist are in downtrends with bearish chart patterns. While fear often creates buying opportunities, the charts aren't yet showing signs of a bottom forming \u2014 we'd be catching a falling knife.",
+  "layman_action": "Stay in cash and wait. The market hasn't shown a clear reversal signal yet. Watch for Ethereum to hold the $1,800 support level \u2014 if it bounces convincingly there with rising volume, that could be our entry point in the next day or two.",
+  "expert_reasoning": "The current setup is a classic 'extreme fear' environment where contrarian entries can be highly profitable \u2014 but timing matters enormously. ETH's RSI at 39.4 is approaching but not yet at oversold (<30), and the chart bias score of -0.70 with price below all major MAs confirms the downtrend is still intact. The Three White Soldiers pattern on LDO (chart bias +0.85) is tempting, but with a 21% rally already in the bag and RSI at 59, the risk/reward ratio of 0.38x is poor for a new entry. BONK at RSI 31 is genuinely oversold, but the -2.00 chart bias with Three Black Crows and Bearish Marubozu signals capitulation still in progress. The prudent move is to wait for ETH to test $1,800 support and see if buyers step in with conviction before committing capital.",
   "risk_factors": [
-    "Extreme Fear is worsening \u2014 could cascade into deeper selloff across alts before any bounce materializes",
-    "BTC dominance at 56.4% is actively compressing altcoin valuations, and BTC itself is flat \u2014 no rising tide to lift boats",
-    "No confirmed reversal patterns on any candidate \u2014 entering now is catching a falling knife"
+    "BTC dominance at 56.4% means capital is flowing out of alts \u2014 any BTC weakness would hit alts 2-3x harder",
+    "Fear & Greed at 25 and worsening suggests further downside before a true bottom forms",
+    "No clear MACD bullish crosses or volume breakout signals on any candidate \u2014 trend reversal not yet confirmed"
   ],
   "watch_list": [
-    "ETH price action at $1,800 support \u2014 a bounce with volume confirmation could trigger a BUY signal",
-    "Fear & Greed index \u2014 a turn from 25 back above 30 would suggest selling exhaustion",
-    "BTC dominance trend \u2014 any decline below 55% would signal rotation back into alts"
+    "ETH price action at $1,800 support \u2014 a bounce with volume would trigger a BUY signal next cycle",
+    "Fear & Greed index \u2014 stabilization or uptick from 25 would signal sentiment bottoming",
+    "LDO momentum \u2014 if it consolidates near $0.37-0.38 without giving back gains, a pullback entry toward $0.34 could emerge"
   ],
-  "market_context": "The market is in Extreme Fear (25/100) and worsening, with BTC holding relatively flat at $63,920 while alts bleed. High BTC dominance at 56.4% makes altcoin swing trades particularly dangerous right now.",
-  "context_banner": "Extreme Fear with no confirmed bottoming signals \u2014 capital preservation takes priority over opportunity hunting.",
-  "btc_price": 63920,
+  "market_context": "The crypto market is in Extreme Fear (25/100, worsening) with BTC dominance elevated at 56.4%, signaling a risk-off rotation out of altcoins. BTC itself is relatively stable (+1.7% 24h) but altcoins are bleeding, particularly smaller caps like BONK (-26% weekly) and HYPE (-12% weekly).",
+  "context_banner": "Extreme Fear markets eventually create the best swing entries \u2014 but discipline means waiting for the chart to confirm a bottom before committing capital.",
+  "btc_price": 63925,
   "fear_greed": {
     "current": 25,
     "label": "Extreme Fear",
@@ -33,30 +33,30 @@
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Extreme Fear at 25 and worsening from 27 yesterday \u2014 the market is not done selling yet, making premature entries risky."
+      "description": "Fear & Greed at 25 (Extreme Fear) and worsening from 27 yesterday \u2014 contrarian opportunity forming but not yet ripe for entry."
     },
     {
       "source": "RSI",
       "signal_type": "technical",
-      "description": "ETH RSI at 39 is approaching oversold but not there yet; BONK at 31 is near oversold but chart structure is strongly bearish with capitulation candles."
-    },
-    {
-      "source": "Chart Pattern Analysis",
-      "signal_type": "technical",
-      "description": "Every candidate with chart data shows bearish or strongly bearish bias except LDO (+0.85) which is already extended +21% in 7 days with poor R/R."
+      "description": "ETH RSI at 39.4 approaching oversold territory \u2014 our most reliable signal (80% win rate) but not yet triggered below 30."
     },
     {
       "source": "Blockworks",
       "signal_type": "news",
-      "description": "ETH derivatives reset article suggests positioning is getting cleaner, but this is a forward-looking setup not yet actionable."
+      "description": "'ETH derivatives reset and the next retail trade' \u2014 suggests positioning cleanup that could precede a bounce, supporting the ETH watchlist thesis."
     },
     {
       "source": "CoinTelegraph",
       "signal_type": "news",
-      "description": "FTX distributing $900M to creditors could add sell pressure as recovered funds hit the market, contributing to the fearful environment."
+      "description": "FTX distributing $900M to creditors could add selling pressure short-term as recipients liquidate recovered crypto assets."
+    },
+    {
+      "source": "Chart Pattern Analysis",
+      "signal_type": "technical",
+      "description": "No candidates show bullish chart bias above +0.85, and the best-scoring candidate (LDO) has already rallied 21% with poor risk/reward ratio of 0.38x."
     }
   ],
   "_mode": "HUNTING",
   "exit_target": 1950.0,
-  "stop_loss": 1745.0
+  "stop_loss": 1740.0
 }
