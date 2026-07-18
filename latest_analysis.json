@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-07-18T11:10:00.436309+00:00",
+  "timestamp": "2026-07-18T12:10:00.136222+00:00",
   "selected_coin": "ETH",
   "selected_coin_name": "Ethereum",
-  "selected_coin_price": 1844.38,
-  "confidence": 32,
-  "layman_headline": "Crypto market is gripped by extreme fear \u2014 patience beats impulse right now.",
-  "layman_explanation": "The overall crypto market is in 'Extreme Fear' mode, with altcoins bleeding billions in value over the past week. Bitcoin is holding around $64,000 but dominance is high at 56.4%, meaning money is flowing out of smaller coins and into Bitcoin for safety. None of the swing trade candidates present a clean, high-confidence setup \u2014 most are either in confirmed downtrends or have already bounced too far to offer good risk/reward. The best approach right now is to wait for fear to stabilize and for clearer technical setups to form.",
-  "layman_action": "Stay on the sidelines for now. Keep cash ready. If Ethereum drops to $1,800 support and holds with a strong bounce candle, that could be a better entry point in the next day or two.",
-  "expert_reasoning": "All swing candidates have significant flaws. BONK is in freefall with a -2.0 chart bias and Three Black Crows \u2014 catching that knife is reckless. LDO has the best chart bias (+0.85) with Three White Soldiers, but RSI at 59 and +18% in 7 days means the easy gains are done and risk/reward is only 0.38x. VVV surged 12.8% today but is below all MAs with a slightly bearish chart. ETH is the most interesting \u2014 RSI at 39 (our highest-reliability signal at 80% win rate), clear $1,800 support, and Blockworks notes an ETH derivatives reset. However, the chart bias is -0.70 with price below all MAs, so I need confirmation of support holding before committing capital. In extreme fear environments, premature entries get punished. Better to wait for $1,800 to be tested and defended.",
+  "selected_coin_price": 1846.38,
+  "confidence": 35,
+  "layman_headline": "Extreme fear grips the crypto market \u2014 patience is the best trade right now.",
+  "layman_explanation": "The crypto market is in 'Extreme Fear' territory at 25/100 and getting worse. Almost every altcoin on the watchlist is in a downtrend with bearish chart patterns. Bitcoin is holding around $64,000 but altcoins have been bleeding heavily \u2014 losing $8.8 billion in a week. While fear often creates future buying opportunities, no coin currently offers a clean setup with favorable risk/reward.",
+  "layman_action": "Wait on the sidelines. The market is still falling and there's no clear bottom signal yet. Keep cash ready to deploy when fear peaks and charts show genuine reversal patterns.",
+  "expert_reasoning": "No candidate presents a compelling risk/reward entry today. BONK has a deeply oversold RSI (31) but Three Black Crows and -2.0 chart bias score signal accelerating downside with no support in sight. TRUMP's RSI at 22 is deeply oversold but the chart bias is -0.7 and risk/reward is only 1.0x. LDO has the best chart bias (+0.85) with Three White Soldiers, but RSI at 59 and +18% in 7 days means it's already extended \u2014 chasing here carries significant pullback risk. ETH is the most defensible position to watch: RSI approaching oversold, $1,800 clear support, and derivatives resetting could catalyze a bounce, but price is still below all MAs in a downtrend. BTC dominance at 56.4% confirms capital is rotating away from alts. The prudent move is to wait for either ETH to test and hold $1,800 or for fear/greed to capitulate below 20.",
   "risk_factors": [
-    "CryptoSlate warns Bitcoin must defend $62,500 \u2014 a BTC breakdown would drag all alts down sharply",
-    "BTC dominance at 56.4% and rising means capital continues rotating out of altcoins",
-    "Fear & Greed at 25 and worsening \u2014 extreme fear can persist for weeks before reversing"
+    "BTC must defend $62,500 (per CryptoSlate) \u2014 a breakdown would drag all alts significantly lower",
+    "Fear & Greed trend is worsening (25 and falling), suggesting capitulation selling may not be over",
+    "BTC dominance at 56.4% means alt season is nowhere close \u2014 alts will underperform in this regime"
   ],
   "watch_list": [
-    "ETH price action at $1,800 support \u2014 watch for a hammer or bullish engulfing candle on the daily",
-    "Bitcoin defense of $62,500 level flagged by CryptoSlate \u2014 a break below invalidates all alt setups",
-    "Fear & Greed index \u2014 any stabilization or uptick above 30 would signal improving conditions for entry"
+    "BTC reaction at $62,500 support \u2014 a break below triggers broader market sell-off",
+    "ETH holding $1,800 support with volume confirmation over next 48 hours",
+    "Fear & Greed index for any spike below 20 (capitulation signal) or reversal above 30 (stabilization)"
   ],
-  "market_context": "The crypto market is in Extreme Fear (25/100, worsening), with altcoins shedding $8.8 billion in a week while BTC dominance climbs to 56.4%. This is a defensive environment where cash preservation outweighs speculative entries.",
-  "context_banner": "Extreme fear and rising BTC dominance make this a patience-first market \u2014 no high-conviction swing entries until support levels are confirmed.",
-  "btc_price": 63976,
+  "market_context": "The market is in Extreme Fear (25/100) with worsening sentiment. BTC is relatively stable at $64K but alts are hemorrhaging \u2014 $8.8B lost in a week \u2014 and high BTC dominance (56.4%) confirms this is not an environment for aggressive alt positioning.",
+  "context_banner": "Extreme Fear is building but no clean reversal signal has fired yet \u2014 disciplined patience will be rewarded with better entries.",
+  "btc_price": 64102,
   "fear_greed": {
     "current": 25,
     "label": "Extreme Fear",
@@ -31,29 +31,29 @@
   "btc_dominance": 56.4,
   "key_signals": [
     {
-      "source": "RSI",
-      "signal_type": "technical",
-      "description": "ETH RSI at 39.4 approaching oversold territory \u2014 historically our most reliable signal (80% win rate) \u2014 but chart structure is still bearish, warranting patience."
-    },
-    {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Fear & Greed at 25 and worsening week-over-week \u2014 extreme fear can present opportunities but also signals risk of further capitulation."
+      "description": "Extreme Fear at 25/100 with worsening trend \u2014 historically creates buying opportunities but timing entry too early gets punished."
+    },
+    {
+      "source": "RSI",
+      "signal_type": "technical",
+      "description": "ETH RSI at 39 approaching oversold and TRUMP at 22 deeply oversold, but neither has confirmed a bounce off support yet."
     },
     {
       "source": "CryptoSlate",
       "signal_type": "news",
-      "description": "Bitcoin must defend $62,500 as altcoins lose $8.8B in a week \u2014 this critical BTC level defines the floor for all alt swing trades."
+      "description": "Bitcoin must defend $62,500 as altcoins lose $8.8B in a week \u2014 sets up the critical support level to watch for broader market direction."
     },
     {
       "source": "Blockworks",
       "signal_type": "news",
-      "description": "ETH derivatives reset noted \u2014 reduced leverage in ETH futures could set up a cleaner rally if spot demand returns."
+      "description": "ETH derivatives reset noted, which could set the stage for a cleaner next move once spot price stabilizes at support."
     },
     {
       "source": "Chart Pattern Analysis",
       "signal_type": "technical",
-      "description": "Best candidate LDO shows Three White Soldiers (+0.85 bias) but R/R is only 0.38x; BONK shows Three Black Crows (-2.0 bias) confirming freefall \u2014 no clean setups available."
+      "description": "Most candidates show bearish chart structures (BONK -2.0, TRUMP -0.7, ETH -0.7). Only LDO is bullish (+0.85) but already extended after +18% weekly move."
     }
   ],
   "_mode": "HUNTING",
