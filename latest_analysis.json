@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-07-18T20:10:00.382846+00:00",
+  "timestamp": "2026-07-18T21:10:00.316051+00:00",
   "selected_coin": "ETH",
   "selected_coin_name": "Ethereum",
-  "selected_coin_price": 1856.39,
-  "confidence": 35,
-  "layman_headline": "Market fear is intense \u2014 patience beats chasing falling knives right now.",
-  "layman_explanation": "The crypto market is in 'Extreme Fear' territory and getting worse, with the fear index at 25 and trending down. Bitcoin is holding relatively steady around $64,500, but most altcoins are struggling badly. Bitcoin dominance at 56.5% means money is flowing away from smaller coins and into Bitcoin for safety. None of the swing trade candidates present a compelling risk-reward setup right now \u2014 charts are mostly bearish, and the few coins showing strength (like LDO) have already run up significantly.",
-  "layman_action": "Stay in cash and wait. The market mood is too fearful and altcoin charts are too weak to justify opening a new position. Watch for Ethereum to test the $1,800 support level \u2014 if it bounces there with rising volume, that could be the entry signal.",
-  "expert_reasoning": "No candidate currently meets the quality threshold for a new entry. BONK is in freefall with a -2.0 chart bias \u2014 catching that knife would be reckless despite oversold RSI. LDO has the best chart (+0.85 bias, Three White Soldiers) but RSI at 59 and a 51.7% 5-day surge means it's already extended. AERO and ONDO have slightly bullish charts but terrible risk/reward ratios (0.45x and 0.38x respectively). ETH is the strongest candidate on a watchlist basis \u2014 RSI at 39 is approaching the oversold zone where our signal credibility data shows 80% win rate, and the $1,800 support is a clean level to define risk. However, the overall bearish chart structure (-0.70 bias) and worsening Fear & Greed trend argue for waiting for a confirmed bounce rather than front-running support.",
+  "selected_coin_price": 1855.49,
+  "confidence": 32,
+  "layman_headline": "Crypto market is deep in fear territory \u2014 patience beats impulse right now.",
+  "layman_explanation": "The overall crypto market is in 'Extreme Fear' mode, with sentiment worsening by the day. Almost every altcoin on our watchlist shows bearish chart structure \u2014 prices below their key moving averages with no clear reversal signals yet. Bitcoin is holding relatively steady near $64,600 and dominating the market, which means money is flowing out of smaller coins. This is a classic 'wait for the dust to settle' environment rather than a time to chase entries.",
+  "layman_action": "Stay on the sidelines with cash ready. The best swing trades come when fear peaks and we see the first clear bounce signals \u2014 we're not there yet. Watch for ETH to test the $1,800 support level as a potential entry if it holds convincingly.",
+  "expert_reasoning": "Every swing candidate shows bearish chart bias (-0.55 to -0.70), with most below all major moving averages. The RSI signal \u2014 our most reliable indicator at 80% win rate \u2014 flags TRUMP (RSI 22) as deeply oversold, but the coin has -97.8% from ATH with no chart support structure and terrible risk/reward (1.0x). ETH's RSI at 39 is approaching oversold with a massive +17.2% 5-day momentum suggesting a potential trend shift, but it hasn't reclaimed its SMA20 yet. BTC dominance at 56.6% is hostile for altcoin entries. The Fear & Greed at 25 and worsening suggests we haven't hit capitulation yet. With no volume confirmation, no MACD crosses, and no bullish candlestick reversals among any candidates, the probability-weighted play is to wait for cleaner setups.",
   "risk_factors": [
-    "Extreme Fear trending worse (25 \u2192 worsening) could cascade into deeper selloff across all alts",
-    "Bitcoin weekend volatility risk with geopolitical oil tensions cited by CryptoSlate",
-    "BTC dominance at 56.5% actively punishing altcoin positions \u2014 could increase further"
+    "Fear & Greed trend is still worsening \u2014 sentiment could deteriorate further before bottoming",
+    "BTC dominance at 56.6% actively suppresses altcoin recoveries \u2014 any BTC weakness drags alts down harder",
+    "Weekend geopolitical risk (oil supply concerns per CryptoSlate) could trigger sudden risk-off selling"
   ],
   "watch_list": [
-    "ETH price action at $1,800 support \u2014 a bounce with volume confirms entry, a break below invalidates",
-    "Fear & Greed index trajectory \u2014 need stabilization above 25 before deploying capital",
-    "BTC options expiry and Fed meeting timeline \u2014 massive call spreads targeting $72K could shift market sentiment"
+    "ETH holding $1,800 support \u2014 a convincing bounce with volume would trigger a BUY signal",
+    "Fear & Greed index \u2014 a reversal from 25 back above 30 would signal capitulation has passed",
+    "BTC reaction to $65,000 resistance and the massive call spreads targeting $72K by month-end"
   ],
-  "market_context": "The crypto market is in Extreme Fear (25/100) and deteriorating, with Bitcoin holding near $64,500 while altcoins bleed. High BTC dominance at 56.5% signals a risk-off environment where capital rotation favors Bitcoin over alternatives.",
-  "context_banner": "Extreme Fear conditions demand patience \u2014 the best swing entries come after fear peaks, not while it's still intensifying.",
-  "btc_price": 64521,
+  "market_context": "Extreme Fear (25/100) with a worsening trend. BTC stable near $64.6K with high dominance at 56.6%, creating a hostile environment for altcoin swing trades. Weekend geopolitical risk around oil supply adds to uncertainty.",
+  "context_banner": "Market fear is deepening with no reversal confirmation \u2014 capital preservation is the highest-conviction trade right now.",
+  "btc_price": 64616,
   "fear_greed": {
     "current": 25,
     "label": "Extreme Fear",
@@ -28,32 +28,32 @@
     "week_avg": 25.4,
     "trend": "worsening"
   },
-  "btc_dominance": 56.5,
+  "btc_dominance": 56.6,
   "key_signals": [
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Extreme Fear at 25 and worsening trend warns against deploying capital into risk assets prematurely."
+      "description": "Extreme Fear at 25 with a worsening weekly trend (avg 25.4) \u2014 no sign of bottoming yet, making premature entries risky."
     },
     {
       "source": "RSI",
       "signal_type": "technical",
-      "description": "ETH RSI at 39 is approaching the oversold zone \u2014 our most reliable signal (80% win rate) \u2014 but hasn't triggered yet at sub-30."
-    },
-    {
-      "source": "CryptoSlate",
-      "signal_type": "news",
-      "description": "Bitcoin facing dangerous weekend with 20% of world's oil supply at risk, adding geopolitical uncertainty to already fearful markets."
-    },
-    {
-      "source": "Blockworks",
-      "signal_type": "news",
-      "description": "ETH derivatives reset reported, suggesting positioning is being cleaned out \u2014 could set up next directional move."
+      "description": "Our most reliable indicator (80% win rate) shows ETH at 39 approaching oversold and TRUMP deeply oversold at 22, but no bounce confirmation exists on either."
     },
     {
       "source": "CoinDesk",
       "signal_type": "news",
-      "description": "Massive BTC call spreads targeting $72,000 by month-end Fed meeting signal institutional bullish positioning that could lift the broader market."
+      "description": "Massive BTC call spreads targeting $72K by month-end ahead of the Fed meeting could provide the catalyst alts need, but the trade hasn't triggered yet."
+    },
+    {
+      "source": "CryptoSlate",
+      "signal_type": "macro",
+      "description": "Weekend geopolitical risk flagged \u2014 20% of world's oil supply in the balance creates risk-off pressure that could hit crypto."
+    },
+    {
+      "source": "Blockworks",
+      "signal_type": "technical",
+      "description": "ETH derivatives reset noted, suggesting overleveraged positions have been flushed \u2014 a cleaner base for eventual recovery but timing uncertain."
     }
   ],
   "_mode": "HUNTING",
