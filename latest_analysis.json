@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-07-18T21:10:00.316051+00:00",
-  "selected_coin": "ETH",
-  "selected_coin_name": "Ethereum",
-  "selected_coin_price": 1855.49,
-  "confidence": 32,
-  "layman_headline": "Crypto market is deep in fear territory \u2014 patience beats impulse right now.",
-  "layman_explanation": "The overall crypto market is in 'Extreme Fear' mode, with sentiment worsening by the day. Almost every altcoin on our watchlist shows bearish chart structure \u2014 prices below their key moving averages with no clear reversal signals yet. Bitcoin is holding relatively steady near $64,600 and dominating the market, which means money is flowing out of smaller coins. This is a classic 'wait for the dust to settle' environment rather than a time to chase entries.",
-  "layman_action": "Stay on the sidelines with cash ready. The best swing trades come when fear peaks and we see the first clear bounce signals \u2014 we're not there yet. Watch for ETH to test the $1,800 support level as a potential entry if it holds convincingly.",
-  "expert_reasoning": "Every swing candidate shows bearish chart bias (-0.55 to -0.70), with most below all major moving averages. The RSI signal \u2014 our most reliable indicator at 80% win rate \u2014 flags TRUMP (RSI 22) as deeply oversold, but the coin has -97.8% from ATH with no chart support structure and terrible risk/reward (1.0x). ETH's RSI at 39 is approaching oversold with a massive +17.2% 5-day momentum suggesting a potential trend shift, but it hasn't reclaimed its SMA20 yet. BTC dominance at 56.6% is hostile for altcoin entries. The Fear & Greed at 25 and worsening suggests we haven't hit capitulation yet. With no volume confirmation, no MACD crosses, and no bullish candlestick reversals among any candidates, the probability-weighted play is to wait for cleaner setups.",
+  "timestamp": "2026-07-18T22:10:00.281611+00:00",
+  "selected_coin": "TRUMP",
+  "selected_coin_name": "Official Trump",
+  "selected_coin_price": 1.62,
+  "confidence": 52,
+  "layman_headline": "Deeply oversold meme coin showing first signs of life in a fearful market.",
+  "layman_explanation": "TRUMP coin has been beaten down heavily and its momentum indicator (RSI at 22) is at extreme oversold levels \u2014 the lowest reading among all candidates. Today it bounced 5.2%, suggesting sellers may be exhausted. The broader crypto market is in 'Extreme Fear,' which historically means the worst of the selling is often close to over. This is a high-risk, quick bounce trade \u2014 not a long-term hold.",
+  "layman_action": "Consider a small speculative position with a tight stop-loss at $1.42. This is a short-term bounce play \u2014 take profits quickly around $1.85 and don't hold through further weakness.",
+  "expert_reasoning": "RSI at 22.3 is the most oversold reading across all candidates and well into historically reliable bounce territory. Our signal credibility data shows RSI-based entries have an 80% win rate with +5.5% average return \u2014 making this our highest-conviction signal type. The 7-day price action is essentially flat (-0.3%) after massive prior declines (-97.8% from ATH), and today's +5.2% suggests capitulation selling may be complete. The bearish chart structure (-0.7 bias) and below-all-MAs positioning are real risks, but for a short-duration mean-reversion trade targeting ~15% upside with a 12% stop-loss, the risk/reward is acceptable. BTC stability (+1.08% 24h) provides a supportive macro backdrop for a quick alt bounce.",
   "risk_factors": [
-    "Fear & Greed trend is still worsening \u2014 sentiment could deteriorate further before bottoming",
-    "BTC dominance at 56.6% actively suppresses altcoin recoveries \u2014 any BTC weakness drags alts down harder",
-    "Weekend geopolitical risk (oil supply concerns per CryptoSlate) could trigger sudden risk-off selling"
+    "Chart structure is firmly bearish \u2014 below all moving averages with no confirmed trend reversal pattern",
+    "BTC dominance at 56.6% is hostile to altcoins, especially meme tokens with no fundamental value",
+    "Extreme Fear (25) is worsening \u2014 market could continue selling before any bounce materializes"
   ],
   "watch_list": [
-    "ETH holding $1,800 support \u2014 a convincing bounce with volume would trigger a BUY signal",
-    "Fear & Greed index \u2014 a reversal from 25 back above 30 would signal capitulation has passed",
-    "BTC reaction to $65,000 resistance and the massive call spreads targeting $72K by month-end"
+    "BTC weekend price action \u2014 CryptoSlate warns of geopolitical oil risk that could trigger a sell-off",
+    "TRUMP RSI movement \u2014 if it drops below 20 without bouncing, the capitulation thesis is wrong",
+    "Fed meeting expectations \u2014 massive BTC call spreads targeting $72K by month-end could lift the entire market"
   ],
-  "market_context": "Extreme Fear (25/100) with a worsening trend. BTC stable near $64.6K with high dominance at 56.6%, creating a hostile environment for altcoin swing trades. Weekend geopolitical risk around oil supply adds to uncertainty.",
-  "context_banner": "Market fear is deepening with no reversal confirmation \u2014 capital preservation is the highest-conviction trade right now.",
-  "btc_price": 64616,
+  "market_context": "The crypto market is in Extreme Fear (25/100, worsening) with BTC holding steady around $64,700 but dominance elevated at 56.6%, creating a hostile environment for altcoins. Weekend geopolitical risk around oil markets adds uncertainty, but large BTC options bets on $72K by month-end suggest institutional players see upside ahead.",
+  "context_banner": "Extreme Fear creates oversold bounces \u2014 the lowest-RSI candidate with a proven signal type offers the best risk-adjusted short-term trade.",
+  "btc_price": 64724,
   "fear_greed": {
     "current": 25,
     "label": "Extreme Fear",
@@ -31,32 +31,32 @@
   "btc_dominance": 56.6,
   "key_signals": [
     {
-      "source": "Fear_Greed",
-      "signal_type": "sentiment",
-      "description": "Extreme Fear at 25 with a worsening weekly trend (avg 25.4) \u2014 no sign of bottoming yet, making premature entries risky."
-    },
-    {
       "source": "RSI",
       "signal_type": "technical",
-      "description": "Our most reliable indicator (80% win rate) shows ETH at 39 approaching oversold and TRUMP deeply oversold at 22, but no bounce confirmation exists on either."
+      "description": "TRUMP RSI at 22.3 is deeply oversold \u2014 our most reliable signal with 80% win rate and +5.5% avg return across 5 historical trades."
+    },
+    {
+      "source": "Fear_Greed",
+      "signal_type": "sentiment",
+      "description": "Market at Extreme Fear (25) and worsening \u2014 contrarian indicator suggesting capitulation may be near, though timing is uncertain."
+    },
+    {
+      "source": "CryptoSlate",
+      "signal_type": "news",
+      "description": "Bitcoin trading through a dangerous weekend with 20% of world's oil supply at risk \u2014 heightened volatility could accelerate moves in either direction."
     },
     {
       "source": "CoinDesk",
       "signal_type": "news",
-      "description": "Massive BTC call spreads targeting $72K by month-end ahead of the Fed meeting could provide the catalyst alts need, but the trade hasn't triggered yet."
+      "description": "Massive BTC call spreads targeting $72K by month-end ahead of Fed meeting \u2014 institutional sentiment is cautiously bullish on BTC."
     },
     {
-      "source": "CryptoSlate",
-      "signal_type": "macro",
-      "description": "Weekend geopolitical risk flagged \u2014 20% of world's oil supply in the balance creates risk-off pressure that could hit crypto."
-    },
-    {
-      "source": "Blockworks",
-      "signal_type": "technical",
-      "description": "ETH derivatives reset noted, suggesting overleveraged positions have been flushed \u2014 a cleaner base for eventual recovery but timing uncertain."
+      "source": "CoinTelegraph",
+      "signal_type": "news",
+      "description": "FTX distributing $900M to creditors in fifth payment round \u2014 potential capital inflow back into crypto markets over coming weeks."
     }
   ],
   "_mode": "HUNTING",
-  "exit_target": 1950.0,
-  "stop_loss": 1740.0
+  "exit_target": 1.85,
+  "stop_loss": 1.42
 }
