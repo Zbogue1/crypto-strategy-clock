@@ -748,5 +748,28 @@
       "LDO"
     ],
     "alert": "Market in Extreme Fear \u2014 position sizing should be conservative. High BTC dominance (56.4%) is actively hostile to altcoin positions."
+  },
+  {
+    "ts": "2026-07-18T10:10:00.317435+00:00",
+    "coin": "ETH",
+    "price": 1844.02,
+    "signal": "HOLD",
+    "confidence": 32,
+    "score": -0.35,
+    "fg": 25,
+    "btc_price": 63945,
+    "btc_dominance": 56.4,
+    "candidates": [
+      "BONK",
+      "VVV",
+      "KITE",
+      "AERO",
+      "USDG",
+      "TRUMP",
+      "DEXE",
+      "ETH",
+      "LDO"
+    ],
+    "alert": "Market in Extreme Fear with deteriorating trend \u2014 all swing candidates carry elevated downside risk. Wait for stabilization signals."
   }
 ]
