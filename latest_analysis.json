@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-07-18T13:10:00.252226+00:00",
-  "selected_coin": "TRUMP",
-  "selected_coin_name": "Official Trump",
-  "selected_coin_price": 1.68,
-  "confidence": 52,
-  "layman_headline": "Deeply oversold meme coin flashes rare bounce signal amid fearful market.",
-  "layman_explanation": "The TRUMP token has been beaten down 97.7% from its all-time high and its RSI reading of 22 puts it in deeply oversold territory \u2014 a zone that historically triggers short-term bounces. Today it already popped over 10% in 24 hours, suggesting buyers are stepping in. The broader crypto market is in 'Extreme Fear,' which can be a contrarian buying opportunity, but it also means risk is elevated so position sizing should be small.",
-  "layman_action": "If comfortable with high-risk meme coin exposure, consider a small speculative position near $1.62 with a strict stop-loss at $1.45. This is a quick bounce trade, not a long-term hold.",
-  "expert_reasoning": "TRUMP's RSI of 22 is the most compelling signal in this cycle. Our signal credibility data shows RSI-based trades have an 80% win rate with +5.5% average return \u2014 making this our most reliable indicator. The 10.29% daily bounce from deeply oversold levels suggests a mean-reversion move is initiating. Chart bias is bearish (-0.70) and price is below all MAs, which tempers conviction \u2014 this is a counter-trend bounce trade, not a trend-following setup. The risk/reward to chart levels is 1:1 ($1.50 support vs $1.60 resistance on the chart snapshot), but current price at $1.68 already reclaimed those levels, suggesting the bounce has legs toward $1.95. Stop-loss at $1.45 gives ~13.7% downside risk against ~16% upside to target, acceptable for a high-volatility meme asset. BTC dominance at 56.5% is headwind for alts, keeping confidence moderate.",
+  "timestamp": "2026-07-18T14:10:00.638357+00:00",
+  "selected_coin": "ETH",
+  "selected_coin_name": "Ethereum",
+  "selected_coin_price": 1840.77,
+  "confidence": 35,
+  "layman_headline": "Extreme fear grips the crypto market \u2014 patience is the smartest play right now.",
+  "layman_explanation": "The crypto market is in 'Extreme Fear' territory at 25/100, and it's getting worse. Bitcoin is holding around $64K but altcoins are bleeding. Most coins on the watchlist show bearish chart patterns with sellers firmly in control. While fear can create buying opportunities, right now the charts aren't showing clear reversal signals \u2014 it's like trying to catch a falling knife. The best move is to wait for the selling to exhaust itself before committing capital.",
+  "layman_action": "Stay on the sidelines with cash ready. Watch for ETH to test $1,800 support \u2014 if it holds and bounces with strong volume, that could be the entry signal. Don't rush in while fear is still intensifying.",
+  "expert_reasoning": "No candidate presents a high-conviction entry right now. BONK has RSI near oversold but its chart bias is -2.0 (strongly bearish) with Three Black Crows and Bearish Marubozu patterns \u2014 this is a falling knife, not a bounce setup. LDO has the best chart bias (+0.85) with Three White Soldiers, but RSI at 59 and +18% in 7 days means it's already extended \u2014 buying here risks a pullback. ETH at RSI 39 is the most interesting, but its chart bias is -0.70 with price below all MAs. The prudent play is to wait for ETH to test $1,800 support and show a reversal candle before entering. BTC dominance at 56.5% continues to pressure alts, and Fear & Greed at 25 and worsening suggests more downside may come before a true reversal.",
   "risk_factors": [
-    "Bearish chart structure with price below all moving averages \u2014 this is a counter-trend trade that could fail if selling resumes",
-    "High BTC dominance (56.5%) and Extreme Fear sentiment mean capital is fleeing alts \u2014 broader market could drag TRUMP lower",
-    "Meme coin with 97.7% drawdown from ATH \u2014 fundamentally there is no floor, and liquidity can evaporate quickly"
+    "Fear & Greed index still worsening (25 and declining) \u2014 capitulation selling could accelerate",
+    "BTC dominance at 56.5% means capital is flowing away from altcoins into Bitcoin",
+    "No clear bullish reversal candles or MACD crosses confirmed on any candidate"
   ],
   "watch_list": [
-    "TRUMP holding above $1.50 support \u2014 a break below invalidates the bounce thesis",
-    "BTC price action around $64K \u2014 any breakdown would crush alt sentiment further",
-    "Fear & Greed index trajectory \u2014 a move from 25 toward 30+ would confirm risk appetite returning"
+    "ETH price action at $1,800 support \u2014 a bounce with volume confirms the entry thesis",
+    "Fear & Greed index stabilization or uptick \u2014 reversal from 25 would signal sentiment bottom",
+    "BTC dominance trend \u2014 any decline below 56% would favor altcoin rotation"
   ],
-  "market_context": "Crypto market is in Extreme Fear (25/100, worsening trend) with BTC dominance elevated at 56.5%, creating a hostile environment for altcoins. BTC itself is holding relatively flat near $64K, providing a fragile but not collapsing backdrop.",
-  "context_banner": "Extreme Fear markets create the best contrarian bounce trades \u2014 but only with strict risk management and small position sizes.",
-  "btc_price": 64082,
+  "market_context": "The crypto market is in Extreme Fear (25/100) and worsening, with BTC holding $64K while alts bleed. High BTC dominance at 56.5% signals a risk-off environment where altcoin swing trades carry elevated risk.",
+  "context_banner": "Extreme Fear is deepening across crypto \u2014 disciplined traders wait for reversal confirmation before deploying capital.",
+  "btc_price": 64078,
   "fear_greed": {
     "current": 25,
     "label": "Extreme Fear",
@@ -31,32 +31,32 @@
   "btc_dominance": 56.5,
   "key_signals": [
     {
-      "source": "RSI",
-      "signal_type": "technical",
-      "description": "TRUMP RSI at 22 is deeply oversold \u2014 our most reliable signal with 80% historical win rate and +5.5% avg return. This is the strongest technical setup among all candidates."
-    },
-    {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Market at Extreme Fear (25/100) with worsening trend \u2014 contrarian opportunity but demands strict stop-losses and reduced position sizing."
+      "description": "Fear & Greed at 25 (Extreme Fear) and worsening from 27 yesterday \u2014 no signs of sentiment bottom yet, suggesting more downside risk before a tradeable bounce."
     },
     {
-      "source": "CoinTelegraph",
-      "signal_type": "news",
-      "description": "FTX distributing $900M to creditors could inject liquidity back into crypto markets over coming weeks, providing a potential tailwind for speculative assets."
-    },
-    {
-      "source": "volume_breakout",
+      "source": "RSI",
       "signal_type": "technical",
-      "description": "TRUMP's 10.29% daily surge amid a broadly flat market indicates unusual buying interest and potential short squeeze dynamics."
+      "description": "ETH RSI at 39 is the most attractive reading among candidates and approaching the oversold zone where our historical 80% win rate kicks in, but hasn't crossed the 30 threshold for a strong signal."
+    },
+    {
+      "source": "Chart Pattern Analysis",
+      "signal_type": "technical",
+      "description": "Every candidate except LDO shows neutral-to-bearish chart bias. LDO's +0.85 bullish bias (Three White Soldiers) is offset by already being extended +18% in 7 days."
     },
     {
       "source": "Blockworks",
       "signal_type": "news",
-      "description": "ETH derivatives reset and DePIN/gaming rebound narratives suggest market is looking for rotation opportunities, which can benefit high-beta speculative tokens."
+      "description": "'ETH derivatives reset' article suggests positioning is being cleared out \u2014 this could set the stage for a cleaner move once fear subsides."
+    },
+    {
+      "source": "CoinTelegraph",
+      "signal_type": "news",
+      "description": "FTX distributing $900M to creditors in fifth payment round could create short-term sell pressure as recipients liquidate received tokens."
     }
   ],
   "_mode": "HUNTING",
-  "exit_target": 1.95,
-  "stop_loss": 1.45
+  "exit_target": 1950.0,
+  "stop_loss": 1740.0
 }
