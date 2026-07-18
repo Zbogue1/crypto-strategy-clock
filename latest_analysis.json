@@ -1,62 +1,62 @@
 {
-  "timestamp": "2026-07-17T23:10:00.294570+00:00",
-  "selected_coin": "LDO",
-  "selected_coin_name": "Lido DAO",
-  "selected_coin_price": 0.372201,
-  "confidence": 58,
-  "layman_headline": "Lido DAO surges 23% in a week while the rest of the market bleeds \u2014 is the rally just getting started?",
-  "layman_explanation": "Lido DAO, the biggest liquid staking protocol on Ethereum, has jumped 23% in the past week while most altcoins dropped. The overall crypto market is in 'Fear' mode, which often means good buying opportunities for coins showing real strength. Lido still has a low RSI (not overbought) despite the rally, and a Bullish Marubozu candle pattern suggests strong buying conviction. The risk/reward ratio to the next resistance level at $0.40 is very attractive at over 6:1.",
-  "layman_action": "Consider a small position in LDO near $0.365 with a stop-loss at $0.295. This is a contrarian play on a coin showing unusual strength during market fear \u2014 but keep the position size modest given the bearish broader environment.",
-  "expert_reasoning": "LDO presents a compelling mean-reversion-meets-momentum setup. Despite being down 94.9% from ATH, the 7-day +23.2% surge with RSI still at 40.69 is unusual \u2014 it suggests the move has legs rather than being exhausted. The Bullish Marubozu candle confirms strong buying conviction. The chart shows key resistance at $0.40 with support at $0.30, giving a risk/reward of ~6.5:1 from current levels. Ethereum TVL is stable at $40.6B, and the narrative around ETH derivatives resetting (Blockworks) plus Robinhood's DeFi onboarding push supports Ethereum ecosystem tokens. The main concern is BTC dominance at 56.4% suppressing altcoin flows, but LDO has already proven it can rally against that headwind this week.",
+  "timestamp": "2026-07-18T00:10:00.207887+00:00",
+  "selected_coin": "ETH",
+  "selected_coin_name": "Ethereum",
+  "selected_coin_price": 1839.35,
+  "confidence": 32,
+  "layman_headline": "Extreme fear grips the crypto market \u2014 patience is the best trade right now.",
+  "layman_explanation": "The crypto market is deep in 'Extreme Fear' territory with a score of 25/100, and it's getting worse. Bitcoin dominance is high at 56.4%, which means money is flowing away from smaller coins and into Bitcoin for safety. Nearly every coin on the watchlist has bearish chart patterns, with prices sitting below key moving averages. While some coins look tempting after big drops, none of them have shown convincing signs of bottoming out yet.",
+  "layman_action": "Stay on the sidelines and keep your cash ready. Wait for fear to stabilize or reverse, and for at least one candidate to show a clear bounce off support with rising volume before committing money.",
+  "expert_reasoning": "All swing candidates present problematic setups. BONK has RSI near 31 (approaching our reliable oversold trigger) but its chart is strongly bearish (-2.0 bias) with Three Black Crows and Bearish Marubozu \u2014 classic capitulation patterns that often precede further downside before any bounce. LIT is overbought at RSI 71 with terrible risk/reward (0.25x). AERO and VVV have poor risk/reward ratios (0.45x and similar). ETH is the cleanest setup with RSI 39, but it's below all MAs with a -0.7 chart bias and only 1.41x risk/reward \u2014 not compelling enough for a new entry. The macro backdrop of worsening extreme fear (25, down from 27 yesterday) and rising BTC dominance (56.4%) creates headwinds for all altcoin trades. Better to wait for fear to stabilize and for a confirmed support bounce.",
   "risk_factors": [
-    "BTC dominance at 56.4% continues to crush altcoins \u2014 LDO's relative strength could reverse if BTC dumps further",
-    "LDO is still in a structural downtrend (below all major MAs) \u2014 the +23% move could be a dead cat bounce rather than a trend reversal",
-    "Ethereum staking dynamics could shift negatively if regulatory pressure mounts (Senator Warren's crypto earnings scrutiny)"
+    "Fear & Greed trending lower \u2014 could indicate further capitulation ahead before any recovery",
+    "BTC dominance at 56.4% and rising actively drains capital from altcoins, suppressing recovery potential",
+    "No candidates show confirmed support bounces or bullish reversal patterns \u2014 catching falling knives"
   ],
   "watch_list": [
-    "Whether LDO holds above $0.35 support over the next 48 hours \u2014 a close below invalidates the momentum thesis",
-    "Fear & Greed index trajectory \u2014 currently improving from 25 to 27, a continued rise would support risk-on positioning",
-    "ETH price action around $1,800 resistance \u2014 LDO's fate is tied to Ethereum's directional move"
+    "ETH RSI dropping below 30 \u2014 would trigger a high-confidence oversold bounce setup based on our 80% RSI win rate",
+    "Fear & Greed Index stabilizing above 25 or reversing upward \u2014 first sign the selling pressure is exhausting",
+    "BONK for a potential hammer/morning star reversal candle at current levels after extreme -26% weekly selloff"
   ],
-  "market_context": "The crypto market sits in 'Fear' territory at 27/100, though the trend is slightly improving. BTC is flat at ~$63.8K with 56.4% dominance, creating a hostile environment for altcoins \u2014 making LDO's +23% weekly outperformance all the more notable.",
-  "context_banner": "Market fear creates opportunity: LDO's breakout strength against a bearish backdrop offers an asymmetric risk/reward entry into the Ethereum staking narrative.",
-  "btc_price": 63866,
+  "market_context": "The crypto market is in a risk-off environment with Extreme Fear at 25/100 and worsening. BTC is relatively stable (+0.18% 24h) but dominance at 56.4% signals capital rotation away from alts, making altcoin swing trades especially hazardous.",
+  "context_banner": "Extreme Fear is intensifying with no confirmed reversal signals \u2014 disciplined patience protects capital for better entries ahead.",
+  "btc_price": 63863,
   "fear_greed": {
-    "current": 27,
-    "label": "Fear",
-    "yesterday": 25,
-    "week_avg": 25.6,
-    "trend": "improving"
+    "current": 25,
+    "label": "Extreme Fear",
+    "yesterday": 27,
+    "week_avg": 25.4,
+    "trend": "worsening"
   },
   "btc_dominance": 56.4,
   "key_signals": [
     {
-      "source": "RSI",
-      "signal_type": "technical",
-      "description": "LDO RSI at 40.69 despite a +23% weekly rally indicates the move is not yet overextended \u2014 our most reliable signal source at 80% win rate supports this entry."
-    },
-    {
-      "source": "CoinTelegraph",
-      "signal_type": "news",
-      "description": "FTX distributing $900M to creditors could inject liquidity back into crypto markets, benefiting momentum plays like LDO. CoinTelegraph signals carry a 67% win rate in our history."
-    },
-    {
-      "source": "Blockworks",
-      "signal_type": "news",
-      "description": "'ETH derivatives reset and the next retail trade' narrative suggests renewed interest in Ethereum ecosystem tokens, directly supporting LDO as the largest liquid staking protocol."
-    },
-    {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Fear index at 27 but improving from 25 \u2014 contrarian buying during fear has historically produced better entries, though this signal has mixed reliability at 62%."
+      "description": "Extreme Fear at 25/100 and worsening (down from 27 yesterday, weekly avg 25.4) \u2014 historically precedes either capitulation bottoms or further downside, but no reversal signal yet."
+    },
+    {
+      "source": "RSI",
+      "signal_type": "technical",
+      "description": "ETH RSI at 39 and BONK at 31 are approaching oversold territory \u2014 our most reliable signal (80% win rate) \u2014 but neither has hit the <30 threshold that maximizes edge."
     },
     {
       "source": "Chart Pattern Analysis",
       "signal_type": "technical",
-      "description": "Bullish Marubozu candle pattern on LDO with a 6.5:1 risk/reward ratio to next resistance at $0.40 \u2014 strong buying conviction with well-defined support at $0.30."
+      "description": "All candidates are below major MAs with bearish chart biases ranging from -0.2 to -2.0. No bullish reversal candlestick patterns detected on any candidate."
+    },
+    {
+      "source": "CoinTelegraph",
+      "signal_type": "news",
+      "description": "FTX distributing $900M to creditors could add selling pressure as recipients liquidate recovered crypto \u2014 a potential near-term headwind."
+    },
+    {
+      "source": "Blockworks",
+      "signal_type": "news",
+      "description": "ETH derivatives reset noted by Blockworks suggests positioning is clearing out, which could set the stage for a cleaner move once sentiment improves."
     }
   ],
   "_mode": "HUNTING",
-  "exit_target": 0.45,
-  "stop_loss": 0.295
+  "exit_target": 1950.0,
+  "stop_loss": 1740.0
 }
