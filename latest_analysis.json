@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-07-18T16:10:00.287896+00:00",
+  "timestamp": "2026-07-18T18:10:00.350114+00:00",
   "selected_coin": "ETH",
   "selected_coin_name": "Ethereum",
-  "selected_coin_price": 1841.62,
-  "confidence": 35,
-  "layman_headline": "Extreme fear grips crypto markets \u2014 patience is the best trade right now.",
-  "layman_explanation": "The crypto market is deep in 'Extreme Fear' territory at 25/100, and it's getting worse, not better. Bitcoin is holding around $64,000 but altcoins are bleeding badly \u2014 many are down 10-30% in the past week. While fear often creates buying opportunities, none of the candidates today show the clean technical setup needed to justify risking capital. The best potential play is Ethereum near $1,800 support, but it hasn't confirmed a bounce yet.",
-  "layman_action": "Stay on the sidelines for now. Set price alerts for Ethereum at $1,800 \u2014 if it touches that support and bounces with volume, that could be the entry. Don't try to catch falling knives in this fearful market.",
-  "expert_reasoning": "No candidate presents a compelling risk/reward for immediate entry. ETH's RSI at 39 is approaching oversold territory (our most reliable signal at 80% win rate), but the chart bias is strongly bearish (-0.70), price is below all major MAs, and support at $1,800 is only 2.2% away \u2014 meaning we haven't seen the capitulation bounce yet. AERO and ONDO have slightly bullish charts but poor risk/reward ratios (0.45x and 0.38x respectively). BONK is down 33% in a week but has zero technical data to work with. BTC dominance at 56.5% is actively crushing altcoin performance. The prudent move is to wait for ETH to test $1,800 support and show a reversal candle before committing capital.",
+  "selected_coin_price": 1849.79,
+  "confidence": 32,
+  "layman_headline": "Crypto market gripped by extreme fear \u2014 no clear safe entry exists right now.",
+  "layman_explanation": "The entire crypto market is in a state of extreme fear, with the Fear & Greed index at just 25 out of 100 and worsening. Bitcoin is holding relatively steady but its dominance at 56.5% means money is flowing away from altcoins. Every swing trade candidate on the watchlist shows bearish chart patterns \u2014 selling pressure is real across the board. While extreme fear can eventually create great buying opportunities, there's no clear reversal signal yet to justify jumping in.",
+  "layman_action": "Stay in cash and be patient. Watch for a fear & greed recovery above 30 and for key support levels to hold before committing capital. The market needs to show it wants to bounce before you buy the dip.",
+  "expert_reasoning": "All nine swing candidates show bearish or strongly bearish chart structures. BONK has the most oversold RSI (30.75) but its chart is catastrophically bearish (-2.0 score) with Three Black Crows and Bearish Marubozu \u2014 catching that knife would be reckless. ONDO has the only positive chart bias (+0.40) but RSI at 62 suggests it's already extended after a 19.7% 5-day move, and the risk/reward to nearest levels is terrible at 0.38x. ETH is the best risk-adjusted candidate with RSI at 39 (approaching oversold \u2014 our highest-confidence signal type at 80% win rate), but it remains below all moving averages. The prudent play is to wait for ETH to test and hold $1,800 support, then enter on confirmation. BTC dominance at 56.5% is actively hostile to alt positions, and the worsening fear trend (25 and declining) suggests we haven't seen capitulation yet.",
   "risk_factors": [
-    "Extreme Fear at 25 and worsening \u2014 sentiment could deteriorate further, dragging all alts down another leg",
-    "BTC dominance at 56.5% means capital is flowing out of alts into Bitcoin \u2014 alt positions face structural headwinds",
-    "No clear volume breakout or MACD cross signals on any candidate \u2014 setups lack confirmation"
+    "Extreme fear at 25 and worsening \u2014 sentiment could deteriorate further with weekend geopolitical risk around oil markets",
+    "BTC dominance at 56.5% actively draining liquidity from altcoins, making alt swing trades structurally disadvantaged",
+    "Every candidate has bearish chart structure \u2014 there is no confirmed reversal pattern anywhere on the watchlist"
   ],
   "watch_list": [
-    "ETH price action at $1,800 support \u2014 a bounce with volume confirms entry, a break below invalidates the setup",
-    "BTC movement toward $72,000 call strike \u2014 if BTC rallies into month-end Fed meeting, it lifts all boats",
-    "Fear & Greed Index \u2014 a turn from 25 back above 30 would signal the worst of the panic is subsiding"
+    "ETH holding $1,800 support \u2014 a decisive break below would invalidate the oversold bounce thesis",
+    "Fear & Greed index \u2014 watch for stabilization or uptick above 30 as a potential sentiment floor signal",
+    "BTC reaction to weekend geopolitical news and whether $64K holds \u2014 massive call spreads targeting $72K suggest institutional optimism that hasn't materialized yet"
   ],
-  "market_context": "Crypto is in Extreme Fear at 25/100 and worsening. BTC holds $64K but altcoins are getting crushed with BTC dominance at 56.5%. The market is in a risk-off mode with no clear catalyst to reverse sentiment yet.",
-  "context_banner": "Extreme Fear dominates crypto \u2014 no clean swing setups today; ETH near $1,800 support is the one to watch for a confirmed bounce.",
-  "btc_price": 64060,
+  "market_context": "The crypto market is in extreme fear (25/100, worsening) with BTC holding ~$64.4K while altcoins bleed. High BTC dominance at 56.5% means capital is rotating out of alts, making swing trades in anything besides BTC particularly risky right now.",
+  "context_banner": "Extreme fear dominates with universally bearish alt charts \u2014 capital preservation is the priority until a clear reversal signal emerges.",
+  "btc_price": 64425,
   "fear_greed": {
     "current": 25,
     "label": "Extreme Fear",
@@ -33,27 +33,27 @@
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Extreme Fear at 25/100 and worsening trend \u2014 while contrarian bullish long-term, the lack of stabilization means more downside is possible near-term."
+      "description": "Fear & Greed at 25 (Extreme Fear) and worsening from 27 yesterday \u2014 no sentiment floor established yet, which historically precedes further downside before a bounce."
     },
     {
       "source": "RSI",
       "signal_type": "technical",
-      "description": "ETH RSI at 39.4 is approaching oversold territory \u2014 our highest-confidence signal (80% win rate) \u2014 but hasn't crossed below 30 for a strong buy trigger yet."
-    },
-    {
-      "source": "Blockworks",
-      "signal_type": "news",
-      "description": "ETH derivatives reset reported, suggesting overleveraged positions have been cleared \u2014 this cleans the slate for a potential reversal once support holds."
-    },
-    {
-      "source": "CoinDesk",
-      "signal_type": "news",
-      "description": "Massive BTC call spreads targeting $72K by month-end aligned with the Fed meeting could serve as a macro catalyst to lift the entire market."
+      "description": "ETH RSI at 39.4 is approaching oversold territory \u2014 our most reliable signal type (80% win rate) \u2014 but hasn't crossed below 30 to confirm full oversold conditions."
     },
     {
       "source": "Chart Pattern Analysis",
       "signal_type": "technical",
-      "description": "All candidates show weak chart structures \u2014 ETH bearish at -0.70, AAVE bearish engulfing at -0.55, KITE in confirmed downtrend at -0.70. No bullish confirmation patterns present."
+      "description": "Every candidate except ONDO has negative chart bias scores; BONK at -2.0 with Three Black Crows confirms aggressive selling across alts."
+    },
+    {
+      "source": "CoinDesk",
+      "signal_type": "news",
+      "description": "Massive BTC call spreads targeting $72K by month-end coinciding with Fed meeting could catalyze a broader market rally, but hasn't triggered yet."
+    },
+    {
+      "source": "CryptoSlate",
+      "signal_type": "macro",
+      "description": "Weekend geopolitical risk with 20% of global oil supply in the balance adds macro uncertainty that could deepen the fear cycle."
     }
   ],
   "_mode": "HUNTING",
