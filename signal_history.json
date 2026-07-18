@@ -725,5 +725,28 @@
       "LDO"
     ],
     "alert": "Market in Extreme Fear with worsening trend \u2014 avoid catching falling knives. Wait for confirmation signals."
+  },
+  {
+    "ts": "2026-07-18T09:10:00.173556+00:00",
+    "coin": "AERO",
+    "price": 0.463968,
+    "signal": "BUY",
+    "confidence": 52,
+    "score": 0.45,
+    "fg": 25,
+    "btc_price": 63929,
+    "btc_dominance": 56.4,
+    "candidates": [
+      "BONK",
+      "VVV",
+      "KITE",
+      "AERO",
+      "DEXE",
+      "USDG",
+      "MON",
+      "ETH",
+      "LDO"
+    ],
+    "alert": "Market in Extreme Fear \u2014 position sizing should be conservative. High BTC dominance (56.4%) is actively hostile to altcoin positions."
   }
 ]
