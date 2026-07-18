@@ -702,5 +702,28 @@
       "LDO"
     ],
     "alert": "Market in Extreme Fear with worsening trend \u2014 avoid impulsive entries. Wait for support confirmations."
+  },
+  {
+    "ts": "2026-07-18T08:10:00.150591+00:00",
+    "coin": "ETH",
+    "price": 1842.38,
+    "signal": "HOLD",
+    "confidence": 35,
+    "score": -0.3,
+    "fg": 25,
+    "btc_price": 63929,
+    "btc_dominance": 56.4,
+    "candidates": [
+      "BONK",
+      "VVV",
+      "KITE",
+      "USDG",
+      "DEXE",
+      "AERO",
+      "MON",
+      "ETH",
+      "LDO"
+    ],
+    "alert": "Market in Extreme Fear with worsening trend \u2014 avoid catching falling knives. Wait for confirmation signals."
   }
 ]
