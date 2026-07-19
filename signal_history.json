@@ -1,29 +1,5 @@
 [
   {
-    "ts": "2026-07-17T20:10:00.390788+00:00",
-    "coin": "ETH",
-    "price": 1836.84,
-    "signal": "HOLD",
-    "confidence": 35,
-    "score": 0.15,
-    "fg": 27,
-    "btc_price": 63989,
-    "btc_dominance": 56.5,
-    "candidates": [
-      "BONK",
-      "MON",
-      "DEXE",
-      "JTO",
-      "KITE",
-      "LIT",
-      "HYPE",
-      "ETH",
-      "LDO",
-      "GRASS"
-    ],
-    "alert": "Geopolitical escalation (Iran strikes) creating additional downside risk \u2014 avoid aggressive positioning until clarity improves."
-  },
-  {
     "ts": "2026-07-17T21:10:00.383586+00:00",
     "coin": "ETH",
     "price": 1843.64,
@@ -926,5 +902,28 @@
       "LDO"
     ],
     "alert": "CryptoSlate flags potential 18% BTC drawdown to $52,900 if buyer demand doesn't materialize \u2014 maintain defensive positioning."
+  },
+  {
+    "ts": "2026-07-19T14:10:00.334560+00:00",
+    "coin": "ETH",
+    "price": 1871.18,
+    "signal": "HOLD",
+    "confidence": 32,
+    "score": -0.35,
+    "fg": 28,
+    "btc_price": 64452,
+    "btc_dominance": 56.4,
+    "candidates": [
+      "BONK",
+      "DEXE",
+      "MON",
+      "KITE",
+      "PEPE",
+      "PENGU",
+      "SUN",
+      "ETH",
+      "LDO"
+    ],
+    "alert": "CryptoSlate warns of potential 18% BTC decline to $52,900 \u2014 monitor BTC closely before any new entries."
   }
 ]
