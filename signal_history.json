@@ -1,29 +1,5 @@
 [
   {
-    "ts": "2026-07-18T02:10:00.185723+00:00",
-    "coin": "ETH",
-    "price": 1840.99,
-    "signal": "HOLD",
-    "confidence": 32,
-    "score": -0.35,
-    "fg": 25,
-    "btc_price": 63898,
-    "btc_dominance": 56.4,
-    "candidates": [
-      "BONK",
-      "VVV",
-      "DEXE",
-      "MON",
-      "KITE",
-      "AERO",
-      "INJ",
-      "ETH",
-      "LDO",
-      "GRASS"
-    ],
-    "alert": "Market in Extreme Fear with worsening trend \u2014 no high-conviction entries available. Stay patient."
-  },
-  {
     "ts": "2026-07-18T03:10:00.283409+00:00",
     "coin": "ETH",
     "price": 1842.45,
@@ -920,5 +896,28 @@
       "LDO"
     ],
     "alert": "All swing candidates in bearish structure below moving averages \u2014 avoid new entries until reversal confirmation."
+  },
+  {
+    "ts": "2026-07-19T20:10:00.445802+00:00",
+    "coin": "ETH",
+    "price": 1862.98,
+    "signal": "HOLD",
+    "confidence": 35,
+    "score": -0.3,
+    "fg": 28,
+    "btc_price": 64447,
+    "btc_dominance": 56.5,
+    "candidates": [
+      "B",
+      "BONK",
+      "KITE",
+      "MON",
+      "PEPE",
+      "SUN",
+      "TRUMP",
+      "ETH",
+      "LDO"
+    ],
+    "alert": "All swing candidates show bearish chart structures. Forcing a trade here carries elevated risk of immediate drawdown."
   }
 ]
