@@ -1,29 +1,5 @@
 [
   {
-    "ts": "2026-07-17T19:10:00.352336+00:00",
-    "coin": "HYPE",
-    "price": 60.13,
-    "signal": "BUY",
-    "confidence": 58,
-    "score": 0.55,
-    "fg": 27,
-    "btc_price": 64110,
-    "btc_dominance": 56.5,
-    "candidates": [
-      "USDG",
-      "BONK",
-      "LIT",
-      "MON",
-      "JTO",
-      "HYPE",
-      "VVV",
-      "ETH",
-      "LDO",
-      "GRASS"
-    ],
-    "alert": "Geopolitical risk elevated: Iran strikes pushing BTC below $62.5K per CoinTelegraph \u2014 size positions conservatively."
-  },
-  {
     "ts": "2026-07-17T20:10:00.390788+00:00",
     "coin": "ETH",
     "price": 1836.84,
@@ -927,5 +903,28 @@
       "LDO"
     ],
     "alert": "All swing candidates either overbought or in confirmed downtrends \u2014 waiting for cleaner setup near ETH $1,800 support."
+  },
+  {
+    "ts": "2026-07-19T13:10:00.245972+00:00",
+    "coin": "ETH",
+    "price": 1866.4,
+    "signal": "HOLD",
+    "confidence": 35,
+    "score": -0.3,
+    "fg": 28,
+    "btc_price": 64333,
+    "btc_dominance": 56.4,
+    "candidates": [
+      "BONK",
+      "KAITO",
+      "MON",
+      "DEXE",
+      "PEPE",
+      "KITE",
+      "TRUMP",
+      "ETH",
+      "LDO"
+    ],
+    "alert": "CryptoSlate flags potential 18% BTC drawdown to $52,900 if buyer demand doesn't materialize \u2014 maintain defensive positioning."
   }
 ]
