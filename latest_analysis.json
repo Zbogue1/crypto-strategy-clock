@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-07-19T11:10:00.233908+00:00",
+  "timestamp": "2026-07-19T12:10:00.282538+00:00",
   "selected_coin": "ETH",
   "selected_coin_name": "Ethereum",
-  "selected_coin_price": 1873.8,
+  "selected_coin_price": 1864.61,
   "confidence": 35,
-  "layman_headline": "The crypto market is scared and most altcoins look beaten down \u2014 but not beaten down enough to jump in yet.",
-  "layman_explanation": "The overall crypto market is in a 'Fear' state with a score of 28 out of 100. Bitcoin is holding relatively steady around $64,500 but is sucking capital away from alternative coins (56.5% dominance). Most of the swing trade candidates are either already overbought after big rallies (KAITO, DEXE) or stuck in bearish downtrends without a clear reversal signal. There's geopolitical risk this weekend around oil markets that could create volatility.",
-  "layman_action": "Stay patient and keep your cash ready. The market hasn't given a clear low-risk entry signal yet. If Ethereum dips toward $1,800 with rising volume and RSI drops below 35, that could be the moment to act. Don't chase anything that's already rallied 40%+.",
-  "expert_reasoning": "Scanning all candidates: KAITO and DEXE are overbought (RSI 79 and 71 respectively) after 44% and 63% 5-day rallies \u2014 chasing these in a Fear environment with high BTC dominance is a recipe for getting caught in a correction. TRUMP has the most oversold RSI at 22 (strong signal per our credibility data), but the chart bias is -0.70 with no support structure and -97.8% from ATH \u2014 this is a knife-catch. BONK dropped 26% in 7 days but has zero technical data to confirm a bottom. ETH is the best risk-adjusted candidate with RSI approaching oversold, massive liquidity, and $41B in ecosystem TVL, but price is still below all moving averages and the chart bias is bearish at -0.70. The proper play is to wait for ETH to either test $1,800 support (better entry) or break above $1,900 resistance with volume confirmation. Weekend geopolitical risk (oil/Middle East per CryptoSlate) adds additional reason to stay on the sidelines.",
+  "layman_headline": "Market fear is high but no clean trade setup exists right now \u2014 staying on the sidelines.",
+  "layman_explanation": "The crypto market is in a 'Fear' state with Bitcoin dominance high at 56.4%, meaning money is flowing to Bitcoin rather than altcoins. Most altcoin candidates are either already overbought after big runs (KAITO up 47%, DEXE, LDO) or in freefall with no signs of stopping (BONK down 27%). The best potential setup is Ethereum near oversold levels, but it's still in a downtrend below all moving averages, so we need to wait for a clearer reversal signal before committing money.",
+  "layman_action": "Wait and watch. Don't buy anything yet. If Ethereum drops to $1,800 support and bounces with increasing volume, that could be the entry. Patience pays in fearful markets.",
+  "expert_reasoning": "No candidate presents a clean, high-conviction swing entry right now. BONK (RSI 31) has a strongly bearish chart (-2.0 bias) with Three Black Crows and Bearish Marubozu \u2014 classic don't-catch-a-falling-knife setup. KAITO and LDO are already extended (RSI 79 and 59 respectively) with poor risk/reward ratios (0.46x and 0.38x). TRUMP at RSI 22 is deeply oversold but the 1.0x R/R and persistent downtrend make it a coin flip. ETH is the most compelling watch \u2014 RSI 39 approaching oversold (our most reliable signal at 80% win rate), 5-day momentum turning positive, and Blockworks noting a derivatives reset. However, the chart bias is still -0.70 with price below all MAs, so we need confirmation via a bounce off $1,800 support before entering. High BTC dominance (56.4%) is a headwind for all alts.",
   "risk_factors": [
-    "Geopolitical weekend risk around oil markets could trigger a broad risk-off selloff affecting all crypto",
-    "BTC dominance at 56.5% and rising means altcoins may continue underperforming even if BTC holds steady",
-    "Fear & Greed at 28 trending flat \u2014 no sign of capitulation that would mark a reliable bottom for mean-reversion"
+    "BTC dominance at 56.4% continues to drain capital from altcoins \u2014 any alt position faces structural headwinds",
+    "Fear & Greed at 28 is low but not at extreme capitulation levels (sub-15) that historically mark reliable bottoms",
+    "Wall Street's $128B private credit exposure concern could trigger broader risk-off if it escalates"
   ],
   "watch_list": [
-    "ETH price action around $1,800 support \u2014 a bounce with volume spike would trigger a BUY",
-    "Fear & Greed index \u2014 a drop below 20 would signal potential capitulation and better entry opportunities",
-    "BTC weekend price action given geopolitical oil risks \u2014 a break below $63,000 would delay all alt entries"
+    "ETH price action at $1,800 support \u2014 a strong bounce with volume would trigger a BUY signal",
+    "BTC dominance trend \u2014 if it starts declining from 56.4%, altcoins get tailwind for recovery trades",
+    "Fear & Greed index \u2014 a move below 20 would signal capitulation and stronger mean-reversion opportunity"
   ],
-  "market_context": "Market is in Fear (28/100) with BTC dominance elevated at 56.5%, creating a hostile environment for altcoin swing trades. Weekend geopolitical risks around oil markets add uncertainty, suggesting patience over action.",
-  "context_banner": "Fear-driven market with high BTC dominance and weekend geopolitical risk \u2014 the best trade right now is no trade until clearer setups emerge.",
-  "btc_price": 64550,
+  "market_context": "Crypto markets are in a fear state (28/100) with BTC holding steady near $64,335 while altcoins bleed. High BTC dominance at 56.4% signals this is not yet an alt-friendly environment, and most oversold altcoins lack clear reversal signals.",
+  "context_banner": "Fear-driven market with high BTC dominance offers no clean alt entries yet \u2014 discipline over FOMO.",
+  "btc_price": 64335,
   "fear_greed": {
     "current": 28,
     "label": "Fear",
@@ -28,35 +28,35 @@
     "week_avg": 25.7,
     "trend": "flat"
   },
-  "btc_dominance": 56.5,
+  "btc_dominance": 56.4,
   "key_signals": [
     {
       "source": "RSI",
       "signal_type": "technical",
-      "description": "ETH RSI at 39 approaching oversold but not yet at the 35 threshold that historically triggers reliable bounces per our 80% win rate data on RSI signals."
+      "description": "ETH RSI at 39 is approaching oversold territory \u2014 our most reliable signal (80% win rate) \u2014 but needs to reach sub-35 or show clear bounce for entry confirmation."
     },
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Fear & Greed at 28 with flat trend \u2014 market is fearful but not yet in extreme fear/capitulation territory that creates the best contrarian entries."
-    },
-    {
-      "source": "CryptoSlate",
-      "signal_type": "news",
-      "description": "Bitcoin trading through a dangerous weekend with 20% of world's oil supply at risk \u2014 geopolitical catalyst for potential volatility in either direction."
+      "description": "Fear & Greed at 28 indicates fear but not extreme capitulation; historically this zone produces mixed results (62% win rate), suggesting patience over aggressive buying."
     },
     {
       "source": "Blockworks",
       "signal_type": "news",
-      "description": "ETH derivatives are resetting, suggesting leveraged positions have been flushed \u2014 could set up cleaner price action for a directional move."
+      "description": "Blockworks reporting 'ETH derivatives reset and the next retail trade' suggests positioning is clearing, potentially setting up for a cleaner move higher."
+    },
+    {
+      "source": "Chart Pattern Analysis",
+      "signal_type": "technical",
+      "description": "BONK's Three Black Crows and -2.0 chart bias confirm catching falling knives is dangerous; LDO's Three White Soldiers (+0.85 bias) are bullish but the 0.38x R/R makes entry unattractive."
     },
     {
       "source": "CoinTelegraph",
       "signal_type": "news",
-      "description": "FTX distributing $900M to creditors in fifth payment round \u2014 potential buy-side pressure as recovered funds flow back into crypto markets over coming weeks."
+      "description": "FTX distributing $900M to creditors in fifth payment round could inject liquidity back into crypto markets over coming weeks \u2014 a macro tailwind to monitor."
     }
   ],
   "_mode": "HUNTING",
-  "exit_target": 2050.0,
-  "stop_loss": 1720.0
+  "exit_target": 1980.0,
+  "stop_loss": 1740.0
 }
