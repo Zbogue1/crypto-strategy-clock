@@ -1,29 +1,5 @@
 [
   {
-    "ts": "2026-07-17T12:10:00.496676+00:00",
-    "coin": "ETH",
-    "price": 1835.37,
-    "signal": "HOLD",
-    "confidence": 38,
-    "score": -0.15,
-    "fg": 27,
-    "btc_price": 63226,
-    "btc_dominance": 56.2,
-    "candidates": [
-      "USDG",
-      "BONK",
-      "DEXE",
-      "MON",
-      "LIT",
-      "JTO",
-      "HYPE",
-      "ETH",
-      "LDO",
-      "GRASS"
-    ],
-    "alert": "Risk-off macro environment: AI stock selloff spreading into crypto. Avoid catching falling knives until a clear reversal signal forms."
-  },
-  {
     "ts": "2026-07-17T13:10:00.348277+00:00",
     "coin": "ETH",
     "price": 1814.48,
@@ -931,5 +907,28 @@
       "LDO"
     ],
     "alert": "Weekend geopolitical risk elevated: oil supply concerns and BTC dominance rising \u2014 avoid new alt positions until Monday clarity."
+  },
+  {
+    "ts": "2026-07-19T06:10:00.335459+00:00",
+    "coin": "ETH",
+    "price": 1867.46,
+    "signal": "HOLD",
+    "confidence": 32,
+    "score": -0.35,
+    "fg": 28,
+    "btc_price": 64654,
+    "btc_dominance": 56.5,
+    "candidates": [
+      "BONK",
+      "MON",
+      "AAVE",
+      "ONDO",
+      "DASH",
+      "DEXE",
+      "SUN",
+      "ETH",
+      "LDO"
+    ],
+    "alert": "No actionable setups meet risk/reward criteria this cycle. All candidates are either in active downtrends or already extended. Waiting for support confirmations."
   }
 ]
