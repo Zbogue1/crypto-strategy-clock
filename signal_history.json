@@ -1,29 +1,5 @@
 [
   {
-    "ts": "2026-07-17T23:10:00.294570+00:00",
-    "coin": "LDO",
-    "price": 0.372201,
-    "signal": "BUY",
-    "confidence": 58,
-    "score": 0.65,
-    "fg": 27,
-    "btc_price": 63866,
-    "btc_dominance": 56.4,
-    "candidates": [
-      "BONK",
-      "USDG",
-      "MON",
-      "VVV",
-      "KITE",
-      "DEXE",
-      "LIT",
-      "ETH",
-      "LDO",
-      "GRASS"
-    ],
-    "alert": null
-  },
-  {
     "ts": "2026-07-18T00:10:00.207887+00:00",
     "coin": "ETH",
     "price": 1839.35,
@@ -923,5 +899,28 @@
       "LDO"
     ],
     "alert": "All swing candidates show bearish chart structures or overextended rallies. No high-confidence setups available this cycle."
+  },
+  {
+    "ts": "2026-07-19T17:10:00.294877+00:00",
+    "coin": "ETH",
+    "price": 1865.43,
+    "signal": "HOLD",
+    "confidence": 38,
+    "score": -0.15,
+    "fg": 28,
+    "btc_price": 64533,
+    "btc_dominance": 56.5,
+    "candidates": [
+      "BONK",
+      "KAITO",
+      "KITE",
+      "MON",
+      "PEPE",
+      "SUN",
+      "INJ",
+      "ETH",
+      "LDO"
+    ],
+    "alert": "No high-conviction setups available. All candidates show bearish chart structures or are already extended. Waiting for ETH to test $1,800 support."
   }
 ]
