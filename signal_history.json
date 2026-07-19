@@ -1,29 +1,5 @@
 [
   {
-    "ts": "2026-07-17T21:10:00.383586+00:00",
-    "coin": "ETH",
-    "price": 1843.64,
-    "signal": "HOLD",
-    "confidence": 38,
-    "score": 0.15,
-    "fg": 27,
-    "btc_price": 64123,
-    "btc_dominance": 56.5,
-    "candidates": [
-      "BONK",
-      "MON",
-      "LIT",
-      "DEXE",
-      "KITE",
-      "HYPE",
-      "JTO",
-      "ETH",
-      "LDO",
-      "GRASS"
-    ],
-    "alert": "Geopolitical escalation (Iran strikes) adding pressure \u2014 risk-off environment may intensify. Monitor closely."
-  },
-  {
     "ts": "2026-07-17T22:10:00.303211+00:00",
     "coin": "ETH",
     "price": 1839.67,
@@ -925,5 +901,28 @@
       "LDO"
     ],
     "alert": "CryptoSlate warns of potential 18% BTC decline to $52,900 \u2014 monitor BTC closely before any new entries."
+  },
+  {
+    "ts": "2026-07-19T15:10:00.242883+00:00",
+    "coin": "ETH",
+    "price": 1872.85,
+    "signal": "HOLD",
+    "confidence": 35,
+    "score": -0.3,
+    "fg": 28,
+    "btc_price": 64513,
+    "btc_dominance": 56.5,
+    "candidates": [
+      "BONK",
+      "DEXE",
+      "MON",
+      "PEPE",
+      "KITE",
+      "SUN",
+      "PENGU",
+      "ETH",
+      "LDO"
+    ],
+    "alert": "All swing candidates show bearish chart structures. Waiting for RSI < 30 or confirmed reversal pattern before deploying capital."
   }
 ]
