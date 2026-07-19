@@ -1,29 +1,5 @@
 [
   {
-    "ts": "2026-07-17T10:10:00.428594+00:00",
-    "coin": "HYPE",
-    "price": 60.54,
-    "signal": "BUY",
-    "confidence": 62,
-    "score": 0.65,
-    "fg": 27,
-    "btc_price": 63041,
-    "btc_dominance": 56.1,
-    "candidates": [
-      "USDG",
-      "BONK",
-      "LIT",
-      "DEXE",
-      "JTO",
-      "MON",
-      "HYPE",
-      "ETH",
-      "LDO",
-      "GRASS"
-    ],
-    "alert": "Geopolitical risk elevated \u2014 U.S. strike on Iran and China trade uncertainty could trigger further downside. Size positions conservatively."
-  },
-  {
     "ts": "2026-07-17T11:10:00.420504+00:00",
     "coin": "HYPE",
     "price": 60.35,
@@ -933,5 +909,28 @@
       "LDO"
     ],
     "alert": "Weekend geopolitical risk: oil supply headlines and low liquidity could amplify volatility in either direction."
+  },
+  {
+    "ts": "2026-07-19T03:10:00.418832+00:00",
+    "coin": "ETH",
+    "price": 1867.38,
+    "signal": "HOLD",
+    "confidence": 38,
+    "score": -0.35,
+    "fg": 28,
+    "btc_price": 64701,
+    "btc_dominance": 56.5,
+    "candidates": [
+      "BONK",
+      "ONDO",
+      "AAVE",
+      "MON",
+      "VIRTUAL",
+      "JASMY",
+      "ENA",
+      "ETH",
+      "LDO"
+    ],
+    "alert": "All swing candidates show bearish or extended chart structures. No high-conviction entry exists this cycle. Wait for ETH $1,800 support test."
   }
 ]
