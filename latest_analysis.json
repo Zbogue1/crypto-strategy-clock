@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-07-19T02:10:00.222115+00:00",
-  "selected_coin": "TRUMP",
-  "selected_coin_name": "Official Trump",
-  "selected_coin_price": 1.67,
-  "confidence": 52,
-  "layman_headline": "Deeply oversold meme coin showing first signs of life in a fearful market.",
-  "layman_explanation": "TRUMP coin has been beaten down nearly 98% from its all-time high and its RSI reading of 22 puts it in deeply oversold territory \u2014 historically one of the most reliable bounce signals we track. The coin just posted a 6% daily gain, suggesting buyers are stepping in at these extreme lows. The overall crypto market is in 'Fear' mode, which means most people are too scared to buy, but that's often when the best short-term bounces happen.",
-  "layman_action": "This is a speculative bounce trade with a tight stop-loss. Only risk what you can afford to lose \u2014 position size small. If it hits $1.42, exit immediately. If it reaches $1.95, take profits.",
-  "expert_reasoning": "RSI at 22.3 is the strongest oversold reading among all candidates, and RSI-based entries have an 80% win rate in our signal credibility data with +5.5% average returns. The 6.2% daily bounce from extreme lows suggests a potential double-bottom formation near $1.50 support. The chart bias is bearish (-0.70) and price is below all major MAs, so this is purely a mean-reversion bounce trade, not a trend-following play. The tight stop at $1.42 (15% below entry) limits downside while the $1.95 target offers roughly 17% upside \u2014 acceptable risk/reward for a high-conviction oversold bounce. High BTC dominance at 56.6% is a headwind for alts, so we keep position sizing conservative.",
+  "timestamp": "2026-07-19T03:10:00.418832+00:00",
+  "selected_coin": "ETH",
+  "selected_coin_name": "Ethereum",
+  "selected_coin_price": 1867.38,
+  "confidence": 38,
+  "layman_headline": "Fear grips the crypto market \u2014 no clean entries yet, patience is the play.",
+  "layman_explanation": "The crypto market is in a fearful state with most altcoins stuck in downtrends. Bitcoin is holding relatively stable around $64,700 while altcoins are getting crushed \u2014 Bitcoin dominance is high at 56.5%, meaning money is flowing away from smaller coins. Every swing candidate on the watchlist either has terrible chart structure or has already run up too much to safely enter. The smartest move right now is to wait for a better setup rather than force a trade into weakness.",
+  "layman_action": "Stay in cash and watch for Ethereum to pull back toward $1,800 support. If it bounces there with increasing volume, that could be a safe entry. Don't chase anything that's already moved 10-20% in the last week.",
+  "expert_reasoning": "No candidate presents a compelling risk/reward right now. BONK is in freefall with a -2.0 chart bias \u2014 catching that knife is reckless. LDO has the best chart (+0.85 bias, Three White Soldiers) but RSI 59 and +18% in 7 days means it's extended with poor R/R (0.38x). ONDO similarly extended. ETH is the most interesting potential setup: RSI 39 approaching oversold (our highest-conviction signal type at 80% win rate), 5-day momentum turning positive at +17.2%, and clear support at $1,800. However, it's still below all major MAs with a -0.7 chart bias, so I want to see it hold $1,800 support before committing capital. The bearish engulfing on AAVE and high BTC dominance argue against aggressive alt entries right now.",
   "risk_factors": [
-    "Bearish chart structure with price below all MAs \u2014 this is a counter-trend trade that could fail if selling pressure resumes",
-    "High BTC dominance (56.6%) is actively draining capital from altcoins, especially speculative meme coins",
-    "Weekend trading with geopolitical risk (oil supply headlines) could trigger broader crypto sell-off"
+    "BTC weekend trading with geopolitical oil supply risk (20% of world's oil in balance per CryptoSlate) could trigger a sharp selloff dragging all alts lower",
+    "BTC dominance at 56.5% and rising means capital continues rotating away from altcoins \u2014 any alt position faces structural headwinds",
+    "Fear & Greed at 28 with a flat trend suggests sentiment hasn't bottomed yet \u2014 capitulation selling could still intensify"
   ],
   "watch_list": [
-    "TRUMP holding above $1.50 support \u2014 a break below invalidates the bounce thesis",
-    "BTC price action over the weekend \u2014 any drop below $63,000 would pressure all alts heavily",
-    "Fear & Greed index movement \u2014 a further drop toward 20 could signal capitulation selling across alts"
+    "ETH price action at $1,800 support \u2014 a bounce with volume confirms entry, a break below invalidates the setup",
+    "BTC reaction to $65,000 resistance and whether call spread positioning toward $72K triggers momentum buying",
+    "FTX $900M creditor distribution timeline \u2014 watch for fresh capital entering the market over coming days"
   ],
-  "market_context": "The crypto market is in a 'Fear' state (28/100) with BTC dominance at 56.6%, creating a hostile environment for altcoins. BTC itself is modestly green and there are massive call spreads targeting $72K by month-end, which could provide a supportive backdrop if momentum builds.",
-  "context_banner": "Deeply oversold RSI on TRUMP at 22.3 triggers our highest-confidence signal in a fearful market primed for mean-reversion bounces.",
-  "btc_price": 64826,
+  "market_context": "Crypto market sits in fear territory (28/100) with BTC dominance elevated at 56.5%, creating a hostile environment for altcoin swing trades. BTC is range-bound near $64,700 with options positioning bullish toward month-end, but weekend geopolitical risks add uncertainty.",
+  "context_banner": "Market fear and high BTC dominance create poor conditions for alt entries \u2014 discipline demands patience until support levels are tested and confirmed.",
+  "btc_price": 64701,
   "fear_greed": {
     "current": 28,
     "label": "Fear",
@@ -28,35 +28,35 @@
     "week_avg": 25.7,
     "trend": "flat"
   },
-  "btc_dominance": 56.6,
+  "btc_dominance": 56.5,
   "key_signals": [
     {
       "source": "RSI",
       "signal_type": "technical",
-      "description": "TRUMP RSI at 22.3 is deeply oversold \u2014 our most reliable signal with 80% win rate and +5.5% avg return historically."
+      "description": "ETH RSI at 39 is approaching oversold territory \u2014 historically our most reliable signal with 80% win rate, but not yet at the 30 threshold for maximum conviction."
     },
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Market Fear at 28/100 with flat trend \u2014 contrarian indicator suggesting oversold bounces are more likely than further capitulation."
+      "description": "Fear & Greed index at 28 (Fear) with flat trend suggests sentiment hasn't found a floor yet \u2014 premature to be aggressive with 62% historical reliability."
     },
     {
       "source": "CoinTelegraph",
       "signal_type": "news",
-      "description": "FTX distributing $900M to creditors in fifth payment round could inject fresh capital into crypto markets, supporting a risk-on bounce."
+      "description": "FTX distributing $900M to creditors in fifth payment round could inject fresh buying pressure into the market over coming weeks \u2014 a potential delayed catalyst."
     },
     {
       "source": "CryptoSlate",
-      "signal_type": "macro",
-      "description": "Dangerous weekend with 20% of world oil supply at risk \u2014 geopolitical uncertainty adds both risk and potential safe-haven crypto bid."
+      "signal_type": "news",
+      "description": "Weekend geopolitical risk with 20% of world's oil supply in balance creates a binary event risk that argues against opening new positions before Monday."
     },
     {
-      "source": "volume_breakout",
+      "source": "Chart Pattern Analysis",
       "signal_type": "technical",
-      "description": "TRUMP's 6.2% daily gain against a bearish trend suggests early accumulation at extreme lows, though confirmation needed."
+      "description": "Every candidate except LDO shows negative chart bias scores; LDO's bullish Three White Soldiers pattern is offset by extended price action (+18% in 7d) and poor 0.38x risk/reward ratio."
     }
   ],
   "_mode": "HUNTING",
-  "exit_target": 1.95,
-  "stop_loss": 1.42
+  "exit_target": 1950.0,
+  "stop_loss": 1740.0
 }
