@@ -1,29 +1,5 @@
 [
   {
-    "ts": "2026-07-17T08:10:00.392461+00:00",
-    "coin": "ETH",
-    "price": 1828.03,
-    "signal": "HOLD",
-    "confidence": 35,
-    "score": -0.15,
-    "fg": 27,
-    "btc_price": 62807,
-    "btc_dominance": 56.1,
-    "candidates": [
-      "USDG",
-      "BONK",
-      "MON",
-      "HYPE",
-      "VVV",
-      "JTO",
-      "LIT",
-      "ETH",
-      "LDO",
-      "GRASS"
-    ],
-    "alert": "U.S. strike on Iran and Trump China trade comments driving risk-off across crypto. Monitor for escalation or de-escalation before committing capital."
-  },
-  {
     "ts": "2026-07-17T09:10:00.712826+00:00",
     "coin": "ETH",
     "price": 1828.98,
@@ -935,5 +911,28 @@
       "LDO"
     ],
     "alert": "Weekend risk elevated: geopolitical tensions around oil supply could trigger sudden crypto volatility. Avoid overexposure."
+  },
+  {
+    "ts": "2026-07-19T01:10:00.223205+00:00",
+    "coin": "ETH",
+    "price": 1858.96,
+    "signal": "HOLD",
+    "confidence": 35,
+    "score": -0.15,
+    "fg": 28,
+    "btc_price": 64732,
+    "btc_dominance": 56.6,
+    "candidates": [
+      "BONK",
+      "ONDO",
+      "MON",
+      "AAVE",
+      "DEXE",
+      "TRUMP",
+      "VIRTUAL",
+      "ETH",
+      "LDO"
+    ],
+    "alert": "Weekend geopolitical risk elevated \u2014 CryptoSlate reports oil supply disruption concerns could trigger broad crypto sell-off. Stay defensive."
   }
 ]
