@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-17T14:10:00.314316+00:00",
-    "coin": "HYPE",
-    "price": 60.7,
-    "signal": "BUY",
-    "confidence": 58,
-    "score": 0.45,
-    "fg": 27,
-    "btc_price": 63274,
-    "btc_dominance": 56.2,
-    "candidates": [
-      "BONK",
-      "DEXE",
-      "JTO",
-      "MON",
-      "LIT",
-      "HYPE",
-      "TIA",
-      "ETH",
-      "LDO"
-    ],
-    "alert": "Global risk-off contagion from AI/chip sector selloff is actively pressuring crypto markets \u2014 manage position sizes conservatively."
-  },
-  {
     "ts": "2026-07-17T15:10:00.356299+00:00",
     "coin": "ETH",
     "price": 1816.42,
@@ -930,5 +907,28 @@
       "GRASS"
     ],
     "alert": "Weekend risk elevated: geopolitical oil tensions and FTX $900M creditor payout could create sharp volatility. Keep positions light."
+  },
+  {
+    "ts": "2026-07-19T08:10:00.397941+00:00",
+    "coin": "ETH",
+    "price": 1868.3,
+    "signal": "HOLD",
+    "confidence": 35,
+    "score": -0.15,
+    "fg": 28,
+    "btc_price": 64644,
+    "btc_dominance": 56.5,
+    "candidates": [
+      "BONK",
+      "MON",
+      "ONDO",
+      "KITE",
+      "AAVE",
+      "DEXE",
+      "SUN",
+      "ETH",
+      "LDO"
+    ],
+    "alert": "Weekend geopolitical risk: 20% of global oil supply uncertainty could trigger sudden market moves. Keep stop-losses tight on any open positions."
   }
 ]
