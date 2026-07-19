@@ -1,29 +1,5 @@
 [
   {
-    "ts": "2026-07-18T01:10:00.217422+00:00",
-    "coin": "VVV",
-    "price": 11.31,
-    "signal": "HOLD",
-    "confidence": 32,
-    "score": -0.15,
-    "fg": 25,
-    "btc_price": 63869,
-    "btc_dominance": 0.0,
-    "candidates": [
-      "BONK",
-      "MON",
-      "DEXE",
-      "KITE",
-      "VVV",
-      "AERO",
-      "INJ",
-      "ETH",
-      "LDO",
-      "GRASS"
-    ],
-    "alert": "Market fear is intensifying (25 and falling). Multiple altcoins showing capitulation-style selling. Wait for stabilization before deploying capital."
-  },
-  {
     "ts": "2026-07-18T02:10:00.185723+00:00",
     "coin": "ETH",
     "price": 1840.99,
@@ -921,5 +897,28 @@
       "LDO"
     ],
     "alert": "All swing candidates show bearish or extended chart structures \u2014 forced entries here have high failure probability."
+  },
+  {
+    "ts": "2026-07-19T19:10:00.343383+00:00",
+    "coin": "ETH",
+    "price": 1858.06,
+    "signal": "HOLD",
+    "confidence": 35,
+    "score": -0.15,
+    "fg": 28,
+    "btc_price": 64384,
+    "btc_dominance": 56.5,
+    "candidates": [
+      "B",
+      "BONK",
+      "MON",
+      "KITE",
+      "PEPE",
+      "SUN",
+      "INJ",
+      "ETH",
+      "LDO"
+    ],
+    "alert": "All swing candidates in bearish structure below moving averages \u2014 avoid new entries until reversal confirmation."
   }
 ]
