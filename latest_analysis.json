@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-07-19T21:10:00.214611+00:00",
+  "timestamp": "2026-07-19T22:10:00.386288+00:00",
   "selected_coin": "ETH",
   "selected_coin_name": "Ethereum",
-  "selected_coin_price": 1865.69,
+  "selected_coin_price": 1862.45,
   "confidence": 35,
-  "layman_headline": "The crypto market is fearful and most coins are in downtrends \u2014 patience is the play right now.",
-  "layman_explanation": "The overall crypto market is sitting in 'Fear' territory at 28/100, with Bitcoin dominance high at 56.5%, meaning money is flowing away from smaller coins into Bitcoin. Every single swing trade candidate has bearish chart structure \u2014 prices are below their key moving averages. While a few coins like TRUMP and BONK are deeply oversold, their charts show active selling pressure with no signs of reversal yet. Catching a falling knife here would be risky.",
-  "layman_action": "Stay on the sidelines and keep your cash ready. Wait for clearer reversal signals \u2014 a bounce off support with rising volume, or a shift in market fear toward neutral. Ethereum near $1,800 could become a compelling entry if it holds that support level.",
-  "expert_reasoning": "No candidate presents a high-conviction swing entry right now. All charts show bearish structure with prices below key moving averages. TRUMP has the most oversold RSI at 22 (which historically is a reliable signal per our credibility data), but its chart bias is -0.70 with tight R/R of 1.0x and the coin has lost 97.8% from ATH \u2014 this is a falling knife. LDO has the best chart bias (+0.85) with a Three White Soldiers pattern, but RSI at 59 after a 14% weekly run and a terrible R/R ratio of 0.38x means the easy money has been made. ETH is the best risk-adjusted opportunity IF it pulls back to $1,800 support \u2014 the 5-day momentum turning positive while price is still near oversold is the early sign of a potential bottom, but confirmation is needed. With Fear & Greed at 28 and BTC dominance at 56.5%, alts remain under pressure and rushing in here has negative expected value.",
+  "layman_headline": "The crypto market is fearful and most coins look weak \u2014 patience is the play right now.",
+  "layman_explanation": "The overall crypto market is sitting in 'Fear' territory with a score of 28 out of 100, and Bitcoin dominance at 56.5% means money is flowing away from smaller coins into Bitcoin. Almost every swing candidate has a bearish chart structure \u2014 prices are below their key moving averages and trending down. While a few coins like TRUMP and BONK are deeply oversold, their charts are ugly with no signs of a bottom forming yet. The safest approach right now is to wait for clearer reversal signals before committing capital.",
+  "layman_action": "Stay in cash and wait. Set price alerts for ETH at $1,800 (potential buy zone) and watch for the Fear & Greed index to dip below 20 for a contrarian entry. Don't chase anything in this environment.",
+  "expert_reasoning": "No candidate presents a compelling risk/reward setup right now. TRUMP has the deepest oversold RSI at 22 (historically strong for bounces per our credibility data), but its chart bias is -0.70 with a terrible 1:1 risk/reward ratio and no visible support structure. BONK at RSI 31 has a -2.0 chart bias with Three Black Crows \u2014 classic capitulation that could continue. LDO has the best chart (bias +0.85, Three White Soldiers), but RSI at 59 and a poor 0.38x risk/reward after a 52% 5-day run makes it a chase. ETH is the best-positioned for a future entry near $1,800 support, where risk/reward improves meaningfully. With BTC dominance at 56.5% and Fear at 28, alts remain under pressure. I'm holding cash and waiting for a cleaner setup.",
   "risk_factors": [
-    "BTC dominance at 56.5% continues to crush altcoin performance \u2014 any BTC weakness could drag everything lower",
-    "Fear & Greed at 28 with a flat trend shows no sign of sentiment recovery \u2014 could deteriorate further",
-    "All candidates are below their 20-day SMAs with bearish chart structure \u2014 no confirmed reversals yet"
+    "BTC dominance at 56.5% continues to squeeze altcoin valuations \u2014 could worsen before improving",
+    "Fear & Greed at 28 has been flat around 25-28 for a week \u2014 could break lower into extreme fear triggering more selling",
+    "No swing candidate has a bullish MACD cross or is above its SMA20/50 with confirmed reversal \u2014 catching falling knives is the primary risk"
   ],
   "watch_list": [
-    "ETH price action around $1,800 support \u2014 a bounce with volume confirmation would trigger a BUY",
-    "Fear & Greed index \u2014 a move above 35 would signal improving conditions for alt entries",
-    "TRUMP RSI at 22 \u2014 if it starts curling up with a bullish candle pattern, could be a quick oversold bounce play"
+    "ETH price action near $1,800 support \u2014 a hammer or morning star candle there with rising volume would be actionable",
+    "TRUMP RSI \u2014 if it drops to 15-18 range with a bullish divergence on MACD, that's a high-probability mean-reversion trade",
+    "Fear & Greed index \u2014 a spike below 15 (extreme fear) often marks local bottoms and would be the contrarian entry signal"
   ],
-  "market_context": "The crypto market is in a fearful state with BTC dominance elevated at 56.5%, creating a hostile environment for altcoin swing trades. BTC itself is flat near $64,500 while regulatory uncertainty around stablecoins (GENIUS Act deadlines missed) adds macro headwinds.",
-  "context_banner": "All swing candidates show bearish chart structure in a fear-driven market \u2014 disciplined traders wait for confirmed reversals rather than catching falling knives.",
-  "btc_price": 64471,
+  "market_context": "The crypto market is in a fear-driven regime with BTC dominance at 56.5%, signaling capital rotation away from altcoins. BTC itself is flat near $64,500, and without a clear directional catalyst, altcoins are bleeding \u2014 not an environment for aggressive swing entries.",
+  "context_banner": "Market fear and high BTC dominance create a hostile environment for alt swing trades \u2014 capital preservation mode until reversal signals emerge.",
+  "btc_price": 64459,
   "fear_greed": {
     "current": 28,
     "label": "Fear",
@@ -31,29 +31,29 @@
   "btc_dominance": 56.5,
   "key_signals": [
     {
-      "source": "Fear_Greed",
-      "signal_type": "sentiment",
-      "description": "Fear & Greed at 28 ('Fear') with flat trend suggests no imminent sentiment recovery \u2014 historically a mixed signal requiring confirmation from technicals."
-    },
-    {
       "source": "RSI",
       "signal_type": "technical",
-      "description": "TRUMP RSI at 22 is deeply oversold (our most reliable signal at 80% win rate), but chart bias of -0.70 and 1.0x R/R make it too risky without a reversal candle."
+      "description": "RSI signals (80% historical win rate) show TRUMP at 22 and BONK at 31 are oversold, but chart structures haven't confirmed reversals \u2014 waiting for alignment between RSI and price action."
+    },
+    {
+      "source": "Fear_Greed",
+      "signal_type": "sentiment",
+      "description": "Fear & Greed at 28 with a flat weekly trend around 25-28 suggests the market hasn't capitulated enough for a high-conviction contrarian entry."
     },
     {
       "source": "CoinTelegraph",
       "signal_type": "news",
-      "description": "US agencies missing GENIUS Act stablecoin deadline creates regulatory uncertainty that dampens risk appetite across crypto markets."
+      "description": "No strong bullish catalyst in current news \u2014 GENIUS Act regulatory delays and Tether's USDT countdown add uncertainty rather than momentum to crypto markets."
     },
     {
       "source": "Blockworks",
       "signal_type": "news",
-      "description": "ETH derivatives reset article suggests positioning is clearing out, which could set up a cleaner move once directional conviction returns."
+      "description": "ETH derivatives reset narrative suggests leveraged positions are getting flushed, which could set the stage for a cleaner entry on ETH once the reset completes."
     },
     {
       "source": "Chart Pattern Analysis",
       "signal_type": "technical",
-      "description": "LDO's Three White Soldiers is the only bullish chart pattern across all candidates, but poor R/R of 0.38x after a 51.7% 5-day run makes chasing it inadvisable."
+      "description": "LDO's Three White Soldiers is the only bullish chart pattern across all candidates, but its 0.38x risk/reward after a 52% 5-day run makes it a poor entry at current levels."
     }
   ],
   "_mode": "HUNTING",
