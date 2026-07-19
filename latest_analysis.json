@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-07-19T14:10:00.334560+00:00",
+  "timestamp": "2026-07-19T15:10:00.242883+00:00",
   "selected_coin": "ETH",
   "selected_coin_name": "Ethereum",
-  "selected_coin_price": 1871.18,
-  "confidence": 32,
-  "layman_headline": "Fear grips the crypto market \u2014 no clean setups worth risking money on right now.",
-  "layman_explanation": "The crypto market is in a fearful state with most altcoins in downtrends and Bitcoin dominating the money flow. Every candidate on the watchlist has bearish chart structures \u2014 prices are below their key moving averages and selling pressure is still strong. While a few coins like BONK are getting close to oversold territory, they're still falling hard with no signs of a bottom forming yet. The smartest move right now is to wait for clearer reversal signals before putting money to work.",
-  "layman_action": "Stay patient and keep cash ready. Wait for oversold coins to actually show a bounce with volume confirmation before entering. There's no rush \u2014 catching a falling knife in this environment is the biggest risk.",
-  "expert_reasoning": "Every swing candidate presents a conflicting picture: either deeply bearish charts (BONK at -2.0 bias with Three Black Crows), overbought after a surge (DEXE RSI 71, LDO already +17% in 7d with 0.38x risk/reward), or neutral with no catalyst (SUN, PENGU, KITE). ETH has the most compelling case with RSI at 39 (our highest-confidence signal historically at 80% win rate), but the bearish chart structure (-0.7 bias), price below all MAs, and BTC dominance at 56.4% crushing alt flows make this a poor risk/reward entry point. The CryptoSlate headline about a potential 18% BTC drop to $52,900 adds macro downside risk. I'd rather wait for ETH to test the $1,800 support level cleanly and show a bullish reversal candle before committing capital.",
+  "selected_coin_price": 1872.85,
+  "confidence": 35,
+  "layman_headline": "Fear dominates crypto \u2014 no clear setup warrants risking capital right now.",
+  "layman_explanation": "The crypto market is in a fearful state with most altcoins in downtrends. Bitcoin dominance is high at 56.5%, meaning money is flowing away from smaller coins and into Bitcoin. While a few coins look oversold and could bounce, the charts are almost universally bearish with no confirmed reversal signals yet. It's better to wait for a cleaner setup than to catch a falling knife.",
+  "layman_action": "Stay on the sidelines with cash ready. Watch for Ethereum to pull back to the $1,800 support level \u2014 if it holds there with increasing volume and RSI dips below 35, that could be the entry point worth acting on.",
+  "expert_reasoning": "Every swing candidate has significant headwinds. BONK has a -2.0 chart bias with Three Black Crows \u2014 a textbook falling knife. DEXE shows RSI at 71 (overbought) despite a -30% weekly drop, indicating a parabolic move that's now correcting violently. LDO has the best chart bias (+0.85) with Three White Soldiers, but the risk/reward ratio is only 0.38x to resistance at $0.40 \u2014 terrible for a swing entry. ETH at RSI 39 with $1,800 support nearby is the best risk/reward setup, but the chart bias is still -0.70 with price below all major MAs. High BTC dominance (56.5%) continues to suppress alt performance. The prudent move is to wait for either RSI to dip below 30 (our most reliable signal at 80% win rate) or a confirmed reversal pattern before committing capital.",
   "risk_factors": [
-    "CryptoSlate flags potential 18% BTC decline to $52,900 which would drag all alts significantly lower",
-    "BTC dominance at 56.4% means capital is flowing away from altcoins \u2014 unfavorable environment for alt swing trades",
-    "Fear & Greed at 28 with flat trend suggests no sentiment inflection point yet \u2014 could get worse before it gets better"
+    "BTC dominance at 56.5% continues to drain capital from altcoins \u2014 any alt entry faces structural headwind",
+    "Fear & Greed at 28 could drop further \u2014 fear environments often cascade before bottoming",
+    "Treasury market stress (per CryptoSlate) amplifying selloffs means macro risk remains elevated"
   ],
   "watch_list": [
-    "ETH behavior at $1,800 support \u2014 a strong bounce with volume here would be a high-quality entry signal",
-    "Fear & Greed index movement \u2014 a spike above 35 could signal the beginning of a sentiment reversal",
-    "BTC price action around $64,000 \u2014 if it breaks lower toward $60K, all alt setups are invalidated"
+    "ETH RSI \u2014 if it drops below 30 at the $1,800 support level, that's a high-confidence oversold bounce setup",
+    "BTC dominance trend \u2014 a reversal below 55% would signal capital rotation back into alts",
+    "LDO momentum \u2014 if it consolidates above $0.35 and builds a bull flag, it could offer a continuation entry"
   ],
-  "market_context": "The crypto market is in a fear-driven consolidation with BTC at $64,452 and dominance at 56.4%, squeezing altcoin valuations. Most altcoins are in structural downtrends below key moving averages, and no clear reversal signals have emerged yet.",
-  "context_banner": "Fear-driven market with universally bearish alt charts demands patience \u2014 capital preservation is the priority until reversal signals materialize.",
-  "btc_price": 64452,
+  "market_context": "The crypto market sits in a fear regime (28/100) with BTC dominance at 56.5%, creating a hostile environment for altcoin swing trades. BTC itself is relatively stable around $64.5K but alts are bleeding, and no confirmed reversal patterns have emerged yet.",
+  "context_banner": "Market fear and high BTC dominance make this a capital preservation moment \u2014 patience will be rewarded with a cleaner entry.",
+  "btc_price": 64513,
   "fear_greed": {
     "current": 28,
     "label": "Fear",
@@ -28,35 +28,35 @@
     "week_avg": 25.7,
     "trend": "flat"
   },
-  "btc_dominance": 56.4,
+  "btc_dominance": 56.5,
   "key_signals": [
     {
       "source": "RSI",
       "signal_type": "technical",
-      "description": "ETH RSI at 39 is approaching oversold but hasn't reached the 30 level that historically produces 80% win-rate bounce trades \u2014 premature to enter."
-    },
-    {
-      "source": "CryptoSlate",
-      "signal_type": "news",
-      "description": "Bitcoin sellers tiring but weak demand leaves 18% downside to $52,900 in play \u2014 significant macro risk for any long position."
+      "description": "RSI is our most reliable signal (80% win rate). ETH at 39 is approaching but not yet in the high-conviction oversold zone below 30 \u2014 waiting for confirmation."
     },
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Fear & Greed at 28 with flat weekly trend (25.7 avg) shows no sentiment recovery yet \u2014 waiting for inflection above 35."
-    },
-    {
-      "source": "Chart Pattern Analysis",
-      "signal_type": "technical",
-      "description": "All swing candidates show bearish chart structures (-0.7 to -2.0 bias scores) except LDO (+0.85) and DEXE (+0.4), both already extended with poor risk/reward ratios."
+      "description": "Fear & Greed at 28 ('Fear') with flat trend suggests we haven't hit capitulation yet \u2014 bottom-fishing is premature."
     },
     {
       "source": "Blockworks",
       "signal_type": "news",
-      "description": "ETH derivatives reset noted by Blockworks could set up a cleaner long entry once positioning clears, but the reset isn't complete yet."
+      "description": "ETH derivatives reset article suggests leverage washout is underway, which typically precedes bounces but requires price confirmation."
+    },
+    {
+      "source": "CryptoSlate",
+      "signal_type": "macro",
+      "description": "Treasury market stress amplifying crypto selloffs \u2014 macro headwind remains active and could push prices lower."
+    },
+    {
+      "source": "Chart Pattern Analysis",
+      "signal_type": "technical",
+      "description": "BONK shows Three Black Crows (-2.0 bias), LDO shows Three White Soldiers (+0.85) but with terrible 0.38x R:R \u2014 no candidate offers both bullish structure AND favorable entry."
     }
   ],
   "_mode": "HUNTING",
-  "exit_target": 1950.0,
+  "exit_target": 1980.0,
   "stop_loss": 1740.0
 }
