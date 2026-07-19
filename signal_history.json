@@ -1,29 +1,5 @@
 [
   {
-    "ts": "2026-07-17T18:10:00.303716+00:00",
-    "coin": "ETH",
-    "price": 1841.14,
-    "signal": "HOLD",
-    "confidence": 38,
-    "score": -0.2,
-    "fg": 27,
-    "btc_price": 63971,
-    "btc_dominance": 56.4,
-    "candidates": [
-      "USDG",
-      "DEXE",
-      "BONK",
-      "MON",
-      "LIT",
-      "JTO",
-      "HYPE",
-      "ETH",
-      "LDO",
-      "GRASS"
-    ],
-    "alert": "Geopolitical risk elevated: Iran strikes pressuring BTC below $62.5K per CoinTelegraph. Watch for potential broader selloff creating better entries."
-  },
-  {
     "ts": "2026-07-17T19:10:00.352336+00:00",
     "coin": "HYPE",
     "price": 60.13,
@@ -928,5 +904,28 @@
       "LDO"
     ],
     "alert": "Weekend geopolitical risk: CryptoSlate reports 20% of world oil supply in balance \u2014 could trigger sharp moves in either direction."
+  },
+  {
+    "ts": "2026-07-19T12:10:00.282538+00:00",
+    "coin": "ETH",
+    "price": 1864.61,
+    "signal": "HOLD",
+    "confidence": 35,
+    "score": -0.15,
+    "fg": 28,
+    "btc_price": 64335,
+    "btc_dominance": 56.4,
+    "candidates": [
+      "BONK",
+      "KAITO",
+      "MON",
+      "DEXE",
+      "KITE",
+      "PEPE",
+      "TRUMP",
+      "ETH",
+      "LDO"
+    ],
+    "alert": "All swing candidates either overbought or in confirmed downtrends \u2014 waiting for cleaner setup near ETH $1,800 support."
   }
 ]
