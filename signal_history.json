@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-18T11:10:00.436309+00:00",
-    "coin": "ETH",
-    "price": 1844.38,
-    "signal": "HOLD",
-    "confidence": 32,
-    "score": -0.35,
-    "fg": 25,
-    "btc_price": 63976,
-    "btc_dominance": 56.4,
-    "candidates": [
-      "BONK",
-      "VVV",
-      "USDG",
-      "AERO",
-      "KITE",
-      "TRUMP",
-      "AAVE",
-      "ETH",
-      "LDO"
-    ],
-    "alert": "Altcoins lost $8.8B in a week with BTC dominance rising \u2014 avoid catching falling knives until fear stabilizes."
-  },
-  {
     "ts": "2026-07-18T12:10:00.136222+00:00",
     "coin": "ETH",
     "price": 1846.38,
@@ -918,5 +895,28 @@
       "LDO"
     ],
     "alert": "All swing candidates show bearish or mixed chart structures. No high-conviction entry exists this cycle. Patience recommended."
+  },
+  {
+    "ts": "2026-07-20T06:10:00.445372+00:00",
+    "coin": "TRUMP",
+    "price": 1.57,
+    "signal": "BUY",
+    "confidence": 52,
+    "score": 0.35,
+    "fg": 29,
+    "btc_price": 64106,
+    "btc_dominance": 56.4,
+    "candidates": [
+      "BONK",
+      "PUMP",
+      "JTO",
+      "KITE",
+      "\u5e01\u5b89\u4eba\u751f",
+      "FIL",
+      "TRUMP",
+      "ETH",
+      "LDO"
+    ],
+    "alert": "Extreme oversold RSI detected on TRUMP \u2014 historically our most reliable buy signal, but chart structure remains bearish. Use tight stops."
   }
 ]
