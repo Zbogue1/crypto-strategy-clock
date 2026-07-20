@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-07-20T15:10:00.694626+00:00",
+  "timestamp": "2026-07-20T16:10:00.567620+00:00",
   "selected_coin": "ETH",
   "selected_coin_name": "Ethereum",
-  "selected_coin_price": 1876.03,
-  "confidence": 38,
-  "layman_headline": "Fear grips the market \u2014 patience is the best trade right now.",
-  "layman_explanation": "The crypto market is in a fearful state with Bitcoin dominance high at 56.5%, meaning money is flowing away from smaller coins and into Bitcoin. While several coins have pulled back sharply, none of them are showing the kind of clean reversal setup that gives us confidence to enter. Ethereum is the strongest large-cap candidate with RSI approaching oversold territory, but it hasn't yet reached a compelling support level for a low-risk entry. We're waiting for a better price or a clearer reversal signal before committing capital.",
-  "layman_action": "Stay on the sidelines for now. Set alerts for Ethereum near $1,800 \u2014 that's where support sits and where a buy could make sense. Don't chase anything that's already bounced.",
-  "expert_reasoning": "Scanning all candidates: BONK has strongly bearish chart structure (-2.0 bias) with Three Black Crows \u2014 catching that knife is reckless despite oversold RSI. BUILDon (B) is up 102% in 7 days with no chart data \u2014 pure FOMO, no edge. LDO has a bullish chart (+0.85) but terrible R/R (0.38x) with resistance at $0.40 just 7% away and RSI already at 59. PUMP is up 32% in a week in a downtrend \u2014 extended. The BinanceLife token has unclear fundamentals and mismatched price data. ETH stands out with RSI at 39 (our highest-confidence signal type at 80% win rate), but the chart bias is still -0.70 with price below all major MAs. The 5.5% weekly bounce means we may have already missed the best entry. The prudent move is to wait for ETH to pull back to $1,800 support or show a confirmed reversal pattern before entering. High BTC dominance (56.5%) is an active headwind for all altcoin positions.",
+  "selected_coin_price": 1893.9,
+  "confidence": 62,
+  "layman_headline": "Ethereum looks ready for a bounce as fear grips the market and big money eyes a BTC push to $72K.",
+  "layman_explanation": "The crypto market is in a fearful mood right now, which historically means prices are closer to a bottom than a top. Ethereum has been beaten down over 60% from its all-time high but showed a 6.7% bounce this past week, suggesting buyers are stepping in. A major trader just placed a $2.5 billion bet that Bitcoin will hit $72,000 by August \u2014 if that plays out, Ethereum typically rallies even harder. We're looking to catch a swing trade on ETH as it tries to reclaim the $1,900-$2,000 zone.",
+  "layman_action": "Consider a small position in Ethereum around $1,860, with a clear exit plan at $2,050 and a stop-loss at $1,780 to limit downside. This is a tactical trade, not a long-term hold \u2014 take profits if the target hits.",
+  "expert_reasoning": "ETH RSI at 39.4 is approaching oversold territory \u2014 a signal category with 80% historical win rate in our tracking. The 5-day momentum of +17.2% shows a strong impulse recovery from the downtrend, though price remains below all major MAs, creating a tension that typically resolves with a larger move. The $1,800 support is only 2.2% below, giving a tight risk zone, while a break above $1,900 resistance opens the path to $2,050. The Blockworks note on ETH derivatives resetting suggests overleveraged shorts have been flushed, creating cleaner conditions for a rally. BTC dominance at 56.7% is elevated but the CryptoSlate report of a $2.5B bet on $72K BTC by August would likely trigger capital rotation into ETH as the primary beta play.",
   "risk_factors": [
-    "BTC dominance at 56.5% actively suppresses altcoin performance \u2014 could continue rising",
-    "Fear & Greed at 29 is improving but hasn't bottomed convincingly \u2014 further downside possible",
-    "ETH chart structure remains bearish with price below all major moving averages"
+    "BTC rejection at $65K resistance could drag ETH back below $1,800 support, invalidating the setup",
+    "High BTC dominance (56.7%) means capital may continue flowing to BTC rather than alts like ETH",
+    "Chart structure remains bearish (below all MAs) \u2014 this is a counter-trend trade that requires discipline on stop-loss"
   ],
   "watch_list": [
-    "ETH price action at $1,800 support \u2014 a bounce with volume confirmation would be the entry trigger",
-    "BTC dominance trend \u2014 any reversal below 55% would significantly improve alt entry conditions",
-    "Fear & Greed index \u2014 a dip below 20 (extreme fear) followed by reversal often marks optimal swing entries"
+    "BTC price action at $65K-$66K resistance \u2014 a breakout above confirms the bullish thesis for the entire market",
+    "ETH ability to hold above $1,800 support on any pullback \u2014 a break below invalidates the trade",
+    "Fear & Greed Index trajectory \u2014 currently improving from 25.9 weekly average to 29; a move above 35 would confirm sentiment shift"
   ],
-  "market_context": "The market is in a fear phase (F&G 29) with BTC dominance elevated at 56.5%, creating a hostile environment for altcoin swing trades. BTC itself is showing mild strength (+3% weekly) but isn't dragging alts along \u2014 classic risk-off rotation within crypto.",
-  "context_banner": "Market fear is improving but hasn't capitulated \u2014 discipline means waiting for cleaner setups rather than forcing trades into headwinds.",
-  "btc_price": 64634,
+  "market_context": "The market is in a Fear phase (29/100) but improving, with BTC up 4.3% on the week and testing $65K resistance. Institutional activity is picking up with Strategy raising $263M and a massive $2.5B options bet targeting $72K BTC by August, suggesting smart money expects higher prices.",
+  "context_banner": "Fear-phase recovery with institutional conviction building \u2014 ETH offers the best risk/reward swing entry among oversold large-caps.",
+  "btc_price": 65396,
   "fear_greed": {
     "current": 29,
     "label": "Fear",
@@ -28,35 +28,35 @@
     "week_avg": 25.9,
     "trend": "improving"
   },
-  "btc_dominance": 56.5,
+  "btc_dominance": 56.7,
   "key_signals": [
     {
       "source": "RSI",
       "signal_type": "technical",
-      "description": "ETH RSI at 39 is approaching oversold territory \u2014 our highest-confidence signal type (80% win rate) \u2014 but hasn't yet triggered below 30 for a strong entry."
+      "description": "ETH RSI at 39.4 approaching oversold \u2014 our highest-confidence signal category (80% win rate) suggesting a bounce is likely."
     },
     {
-      "source": "Fear_Greed",
-      "signal_type": "sentiment",
-      "description": "Fear & Greed at 29 improving from 25.9 weekly average suggests sentiment is bottoming, but hasn't reached extreme fear levels that mark the best swing entries."
+      "source": "CryptoSlate",
+      "signal_type": "news",
+      "description": "A $2.5B options position targeting BTC $72K by August indicates major institutional conviction in a near-term rally that would lift ETH."
     },
     {
       "source": "Blockworks",
       "signal_type": "news",
-      "description": "ETH derivatives reset coverage suggests leveraged positions are being cleared, which typically precedes cleaner directional moves."
+      "description": "ETH derivatives reset noted \u2014 overleveraged positions flushed out, creating cleaner market structure for an upward move."
+    },
+    {
+      "source": "Fear_Greed",
+      "signal_type": "sentiment",
+      "description": "Fear index at 29 but improving from 25.9 weekly average \u2014 historically, buying during Fear with improving trend has produced positive returns."
     },
     {
       "source": "CoinTelegraph",
       "signal_type": "news",
-      "description": "Peter Brandt's bear market timing call and Strategy's continued Bitcoin accumulation reinforce BTC-centric sentiment, keeping alt headwinds in place."
-    },
-    {
-      "source": "volume_breakout",
-      "signal_type": "technical",
-      "description": "No volume breakout signals detected across candidates \u2014 no conviction moves to trade, reinforcing the HOLD decision."
+      "description": "BTC hitting $65K wall while Strategy continues accumulating 843,775 BTC \u2014 sustained institutional demand provides a floor for the broader market."
     }
   ],
   "_mode": "HUNTING",
-  "exit_target": 1980.0,
-  "stop_loss": 1740.0
+  "exit_target": 2050.0,
+  "stop_loss": 1780.0
 }
