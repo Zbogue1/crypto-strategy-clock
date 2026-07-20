@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-07-20T21:10:00.310381+00:00",
+  "timestamp": "2026-07-20T22:10:00.319122+00:00",
   "selected_coin": "ETH",
   "selected_coin_name": "Ethereum",
-  "selected_coin_price": 1903.75,
-  "confidence": 62,
-  "layman_headline": "Ethereum shows signs of bottoming out while fear grips the broader market \u2014 a classic contrarian setup.",
-  "layman_explanation": "The crypto market is fearful right now (Fear index at 29), which historically has been a good time to buy quality assets at a discount. Ethereum is up nearly 8% over the past week after being beaten down over 60% from its all-time high, suggesting early buyers are stepping in. Bitcoin is leading the recovery at $65K with strong dominance, and when BTC stabilizes, ETH typically follows with larger percentage moves. The risk-reward here favors a measured entry with a clear stop-loss below key support.",
-  "layman_action": "Consider a small position in Ethereum around the $1,870 level with a stop-loss at $1,780. If it reaches $2,080, take profits. This is a cautious bet on a recovery bounce in a fearful market.",
-  "expert_reasoning": "ETH's RSI at 39.42 is approaching oversold territory \u2014 our most reliable signal historically (80% win rate, +5.5% avg return). The 7-day +7.8% bounce from deeply depressed levels with 5-day momentum of +17.2% suggests a reversal is forming. While the chart bias is bearish (-0.70) with price below all major MAs, this is characteristic of the early stages of trend reversal. The $1,800 support is only 2.2% below with resistance at $1,900 being tested now \u2014 a break above would confirm. ETH's $41.6B TVL is stable, and the Blockworks note on ETH derivatives reset suggests leverage has been flushed, creating cleaner conditions for upside. High BTC dominance at 56.6% is a headwind for alts, but ETH's correlation to BTC is strongest among alts, making it the safest alt play in this environment.",
+  "selected_coin_price": 1898.83,
+  "confidence": 38,
+  "layman_headline": "The market is fearful and most altcoins look beaten up \u2014 but none have a clean enough setup to buy right now.",
+  "layman_explanation": "The crypto market is in a 'Fear' state with Bitcoin dominance high at 56.6%, meaning money is flowing to Bitcoin and away from smaller coins. Several altcoins have dropped sharply, but their charts are still showing strong downward momentum with bearish patterns. Ethereum is the most interesting candidate \u2014 it's down 61% from its all-time high with a low RSI, and has bounced 8% this week \u2014 but it hasn't confirmed a reversal yet and is still below all its moving averages. Jumping in now would be catching a falling knife.",
+  "layman_action": "Wait. Don't buy anything yet. Set an alert for Ethereum around $1,810 (near support) and watch for a confirmed bounce with increasing volume before entering. Patience in fearful markets pays off.",
+  "expert_reasoning": "Every swing candidate has a bearish chart bias score. BONK is at -2.0 (strongly bearish with Three Black Crows), NIGHT dropped 37% in a week without any support confirmation, and MON/KITE are in persistent downtrends below all MAs. LDO has the only bullish chart (+0.85) with Three White Soldiers, but its RSI at 59 and +51.7% 5-day momentum signal it's already extended \u2014 the risk/reward is just 0.38x to resistance at $0.40. ETH at RSI 39 with $1,800 support nearby is the cleanest potential setup, but it's still below all moving averages and the chart bias is -0.70. The RSI signal source has an 80% win rate historically, but I need it to combine with a bullish chart confirmation (MACD cross or break above SMA20) before deploying capital. BTC dominance at 56.6% is another headwind for alt positions.",
   "risk_factors": [
-    "BTC dominance at 56.6% continues to compress alt performance \u2014 if BTC stalls at $65K resistance, ETH could retrace",
-    "Price remains below all major moving averages \u2014 this is a counter-trend trade that could fail if broader downtrend resumes",
-    "Macro institutional tech sell-off (per CoinTelegraph) could spill over into crypto risk assets if equity weakness deepens"
+    "BTC dominance continues rising, draining liquidity from all altcoins further",
+    "ETH support at $1,800 fails, triggering another leg down toward $1,600",
+    "Macro uncertainty (no macro data available) could surprise to the downside"
   ],
   "watch_list": [
-    "BTC price action at $65K resistance \u2014 a breakout above would turbocharge ETH's move, rejection could drag it down",
-    "Fear & Greed Index trajectory \u2014 currently improving from 25.9 weekly avg to 29; continued improvement supports the trade",
-    "ETH reclaiming the $1,900-$1,950 zone and holding it as support would confirm the reversal thesis"
+    "ETH price action at $1,800 support \u2014 does it hold and form a higher low?",
+    "BTC breaking above $67,000 toward $70K \u2014 would signal broader risk-on shift",
+    "LDO for a pullback entry near $0.35 if its bullish momentum pauses \u2014 best chart structure of all candidates"
   ],
-  "market_context": "The crypto market is in a 'Fear' state (29/100) but improving from last week's 25.9 average. BTC is testing $65K with strong 5% weekly gains, and the broader market is showing early signs of recovery despite high BTC dominance suppressing altcoin performance.",
-  "context_banner": "Ethereum's RSI approaches oversold territory amid improving market fear \u2014 a historically reliable contrarian entry signal with defined downside risk.",
-  "btc_price": 65273,
+  "market_context": "The market is in Fear (29/100) but improving from last week's 25.9 average. BTC is up 5% on the week and holding $65K, but high dominance at 56.6% means altcoins are underperforming \u2014 not ideal for alt swing trades.",
+  "context_banner": "Fear is improving but altcoin charts remain bearish across the board \u2014 discipline demands waiting for a confirmed reversal setup before deploying capital.",
+  "btc_price": 65149,
   "fear_greed": {
     "current": 29,
     "label": "Fear",
@@ -33,30 +33,30 @@
     {
       "source": "RSI",
       "signal_type": "technical",
-      "description": "ETH RSI at 39.42 approaching oversold \u2014 our most reliable signal with 80% win rate and +5.5% average return across past trades."
+      "description": "ETH RSI at 39 is approaching oversold territory \u2014 our most reliable signal (80% win rate) \u2014 but needs chart confirmation before acting on it."
     },
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Market fear at 29 improving from 25.9 weekly average \u2014 contrarian buying during fear has 62% historical success rate."
-    },
-    {
-      "source": "Blockworks",
-      "signal_type": "news",
-      "description": "Article on 'ETH derivatives reset and the next retail trade' suggests leveraged positions have been flushed, creating cleaner upside conditions."
+      "description": "Fear index at 29 improving from 25.9 weekly average suggests sentiment may be bottoming, but hasn't flipped to greed yet."
     },
     {
       "source": "CoinTelegraph",
       "signal_type": "news",
-      "description": "Bitcoin hitting $65K wall while institutions sell tech stocks \u2014 suggests crypto-specific strength but potential macro headwind."
+      "description": "Bitcoin eyeing $70K rally and defying tech sell-off is a positive macro catalyst that could eventually lift alts \u2014 our second most reliable signal source (67% win rate)."
     },
     {
-      "source": "volume_breakout",
+      "source": "Blockworks",
+      "signal_type": "news",
+      "description": "ETH derivatives reset signals potential fresh positioning opportunity once spot price confirms a reversal."
+    },
+    {
+      "source": "Chart Pattern Analysis",
       "signal_type": "technical",
-      "description": "ETH 24h volume at $10.8B is robust, and the +7.8% weekly recovery with strong 5-day momentum (+17.2%) indicates real buying pressure, not just a dead cat bounce."
+      "description": "All candidates except LDO have bearish chart bias scores (-0.35 to -2.0). LDO is bullish (+0.85) but already extended with poor risk/reward (0.38x)."
     }
   ],
   "_mode": "HUNTING",
-  "exit_target": 2080.0,
-  "stop_loss": 1780.0
+  "exit_target": 2050.0,
+  "stop_loss": 1740.0
 }
