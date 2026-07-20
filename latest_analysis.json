@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-07-20T14:10:00.449044+00:00",
+  "timestamp": "2026-07-20T15:10:00.694626+00:00",
   "selected_coin": "ETH",
   "selected_coin_name": "Ethereum",
-  "selected_coin_price": 1862.29,
-  "confidence": 35,
-  "layman_headline": "Crypto market is fearful and alts are bleeding \u2014 patience is the best trade right now.",
-  "layman_explanation": "The overall crypto market is in a state of fear, with most altcoins down significantly. Bitcoin dominance is high at 56.5%, meaning money is flowing out of smaller coins and into Bitcoin. While a few candidates show oversold readings that could trigger bounces, none have a clean enough setup with confirming signals to justify risking capital. The best approach right now is to wait for a clearer entry rather than chase into falling knives.",
-  "layman_action": "Stay on the sidelines with cash ready. Watch for Ethereum to pull back closer to $1,800 support \u2014 if it holds there with increasing buying volume, that could be a solid entry point. Don't rush in during fearful markets without a clear technical trigger.",
-  "expert_reasoning": "Reviewing all 9 candidates, none present a high-conviction swing setup. BONK has the most oversold RSI (30.75) but chart bias is -2.0 with Three Black Crows \u2014 classic falling knife. LDO has the best chart bias (+0.85) with Three White Soldiers, but RSI at 58.5 and a 51.7% 5-day move means it's already extended with terrible risk/reward (0.38x). \u5e01\u5b89\u4eba\u751f shows a bull flag but low liquidity and the -7% 24h drop is concerning. ETH is the best risk-adjusted option with RSI at 39 (our most reliable signal source at 80% win rate) and $41B in TVL, but price is below all major MAs and chart bias is -0.70. With BTC dominance at 56.5% crushing alts and the fear/greed at 29, the macro environment doesn't support aggressive alt entries. Better to wait for ETH to test $1,800 support and show a reversal candle.",
+  "selected_coin_price": 1876.03,
+  "confidence": 38,
+  "layman_headline": "Fear grips the market \u2014 patience is the best trade right now.",
+  "layman_explanation": "The crypto market is in a fearful state with Bitcoin dominance high at 56.5%, meaning money is flowing away from smaller coins and into Bitcoin. While several coins have pulled back sharply, none of them are showing the kind of clean reversal setup that gives us confidence to enter. Ethereum is the strongest large-cap candidate with RSI approaching oversold territory, but it hasn't yet reached a compelling support level for a low-risk entry. We're waiting for a better price or a clearer reversal signal before committing capital.",
+  "layman_action": "Stay on the sidelines for now. Set alerts for Ethereum near $1,800 \u2014 that's where support sits and where a buy could make sense. Don't chase anything that's already bounced.",
+  "expert_reasoning": "Scanning all candidates: BONK has strongly bearish chart structure (-2.0 bias) with Three Black Crows \u2014 catching that knife is reckless despite oversold RSI. BUILDon (B) is up 102% in 7 days with no chart data \u2014 pure FOMO, no edge. LDO has a bullish chart (+0.85) but terrible R/R (0.38x) with resistance at $0.40 just 7% away and RSI already at 59. PUMP is up 32% in a week in a downtrend \u2014 extended. The BinanceLife token has unclear fundamentals and mismatched price data. ETH stands out with RSI at 39 (our highest-confidence signal type at 80% win rate), but the chart bias is still -0.70 with price below all major MAs. The 5.5% weekly bounce means we may have already missed the best entry. The prudent move is to wait for ETH to pull back to $1,800 support or show a confirmed reversal pattern before entering. High BTC dominance (56.5%) is an active headwind for all altcoin positions.",
   "risk_factors": [
-    "Bitcoin 'volmageddon' warning could trigger a sharp BTC selloff dragging all alts lower",
-    "BTC dominance at 56.5% and rising means capital continues rotating away from altcoins",
-    "Fear & Greed at 29 is improving but hasn't reached extreme fear (below 20) where the best contrarian entries historically occur"
+    "BTC dominance at 56.5% actively suppresses altcoin performance \u2014 could continue rising",
+    "Fear & Greed at 29 is improving but hasn't bottomed convincingly \u2014 further downside possible",
+    "ETH chart structure remains bearish with price below all major moving averages"
   ],
   "watch_list": [
-    "ETH price action at $1,800 support \u2014 does it hold or break? A bounce with volume = entry signal",
-    "Fear & Greed index trajectory \u2014 crossing above 35 would signal improving risk appetite for alts",
-    "BTC dominance \u2014 any reversal below 55% would be a strong signal to rotate into alts"
+    "ETH price action at $1,800 support \u2014 a bounce with volume confirmation would be the entry trigger",
+    "BTC dominance trend \u2014 any reversal below 55% would significantly improve alt entry conditions",
+    "Fear & Greed index \u2014 a dip below 20 (extreme fear) followed by reversal often marks optimal swing entries"
   ],
-  "market_context": "The crypto market is in a fear state (29/100) with BTC dominance elevated at 56.5%, creating a hostile environment for altcoin swing trades. BTC itself is consolidating around $64,300 with modest weekly gains, but a potential 'volmageddon' scenario adds uncertainty.",
-  "context_banner": "Market fear and high BTC dominance make this a patience-rewarding environment \u2014 capital preservation beats chasing setups.",
-  "btc_price": 64363,
+  "market_context": "The market is in a fear phase (F&G 29) with BTC dominance elevated at 56.5%, creating a hostile environment for altcoin swing trades. BTC itself is showing mild strength (+3% weekly) but isn't dragging alts along \u2014 classic risk-off rotation within crypto.",
+  "context_banner": "Market fear is improving but hasn't capitulated \u2014 discipline means waiting for cleaner setups rather than forcing trades into headwinds.",
+  "btc_price": 64634,
   "fear_greed": {
     "current": 29,
     "label": "Fear",
@@ -33,30 +33,30 @@
     {
       "source": "RSI",
       "signal_type": "technical",
-      "description": "ETH RSI at 39 and BONK at 31 show oversold conditions developing, but neither has confirmed a reversal yet \u2014 RSI is our highest-confidence signal (80% win rate) so we're watching closely for sub-30 entries."
+      "description": "ETH RSI at 39 is approaching oversold territory \u2014 our highest-confidence signal type (80% win rate) \u2014 but hasn't yet triggered below 30 for a strong entry."
     },
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Fear & Greed at 29 ('Fear') is improving from last week's 25.9 average, but hasn't reached the extreme fear levels (sub-20) that historically produce the best contrarian entries."
-    },
-    {
-      "source": "CoinDesk",
-      "signal_type": "news",
-      "description": "Bitcoin 'volmageddon' warning article suggests a major volatility event may be brewing, counseling caution before taking new positions."
+      "description": "Fear & Greed at 29 improving from 25.9 weekly average suggests sentiment is bottoming, but hasn't reached extreme fear levels that mark the best swing entries."
     },
     {
       "source": "Blockworks",
       "signal_type": "news",
-      "description": "ETH derivatives reset article suggests positioning is being cleared, which often precedes a directional move \u2014 but direction is uncertain."
+      "description": "ETH derivatives reset coverage suggests leveraged positions are being cleared, which typically precedes cleaner directional moves."
     },
     {
       "source": "CoinTelegraph",
       "signal_type": "news",
-      "description": "Strategy continues aggressive BTC accumulation (843,775 BTC) reinforcing institutional demand narrative, but Zilliqa cold wallet theft highlights ongoing security risks in the space."
+      "description": "Peter Brandt's bear market timing call and Strategy's continued Bitcoin accumulation reinforce BTC-centric sentiment, keeping alt headwinds in place."
+    },
+    {
+      "source": "volume_breakout",
+      "signal_type": "technical",
+      "description": "No volume breakout signals detected across candidates \u2014 no conviction moves to trade, reinforcing the HOLD decision."
     }
   ],
   "_mode": "HUNTING",
-  "exit_target": 1950.0,
+  "exit_target": 1980.0,
   "stop_loss": 1740.0
 }
