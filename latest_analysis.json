@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-07-20T22:10:00.319122+00:00",
+  "timestamp": "2026-07-20T23:10:00.241775+00:00",
   "selected_coin": "ETH",
   "selected_coin_name": "Ethereum",
-  "selected_coin_price": 1898.83,
-  "confidence": 38,
-  "layman_headline": "The market is fearful and most altcoins look beaten up \u2014 but none have a clean enough setup to buy right now.",
-  "layman_explanation": "The crypto market is in a 'Fear' state with Bitcoin dominance high at 56.6%, meaning money is flowing to Bitcoin and away from smaller coins. Several altcoins have dropped sharply, but their charts are still showing strong downward momentum with bearish patterns. Ethereum is the most interesting candidate \u2014 it's down 61% from its all-time high with a low RSI, and has bounced 8% this week \u2014 but it hasn't confirmed a reversal yet and is still below all its moving averages. Jumping in now would be catching a falling knife.",
-  "layman_action": "Wait. Don't buy anything yet. Set an alert for Ethereum around $1,810 (near support) and watch for a confirmed bounce with increasing volume before entering. Patience in fearful markets pays off.",
-  "expert_reasoning": "Every swing candidate has a bearish chart bias score. BONK is at -2.0 (strongly bearish with Three Black Crows), NIGHT dropped 37% in a week without any support confirmation, and MON/KITE are in persistent downtrends below all MAs. LDO has the only bullish chart (+0.85) with Three White Soldiers, but its RSI at 59 and +51.7% 5-day momentum signal it's already extended \u2014 the risk/reward is just 0.38x to resistance at $0.40. ETH at RSI 39 with $1,800 support nearby is the cleanest potential setup, but it's still below all moving averages and the chart bias is -0.70. The RSI signal source has an 80% win rate historically, but I need it to combine with a bullish chart confirmation (MACD cross or break above SMA20) before deploying capital. BTC dominance at 56.6% is another headwind for alt positions.",
+  "selected_coin_price": 1897.88,
+  "confidence": 35,
+  "layman_headline": "The market is fearful and all swing candidates look weak \u2014 patience is the play right now.",
+  "layman_explanation": "Bitcoin has bounced modestly this week but the broader altcoin market remains in a downtrend. Every coin on our watchlist is either in a confirmed bearish chart pattern or has already run up too much to chase safely. The Fear & Greed index sits at 29 ('Fear'), which often precedes good buying opportunities \u2014 but we're not there yet. The best approach is to wait for a clearer reversal signal before committing capital.",
+  "layman_action": "Stay in cash and wait. The market hasn't given a high-confidence entry yet. Watch Ethereum closely near $1,800 support \u2014 if it holds and RSI dips below 35, that could be the setup worth taking.",
+  "expert_reasoning": "All nine swing candidates present unfavorable risk/reward for immediate entry. BONK has a strongly bearish chart bias (-2.0) with Three Black Crows and Bearish Marubozu \u2014 a classic falling knife. NIGHT is down 37% in 7 days with no volume data and no support levels identified. LDO has the best chart bias (+0.85) with Three White Soldiers, but RSI at 59 after a 23% weekly and 52% 5-day run makes chasing extremely risky with a poor 0.38x risk/reward ratio. ETH is the most compelling on a pullback \u2014 RSI at 39 (reliable signal per our credibility data at 80% win rate), $41B TVL providing fundamental floor, and the ETH derivatives reset narrative from Blockworks. However, price is below all MAs with a -0.70 chart bias, and BTC dominance at 56.6% continues to suppress alts. The prudent move is to wait for ETH to test $1,800 support and show a reversal candle before entering.",
   "risk_factors": [
-    "BTC dominance continues rising, draining liquidity from all altcoins further",
-    "ETH support at $1,800 fails, triggering another leg down toward $1,600",
-    "Macro uncertainty (no macro data available) could surprise to the downside"
+    "BTC dominance at 56.6% continues rising, draining capital from altcoins \u2014 any position here fights the macro trend",
+    "All candidates are below key moving averages indicating persistent bearish structure across the alt market",
+    "Fear & Greed at 29 is improving but hasn't reached extreme fear levels (sub-20) that historically mark reliable bottoms"
   ],
   "watch_list": [
-    "ETH price action at $1,800 support \u2014 does it hold and form a higher low?",
-    "BTC breaking above $67,000 toward $70K \u2014 would signal broader risk-on shift",
-    "LDO for a pullback entry near $0.35 if its bullish momentum pauses \u2014 best chart structure of all candidates"
+    "ETH price action at $1,800 support \u2014 a bounce with volume confirmation here would trigger a BUY",
+    "BTC ability to break and hold above $66,000 \u2014 would signal broader risk-on shift benefiting alts",
+    "LDO for a pullback toward $0.32-0.34 \u2014 the bullish chart structure could offer a better entry on a retest"
   ],
-  "market_context": "The market is in Fear (29/100) but improving from last week's 25.9 average. BTC is up 5% on the week and holding $65K, but high dominance at 56.6% means altcoins are underperforming \u2014 not ideal for alt swing trades.",
-  "context_banner": "Fear is improving but altcoin charts remain bearish across the board \u2014 discipline demands waiting for a confirmed reversal setup before deploying capital.",
-  "btc_price": 65149,
+  "market_context": "The crypto market is in a 'Fear' state with BTC recovering modestly (+5.3% weekly) while maintaining 56.6% dominance. Altcoins remain under pressure with most candidates in confirmed downtrends, suggesting this is a patience phase rather than an action phase.",
+  "context_banner": "Fearful market with all alt candidates in bearish chart structures \u2014 disciplined patience now sets up higher-conviction entries ahead.",
+  "btc_price": 65158,
   "fear_greed": {
     "current": 29,
     "label": "Fear",
@@ -33,27 +33,27 @@
     {
       "source": "RSI",
       "signal_type": "technical",
-      "description": "ETH RSI at 39 is approaching oversold territory \u2014 our most reliable signal (80% win rate) \u2014 but needs chart confirmation before acting on it."
+      "description": "ETH RSI at 39 is approaching oversold territory \u2014 our most reliable signal at 80% win rate \u2014 but needs price to reach support before acting on it."
     },
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Fear index at 29 improving from 25.9 weekly average suggests sentiment may be bottoming, but hasn't flipped to greed yet."
+      "description": "Fear & Greed at 29 improving from weekly average of 25.9 suggests the worst panic may be fading, but hasn't reached extreme fear levels that mark strong bottoms."
     },
     {
       "source": "CoinTelegraph",
       "signal_type": "news",
-      "description": "Bitcoin eyeing $70K rally and defying tech sell-off is a positive macro catalyst that could eventually lift alts \u2014 our second most reliable signal source (67% win rate)."
+      "description": "Bitcoin defying tech stock selloff and eyeing $70K suggests the macro leader is strengthening, which could eventually lift alts \u2014 but hasn't yet."
     },
     {
       "source": "Blockworks",
       "signal_type": "news",
-      "description": "ETH derivatives reset signals potential fresh positioning opportunity once spot price confirms a reversal."
+      "description": "ETH derivatives reset article suggests positioning has been cleaned out, creating conditions for a fresh directional move in Ethereum."
     },
     {
       "source": "Chart Pattern Analysis",
       "signal_type": "technical",
-      "description": "All candidates except LDO have bearish chart bias scores (-0.35 to -2.0). LDO is bullish (+0.85) but already extended with poor risk/reward (0.38x)."
+      "description": "Every candidate except LDO carries a bearish chart bias (-0.35 to -2.0), and LDO's 0.38x risk/reward after a 52% 5-day surge makes chasing it too dangerous."
     }
   ],
   "_mode": "HUNTING",
