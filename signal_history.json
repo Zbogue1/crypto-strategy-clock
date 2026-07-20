@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-18T16:10:00.287896+00:00",
-    "coin": "ETH",
-    "price": 1841.62,
-    "signal": "HOLD",
-    "confidence": 35,
-    "score": -0.3,
-    "fg": 25,
-    "btc_price": 64060,
-    "btc_dominance": 56.5,
-    "candidates": [
-      "BONK",
-      "AERO",
-      "KITE",
-      "ONDO",
-      "AAVE",
-      "VVV",
-      "USDG",
-      "ETH",
-      "LDO"
-    ],
-    "alert": "Market in Extreme Fear (25/100) and deteriorating \u2014 avoid catching falling knives without confirmed reversal signals."
-  },
-  {
     "ts": "2026-07-18T18:10:00.350114+00:00",
     "coin": "ETH",
     "price": 1849.79,
@@ -918,5 +895,28 @@
       "LDO"
     ],
     "alert": "Multiple altcoins showing sharp 7-day declines (BONK -24%, KITE -21%, WLD -13%) but no confirmed reversal patterns yet \u2014 watch for capitulation wicks as potential entry signals."
+  },
+  {
+    "ts": "2026-07-20T11:10:00.462340+00:00",
+    "coin": "ETH",
+    "price": 1873.47,
+    "signal": "HOLD",
+    "confidence": 35,
+    "score": -0.15,
+    "fg": 29,
+    "btc_price": 64349,
+    "btc_dominance": 56.4,
+    "candidates": [
+      "BONK",
+      "PUMP",
+      "JTO",
+      "KITE",
+      "WLD",
+      "\u5e01\u5b89\u4eba\u751f",
+      "MON",
+      "ETH",
+      "LDO"
+    ],
+    "alert": "Stablecoin liquidity drain of $2.3B flagged by CryptoSlate \u2014 monitor for potential cascading sell pressure across the market."
   }
 ]
