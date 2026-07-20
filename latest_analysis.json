@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-07-20T13:10:00.807395+00:00",
+  "timestamp": "2026-07-20T14:10:00.449044+00:00",
   "selected_coin": "ETH",
   "selected_coin_name": "Ethereum",
-  "selected_coin_price": 1872.3,
+  "selected_coin_price": 1862.29,
   "confidence": 35,
-  "layman_headline": "Fear grips the crypto market \u2014 patience beats chasing weak setups right now.",
-  "layman_explanation": "The crypto market is in a 'Fear' state with Bitcoin dominance at 56.5%, meaning money is flowing away from smaller coins and toward Bitcoin. While several coins have dropped significantly, none of them are showing the clean reversal signals we need to justify risking capital. Most charts still look bearish with prices below their key moving averages. The best move right now is to wait for a clearer setup rather than catch a falling knife.",
-  "layman_action": "Stay in cash for now. Set price alerts on Ethereum at $1,800 and watch for a confirmed bounce off that support level before considering an entry. Don't rush \u2014 fearful markets can stay fearful longer than expected.",
-  "expert_reasoning": "I evaluated all 9 swing candidates and none present a compelling entry right now. BONK has a -2.0 chart bias with Three Black Crows \u2014 a classic sell signal, not a buy. PUMP surged 31.5% in 7 days and is likely extended. BinanceLife has a bull flag pattern (+0.80 bias) but poor risk/reward at 0.97x and RSI already at 58. LDO shows Three White Soldiers (+0.85 bias) but RSI is elevated at 59 and risk/reward is terrible at 0.38x with resistance only 7.4% away. ETH is the strongest fundamental candidate with RSI at 39 (approaching oversold, our most reliable signal at 80% win rate), but the chart bias is -0.70 with price below all MAs. High BTC dominance at 56.5% is a headwind for all alts. I'm waiting for ETH to test $1,800 support and show a confirmed bounce before committing capital.",
+  "layman_headline": "Crypto market is fearful and alts are bleeding \u2014 patience is the best trade right now.",
+  "layman_explanation": "The overall crypto market is in a state of fear, with most altcoins down significantly. Bitcoin dominance is high at 56.5%, meaning money is flowing out of smaller coins and into Bitcoin. While a few candidates show oversold readings that could trigger bounces, none have a clean enough setup with confirming signals to justify risking capital. The best approach right now is to wait for a clearer entry rather than chase into falling knives.",
+  "layman_action": "Stay on the sidelines with cash ready. Watch for Ethereum to pull back closer to $1,800 support \u2014 if it holds there with increasing buying volume, that could be a solid entry point. Don't rush in during fearful markets without a clear technical trigger.",
+  "expert_reasoning": "Reviewing all 9 candidates, none present a high-conviction swing setup. BONK has the most oversold RSI (30.75) but chart bias is -2.0 with Three Black Crows \u2014 classic falling knife. LDO has the best chart bias (+0.85) with Three White Soldiers, but RSI at 58.5 and a 51.7% 5-day move means it's already extended with terrible risk/reward (0.38x). \u5e01\u5b89\u4eba\u751f shows a bull flag but low liquidity and the -7% 24h drop is concerning. ETH is the best risk-adjusted option with RSI at 39 (our most reliable signal source at 80% win rate) and $41B in TVL, but price is below all major MAs and chart bias is -0.70. With BTC dominance at 56.5% crushing alts and the fear/greed at 29, the macro environment doesn't support aggressive alt entries. Better to wait for ETH to test $1,800 support and show a reversal candle.",
   "risk_factors": [
-    "BTC dominance at 56.5% continues to crush alt performance \u2014 could intensify further",
-    "Fear & Greed at 29 is improving but could easily reverse back toward extreme fear",
-    "CoinDesk reports a potential Bitcoin 'volmageddon' brewing, which could trigger a sharp market-wide selloff"
+    "Bitcoin 'volmageddon' warning could trigger a sharp BTC selloff dragging all alts lower",
+    "BTC dominance at 56.5% and rising means capital continues rotating away from altcoins",
+    "Fear & Greed at 29 is improving but hasn't reached extreme fear (below 20) where the best contrarian entries historically occur"
   ],
   "watch_list": [
-    "ETH price action at $1,800 support \u2014 a confirmed bounce with volume would trigger a BUY",
-    "Bitcoin volatility indicator flagged by CoinDesk \u2014 watch for sudden BTC moves that could cascade across alts",
-    "Fear & Greed Index trajectory \u2014 a move above 35 would confirm improving sentiment and support alt entries"
+    "ETH price action at $1,800 support \u2014 does it hold or break? A bounce with volume = entry signal",
+    "Fear & Greed index trajectory \u2014 crossing above 35 would signal improving risk appetite for alts",
+    "BTC dominance \u2014 any reversal below 55% would be a strong signal to rotate into alts"
   ],
-  "market_context": "The market is in a Fear state (29/100) with BTC dominance elevated at 56.5%, creating a hostile environment for altcoins. BTC itself is recovering slowly (+3.3% weekly) but alts are mixed, and most swing candidates show bearish chart structures below key moving averages.",
-  "context_banner": "No high-conviction swing setups exist right now \u2014 disciplined patience in a fearful, BTC-dominant market protects capital for better entries ahead.",
-  "btc_price": 64629,
+  "market_context": "The crypto market is in a fear state (29/100) with BTC dominance elevated at 56.5%, creating a hostile environment for altcoin swing trades. BTC itself is consolidating around $64,300 with modest weekly gains, but a potential 'volmageddon' scenario adds uncertainty.",
+  "context_banner": "Market fear and high BTC dominance make this a patience-rewarding environment \u2014 capital preservation beats chasing setups.",
+  "btc_price": 64363,
   "fear_greed": {
     "current": 29,
     "label": "Fear",
@@ -33,30 +33,30 @@
     {
       "source": "RSI",
       "signal_type": "technical",
-      "description": "ETH RSI at 39 is approaching oversold (our most reliable signal at 80% win rate), but hasn't hit the <30 trigger yet \u2014 worth monitoring closely."
+      "description": "ETH RSI at 39 and BONK at 31 show oversold conditions developing, but neither has confirmed a reversal yet \u2014 RSI is our highest-confidence signal (80% win rate) so we're watching closely for sub-30 entries."
     },
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Fear & Greed at 29 trending up from 25.9 weekly average suggests sentiment is improving but hasn't confirmed a reversal \u2014 premature to act aggressively."
+      "description": "Fear & Greed at 29 ('Fear') is improving from last week's 25.9 average, but hasn't reached the extreme fear levels (sub-20) that historically produce the best contrarian entries."
     },
     {
       "source": "CoinDesk",
       "signal_type": "news",
-      "description": "Bitcoin 'volmageddon' warning suggests elevated volatility ahead \u2014 entering positions now carries outsized risk of sudden drawdowns."
-    },
-    {
-      "source": "Chart Pattern Analysis",
-      "signal_type": "technical",
-      "description": "Most candidates show bearish chart structures: BONK at -2.0, ETH/MON/KITE at -0.7. Only LDO (+0.85) and BinanceLife (+0.80) are bullish but both have poor risk/reward ratios."
+      "description": "Bitcoin 'volmageddon' warning article suggests a major volatility event may be brewing, counseling caution before taking new positions."
     },
     {
       "source": "Blockworks",
       "signal_type": "news",
-      "description": "ETH derivatives reset reported \u2014 could set up cleaner positioning for a bounce once spot price confirms support at $1,800."
+      "description": "ETH derivatives reset article suggests positioning is being cleared, which often precedes a directional move \u2014 but direction is uncertain."
+    },
+    {
+      "source": "CoinTelegraph",
+      "signal_type": "news",
+      "description": "Strategy continues aggressive BTC accumulation (843,775 BTC) reinforcing institutional demand narrative, but Zilliqa cold wallet theft highlights ongoing security risks in the space."
     }
   ],
   "_mode": "HUNTING",
-  "exit_target": 1980.0,
+  "exit_target": 1950.0,
   "stop_loss": 1740.0
 }
