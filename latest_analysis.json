@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-07-20T11:10:00.462340+00:00",
+  "timestamp": "2026-07-20T12:10:00.546570+00:00",
   "selected_coin": "ETH",
   "selected_coin_name": "Ethereum",
-  "selected_coin_price": 1873.47,
+  "selected_coin_price": 1881.32,
   "confidence": 35,
-  "layman_headline": "Market fear and weak charts say patience pays \u2014 no new trades today.",
-  "layman_explanation": "The crypto market is in a fearful state with most altcoins showing bearish chart structures. Bitcoin dominance is high at 56.4%, meaning money is flowing out of smaller coins and into Bitcoin. While a few coins had big recent moves (PUMP up 28%, LDO up 13%), those are already extended and risky to chase. The best potential setup is Ethereum near oversold levels, but its chart is still bearish and support at $1,800 hasn't been tested yet \u2014 better to wait for a cleaner entry.",
-  "layman_action": "Stay in cash and wait. The market is scared and most coins are in downtrends. If Ethereum dips to $1,800 and holds that support with increasing volume, that could be a safer entry point in the next few days.",
-  "expert_reasoning": "Every candidate has significant flaws. BONK has a -2.0 chart bias with Three Black Crows \u2014 catching a falling knife. PUMP and LDO are already extended after +28% and +13% weekly moves with RSIs approaching overbought territory. JTO and WLD have poor risk/reward ratios (0.52x and 0.38x). BinanceLife (\u5e01\u5b89\u4eba\u751f) has a bull flag but the token is obscure with questionable liquidity. ETH at RSI 39 with $1,800 key support nearby offers the cleanest eventual setup, but the chart bias is still -0.70 with price below all major MAs. The CryptoSlate headline warning about $2.3B stablecoin liquidity drain exposing $57K BTC is a macro risk. High BTC dominance at 56.4% means alt positions carry extra risk. The prudent move is to wait for ETH to test and hold $1,800 or for fear/greed to drop further into extreme fear territory for a higher-conviction contrarian entry.",
+  "layman_headline": "The crypto market is fearful and altcoins are getting crushed \u2014 patience is the best trade right now.",
+  "layman_explanation": "The overall crypto market is in a 'Fear' state with Bitcoin dominating at 56.5%, which means money is flowing out of smaller coins and into Bitcoin. Most of the swing trade candidates on our watchlist have bearish chart structures, meaning they're still falling and haven't found solid footing yet. While Ethereum's RSI is approaching oversold territory, it's still below all its key moving averages and hasn't shown a confirmed reversal signal. The smart move is to wait for a clearer bottom rather than try to catch a falling knife.",
+  "layman_action": "Stay in cash and wait. Set price alerts for Ethereum around $1,800 \u2014 if it holds that support level with strong buying volume, that would be a much better entry point than buying here.",
+  "expert_reasoning": "No candidate presents a compelling risk/reward entry right now. ETH has the best fundamental profile with RSI at 39 approaching our high-conviction oversold zone, but the chart bias is -0.70 (bearish), price is below all major moving averages, and the risk/reward to nearest support/resistance is only 1.41x. LDO has the best chart bias (+0.85) with Three White Soldiers pattern, but RSI at 59 is getting elevated after a 51.7% 5-day surge and the R/R to nearest levels is a terrible 0.38x. BinanceLife has a Bull Flag but is too illiquid and exotic. BONK is in freefall with a -2.0 chart bias. BTC dominance at 56.5% is actively punishing alt positions. The fear/greed improving from 25.9 weekly average to 29 is mildly encouraging but not yet actionable. I'd rather wait for ETH to test $1,800 support with a bullish reversal candle before committing capital.",
   "risk_factors": [
-    "Stablecoin liquidity drain of $2.3B could trigger another leg down across all crypto assets",
-    "BTC dominance at 56.4% and rising means altcoin capital continues bleeding to Bitcoin",
-    "Allbridge exploit and Ethereum bridge shutdown news may further erode DeFi confidence"
+    "Bitcoin ETF stablecoin liquidity drain of $2.3B could drag BTC below $57K, pulling all alts down further",
+    "BTC dominance at 56.5% and rising means alt positions face structural headwinds regardless of individual merit",
+    "Allbridge exploit and Zilliqa cold wallet theft signal elevated smart contract and security risk across the ecosystem"
   ],
   "watch_list": [
-    "ETH price action at $1,800 support \u2014 a hold with volume confirmation would be an actionable entry signal",
-    "Russia crypto bill final readings Tuesday \u2014 regulatory clarity could move markets either direction",
-    "Fear & Greed index \u2014 if it drops below 20 (extreme fear) while ETH holds support, that's a high-conviction buy zone"
+    "ETH price action at $1,800 support \u2014 a strong bounce with volume would trigger a BUY signal",
+    "Fear & Greed index trend \u2014 if it crosses above 35 with sustained improvement, alt risk appetite may return",
+    "Russia's crypto bill final readings Tuesday \u2014 regulatory clarity could be a market-moving catalyst"
   ],
-  "market_context": "Crypto markets are in a fear phase (29/100) with BTC struggling below $64,400 amid an oil bounce and AI selloff. BTC dominance at 56.4% signals capital rotation away from altcoins, making alt swing trades higher risk than usual.",
-  "context_banner": "Fear-driven market with weak alt charts \u2014 discipline demands waiting for support confirmation before deploying capital.",
-  "btc_price": 64349,
+  "market_context": "Crypto is in a fear-driven environment (F&G: 29) with BTC dominance at 56.5% crushing altcoin performance. BTC itself is modestly positive (+3.1% weekly) but a potential $2.3B stablecoin liquidity drain threatens further downside.",
+  "context_banner": "High BTC dominance and fear-driven markets make this a wait-for-confirmation environment \u2014 capital preservation is the priority until altcoin charts show reversal signals.",
+  "btc_price": 64780,
   "fear_greed": {
     "current": 29,
     "label": "Fear",
@@ -28,32 +28,32 @@
     "week_avg": 25.9,
     "trend": "improving"
   },
-  "btc_dominance": 56.4,
+  "btc_dominance": 56.5,
   "key_signals": [
     {
       "source": "RSI",
       "signal_type": "technical",
-      "description": "ETH RSI at 39 is approaching oversold but hasn't crossed the 30 threshold yet \u2014 close but not compelling enough alone for entry."
+      "description": "ETH RSI at 39 is approaching oversold territory \u2014 our most reliable signal (80% win rate) \u2014 but hasn't crossed the 30 threshold for a high-conviction entry."
     },
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Fear & Greed at 29 (Fear) and improving from 25.9 weekly average \u2014 contrarian setup building but not yet at extreme fear levels."
-    },
-    {
-      "source": "CryptoSlate",
-      "signal_type": "news",
-      "description": "Warning about $2.3B stablecoin liquidity drain exposing BTC to $57K downside adds meaningful macro risk to any new position."
+      "description": "Market fear at 29/100 improving from weekly average of 25.9 suggests sentiment is stabilizing but not yet at extreme levels that historically mark bottoms."
     },
     {
       "source": "CoinTelegraph",
       "signal_type": "news",
-      "description": "Grayscale planning ETH/SOL staking reward payouts and Russia crypto bill final readings provide upcoming catalysts worth monitoring."
+      "description": "Grayscale planning regular cash payouts from ETH and SOL staking rewards is a medium-term bullish catalyst for ETH, adding institutional yield demand."
+    },
+    {
+      "source": "CryptoSlate",
+      "signal_type": "macro",
+      "description": "$2.3 billion stablecoin liquidity drain from Bitcoin ETFs leaves BTC exposed to $57K \u2014 a significant downside risk that would cascade to all alts."
     },
     {
       "source": "Chart Pattern Analysis",
       "signal_type": "technical",
-      "description": "All top candidates show either bearish chart structures (BONK -2.0, ETH -0.7) or are already extended (LDO +0.85 but RSI 59 and +13% in 7 days) \u2014 no clean setups available."
+      "description": "All top candidates show bearish or mixed chart structures \u2014 no candidate has a bullish chart bias combined with favorable risk/reward and oversold conditions simultaneously."
     }
   ],
   "_mode": "HUNTING",
