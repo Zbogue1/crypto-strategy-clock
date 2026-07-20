@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-07-20T20:10:00.324777+00:00",
+  "timestamp": "2026-07-20T21:10:00.310381+00:00",
   "selected_coin": "ETH",
   "selected_coin_name": "Ethereum",
-  "selected_coin_price": 1897.5,
-  "confidence": 35,
-  "layman_headline": "Market fear lingers \u2014 no high-conviction swing trade setup right now, staying patient.",
-  "layman_explanation": "The crypto market is in a fear phase with Bitcoin dominance at 56.5%, which means money is flowing away from altcoins and into Bitcoin. Most of the swing trade candidates are either in downtrends with bearish chart structures, or have already rallied sharply and look extended. The best potential setup is Ethereum near oversold RSI levels, but it's still below all its key moving averages and just bounced 7% \u2014 making a chase entry risky. We're better off waiting for a pullback to stronger support.",
-  "layman_action": "Stay on the sidelines with cash ready. If Ethereum pulls back to the $1,800 support level, that becomes a much better entry point with a clear stop-loss below $1,720. Don't chase coins that have already bounced 20-40% this week.",
-  "expert_reasoning": "No candidate presents a compelling risk/reward right now. LDO and \u5e01\u5b89\u4eba\u751f have the best chart bias scores (+0.85 and +0.80), but both have already extended significantly (LDO +51.7% in 5 days, \u5e01\u5b89\u4eba\u751f has a poor 0.38x and 0.97x risk/reward ratio respectively). PUMP has a Morning Star pattern but is up 40% in 7 days \u2014 chasing that is dangerous. ETH's RSI at 39 is our most reliable signal type (80% win rate historically), but the chart bias is -0.70 with price below all MAs and resistance at $1,900 right overhead. The smart play is to wait for ETH to retest $1,800 support, which would push RSI closer to genuinely oversold territory and provide a much better risk/reward entry. BTC dominance at 56.5% continues to suppress alt performance broadly.",
+  "selected_coin_price": 1903.75,
+  "confidence": 62,
+  "layman_headline": "Ethereum shows signs of bottoming out while fear grips the broader market \u2014 a classic contrarian setup.",
+  "layman_explanation": "The crypto market is fearful right now (Fear index at 29), which historically has been a good time to buy quality assets at a discount. Ethereum is up nearly 8% over the past week after being beaten down over 60% from its all-time high, suggesting early buyers are stepping in. Bitcoin is leading the recovery at $65K with strong dominance, and when BTC stabilizes, ETH typically follows with larger percentage moves. The risk-reward here favors a measured entry with a clear stop-loss below key support.",
+  "layman_action": "Consider a small position in Ethereum around the $1,870 level with a stop-loss at $1,780. If it reaches $2,080, take profits. This is a cautious bet on a recovery bounce in a fearful market.",
+  "expert_reasoning": "ETH's RSI at 39.42 is approaching oversold territory \u2014 our most reliable signal historically (80% win rate, +5.5% avg return). The 7-day +7.8% bounce from deeply depressed levels with 5-day momentum of +17.2% suggests a reversal is forming. While the chart bias is bearish (-0.70) with price below all major MAs, this is characteristic of the early stages of trend reversal. The $1,800 support is only 2.2% below with resistance at $1,900 being tested now \u2014 a break above would confirm. ETH's $41.6B TVL is stable, and the Blockworks note on ETH derivatives reset suggests leverage has been flushed, creating cleaner conditions for upside. High BTC dominance at 56.6% is a headwind for alts, but ETH's correlation to BTC is strongest among alts, making it the safest alt play in this environment.",
   "risk_factors": [
-    "BTC dominance at 56.5% is actively suppressing altcoin performance \u2014 any BTC correction could drag the entire market down",
-    "Bitcoin hitting $65K resistance with institutional tech sell-off in equities could trigger a broader risk-off move",
-    "Fear & Greed at 29 is improving but still in fear territory \u2014 sentiment could easily reverse if BTC rejects at resistance"
+    "BTC dominance at 56.6% continues to compress alt performance \u2014 if BTC stalls at $65K resistance, ETH could retrace",
+    "Price remains below all major moving averages \u2014 this is a counter-trend trade that could fail if broader downtrend resumes",
+    "Macro institutional tech sell-off (per CoinTelegraph) could spill over into crypto risk assets if equity weakness deepens"
   ],
   "watch_list": [
-    "ETH price action at $1,800 support \u2014 a bounce there with rising volume would be an ideal entry",
-    "BTC behavior at $65,000 resistance \u2014 a breakout lifts everything, a rejection could create better buying opportunities",
-    "Fear & Greed index trajectory \u2014 if it crosses above 35, it signals sentiment shift that supports risk-on altcoin trades"
+    "BTC price action at $65K resistance \u2014 a breakout above would turbocharge ETH's move, rejection could drag it down",
+    "Fear & Greed Index trajectory \u2014 currently improving from 25.9 weekly avg to 29; continued improvement supports the trade",
+    "ETH reclaiming the $1,900-$1,950 zone and holding it as support would confirm the reversal thesis"
   ],
-  "market_context": "Bitcoin is testing $65K resistance while equities face institutional selling pressure. The market is in fear (29/100) but improving, with BTC dominance at 56.5% keeping altcoins suppressed \u2014 not ideal conditions for aggressive alt entries.",
-  "context_banner": "High BTC dominance and fearful sentiment make this a patience cycle \u2014 the best trades come from waiting for clean support bounces, not chasing extended moves.",
-  "btc_price": 65096,
+  "market_context": "The crypto market is in a 'Fear' state (29/100) but improving from last week's 25.9 average. BTC is testing $65K with strong 5% weekly gains, and the broader market is showing early signs of recovery despite high BTC dominance suppressing altcoin performance.",
+  "context_banner": "Ethereum's RSI approaches oversold territory amid improving market fear \u2014 a historically reliable contrarian entry signal with defined downside risk.",
+  "btc_price": 65273,
   "fear_greed": {
     "current": 29,
     "label": "Fear",
@@ -28,35 +28,35 @@
     "week_avg": 25.9,
     "trend": "improving"
   },
-  "btc_dominance": 56.5,
+  "btc_dominance": 56.6,
   "key_signals": [
     {
       "source": "RSI",
       "signal_type": "technical",
-      "description": "ETH RSI at 39 is approaching oversold territory \u2014 our most reliable signal historically (80% win rate) \u2014 but needs to reach support at $1,800 for a proper setup."
+      "description": "ETH RSI at 39.42 approaching oversold \u2014 our most reliable signal with 80% win rate and +5.5% average return across past trades."
     },
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Fear & Greed at 29 (Fear) with improving trend from 25.9 weekly average suggests sentiment is bottoming but hasn't turned yet."
+      "description": "Market fear at 29 improving from 25.9 weekly average \u2014 contrarian buying during fear has 62% historical success rate."
     },
     {
       "source": "Blockworks",
       "signal_type": "news",
-      "description": "ETH derivatives reset article signals cleaner positioning in Ethereum markets, which could reduce liquidation risk on the next move up."
+      "description": "Article on 'ETH derivatives reset and the next retail trade' suggests leveraged positions have been flushed, creating cleaner upside conditions."
     },
     {
       "source": "CoinTelegraph",
       "signal_type": "news",
-      "description": "Bitcoin hitting $65K wall amid record institutional tech sell-off creates macro uncertainty that warrants caution before new entries."
+      "description": "Bitcoin hitting $65K wall while institutions sell tech stocks \u2014 suggests crypto-specific strength but potential macro headwind."
     },
     {
-      "source": "Chart Pattern Analysis",
+      "source": "volume_breakout",
       "signal_type": "technical",
-      "description": "Best chart scores belong to LDO (+0.85) and \u5e01\u5b89\u4eba\u751f (+0.80), but both have poor risk/reward ratios (0.38x and 0.97x) \u2014 not suitable for swing entries."
+      "description": "ETH 24h volume at $10.8B is robust, and the +7.8% weekly recovery with strong 5-day momentum (+17.2%) indicates real buying pressure, not just a dead cat bounce."
     }
   ],
   "_mode": "HUNTING",
-  "exit_target": 2050.0,
-  "stop_loss": 1720.0
+  "exit_target": 2080.0,
+  "stop_loss": 1780.0
 }
