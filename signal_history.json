@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-18T23:10:00.297472+00:00",
-    "coin": "ETH",
-    "price": 1860.76,
-    "signal": "HOLD",
-    "confidence": 35,
-    "score": -0.3,
-    "fg": 25,
-    "btc_price": 64707,
-    "btc_dominance": 56.6,
-    "candidates": [
-      "BONK",
-      "AAVE",
-      "ONDO",
-      "PENGU",
-      "MON",
-      "DEXE",
-      "TRUMP",
-      "ETH",
-      "LDO"
-    ],
-    "alert": "Market in Extreme Fear with worsening trend \u2014 all swing candidates show bearish or mixed chart structures. High-conviction entries are not available this cycle."
-  },
-  {
     "ts": "2026-07-19T00:10:00.290254+00:00",
     "coin": "ETH",
     "price": 1861.26,
@@ -917,6 +894,30 @@
       "MON",
       "ETH",
       "LDO"
+    ],
+    "alert": null
+  },
+  {
+    "ts": "2026-07-20T17:10:00.672486+00:00",
+    "coin": "ETH",
+    "price": 1898.86,
+    "signal": "HOLD",
+    "confidence": 35,
+    "score": -0.15,
+    "fg": 29,
+    "btc_price": 65427,
+    "btc_dominance": 56.7,
+    "candidates": [
+      "NIGHT",
+      "MON",
+      "\u5e01\u5b89\u4eba\u751f",
+      "BONK",
+      "B",
+      "PUMP",
+      "KITE",
+      "ETH",
+      "LDO",
+      "GRASS"
     ],
     "alert": null
   }
