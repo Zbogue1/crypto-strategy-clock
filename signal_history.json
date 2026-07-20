@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-18T13:10:00.252226+00:00",
-    "coin": "TRUMP",
-    "price": 1.68,
-    "signal": "BUY",
-    "confidence": 52,
-    "score": 0.35,
-    "fg": 25,
-    "btc_price": 64082,
-    "btc_dominance": 56.5,
-    "candidates": [
-      "BONK",
-      "VVV",
-      "AERO",
-      "USDG",
-      "KITE",
-      "TRUMP",
-      "WLD",
-      "ETH",
-      "LDO"
-    ],
-    "alert": "Extreme Fear conditions (25/100) \u2014 all alt positions carry elevated risk. Size accordingly."
-  },
-  {
     "ts": "2026-07-18T14:10:00.638357+00:00",
     "coin": "ETH",
     "price": 1840.77,
@@ -918,5 +895,28 @@
       "LDO"
     ],
     "alert": null
+  },
+  {
+    "ts": "2026-07-20T08:10:00.308229+00:00",
+    "coin": "ETH",
+    "price": 1860.72,
+    "signal": "HOLD",
+    "confidence": 38,
+    "score": -0.35,
+    "fg": 29,
+    "btc_price": 64192,
+    "btc_dominance": 56.4,
+    "candidates": [
+      "B",
+      "PUMP",
+      "BONK",
+      "JTO",
+      "KITE",
+      "WLD",
+      "FIL",
+      "ETH",
+      "LDO"
+    ],
+    "alert": "All swing candidates either overextended or in active downtrends \u2014 forcing a trade here has negative expected value."
   }
 ]
