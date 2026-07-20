@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-18T14:10:00.638357+00:00",
-    "coin": "ETH",
-    "price": 1840.77,
-    "signal": "HOLD",
-    "confidence": 35,
-    "score": -0.3,
-    "fg": 25,
-    "btc_price": 64078,
-    "btc_dominance": 56.5,
-    "candidates": [
-      "BONK",
-      "VVV",
-      "AERO",
-      "USDG",
-      "AAVE",
-      "ONDO",
-      "KITE",
-      "ETH",
-      "LDO"
-    ],
-    "alert": "Market in Extreme Fear with worsening trend \u2014 all altcoin charts showing bearish bias. Capital preservation is priority."
-  },
-  {
     "ts": "2026-07-18T15:10:00.259310+00:00",
     "coin": "ETH",
     "price": 1844.54,
@@ -918,5 +895,28 @@
       "LDO"
     ],
     "alert": "All swing candidates either overextended or in active downtrends \u2014 forcing a trade here has negative expected value."
+  },
+  {
+    "ts": "2026-07-20T09:10:00.313574+00:00",
+    "coin": "ETH",
+    "price": 1858.04,
+    "signal": "HOLD",
+    "confidence": 38,
+    "score": -0.25,
+    "fg": 29,
+    "btc_price": 63976,
+    "btc_dominance": 56.4,
+    "candidates": [
+      "PUMP",
+      "BONK",
+      "WLD",
+      "KITE",
+      "JTO",
+      "FIL",
+      "MON",
+      "ETH",
+      "LDO"
+    ],
+    "alert": "All swing candidates show bearish chart structures. Waiting for confirmed reversal signals before deploying capital."
   }
 ]
