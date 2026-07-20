@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-19T00:10:00.290254+00:00",
-    "coin": "ETH",
-    "price": 1861.26,
-    "signal": "HOLD",
-    "confidence": 38,
-    "score": -0.15,
-    "fg": 28,
-    "btc_price": 64787,
-    "btc_dominance": 56.6,
-    "candidates": [
-      "BONK",
-      "MON",
-      "ONDO",
-      "AAVE",
-      "TRUMP",
-      "DEXE",
-      "PENGU",
-      "ETH",
-      "LDO"
-    ],
-    "alert": "Weekend risk elevated: geopolitical tensions around oil supply could trigger sudden crypto volatility. Avoid overexposure."
-  },
-  {
     "ts": "2026-07-19T01:10:00.223205+00:00",
     "coin": "ETH",
     "price": 1858.96,
@@ -920,5 +897,28 @@
       "GRASS"
     ],
     "alert": null
+  },
+  {
+    "ts": "2026-07-20T18:10:00.373798+00:00",
+    "coin": "ETH",
+    "price": 1909.36,
+    "signal": "HOLD",
+    "confidence": 38,
+    "score": -0.15,
+    "fg": 29,
+    "btc_price": 65536,
+    "btc_dominance": 56.7,
+    "candidates": [
+      "NIGHT",
+      "MON",
+      "\u5e01\u5b89\u4eba\u751f",
+      "PUMP",
+      "BONK",
+      "KITE",
+      "JTO",
+      "ETH",
+      "LDO"
+    ],
+    "alert": "BTC approaching critical $65K resistance \u2014 breakout or rejection here will define alt market direction for the next 1-2 weeks."
   }
 ]
