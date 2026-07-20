@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-07-20T05:10:00.282973+00:00",
-  "selected_coin": "ETH",
-  "selected_coin_name": "Ethereum",
-  "selected_coin_price": 1864.89,
-  "confidence": 35,
-  "layman_headline": "Fear grips the crypto market \u2014 patience beats impulse right now.",
-  "layman_explanation": "The crypto market is in a fearful state with most coins showing bearish chart structures. While a few coins like TRUMP and BONK are technically oversold, their charts are ugly with strong downward momentum. Ethereum looks like the safest opportunity if it pulls back to stronger support around $1,800, but even it hasn't given a clean buy signal yet. The smart move is to wait for better setups rather than force a trade into weakness.",
-  "layman_action": "Keep your cash on the sidelines for now. Set alerts for ETH near $1,800 and watch if the Fear & Greed index continues improving toward 35+, which could signal the start of a real recovery. Don't chase anything today.",
-  "expert_reasoning": "Every swing candidate shows problematic setups. BONK has a -2.0 chart bias with Three Black Crows \u2014 a classic capitulation pattern to avoid catching. TRUMP's RSI at 22 is deeply oversold (historically our most reliable signal at 80% win rate), but the bearish chart structure and lack of volume/catalyst make it a knife-catch. LDO has the best chart bias (+0.85) with Three White Soldiers, but RSI at 59 and +51.7% 5-day momentum scream 'already extended.' ETH is the highest-quality asset approaching oversold territory with a clear support at $1,800, but its chart bias is -0.70 with price below all MAs. The proper play is to wait for ETH to test $1,800 support with a bullish reversal candle before entering. High BTC dominance at 56.5% continues to punish altcoins, making this a poor environment for speculative alt entries.",
+  "timestamp": "2026-07-20T06:10:00.445372+00:00",
+  "selected_coin": "TRUMP",
+  "selected_coin_name": "Official Trump",
+  "selected_coin_price": 1.57,
+  "confidence": 52,
+  "layman_headline": "Deeply oversold TRUMP token may be due for a short-term relief bounce.",
+  "layman_explanation": "The TRUMP token has been beaten down so hard that its momentum indicator (RSI) is at 22, which is deeply oversold \u2014 historically one of the most reliable signals for a short-term bounce. The overall crypto market is in 'Fear' mode with sentiment slowly improving, which often creates buying opportunities. While the chart structure is bearish, extreme oversold readings frequently trigger mean-reversion rallies of 10-15% even in downtrends. This is a calculated contrarian play with a tight stop-loss.",
+  "layman_action": "Consider a small speculative position in TRUMP around $1.53 with a strict stop-loss at $1.42. This is a higher-risk bounce trade \u2014 keep position size small and take profits quickly near $1.78.",
+  "expert_reasoning": "TRUMP's RSI of 22.3 is the deepest oversold reading among all candidates, and RSI is our most reliable signal source (80% win rate, +5.5% avg return). While the chart bias is bearish (-0.70) with price below all MAs, the extreme oversold condition at a round-number psychological support ($1.50) creates a high-probability mean-reversion setup. The 7-day change of +2% indicates selling pressure is finally exhausting. Risk/reward is defined: $1.42 stop gives ~7% downside vs ~16% upside to $1.78, yielding roughly 2.3:1 R/R. The Fear & Greed index improving from 25.9 weekly average to 29 adds a marginal tailwind. Position sizing should be conservative given the bearish trend structure.",
   "risk_factors": [
-    "BTC dominance at 56.5% and rising could continue crushing altcoin performance for weeks",
-    "Fear & Greed at 29 is improving but hasn't crossed the 35+ threshold that typically precedes sustained recoveries",
-    "No clear MACD bullish crosses or volume breakout confirmations on any candidate \u2014 all setups lack conviction"
+    "Bearish chart structure with price below all moving averages \u2014 the downtrend could simply continue through support",
+    "High BTC dominance (56.4%) is actively draining capital from altcoins, creating persistent headwinds",
+    "Political/meme token with no fundamental value floor \u2014 sentiment shifts can cause accelerated drops"
   ],
   "watch_list": [
-    "ETH price action at $1,800 support \u2014 a bounce with volume would trigger a BUY signal",
-    "Fear & Greed index crossing above 35 as confirmation of sentiment shift",
-    "TRUMP RSI staying below 25 \u2014 if it holds at $1.50 support and RSI starts curling up, that becomes a high-conviction oversold bounce play"
+    "TRUMP price action around $1.50 support \u2014 a daily close below invalidates the bounce thesis",
+    "BTC price stability above $63,000 \u2014 any BTC breakdown will drag all alts lower",
+    "Fear & Greed index trajectory \u2014 continued improvement above 30 would support risk-on positioning"
   ],
-  "market_context": "The crypto market is in a fear phase with BTC at $64.4K holding relatively well while altcoins bleed. BTC dominance at 56.5% signals capital rotation into Bitcoin and away from alts, making this a hostile environment for swing trades on smaller coins.",
-  "context_banner": "Market fear is improving from extreme levels but hasn't confirmed a reversal \u2014 discipline means waiting for clean setups rather than buying into bearish chart structures.",
-  "btc_price": 64398,
+  "market_context": "Bitcoin is consolidating near $64,100 with modest ETF inflows returning but not yet convincing. The market is in a 'Fear' state (29/100) that is slowly improving, creating a cautious environment where oversold bounces are the highest-probability swing setups.",
+  "context_banner": "Deeply oversold RSI readings in a stabilizing fear environment historically produce the most reliable short-term bounce trades.",
+  "btc_price": 64106,
   "fear_greed": {
     "current": 29,
     "label": "Fear",
@@ -28,35 +28,35 @@
     "week_avg": 25.9,
     "trend": "improving"
   },
-  "btc_dominance": 56.5,
+  "btc_dominance": 56.4,
   "key_signals": [
     {
       "source": "RSI",
       "signal_type": "technical",
-      "description": "TRUMP RSI at 22 is deeply oversold (our most reliable signal at 80% win rate), but bearish chart structure (-0.70) prevents entry \u2014 waiting for chart confirmation."
+      "description": "TRUMP RSI at 22.3 is deeply oversold \u2014 our highest-conviction signal type with 80% historical win rate and +5.5% avg return."
     },
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Fear & Greed at 29 trending up from 26 weekly average suggests improving sentiment, but hasn't crossed the 35 threshold needed for conviction entries."
-    },
-    {
-      "source": "Blockworks",
-      "signal_type": "news",
-      "description": "ETH derivatives reset article suggests positioning is getting cleaned out, which historically precedes price recoveries \u2014 adds to ETH watchlist priority."
-    },
-    {
-      "source": "Chart Pattern Analysis",
-      "signal_type": "technical",
-      "description": "LDO shows Three White Soldiers (+0.85 bias) but +51.7% in 5 days means the move is already extended with poor risk/reward (0.38x). BONK shows Three Black Crows (-2.0 bias) confirming capitulation still in progress."
+      "description": "Market Fear at 29 improving from weekly avg of 25.9 \u2014 contrarian conditions favor oversold bounce plays."
     },
     {
       "source": "CoinTelegraph",
       "signal_type": "news",
-      "description": "CLARITY Act progress and Bitcoin's new $80K target narrative could shift sentiment if BTC breaks higher, which would eventually benefit alts \u2014 monitoring closely."
+      "description": "Potential CLARITY Act progress this week and BTC $80K target discussion suggest market catalysts ahead that could lift sentiment."
+    },
+    {
+      "source": "CoinDesk",
+      "signal_type": "news",
+      "description": "Bitcoin ETFs seeing renewed inflows, though modest \u2014 signals institutional sentiment stabilizing which supports broader crypto recovery."
+    },
+    {
+      "source": "Blockworks",
+      "signal_type": "macro",
+      "description": "ETH derivatives reset and focus on 'finding good news despite bad headlines' suggests market positioning for a turn higher."
     }
   ],
   "_mode": "HUNTING",
-  "exit_target": 1980.0,
-  "stop_loss": 1740.0
+  "exit_target": 1.78,
+  "stop_loss": 1.42
 }
