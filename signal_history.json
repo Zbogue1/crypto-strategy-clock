@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-18T15:10:00.259310+00:00",
-    "coin": "ETH",
-    "price": 1844.54,
-    "signal": "HOLD",
-    "confidence": 35,
-    "score": -0.3,
-    "fg": 25,
-    "btc_price": 64090,
-    "btc_dominance": 56.5,
-    "candidates": [
-      "BONK",
-      "VVV",
-      "AERO",
-      "USDG",
-      "KITE",
-      "AAVE",
-      "TRUMP",
-      "ETH",
-      "LDO"
-    ],
-    "alert": "Market in Extreme Fear with worsening trend. No high-conviction setups available. Wait for sentiment stabilization before deploying capital."
-  },
-  {
     "ts": "2026-07-18T16:10:00.287896+00:00",
     "coin": "ETH",
     "price": 1841.62,
@@ -918,5 +895,28 @@
       "LDO"
     ],
     "alert": "All swing candidates show bearish chart structures. Waiting for confirmed reversal signals before deploying capital."
+  },
+  {
+    "ts": "2026-07-20T10:10:00.439629+00:00",
+    "coin": "ETH",
+    "price": 1863.17,
+    "signal": "HOLD",
+    "confidence": 38,
+    "score": -0.15,
+    "fg": 29,
+    "btc_price": 64157,
+    "btc_dominance": 56.4,
+    "candidates": [
+      "PUMP",
+      "BONK",
+      "JTO",
+      "KITE",
+      "\u5e01\u5b89\u4eba\u751f",
+      "MON",
+      "WLD",
+      "ETH",
+      "LDO"
+    ],
+    "alert": "Multiple altcoins showing sharp 7-day declines (BONK -24%, KITE -21%, WLD -13%) but no confirmed reversal patterns yet \u2014 watch for capitulation wicks as potential entry signals."
   }
 ]
