@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-18T18:10:00.350114+00:00",
-    "coin": "ETH",
-    "price": 1849.79,
-    "signal": "HOLD",
-    "confidence": 32,
-    "score": -0.35,
-    "fg": 25,
-    "btc_price": 64425,
-    "btc_dominance": 56.5,
-    "candidates": [
-      "BONK",
-      "AAVE",
-      "KITE",
-      "AERO",
-      "MON",
-      "VIRTUAL",
-      "ONDO",
-      "ETH",
-      "LDO"
-    ],
-    "alert": "All swing candidates show bearish chart patterns during worsening extreme fear. No high-conviction entry exists this cycle."
-  },
-  {
     "ts": "2026-07-18T19:10:00.579622+00:00",
     "coin": "LDO",
     "price": 0.354669,
@@ -918,5 +895,28 @@
       "LDO"
     ],
     "alert": "Stablecoin liquidity drain of $2.3B flagged by CryptoSlate \u2014 monitor for potential cascading sell pressure across the market."
+  },
+  {
+    "ts": "2026-07-20T12:10:00.546570+00:00",
+    "coin": "ETH",
+    "price": 1881.32,
+    "signal": "HOLD",
+    "confidence": 35,
+    "score": -0.15,
+    "fg": 29,
+    "btc_price": 64780,
+    "btc_dominance": 56.5,
+    "candidates": [
+      "PUMP",
+      "BONK",
+      "JTO",
+      "KITE",
+      "\u5e01\u5b89\u4eba\u751f",
+      "MON",
+      "WLD",
+      "ETH",
+      "LDO"
+    ],
+    "alert": "Multiple security incidents this cycle (Allbridge exploit, Zilliqa wallet theft) \u2014 elevated caution warranted on DeFi and smaller cap positions."
   }
 ]
