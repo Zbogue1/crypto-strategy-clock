@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-18T22:10:00.281611+00:00",
-    "coin": "TRUMP",
-    "price": 1.62,
-    "signal": "BUY",
-    "confidence": 52,
-    "score": 0.35,
-    "fg": 25,
-    "btc_price": 64724,
-    "btc_dominance": 56.6,
-    "candidates": [
-      "BONK",
-      "AAVE",
-      "MON",
-      "ONDO",
-      "PENGU",
-      "TRUMP",
-      "DEXE",
-      "ETH",
-      "LDO"
-    ],
-    "alert": "Weekend geopolitical risk: 20% of global oil supply in balance per CryptoSlate \u2014 potential for sharp market moves in either direction."
-  },
-  {
     "ts": "2026-07-18T23:10:00.297472+00:00",
     "coin": "ETH",
     "price": 1860.76,
@@ -915,6 +892,29 @@
       "MON",
       "JTO",
       "KITE",
+      "ETH",
+      "LDO"
+    ],
+    "alert": null
+  },
+  {
+    "ts": "2026-07-20T16:10:00.567620+00:00",
+    "coin": "ETH",
+    "price": 1893.9,
+    "signal": "BUY",
+    "confidence": 62,
+    "score": 0.45,
+    "fg": 29,
+    "btc_price": 65396,
+    "btc_dominance": 56.7,
+    "candidates": [
+      "\u5e01\u5b89\u4eba\u751f",
+      "PUMP",
+      "BONK",
+      "B",
+      "KITE",
+      "JTO",
+      "MON",
       "ETH",
       "LDO"
     ],
