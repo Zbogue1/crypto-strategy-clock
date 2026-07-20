@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-19T02:10:00.222115+00:00",
-    "coin": "TRUMP",
-    "price": 1.67,
-    "signal": "BUY",
-    "confidence": 52,
-    "score": 0.35,
-    "fg": 28,
-    "btc_price": 64826,
-    "btc_dominance": 56.6,
-    "candidates": [
-      "BONK",
-      "ONDO",
-      "MON",
-      "TRUMP",
-      "AAVE",
-      "DEXE",
-      "VIRTUAL",
-      "ETH",
-      "LDO"
-    ],
-    "alert": "Weekend geopolitical risk: oil supply headlines and low liquidity could amplify volatility in either direction."
-  },
-  {
     "ts": "2026-07-19T03:10:00.418832+00:00",
     "coin": "ETH",
     "price": 1867.38,
@@ -921,5 +898,28 @@
       "GRASS"
     ],
     "alert": "No high-conviction setups available. All candidates have bearish chart structures or are overextended. Waiting for confirmed support holds."
+  },
+  {
+    "ts": "2026-07-20T20:10:00.324777+00:00",
+    "coin": "ETH",
+    "price": 1897.5,
+    "signal": "HOLD",
+    "confidence": 35,
+    "score": -0.15,
+    "fg": 29,
+    "btc_price": 65096,
+    "btc_dominance": 56.5,
+    "candidates": [
+      "NIGHT",
+      "MON",
+      "\u5e01\u5b89\u4eba\u751f",
+      "BONK",
+      "PUMP",
+      "KITE",
+      "JTO",
+      "ETH",
+      "LDO"
+    ],
+    "alert": null
   }
 ]
