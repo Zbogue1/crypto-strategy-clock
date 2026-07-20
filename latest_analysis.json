@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-07-20T10:10:00.439629+00:00",
+  "timestamp": "2026-07-20T11:10:00.462340+00:00",
   "selected_coin": "ETH",
   "selected_coin_name": "Ethereum",
-  "selected_coin_price": 1863.17,
-  "confidence": 38,
-  "layman_headline": "The crypto market is fearful and no coin presents a clean enough setup to risk capital today.",
-  "layman_explanation": "The overall crypto market is sitting in 'Fear' territory at 29/100, and Bitcoin dominance remains high at 56.4%, which means altcoins are struggling to gain traction. While several coins have dropped sharply (BONK down 24%, WLD down 13%), the charts show continued selling pressure rather than clear bottoming signals. Ethereum is the closest to a decent setup with RSI approaching oversold and strong 5-day momentum, but it's still below all major moving averages and only 2% above support \u2014 meaning there's not much cushion before a breakdown.",
-  "layman_action": "Stay in cash and wait. The best opportunities come when fear is high AND charts show a clear reversal pattern. We're seeing the fear but not yet the reversal. Set alerts for ETH near $1,800 support \u2014 if it holds and bounces with volume, that becomes a much better entry.",
-  "expert_reasoning": "I evaluated all 9 swing candidates systematically. BONK has the deepest oversold reading (RSI 31) but a -2.0 chart bias with Three Black Crows \u2014 that's a falling knife, not a bounce setup. LDO has the strongest chart bias (+0.85) with Three White Soldiers, but RSI at 59 and +51.7% 5-day momentum means it's already extended with a terrible 0.38x risk/reward to nearest resistance. \u5e01\u5b89\u4eba\u751f shows a Bull Flag (+0.80 bias) but RSI at 58 and a 0.97x R/R aren't compelling. ETH at RSI 39 with $1,800 support just 2.2% below is the cleanest potential setup, but with price below all MAs and a -0.70 chart bias, I'd need to see a confirmed bounce off $1,800 with volume before committing capital. High BTC dominance (56.4%) is an additional headwind for all altcoin trades. Discipline says HOLD.",
+  "selected_coin_price": 1873.47,
+  "confidence": 35,
+  "layman_headline": "Market fear and weak charts say patience pays \u2014 no new trades today.",
+  "layman_explanation": "The crypto market is in a fearful state with most altcoins showing bearish chart structures. Bitcoin dominance is high at 56.4%, meaning money is flowing out of smaller coins and into Bitcoin. While a few coins had big recent moves (PUMP up 28%, LDO up 13%), those are already extended and risky to chase. The best potential setup is Ethereum near oversold levels, but its chart is still bearish and support at $1,800 hasn't been tested yet \u2014 better to wait for a cleaner entry.",
+  "layman_action": "Stay in cash and wait. The market is scared and most coins are in downtrends. If Ethereum dips to $1,800 and holds that support with increasing volume, that could be a safer entry point in the next few days.",
+  "expert_reasoning": "Every candidate has significant flaws. BONK has a -2.0 chart bias with Three Black Crows \u2014 catching a falling knife. PUMP and LDO are already extended after +28% and +13% weekly moves with RSIs approaching overbought territory. JTO and WLD have poor risk/reward ratios (0.52x and 0.38x). BinanceLife (\u5e01\u5b89\u4eba\u751f) has a bull flag but the token is obscure with questionable liquidity. ETH at RSI 39 with $1,800 key support nearby offers the cleanest eventual setup, but the chart bias is still -0.70 with price below all major MAs. The CryptoSlate headline warning about $2.3B stablecoin liquidity drain exposing $57K BTC is a macro risk. High BTC dominance at 56.4% means alt positions carry extra risk. The prudent move is to wait for ETH to test and hold $1,800 or for fear/greed to drop further into extreme fear territory for a higher-conviction contrarian entry.",
   "risk_factors": [
-    "BTC dominance at 56.4% continues to drain capital from altcoins \u2014 any BTC weakness could cascade harder into alts",
-    "Allbridge exploit ($1.65M) and Ethereum bridge shutdown news could spook DeFi participants and trigger further selling",
-    "AI selloff pushing BTC under $64K suggests macro risk-off sentiment that hasn't fully played out yet"
+    "Stablecoin liquidity drain of $2.3B could trigger another leg down across all crypto assets",
+    "BTC dominance at 56.4% and rising means altcoin capital continues bleeding to Bitcoin",
+    "Allbridge exploit and Ethereum bridge shutdown news may further erode DeFi confidence"
   ],
   "watch_list": [
-    "ETH price action around $1,800 support \u2014 a bounce with volume creates a BUY setup, a break below invalidates",
-    "Fear & Greed Index trajectory \u2014 currently improving from 25.9 weekly avg to 29, a push above 35 would signal sentiment shift",
-    "Bitcoin ETF flow data this week \u2014 second consecutive week of inflows could provide the floor BTC needs to stabilize alts"
+    "ETH price action at $1,800 support \u2014 a hold with volume confirmation would be an actionable entry signal",
+    "Russia crypto bill final readings Tuesday \u2014 regulatory clarity could move markets either direction",
+    "Fear & Greed index \u2014 if it drops below 20 (extreme fear) while ETH holds support, that's a high-conviction buy zone"
   ],
-  "market_context": "Crypto markets are in a fearful state (29/100) with BTC under pressure from AI selloff contagion and high dominance squeezing altcoins. Bitcoin ETF inflows provide a fragile floor, but the macro setup (ECB rate decision, U.S. regulatory developments) introduces event risk this week.",
-  "context_banner": "Fear is rising and altcoins are bleeding \u2014 capital preservation beats premature entries in this environment.",
-  "btc_price": 64157,
+  "market_context": "Crypto markets are in a fear phase (29/100) with BTC struggling below $64,400 amid an oil bounce and AI selloff. BTC dominance at 56.4% signals capital rotation away from altcoins, making alt swing trades higher risk than usual.",
+  "context_banner": "Fear-driven market with weak alt charts \u2014 discipline demands waiting for support confirmation before deploying capital.",
+  "btc_price": 64349,
   "fear_greed": {
     "current": 29,
     "label": "Fear",
@@ -33,30 +33,30 @@
     {
       "source": "RSI",
       "signal_type": "technical",
-      "description": "ETH RSI at 39 is approaching oversold territory \u2014 our most reliable signal source (80% win rate) \u2014 but hasn't crossed below 30 to trigger a high-conviction reversal entry yet."
+      "description": "ETH RSI at 39 is approaching oversold but hasn't crossed the 30 threshold yet \u2014 close but not compelling enough alone for entry."
     },
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Fear & Greed at 29 (Fear) with improving trend from 25.9 weekly average suggests sentiment may be bottoming, but historically this index has a mixed 62% hit rate in our trades."
+      "description": "Fear & Greed at 29 (Fear) and improving from 25.9 weekly average \u2014 contrarian setup building but not yet at extreme fear levels."
+    },
+    {
+      "source": "CryptoSlate",
+      "signal_type": "news",
+      "description": "Warning about $2.3B stablecoin liquidity drain exposing BTC to $57K downside adds meaningful macro risk to any new position."
     },
     {
       "source": "CoinTelegraph",
       "signal_type": "news",
-      "description": "Bitcoin ETF inflows extending to second week provides macro support, and our second most reliable signal source (67% win rate) \u2014 but the article notes recovery 'lacks momentum.'"
+      "description": "Grayscale planning ETH/SOL staking reward payouts and Russia crypto bill final readings provide upcoming catalysts worth monitoring."
     },
     {
-      "source": "Blockworks",
-      "signal_type": "news",
-      "description": "ETH derivatives reset article suggests overleveraged positions have been flushed, potentially clearing the path for a cleaner move higher once direction is established."
-    },
-    {
-      "source": "CoinDesk",
-      "signal_type": "news",
-      "description": "AI selloff and oil bounce pushing BTC under $64K signals macro headwinds that could keep risk assets under pressure near-term."
+      "source": "Chart Pattern Analysis",
+      "signal_type": "technical",
+      "description": "All top candidates show either bearish chart structures (BONK -2.0, ETH -0.7) or are already extended (LDO +0.85 but RSI 59 and +13% in 7 days) \u2014 no clean setups available."
     }
   ],
   "_mode": "HUNTING",
-  "exit_target": 1950.0,
-  "stop_loss": 1770.0
+  "exit_target": 2050.0,
+  "stop_loss": 1720.0
 }
