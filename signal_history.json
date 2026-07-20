@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-19T06:10:00.335459+00:00",
-    "coin": "ETH",
-    "price": 1867.46,
-    "signal": "HOLD",
-    "confidence": 32,
-    "score": -0.35,
-    "fg": 28,
-    "btc_price": 64654,
-    "btc_dominance": 56.5,
-    "candidates": [
-      "BONK",
-      "MON",
-      "AAVE",
-      "ONDO",
-      "DASH",
-      "DEXE",
-      "SUN",
-      "ETH",
-      "LDO"
-    ],
-    "alert": "No actionable setups meet risk/reward criteria this cycle. All candidates are either in active downtrends or already extended. Waiting for support confirmations."
-  },
-  {
     "ts": "2026-07-19T07:10:00.162190+00:00",
     "coin": "ETH",
     "price": 1866.9,
@@ -921,5 +898,28 @@
       "LDO"
     ],
     "alert": "All swing candidates show bearish chart structures. Wait for RSI + chart confirmation before entering."
+  },
+  {
+    "ts": "2026-07-20T23:10:00.241775+00:00",
+    "coin": "ETH",
+    "price": 1897.88,
+    "signal": "HOLD",
+    "confidence": 35,
+    "score": -0.3,
+    "fg": 29,
+    "btc_price": 65158,
+    "btc_dominance": 56.6,
+    "candidates": [
+      "NIGHT",
+      "MON",
+      "BONK",
+      "\u5e01\u5b89\u4eba\u751f",
+      "KITE",
+      "JTO",
+      "USDG",
+      "ETH",
+      "LDO"
+    ],
+    "alert": null
   }
 ]
