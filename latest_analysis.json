@@ -1,62 +1,28 @@
 {
-  "timestamp": "2026-07-19T23:10:00.375665+00:00",
-  "selected_coin": "ETH",
-  "selected_coin_name": "Ethereum",
-  "selected_coin_price": 1865.83,
-  "confidence": 38,
-  "layman_headline": "Fear dominates crypto markets \u2014 no strong setups worth risking capital on right now.",
-  "layman_explanation": "The overall crypto market is in a fearful state with most altcoins stuck in downtrends and Bitcoin dominance squeezing alternative coins. While a few coins like TRUMP show deeply oversold readings, their charts are still pointing down with no reversal confirmation. Ethereum is the closest to offering a quality entry but needs to hold its $1,800 support and show a clear bounce before committing money. Patience is the best trade right now.",
-  "layman_action": "Wait on the sidelines. If Ethereum dips to the $1,790-$1,810 range and shows a strong bounce with rising volume, that could be the entry worth taking. Don't chase anything in this fearful market.",
-  "expert_reasoning": "Every candidate on the watchlist has significant headwinds. B and PUMP have surged 126% and 35% in 7 days respectively \u2014 chasing extended moves contradicts swing trading discipline. BONK has a -2.0 chart bias with Three Black Crows and Bearish Marubozu \u2014 that's a falling knife. TRUMP's RSI at 22 is deeply oversold (a reliable signal per our credibility data at 80% win rate), but the 1:1 risk/reward ratio and bearish chart structure make it a poor risk-adjusted entry. LDO has the strongest chart (+0.85 bias, Three White Soldiers) but RSI is already at 59 after a 51.7% 5-day move with only 0.38x risk/reward \u2014 terrible entry timing. ETH at RSI 39 with $1,800 support nearby is the best candidate, but needs a confirmed bounce at support before entry. High BTC dominance at 56.5% continues to pressure altcoins broadly.",
-  "risk_factors": [
-    "BTC dominance at 56.5% could continue rising, further crushing altcoin performance",
-    "Fear & Greed at 28 could deteriorate further \u2014 fear often begets more fear before capitulation",
-    "GENIUS Act regulatory uncertainty around stablecoins could trigger unexpected market-wide selling"
-  ],
-  "watch_list": [
-    "ETH price action at $1,800 support \u2014 a strong bounce with volume confirms the trade",
-    "TRUMP RSI \u2014 if it drops below 20 with a hammer candle at $1.50 support, that becomes actionable",
-    "BTC dominance trend \u2014 any reversal below 56% would signal altcoin rotation beginning"
-  ],
-  "market_context": "Crypto markets are in a fearful, risk-off environment with BTC dominance at 56.5% crushing altcoins. BTC is flat while most alts bleed \u2014 classic late-cycle dominance squeeze that requires patience before alt entries.",
-  "context_banner": "All candidates show bearish structures or overextended moves \u2014 discipline demands waiting for confirmed reversals at key support levels.",
-  "btc_price": 64595,
+  "timestamp": "2026-07-20T02:10:00.301552+00:00",
+  "selected_coin": "BTC",
+  "selected_coin_name": "Bitcoin",
+  "selected_coin_price": 64819,
+  "confidence": 0,
+  "layman_headline": "Service temporarily unavailable",
+  "layman_explanation": "Could not reach the analysis service.",
+  "layman_action": "Wait for the next update.",
+  "expert_reasoning": "HTTPSConnectionPool(host='api.anthropic.com', port=443): Read timed out. (read timeout=60)",
+  "risk_factors": [],
+  "watch_list": [],
+  "market_context": null,
+  "context_banner": null,
+  "btc_price": 64819,
   "fear_greed": {
-    "current": 28,
+    "current": 29,
     "label": "Fear",
-    "yesterday": 25,
-    "week_avg": 25.7,
-    "trend": "flat"
+    "yesterday": 28,
+    "week_avg": 25.9,
+    "trend": "improving"
   },
   "btc_dominance": 56.5,
-  "key_signals": [
-    {
-      "source": "RSI",
-      "signal_type": "technical",
-      "description": "TRUMP RSI at 22 is deeply oversold (our most reliable signal at 80% win rate), but poor risk/reward ratio of 1:1 prevents entry \u2014 watching for improvement."
-    },
-    {
-      "source": "Fear_Greed",
-      "signal_type": "sentiment",
-      "description": "Fear & Greed at 28 ('Fear') with flat trend suggests market hasn't capitulated yet \u2014 historically a zone where patience pays more than aggression."
-    },
-    {
-      "source": "Blockworks",
-      "signal_type": "news",
-      "description": "ETH derivatives reset article suggests leveraged positions are being flushed \u2014 this clearing of excess positioning often precedes tradable bounces."
-    },
-    {
-      "source": "CoinTelegraph",
-      "signal_type": "news",
-      "description": "GENIUS Act stablecoin rules deadline missed by US agencies \u2014 regulatory overhang creates uncertainty but eventual clarity could be bullish catalyst."
-    },
-    {
-      "source": "Chart Pattern Analysis",
-      "signal_type": "technical",
-      "description": "LDO shows Three White Soldiers (+0.85 bias) but 0.38x risk/reward after 51.7% 5-day surge makes entry timing poor \u2014 need pullback to $0.30 support."
-    }
-  ],
+  "key_signals": [],
   "_mode": "HUNTING",
-  "exit_target": 1950.0,
-  "stop_loss": 1740.0
+  "exit_target": null,
+  "stop_loss": null
 }
