@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-19T09:10:00.229433+00:00",
-    "coin": "ETH",
-    "price": 1871.64,
-    "signal": "HOLD",
-    "confidence": 35,
-    "score": -0.3,
-    "fg": 28,
-    "btc_price": 64642,
-    "btc_dominance": 56.5,
-    "candidates": [
-      "BONK",
-      "MON",
-      "KITE",
-      "DEXE",
-      "PENGU",
-      "AAVE",
-      "SUN",
-      "ETH",
-      "LDO"
-    ],
-    "alert": "All swing candidates show bearish chart structures \u2014 avoid catching falling knives. Wait for support confirmation."
-  },
-  {
     "ts": "2026-07-19T10:10:00.481222+00:00",
     "coin": "ETH",
     "price": 1865.01,
@@ -919,5 +896,27 @@
       "ETH"
     ],
     "alert": "Market in Extreme Fear with bearish alt structures \u2014 avoid knife-catching. Wait for support confirmation."
+  },
+  {
+    "ts": "2026-07-21T02:10:00.427160+00:00",
+    "coin": "ETH",
+    "price": 1909.78,
+    "signal": "HOLD",
+    "confidence": 35,
+    "score": -0.15,
+    "fg": 25,
+    "btc_price": 65308,
+    "btc_dominance": 56.5,
+    "candidates": [
+      "NIGHT",
+      "MON",
+      "BONK",
+      "\u5e01\u5b89\u4eba\u751f",
+      "UB",
+      "KITE",
+      "LDO",
+      "ETH"
+    ],
+    "alert": "All swing candidates show bearish chart structures. Wait for confirmed reversal patterns before deploying capital."
   }
 ]
