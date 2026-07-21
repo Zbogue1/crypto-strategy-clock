@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-07-21T16:10:00.586790+00:00",
+  "timestamp": "2026-07-21T17:10:00.311786+00:00",
   "selected_coin": "XRP",
   "selected_coin_name": "XRP",
   "selected_coin_price": 0.0,
-  "confidence": 30,
-  "layman_headline": "Extreme Fear grips the market \u2014 patience beats FOMO right now.",
-  "layman_explanation": "The crypto market is in 'Extreme Fear' territory at 25/100, and Bitcoin dominance is high at 56.9%, which means money is flowing away from altcoins and into Bitcoin. The swing candidates available today are mostly low-quality setups: many have already rallied 20-35% in the past week (making them extended and risky to chase), while others are in clear downtrends with bearish chart structures. There's no clean entry with a strong risk/reward ratio right now.",
-  "layman_action": "Stay in cash and wait for a cleaner setup. The best swing trades come when fear peaks and a coin shows clear technical reversal signals \u2014 we're not quite there yet on any candidate with sufficient quality.",
-  "expert_reasoning": "Systematically evaluating all 9 candidates: DEXE has conflicting signals (price data shows $9.98 but chart says $36.27, RSI 71 overbought despite a -75% drop \u2014 data integrity issues make this untradeable). \u5e01\u5b89\u4eba\u751f has a bullish chart (bull flag, +0.80 bias) but risk/reward is only 0.97x and RSI at 58 after a -24% drop suggests more selling ahead. UB shows a Morning Star with 3.44x R/R but is already +35% in 7 days \u2014 extended. LDO has the best chart bias (+0.85, Three White Soldiers) but terrible R/R of 0.38x and is +20% in 7 days. ONDO is similarly extended at +28%. ETH has approaching-oversold RSI (39) which is a reliable signal per our track record (83% win rate), but the chart bias is bearish (-0.70) and price is below all MAs \u2014 no reversal confirmation yet. NIGHT is in a clear downtrend. VVV is slightly bearish. MON lacks any technical data. With BTC dominance at 56.9%, altcoin setups carry extra headwind risk. The disciplined move is to wait for ETH to either confirm a reversal (reclaim SMA20, RSI dip to 30-35) or for a fresh catalyst-driven setup.",
+  "confidence": 28,
+  "layman_headline": "Extreme Fear grips the market \u2014 no swing trade setups meet our quality bar right now.",
+  "layman_explanation": "The crypto market is deeply fearful with a Fear & Greed score of 25 ('Extreme Fear'). Bitcoin is holding relatively well at $66,400 and dominance is high at 56.9%, meaning money is flowing out of altcoins and into Bitcoin. Every altcoin on our watchlist has significant problems: some have already run up too much, others are in freefall with no clear bottom, and the rest have poor risk/reward setups. Patience is the best trade here.",
+  "layman_action": "Stay in cash and wait. The market is fearful but hasn't shown clear reversal signals on any quality altcoin. Watch for BTC to either break higher (which could eventually rotate into alts) or for oversold altcoins to form proper bottoms with volume confirmation.",
+  "expert_reasoning": "Systematically evaluating all 9 candidates: (1) DEXE has severely conflicting data \u2014 24h change shows -70% crash but chart analysis shows uptrend at $36.27 vs listed price $10.10 \u2014 untradeable with unreliable data. (2) \u5e01\u5b89\u4eba\u751f has the best chart setup (bull flag, +0.80 bias) but R/R ratio is only 0.97x \u2014 inadequate for swing trading in extreme fear conditions. (3) LDO shows Three White Soldiers with +0.85 chart bias, but has already run +51.7% in 5 days and R/R is a terrible 0.38x \u2014 classic case of chasing. (4) UB has Morning Star reversal and good R/R (3.44x) but is below all MAs and already up 34.6% in 7 days. (5) BONK has -2.0 chart bias with Three Black Crows and Bearish Marubozu \u2014 absolute avoid. (6) ETH is below all MAs with bearish structure. (7) MON is in a downtrend below all MAs. (8) NIGHT has zero chart data. (9) VVV is slightly bearish. With BTC dominance at 56.9% and Fear & Greed at 25, this is a hostile environment for altcoin swing trades. Our reliable RSI signal (83% win rate) isn't giving clean oversold reads on quality setups \u2014 BONK's RSI 31 is paired with a catastrophic chart.",
   "risk_factors": [
-    "BTC dominance at 56.9% creates persistent headwinds for all altcoin positions",
-    "Extreme Fear at 25 can persist or deepen \u2014 catching a falling knife is the primary risk",
-    "Most candidates have already moved significantly, leaving poor risk/reward entries"
+    "BTC dominance at 56.9% is actively suppressing altcoin performance \u2014 capital is rotating to BTC safety",
+    "Extreme Fear (25) with flat trend means sentiment hasn't bottomed yet \u2014 could worsen before improving",
+    "No candidate offers both a clean technical setup AND acceptable risk/reward ratio simultaneously"
   ],
   "watch_list": [
-    "ETH RSI approaching 30 with a bullish reversal candle \u2014 would trigger a high-conviction buy",
-    "BTC dominance trend \u2014 a rollover below 56% would signal altcoin rotation beginning",
-    "Fear & Greed index \u2014 a spike below 20 followed by recovery would be a classic capitulation signal"
+    "BTC behavior at $67K-$68K resistance \u2014 a breakout could signal risk-on rotation into alts",
+    "Fear & Greed index \u2014 watch for a move below 20 (capitulation) or above 30 (recovery)",
+    "LDO if it pulls back to $0.30-$0.33 support with RSI dropping to 40-45 \u2014 would create much better R/R entry"
   ],
-  "market_context": "The crypto market is in Extreme Fear (25/100) with BTC dominance elevated at 56.9%, indicating a risk-off environment where capital favors Bitcoin over altcoins. BTC itself is showing strength (+4% weekly) supported by institutional inflows, but this hasn't translated into broad altcoin recovery yet.",
-  "context_banner": "High BTC dominance and Extreme Fear create a hostile environment for altcoin swing trades \u2014 discipline demands waiting for confirmed reversal setups rather than chasing extended bounces.",
-  "btc_price": 66613,
+  "market_context": "Bitcoin is showing resilience near $66.5K with +2.7% weekly gains, but altcoins are broadly weak. BTC dominance at 56.9% and Extreme Fear at 25 create a hostile environment for altcoin swing trades \u2014 capital is seeking safety in BTC and stables.",
+  "context_banner": "Extreme Fear with high BTC dominance means patience outperforms aggression \u2014 no altcoin setup currently justifies deployment of capital.",
+  "btc_price": 66469,
   "fear_greed": {
     "current": 25,
     "label": "Extreme Fear",
@@ -33,27 +33,27 @@
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Extreme Fear at 25/100 with flat trend suggests capitulation hasn't completed \u2014 buying too early in fear carries significant drawdown risk."
+      "description": "Extreme Fear at 25/100 with flat weekly trend indicates persistent risk aversion without signs of capitulation bottom \u2014 historically reliable signal (67% win rate) suggests waiting for sub-20 or recovery above 30."
     },
     {
       "source": "RSI",
       "signal_type": "technical",
-      "description": "ETH RSI at 39 is approaching oversold (our most reliable signal at 83% win rate) but hasn't reached the 30 threshold for a high-conviction entry."
+      "description": "Our most reliable signal (83% win rate) shows no clean oversold opportunities \u2014 the only near-oversold reads (BONK 31, MON 38) are paired with strongly bearish chart structures, disqualifying them."
     },
     {
       "source": "Chart Pattern Analysis",
       "signal_type": "technical",
-      "description": "LDO and UB show bullish chart patterns (+0.85 and +0.80 bias) but both have already rallied 20-35% making entries risky with poor R/R ratios."
+      "description": "Best chart patterns (LDO Three White Soldiers, \u5e01\u5b89\u4eba\u751f Bull Flag) both have terrible risk/reward ratios (0.38x and 0.97x respectively), meaning potential downside exceeds or matches potential upside."
     },
     {
-      "source": "CoinDesk",
+      "source": "CoinTelegraph",
       "signal_type": "news",
-      "description": "Bitcoin rally has broad-based institutional support with whales and options traders piling in \u2014 bullish for BTC but high dominance means alts are starved of capital."
+      "description": "Bitcoin nearing seven-week high despite geopolitical tensions suggests BTC strength, but this is channeling capital away from alts rather than lifting the broader market."
     },
     {
       "source": "Blockworks",
       "signal_type": "news",
-      "description": "ETH derivatives reset noted by Blockworks suggests positioning is being unwound \u2014 could set up a cleaner entry in coming days once the reset completes."
+      "description": "'ETH derivatives reset and the next retail trade' headline suggests ETH positioning is resetting \u2014 could create future opportunity but premature to act on without confirming price action."
     }
   ],
   "_mode": "HUNTING",
