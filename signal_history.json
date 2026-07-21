@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-19T11:10:00.233908+00:00",
-    "coin": "ETH",
-    "price": 1873.8,
-    "signal": "HOLD",
-    "confidence": 35,
-    "score": -0.15,
-    "fg": 28,
-    "btc_price": 64550,
-    "btc_dominance": 56.5,
-    "candidates": [
-      "BONK",
-      "KAITO",
-      "MON",
-      "KITE",
-      "DEXE",
-      "PEPE",
-      "TRUMP",
-      "ETH",
-      "LDO"
-    ],
-    "alert": "Weekend geopolitical risk: CryptoSlate reports 20% of world oil supply in balance \u2014 could trigger sharp moves in either direction."
-  },
-  {
     "ts": "2026-07-19T12:10:00.282538+00:00",
     "coin": "ETH",
     "price": 1864.61,
@@ -917,5 +894,27 @@
       "ETH"
     ],
     "alert": "All swing candidates are either in confirmed downtrends or already extended from bounce \u2014 no clean entry available this cycle."
+  },
+  {
+    "ts": "2026-07-21T04:10:00.248425+00:00",
+    "coin": "ETH",
+    "price": 1927.94,
+    "signal": "HOLD",
+    "confidence": 35,
+    "score": -0.15,
+    "fg": 25,
+    "btc_price": 65665,
+    "btc_dominance": 56.5,
+    "candidates": [
+      "NIGHT",
+      "MON",
+      "BONK",
+      "\u5e01\u5b89\u4eba\u751f",
+      "DEXE",
+      "LDO",
+      "USDG",
+      "ETH"
+    ],
+    "alert": "All swing candidates show weak or bearish chart structures. High-conviction setups are absent this cycle."
   }
 ]
