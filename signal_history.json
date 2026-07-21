@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-19T23:10:00.375665+00:00",
-    "coin": "ETH",
-    "price": 1865.83,
-    "signal": "HOLD",
-    "confidence": 38,
-    "score": -0.25,
-    "fg": 28,
-    "btc_price": 64595,
-    "btc_dominance": 56.5,
-    "candidates": [
-      "B",
-      "BONK",
-      "PUMP",
-      "KITE",
-      "TRUMP",
-      "MON",
-      "PEPE",
-      "ETH",
-      "LDO"
-    ],
-    "alert": "Market in Fear territory with high BTC dominance \u2014 altcoin entries carry elevated risk. Wait for confirmation before deploying capital."
-  },
-  {
     "ts": "2026-07-20T00:10:00.759715+00:00",
     "coin": "ETH",
     "price": 1876.07,
@@ -909,5 +886,28 @@
       "LDO"
     ],
     "alert": "Extreme Fear at 25 \u2014 historically a contrarian buying zone, but position sizing must be conservative given macro uncertainty including US-Iran tensions."
+  },
+  {
+    "ts": "2026-07-21T16:10:00.586790+00:00",
+    "coin": "XRP",
+    "price": 0.0,
+    "signal": "HOLD",
+    "confidence": 30,
+    "score": -0.3,
+    "fg": 25,
+    "btc_price": 66613,
+    "btc_dominance": 56.9,
+    "candidates": [
+      "DEXE",
+      "MON",
+      "\u5e01\u5b89\u4eba\u751f",
+      "NIGHT",
+      "VVV",
+      "UB",
+      "ONDO",
+      "ETH",
+      "LDO"
+    ],
+    "alert": "All swing candidates have poor risk/reward profiles or data integrity issues \u2014 staying in cash is the highest-EV play this cycle."
   }
 ]
