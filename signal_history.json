@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-20T03:10:00.353205+00:00",
-    "coin": "ETH",
-    "price": 1876.55,
-    "signal": "BUY",
-    "confidence": 58,
-    "score": 0.35,
-    "fg": 29,
-    "btc_price": 64763,
-    "btc_dominance": 56.5,
-    "candidates": [
-      "PUMP",
-      "BONK",
-      "KAITO",
-      "JTO",
-      "KITE",
-      "WLD",
-      "PEPE",
-      "ETH",
-      "LDO"
-    ],
-    "alert": null
-  },
-  {
     "ts": "2026-07-20T04:10:00.445283+00:00",
     "coin": "TRUMP",
     "price": 1.57,
@@ -909,5 +886,28 @@
       "LDO"
     ],
     "alert": "Data integrity warning: DEXE candidate shows price of $9.44 but chart analysis references $36.27 with contradictory signals \u2014 avoid this asset entirely."
+  },
+  {
+    "ts": "2026-07-21T19:10:00.669489+00:00",
+    "coin": "XRP",
+    "price": 3.96,
+    "signal": "HOLD",
+    "confidence": 30,
+    "score": -0.3,
+    "fg": 25,
+    "btc_price": 66326,
+    "btc_dominance": 56.8,
+    "candidates": [
+      "DEXE",
+      "MON",
+      "\u5e01\u5b89\u4eba\u751f",
+      "NIGHT",
+      "VVV",
+      "BONK",
+      "ONDO",
+      "ETH",
+      "LDO"
+    ],
+    "alert": "Multiple candidates show severely inconsistent data (DEXE price $8.12 vs chart $36.27, -77% 24h with RSI 71). Exercise extreme caution with data quality this cycle."
   }
 ]
