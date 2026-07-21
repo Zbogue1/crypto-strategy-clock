@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-20T00:10:00.759715+00:00",
-    "coin": "ETH",
-    "price": 1876.07,
-    "signal": "HOLD",
-    "confidence": 38,
-    "score": -0.15,
-    "fg": 29,
-    "btc_price": 64781,
-    "btc_dominance": 56.5,
-    "candidates": [
-      "B",
-      "PUMP",
-      "BONK",
-      "KITE",
-      "TRUMP",
-      "PEPE",
-      "MON",
-      "ETH",
-      "LDO"
-    ],
-    "alert": "No high-conviction setups available \u2014 all candidates either extended after rallies or in active downtrends without reversal confirmation. Patience is the best trade."
-  },
-  {
     "ts": "2026-07-20T02:10:00.301552+00:00",
     "coin": "BTC",
     "price": 64819,
@@ -909,5 +886,28 @@
       "LDO"
     ],
     "alert": "All swing candidates have poor risk/reward profiles or data integrity issues \u2014 staying in cash is the highest-EV play this cycle."
+  },
+  {
+    "ts": "2026-07-21T17:10:00.311786+00:00",
+    "coin": "XRP",
+    "price": 0.0,
+    "signal": "HOLD",
+    "confidence": 28,
+    "score": -0.35,
+    "fg": 25,
+    "btc_price": 66469,
+    "btc_dominance": 56.9,
+    "candidates": [
+      "DEXE",
+      "MON",
+      "\u5e01\u5b89\u4eba\u751f",
+      "NIGHT",
+      "UB",
+      "VVV",
+      "BONK",
+      "ETH",
+      "LDO"
+    ],
+    "alert": "Market in Extreme Fear (25/100) with rising BTC dominance \u2014 altcoin setups carry elevated risk. Wait for clearer reversal signals."
   }
 ]
