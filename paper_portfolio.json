@@ -1,5 +1,5 @@
 {
-  "cash": 524.5593,
+  "cash": 574.9521,
   "holdings": [
     {
       "coin_ticker": "GRASS",
@@ -36,26 +36,26 @@
     {
       "coin_ticker": "LDO",
       "coin_id": "ldo",
-      "units": 253.59340550857215,
+      "units": 126.79670275428607,
       "entry_price": 0.364668,
       "entry_date": "2026-07-16T09:10:09.795217+00:00",
       "entry_signal": "BUY",
       "entry_confidence": 58,
-      "allocated_usd": 92.57,
-      "fee_paid": 0.0926,
+      "allocated_usd": 46.285,
+      "fee_paid": 0.0463,
       "exit_target": 0.43,
-      "stop_loss": 0.295,
+      "stop_loss": 0.364668,
       "entry_target": 0.345,
       "expected_days": 10,
-      "partial_taken": false
+      "partial_taken": true
     }
   ],
-  "realized_pnl": -48.4007,
+  "realized_pnl": -44.2929,
   "peak_value": 1032.0739,
-  "total_trades": 11,
-  "winning_trades": 6,
+  "total_trades": 12,
+  "winning_trades": 7,
   "losing_trades": 5,
-  "total_fees": 2.8211,
+  "total_fees": 2.8715,
   "trade_history": [
     {
       "trade_num": 1,
@@ -330,6 +330,29 @@
       "hit_target": false,
       "hit_stop": true,
       "result": "LOSS"
+    },
+    {
+      "trade_num": 12,
+      "coin_ticker": "LDO",
+      "coin_id": "ldo",
+      "entry_price": 0.364668,
+      "entry_date": "2026-07-16T09:10:09.795217+00:00",
+      "entry_signal": "BUY",
+      "entry_confidence": 58,
+      "allocated_usd": 46.285,
+      "exit_price": 0.397827,
+      "exit_date": "2026-07-21T03:13:48.858446+00:00",
+      "exit_signal": "PARTIAL",
+      "exit_reason": "partial_take_50pct",
+      "units": 126.79670275428607,
+      "gross_proceeds": 50.4432,
+      "fees_total": 0.0967,
+      "net_proceeds": 50.3928,
+      "profit_usd": 4.1078,
+      "profit_pct": 8.88,
+      "days_held": 4.75,
+      "exit_target": 0.43,
+      "result": "WIN"
     }
   ],
   "started_at": "2026-06-27T00:00:00+00:00",
