@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-19T22:10:00.386288+00:00",
-    "coin": "ETH",
-    "price": 1862.45,
-    "signal": "HOLD",
-    "confidence": 35,
-    "score": -0.15,
-    "fg": 28,
-    "btc_price": 64459,
-    "btc_dominance": 56.5,
-    "candidates": [
-      "B",
-      "BONK",
-      "KITE",
-      "PUMP",
-      "TRUMP",
-      "MON",
-      "PEPE",
-      "ETH",
-      "LDO"
-    ],
-    "alert": "All swing candidates have bearish chart structures. No clean entry exists. Patience required."
-  },
-  {
     "ts": "2026-07-19T23:10:00.375665+00:00",
     "coin": "ETH",
     "price": 1865.83,
@@ -909,5 +886,28 @@
       "LDO"
     ],
     "alert": "Market in Extreme Fear \u2014 watch for capitulation bottoms forming over next 48-72 hours for potential high-conviction entries."
+  },
+  {
+    "ts": "2026-07-21T15:10:00.638659+00:00",
+    "coin": "UB",
+    "price": 0.10423,
+    "signal": "BUY",
+    "confidence": 52,
+    "score": 0.45,
+    "fg": 25,
+    "btc_price": 66680,
+    "btc_dominance": 56.9,
+    "candidates": [
+      "DEXE",
+      "NIGHT",
+      "MON",
+      "\u5e01\u5b89\u4eba\u751f",
+      "ONDO",
+      "VVV",
+      "UB",
+      "ETH",
+      "LDO"
+    ],
+    "alert": "Extreme Fear at 25 \u2014 historically a contrarian buying zone, but position sizing must be conservative given macro uncertainty including US-Iran tensions."
   }
 ]
