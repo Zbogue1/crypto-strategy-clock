@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-19T21:10:00.214611+00:00",
-    "coin": "ETH",
-    "price": 1865.69,
-    "signal": "HOLD",
-    "confidence": 35,
-    "score": -0.3,
-    "fg": 28,
-    "btc_price": 64471,
-    "btc_dominance": 56.5,
-    "candidates": [
-      "B",
-      "BONK",
-      "KITE",
-      "PEPE",
-      "MON",
-      "SUN",
-      "TRUMP",
-      "ETH",
-      "LDO"
-    ],
-    "alert": "No high-conviction setups available. All candidates show bearish structure. Waiting for confirmation."
-  },
-  {
     "ts": "2026-07-19T22:10:00.386288+00:00",
     "coin": "ETH",
     "price": 1862.45,
@@ -909,5 +886,28 @@
       "ETH"
     ],
     "alert": "Extreme Fear at 25 with BTC attempting breakout \u2014 high-quality setups may emerge within 24-48 hours if momentum continues."
+  },
+  {
+    "ts": "2026-07-21T14:10:00.355811+00:00",
+    "coin": "BTC",
+    "price": 66799,
+    "signal": "HOLD",
+    "confidence": 32,
+    "score": -0.3,
+    "fg": 25,
+    "btc_price": 66799,
+    "btc_dominance": 56.9,
+    "candidates": [
+      "DEXE",
+      "NIGHT",
+      "MON",
+      "\u5e01\u5b89\u4eba\u751f",
+      "VVV",
+      "ONDO",
+      "UB",
+      "ETH",
+      "LDO"
+    ],
+    "alert": "Market in Extreme Fear \u2014 watch for capitulation bottoms forming over next 48-72 hours for potential high-conviction entries."
   }
 ]
