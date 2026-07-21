@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-19T12:10:00.282538+00:00",
-    "coin": "ETH",
-    "price": 1864.61,
-    "signal": "HOLD",
-    "confidence": 35,
-    "score": -0.15,
-    "fg": 28,
-    "btc_price": 64335,
-    "btc_dominance": 56.4,
-    "candidates": [
-      "BONK",
-      "KAITO",
-      "MON",
-      "DEXE",
-      "KITE",
-      "PEPE",
-      "TRUMP",
-      "ETH",
-      "LDO"
-    ],
-    "alert": "All swing candidates either overbought or in confirmed downtrends \u2014 waiting for cleaner setup near ETH $1,800 support."
-  },
-  {
     "ts": "2026-07-19T13:10:00.245972+00:00",
     "coin": "ETH",
     "price": 1866.4,
@@ -916,5 +893,27 @@
       "ETH"
     ],
     "alert": "All swing candidates show weak or bearish chart structures. High-conviction setups are absent this cycle."
+  },
+  {
+    "ts": "2026-07-21T05:10:00.208877+00:00",
+    "coin": "LDO",
+    "price": 0.400836,
+    "signal": "HOLD",
+    "confidence": 32,
+    "score": -0.3,
+    "fg": 25,
+    "btc_price": 65487,
+    "btc_dominance": 56.5,
+    "candidates": [
+      "NIGHT",
+      "MON",
+      "BONK",
+      "DEXE",
+      "\u5e01\u5b89\u4eba\u751f",
+      "LDO",
+      "USDG",
+      "ETH"
+    ],
+    "alert": "All swing candidates show poor risk/reward or strongly bearish charts \u2014 avoid new entries this cycle."
   }
 ]
