@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-20T05:10:00.282973+00:00",
-    "coin": "ETH",
-    "price": 1864.89,
-    "signal": "HOLD",
-    "confidence": 35,
-    "score": -0.15,
-    "fg": 29,
-    "btc_price": 64398,
-    "btc_dominance": 56.5,
-    "candidates": [
-      "BONK",
-      "PUMP",
-      "JTO",
-      "KITE",
-      "WLD",
-      "TRUMP",
-      "PEPE",
-      "ETH",
-      "LDO"
-    ],
-    "alert": "All swing candidates show bearish or mixed chart structures. No high-conviction entry exists this cycle. Patience recommended."
-  },
-  {
     "ts": "2026-07-20T06:10:00.445372+00:00",
     "coin": "TRUMP",
     "price": 1.57,
@@ -909,5 +886,28 @@
       "LDO"
     ],
     "alert": "Market in Extreme Fear with no clean swing setups. All oversold candidates show bearish chart structures; all momentum plays are extended. Capital preservation is priority."
+  },
+  {
+    "ts": "2026-07-21T21:10:00.340551+00:00",
+    "coin": "BTC",
+    "price": 66325,
+    "signal": "HOLD",
+    "confidence": 30,
+    "score": -0.3,
+    "fg": 25,
+    "btc_price": 66325,
+    "btc_dominance": 56.8,
+    "candidates": [
+      "DEXE",
+      "NIGHT",
+      "\u5e01\u5b89\u4eba\u751f",
+      "MON",
+      "VVV",
+      "BONK",
+      "ONDO",
+      "ETH",
+      "LDO"
+    ],
+    "alert": "All swing candidates fail quality filters. Waiting for better setups."
   }
 ]
