@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-07-21T15:10:00.638659+00:00",
-  "selected_coin": "UB",
-  "selected_coin_name": "Unibase",
-  "selected_coin_price": 0.10423,
-  "confidence": 52,
-  "layman_headline": "Hunting for a bounce play in fearful markets \u2014 Unibase shows the cleanest reversal pattern.",
-  "layman_explanation": "The overall crypto market is in 'Extreme Fear' mode, which historically is when the best buying opportunities appear. Bitcoin is recovering around $66,680, giving altcoins a small window to bounce. Among the candidates, Unibase (UB) stands out because its chart is showing a classic 'Morning Star' reversal pattern \u2014 a textbook signal that selling pressure is exhausting and buyers are stepping in. Its RSI is neutral at 54, meaning it's neither overbought nor stretched, unlike many other candidates that have already surged 20-30%.",
-  "layman_action": "This is a speculative, small-position trade. If you're cautious, consider waiting for UB to pull back toward $0.095 before entering. Set a hard stop-loss at $0.085 \u2014 if it drops below that, exit immediately. This is not a high-conviction setup given the fearful macro environment, so keep position size small.",
-  "expert_reasoning": "UB presents the best risk-adjusted setup among the candidates. The Morning Star pattern on the chart is a high-reliability three-candle reversal formation, and the chart bias score of +0.80 is the second highest after LDO (+0.85). However, LDO and ONDO have already moved +20-30% in 7 days with poor risk/reward ratios of 0.38x, making them chase trades. UB's R/R of 3.44x with support at $0.0887 provides a clear stop-loss level. The RSI at 54 is neutral, avoiding the overbought trap seen in DEXE (71) and the still-bearish structures in ETH and NIGHT. The main concern is BTC dominance at 56.9% which pressures altcoins, and the Extreme Fear environment suggests keeping position size conservative. DEXE is excluded due to contradictory signals \u2014 the reported -75% 7d drop conflicts with the chart showing $36.27 (massively higher than the $9.87 listed price), suggesting data integrity issues.",
+  "timestamp": "2026-07-21T16:10:00.586790+00:00",
+  "selected_coin": "XRP",
+  "selected_coin_name": "XRP",
+  "selected_coin_price": 0.0,
+  "confidence": 30,
+  "layman_headline": "Extreme Fear grips the market \u2014 patience beats FOMO right now.",
+  "layman_explanation": "The crypto market is in 'Extreme Fear' territory at 25/100, and Bitcoin dominance is high at 56.9%, which means money is flowing away from altcoins and into Bitcoin. The swing candidates available today are mostly low-quality setups: many have already rallied 20-35% in the past week (making them extended and risky to chase), while others are in clear downtrends with bearish chart structures. There's no clean entry with a strong risk/reward ratio right now.",
+  "layman_action": "Stay in cash and wait for a cleaner setup. The best swing trades come when fear peaks and a coin shows clear technical reversal signals \u2014 we're not quite there yet on any candidate with sufficient quality.",
+  "expert_reasoning": "Systematically evaluating all 9 candidates: DEXE has conflicting signals (price data shows $9.98 but chart says $36.27, RSI 71 overbought despite a -75% drop \u2014 data integrity issues make this untradeable). \u5e01\u5b89\u4eba\u751f has a bullish chart (bull flag, +0.80 bias) but risk/reward is only 0.97x and RSI at 58 after a -24% drop suggests more selling ahead. UB shows a Morning Star with 3.44x R/R but is already +35% in 7 days \u2014 extended. LDO has the best chart bias (+0.85, Three White Soldiers) but terrible R/R of 0.38x and is +20% in 7 days. ONDO is similarly extended at +28%. ETH has approaching-oversold RSI (39) which is a reliable signal per our track record (83% win rate), but the chart bias is bearish (-0.70) and price is below all MAs \u2014 no reversal confirmation yet. NIGHT is in a clear downtrend. VVV is slightly bearish. MON lacks any technical data. With BTC dominance at 56.9%, altcoin setups carry extra headwind risk. The disciplined move is to wait for ETH to either confirm a reversal (reclaim SMA20, RSI dip to 30-35) or for a fresh catalyst-driven setup.",
   "risk_factors": [
-    "BTC dominance at 56.9% is actively suppressing altcoin performance \u2014 any BTC pullback could drag UB down sharply",
-    "UB has already moved +29.3% in 7 days, which could mean the bounce is already priced in and a pullback is imminent",
-    "Extreme Fear (25/100) market sentiment can persist and deepen, causing further selling pressure across all alts including UB"
+    "BTC dominance at 56.9% creates persistent headwinds for all altcoin positions",
+    "Extreme Fear at 25 can persist or deepen \u2014 catching a falling knife is the primary risk",
+    "Most candidates have already moved significantly, leaving poor risk/reward entries"
   ],
   "watch_list": [
-    "BTC price action around $66,000-$67,000 \u2014 a rejection here could trigger a broader altcoin selloff",
-    "UB holding above the $0.0887 support level \u2014 a break below invalidates the Morning Star pattern",
-    "Fear & Greed Index trajectory \u2014 any move toward 20 or below signals capitulation risk"
+    "ETH RSI approaching 30 with a bullish reversal candle \u2014 would trigger a high-conviction buy",
+    "BTC dominance trend \u2014 a rollover below 56% would signal altcoin rotation beginning",
+    "Fear & Greed index \u2014 a spike below 20 followed by recovery would be a classic capitulation signal"
   ],
-  "market_context": "Bitcoin is attempting to stabilize around $66,680 amid Extreme Fear (25/100), with institutional buying and options activity providing support. Altcoins remain under pressure from 56.9% BTC dominance, but the fear reading historically precedes relief bounces.",
-  "context_banner": "Extreme Fear creates opportunity, but selectivity is paramount \u2014 UB's Morning Star reversal with 3.4x risk/reward is the cleanest setup in a challenging alt environment.",
-  "btc_price": 66680,
+  "market_context": "The crypto market is in Extreme Fear (25/100) with BTC dominance elevated at 56.9%, indicating a risk-off environment where capital favors Bitcoin over altcoins. BTC itself is showing strength (+4% weekly) supported by institutional inflows, but this hasn't translated into broad altcoin recovery yet.",
+  "context_banner": "High BTC dominance and Extreme Fear create a hostile environment for altcoin swing trades \u2014 discipline demands waiting for confirmed reversal setups rather than chasing extended bounces.",
+  "btc_price": 66613,
   "fear_greed": {
     "current": 25,
     "label": "Extreme Fear",
@@ -31,32 +31,32 @@
   "btc_dominance": 56.9,
   "key_signals": [
     {
-      "source": "Chart Pattern Analysis",
-      "signal_type": "technical",
-      "description": "UB confirmed a Morning Star candlestick reversal pattern \u2014 a high-reliability bottom signal \u2014 with the strongest chart bias score (+0.80) among all candidates."
+      "source": "Fear_Greed",
+      "signal_type": "sentiment",
+      "description": "Extreme Fear at 25/100 with flat trend suggests capitulation hasn't completed \u2014 buying too early in fear carries significant drawdown risk."
     },
     {
       "source": "RSI",
       "signal_type": "technical",
-      "description": "UB's RSI at 54 is neutral with room to run upward, unlike DEXE (71, overbought) or LDO/ONDO which are approaching overbought after strong runs."
+      "description": "ETH RSI at 39 is approaching oversold (our most reliable signal at 83% win rate) but hasn't reached the 30 threshold for a high-conviction entry."
     },
     {
-      "source": "Fear_Greed",
-      "signal_type": "sentiment",
-      "description": "Extreme Fear at 25/100 with flat trend \u2014 historically a contrarian buy zone, but also signals caution on position sizing."
-    },
-    {
-      "source": "CryptoSlate",
-      "signal_type": "news",
-      "description": "Bitcoin's $66,000 breakout surviving US-Iran escalation suggests underlying market resilience, providing a floor for altcoin bounce trades."
+      "source": "Chart Pattern Analysis",
+      "signal_type": "technical",
+      "description": "LDO and UB show bullish chart patterns (+0.85 and +0.80 bias) but both have already rallied 20-35% making entries risky with poor R/R ratios."
     },
     {
       "source": "CoinDesk",
       "signal_type": "news",
-      "description": "Institutional and whale accumulation in Bitcoin provides macro support, with broad-based rally participation suggesting risk appetite is cautiously returning."
+      "description": "Bitcoin rally has broad-based institutional support with whales and options traders piling in \u2014 bullish for BTC but high dominance means alts are starved of capital."
+    },
+    {
+      "source": "Blockworks",
+      "signal_type": "news",
+      "description": "ETH derivatives reset noted by Blockworks suggests positioning is being unwound \u2014 could set up a cleaner entry in coming days once the reset completes."
     }
   ],
   "_mode": "HUNTING",
-  "exit_target": 0.12,
-  "stop_loss": 0.085
+  "exit_target": null,
+  "stop_loss": null
 }
