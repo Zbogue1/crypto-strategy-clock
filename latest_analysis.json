@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-07-21T10:10:00.513800+00:00",
+  "timestamp": "2026-07-21T11:10:00.270586+00:00",
   "selected_coin": "ETH",
   "selected_coin_name": "Ethereum",
-  "selected_coin_price": 1942.12,
+  "selected_coin_price": 1930.05,
   "confidence": 38,
-  "layman_headline": "Market fear is extreme but no clean entry stands out yet \u2014 patience is the play.",
-  "layman_explanation": "The crypto market is in 'Extreme Fear' territory at 25/100, which historically can present buying opportunities. Bitcoin is bouncing nicely with 5 straight days of ETF inflows, and most major coins are green. However, the swing trade candidates right now are either already extended after big rallies (LDO +25%, ONDO +30% in a week) or still in ugly downtrends (BONK, NIGHT). None offer a clean risk/reward entry at current prices.",
-  "layman_action": "Wait for a pullback in ETH toward the $1,800-$1,850 support zone before entering. The extreme fear reading suggests a broader opportunity is forming, but chasing coins that already bounced 20-30% is risky. Set alerts and be ready.",
-  "expert_reasoning": "All swing candidates have significant issues. DEXE shows RSI 71 (overbought) despite a -53% 7d drop \u2014 conflicting signals suggest data lag and unreliable entry. LDO and ONDO have the best chart bias scores (+0.85 and +0.40) but both already ran 25-30% in 7 days with risk/reward ratios of only 0.38x to nearest resistance \u2014 terrible for new entries. BONK has a -2.0 chart bias (strongly bearish) with Three Black Crows, making it a falling knife. ETH at RSI 39 is the most promising setup but needs a pullback to support at $1,800 before the risk/reward justifies entry. Given high BTC dominance at 56.7% suppressing alts, and extreme fear sentiment that could worsen before improving, the disciplined move is to wait.",
+  "layman_headline": "Market fear is extreme but no clean entry presents itself \u2014 patience is the play.",
+  "layman_explanation": "Bitcoin is bouncing back toward $66,000 with ETF inflows picking up, and the broader market is showing green. However, the market mood is still 'Extreme Fear' at 25/100 and Bitcoin dominance is high at 56.7%, meaning altcoins are still getting crushed relative to Bitcoin. Every swing candidate on the watchlist has significant flaws \u2014 either already ran up too much, has terrible chart structure, or conflicting signals. Rushing in now would mean chasing rallies or catching falling knives.",
+  "layman_action": "Wait for a cleaner setup. If Ethereum pulls back toward $1,850 with RSI dipping below 35, that would be a much better entry point. Keep cash ready \u2014 extreme fear environments eventually produce great opportunities, but timing matters.",
+  "expert_reasoning": "No candidate offers a high-conviction swing entry right now. ETH is the strongest fundamental pick with RSI at 39.4 approaching oversold territory, but chart bias is -0.70 (bearish structure, below all MAs) and it's already bounced 8.2% in 7 days \u2014 entering now means poor risk/reward at 1.41x. LDO has the best chart bias (+0.85) with Three White Soldiers pattern, but the R/R is only 0.38x with resistance at $0.40 just 7.4% away after a 23% weekly run and 51.7% 5-day momentum \u2014 classic chase scenario. DEXE data is internally contradictory (price shows -40% 24h but RSI is 71 overbought, chart says $36.27 but price field says $20.42) making it untradeable. BONK at -2.0 chart bias with Three Black Crows is a falling knife. The prudent move is to wait for ETH to retest $1,850 support or for a proper MACD bullish cross confirmation.",
   "risk_factors": [
-    "BTC dominance at 56.7% continues to siphon capital from altcoins \u2014 any alt entry faces headwinds",
-    "Extreme Fear at 25 could intensify further before a true reversal, potentially pushing alts lower",
-    "FTX $900M payout beginning could create selling pressure as creditors liquidate recovered assets"
+    "BTC dominance at 56.7% means alts continue to underperform even if BTC rallies \u2014 capital rotation to alts may not happen",
+    "Extreme Fear at 25 can persist or worsen \u2014 this is not a reliable bottom signal by itself, just context",
+    "Oil near $90 creates macro headwinds that could pressure risk assets including crypto if equity markets sell off"
   ],
   "watch_list": [
-    "ETH price action near $1,800-$1,850 support \u2014 a bounce with volume here is the ideal entry",
-    "Bitcoin ETF inflow streak \u2014 if this breaks, the entire market rally could stall",
-    "Fear & Greed index trajectory \u2014 a move below 20 would signal capitulation and stronger buy setup"
+    "BTC breaking and holding above $67,000 \u2014 would confirm range breakout and likely pull alts higher",
+    "ETH RSI dropping below 35 on a pullback to $1,800-$1,850 support \u2014 would be ideal swing entry zone",
+    "Fear & Greed index \u2014 any move below 20 or sharp reversal above 30 signals inflection point"
   ],
-  "market_context": "Bitcoin is showing strength at $66.2K with a 5-day ETF inflow streak, but altcoins are lagging with BTC dominance at 56.7%. The market is in Extreme Fear (25/100), which historically precedes recoveries but timing is uncertain.",
-  "context_banner": "Extreme Fear and strong BTC ETF flows are building a contrarian setup, but the best alt entries require patience for pullbacks to support.",
-  "btc_price": 66227,
+  "market_context": "Bitcoin is testing $66K with 5 straight days of ETF inflows, but the broader market remains in Extreme Fear at 25. BTC dominance at 56.7% signals capital is hiding in Bitcoin rather than flowing into alts, making altcoin swing trades riskier than usual.",
+  "context_banner": "Bitcoin ETF inflows build momentum toward $66K but Extreme Fear and high BTC dominance make altcoin entries premature \u2014 wait for confirmation.",
+  "btc_price": 66117,
   "fear_greed": {
     "current": 25,
     "label": "Extreme Fear",
@@ -33,27 +33,27 @@
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Extreme Fear at 25/100 with flat trend suggests contrarian buying opportunity is forming but not yet at capitulation levels."
+      "description": "Extreme Fear at 25/100 with flat trend \u2014 historically precedes opportunities but does not confirm a bottom yet."
     },
     {
       "source": "RSI",
       "signal_type": "technical",
-      "description": "ETH RSI at 39 is approaching oversold territory \u2014 our most reliable signal (83% win rate) \u2014 but needs a pullback to support for optimal entry."
+      "description": "ETH RSI at 39.4 is approaching oversold but hasn't triggered a clear reversal signal \u2014 needs to dip below 35 or show MACD bullish cross for confirmation."
     },
     {
-      "source": "CoinDesk",
+      "source": "CoinTelegraph",
       "signal_type": "news",
-      "description": "Bitcoin ETFs posted 5 consecutive days of inflows (first since April), signaling sustained institutional demand supporting the BTC rally."
-    },
-    {
-      "source": "CryptoSlate",
-      "signal_type": "news",
-      "description": "FTX begins $900M payout to creditors in 45 countries, creating potential near-term selling pressure as recovered funds may be liquidated."
+      "description": "Bitcoin ETFs posting 5-day inflow streak (longest since May) and BTC hitting one-month high at $66.3K \u2014 institutional demand is returning but hasn't spilled into alts yet."
     },
     {
       "source": "Chart Pattern Analysis",
       "signal_type": "technical",
-      "description": "Best candidates (LDO, ONDO) show bullish chart patterns but risk/reward ratios of 0.38x are far below the 2.0x minimum threshold for new entries."
+      "description": "Best candidate LDO shows Three White Soldiers but R/R is only 0.38x with resistance at $0.40 \u2014 classic late entry trap after 51.7% 5-day run."
+    },
+    {
+      "source": "CryptoSlate",
+      "signal_type": "macro",
+      "description": "Oil near $90 and US debt at $39.5 trillion create a macro liquidity tension \u2014 BTC holding $66K despite this is notable strength but adds uncertainty for risk assets."
     }
   ],
   "_mode": "HUNTING",
