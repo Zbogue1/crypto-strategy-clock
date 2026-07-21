@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-07-21T19:10:00.669489+00:00",
+  "timestamp": "2026-07-21T20:10:00.413195+00:00",
   "selected_coin": "XRP",
   "selected_coin_name": "XRP",
-  "selected_coin_price": 3.96,
-  "confidence": 30,
-  "layman_headline": "Extreme fear grips crypto \u2014 patience beats impulse right now.",
-  "layman_explanation": "The crypto market is deep in 'Extreme Fear' territory at 25/100, and Bitcoin dominance at 56.8% means money is flowing out of smaller coins and into Bitcoin. All of the swing trade candidates today either have bearish chart structures, have already rallied too much in recent days, or carry serious data quality red flags. None of them offer the clean, low-risk entry we need for a confident swing trade.",
-  "layman_action": "Stay in cash for now. The market fear is high but none of today's setups have a good enough risk-reward profile. Wait for a cleaner entry with confirmed reversal signals.",
-  "expert_reasoning": "Systematically reviewing all 9 candidates: DEXE shows a -77% 24h drop with contradictory data (RSI 71 overbought yet price crashed, chart says $36 while price listed at $8.12) \u2014 data is unreliable, avoid. \u5e01\u5b89\u4eba\u751f (BinanceLife) has the best chart bias (+0.80) with a bull flag pattern, but risk/reward is only 0.97x which is far below our 2.0x minimum, and the RSI at 58 after a -20% weekly drop is inconsistent. LDO has a strong chart bias (+0.85) with Three White Soldiers, but has already rallied 51.7% in 5 days \u2014 chasing extended momentum is not swing trading. ONDO is up 27% weekly with 0.38x risk/reward \u2014 terrible entry point. ETH has favorable RSI (39) but bearish chart structure (-0.70 bias) and only 1.41x risk/reward. MON and NIGHT both have bearish chart structures with no support levels or catalysts. BONK has zero technical data. VVV is slightly bearish with neutral RSI. High BTC dominance (56.8%) further suppresses alt upside. The disciplined move is to wait.",
+  "selected_coin_price": 0.0,
+  "confidence": 28,
+  "layman_headline": "Extreme Fear grips the market \u2014 no clean swing trade setup available right now.",
+  "layman_explanation": "The crypto market is in 'Extreme Fear' mode with a score of just 25 out of 100, and Bitcoin dominance is high at 56.8%, which means money is flowing away from altcoins and into Bitcoin. While several coins have dropped sharply, none of the candidates show the combination of strong chart structure, reasonable RSI, and a clear catalyst needed for a high-confidence swing entry. Most oversold coins like BONK and NIGHT have strongly bearish chart patterns suggesting more downside, while coins bouncing like LDO and ONDO have already moved 18-27% in a week and look extended.",
+  "layman_action": "Stay in cash and wait. The market is fearful but hasn't shown clear bottoming signals on altcoins yet. Watch for BTC to break above $68,000 \u2014 if it does, altcoin setups will improve dramatically. Patience here protects capital.",
+  "expert_reasoning": "This cycle presents a classic trap for swing traders: extreme fear tempts contrarian entries, but the actual chart structures on oversold candidates (BONK at -2.0 bias, NIGHT at -0.7, MON at -0.7) all confirm ongoing downtrends with bearish patterns like Three Black Crows. The coins showing bullish momentum (LDO +51.7% in 5 days, ONDO +27.4% in 7 days) are already extended with RSIs pushing toward overbought and terrible risk/reward ratios (0.38x). DEXE shows a massive data discrepancy \u2014 price listed at $8.11 but chart analysis references $36.27, with an RSI of 71 (overbought) despite an alleged -80% weekly drop. This data inconsistency makes it untradeable. BTC dominance at 56.8% actively suppresses alt performance. The prudent move is to wait for either a clean oversold bounce setup with confirming bullish candle patterns, or for BTC to resolve above $68K resistance creating conditions for alt rotation.",
   "risk_factors": [
-    "Extreme Fear can persist for weeks, meaning there may be further downside before a true reversal",
-    "High BTC dominance at 56.8% actively drains liquidity from altcoins \u2014 any alt position faces structural headwinds",
-    "Several candidates show contradictory data between listed prices, chart analysis prices, and indicators \u2014 executing on unreliable data is itself a major risk"
+    "BTC rejection at $68K could accelerate alt selling and push Fear & Greed below 20",
+    "Russia's retail crypto investment cap and BIS stablecoin warnings signal increasing global regulatory headwinds",
+    "High BTC dominance (56.8%) means even if BTC rallies, alts may continue to underperform"
   ],
   "watch_list": [
-    "BTC price action around $66K-$68K \u2014 a breakout above $68K could signal broader market recovery and create alt entries",
-    "Fear & Greed Index \u2014 a sustained move above 30 would signal the worst of the selling pressure may be abating",
-    "LDO if it pulls back 10-15% toward $0.33 support with RSI dropping to 40-45 \u2014 that would create a proper entry with good risk/reward"
+    "BTC price action at $68,000 resistance \u2014 a clean breakout could trigger alt rotation opportunities",
+    "BONK RSI dropping below 30 with a bullish reversal candle (hammer/morning star) would create a high-quality oversold bounce setup",
+    "Fear & Greed index \u2014 a move below 20 often marks capitulation bottoms ideal for entry"
   ],
-  "market_context": "The market is in Extreme Fear (25/100) with BTC dominance elevated at 56.8%, creating a hostile environment for altcoin swing trades. BTC itself is showing mild recovery (+2.7% weekly) but altcoins are broadly bleeding, with most candidates down 20-80% on the week.",
-  "context_banner": "Extreme Fear across crypto markets with no clean swing setups \u2014 disciplined patience protects capital until risk/reward improves.",
-  "btc_price": 66326,
+  "market_context": "The crypto market is in Extreme Fear (25/100) with BTC testing $68K resistance while dominance remains elevated at 56.8%. Altcoins are bleeding as capital concentrates into Bitcoin, creating a hostile environment for alt swing trades until BTC direction resolves.",
+  "context_banner": "Extreme Fear conditions with high BTC dominance \u2014 no altcoin setup currently offers sufficient risk-adjusted edge for a swing entry.",
+  "btc_price": 66397,
   "fear_greed": {
     "current": 25,
     "label": "Extreme Fear",
@@ -33,27 +33,27 @@
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Extreme Fear at 25/100 with flat trend indicates persistent selling pressure and no imminent sentiment reversal \u2014 contrarian buy signals exist but no technical confirmation yet."
+      "description": "Extreme Fear at 25/100 with flat trend suggests we haven't reached capitulation yet \u2014 too early for contrarian alt entries without confirming reversal patterns."
     },
     {
       "source": "RSI",
       "signal_type": "technical",
-      "description": "The candidates with favorable RSI readings (ETH 39, MON 38, NIGHT 39) all have bearish chart structures (-0.70 bias), meaning oversold readings lack bullish confirmation for entries."
+      "description": "Best oversold candidates (BONK 31, MON 38, NIGHT 39) lack bullish reversal candles to confirm bottoming, while momentum plays (DEXE 71, ONDO 62) are overbought or extended."
     },
     {
       "source": "Chart Pattern Analysis",
       "signal_type": "technical",
-      "description": "LDO's Three White Soldiers and \u5e01\u5b89\u4eba\u751f's Bull Flag are the strongest chart patterns but both suffer from poor risk/reward ratios (0.38x and 0.97x respectively) after sharp recent rallies."
-    },
-    {
-      "source": "CoinTelegraph",
-      "signal_type": "news",
-      "description": "Telegram's native Gram wallet announcement and White House crypto ethics provisions are medium-term bullish but lack immediate price catalysts for specific swing candidates."
+      "description": "BONK shows Three Black Crows with -2.0 bias score (strongly bearish), while LDO shows Three White Soldiers but with 0.38x risk/reward \u2014 neither offers a good swing entry."
     },
     {
       "source": "CoinDesk",
       "signal_type": "news",
-      "description": "Russia's $3,800 annual cap for retail crypto and Movement Labs bankruptcy filing reflect mixed regulatory and project health signals, adding to market uncertainty."
+      "description": "Bitcoin rally facing key test at $68K with analysts noting 'summer slumber' \u2014 suggests range-bound BTC which keeps alt rotation on hold."
+    },
+    {
+      "source": "CoinTelegraph",
+      "signal_type": "news",
+      "description": "Analyst notes crypto breakout could accelerate as AI trade cools \u2014 a potential future catalyst, but not actionable until BTC confirms above resistance."
     }
   ],
   "_mode": "HUNTING",
