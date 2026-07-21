@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-07-21T07:10:00.278106+00:00",
+  "timestamp": "2026-07-21T08:10:00.378122+00:00",
   "selected_coin": "ETH",
   "selected_coin_name": "Ethereum",
-  "selected_coin_price": 1933.11,
-  "confidence": 35,
-  "layman_headline": "Market is bouncing but fear is extreme \u2014 patience is the best trade right now.",
-  "layman_explanation": "Bitcoin and the broader crypto market are seeing a short-term bounce after a period of heavy selling. The Fear & Greed index is at 25, which means most investors are scared. While several coins have bounced 5-10% in the past week, the overall trend for altcoins remains bearish \u2014 prices are still below their key moving averages. This bounce could easily fade if buyers don't follow through.",
-  "layman_action": "Wait on the sidelines for now. The bounce looks like a relief rally in a larger downtrend. If Ethereum pulls back to the $1,850 area and holds, that could become a safer entry point. Don't chase coins that have already jumped 20-100% in a week.",
-  "expert_reasoning": "All swing candidates present problematic setups. BONK has a -2.0 chart bias with Three Black Crows \u2014 a classic sell signal. UB and B have rallied 35% and 125% in a week respectively, making them extended and dangerous to chase. NIGHT is in free fall at -33% weekly with no support structure visible. ETH is the strongest contender with RSI at 39 (our most reliable signal at 83% win rate), Extreme Fear conditions (67% win rate signal), and legitimate ecosystem backing. However, ETH's chart bias is -0.70 with price below all MAs and only a 1.41x risk/reward to nearest levels. BTC dominance at 56.6% is headwind for all alts. The prudent move is to wait for ETH to retest $1,850 support or for chart bias to improve before committing capital.",
+  "selected_coin_price": 1932.5,
+  "confidence": 62,
+  "layman_headline": "Ethereum looks beaten down enough to bounce as Bitcoin ETF inflows build momentum across crypto.",
+  "layman_explanation": "The crypto market is in 'Extreme Fear' territory, which historically has been a good time to buy quality assets at a discount. Ethereum is up about 9% this week but still sits nearly 61% below its all-time high, with its RSI near oversold levels suggesting sellers are exhausted. Bitcoin ETFs have posted five straight days of inflows, which tends to lift the entire market. ETH is the highest-quality asset on this watchlist with the best risk/reward setup relative to its fundamentals.",
+  "layman_action": "Consider a cautious entry into Ethereum around $1,900 with a firm stop-loss at $1,780. This limits your downside to about 6% while targeting a move to $2,100 for roughly 10% upside. Don't go all-in \u2014 size the position so a stop-loss hit won't hurt meaningfully.",
+  "expert_reasoning": "ETH RSI at 39.42 is approaching oversold territory \u2014 our most reliable signal with 83% win rate. The 5-day momentum of +17.2% shows a sharp recovery is underway from deeply oversold conditions. While the chart bias is bearish (-0.70) with price below all MAs, this is characteristic of early-stage reversal setups in extreme fear environments (F&G at 25). The BTC ETF inflow streak provides a macro tailwind that historically benefits ETH disproportionately. Support at $1,800 provides a clear stop-loss level, and resistance at $1,900-$2,000 zone needs to be cleared for confirmation. Risk/reward of approximately 1.67:1 from current levels to target vs stop is acceptable given the fear-driven discount.",
   "risk_factors": [
-    "BTC dominance at 56.6% continues to suppress altcoin performance \u2014 even strong bounces fade",
-    "Extreme Fear (25) can persist or worsen, leading to another leg down before a true bottom",
-    "ETH chart structure is bearish with price below all major MAs \u2014 this bounce may be a dead cat rally"
+    "BTC dominance at 56.7% means capital is flowing to Bitcoin over alts \u2014 ETH could underperform even if BTC rallies further",
+    "Chart structure is still bearish with price below all major moving averages; this bounce could be a dead cat bounce in a larger downtrend",
+    "Extreme Fear sentiment can persist or deepen \u2014 no guarantee the market has bottomed, and ETH is 61% below ATH for structural reasons"
   ],
   "watch_list": [
-    "ETH price action around $1,900 resistance \u2014 a clean break and hold above could shift chart bias",
-    "BTC ability to hold above $65,000 \u2014 if it fails, altcoins will sell off harder",
-    "Fear & Greed index movement \u2014 need to see it rise above 30 to confirm sentiment is turning"
+    "Bitcoin ETF daily flow data \u2014 if the 5-day inflow streak breaks, risk-off could resume quickly",
+    "ETH reclaiming the $1,900 and then $2,000 level on volume would confirm the reversal thesis",
+    "BTC dominance trend \u2014 any drop below 56% signals rotation into alts which would strongly benefit ETH"
   ],
-  "market_context": "BTC is bouncing near $65.8K supported by 5 consecutive days of ETF inflows, but Extreme Fear at 25 and high BTC dominance at 56.6% suggest this is a relief rally rather than a trend reversal. Altcoins are getting a short-term lift but remain structurally weak.",
-  "context_banner": "Relief rally in extreme fear \u2014 high-quality setups haven't formed yet; disciplined patience protects capital.",
-  "btc_price": 65831,
+  "market_context": "The crypto market is in Extreme Fear (25/100) while BTC is actually rallying to two-week highs on sustained ETF inflows. This divergence between sentiment and price action often marks inflection points where fear-driven selling exhausts itself.",
+  "context_banner": "Extreme Fear persists but Bitcoin ETF inflows are building a floor \u2014 Ethereum's near-oversold RSI offers the best risk/reward entry among liquid assets.",
+  "btc_price": 66158,
   "fear_greed": {
     "current": 25,
     "label": "Extreme Fear",
@@ -28,35 +28,35 @@
     "week_avg": 26.3,
     "trend": "flat"
   },
-  "btc_dominance": 56.6,
+  "btc_dominance": 56.7,
   "key_signals": [
-    {
-      "source": "Fear_Greed",
-      "signal_type": "sentiment",
-      "description": "Extreme Fear at 25 with flat trend suggests we haven't bottomed yet \u2014 historically a contrarian buy zone but requires confirmation, and our 67% win rate with this signal says wait for better alignment."
-    },
     {
       "source": "RSI",
       "signal_type": "technical",
-      "description": "ETH RSI at 39 is approaching oversold territory \u2014 our most reliable signal (83% win rate) \u2014 but not yet at the 30 threshold that typically marks a strong bounce entry."
+      "description": "ETH RSI at 39.42 is approaching oversold territory \u2014 our highest-confidence signal (83% win rate historically) suggesting a bounce is likely."
+    },
+    {
+      "source": "Fear_Greed",
+      "signal_type": "sentiment",
+      "description": "Extreme Fear at 25/100 with flat trend \u2014 historically a reliable contrarian buy signal (67% win rate) especially when paired with price recovery."
+    },
+    {
+      "source": "CoinTelegraph",
+      "signal_type": "news",
+      "description": "Bitcoin ETFs posting five-day inflow streak (longest since May) signals institutional demand is returning, which lifts the entire crypto market including ETH."
     },
     {
       "source": "CoinDesk",
       "signal_type": "news",
-      "description": "Bitcoin ETFs posting 5 straight days of inflows for the first time since April is providing a floor for BTC, which indirectly supports altcoins."
+      "description": "BTC hitting two-week high near $65,500 as chip trade tailwinds return provides macro support for the broader crypto rally thesis."
     },
     {
       "source": "Chart Pattern Analysis",
       "signal_type": "technical",
-      "description": "Every candidate with chart data shows bearish structure (below all MAs). UB's Morning Star is the only bullish candle pattern, but the +35% weekly gain makes chasing it risky."
-    },
-    {
-      "source": "Blockworks",
-      "signal_type": "news",
-      "description": "ETH derivatives reset narrative suggests overleveraged positions are being flushed, which could create a cleaner setup for entry once the reset completes."
+      "description": "ETH chart bias is bearish (-0.70) but the 17.2% five-day momentum surge from deep oversold conditions suggests early reversal \u2014 support at $1,800 provides clear risk management level."
     }
   ],
   "_mode": "HUNTING",
-  "exit_target": 2050.0,
+  "exit_target": 2100.0,
   "stop_loss": 1780.0
 }
