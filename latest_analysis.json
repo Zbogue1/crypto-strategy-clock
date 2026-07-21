@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-07-21T22:10:00.294287+00:00",
-  "selected_coin": "XRP",
-  "selected_coin_name": "XRP",
-  "selected_coin_price": 2.73,
-  "confidence": 30,
-  "layman_headline": "Extreme Fear grips crypto \u2014 no clean swing trade setups right now, patience is the play.",
-  "layman_explanation": "The crypto market is deep in 'Extreme Fear' territory at 25/100, and Bitcoin dominance at 56.8% means money is flowing away from altcoins toward Bitcoin. Every swing candidate on our watchlist has serious problems: some have already run up too much (LDO +51% in 5 days, UB +36% in a week), others are in freefall with no bottom in sight (BONK, DEXE), and the rest have bearish chart structures. Catching a falling knife or chasing a pump in this fearful environment is a recipe for losses.",
-  "layman_action": "Stay in cash and wait. The market is fearful and altcoins are weak. A better entry will come when fear starts to recede or when a strong oversold bounce forms with volume confirmation. Don't force a trade.",
-  "expert_reasoning": "Systematically evaluating all 9 candidates: DEXE shows a data conflict (price listed at $7.51 but chart says $36.27, RSI 71 overbought, -81% in 7 days \u2014 unreliable data, skip). BONK has a -2.0 chart bias with Three Black Crows and Bearish Marubozu \u2014 classic capitulation that could continue. NIGHT is in a downtrend below all MAs with a -0.7 chart bias. ETH has a -0.7 chart bias below all MAs with only a 1.41x risk/reward ratio. LDO has the strongest chart (+0.85 bias, Three White Soldiers) but RSI 59 after +51.7% in 5 days screams exhaustion, and the risk/reward is a terrible 0.38x. UB has a Morning Star pattern but is already up 36.5% in 7 days. BinanceLife shows a Bull Flag but the 0.97x R/R is inadequate. VVV is below all MAs with a slightly bearish chart. MON has zero technical data. Given the Extreme Fear environment, high BTC dominance crushing alts, and no candidate offering both a clean technical setup AND acceptable risk/reward, the disciplined move is to HOLD cash.",
+  "timestamp": "2026-07-21T23:10:00.261246+00:00",
+  "selected_coin": "ETH",
+  "selected_coin_name": "Ethereum",
+  "selected_coin_price": 1917.64,
+  "confidence": 35,
+  "layman_headline": "Extreme Fear grips the market \u2014 patience is the play right now.",
+  "layman_explanation": "The crypto market is deeply fearful with a Fear & Greed score of 25, and Bitcoin dominance at 56.8% is squeezing altcoins. While several coins have bounced recently, none present a clean swing trade setup with good risk/reward right now. Most candidates are either already extended from recent rallies, stuck in strong downtrends, or have contradictory signals. We're watching Ethereum closely for a pullback to better support levels where the risk/reward becomes attractive.",
+  "layman_action": "Stay on the sidelines for now. Set price alerts on Ethereum around $1,820 and watch for a clearer bottoming signal. Don't chase bounces in this fearful environment \u2014 wait for the market to show its hand.",
+  "expert_reasoning": "Every swing candidate this cycle has significant flaws. DEXE shows an -81% 24h crash with an RSI of 71 \u2014 a falling knife with overbought readings, extremely dangerous. BONK has a -2.0 chart bias (strongly bearish) with Three Black Crows and Bearish Marubozu patterns \u2014 classic trend acceleration, not a bottom. BinanceLife and UB both rallied 37-67% recently and have poor risk/reward ratios at current levels. LDO's Three White Soldiers pattern is bullish but the 0.38x risk/reward ratio is terrible for a swing entry. ETH is the most compelling watch, with RSI at 39 approaching oversold (our highest-confidence signal type at 83% win rate), but the bearish chart structure (-0.7 bias) and below-all-MAs positioning means we need a cleaner setup. In Extreme Fear environments, patience pays \u2014 we wait for a test of $1,800 support with a reversal candle before committing capital.",
   "risk_factors": [
-    "BTC faces key resistance at $68K \u2014 a rejection could drag the entire alt market further down",
-    "BTC dominance at 56.8% continues to squeeze altcoin valuations \u2014 no sign of rotation into alts",
-    "Extreme Fear at 25 has been flat for a week, suggesting sentiment could deteriorate further before a reversal"
+    "BTC dominance at 56.8% continues to crush altcoin performance \u2014 any BTC weakness could cascade harder into alts",
+    "Fear & Greed at 25 with flat trend could deteriorate further, pushing prices lower before any sustainable bounce",
+    "CLARITY Act political uncertainty \u2014 Democrats balking at ethics provisions could stall regulatory progress and dampen sentiment"
   ],
   "watch_list": [
-    "BTC price action at $68,000 resistance \u2014 a clean breakout could shift market sentiment and create alt opportunities",
-    "Fear & Greed Index \u2014 watch for a decisive move above 30 as a potential early signal of sentiment recovery",
-    "ETH at $1,900-$1,920 \u2014 if it can hold and build a base above this level with rising volume, it becomes a strong mean-reversion candidate"
+    "ETH price action at $1,800 support \u2014 a bounce with volume confirmation would trigger a BUY signal",
+    "Fear & Greed index movement \u2014 a shift from 25 toward 30+ would signal sentiment bottoming",
+    "BTC behavior at $68,000 resistance \u2014 a breakout could lift the entire market, a rejection could send alts lower"
   ],
-  "market_context": "The crypto market is in Extreme Fear (25/100) with BTC dominance elevated at 56.8%, creating a hostile environment for altcoin swing trades. BTC itself is showing mild strength (+1.74% daily) but faces a critical test at $68K resistance that will determine the next market direction.",
-  "context_banner": "Extreme Fear and high BTC dominance make this a cash-preservation cycle \u2014 no swing candidate offers a clean risk/reward setup worth deploying capital into.",
-  "btc_price": 66286,
+  "market_context": "The crypto market is in Extreme Fear (25/100) with BTC testing $68K resistance while dominance remains elevated at 56.8%, creating a hostile environment for altcoin swing trades. Regulatory news around the CLARITY Act provides a potential catalyst but political uncertainty keeps it from being actionable.",
+  "context_banner": "Extreme Fear with no clean altcoin setups \u2014 disciplined patience protects capital until a high-conviction entry emerges.",
+  "btc_price": 66236,
   "fear_greed": {
     "current": 25,
     "label": "Extreme Fear",
@@ -33,30 +33,30 @@
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Extreme Fear at 25/100, flat for a week \u2014 indicates persistent risk-off sentiment with no sign of a capitulation flush or recovery yet."
+      "description": "Extreme Fear at 25/100 with flat weekly trend signals the market hasn't found a bottom yet \u2014 historically reliable signal (67% win rate) but needs to stabilize before buying."
     },
     {
       "source": "RSI",
       "signal_type": "technical",
-      "description": "Best oversold candidates (BONK RSI 31, NIGHT RSI 39, ETH RSI 39) all have bearish chart structures, meaning oversold readings could deepen rather than bounce."
-    },
-    {
-      "source": "Chart Pattern Analysis",
-      "signal_type": "technical",
-      "description": "BONK's -2.0 chart bias with Three Black Crows confirms active selling momentum \u2014 catching this knife is extremely risky."
-    },
-    {
-      "source": "CoinDesk",
-      "signal_type": "news",
-      "description": "BTC rally faces a key test at $68K with analysts warning of 'summer slumber' \u2014 suggests the broader market may lack the catalyst needed to lift alts."
+      "description": "ETH RSI at 39 is approaching oversold territory \u2014 our most reliable signal (83% win rate) \u2014 but needs to drop to ~30 or show divergence for highest-conviction entry."
     },
     {
       "source": "CoinTelegraph",
       "signal_type": "news",
-      "description": "ETH broke $1.9K resistance per CoinTelegraph, targeting $2.1K \u2014 but the chart still shows bearish structure below all major MAs, making this a watch rather than an action."
+      "description": "ETH breaking $1,900 resistance with $2,100 target discussed provides upside framework, but current chart bias of -0.7 means the breakout hasn't been confirmed."
+    },
+    {
+      "source": "Chart Pattern Analysis",
+      "signal_type": "technical",
+      "description": "BONK's strongly bearish -2.0 chart score with Three Black Crows eliminated it despite oversold RSI \u2014 catching falling knives is the #1 risk in fearful markets."
+    },
+    {
+      "source": "CoinDesk",
+      "signal_type": "news",
+      "description": "BTC rally facing key test at $68K with 'summer slumber' analysis suggests range-bound conditions that limit altcoin upside potential in the near term."
     }
   ],
   "_mode": "HUNTING",
-  "exit_target": null,
-  "stop_loss": null
+  "exit_target": 2100.0,
+  "stop_loss": 1750.0
 }
