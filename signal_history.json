@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-19T13:10:00.245972+00:00",
-    "coin": "ETH",
-    "price": 1866.4,
-    "signal": "HOLD",
-    "confidence": 35,
-    "score": -0.3,
-    "fg": 28,
-    "btc_price": 64333,
-    "btc_dominance": 56.4,
-    "candidates": [
-      "BONK",
-      "KAITO",
-      "MON",
-      "DEXE",
-      "PEPE",
-      "KITE",
-      "TRUMP",
-      "ETH",
-      "LDO"
-    ],
-    "alert": "CryptoSlate flags potential 18% BTC drawdown to $52,900 if buyer demand doesn't materialize \u2014 maintain defensive positioning."
-  },
-  {
     "ts": "2026-07-19T14:10:00.334560+00:00",
     "coin": "ETH",
     "price": 1871.18,
@@ -915,5 +892,27 @@
       "ETH"
     ],
     "alert": "All swing candidates show poor risk/reward or strongly bearish charts \u2014 avoid new entries this cycle."
+  },
+  {
+    "ts": "2026-07-21T06:10:00.274911+00:00",
+    "coin": "UB",
+    "price": 0.100403,
+    "signal": "BUY",
+    "confidence": 52,
+    "score": 0.45,
+    "fg": 25,
+    "btc_price": 65657,
+    "btc_dominance": 56.6,
+    "candidates": [
+      "NIGHT",
+      "MON",
+      "BONK",
+      "UB",
+      "DEXE",
+      "LDO",
+      "B",
+      "ETH"
+    ],
+    "alert": "Extreme Fear environment (25/100) \u2014 position sizing should be conservative; max 50% of normal allocation recommended."
   }
 ]
