@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-20T04:10:00.445283+00:00",
-    "coin": "TRUMP",
-    "price": 1.57,
-    "signal": "BUY",
-    "confidence": 52,
-    "score": 0.35,
-    "fg": 29,
-    "btc_price": 64698,
-    "btc_dominance": 56.5,
-    "candidates": [
-      "PUMP",
-      "BONK",
-      "KAITO",
-      "JTO",
-      "KITE",
-      "TRUMP",
-      "PEPE",
-      "ETH",
-      "LDO"
-    ],
-    "alert": "This is a counter-trend bounce trade \u2014 position size conservatively and respect the stop-loss."
-  },
-  {
     "ts": "2026-07-20T05:10:00.282973+00:00",
     "coin": "ETH",
     "price": 1864.89,
@@ -909,5 +886,28 @@
       "LDO"
     ],
     "alert": "Multiple candidates show severely inconsistent data (DEXE price $8.12 vs chart $36.27, -77% 24h with RSI 71). Exercise extreme caution with data quality this cycle."
+  },
+  {
+    "ts": "2026-07-21T20:10:00.413195+00:00",
+    "coin": "XRP",
+    "price": 0.0,
+    "signal": "HOLD",
+    "confidence": 28,
+    "score": -0.35,
+    "fg": 25,
+    "btc_price": 66397,
+    "btc_dominance": 56.8,
+    "candidates": [
+      "DEXE",
+      "NIGHT",
+      "MON",
+      "\u5e01\u5b89\u4eba\u751f",
+      "VVV",
+      "BONK",
+      "ONDO",
+      "ETH",
+      "LDO"
+    ],
+    "alert": "Market in Extreme Fear with no clean swing setups. All oversold candidates show bearish chart structures; all momentum plays are extended. Capital preservation is priority."
   }
 ]
