@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-07-21T11:10:00.270586+00:00",
+  "timestamp": "2026-07-21T12:10:00.430122+00:00",
   "selected_coin": "ETH",
   "selected_coin_name": "Ethereum",
-  "selected_coin_price": 1930.05,
+  "selected_coin_price": 1933.21,
   "confidence": 38,
-  "layman_headline": "Market fear is extreme but no clean entry presents itself \u2014 patience is the play.",
-  "layman_explanation": "Bitcoin is bouncing back toward $66,000 with ETF inflows picking up, and the broader market is showing green. However, the market mood is still 'Extreme Fear' at 25/100 and Bitcoin dominance is high at 56.7%, meaning altcoins are still getting crushed relative to Bitcoin. Every swing candidate on the watchlist has significant flaws \u2014 either already ran up too much, has terrible chart structure, or conflicting signals. Rushing in now would mean chasing rallies or catching falling knives.",
-  "layman_action": "Wait for a cleaner setup. If Ethereum pulls back toward $1,850 with RSI dipping below 35, that would be a much better entry point. Keep cash ready \u2014 extreme fear environments eventually produce great opportunities, but timing matters.",
-  "expert_reasoning": "No candidate offers a high-conviction swing entry right now. ETH is the strongest fundamental pick with RSI at 39.4 approaching oversold territory, but chart bias is -0.70 (bearish structure, below all MAs) and it's already bounced 8.2% in 7 days \u2014 entering now means poor risk/reward at 1.41x. LDO has the best chart bias (+0.85) with Three White Soldiers pattern, but the R/R is only 0.38x with resistance at $0.40 just 7.4% away after a 23% weekly run and 51.7% 5-day momentum \u2014 classic chase scenario. DEXE data is internally contradictory (price shows -40% 24h but RSI is 71 overbought, chart says $36.27 but price field says $20.42) making it untradeable. BONK at -2.0 chart bias with Three Black Crows is a falling knife. The prudent move is to wait for ETH to retest $1,850 support or for a proper MACD bullish cross confirmation.",
+  "layman_headline": "Bitcoin is rallying to one-month highs but altcoins look exhausted \u2014 patience is the play.",
+  "layman_explanation": "Bitcoin just hit $66,300 with five straight days of ETF inflows, and the broader market is bouncing. However, most altcoin candidates on our watchlist have already moved 20-50% in the past week, meaning the easy money has been made. The overall market mood is still in 'Extreme Fear' at 25/100, which can be a contrarian buy signal, but Bitcoin dominance at 56.8% tells us money is flowing into BTC, not alts. Chasing extended altcoins here carries significant pullback risk.",
+  "layman_action": "Wait for a pullback before entering any new position. The best setups right now have already run hard. If ETH dips back toward $1,840, that could be a clean entry \u2014 otherwise, stay in cash and watch.",
+  "expert_reasoning": "Scanning all 9 candidates, the problem is clear: the coins with the best chart patterns (LDO +0.85 bias, UB +0.80, \u5e01\u5b89\u4eba\u751f +0.80) have already surged 27-40% in 7 days, making entries at current levels a chase with poor risk/reward ratios (LDO and ONDO both show 0.38x R:R). DEXE shows extreme data inconsistency \u2014 price listed at $14.72 but chart says $36.27, with RSI at 71 (overbought) despite a -64% weekly drop \u2014 this is untradeable noise. ETH stands out as the highest-quality asset with RSI at 39 (our most reliable signal at 83% win rate), but the chart bias is -0.70 (bearish structure, below all MAs) and it's already bounced 7.6% this week. The prudent move is to wait for a retest of the $1,800-1,840 support zone before entering, rather than chasing the current bounce in a fearful market with high BTC dominance suppressing alts.",
   "risk_factors": [
-    "BTC dominance at 56.7% means alts continue to underperform even if BTC rallies \u2014 capital rotation to alts may not happen",
-    "Extreme Fear at 25 can persist or worsen \u2014 this is not a reliable bottom signal by itself, just context",
-    "Oil near $90 creates macro headwinds that could pressure risk assets including crypto if equity markets sell off"
+    "BTC dominance at 56.8% continues to drain capital from alts \u2014 ETH could underperform even if BTC rallies further",
+    "Extreme Fear (25) can persist or deepen, meaning the bottom may not be in yet for altcoins",
+    "Oil near $90 creates macro headwinds; if risk-off sentiment returns, the current rally could reverse sharply"
   ],
   "watch_list": [
-    "BTC breaking and holding above $67,000 \u2014 would confirm range breakout and likely pull alts higher",
-    "ETH RSI dropping below 35 on a pullback to $1,800-$1,850 support \u2014 would be ideal swing entry zone",
-    "Fear & Greed index \u2014 any move below 20 or sharp reversal above 30 signals inflection point"
+    "ETH price action around $1,800-1,840 support \u2014 a hold there with RSI dipping below 35 would be an ideal entry",
+    "Bitcoin ETF inflow streak \u2014 if it breaks, the rally narrative weakens and alts will sell off harder",
+    "BTC dominance trend \u2014 a reversal below 56% would signal capital rotating back into alts"
   ],
-  "market_context": "Bitcoin is testing $66K with 5 straight days of ETF inflows, but the broader market remains in Extreme Fear at 25. BTC dominance at 56.7% signals capital is hiding in Bitcoin rather than flowing into alts, making altcoin swing trades riskier than usual.",
-  "context_banner": "Bitcoin ETF inflows build momentum toward $66K but Extreme Fear and high BTC dominance make altcoin entries premature \u2014 wait for confirmation.",
-  "btc_price": 66117,
+  "market_context": "Bitcoin is at a one-month high of $66.3K driven by sustained institutional ETF inflows and options positioning, but the broader market remains in Extreme Fear (25/100). High BTC dominance at 56.8% means altcoins are underperforming, making this a BTC-led rally that hasn't yet lifted the alt ecosystem.",
+  "context_banner": "Bitcoin breaks to one-month highs on institutional flows, but altcoin setups are overextended \u2014 discipline demands patience over FOMO.",
+  "btc_price": 66304,
   "fear_greed": {
     "current": 25,
     "label": "Extreme Fear",
@@ -28,35 +28,35 @@
     "week_avg": 26.3,
     "trend": "flat"
   },
-  "btc_dominance": 56.7,
+  "btc_dominance": 56.8,
   "key_signals": [
-    {
-      "source": "Fear_Greed",
-      "signal_type": "sentiment",
-      "description": "Extreme Fear at 25/100 with flat trend \u2014 historically precedes opportunities but does not confirm a bottom yet."
-    },
     {
       "source": "RSI",
       "signal_type": "technical",
-      "description": "ETH RSI at 39.4 is approaching oversold but hasn't triggered a clear reversal signal \u2014 needs to dip below 35 or show MACD bullish cross for confirmation."
+      "description": "ETH RSI at 39 is approaching oversold \u2014 our most reliable signal (83% win rate) \u2014 but needs to dip further or consolidate before entry is optimal."
+    },
+    {
+      "source": "Fear_Greed",
+      "signal_type": "sentiment",
+      "description": "Extreme Fear at 25/100 is historically a contrarian buy zone (67% win rate in our trades), but the flat trend suggests fear hasn't capitulated yet."
+    },
+    {
+      "source": "CoinDesk",
+      "signal_type": "news",
+      "description": "Bitcoin ETFs posting 5 consecutive days of inflows confirms institutional demand is real, supporting the broader rally thesis."
     },
     {
       "source": "CoinTelegraph",
       "signal_type": "news",
-      "description": "Bitcoin ETFs posting 5-day inflow streak (longest since May) and BTC hitting one-month high at $66.3K \u2014 institutional demand is returning but hasn't spilled into alts yet."
+      "description": "BTC breakout to $66.3K and Russian crypto regulation news suggest macro-level adoption catalysts are building \u2014 reliable source at 67% win rate."
     },
     {
       "source": "Chart Pattern Analysis",
       "signal_type": "technical",
-      "description": "Best candidate LDO shows Three White Soldiers but R/R is only 0.38x with resistance at $0.40 \u2014 classic late entry trap after 51.7% 5-day run."
-    },
-    {
-      "source": "CryptoSlate",
-      "signal_type": "macro",
-      "description": "Oil near $90 and US debt at $39.5 trillion create a macro liquidity tension \u2014 BTC holding $66K despite this is notable strength but adds uncertainty for risk assets."
+      "description": "Best-scoring chart patterns (LDO Three White Soldiers at +0.85, UB Morning Star at +0.80) are on coins already up 27-40% weekly with poor risk/reward ratios of 0.38x \u2014 not actionable at current prices."
     }
   ],
   "_mode": "HUNTING",
-  "exit_target": 2100.0,
-  "stop_loss": 1750.0
+  "exit_target": 2050.0,
+  "stop_loss": 1780.0
 }
