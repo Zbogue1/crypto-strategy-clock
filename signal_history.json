@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-19T19:10:00.343383+00:00",
-    "coin": "ETH",
-    "price": 1858.06,
-    "signal": "HOLD",
-    "confidence": 35,
-    "score": -0.15,
-    "fg": 28,
-    "btc_price": 64384,
-    "btc_dominance": 56.5,
-    "candidates": [
-      "B",
-      "BONK",
-      "MON",
-      "KITE",
-      "PEPE",
-      "SUN",
-      "INJ",
-      "ETH",
-      "LDO"
-    ],
-    "alert": "All swing candidates in bearish structure below moving averages \u2014 avoid new entries until reversal confirmation."
-  },
-  {
     "ts": "2026-07-19T20:10:00.445802+00:00",
     "coin": "ETH",
     "price": 1862.98,
@@ -910,5 +887,28 @@
       "ETH"
     ],
     "alert": "All swing candidates have material flaws: DEXE has contradictory data, LDO is extended, BONK is in freefall, ETH chart is bearish. No position opened to protect capital."
+  },
+  {
+    "ts": "2026-07-21T12:10:00.430122+00:00",
+    "coin": "ETH",
+    "price": 1933.21,
+    "signal": "HOLD",
+    "confidence": 38,
+    "score": -0.15,
+    "fg": 25,
+    "btc_price": 66304,
+    "btc_dominance": 56.8,
+    "candidates": [
+      "DEXE",
+      "NIGHT",
+      "MON",
+      "\u5e01\u5b89\u4eba\u751f",
+      "UB",
+      "VVV",
+      "ONDO",
+      "ETH",
+      "LDO"
+    ],
+    "alert": "Most swing candidates have already moved 20-50% this week. Chasing here carries elevated pullback risk. Wait for a retest."
   }
 ]
