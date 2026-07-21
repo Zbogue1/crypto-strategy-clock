@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-20T06:10:00.445372+00:00",
-    "coin": "TRUMP",
-    "price": 1.57,
-    "signal": "BUY",
-    "confidence": 52,
-    "score": 0.35,
-    "fg": 29,
-    "btc_price": 64106,
-    "btc_dominance": 56.4,
-    "candidates": [
-      "BONK",
-      "PUMP",
-      "JTO",
-      "KITE",
-      "\u5e01\u5b89\u4eba\u751f",
-      "FIL",
-      "TRUMP",
-      "ETH",
-      "LDO"
-    ],
-    "alert": "Extreme oversold RSI detected on TRUMP \u2014 historically our most reliable buy signal, but chart structure remains bearish. Use tight stops."
-  },
-  {
     "ts": "2026-07-20T07:10:00.358859+00:00",
     "coin": "ETH",
     "price": 1851.71,
@@ -909,5 +886,28 @@
       "LDO"
     ],
     "alert": "All swing candidates fail quality filters. Waiting for better setups."
+  },
+  {
+    "ts": "2026-07-21T22:10:00.294287+00:00",
+    "coin": "XRP",
+    "price": 2.73,
+    "signal": "HOLD",
+    "confidence": 30,
+    "score": -0.3,
+    "fg": 25,
+    "btc_price": 66286,
+    "btc_dominance": 56.8,
+    "candidates": [
+      "DEXE",
+      "NIGHT",
+      "\u5e01\u5b89\u4eba\u751f",
+      "MON",
+      "BONK",
+      "VVV",
+      "UB",
+      "ETH",
+      "LDO"
+    ],
+    "alert": "All swing candidates fail quality checks \u2014 data conflicts, exhausted rallies, or active downtrends. Forcing a trade here would violate risk management principles."
   }
 ]
