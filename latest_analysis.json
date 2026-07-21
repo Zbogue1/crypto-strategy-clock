@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-07-21T04:10:00.248425+00:00",
-  "selected_coin": "ETH",
-  "selected_coin_name": "Ethereum",
-  "selected_coin_price": 1927.94,
-  "confidence": 35,
-  "layman_headline": "Market fear is screaming 'buy' but the charts are screaming 'wait' \u2014 patience wins here.",
-  "layman_explanation": "The crypto market is in 'Extreme Fear' mode with a score of 25/100, which historically has been a good time to start looking for bargains. However, almost every altcoin candidate on the watchlist has bearish chart structure \u2014 prices are below their moving averages with ugly patterns. Bitcoin itself is recovering (+5% this week) but Bitcoin dominance at 56.5% means money is flowing to BTC, not alts. Jumping into weak altcoins during a BTC-dominance phase is a recipe for underperformance.",
-  "layman_action": "Stay in cash for now. The fear levels suggest a bounce opportunity is forming, but the technical setups aren't clean enough yet. Wait for a confirmed reversal pattern before committing capital \u2014 likely within the next few days.",
-  "expert_reasoning": "The watchlist presents a challenging set of candidates. BONK has a -2.0 chart bias with Three Black Crows and Bearish Marubozu \u2014 a falling knife. NIGHT dropped 39% in 7 days with no support levels or volume data. LDO has the best chart bias (+0.85) with Three White Soldiers, but RSI at 59 after a 29% weekly run gives poor risk/reward (R:R ratio only 0.38x to resistance). DEXE is overbought at RSI 71 after a 63% 5-day surge. ETH is the cleanest candidate: RSI at 39 (reliable signal per our track record \u2014 83% win rate), Extreme Fear sentiment (67% win rate signal), and massive $41.5B TVL ecosystem. However, the bearish chart structure (-0.7 bias) and the fact it's already bounced 8% this week means chasing here offers mediocre risk/reward. The disciplined play is to wait for a pullback to ~$1,850 or a breakout above the SMA20 for confirmation.",
+  "timestamp": "2026-07-21T05:10:00.208877+00:00",
+  "selected_coin": "LDO",
+  "selected_coin_name": "Lido DAO",
+  "selected_coin_price": 0.400836,
+  "confidence": 32,
+  "layman_headline": "Fear is high and altcoins look weak \u2014 patience is the best trade right now.",
+  "layman_explanation": "The crypto market is sitting in 'Extreme Fear' territory at 25/100, with Bitcoin dominating at 56.5% and sucking capital away from smaller coins. While a few altcoins like Lido DAO have bounced sharply (+27% in a week), they've already moved too far too fast to safely enter now. The candidates that are genuinely oversold (BONK, NIGHT) have terrible chart structures with strong bearish patterns, making them falling knives rather than buying opportunities.",
+  "layman_action": "Stay in cash and wait. The best setups will come when these oversold coins show actual bottoming signals \u2014 like a reversal candle at support \u2014 rather than just being 'down a lot.' Set price alerts on LDO around $0.35 and ETH around $1,800 for potential entries.",
+  "expert_reasoning": "Surveying all 8 swing candidates reveals a market in distress with no clean entry. BONK has a strongly bearish chart (-2.0 bias) with Three Black Crows and Bearish Marubozu \u2014 classic capitulation candles that warn of further downside despite RSI near 31. NIGHT is down 40% in a week with no support levels identified and bearish chart bias. LDO is the strongest technically with a +0.85 chart bias and Three White Soldiers, but it's already extended (+51.7% in 5 days) with a terrible R/R of 0.38x to nearest resistance. The BinanceLife token shows a Bull Flag but has RSI at 58 and poor R/R (0.97x). With Fear & Greed at 25 and BTC dominance at 56.5%, capital is rotating into BTC and away from alts \u2014 fighting this trend is inadvisable. The prudent move is to wait for LDO to pull back toward its $0.30 support or for oversold coins to form genuine reversal patterns.",
   "risk_factors": [
-    "BTC dominance at 56.5% continues to compress alt performance \u2014 even a good ETH setup can underperform",
-    "Extreme Fear trending flat (not improving) \u2014 sentiment could deteriorate further on any macro shock",
-    "All swing candidates show bearish chart structures \u2014 catching falling knives in a risk-off environment"
+    "BTC dominance at 56.5% continues to crush altcoin performance \u2014 any further BTC strength drains alt liquidity",
+    "Extreme Fear (25) can persist or deepen before a true reversal \u2014 catching knives in this environment has poor odds",
+    "No funding rate data available for any candidate, leaving leveraged positioning blind spots"
   ],
   "watch_list": [
-    "ETH price action around $1,900 resistance \u2014 a daily close above would confirm the bounce and trigger entry",
-    "Fear & Greed index movement \u2014 a shift from 25 toward 30+ would confirm sentiment bottoming",
-    "BTC dominance trend \u2014 any decline below 56% would signal capital rotation back to alts"
+    "LDO price action around $0.35-0.37 support zone \u2014 a pullback with a bullish reversal candle would be a textbook entry",
+    "Fear & Greed index \u2014 a move from 25 toward 35+ would signal improving risk appetite for alt entries",
+    "BTC holding $65,000 support \u2014 if BTC breaks down, all alt setups become invalid"
   ],
-  "market_context": "The broader crypto market is in Extreme Fear (25/100) with BTC recovering but dominance elevated at 56.5%, creating a hostile environment for altcoin swing trades. Most alts remain in bearish structure despite a mild relief bounce this week.",
-  "context_banner": "Extreme Fear creates opportunity but bearish alt structures demand patience \u2014 wait for confirmed reversal before deploying capital.",
-  "btc_price": 65665,
+  "market_context": "The market is in Extreme Fear (25/100) with BTC dominance elevated at 56.5%, creating a hostile environment for altcoin swing trades. BTC itself is showing modest recovery (+4.5% weekly) but altcoins are heavily mixed, with many still in steep downtrends.",
+  "context_banner": "Extreme Fear and high BTC dominance make this a patience-over-action environment \u2014 the best trade is no trade until setups improve.",
+  "btc_price": 65487,
   "fear_greed": {
     "current": 25,
     "label": "Extreme Fear",
@@ -33,30 +33,30 @@
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Extreme Fear at 25/100 trending flat \u2014 historically a contrarian buy zone but not yet showing improvement, suggesting the bottom may not be fully in."
-    },
-    {
-      "source": "RSI",
-      "signal_type": "technical",
-      "description": "ETH RSI at 39 is approaching oversold territory, a reliable signal (83% win rate in our track record), but chart structure remains bearish with price below all MAs."
+      "description": "Fear & Greed at 25 (Extreme Fear) with flat trend at 26.3 weekly average \u2014 sentiment hasn't bottomed convincingly, making contrarian entries premature."
     },
     {
       "source": "Chart Pattern Analysis",
       "signal_type": "technical",
-      "description": "BONK shows Three Black Crows and Bearish Marubozu (-2.0 bias), LDO shows Three White Soldiers (+0.85 bias) but is already extended \u2014 no clean entry exists across candidates."
+      "description": "BONK shows Three Black Crows and Bearish Marubozu (chart bias -2.0), confirming active selling pressure despite approaching oversold RSI \u2014 a falling knife, not a bounce candidate."
     },
     {
-      "source": "Blockworks",
-      "signal_type": "news",
-      "description": "ETH derivatives reset article suggests positioning is being unwound, which could set up a cleaner long entry once the flush completes."
+      "source": "RSI",
+      "signal_type": "technical",
+      "description": "LDO RSI at 59 after a +51.7% 5-day rally means the strongest chart setup is already extended; entering now offers only 0.38x risk/reward to nearest resistance."
     },
     {
       "source": "CoinTelegraph",
       "signal_type": "news",
-      "description": "Grayscale filing S-1 for Worldcoin ETF and CLARITY bill progress show continued institutional crypto adoption \u2014 medium-term bullish backdrop."
+      "description": "Grayscale filing S-1 for a Worldcoin ETF and CLARITY bill developments show institutional crypto adoption continues, but no immediate catalyst for the specific altcoins on the watchlist."
+    },
+    {
+      "source": "Blockworks",
+      "signal_type": "news",
+      "description": "ETH derivatives reset narrative and DePIN/gaming rebound suggest sector rotation is underway but hasn't produced a clean swing setup in current candidates."
     }
   ],
   "_mode": "HUNTING",
-  "exit_target": 2050.0,
-  "stop_loss": 1780.0
+  "exit_target": 0.44,
+  "stop_loss": 0.295
 }
