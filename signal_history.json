@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-19T20:10:00.445802+00:00",
-    "coin": "ETH",
-    "price": 1862.98,
-    "signal": "HOLD",
-    "confidence": 35,
-    "score": -0.3,
-    "fg": 28,
-    "btc_price": 64447,
-    "btc_dominance": 56.5,
-    "candidates": [
-      "B",
-      "BONK",
-      "KITE",
-      "MON",
-      "PEPE",
-      "SUN",
-      "TRUMP",
-      "ETH",
-      "LDO"
-    ],
-    "alert": "All swing candidates show bearish chart structures. Forcing a trade here carries elevated risk of immediate drawdown."
-  },
-  {
     "ts": "2026-07-19T21:10:00.214611+00:00",
     "coin": "ETH",
     "price": 1865.69,
@@ -910,5 +887,27 @@
       "LDO"
     ],
     "alert": "Most swing candidates have already moved 20-50% this week. Chasing here carries elevated pullback risk. Wait for a retest."
+  },
+  {
+    "ts": "2026-07-21T13:10:00.399152+00:00",
+    "coin": "ETH",
+    "price": 1941.01,
+    "signal": "HOLD",
+    "confidence": 38,
+    "score": -0.15,
+    "fg": 25,
+    "btc_price": 66524,
+    "btc_dominance": 56.8,
+    "candidates": [
+      "DEXE",
+      "NIGHT",
+      "MON",
+      "\u5e01\u5b89\u4eba\u751f",
+      "VVV",
+      "UB",
+      "LDO",
+      "ETH"
+    ],
+    "alert": "Extreme Fear at 25 with BTC attempting breakout \u2014 high-quality setups may emerge within 24-48 hours if momentum continues."
   }
 ]
