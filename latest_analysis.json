@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-07-21T01:10:00.431895+00:00",
+  "timestamp": "2026-07-21T02:10:00.427160+00:00",
   "selected_coin": "ETH",
   "selected_coin_name": "Ethereum",
-  "selected_coin_price": 1914.96,
+  "selected_coin_price": 1909.78,
   "confidence": 35,
-  "layman_headline": "The crypto market is gripped by extreme fear \u2014 patience is the best trade right now.",
-  "layman_explanation": "The overall crypto market is in 'Extreme Fear' territory with a score of just 25 out of 100, and Bitcoin dominance at 56.6% means altcoins are generally struggling. While several coins have bounced in the last 24 hours, the chart structures across nearly all candidates remain bearish \u2014 prices are below their key moving averages. The best candidate, Ethereum, has a near-oversold RSI and strong 7-day bounce, but it hasn't reclaimed key resistance levels yet. Rushing into a trade here without confirmation would be catching a falling knife.",
-  "layman_action": "Stay in cash and wait. If Ethereum pulls back to the $1,800-$1,820 zone and holds that support with increasing volume, that would be a much safer entry point. Don't chase the bounce.",
-  "expert_reasoning": "None of the swing candidates present a compelling risk/reward entry right now. BONK has a chart bias of -2.0 with Three Black Crows and Bearish Marubozu \u2014 textbook trend acceleration down, not a place to bottom-fish despite RSI at 31. LDO has the best chart bias (+0.85) with Three White Soldiers, but it's already up 25% in 7 days and 51.7% in 5 days \u2014 chasing here offers terrible R/R at 0.38x with resistance at $0.40 just 7.4% away. ETH is the most liquid candidate with RSI at 39 (our highest-conviction signal type at 80% win rate), but it's below all major MAs and the chart bias is -0.7. The prudent move is to wait for ETH to either retest $1,800 support or break above the $1,900 resistance with volume confirmation before entering. Extreme Fear at 25 does create opportunity, but the flat trend in fear suggests no capitulation washout has occurred yet.",
+  "layman_headline": "The crypto market is deep in fear territory \u2014 patience is the smartest play right now.",
+  "layman_explanation": "The overall crypto market is gripped by extreme fear, with the sentiment index at just 25 out of 100. Bitcoin dominance is high at 56.5%, meaning money is flowing out of smaller coins and into Bitcoin for safety. While a few candidates show oversold readings, every single one has bearish chart structures \u2014 prices are below their moving averages with no confirmed reversal patterns yet. Jumping in now would be like trying to catch a falling knife.",
+  "layman_action": "Stay on the sidelines and wait. Set price alerts for Ethereum around $1,800-$1,820 and watch for a confirmed bounce with rising volume before committing capital.",
+  "expert_reasoning": "Reviewing all 8 candidates, the landscape is overwhelmingly bearish. NIGHT (-38.6% weekly) and BONK (chart bias -2.0 with Three Black Crows) are in freefall \u2014 catching knives. UB and LDO have bullish chart patterns but are already extended (+35.5% and +25.5% weekly respectively), making risk/reward poor for new entries. LDO's risk/reward ratio is just 0.38x \u2014 terrible. ETH is the best candidate with RSI at 39 (our most reliable signal at 80% win rate), but the chart bias is -0.70 with price below all MAs and only 1.41x risk/reward. BTC dominance at 56.5% further argues against alt positions. The prudent move is to wait for ETH to retest $1,800 support with a confirmed reversal candle pattern before entering.",
   "risk_factors": [
-    "BTC dominance at 56.6% continues to crush altcoin performance \u2014 capital is flowing to Bitcoin, not alts",
-    "Extreme Fear has been flat for a week (avg 26.3) suggesting no capitulation bottom yet \u2014 market could grind lower",
-    "All swing candidates except LDO and \u5e01\u5b89\u4eba\u751f are below major moving averages, indicating prevailing downtrends"
+    "Extreme Fear sentiment (25) could deepen further, dragging all alts lower regardless of individual setups",
+    "BTC dominance at 56.5% and rising means capital continues rotating away from altcoins",
+    "No confirmed bullish reversal patterns on any high-quality candidate \u2014 all chart structures remain bearish"
   ],
   "watch_list": [
-    "ETH price action at $1,800 support \u2014 a hold here with volume would set up a proper swing entry",
-    "Fear & Greed index \u2014 a spike down below 20 could signal capitulation and a better entry point",
-    "BTC dominance trend \u2014 any drop below 55% would signal capital rotating into alts, improving alt swing setups"
+    "ETH price action at $1,800 support \u2014 a bounce with volume here would be a strong entry signal",
+    "Fear & Greed index \u2014 a move from 25 toward 30+ would suggest sentiment is bottoming",
+    "BTC dominance trend \u2014 any decline below 56% would signal improving alt conditions"
   ],
-  "market_context": "The crypto market is in Extreme Fear (25/100) with BTC dominance at 56.6%, creating a hostile environment for altcoin swing trades. BTC itself is bouncing (+4.9% weekly) but altcoin chart structures remain predominantly bearish.",
-  "context_banner": "Extreme Fear dominates the market \u2014 the best trade right now is no trade until clearer confirmation emerges.",
-  "btc_price": 65547,
+  "market_context": "The crypto market sits in Extreme Fear at 25/100 with BTC dominance elevated at 56.5%. BTC itself is showing relative strength (+4.5% weekly) while most alts remain in downtrends, creating a risk-off environment unfavorable for new alt positions.",
+  "context_banner": "Extreme Fear dominates the market \u2014 discipline means waiting for confirmed reversal signals rather than bottom-fishing in active downtrends.",
+  "btc_price": 65308,
   "fear_greed": {
     "current": 25,
     "label": "Extreme Fear",
@@ -28,32 +28,32 @@
     "week_avg": 26.3,
     "trend": "flat"
   },
-  "btc_dominance": 56.6,
+  "btc_dominance": 56.5,
   "key_signals": [
-    {
-      "source": "RSI",
-      "signal_type": "technical",
-      "description": "ETH RSI at 39.4 is approaching oversold territory \u2014 our most reliable signal (80% win rate) \u2014 but needs price confirmation at support before acting."
-    },
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Extreme Fear at 25 with a flat weekly trend (26.3 avg) suggests ongoing bearish sentiment without a capitulation flush, making bottom-picking risky."
+      "description": "Extreme Fear at 25/100 with flat trend \u2014 no sign of sentiment recovery yet, making new entries premature."
     },
     {
-      "source": "CoinTelegraph",
-      "signal_type": "news",
-      "description": "Bitcoin defying tech stock sell-off and bulls eyeing $70K provides a macro tailwind, but BTC strength at 56.6% dominance is currently hurting alts."
-    },
-    {
-      "source": "Blockworks",
-      "signal_type": "news",
-      "description": "ETH derivatives reset article suggests positioning is clearing out, which could set the stage for a cleaner directional move once confirmed."
+      "source": "RSI",
+      "signal_type": "technical",
+      "description": "ETH RSI at 39 is approaching oversold (our most reliable signal at 80% win rate), but needs to reach sub-35 or show a confirmed bounce for highest probability entry."
     },
     {
       "source": "Chart Pattern Analysis",
       "signal_type": "technical",
-      "description": "BONK shows Three Black Crows with chart bias -2.0, LDO has R/R of only 0.38x near resistance \u2014 no candidate offers a clean high-conviction entry right now."
+      "description": "Every major candidate (ETH, BONK, NIGHT, KITE, MON) has bearish chart bias with price below all moving averages \u2014 no confirmed reversal patterns detected."
+    },
+    {
+      "source": "CoinTelegraph",
+      "signal_type": "news",
+      "description": "Bitcoin eyeing $70K rally narrative is supportive for BTC but high BTC dominance at 56.5% means alt positions carry extra rotation risk."
+    },
+    {
+      "source": "Blockworks",
+      "signal_type": "news",
+      "description": "ETH derivatives reset coverage suggests positioning is being cleared, which could set up a cleaner move once direction is confirmed."
     }
   ],
   "_mode": "HUNTING",
