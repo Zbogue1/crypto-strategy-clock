@@ -1,58 +1,27 @@
 {
-  "open_trade": {
-    "coin": "LDO",
-    "entry_time": "2026-07-16T09:10:09.795888+00:00",
-    "key_signals": [
-      {
-        "source": "RSI",
-        "signal_type": "technical",
-        "description": "LDO RSI at 40.69 is approaching oversold territory while still having significant room to run \u2014 our highest-confidence signal source at 80% win rate."
-      },
-      {
-        "source": "CoinDesk",
-        "signal_type": "news",
-        "description": "Ether outrunning Bitcoin as ETF money returns, almost entirely from BlackRock's fund \u2014 directly bullish for Lido as the dominant ETH staking protocol."
-      },
-      {
-        "source": "CryptoSlate",
-        "signal_type": "news",
-        "description": "Ethereum flashing a $478 million buy signal provides fundamental backdrop supporting ETH ecosystem tokens like LDO."
-      },
-      {
-        "source": "Fear_Greed",
-        "signal_type": "sentiment",
-        "description": "Extreme Fear at 25/100 historically creates better entry points for swing trades, though the persistent fear (unchanged week-over-week) suggests caution on position sizing."
-      },
-      {
-        "source": "Chart Pattern Analysis",
-        "signal_type": "technical",
-        "description": "Bullish Marubozu candlestick with 6.51x risk/reward ratio ($0.30 support to $0.40 resistance) provides the best technical setup among all candidates."
-      }
-    ],
-    "confidence": 58
-  },
+  "open_trade": null,
   "signal_stats": {
     "Fear_Greed__sentiment": {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "wins": 5,
+      "wins": 6,
       "losses": 3,
-      "total": 8,
-      "win_rate": 0.625,
-      "total_pct": 14.7,
-      "avg_return": 1.8375,
-      "last_seen": "2026-07-16T04:10:06.180556+00:00"
+      "total": 9,
+      "win_rate": 0.667,
+      "total_pct": 23.58,
+      "avg_return": 2.62,
+      "last_seen": "2026-07-21T03:13:48.859471+00:00"
     },
     "CoinDesk__news": {
       "source": "CoinDesk",
       "signal_type": "news",
-      "wins": 3,
+      "wins": 4,
       "losses": 3,
-      "total": 6,
-      "win_rate": 0.5,
-      "total_pct": -17.28,
-      "avg_return": -2.88,
-      "last_seen": "2026-07-16T04:10:06.180577+00:00"
+      "total": 7,
+      "win_rate": 0.571,
+      "total_pct": -8.4,
+      "avg_return": -1.2,
+      "last_seen": "2026-07-21T03:13:48.859462+00:00"
     },
     "CoinTelegraph__onchain": {
       "source": "CoinTelegraph",
@@ -90,13 +59,13 @@
     "RSI__technical": {
       "source": "RSI",
       "signal_type": "technical",
-      "wins": 4,
+      "wins": 5,
       "losses": 1,
-      "total": 5,
-      "win_rate": 0.8,
-      "total_pct": 27.74,
-      "avg_return": 5.548,
-      "last_seen": "2026-07-14T13:12:44.876997+00:00"
+      "total": 6,
+      "win_rate": 0.833,
+      "total_pct": 36.62,
+      "avg_return": 6.1033,
+      "last_seen": "2026-07-21T03:13:48.859446+00:00"
     },
     "CoinDesk__technical": {
       "source": "CoinDesk",
@@ -134,13 +103,13 @@
     "Chart Pattern Analysis__technical": {
       "source": "Chart Pattern Analysis",
       "signal_type": "technical",
-      "wins": 1,
+      "wins": 2,
       "losses": 1,
-      "total": 2,
-      "win_rate": 0.5,
-      "total_pct": -14.46,
-      "avg_return": -7.23,
-      "last_seen": "2026-07-14T13:12:44.877011+00:00"
+      "total": 3,
+      "win_rate": 0.667,
+      "total_pct": -5.58,
+      "avg_return": -1.86,
+      "last_seen": "2026-07-21T03:13:48.859474+00:00"
     },
     "DeFiLlama__onchain": {
       "source": "DeFiLlama",
@@ -174,8 +143,19 @@
       "total_pct": -24.86,
       "avg_return": -12.43,
       "last_seen": "2026-07-16T04:10:06.180583+00:00"
+    },
+    "CryptoSlate__news": {
+      "source": "CryptoSlate",
+      "signal_type": "news",
+      "wins": 1,
+      "losses": 0,
+      "total": 1,
+      "win_rate": 1.0,
+      "total_pct": 8.88,
+      "avg_return": 8.88,
+      "last_seen": "2026-07-21T03:13:48.859467+00:00"
     }
   },
-  "trade_count": 8,
-  "last_updated": "2026-07-16T09:10:09.795936+00:00"
+  "trade_count": 9,
+  "last_updated": "2026-07-21T03:13:48.859562+00:00"
 }
