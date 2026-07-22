@@ -1,27 +1,5 @@
 [
   {
-    "ts": "2026-07-21T01:10:00.431895+00:00",
-    "coin": "ETH",
-    "price": 1914.96,
-    "signal": "HOLD",
-    "confidence": 35,
-    "score": -0.15,
-    "fg": 25,
-    "btc_price": 65547,
-    "btc_dominance": 56.6,
-    "candidates": [
-      "NIGHT",
-      "MON",
-      "BONK",
-      "\u5e01\u5b89\u4eba\u751f",
-      "KITE",
-      "LDO",
-      "USDG",
-      "ETH"
-    ],
-    "alert": "Market in Extreme Fear with bearish alt structures \u2014 avoid knife-catching. Wait for support confirmation."
-  },
-  {
     "ts": "2026-07-21T02:10:00.427160+00:00",
     "coin": "ETH",
     "price": 1909.78,
@@ -908,5 +886,28 @@
       "LDO"
     ],
     "alert": null
+  },
+  {
+    "ts": "2026-07-22T17:10:00.802303+00:00",
+    "coin": "BONK",
+    "price": 3.11e-06,
+    "signal": "BUY",
+    "confidence": 58,
+    "score": 0.45,
+    "fg": 33,
+    "btc_price": 66207,
+    "btc_dominance": 56.7,
+    "candidates": [
+      "MON",
+      "NIGHT",
+      "USDG",
+      "AERO",
+      "BONK",
+      "UB",
+      "KITE",
+      "ETH",
+      "LDO"
+    ],
+    "alert": "High-risk trade: meme coin with bearish chart structure. Size position conservatively and respect stop-loss strictly."
   }
 ]
