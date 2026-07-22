@@ -1,32 +1,32 @@
 {
   "open_trade": {
     "coin": "ETH",
-    "entry_time": "2026-07-22T04:13:54.775836+00:00",
+    "entry_time": "2026-07-22T05:13:52.077400+00:00",
     "key_signals": [
+      {
+        "source": "CoinTelegraph",
+        "signal_type": "news",
+        "description": "CoinTelegraph highlighted ETH breaking $1,900 resistance with $2,100 as the next bullish target, providing narrative momentum for the trade."
+      },
       {
         "source": "Chart Pattern Analysis",
         "signal_type": "technical",
-        "description": "ETH printed a Three White Soldiers bullish candlestick pattern with a chart bias score of +0.30 and 2.84x risk/reward \u2014 the strongest technical setup among all candidates."
-      },
-      {
-        "source": "Fear_Greed",
-        "signal_type": "sentiment",
-        "description": "Fear & Greed at 33 improving from 25 yesterday and 27.4 weekly average \u2014 historically reliable signal (67% win rate) indicating a recovering fear environment favorable for entries."
+        "description": "Three White Soldiers candle pattern on ETH daily chart signals sustained buying pressure and potential trend reversal from the downtrend."
       },
       {
         "source": "RSI",
         "signal_type": "technical",
-        "description": "ETH RSI at 43.85 is neutral with significant room to run before overbought conditions \u2014 our most reliable signal source (83% win rate, +6.1% avg return)."
+        "description": "ETH RSI at 43.85 is neutral with significant room to run before overbought, unlike overextended candidates like ONDO (64) and LDO (59)."
       },
       {
-        "source": "CoinTelegraph",
-        "signal_type": "news",
-        "description": "CoinTelegraph highlighted ETH breaking $1,900 resistance with $2,100 as the next bull target \u2014 a reliable news source (67% win rate) providing directional confirmation."
+        "source": "Fear_Greed",
+        "signal_type": "sentiment",
+        "description": "Fear & Greed at 33 improving from 25 yesterday and 27.4 weekly average \u2014 our backtested 67% win rate signal suggests this fear level often precedes bounces."
       },
       {
         "source": "Blockworks",
         "signal_type": "news",
-        "description": "Blockworks reported ETH derivatives have reset, suggesting cleaner positioning and reduced risk of leveraged liquidation cascades on the next move up."
+        "description": "Blockworks reported ETH derivatives reset, meaning overleveraged positions have been flushed, creating a healthier foundation for upside moves."
       }
     ],
     "confidence": 62
@@ -188,5 +188,5 @@
     }
   },
   "trade_count": 9,
-  "last_updated": "2026-07-22T04:13:54.775840+00:00"
+  "last_updated": "2026-07-22T05:13:52.077405+00:00"
 }
