@@ -1,5 +1,5 @@
 {
-  "cash": 723.4073,
+  "cash": 614.8973,
   "holdings": [
     {
       "coin_ticker": "ETH",
@@ -32,6 +32,22 @@
       "entry_target": 0.345,
       "expected_days": 10,
       "partial_taken": true
+    },
+    {
+      "coin_ticker": "BONK",
+      "coin_id": "bonk",
+      "units": 35776072.60726073,
+      "entry_price": 3.03e-06,
+      "entry_date": "2026-07-22T09:14:57.895144+00:00",
+      "entry_signal": "BUY",
+      "entry_confidence": 52,
+      "allocated_usd": 108.51,
+      "fee_paid": 0.1085,
+      "exit_target": 3.65e-06,
+      "stop_loss": 2.55e-06,
+      "entry_target": 2.95e-06,
+      "expected_days": 7,
+      "partial_taken": false
     }
   ],
   "realized_pnl": -45.7177,
@@ -39,7 +55,7 @@
   "total_trades": 13,
   "winning_trades": 7,
   "losing_trades": 6,
-  "total_fees": 3.0201,
+  "total_fees": 3.1286,
   "trade_history": [
     {
       "trade_num": 1,
