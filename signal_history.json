@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-21T00:10:00.445970+00:00",
-    "coin": "ETH",
-    "price": 1900.27,
-    "signal": "HOLD",
-    "confidence": 35,
-    "score": -0.3,
-    "fg": 25,
-    "btc_price": 65141,
-    "btc_dominance": 56.5,
-    "candidates": [
-      "NIGHT",
-      "MON",
-      "BONK",
-      "\u5e01\u5b89\u4eba\u751f",
-      "USDG",
-      "KITE",
-      "JTO",
-      "ETH",
-      "LDO"
-    ],
-    "alert": "All swing candidates have bearish or insufficient chart structures. Waiting for pullback entries or trend reversal confirmation."
-  },
-  {
     "ts": "2026-07-21T01:10:00.431895+00:00",
     "coin": "ETH",
     "price": 1914.96,
@@ -904,6 +881,29 @@
       "USDG",
       "UB",
       "FET",
+      "ETH",
+      "LDO"
+    ],
+    "alert": null
+  },
+  {
+    "ts": "2026-07-22T16:10:00.294446+00:00",
+    "coin": "ETH",
+    "price": 1944.29,
+    "signal": "BUY",
+    "confidence": 62,
+    "score": 0.45,
+    "fg": 33,
+    "btc_price": 66096,
+    "btc_dominance": 56.7,
+    "candidates": [
+      "MON",
+      "NIGHT",
+      "AERO",
+      "USDG",
+      "BONK",
+      "UB",
+      "DASH",
       "ETH",
       "LDO"
     ],
