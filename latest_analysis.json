@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-07-22T10:10:00.310457+00:00",
+  "timestamp": "2026-07-22T11:10:00.706657+00:00",
   "selected_coin": "ETH",
   "selected_coin_name": "Ethereum",
-  "selected_coin_price": 1922.27,
+  "selected_coin_price": 1927.73,
   "confidence": 62,
-  "layman_headline": "Ethereum shows a bullish candlestick pattern near key support while the broader market is fearful \u2014 a classic contrarian entry.",
-  "layman_explanation": "Ethereum has posted three strong green candles in a row (called 'Three White Soldiers'), which historically signals continued upward momentum. It's sitting just above its $1,900 support level with a clear path toward $2,000 resistance. The overall crypto market is in 'Fear' mode at 33/100 but improving from last week's 25 \u2014 meaning sentiment is turning up from deeply pessimistic levels. Bitcoin ETFs continue attracting inflows (6 straight days), which supports the broader market.",
-  "layman_action": "Consider a measured entry in Ethereum around $1,900-$1,925, targeting $2,000 for a ~4-5% gain. Set a hard stop at $1,840 to limit downside to ~4%. This is a relatively tight, defensive swing trade during uncertain times.",
-  "expert_reasoning": "ETH displays a Three White Soldiers pattern with +19.7% 5-day momentum emerging from a broader downtrend \u2014 classic reversal confirmation. RSI at 43.85 is neutral with room to run before overbought territory. Support at $1,900 is only 1.4% below current price, while resistance at $2,000 gives a 2.84x risk/reward ratio. Bitcoin ETF inflows ($203M, 6-day streak) provide macro tailwind, and the Fear & Greed index improving from 25\u219233 aligns with our historically reliable Fear_Greed signal (67% win rate). High BTC dominance at 56.7% is the primary headwind for alts, but ETH tends to be least affected among alts during dominance compression phases. The NIGHT bridge exploit (515M tokens) could temporarily suppress Cardano ecosystem confidence but doesn't directly threaten ETH.",
+  "layman_headline": "Ethereum shows early signs of recovery with strong buying candles near support.",
+  "layman_explanation": "The crypto market is still in a fearful state, but sentiment is improving from extreme fear last week. Ethereum has posted three consecutive strong up-candles (a 'Three White Soldiers' pattern), suggesting buyers are stepping in after a long decline. It's sitting just above $1,900 support with a decent shot at reclaiming $2,000. While the broader environment favors Bitcoin over altcoins, ETH is the safest large-cap alt to play a bounce.",
+  "layman_action": "Consider a small position in Ethereum near $1,910 with a firm stop-loss at $1,850. Take profits around $2,000. This is a measured recovery bet, not an all-in trade.",
+  "expert_reasoning": "ETH presents the cleanest swing setup among candidates. The Three White Soldiers pattern on the daily chart is a high-confidence bullish reversal signal, supported by RSI at 43.85 (neutral with room to run up). The 5-day momentum of +19.7% shows strong buying pressure returning. Key support at $1,900 is only 1.4% below, providing a tight risk floor, while resistance at $2,000 offers a 3.8% upside with a 2.84x risk/reward ratio. Bitcoin ETF inflows (6-day streak, $203M added) create a positive macro tailwind. Fear & Greed improving from 25 to 33 suggests the worst of the selloff may be behind us. High BTC dominance at 56.7% is a headwind for alts, but ETH historically leads alt recoveries when BTC stabilizes.",
   "risk_factors": [
-    "BTC dominance at 56.7% continues suppressing alt performance \u2014 ETH could lag even if BTC holds steady",
-    "Bitcoin hovering under $66K with traders awaiting Alphabet earnings could trigger a risk-off move across crypto",
-    "Support at $1,900 is very close (1.4%) \u2014 a quick BTC dump could slice through it and trigger cascading sells"
+    "Bitcoin dominance at 56.7% continues to suppress altcoin performance \u2014 ETH could lag even if BTC holds",
+    "CoinDesk reports inflation concerns resurfacing with oil above $85, which could trigger broader risk-off selling",
+    "The NIGHT bridge exploit (515M tokens stolen) adds negative sentiment to smart contract platforms broadly"
   ],
   "watch_list": [
-    "Bitcoin reaction to Alphabet earnings and whether BTC holds $65,500 support",
-    "ETH ability to hold $1,900 support and whether volume increases on the next green candle",
-    "Fear & Greed index trajectory \u2014 continued improvement above 35-40 would confirm sentiment recovery"
+    "BTC price action around $66,000 \u2014 a breakdown below $65,000 would drag ETH through its $1,900 support",
+    "Alphabet earnings and AI trade sentiment \u2014 risk-on/risk-off signal for correlated tech assets",
+    "Fear & Greed trend continuation \u2014 if it crosses above 40, altcoin rotation becomes more likely"
   ],
-  "market_context": "Crypto is in a 'Fear' regime (33/100) but improving from last week's 25, with Bitcoin ETFs seeing sustained inflows. BTC dominance at 56.7% is elevated, making selective alt entries riskier than usual but ETH remains the safest large-cap alt play.",
-  "context_banner": "Ethereum's Three White Soldiers pattern and improving market fear present a disciplined contrarian swing opportunity targeting $2,000 resistance.",
-  "btc_price": 65852,
+  "market_context": "The crypto market is in a fear-driven consolidation phase with BTC holding near $66K and ETF inflows providing a floor. Sentiment is improving from extreme fear but hasn't yet shifted to neutral, creating a window for early positioning before the crowd.",
+  "context_banner": "Bitcoin ETF inflows extend to 6 days while Fear & Greed recovers from extreme lows \u2014 early-stage risk appetite returning favors quality altcoin entries.",
+  "btc_price": 65988,
   "fear_greed": {
     "current": 33,
     "label": "Fear",
@@ -31,32 +31,32 @@
   "btc_dominance": 56.7,
   "key_signals": [
     {
-      "source": "Chart Pattern Analysis",
-      "signal_type": "technical",
-      "description": "ETH printed a Three White Soldiers candlestick pattern \u2014 three consecutive strong bullish candles closing near highs, indicating sustained buying pressure and trend acceleration."
-    },
-    {
       "source": "RSI",
       "signal_type": "technical",
-      "description": "ETH RSI at 43.85 is neutral with ample room to rise, while BONK's oversold RSI at 29 was considered but rejected due to bearish chart structure and meme coin risk."
+      "description": "ETH RSI at 43.85 is neutral with significant room to expand upward, avoiding overbought risk that plagues LDO and USDG."
+    },
+    {
+      "source": "Chart Pattern Analysis",
+      "signal_type": "technical",
+      "description": "Three White Soldiers candlestick pattern on ETH confirms sustained buying pressure and potential trend reversal from the downtrend."
     },
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Fear & Greed at 33 improving from 25 last week \u2014 our most reliable sentiment signal (67% win rate) suggests fear is peaking and conditions favor contrarian entries."
+      "description": "Fear & Greed at 33, improving from 25 yesterday and 27.4 weekly average \u2014 trend of improving sentiment supports buying into fear."
     },
     {
       "source": "CoinTelegraph",
       "signal_type": "news",
-      "description": "Bitcoin ETFs extended their inflow streak to 6 days with $203M added, providing sustained institutional demand that supports the broader crypto market including ETH."
+      "description": "Bitcoin ETFs extended their inflow streak to 6 days with $203M added, providing institutional demand that anchors BTC and enables alt recovery."
     },
     {
-      "source": "CryptoSlate",
-      "signal_type": "news",
-      "description": "515M NIGHT bridge exploit on Cardano ecosystem highlights smart contract risk in smaller chains, reinforcing ETH's relative safety as the most battle-tested L1."
+      "source": "CoinDesk",
+      "signal_type": "macro",
+      "description": "Inflation concerns resurfacing with oil above $85 and BTC under $66K awaiting Alphabet earnings \u2014 macro risk remains but is partially priced in at current fear levels."
     }
   ],
   "_mode": "HUNTING",
   "exit_target": 2000.0,
-  "stop_loss": 1840.0
+  "stop_loss": 1850.0
 }
