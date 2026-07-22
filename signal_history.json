@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-20T23:10:00.241775+00:00",
-    "coin": "ETH",
-    "price": 1897.88,
-    "signal": "HOLD",
-    "confidence": 35,
-    "score": -0.3,
-    "fg": 29,
-    "btc_price": 65158,
-    "btc_dominance": 56.6,
-    "candidates": [
-      "NIGHT",
-      "MON",
-      "BONK",
-      "\u5e01\u5b89\u4eba\u751f",
-      "KITE",
-      "JTO",
-      "USDG",
-      "ETH",
-      "LDO"
-    ],
-    "alert": null
-  },
-  {
     "ts": "2026-07-21T00:10:00.445970+00:00",
     "coin": "ETH",
     "price": 1900.27,
@@ -904,6 +881,29 @@
       "UB",
       "USDG",
       "\u5e01\u5b89\u4eba\u751f",
+      "ETH",
+      "LDO"
+    ],
+    "alert": null
+  },
+  {
+    "ts": "2026-07-22T15:10:00.523747+00:00",
+    "coin": "ETH",
+    "price": 1937.0,
+    "signal": "BUY",
+    "confidence": 62,
+    "score": 0.55,
+    "fg": 33,
+    "btc_price": 65846,
+    "btc_dominance": 56.7,
+    "candidates": [
+      "MON",
+      "NIGHT",
+      "AERO",
+      "BONK",
+      "USDG",
+      "UB",
+      "FET",
       "ETH",
       "LDO"
     ],
