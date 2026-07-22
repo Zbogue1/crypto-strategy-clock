@@ -1,32 +1,32 @@
 {
   "open_trade": {
     "coin": "ETH",
-    "entry_time": "2026-07-22T07:13:57.828796+00:00",
+    "entry_time": "2026-07-22T08:13:53.845296+00:00",
     "key_signals": [
       {
-        "source": "Fear_Greed",
-        "signal_type": "sentiment",
-        "description": "Fear & Greed improving from 25 to 33 with upward trend, suggesting worst of the sell-off sentiment is fading \u2014 historically a reliable signal (67% win rate)."
-      },
-      {
-        "source": "RSI",
-        "signal_type": "technical",
-        "description": "ETH RSI at 44 is neutral with room to run higher, not yet overbought \u2014 RSI has been our most reliable signal source at 83% win rate."
+        "source": "CoinTelegraph",
+        "signal_type": "news",
+        "description": "Bitcoin ETFs extended their inflow streak to six consecutive days with $203M added, signaling strong institutional demand returning to the market and providing a bullish macro backdrop."
       },
       {
         "source": "Chart Pattern Analysis",
         "signal_type": "technical",
-        "description": "Three White Soldiers bullish candlestick pattern on ETH indicates sustained buying pressure and trend acceleration, confirmed by +19.7% 5-day momentum."
+        "description": "ETH formed a Three White Soldiers candlestick pattern \u2014 three strong bullish candles indicating sustained buying pressure and a potential trend acceleration upward."
       },
       {
-        "source": "Blockworks",
-        "signal_type": "news",
-        "description": "ETH derivatives have reset per Blockworks analysis, clearing overleveraged positions and setting up a cleaner base for the next leg up."
+        "source": "Fear_Greed",
+        "signal_type": "sentiment",
+        "description": "Fear & Greed improving from 25 to 33 with a weekly average of 27.4 \u2014 the upward trend in sentiment historically precedes price recoveries and supports contrarian buying."
+      },
+      {
+        "source": "RSI",
+        "signal_type": "technical",
+        "description": "ETH RSI at 44 is neutral with ample room to run higher, while BONK's RSI at 29 (oversold) was considered but rejected due to bearish chart structure and high BTC dominance headwinds for meme coins."
       },
       {
         "source": "CoinDesk",
         "signal_type": "news",
-        "description": "Bitcoin holding near $66,300 with macro tailwinds (chip rally, yen weakness) provides a stable backdrop for ETH to push toward $2,000 resistance."
+        "description": "Bitcoin holding near $66,300 with analysts noting a key test at $68K \u2014 a stable BTC provides the floor needed for an ETH swing trade to work within its defined risk parameters."
       }
     ],
     "confidence": 62
@@ -188,5 +188,5 @@
     }
   },
   "trade_count": 9,
-  "last_updated": "2026-07-22T07:13:57.828802+00:00"
+  "last_updated": "2026-07-22T08:13:53.845301+00:00"
 }
