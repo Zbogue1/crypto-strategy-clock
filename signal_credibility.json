@@ -1,32 +1,32 @@
 {
   "open_trade": {
     "coin": "ETH",
-    "entry_time": "2026-07-22T06:13:50.225749+00:00",
+    "entry_time": "2026-07-22T07:13:57.828796+00:00",
     "key_signals": [
       {
-        "source": "Chart Pattern Analysis",
-        "signal_type": "technical",
-        "description": "ETH printed a Three White Soldiers bullish candlestick pattern \u2014 three consecutive strong bullish candles indicating sustained buying pressure and trend acceleration."
+        "source": "Fear_Greed",
+        "signal_type": "sentiment",
+        "description": "Fear & Greed improving from 25 to 33 with upward trend, suggesting worst of the sell-off sentiment is fading \u2014 historically a reliable signal (67% win rate)."
       },
       {
         "source": "RSI",
         "signal_type": "technical",
-        "description": "ETH RSI at 43.85 is neutral despite +19.7% 5-day momentum, meaning the rally has room to extend before overbought conditions emerge."
+        "description": "ETH RSI at 44 is neutral with room to run higher, not yet overbought \u2014 RSI has been our most reliable signal source at 83% win rate."
       },
       {
-        "source": "Fear_Greed",
-        "signal_type": "sentiment",
-        "description": "Fear & Greed improved sharply from 25 to 33 in one day with a weekly average of 27.4, signaling a potential sentiment bottom and improving risk appetite."
+        "source": "Chart Pattern Analysis",
+        "signal_type": "technical",
+        "description": "Three White Soldiers bullish candlestick pattern on ETH indicates sustained buying pressure and trend acceleration, confirmed by +19.7% 5-day momentum."
       },
       {
         "source": "Blockworks",
         "signal_type": "news",
-        "description": "Blockworks highlighted 'ETH derivatives reset and the next retail trade,' suggesting fresh positioning and potential momentum as derivatives markets reset."
+        "description": "ETH derivatives have reset per Blockworks analysis, clearing overleveraged positions and setting up a cleaner base for the next leg up."
       },
       {
         "source": "CoinDesk",
         "signal_type": "news",
-        "description": "Bitcoin holding near $66.3K with a key test at $68K provides a stable backdrop, while the Crypto Clarity Act legislative push adds regulatory clarity narrative."
+        "description": "Bitcoin holding near $66,300 with macro tailwinds (chip rally, yen weakness) provides a stable backdrop for ETH to push toward $2,000 resistance."
       }
     ],
     "confidence": 62
@@ -188,5 +188,5 @@
     }
   },
   "trade_count": 9,
-  "last_updated": "2026-07-22T06:13:50.225757+00:00"
+  "last_updated": "2026-07-22T07:13:57.828802+00:00"
 }
