@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-07-22T19:10:00.383065+00:00",
+  "timestamp": "2026-07-22T20:10:00.473692+00:00",
   "selected_coin": "ETH",
   "selected_coin_name": "Ethereum",
-  "selected_coin_price": 1926.58,
+  "selected_coin_price": 1925.2,
   "confidence": 62,
-  "layman_headline": "Ethereum shows early signs of recovery while the broader market remains fearful.",
-  "layman_explanation": "The crypto market is in a 'Fear' phase, but sentiment is improving from deeper fear levels last week. Ethereum has formed a bullish candlestick pattern called 'Three White Soldiers' \u2014 three strong up-days in a row \u2014 suggesting buying pressure is building. While most altcoins are getting hammered, ETH is holding steady near $1,927 with solid support at $1,900 and a clear path to $2,000. This is a calculated bet on the largest altcoin bouncing during a fear-driven market.",
-  "layman_action": "Consider a small position in Ethereum around $1,910-$1,927 with a firm stop-loss at $1,855. If it breaks above $2,000, there's room to run toward $2,050. Keep position sizing conservative given the fearful market environment.",
-  "expert_reasoning": "ETH presents the strongest setup among the candidates for several reasons. First, the Three White Soldiers candlestick pattern is a high-reliability bullish reversal signal, confirmed by 19.7% 5-day momentum despite the broader downtrend. The risk/reward to support ($1,900) vs resistance ($2,000) is 2.84x, well above the 2.0x threshold. RSI at 43.85 is neutral-to-low, providing room for upside without overbought risk. The chart bias score of +0.30 is the only positive score among all candidates. BONK's oversold RSI (29) was tempting, but its -94.8% from ATH, -29.6% 5-day momentum, and bearish chart structure (-0.70) make it a falling knife. The CLARITY Act news could create near-term regulatory clarity that benefits established protocols like Ethereum over smaller tokens.",
+  "layman_headline": "Ethereum shows early recovery signs while the broader market sits in fear \u2014 a cautious buying opportunity.",
+  "layman_explanation": "The crypto market is fearful right now (33/100), but that fear is improving from last week's deeper lows. Ethereum has formed a bullish 'Three White Soldiers' candlestick pattern \u2014 basically three strong green candles in a row that suggest buyers are stepping in. ETH is sitting just above $1,900 support with a clear path to $2,000 resistance, giving us a decent risk-to-reward setup. Most altcoins look terrible right now, but ETH is the best-positioned large cap with real technical structure forming.",
+  "layman_action": "Consider a small position in Ethereum around $1,910 with a stop-loss at $1,850. This is a cautious trade in a fearful market \u2014 don't go all-in. Take profits near $2,000-$2,050.",
+  "expert_reasoning": "ETH presents the strongest risk-adjusted setup among all candidates. The Three White Soldiers pattern is a high-reliability bullish reversal signal, and the 5-day momentum of +19.7% shows buyers are returning while the RSI at 44 still has significant room to run before overbought territory. The $1,900 support level provides a clear invalidation point just 1.4% below current price, while the $2,000 resistance target offers 3.8% upside on the first leg. Fear & Greed improving from 25 to 33 suggests sentiment is bottoming \u2014 historically a reliable signal per our track record (67% win rate). High BTC dominance at 56.7% is the main headwind for alts, but ETH has the liquidity and institutional interest to decouple from smaller alts in a recovery.",
   "risk_factors": [
-    "BTC dominance at 56.7% continues to suppress altcoin performance \u2014 if BTC drops below $64,000, ETH could break $1,900 support",
-    "SEC's Peirce warning that DeFi vaults and onchain lending may fall under securities laws could create regulatory headwinds for ETH ecosystem",
-    "Fear & Greed at 33 is improving but still in Fear territory \u2014 broader market sentiment could reverse if macro events deteriorate"
+    "BTC dominance at 56.7% continues to suppress alt performance \u2014 if BTC dominance rises further, ETH could underperform",
+    "SEC's Peirce warning about DeFi vaults and onchain lending falling under securities laws could create regulatory headwinds for the Ethereum ecosystem",
+    "The CLARITY Act imposing limits on crypto could dampen institutional sentiment broadly if it advances"
   ],
   "watch_list": [
-    "ETH holding $1,900 support level \u2014 a break below invalidates the bullish setup",
-    "BTC price action around $65,000-$66,000 \u2014 any sharp BTC move will drag or lift ETH",
-    "Follow-up on CLARITY Act and SEC DeFi regulatory developments for potential sentiment impact"
+    "ETH holding $1,900 support level \u2014 a break below invalidates the bullish candle pattern",
+    "Fear & Greed index trajectory \u2014 continued improvement above 35 would confirm sentiment recovery",
+    "BTC price action around $65,000-$66,000 \u2014 a breakdown in BTC would drag ETH down regardless of its own technicals"
   ],
-  "market_context": "The crypto market is in a 'Fear' phase (33/100) but improving from last week's deeper fear (25-27). BTC dominance remains high at 56.7%, keeping pressure on altcoins, though BTC itself is relatively stable around $65,800.",
-  "context_banner": "Ethereum's Three White Soldiers pattern amid improving fear sentiment offers the highest-quality swing entry in an otherwise challenging altcoin landscape.",
-  "btc_price": 65776,
+  "market_context": "The crypto market is in a 'Fear' state (33/100) but improving from extreme fear levels last week (25). BTC is consolidating around $65,800 with high dominance at 56.7%, making selective alt plays challenging but not impossible for large caps like ETH.",
+  "context_banner": "Fear is easing and Ethereum's chart structure is the strongest among all swing candidates \u2014 a measured entry with tight risk management is warranted.",
+  "btc_price": 65796,
   "fear_greed": {
     "current": 33,
     "label": "Fear",
@@ -31,32 +31,32 @@
   "btc_dominance": 56.7,
   "key_signals": [
     {
-      "source": "Chart Pattern Analysis",
-      "signal_type": "technical",
-      "description": "ETH formed a Three White Soldiers bullish candlestick pattern with a +0.30 chart bias score \u2014 the only candidate with a positive chart bias, indicating sustained buying pressure and likely upward acceleration."
-    },
-    {
       "source": "RSI",
       "signal_type": "technical",
-      "description": "ETH RSI at 43.85 provides ample room for upside before reaching overbought territory, while BONK's oversold RSI of 29 was rejected due to falling-knife risk in bearish structure."
+      "description": "ETH RSI at 44 is neutral with room to run upward \u2014 not overbought, not oversold, positioned for a momentum continuation after the Three White Soldiers pattern."
+    },
+    {
+      "source": "Chart Pattern Analysis",
+      "signal_type": "technical",
+      "description": "Three White Soldiers bullish candlestick pattern confirmed on ETH with 2.84x risk/reward to nearest support/resistance levels, the only candidate with a positive chart bias score."
     },
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Fear & Greed improving from 25 to 33 over the past few days suggests sentiment bottoming \u2014 historically a reliable signal for mean-reversion entries per our track record (67% win rate)."
+      "description": "Fear & Greed at 33 improving from 25 yesterday and 27.4 weekly average \u2014 sentiment bottoming pattern that has historically preceded swing trade wins (67% win rate)."
     },
     {
-      "source": "CoinTelegraph",
+      "source": "Blockworks",
       "signal_type": "news",
-      "description": "Bitcoin price stability despite Iran geopolitical tensions and potential S&P 500 short squeeze suggests risk assets may be bottoming, providing macro tailwind for ETH."
+      "description": "Blockworks reporting 'ETH derivatives reset and the next retail trade' suggests leveraged positions have been flushed, creating cleaner conditions for an organic move higher."
     },
     {
       "source": "CoinDesk",
       "signal_type": "news",
-      "description": "SEC's Peirce DeFi securities warning is a watchable headwind, but the CLARITY Act's progression toward regulatory clarity is net-positive for established Layer 1s like Ethereum."
+      "description": "Regulatory headlines (CLARITY Act, SEC DeFi warnings) are creating uncertainty but are already priced into the fear environment \u2014 any positive resolution would be a catalyst."
     }
   ],
   "_mode": "HUNTING",
   "exit_target": 2050.0,
-  "stop_loss": 1855.0
+  "stop_loss": 1850.0
 }
