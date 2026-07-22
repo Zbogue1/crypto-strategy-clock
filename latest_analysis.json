@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-07-22T06:10:00.285287+00:00",
+  "timestamp": "2026-07-22T07:10:00.275861+00:00",
   "selected_coin": "ETH",
   "selected_coin_name": "Ethereum",
-  "selected_coin_price": 1916.6,
+  "selected_coin_price": 1915.34,
   "confidence": 62,
-  "layman_headline": "Ethereum shows bullish candlestick pattern near key support as fear starts to lift.",
-  "layman_explanation": "The crypto market has been in a fearful state recently, but sentiment is improving \u2014 the Fear & Greed index jumped from 25 to 33 in just a day. Ethereum has printed a 'Three White Soldiers' candlestick pattern, which means three strong up-days in a row, suggesting buyers are stepping in with conviction. ETH is sitting right above $1,900 support with a clean shot at $2,000 resistance, giving us a nearly 3:1 reward-to-risk ratio. This is a cautious, measured trade on a blue-chip asset rather than chasing risky small coins.",
-  "layman_action": "Consider a small position in Ethereum near $1,900 with a clear exit plan: take profit around $2,000 and cut losses if it drops below $1,840.",
-  "expert_reasoning": "ETH presents the best swing setup among candidates. The Three White Soldiers pattern on the daily chart signals sustained buying pressure with a 5-day momentum of +19.7%, yet the RSI at 43.85 remains neutral \u2014 meaning the move has room to extend before becoming overbought. Support at $1,900 is just 1.4% below current price, while resistance at $2,000 offers a 2.84x risk/reward. The broader market context is cautiously favorable: BTC is stable near $65.9K, fear is improving from extreme levels, and Blockworks specifically flags an ETH derivatives reset as a catalyst. The $42B in Ethereum ecosystem TVL underpins fundamental value. High BTC dominance at 56.8% is the main headwind for alts, but ETH typically leads any dominance rotation.",
+  "layman_headline": "Ethereum shows signs of a bounce from fear-driven lows as bullish candle pattern emerges.",
+  "layman_explanation": "The crypto market has been in a fearful state recently, but sentiment is improving from extreme fear toward just regular fear. Ethereum dropped significantly over recent weeks but has surged nearly 20% in just the past 5 days and is forming a strong bullish candle pattern called 'Three White Soldiers' \u2014 three consecutive strong up-days. It's sitting right above a key support level at $1,900 with a clear path toward $2,000, offering a favorable risk-to-reward ratio of nearly 3:1.",
+  "layman_action": "Consider a small position in Ethereum near the $1,900 support level with a stop-loss at $1,830. Take profits around $2,000. This is a moderate-confidence trade \u2014 don't oversize it.",
+  "expert_reasoning": "ETH presents the strongest risk-adjusted setup among candidates. The Three White Soldiers pattern on the chart is a reliable bullish reversal signal, and the 5-day momentum of +19.7% confirms buyers are stepping in aggressively. RSI at 44 is neutral \u2014 not overbought, leaving room for upside. Support at $1,900 is very close (-1.4%), giving a tight stop, while resistance at $2,000 provides a 2.84x risk/reward ratio. The Fear & Greed index improving from 25 to 33 suggests the worst of the selling pressure may be easing. High BTC dominance at 56.8% is a headwind for alts, which tempers confidence, but ETH's massive liquidity ($10.8B daily volume) and ecosystem TVL of $42B make it the safest alt to play in this environment.",
   "risk_factors": [
-    "BTC dominance at 56.8% continues to suppress altcoin performance \u2014 ETH could lag even if BTC rallies",
-    "Support at $1,900 is very close (1.4%); a break below could trigger a cascade to $1,800",
-    "Crypto Clarity Act legislative uncertainty and Movement Labs bankruptcy headlines could dampen broader risk appetite"
+    "BTC dominance at 56.8% continues to suppress altcoin performance \u2014 ETH could underperform even if BTC rallies",
+    "Bitcoin faces key resistance at $68,000 per analysts; rejection there could drag ETH back below $1,900 support",
+    "The CLARITY Act political uncertainty and broader regulatory noise could create sudden negative sentiment shifts"
   ],
   "watch_list": [
-    "BTC price action at $68,000 resistance \u2014 a rejection there could drag ETH down",
-    "Fear & Greed index trajectory \u2014 continued improvement toward 40+ would confirm risk-on sentiment",
-    "ETH volume on any move toward $2,000 resistance \u2014 need volume confirmation for breakout"
+    "BTC price action at the $68,000 resistance level \u2014 a rejection could pull ETH down with it",
+    "Fear & Greed index trend \u2014 continued improvement above 35 would confirm risk-on sentiment returning",
+    "ETH holding $1,900 support over the next 48 hours \u2014 a close below invalidates the bullish setup"
   ],
-  "market_context": "Bitcoin holds near $66K with analysts watching the $68K resistance test. Market fear is improving (33, up from 25) but BTC dominance at 56.8% remains a headwind for altcoins.",
-  "context_banner": "Improving fear sentiment and a textbook bullish candlestick pattern on ETH create a measured swing opportunity near $1,900 support.",
-  "btc_price": 65875,
+  "market_context": "The crypto market is in a 'Fear' state (33/100) but improving from 'Extreme Fear' last week (25). BTC is stable near $65,800 with high dominance at 56.8%, creating a challenging but not impossible environment for selective alt plays.",
+  "context_banner": "Fear is receding and ETH's Three White Soldiers pattern near $1,900 support offers a disciplined swing entry with defined risk.",
+  "btc_price": 65861,
   "fear_greed": {
     "current": 33,
     "label": "Fear",
@@ -31,32 +31,32 @@
   "btc_dominance": 56.8,
   "key_signals": [
     {
-      "source": "Chart Pattern Analysis",
-      "signal_type": "technical",
-      "description": "ETH printed a Three White Soldiers bullish candlestick pattern \u2014 three consecutive strong bullish candles indicating sustained buying pressure and trend acceleration."
+      "source": "Fear_Greed",
+      "signal_type": "sentiment",
+      "description": "Fear & Greed improving from 25 to 33 with upward trend, suggesting worst of the sell-off sentiment is fading \u2014 historically a reliable signal (67% win rate)."
     },
     {
       "source": "RSI",
       "signal_type": "technical",
-      "description": "ETH RSI at 43.85 is neutral despite +19.7% 5-day momentum, meaning the rally has room to extend before overbought conditions emerge."
+      "description": "ETH RSI at 44 is neutral with room to run higher, not yet overbought \u2014 RSI has been our most reliable signal source at 83% win rate."
     },
     {
-      "source": "Fear_Greed",
-      "signal_type": "sentiment",
-      "description": "Fear & Greed improved sharply from 25 to 33 in one day with a weekly average of 27.4, signaling a potential sentiment bottom and improving risk appetite."
+      "source": "Chart Pattern Analysis",
+      "signal_type": "technical",
+      "description": "Three White Soldiers bullish candlestick pattern on ETH indicates sustained buying pressure and trend acceleration, confirmed by +19.7% 5-day momentum."
     },
     {
       "source": "Blockworks",
       "signal_type": "news",
-      "description": "Blockworks highlighted 'ETH derivatives reset and the next retail trade,' suggesting fresh positioning and potential momentum as derivatives markets reset."
+      "description": "ETH derivatives have reset per Blockworks analysis, clearing overleveraged positions and setting up a cleaner base for the next leg up."
     },
     {
       "source": "CoinDesk",
       "signal_type": "news",
-      "description": "Bitcoin holding near $66.3K with a key test at $68K provides a stable backdrop, while the Crypto Clarity Act legislative push adds regulatory clarity narrative."
+      "description": "Bitcoin holding near $66,300 with macro tailwinds (chip rally, yen weakness) provides a stable backdrop for ETH to push toward $2,000 resistance."
     }
   ],
   "_mode": "HUNTING",
   "exit_target": 2000.0,
-  "stop_loss": 1840.0
+  "stop_loss": 1830.0
 }
