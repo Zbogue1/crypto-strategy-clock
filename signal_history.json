@@ -1,27 +1,5 @@
 [
   {
-    "ts": "2026-07-21T05:10:00.208877+00:00",
-    "coin": "LDO",
-    "price": 0.400836,
-    "signal": "HOLD",
-    "confidence": 32,
-    "score": -0.3,
-    "fg": 25,
-    "btc_price": 65487,
-    "btc_dominance": 56.5,
-    "candidates": [
-      "NIGHT",
-      "MON",
-      "BONK",
-      "DEXE",
-      "\u5e01\u5b89\u4eba\u751f",
-      "LDO",
-      "USDG",
-      "ETH"
-    ],
-    "alert": "All swing candidates show poor risk/reward or strongly bearish charts \u2014 avoid new entries this cycle."
-  },
-  {
     "ts": "2026-07-21T06:10:00.274911+00:00",
     "coin": "UB",
     "price": 0.100403,
@@ -899,6 +877,29 @@
     "score": 0.45,
     "fg": 33,
     "btc_price": 65796,
+    "btc_dominance": 56.7,
+    "candidates": [
+      "MON",
+      "NIGHT",
+      "USDG",
+      "AERO",
+      "BONK",
+      "UB",
+      "ENA",
+      "ETH",
+      "LDO"
+    ],
+    "alert": null
+  },
+  {
+    "ts": "2026-07-22T21:10:00.253073+00:00",
+    "coin": "ETH",
+    "price": 1928.4,
+    "signal": "BUY",
+    "confidence": 62,
+    "score": 0.45,
+    "fg": 33,
+    "btc_price": 65895,
     "btc_dominance": 56.7,
     "candidates": [
       "MON",
