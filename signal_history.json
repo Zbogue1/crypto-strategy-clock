@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-20T08:10:00.308229+00:00",
-    "coin": "ETH",
-    "price": 1860.72,
-    "signal": "HOLD",
-    "confidence": 38,
-    "score": -0.35,
-    "fg": 29,
-    "btc_price": 64192,
-    "btc_dominance": 56.4,
-    "candidates": [
-      "B",
-      "PUMP",
-      "BONK",
-      "JTO",
-      "KITE",
-      "WLD",
-      "FIL",
-      "ETH",
-      "LDO"
-    ],
-    "alert": "All swing candidates either overextended or in active downtrends \u2014 forcing a trade here has negative expected value."
-  },
-  {
     "ts": "2026-07-20T09:10:00.313574+00:00",
     "coin": "ETH",
     "price": 1858.04,
@@ -909,5 +886,28 @@
       "LDO"
     ],
     "alert": "Market in Extreme Fear \u2014 all swing candidates have flawed setups. Wait for ETH pullback to $1,800 support or BTC breakout above $68K before deploying capital."
+  },
+  {
+    "ts": "2026-07-22T00:10:00.264589+00:00",
+    "coin": "ETH",
+    "price": 1933.39,
+    "signal": "BUY",
+    "confidence": 62,
+    "score": 0.45,
+    "fg": 33,
+    "btc_price": 66594,
+    "btc_dominance": 56.9,
+    "candidates": [
+      "DEXE",
+      "NIGHT",
+      "\u5e01\u5b89\u4eba\u751f",
+      "MON",
+      "VVV",
+      "BONK",
+      "UB",
+      "ETH",
+      "LDO"
+    ],
+    "alert": null
   }
 ]
