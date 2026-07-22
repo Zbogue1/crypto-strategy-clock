@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-07-22T03:10:00.326530+00:00",
+  "timestamp": "2026-07-22T04:10:00.172460+00:00",
   "selected_coin": "ETH",
   "selected_coin_name": "Ethereum",
-  "selected_coin_price": 1929.36,
+  "selected_coin_price": 1932.14,
   "confidence": 62,
-  "layman_headline": "Ethereum shows signs of a bounce while the broader market is still fearful \u2014 a classic setup for patient buyers.",
-  "layman_explanation": "The crypto market has been in a fearful state for the past week, but sentiment is starting to improve. Ethereum's chart is showing a classic bullish pattern called 'Three White Soldiers' \u2014 three strong green candles in a row \u2014 suggesting buyers are stepping in around the $1,900 level. ETH is up almost 20% in the last 5 days but its RSI is still neutral at 44, meaning it's not overheated yet. The $2,000 level is the next major target, which would be about a 5% gain from here.",
-  "layman_action": "Consider a small position in Ethereum near $1,910, with a plan to sell around $2,050 and a hard stop-loss at $1,850 if things go wrong. This gives roughly a 2:1 reward-to-risk ratio.",
-  "expert_reasoning": "ETH presents the best risk-adjusted swing trade here. The Three White Soldiers candlestick pattern on a downtrend is a high-probability reversal signal, confirmed by 5-day momentum of +19.7% showing strong buying pressure. RSI at 43.85 is neutral \u2014 crucially, this means ETH has rallied significantly but still has room to run before becoming technically overbought. Support at $1,900 is tight (1.4% away) while resistance at $2,000 is 3.8% away, giving a 2.84x R/R. The Fear & Greed index at 33 (Fear) but improving from 25 yesterday and 27.4 weekly average suggests we're at an inflection point where contrarian entries have historically paid off \u2014 our signal credibility data shows Fear_Greed at 67% win rate. BTC dominance at 56.8% is a headwind for alts, but ETH is the most resilient alt in high-dominance environments given its $42B TVL and institutional profile.",
+  "layman_headline": "Ethereum shows signs of life with a bullish candle pattern as the market crawls out of fear.",
+  "layman_explanation": "Ethereum has quietly rallied about 20% in 5 days and is now printing strong bullish candlestick patterns (Three White Soldiers), suggesting sustained buying pressure. The overall crypto market is in 'Fear' territory at 33, but improving from last week's 27 \u2014 historically these recovering-fear environments have been decent entry points. Bitcoin is holding above $66K which provides a stable backdrop. Ethereum at $1,932 is still 61% below its all-time high, meaning there's significant upside room if momentum continues.",
+  "layman_action": "Consider a cautious entry into Ethereum near $1,920 with a stop-loss at $1,850. This limits your downside to about 3.6% while targeting the $2,000-$2,050 psychological resistance zone for a potential 6-7% gain.",
+  "expert_reasoning": "ETH presents the strongest risk-adjusted setup among all candidates. The Three White Soldiers pattern on the chart is a high-reliability bullish continuation signal, confirmed by 5-day momentum of +19.7% emerging from a downtrend. RSI at 43.85 is neutral with room to run \u2014 not overbought. Support at $1,900 is only 1.4% below current price providing a tight stop, while resistance at $2,000 offers a 2.84x risk/reward ratio. The improving Fear & Greed index (33, up from 25 yesterday) aligns with our historically reliable Fear_Greed signal (67% win rate). BTC dominance at 56.8% is a headwind for alts, but ETH's $11.4B daily volume and $42B DeFi TVL provide fundamental backing that micro-caps lack. The other candidates \u2014 DEXE (-87% in 7 days, likely structural break), BONK (oversold but in freefall with no support identified), NIGHT (bearish structure), LDO (already extended +57% in 5 days) \u2014 all carry significantly more risk.",
   "risk_factors": [
-    "BTC faces key resistance at $68,000 \u2014 rejection there could drag ETH back below $1,900 support",
-    "High BTC dominance at 56.8% signals capital rotation away from alts, limiting ETH upside",
-    "CLARITY Act regulatory uncertainty and political gridlock could trigger a risk-off move"
+    "BTC dominance at 56.8% continues to suppress altcoin performance \u2014 if BTC pulls back from the $68K resistance zone mentioned in CoinDesk analysis, ETH could drop harder",
+    "ETH is still in a broader downtrend despite the 5-day rally \u2014 the move could be a bear market bounce that fails at $2,000 resistance",
+    "Summer slumber narrative from analysts could limit upside momentum if volume dries up"
   ],
   "watch_list": [
-    "BTC price action at the $68,000 resistance level \u2014 a breakout or rejection will dictate alt direction",
-    "ETH holding $1,900 support over the next 48 hours \u2014 a close below invalidates the bullish setup",
-    "Fear & Greed index trajectory \u2014 continued improvement above 35 would confirm sentiment recovery"
+    "BTC price action at $68,000 resistance \u2014 a rejection could drag ETH down with it",
+    "ETH volume over next 48 hours \u2014 need sustained buying to confirm Three White Soldiers pattern",
+    "CLARITY Act legislative progress \u2014 positive crypto regulatory news could provide additional catalyst"
   ],
-  "market_context": "The crypto market is in a recovery phase from deep fear (F&G improving from 25 to 33). BTC is testing $66K+ with eyes on $68K resistance, and regulatory clarity via the CLARITY Act is providing a macro tailwind, though political gridlock adds uncertainty.",
-  "context_banner": "Ethereum's Three White Soldiers reversal pattern at $1,900 support offers a disciplined swing entry as market fear begins to lift.",
-  "btc_price": 66241,
+  "market_context": "The crypto market is recovering from deep fear (27 last week to 33 now), with BTC holding above $66K and testing $68K resistance. High BTC dominance at 56.8% means capital hasn't rotated into alts yet, but improving sentiment could trigger that rotation soon.",
+  "context_banner": "Ethereum flashes a rare Three White Soldiers reversal pattern as the market emerges from fear \u2014 a disciplined entry with tight risk management offers the best risk/reward on the board.",
+  "btc_price": 66287,
   "fear_greed": {
     "current": 33,
     "label": "Fear",
@@ -31,29 +31,29 @@
   "btc_dominance": 56.8,
   "key_signals": [
     {
-      "source": "CoinTelegraph",
-      "signal_type": "news",
-      "description": "ETH breaking $1,900 resistance with analysts targeting $2,100 \u2014 provides directional conviction and price targets for the trade."
-    },
-    {
-      "source": "RSI",
-      "signal_type": "technical",
-      "description": "ETH RSI at 43.85 is neutral despite a +19.7% 5-day rally, indicating room to run before overbought \u2014 our most reliable signal at 83% win rate."
-    },
-    {
       "source": "Chart Pattern Analysis",
       "signal_type": "technical",
-      "description": "Three White Soldiers candlestick pattern on a downtrend reversal, with 2.84x risk/reward ratio to key levels \u2014 a high-quality bullish setup."
+      "description": "ETH printed a Three White Soldiers bullish candlestick pattern with a chart bias score of +0.30 and 2.84x risk/reward \u2014 the strongest technical setup among all candidates."
     },
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Fear & Greed at 33 improving from 25 yesterday \u2014 contrarian entries during fear recovery have a 67% win rate in our track record."
+      "description": "Fear & Greed at 33 improving from 25 yesterday and 27.4 weekly average \u2014 historically reliable signal (67% win rate) indicating a recovering fear environment favorable for entries."
+    },
+    {
+      "source": "RSI",
+      "signal_type": "technical",
+      "description": "ETH RSI at 43.85 is neutral with significant room to run before overbought conditions \u2014 our most reliable signal source (83% win rate, +6.1% avg return)."
+    },
+    {
+      "source": "CoinTelegraph",
+      "signal_type": "news",
+      "description": "CoinTelegraph highlighted ETH breaking $1,900 resistance with $2,100 as the next bull target \u2014 a reliable news source (67% win rate) providing directional confirmation."
     },
     {
       "source": "Blockworks",
       "signal_type": "news",
-      "description": "ETH derivatives have reset, clearing overleveraged positions and setting up a cleaner foundation for the next move higher."
+      "description": "Blockworks reported ETH derivatives have reset, suggesting cleaner positioning and reduced risk of leveraged liquidation cascades on the next move up."
     }
   ],
   "_mode": "HUNTING",
