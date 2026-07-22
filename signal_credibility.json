@@ -1,35 +1,35 @@
 {
   "open_trade": {
-    "coin": "ETH",
-    "entry_time": "2026-07-22T08:13:53.845296+00:00",
+    "coin": "BONK",
+    "entry_time": "2026-07-22T09:14:57.895886+00:00",
     "key_signals": [
       {
-        "source": "CoinTelegraph",
-        "signal_type": "news",
-        "description": "Bitcoin ETFs extended their inflow streak to six consecutive days with $203M added, signaling strong institutional demand returning to the market and providing a bullish macro backdrop."
-      },
-      {
-        "source": "Chart Pattern Analysis",
+        "source": "RSI",
         "signal_type": "technical",
-        "description": "ETH formed a Three White Soldiers candlestick pattern \u2014 three strong bullish candles indicating sustained buying pressure and a potential trend acceleration upward."
+        "description": "BONK RSI at 29.14 is deeply oversold \u2014 our most reliable signal (83% win rate) historically leading to short-term bounces."
       },
       {
         "source": "Fear_Greed",
         "signal_type": "sentiment",
-        "description": "Fear & Greed improving from 25 to 33 with a weekly average of 27.4 \u2014 the upward trend in sentiment historically precedes price recoveries and supports contrarian buying."
+        "description": "Fear & Greed improving from 25 to 33 with an upward trend, suggesting panic selling is subsiding \u2014 our second most reliable signal (67% win rate)."
       },
       {
-        "source": "RSI",
+        "source": "CoinTelegraph",
+        "signal_type": "news",
+        "description": "Bitcoin ETFs extended their inflow streak to six days with $203M added, providing macro support for the broader crypto market."
+      },
+      {
+        "source": "Chart Pattern Analysis",
         "signal_type": "technical",
-        "description": "ETH RSI at 44 is neutral with ample room to run higher, while BONK's RSI at 29 (oversold) was considered but rejected due to bearish chart structure and high BTC dominance headwinds for meme coins."
+        "description": "BONK bearish chart bias (-0.7) with price below all MAs confirms this is a counter-trend bounce trade requiring strict risk management."
       },
       {
         "source": "CoinDesk",
         "signal_type": "news",
-        "description": "Bitcoin holding near $66,300 with analysts noting a key test at $68K \u2014 a stable BTC provides the floor needed for an ETH swing trade to work within its defined risk parameters."
+        "description": "Bitcoin holding near $66,300 as risk assets rally provides a supportive floor, though the Balance stablecoin exploit adds general caution."
       }
     ],
-    "confidence": 62
+    "confidence": 52
   },
   "signal_stats": {
     "Fear_Greed__sentiment": {
@@ -188,5 +188,5 @@
     }
   },
   "trade_count": 9,
-  "last_updated": "2026-07-22T08:13:53.845301+00:00"
+  "last_updated": "2026-07-22T09:14:57.895893+00:00"
 }
