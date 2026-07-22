@@ -1,29 +1,5 @@
 [
   {
-    "ts": "2026-07-20T17:10:00.672486+00:00",
-    "coin": "ETH",
-    "price": 1898.86,
-    "signal": "HOLD",
-    "confidence": 35,
-    "score": -0.15,
-    "fg": 29,
-    "btc_price": 65427,
-    "btc_dominance": 56.7,
-    "candidates": [
-      "NIGHT",
-      "MON",
-      "\u5e01\u5b89\u4eba\u751f",
-      "BONK",
-      "B",
-      "PUMP",
-      "KITE",
-      "ETH",
-      "LDO",
-      "GRASS"
-    ],
-    "alert": null
-  },
-  {
     "ts": "2026-07-20T18:10:00.373798+00:00",
     "coin": "ETH",
     "price": 1909.36,
@@ -910,5 +886,28 @@
       "LDO"
     ],
     "alert": null
+  },
+  {
+    "ts": "2026-07-22T09:10:00.350168+00:00",
+    "coin": "BONK",
+    "price": 3.03e-06,
+    "signal": "BUY",
+    "confidence": 52,
+    "score": 0.35,
+    "fg": 33,
+    "btc_price": 65992,
+    "btc_dominance": 56.8,
+    "candidates": [
+      "NIGHT",
+      "MON",
+      "\u5e01\u5b89\u4eba\u751f",
+      "BONK",
+      "UB",
+      "USDG",
+      "AERO",
+      "ETH",
+      "LDO"
+    ],
+    "alert": "High BTC dominance environment is hostile to altcoins \u2014 keep position sizing small on this speculative bounce trade."
   }
 ]
