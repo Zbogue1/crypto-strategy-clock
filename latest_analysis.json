@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-07-22T14:10:00.402873+00:00",
+  "timestamp": "2026-07-22T15:10:00.523747+00:00",
   "selected_coin": "ETH",
   "selected_coin_name": "Ethereum",
-  "selected_coin_price": 1943.36,
+  "selected_coin_price": 1937.0,
   "confidence": 62,
-  "layman_headline": "Ethereum shows early signs of recovery while the broader market trembles in fear.",
-  "layman_explanation": "The crypto market is in a state of fear, but that fear is improving \u2014 it went from 25 yesterday to 33 today. Ethereum has printed a strong bullish candlestick pattern called 'Three White Soldiers,' which means three days in a row of solid buying. Bitcoin recently touched $66K before pulling back, and Ethereum is holding up well near $1,943 with support just below at $1,900. This looks like a controlled dip-buy opportunity on the second-largest crypto asset.",
-  "layman_action": "Consider a small position in Ethereum around $1,920, with a plan to sell near $2,050 for roughly 6-7% profit. Set a hard stop-loss at $1,870 to limit downside to about 2.5%.",
-  "expert_reasoning": "ETH presents the cleanest swing setup among all candidates. The Three White Soldiers candlestick pattern on the daily chart signals sustained buying pressure with 5-day momentum of +19.7%, yet the RSI at 43.85 shows it's far from overbought \u2014 plenty of room to run. Support at $1,900 is only 1.4% below current price, while resistance at $2,000 is 3.8% above, giving a favorable 2.84x risk/reward. The improving Fear & Greed Index (25\u219233, trending up) historically correlates with bottoming behavior in quality assets. BTC's 9K daily outflow from Binance suggests smart money accumulation, which typically benefits ETH as the primary alt. The main headwind is 56.6% BTC dominance suppressing alts, but ETH's relative strength (+0.37% vs BTC's -1.29% today) suggests capital rotation may be beginning.",
+  "layman_headline": "Ethereum shows early recovery signs while the broader market is still fearful \u2014 a classic buy-the-dip setup.",
+  "layman_explanation": "The crypto market is in a 'Fear' zone, which historically is when the best buying opportunities appear. Ethereum just printed a strong bullish candlestick pattern called 'Three White Soldiers,' meaning buyers have shown up three days in a row with force. Bitcoin recently touched $66K and is pulling back slightly, but ETH is holding firm near $1,937 with strong support just below at $1,900. This is one of the better risk/reward setups available right now \u2014 tight stop, clear upside target.",
+  "layman_action": "Consider a cautious entry into Ethereum near $1,920 with a stop-loss at $1,870. If it breaks above $2,000, the next leg up could be swift. Don't go all-in \u2014 the market is still nervous.",
+  "expert_reasoning": "ETH stands out among the swing candidates for several reasons: (1) It has a confirmed Three White Soldiers pattern \u2014 a powerful multi-candle bullish reversal signal indicating sustained buying pressure. (2) The risk/reward to nearest support/resistance levels is 2.84x, the best actionable ratio among candidates. (3) RSI at 43.85 is neutral-to-low, leaving room for upside without being overextended. (4) 5-day momentum of +19.7% shows buyers are stepping in aggressively despite the overall downtrend label. (5) BTC showing 9K daily outflows from Binance per CoinTelegraph suggests accumulation, which tends to lift ETH as well. The main headwind is 56.7% BTC dominance pressuring alts, but ETH's deep liquidity and $41.8B ecosystem TVL make it the safest alt play in this environment.",
   "risk_factors": [
-    "BTC dominance at 56.6% continues to suppress alt performance \u2014 if BTC drops sharply, ETH will likely fall harder",
-    "ETH is still in a macro downtrend (below major MAs, -60.7% from ATH), and this bounce could be a dead cat rally",
-    "The $2,000 psychological resistance is a major barrier that has rejected price multiple times"
+    "BTC dominance at 56.7% continues to suppress alt performance \u2014 if BTC drops sharply, ETH will follow",
+    "ETH is still below its 50-day and 200-day moving averages, meaning the broader trend is bearish and this could be a dead cat bounce",
+    "Fear & Greed improving but still at 33 \u2014 a reversal back to extreme fear could trigger another selloff across all assets"
   ],
   "watch_list": [
-    "BTC price action around $66K \u2014 a decisive break above confirms risk-on, rejection sends alts lower",
-    "Fear & Greed Index trajectory \u2014 needs to continue improving above 35-40 to confirm sentiment shift",
-    "ETH daily close relative to $1,900 support \u2014 a close below invalidates the bullish candle pattern"
+    "Bitcoin price action around $65,000-$66,000 \u2014 a break below $65K would pressure ETH and likely trigger the stop-loss",
+    "ETH ability to hold $1,900 support over the next 48 hours \u2014 if it breaks, exit immediately",
+    "Fear & Greed trajectory \u2014 if it continues improving toward 40+, it confirms the risk-on rotation into alts"
   ],
-  "market_context": "The crypto market is in 'Fear' territory at 33/100 but improving rapidly from 25 yesterday. BTC recently touched $66K with significant exchange outflows suggesting accumulation, though high BTC dominance at 56.6% remains a headwind for altcoins.",
-  "context_banner": "Improving fear sentiment and bullish ETH candlestick patterns create a measured dip-buy opportunity on the market's most liquid altcoin.",
-  "btc_price": 65925,
+  "market_context": "The market is in a transitional phase \u2014 Fear & Greed improving from 25 to 33 suggests the worst of the selloff may be over, but BTC dominance at 56.7% means capital hasn't rotated into alts yet. Bitcoin's 9K daily Binance outflow is a noteworthy accumulation signal.",
+  "context_banner": "Fear is easing and Ethereum is printing its strongest bullish candle pattern in weeks \u2014 a measured entry with tight risk management offers a favorable swing setup.",
+  "btc_price": 65846,
   "fear_greed": {
     "current": 33,
     "label": "Fear",
@@ -28,32 +28,32 @@
     "week_avg": 27.4,
     "trend": "improving"
   },
-  "btc_dominance": 56.6,
+  "btc_dominance": 56.7,
   "key_signals": [
+    {
+      "source": "Chart Pattern Analysis",
+      "signal_type": "technical",
+      "description": "Three White Soldiers pattern on ETH confirms sustained buying pressure with three consecutive strong bullish closes \u2014 a high-reliability reversal signal."
+    },
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Fear & Greed improving from 25 to 33 (trend: improving) \u2014 historically reliable signal (67% win rate) suggesting sentiment bottoming and a favorable entry window."
+      "description": "Fear & Greed improved from 25 to 33, trending upward \u2014 historically reliable signal (67% win rate) that the market is bottoming and risk appetite is returning."
     },
     {
       "source": "CoinTelegraph",
       "signal_type": "news",
-      "description": "Bitcoin analysis highlights 'serious volume' after Binance sees 9K BTC daily outflow \u2014 institutional accumulation signal that benefits ETH as primary alt."
-    },
-    {
-      "source": "Chart Pattern Analysis",
-      "signal_type": "technical",
-      "description": "ETH Three White Soldiers bullish candlestick pattern with 2.84x risk/reward ratio to nearest support/resistance levels \u2014 reliable pattern signal (67% win rate)."
+      "description": "Bitcoin analysis highlights 9K BTC daily outflow from Binance \u2014 a supply squeeze signal suggesting institutional accumulation that should benefit ETH as well."
     },
     {
       "source": "RSI",
       "signal_type": "technical",
-      "description": "ETH RSI at 43.85 is neutral-to-low, confirming the rally has room to extend before hitting overbought territory \u2014 RSI is our most reliable signal at 83% win rate."
+      "description": "ETH RSI at 43.85 is neutral-to-low with room to run higher before hitting overbought territory, supporting the long thesis."
     },
     {
       "source": "CryptoSlate",
       "signal_type": "news",
-      "description": "Bitcoin broke $66K but signals show the rally is 'far from normal' \u2014 cautious optimism warrants measured position sizing rather than aggressive entry."
+      "description": "Bitcoin broke $66K but key signals show the rally is 'far from normal' \u2014 cautionary context that warrants tight stop-loss discipline on this trade."
     }
   ],
   "_mode": "HUNTING",
