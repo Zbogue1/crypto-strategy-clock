@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-20T18:10:00.373798+00:00",
-    "coin": "ETH",
-    "price": 1909.36,
-    "signal": "HOLD",
-    "confidence": 38,
-    "score": -0.15,
-    "fg": 29,
-    "btc_price": 65536,
-    "btc_dominance": 56.7,
-    "candidates": [
-      "NIGHT",
-      "MON",
-      "\u5e01\u5b89\u4eba\u751f",
-      "PUMP",
-      "BONK",
-      "KITE",
-      "JTO",
-      "ETH",
-      "LDO"
-    ],
-    "alert": "BTC approaching critical $65K resistance \u2014 breakout or rejection here will define alt market direction for the next 1-2 weeks."
-  },
-  {
     "ts": "2026-07-20T19:10:00.365045+00:00",
     "coin": "ETH",
     "price": 1894.58,
@@ -909,5 +886,28 @@
       "LDO"
     ],
     "alert": "High BTC dominance environment is hostile to altcoins \u2014 keep position sizing small on this speculative bounce trade."
+  },
+  {
+    "ts": "2026-07-22T10:10:00.310457+00:00",
+    "coin": "ETH",
+    "price": 1922.27,
+    "signal": "BUY",
+    "confidence": 62,
+    "score": 0.45,
+    "fg": 33,
+    "btc_price": 65852,
+    "btc_dominance": 56.7,
+    "candidates": [
+      "NIGHT",
+      "MON",
+      "\u5e01\u5b89\u4eba\u751f",
+      "UB",
+      "BONK",
+      "AERO",
+      "USDG",
+      "ETH",
+      "LDO"
+    ],
+    "alert": null
   }
 ]
