@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-20T13:10:00.807395+00:00",
-    "coin": "ETH",
-    "price": 1872.3,
-    "signal": "HOLD",
-    "confidence": 35,
-    "score": -0.15,
-    "fg": 29,
-    "btc_price": 64629,
-    "btc_dominance": 56.5,
-    "candidates": [
-      "BONK",
-      "PUMP",
-      "\u5e01\u5b89\u4eba\u751f",
-      "JTO",
-      "KITE",
-      "MON",
-      "WLD",
-      "ETH",
-      "LDO"
-    ],
-    "alert": "CoinDesk flags potential Bitcoin 'volmageddon' \u2014 elevated volatility risk could create sharp moves in either direction. Stay nimble."
-  },
-  {
     "ts": "2026-07-20T14:10:00.449044+00:00",
     "coin": "ETH",
     "price": 1862.29,
@@ -906,6 +883,29 @@
       "VVV",
       "BONK",
       "USDG",
+      "ETH",
+      "LDO"
+    ],
+    "alert": null
+  },
+  {
+    "ts": "2026-07-22T05:10:00.314265+00:00",
+    "coin": "ETH",
+    "price": 1932.32,
+    "signal": "BUY",
+    "confidence": 62,
+    "score": 0.55,
+    "fg": 33,
+    "btc_price": 66242,
+    "btc_dominance": 56.8,
+    "candidates": [
+      "NIGHT",
+      "\u5e01\u5b89\u4eba\u751f",
+      "MON",
+      "BONK",
+      "UB",
+      "AERO",
+      "ONDO",
       "ETH",
       "LDO"
     ],
