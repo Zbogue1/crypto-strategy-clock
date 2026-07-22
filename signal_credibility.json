@@ -1,32 +1,32 @@
 {
   "open_trade": {
     "coin": "ETH",
-    "entry_time": "2026-07-22T05:13:52.077400+00:00",
+    "entry_time": "2026-07-22T06:13:50.225749+00:00",
     "key_signals": [
-      {
-        "source": "CoinTelegraph",
-        "signal_type": "news",
-        "description": "CoinTelegraph highlighted ETH breaking $1,900 resistance with $2,100 as the next bullish target, providing narrative momentum for the trade."
-      },
       {
         "source": "Chart Pattern Analysis",
         "signal_type": "technical",
-        "description": "Three White Soldiers candle pattern on ETH daily chart signals sustained buying pressure and potential trend reversal from the downtrend."
+        "description": "ETH printed a Three White Soldiers bullish candlestick pattern \u2014 three consecutive strong bullish candles indicating sustained buying pressure and trend acceleration."
       },
       {
         "source": "RSI",
         "signal_type": "technical",
-        "description": "ETH RSI at 43.85 is neutral with significant room to run before overbought, unlike overextended candidates like ONDO (64) and LDO (59)."
+        "description": "ETH RSI at 43.85 is neutral despite +19.7% 5-day momentum, meaning the rally has room to extend before overbought conditions emerge."
       },
       {
         "source": "Fear_Greed",
         "signal_type": "sentiment",
-        "description": "Fear & Greed at 33 improving from 25 yesterday and 27.4 weekly average \u2014 our backtested 67% win rate signal suggests this fear level often precedes bounces."
+        "description": "Fear & Greed improved sharply from 25 to 33 in one day with a weekly average of 27.4, signaling a potential sentiment bottom and improving risk appetite."
       },
       {
         "source": "Blockworks",
         "signal_type": "news",
-        "description": "Blockworks reported ETH derivatives reset, meaning overleveraged positions have been flushed, creating a healthier foundation for upside moves."
+        "description": "Blockworks highlighted 'ETH derivatives reset and the next retail trade,' suggesting fresh positioning and potential momentum as derivatives markets reset."
+      },
+      {
+        "source": "CoinDesk",
+        "signal_type": "news",
+        "description": "Bitcoin holding near $66.3K with a key test at $68K provides a stable backdrop, while the Crypto Clarity Act legislative push adds regulatory clarity narrative."
       }
     ],
     "confidence": 62
@@ -188,5 +188,5 @@
     }
   },
   "trade_count": 9,
-  "last_updated": "2026-07-22T05:13:52.077405+00:00"
+  "last_updated": "2026-07-22T06:13:50.225757+00:00"
 }
