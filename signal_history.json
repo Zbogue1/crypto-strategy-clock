@@ -1,29 +1,5 @@
 [
   {
-    "ts": "2026-07-20T19:10:00.365045+00:00",
-    "coin": "ETH",
-    "price": 1894.58,
-    "signal": "HOLD",
-    "confidence": 35,
-    "score": -0.15,
-    "fg": 29,
-    "btc_price": 65164,
-    "btc_dominance": 56.6,
-    "candidates": [
-      "NIGHT",
-      "MON",
-      "BONK",
-      "\u5e01\u5b89\u4eba\u751f",
-      "PUMP",
-      "KITE",
-      "JTO",
-      "ETH",
-      "LDO",
-      "GRASS"
-    ],
-    "alert": "No high-conviction setups available. All candidates have bearish chart structures or are overextended. Waiting for confirmed support holds."
-  },
-  {
     "ts": "2026-07-20T20:10:00.324777+00:00",
     "coin": "ETH",
     "price": 1897.5,
@@ -904,6 +880,29 @@
       "UB",
       "BONK",
       "AERO",
+      "USDG",
+      "ETH",
+      "LDO"
+    ],
+    "alert": null
+  },
+  {
+    "ts": "2026-07-22T11:10:00.706657+00:00",
+    "coin": "ETH",
+    "price": 1927.73,
+    "signal": "BUY",
+    "confidence": 62,
+    "score": 0.45,
+    "fg": 33,
+    "btc_price": 65988,
+    "btc_dominance": 56.7,
+    "candidates": [
+      "MON",
+      "NIGHT",
+      "\u5e01\u5b89\u4eba\u751f",
+      "UB",
+      "AERO",
+      "BONK",
       "USDG",
       "ETH",
       "LDO"
