@@ -1,5 +1,36 @@
 {
-  "open_trade": null,
+  "open_trade": {
+    "coin": "ETH",
+    "entry_time": "2026-07-22T03:15:02.012785+00:00",
+    "key_signals": [
+      {
+        "source": "CoinTelegraph",
+        "signal_type": "news",
+        "description": "ETH breaking $1,900 resistance with analysts targeting $2,100 \u2014 provides directional conviction and price targets for the trade."
+      },
+      {
+        "source": "RSI",
+        "signal_type": "technical",
+        "description": "ETH RSI at 43.85 is neutral despite a +19.7% 5-day rally, indicating room to run before overbought \u2014 our most reliable signal at 83% win rate."
+      },
+      {
+        "source": "Chart Pattern Analysis",
+        "signal_type": "technical",
+        "description": "Three White Soldiers candlestick pattern on a downtrend reversal, with 2.84x risk/reward ratio to key levels \u2014 a high-quality bullish setup."
+      },
+      {
+        "source": "Fear_Greed",
+        "signal_type": "sentiment",
+        "description": "Fear & Greed at 33 improving from 25 yesterday \u2014 contrarian entries during fear recovery have a 67% win rate in our track record."
+      },
+      {
+        "source": "Blockworks",
+        "signal_type": "news",
+        "description": "ETH derivatives have reset, clearing overleveraged positions and setting up a cleaner foundation for the next move higher."
+      }
+    ],
+    "confidence": 62
+  },
   "signal_stats": {
     "Fear_Greed__sentiment": {
       "source": "Fear_Greed",
@@ -157,5 +188,5 @@
     }
   },
   "trade_count": 9,
-  "last_updated": "2026-07-21T03:13:48.859562+00:00"
+  "last_updated": "2026-07-22T03:15:02.012792+00:00"
 }
