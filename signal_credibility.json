@@ -1,32 +1,32 @@
 {
   "open_trade": {
     "coin": "ETH",
-    "entry_time": "2026-07-22T03:15:02.012785+00:00",
+    "entry_time": "2026-07-22T04:13:54.775836+00:00",
     "key_signals": [
-      {
-        "source": "CoinTelegraph",
-        "signal_type": "news",
-        "description": "ETH breaking $1,900 resistance with analysts targeting $2,100 \u2014 provides directional conviction and price targets for the trade."
-      },
-      {
-        "source": "RSI",
-        "signal_type": "technical",
-        "description": "ETH RSI at 43.85 is neutral despite a +19.7% 5-day rally, indicating room to run before overbought \u2014 our most reliable signal at 83% win rate."
-      },
       {
         "source": "Chart Pattern Analysis",
         "signal_type": "technical",
-        "description": "Three White Soldiers candlestick pattern on a downtrend reversal, with 2.84x risk/reward ratio to key levels \u2014 a high-quality bullish setup."
+        "description": "ETH printed a Three White Soldiers bullish candlestick pattern with a chart bias score of +0.30 and 2.84x risk/reward \u2014 the strongest technical setup among all candidates."
       },
       {
         "source": "Fear_Greed",
         "signal_type": "sentiment",
-        "description": "Fear & Greed at 33 improving from 25 yesterday \u2014 contrarian entries during fear recovery have a 67% win rate in our track record."
+        "description": "Fear & Greed at 33 improving from 25 yesterday and 27.4 weekly average \u2014 historically reliable signal (67% win rate) indicating a recovering fear environment favorable for entries."
+      },
+      {
+        "source": "RSI",
+        "signal_type": "technical",
+        "description": "ETH RSI at 43.85 is neutral with significant room to run before overbought conditions \u2014 our most reliable signal source (83% win rate, +6.1% avg return)."
+      },
+      {
+        "source": "CoinTelegraph",
+        "signal_type": "news",
+        "description": "CoinTelegraph highlighted ETH breaking $1,900 resistance with $2,100 as the next bull target \u2014 a reliable news source (67% win rate) providing directional confirmation."
       },
       {
         "source": "Blockworks",
         "signal_type": "news",
-        "description": "ETH derivatives have reset, clearing overleveraged positions and setting up a cleaner foundation for the next move higher."
+        "description": "Blockworks reported ETH derivatives have reset, suggesting cleaner positioning and reduced risk of leveraged liquidation cascades on the next move up."
       }
     ],
     "confidence": 62
@@ -188,5 +188,5 @@
     }
   },
   "trade_count": 9,
-  "last_updated": "2026-07-22T03:15:02.012792+00:00"
+  "last_updated": "2026-07-22T04:13:54.775840+00:00"
 }
