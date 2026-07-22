@@ -1,27 +1,5 @@
 [
   {
-    "ts": "2026-07-21T06:10:00.274911+00:00",
-    "coin": "UB",
-    "price": 0.100403,
-    "signal": "BUY",
-    "confidence": 52,
-    "score": 0.45,
-    "fg": 25,
-    "btc_price": 65657,
-    "btc_dominance": 56.6,
-    "candidates": [
-      "NIGHT",
-      "MON",
-      "BONK",
-      "UB",
-      "DEXE",
-      "LDO",
-      "B",
-      "ETH"
-    ],
-    "alert": "Extreme Fear environment (25/100) \u2014 position sizing should be conservative; max 50% of normal allocation recommended."
-  },
-  {
     "ts": "2026-07-21T07:10:00.278106+00:00",
     "coin": "ETH",
     "price": 1933.11,
@@ -909,6 +887,29 @@
       "BONK",
       "UB",
       "ENA",
+      "ETH",
+      "LDO"
+    ],
+    "alert": null
+  },
+  {
+    "ts": "2026-07-22T23:10:00.399448+00:00",
+    "coin": "ETH",
+    "price": 1935.06,
+    "signal": "BUY",
+    "confidence": 62,
+    "score": 0.45,
+    "fg": 33,
+    "btc_price": 66021,
+    "btc_dominance": 56.7,
+    "candidates": [
+      "MON",
+      "NIGHT",
+      "USDG",
+      "UB",
+      "AERO",
+      "BONK",
+      "DASH",
       "ETH",
       "LDO"
     ],
