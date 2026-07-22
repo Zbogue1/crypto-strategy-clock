@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-07-22T07:10:00.275861+00:00",
+  "timestamp": "2026-07-22T08:10:00.446394+00:00",
   "selected_coin": "ETH",
   "selected_coin_name": "Ethereum",
-  "selected_coin_price": 1915.34,
+  "selected_coin_price": 1921.14,
   "confidence": 62,
-  "layman_headline": "Ethereum shows signs of a bounce from fear-driven lows as bullish candle pattern emerges.",
-  "layman_explanation": "The crypto market has been in a fearful state recently, but sentiment is improving from extreme fear toward just regular fear. Ethereum dropped significantly over recent weeks but has surged nearly 20% in just the past 5 days and is forming a strong bullish candle pattern called 'Three White Soldiers' \u2014 three consecutive strong up-days. It's sitting right above a key support level at $1,900 with a clear path toward $2,000, offering a favorable risk-to-reward ratio of nearly 3:1.",
-  "layman_action": "Consider a small position in Ethereum near the $1,900 support level with a stop-loss at $1,830. Take profits around $2,000. This is a moderate-confidence trade \u2014 don't oversize it.",
-  "expert_reasoning": "ETH presents the strongest risk-adjusted setup among candidates. The Three White Soldiers pattern on the chart is a reliable bullish reversal signal, and the 5-day momentum of +19.7% confirms buyers are stepping in aggressively. RSI at 44 is neutral \u2014 not overbought, leaving room for upside. Support at $1,900 is very close (-1.4%), giving a tight stop, while resistance at $2,000 provides a 2.84x risk/reward ratio. The Fear & Greed index improving from 25 to 33 suggests the worst of the selling pressure may be easing. High BTC dominance at 56.8% is a headwind for alts, which tempers confidence, but ETH's massive liquidity ($10.8B daily volume) and ecosystem TVL of $42B make it the safest alt to play in this environment.",
+  "layman_headline": "Ethereum shows early recovery signs while the broader market is still fearful \u2014 a classic buying window.",
+  "layman_explanation": "The crypto market is in a 'Fear' state with a score of 33 out of 100, but that fear is improving from last week's 25. Ethereum has gained about 3% this week and is showing a bullish candlestick pattern called 'Three White Soldiers' \u2014 three strong green candles in a row that suggest buyers are stepping in. Bitcoin is holding steady near $66,000 with ETF inflows continuing for six straight days, which provides a stable backdrop. Meanwhile, most altcoin candidates are in steep downtrends with bearish charts, making ETH the safest swing trade with the best risk-reward setup.",
+  "layman_action": "Consider a small position in Ethereum around $1,900-$1,920 with a target of $2,000 (about 4-5% upside) and a stop-loss at $1,850 (about 3.5% downside). This gives a favorable risk-reward ratio of nearly 3:1.",
+  "expert_reasoning": "ETH presents the strongest swing setup among all candidates. The Three White Soldiers pattern on the chart combined with price holding above SMA20 suggests a nascent trend reversal from the broader downtrend. RSI at 44 is neutral with room to run higher before becoming overbought. The risk/reward to nearest levels is 2.84x \u2014 support at $1,900 is only 1.4% below while resistance at $2,000 is 3.8% above. BTC's stability at $66K with continued ETF inflows provides macro tailwind. The improving Fear & Greed trend (25\u219233) historically precedes broader recovery moves, and ETH derivatives are reportedly resetting per Blockworks, which could reduce selling pressure.",
   "risk_factors": [
-    "BTC dominance at 56.8% continues to suppress altcoin performance \u2014 ETH could underperform even if BTC rallies",
-    "Bitcoin faces key resistance at $68,000 per analysts; rejection there could drag ETH back below $1,900 support",
-    "The CLARITY Act political uncertainty and broader regulatory noise could create sudden negative sentiment shifts"
+    "BTC dominance at 56.8% remains elevated \u2014 capital rotation into alts including ETH may be delayed",
+    "ETH is still in a broader downtrend and below most major moving averages \u2014 this could be a bear market rally that fails at $2,000 resistance",
+    "Regulatory uncertainty around the CLARITY Act and ethics disputes in Congress could trigger negative headlines impacting sentiment"
   ],
   "watch_list": [
-    "BTC price action at the $68,000 resistance level \u2014 a rejection could pull ETH down with it",
-    "Fear & Greed index trend \u2014 continued improvement above 35 would confirm risk-on sentiment returning",
-    "ETH holding $1,900 support over the next 48 hours \u2014 a close below invalidates the bullish setup"
+    "BTC price action around $68,000 resistance \u2014 a breakout would be bullish for ETH, a rejection could drag it down",
+    "Bitcoin ETF flow data over the next 2 days \u2014 continuation of the 6-day inflow streak signals sustained institutional demand",
+    "ETH reaction at the $2,000 psychological resistance level \u2014 a clean break opens the path significantly higher"
   ],
-  "market_context": "The crypto market is in a 'Fear' state (33/100) but improving from 'Extreme Fear' last week (25). BTC is stable near $65,800 with high dominance at 56.8%, creating a challenging but not impossible environment for selective alt plays.",
-  "context_banner": "Fear is receding and ETH's Three White Soldiers pattern near $1,900 support offers a disciplined swing entry with defined risk.",
-  "btc_price": 65861,
+  "market_context": "Bitcoin is consolidating near $66K with institutional ETF inflows providing support, while the Fear & Greed index is improving from deep fear. The market appears to be in an early recovery phase but hasn't confirmed a trend reversal yet \u2014 a cautious, selective approach is warranted.",
+  "context_banner": "Improving fear sentiment and sustained Bitcoin ETF inflows create a selective buying window, with Ethereum's bullish candlestick pattern offering the cleanest risk-defined swing entry.",
+  "btc_price": 66004,
   "fear_greed": {
     "current": 33,
     "label": "Fear",
@@ -31,32 +31,32 @@
   "btc_dominance": 56.8,
   "key_signals": [
     {
-      "source": "Fear_Greed",
-      "signal_type": "sentiment",
-      "description": "Fear & Greed improving from 25 to 33 with upward trend, suggesting worst of the sell-off sentiment is fading \u2014 historically a reliable signal (67% win rate)."
-    },
-    {
-      "source": "RSI",
-      "signal_type": "technical",
-      "description": "ETH RSI at 44 is neutral with room to run higher, not yet overbought \u2014 RSI has been our most reliable signal source at 83% win rate."
+      "source": "CoinTelegraph",
+      "signal_type": "news",
+      "description": "Bitcoin ETFs extended their inflow streak to six consecutive days with $203M added, signaling strong institutional demand returning to the market and providing a bullish macro backdrop."
     },
     {
       "source": "Chart Pattern Analysis",
       "signal_type": "technical",
-      "description": "Three White Soldiers bullish candlestick pattern on ETH indicates sustained buying pressure and trend acceleration, confirmed by +19.7% 5-day momentum."
+      "description": "ETH formed a Three White Soldiers candlestick pattern \u2014 three strong bullish candles indicating sustained buying pressure and a potential trend acceleration upward."
     },
     {
-      "source": "Blockworks",
-      "signal_type": "news",
-      "description": "ETH derivatives have reset per Blockworks analysis, clearing overleveraged positions and setting up a cleaner base for the next leg up."
+      "source": "Fear_Greed",
+      "signal_type": "sentiment",
+      "description": "Fear & Greed improving from 25 to 33 with a weekly average of 27.4 \u2014 the upward trend in sentiment historically precedes price recoveries and supports contrarian buying."
+    },
+    {
+      "source": "RSI",
+      "signal_type": "technical",
+      "description": "ETH RSI at 44 is neutral with ample room to run higher, while BONK's RSI at 29 (oversold) was considered but rejected due to bearish chart structure and high BTC dominance headwinds for meme coins."
     },
     {
       "source": "CoinDesk",
       "signal_type": "news",
-      "description": "Bitcoin holding near $66,300 with macro tailwinds (chip rally, yen weakness) provides a stable backdrop for ETH to push toward $2,000 resistance."
+      "description": "Bitcoin holding near $66,300 with analysts noting a key test at $68K \u2014 a stable BTC provides the floor needed for an ETH swing trade to work within its defined risk parameters."
     }
   ],
   "_mode": "HUNTING",
   "exit_target": 2000.0,
-  "stop_loss": 1830.0
+  "stop_loss": 1850.0
 }
