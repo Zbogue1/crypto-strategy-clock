@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-22T02:10:00.377321+00:00",
-    "coin": "ETH",
-    "price": 1929.85,
-    "signal": "BUY",
-    "confidence": 62,
-    "score": 0.55,
-    "fg": 33,
-    "btc_price": 66357,
-    "btc_dominance": 56.8,
-    "candidates": [
-      "DEXE",
-      "NIGHT",
-      "\u5e01\u5b89\u4eba\u751f",
-      "MON",
-      "VVV",
-      "BONK",
-      "ONDO",
-      "ETH",
-      "LDO"
-    ],
-    "alert": null
-  },
-  {
     "ts": "2026-07-22T03:10:00.326530+00:00",
     "coin": "ETH",
     "price": 1929.36,
@@ -919,5 +896,28 @@
       "LDO"
     ],
     "alert": null
+  },
+  {
+    "ts": "2026-07-23T20:10:00.387191+00:00",
+    "coin": "ETH",
+    "price": 1880.46,
+    "signal": "HOLD",
+    "confidence": 38,
+    "score": -0.15,
+    "fg": 31,
+    "btc_price": 64966,
+    "btc_dominance": 56.7,
+    "candidates": [
+      "BCAP",
+      "GROK",
+      "\u5e01\u5b89\u4eba\u751f",
+      "MON",
+      "BONK",
+      "UB",
+      "NIGHT",
+      "ETH",
+      "LDO"
+    ],
+    "alert": "No high-conviction swing trade setups available \u2014 all candidates carry elevated risk in current market conditions."
   }
 ]
