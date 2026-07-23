@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-21T14:10:00.355811+00:00",
-    "coin": "BTC",
-    "price": 66799,
-    "signal": "HOLD",
-    "confidence": 32,
-    "score": -0.3,
-    "fg": 25,
-    "btc_price": 66799,
-    "btc_dominance": 56.9,
-    "candidates": [
-      "DEXE",
-      "NIGHT",
-      "MON",
-      "\u5e01\u5b89\u4eba\u751f",
-      "VVV",
-      "ONDO",
-      "UB",
-      "ETH",
-      "LDO"
-    ],
-    "alert": "Market in Extreme Fear \u2014 watch for capitulation bottoms forming over next 48-72 hours for potential high-conviction entries."
-  },
-  {
     "ts": "2026-07-21T15:10:00.638659+00:00",
     "coin": "UB",
     "price": 0.10423,
@@ -919,5 +896,28 @@
       "LDO"
     ],
     "alert": "Two crypto bridge exploits totaling $55.6M in 7 hours \u2014 monitor DeFi risk closely"
+  },
+  {
+    "ts": "2026-07-23T07:10:00.472754+00:00",
+    "coin": "ETH",
+    "price": 1921.3,
+    "signal": "BUY",
+    "confidence": 58,
+    "score": 0.45,
+    "fg": 31,
+    "btc_price": 65663,
+    "btc_dominance": 56.7,
+    "candidates": [
+      "BCAP",
+      "DEXE",
+      "MON",
+      "NIGHT",
+      "UB",
+      "AERO",
+      "BONK",
+      "ETH",
+      "LDO"
+    ],
+    "alert": "Multiple bridge hacks totaling $55M+ in last 24 hours \u2014 monitor DeFi contagion risk closely."
   }
 ]
