@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-21T10:10:00.513800+00:00",
-    "coin": "ETH",
-    "price": 1942.12,
-    "signal": "HOLD",
-    "confidence": 38,
-    "score": -0.15,
-    "fg": 25,
-    "btc_price": 66227,
-    "btc_dominance": 56.7,
-    "candidates": [
-      "DEXE",
-      "NIGHT",
-      "MON",
-      "UB",
-      "\u5e01\u5b89\u4eba\u751f",
-      "ONDO",
-      "BONK",
-      "ETH",
-      "LDO"
-    ],
-    "alert": "FTX begins $900M creditor payout \u2014 monitor for increased selling pressure across markets over coming weeks."
-  },
-  {
     "ts": "2026-07-21T11:10:00.270586+00:00",
     "coin": "ETH",
     "price": 1930.05,
@@ -912,6 +889,29 @@
       "UB",
       "AERO",
       "BONK",
+      "KITE",
+      "ETH",
+      "LDO"
+    ],
+    "alert": null
+  },
+  {
+    "ts": "2026-07-23T03:10:00.370572+00:00",
+    "coin": "ETH",
+    "price": 1923.41,
+    "signal": "BUY",
+    "confidence": 62,
+    "score": 0.45,
+    "fg": 31,
+    "btc_price": 65678,
+    "btc_dominance": 56.7,
+    "candidates": [
+      "MON",
+      "NIGHT",
+      "USDG",
+      "BONK",
+      "AERO",
+      "UB",
       "KITE",
       "ETH",
       "LDO"
