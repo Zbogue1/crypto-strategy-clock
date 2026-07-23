@@ -1,27 +1,5 @@
 [
   {
-    "ts": "2026-07-21T13:10:00.399152+00:00",
-    "coin": "ETH",
-    "price": 1941.01,
-    "signal": "HOLD",
-    "confidence": 38,
-    "score": -0.15,
-    "fg": 25,
-    "btc_price": 66524,
-    "btc_dominance": 56.8,
-    "candidates": [
-      "DEXE",
-      "NIGHT",
-      "MON",
-      "\u5e01\u5b89\u4eba\u751f",
-      "VVV",
-      "UB",
-      "LDO",
-      "ETH"
-    ],
-    "alert": "Extreme Fear at 25 with BTC attempting breakout \u2014 high-quality setups may emerge within 24-48 hours if momentum continues."
-  },
-  {
     "ts": "2026-07-21T14:10:00.355811+00:00",
     "coin": "BTC",
     "price": 66799,
@@ -918,5 +896,28 @@
       "LDO"
     ],
     "alert": "High BTC dominance and macro headwinds make all alt trades higher risk \u2014 keep position sizes small and stops tight."
+  },
+  {
+    "ts": "2026-07-23T06:10:00.336212+00:00",
+    "coin": "ETH",
+    "price": 1921.06,
+    "signal": "BUY",
+    "confidence": 62,
+    "score": 0.45,
+    "fg": 31,
+    "btc_price": 65651,
+    "btc_dominance": 56.7,
+    "candidates": [
+      "BCAP",
+      "DEXE",
+      "MON",
+      "NIGHT",
+      "AERO",
+      "BONK",
+      "UB",
+      "ETH",
+      "LDO"
+    ],
+    "alert": "Two crypto bridge exploits totaling $55.6M in 7 hours \u2014 monitor DeFi risk closely"
   }
 ]
