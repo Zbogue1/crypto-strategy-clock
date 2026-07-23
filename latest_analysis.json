@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-07-23T16:10:00.374392+00:00",
-  "selected_coin": "BONK",
-  "selected_coin_name": "Bonk",
-  "selected_coin_price": 2.93e-06,
+  "timestamp": "2026-07-23T17:10:00.402568+00:00",
+  "selected_coin": "MON",
+  "selected_coin_name": "Monad",
+  "selected_coin_price": 0.02258474,
   "confidence": 32,
-  "layman_headline": "The market is fearful and weak \u2014 no safe entry exists right now, so we stay in cash.",
-  "layman_explanation": "The crypto market is in a fearful mood with most coins falling. Bitcoin dominance is high at 56.6%, which means money is flowing out of smaller coins (altcoins) and into Bitcoin or out of crypto entirely. Every candidate on the watchlist has significant problems \u2014 either they just pumped 363% and are wildly overbought, they're in steep downtrends, or they lack the chart structure for a confident swing trade. The smartest move right now is to wait for better setups.",
-  "layman_action": "Stay in cash. Don't chase anything. Wait for the fear index to bottom out and for a clear technical setup \u2014 like a confirmed oversold bounce with volume \u2014 before putting money to work.",
-  "expert_reasoning": "This cycle presents no compelling swing trade entries. BCAP is at RSI 93.81 after a 363% move \u2014 a textbook blow-off top, not a buy. GROK shows -100% change which signals data issues or a dead project. MON has a bullish engulfing candle but is below all MAs with neutral chart bias. BONK's RSI of 29 is deeply oversold (our highest-conviction signal historically), but the chart bias is -0.70, price is below all MAs, 5-day momentum is -29.4%, and there's no identifiable support level \u2014 this is a falling knife. AERO has the best chart structure (slightly bullish, above 2 MAs) but RSI is neutral at 50 and the risk/reward is only 0.86x. With Fear & Greed at 31 and BTC dominance at 56.6%, the macro backdrop actively suppresses altcoin setups. Discipline demands we wait.",
+  "layman_headline": "Fear grips the crypto market \u2014 no clear swing trade setup stands out right now.",
+  "layman_explanation": "The overall crypto market is in a fearful state with Bitcoin dominance high at 56.6%, which typically means altcoins underperform. Most of the swing candidates are either in strong downtrends with bearish chart structures, wildly overbought (PRIME at RSI 95), or are questionable micro-cap tokens with unreliable data (GROK showing -100%). The best relative candidate is Monad (MON), which shows a bullish engulfing candle and decent risk/reward at 2.87x, but it's still below all major moving averages in a downtrend. The setup isn't compelling enough to commit capital right now.",
+  "layman_action": "Stay in cash and wait. The market is fearful but hasn't shown a clear reversal signal yet. Watch for Fear & Greed to dip below 20 (extreme fear) or for BTC to stabilize and form a higher low \u2014 that would give altcoins room to bounce.",
+  "expert_reasoning": "Scanning all candidates: BCAP is a 363% pump with zero technicals \u2014 classic chase trap. GROK shows -100% change which appears to be a data anomaly or rug. PRIME has RSI at 95.34 \u2014 extremely overbought despite bullish chart, making it a sell not a buy. BONK has RSI 29 (oversold, a reliable signal historically) but the chart bias is bearish at -0.70 with no support level identified and a downtrend. NIGHT is similarly oversold but in a steep downtrend with bearish structure. MON stands out with a bullish engulfing candle, RSI 42 approaching oversold, and a 2.87x risk/reward ratio to nearest support/resistance. However, price is below all MAs in a downtrend, and BTC dominance at 56.6% suppresses alt rallies. Fear & Greed at 31 is improving (from 28.3 weekly avg) but hasn't reached the extreme fear capitulation zone that typically produces the best bounces. No position is warranted until we see either a confirmed trend reversal in MON or a broader market fear capitulation.",
   "risk_factors": [
-    "BTC dominance at 56.6% is actively draining liquidity from altcoins \u2014 any altcoin trade faces structural headwinds",
-    "Fear & Greed at 31 and declining from yesterday suggests sentiment hasn't bottomed yet \u2014 could see further capitulation",
-    "No candidate has both a bullish chart structure AND an oversold RSI \u2014 the usual high-probability combo is absent"
+    "BTC dominance at 56.6% continues to drain capital from altcoins \u2014 alts may underperform even if BTC stabilizes",
+    "Fear & Greed at 31 is improving but hasn't reached extreme fear levels where the highest-conviction bounce trades emerge",
+    "Most candidates lack sufficient chart data, volume metrics, or funding rate data to build high-conviction setups"
   ],
   "watch_list": [
-    "BONK RSI \u2014 if it drops below 25 while forming a bullish divergence on MACD, that would be a stronger entry signal",
-    "Fear & Greed index \u2014 watch for a move below 20 (extreme fear) which historically marks bottoming zones for mean-reversion trades",
-    "AERO price action near $0.40 support \u2014 if it holds and RSI dips toward 40 with volume, it becomes the best candidate"
+    "Fear & Greed index \u2014 watch for a drop below 20 (extreme fear) which historically produces the best mean-reversion entries",
+    "MON price action \u2014 if it holds above $0.020 support and prints another bullish candle, the engulfing pattern strengthens",
+    "BONK RSI \u2014 at 29 it's oversold; if RSI dips below 25 with a volume spike, that could be a capitulation bounce opportunity"
   ],
-  "market_context": "The crypto market is in a fear-driven consolidation phase with BTC at $64,784 and high dominance (56.6%), signaling risk-off behavior. Altcoins are broadly bleeding while Bitcoin holds relatively steady \u2014 not the environment for aggressive altcoin swing trades.",
-  "context_banner": "Market fear is elevated and altcoin structures are weak \u2014 disciplined patience is the highest-edge strategy right now.",
-  "btc_price": 64784,
+  "market_context": "The crypto market is in a fear regime (F&G 31) with BTC at $64.7K showing mild weakness (-1.9% 24h). High BTC dominance at 56.6% signals capital rotation away from alts, making altcoin swing trades particularly risky right now.",
+  "context_banner": "Market fear is improving but not yet at capitulation levels \u2014 patience is the highest-conviction trade today.",
+  "btc_price": 64716,
   "fear_greed": {
     "current": 31,
     "label": "Fear",
@@ -31,32 +31,32 @@
   "btc_dominance": 56.6,
   "key_signals": [
     {
-      "source": "RSI",
-      "signal_type": "technical",
-      "description": "BONK RSI at 29 is deeply oversold (our most reliable signal at 83% win rate), but without supporting chart structure it's insufficient for entry."
-    },
-    {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Fear & Greed at 31 (Fear) and declining from yesterday's 33 suggests sentiment hasn't bottomed \u2014 improving weekly trend from 28.3 avg is a faint positive but not decisive."
+      "description": "Fear & Greed at 31 (Fear) improving from weekly avg of 28.3, but not yet at extreme fear levels that produce reliable bounce entries."
+    },
+    {
+      "source": "RSI",
+      "signal_type": "technical",
+      "description": "BONK RSI at 29 is oversold (historically 83% win rate signal), but bearish chart structure (-0.70 bias) and no visible support make it too risky to act on alone."
     },
     {
       "source": "Chart Pattern Analysis",
       "signal_type": "technical",
-      "description": "Best chart structure belongs to AERO (bias +0.40, above 2 MAs) but risk/reward of 0.86x is below the 2.0x minimum for high-quality entries."
+      "description": "MON shows a bullish engulfing candle with 2.87x risk/reward, but price below all MAs in a downtrend prevents confirmation."
+    },
+    {
+      "source": "RSI",
+      "signal_type": "technical",
+      "description": "PRIME RSI at 95.34 is extremely overbought \u2014 despite bullish chart, this signals imminent correction risk and disqualifies it as a buy candidate."
     },
     {
       "source": "CoinTelegraph",
       "signal_type": "news",
-      "description": "BitMEX token crashing 90% on exchange shutdown news underscores the risk environment \u2014 no positive catalysts are driving altcoin flows."
-    },
-    {
-      "source": "Blockworks",
-      "signal_type": "news",
-      "description": "'ETH derivatives reset' story suggests positioning is normalizing but hasn't translated into price strength yet \u2014 ETH flat on the week at -61.9% from ATH."
+      "description": "Ethereum nearing market bottom vs BTC per CryptoQuant, but key signals remain unconfirmed \u2014 supports waiting rather than acting prematurely on ETH or ETH-ecosystem plays."
     }
   ],
   "_mode": "HUNTING",
-  "exit_target": 3.6e-06,
-  "stop_loss": 2.4e-06
+  "exit_target": 0.029,
+  "stop_loss": 0.0178
 }
