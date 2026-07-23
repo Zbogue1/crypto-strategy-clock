@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-21T19:10:00.669489+00:00",
-    "coin": "XRP",
-    "price": 3.96,
-    "signal": "HOLD",
-    "confidence": 30,
-    "score": -0.3,
-    "fg": 25,
-    "btc_price": 66326,
-    "btc_dominance": 56.8,
-    "candidates": [
-      "DEXE",
-      "MON",
-      "\u5e01\u5b89\u4eba\u751f",
-      "NIGHT",
-      "VVV",
-      "BONK",
-      "ONDO",
-      "ETH",
-      "LDO"
-    ],
-    "alert": "Multiple candidates show severely inconsistent data (DEXE price $8.12 vs chart $36.27, -77% 24h with RSI 71). Exercise extreme caution with data quality this cycle."
-  },
-  {
     "ts": "2026-07-21T20:10:00.413195+00:00",
     "coin": "XRP",
     "price": 0.0,
@@ -919,5 +896,28 @@
       "LDO"
     ],
     "alert": "Geopolitical risk elevated: Iran conflict expansion sending oil above $90\u2014monitor for broader risk-off cascade."
+  },
+  {
+    "ts": "2026-07-23T13:10:00.394795+00:00",
+    "coin": "BONK",
+    "price": 2.96e-06,
+    "signal": "BUY",
+    "confidence": 52,
+    "score": 0.35,
+    "fg": 31,
+    "btc_price": 65065,
+    "btc_dominance": 56.6,
+    "candidates": [
+      "BCAP",
+      "DEXE",
+      "MON",
+      "NIGHT",
+      "BONK",
+      "AERO",
+      "KITE",
+      "ETH",
+      "LDO"
+    ],
+    "alert": "High-risk trade in bearish alt environment \u2014 use reduced position size and strict stop-loss discipline."
   }
 ]
