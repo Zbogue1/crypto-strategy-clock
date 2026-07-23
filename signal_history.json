@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-21T16:10:00.586790+00:00",
-    "coin": "XRP",
-    "price": 0.0,
-    "signal": "HOLD",
-    "confidence": 30,
-    "score": -0.3,
-    "fg": 25,
-    "btc_price": 66613,
-    "btc_dominance": 56.9,
-    "candidates": [
-      "DEXE",
-      "MON",
-      "\u5e01\u5b89\u4eba\u751f",
-      "NIGHT",
-      "VVV",
-      "UB",
-      "ONDO",
-      "ETH",
-      "LDO"
-    ],
-    "alert": "All swing candidates have poor risk/reward profiles or data integrity issues \u2014 staying in cash is the highest-EV play this cycle."
-  },
-  {
     "ts": "2026-07-21T17:10:00.311786+00:00",
     "coin": "XRP",
     "price": 0.0,
@@ -919,5 +896,28 @@
       "LDO"
     ],
     "alert": "Multiple protocol exploits totaling $59M (AFX Trade + others) signal elevated smart contract risk across the ecosystem."
+  },
+  {
+    "ts": "2026-07-23T09:10:00.403757+00:00",
+    "coin": "ETH",
+    "price": 1928.17,
+    "signal": "BUY",
+    "confidence": 62,
+    "score": 0.55,
+    "fg": 31,
+    "btc_price": 65665,
+    "btc_dominance": 56.6,
+    "candidates": [
+      "BCAP",
+      "DEXE",
+      "MON",
+      "UB",
+      "AERO",
+      "BONK",
+      "NIGHT",
+      "ETH",
+      "LDO"
+    ],
+    "alert": null
   }
 ]
