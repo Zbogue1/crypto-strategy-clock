@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-22T00:10:00.264589+00:00",
-    "coin": "ETH",
-    "price": 1933.39,
-    "signal": "BUY",
-    "confidence": 62,
-    "score": 0.45,
-    "fg": 33,
-    "btc_price": 66594,
-    "btc_dominance": 56.9,
-    "candidates": [
-      "DEXE",
-      "NIGHT",
-      "\u5e01\u5b89\u4eba\u751f",
-      "MON",
-      "VVV",
-      "BONK",
-      "UB",
-      "ETH",
-      "LDO"
-    ],
-    "alert": null
-  },
-  {
     "ts": "2026-07-22T01:10:00.225861+00:00",
     "coin": "ETH",
     "price": 1936.75,
@@ -919,5 +896,28 @@
       "LDO"
     ],
     "alert": "No high-quality swing setup identified. All candidates have significant structural weaknesses or are overbought. Staying in cash."
+  },
+  {
+    "ts": "2026-07-23T18:10:00.363684+00:00",
+    "coin": "ETH",
+    "price": 1877.99,
+    "signal": "BUY",
+    "confidence": 62,
+    "score": 1.35,
+    "fg": 31,
+    "btc_price": 64688,
+    "btc_dominance": 56.6,
+    "candidates": [
+      "BCAP",
+      "GROK",
+      "\u5e01\u5b89\u4eba\u751f",
+      "MON",
+      "BONK",
+      "PRIME",
+      "AERO",
+      "ETH",
+      "LDO"
+    ],
+    "alert": null
   }
 ]
