@@ -1,27 +1,5 @@
 [
   {
-    "ts": "2026-07-21T08:10:00.378122+00:00",
-    "coin": "ETH",
-    "price": 1932.5,
-    "signal": "BUY",
-    "confidence": 62,
-    "score": 0.45,
-    "fg": 25,
-    "btc_price": 66158,
-    "btc_dominance": 56.7,
-    "candidates": [
-      "NIGHT",
-      "DEXE",
-      "MON",
-      "UB",
-      "BONK",
-      "\u5e01\u5b89\u4eba\u751f",
-      "LDO",
-      "ETH"
-    ],
-    "alert": "Extreme Fear + rising BTC prices = classic contrarian buy window, but confirm with volume on any breakout above $2,000"
-  },
-  {
     "ts": "2026-07-21T09:10:00.406106+00:00",
     "coin": "ETH",
     "price": 1937.05,
@@ -911,6 +889,29 @@
       "AERO",
       "BONK",
       "WLD",
+      "ETH",
+      "LDO"
+    ],
+    "alert": null
+  },
+  {
+    "ts": "2026-07-23T01:10:00.304183+00:00",
+    "coin": "ETH",
+    "price": 1932.39,
+    "signal": "BUY",
+    "confidence": 62,
+    "score": 0.45,
+    "fg": 31,
+    "btc_price": 66058,
+    "btc_dominance": 56.7,
+    "candidates": [
+      "MON",
+      "NIGHT",
+      "USDG",
+      "UB",
+      "AERO",
+      "BONK",
+      "VIRTUAL",
       "ETH",
       "LDO"
     ],
