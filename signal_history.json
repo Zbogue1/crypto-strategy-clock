@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-21T12:10:00.430122+00:00",
-    "coin": "ETH",
-    "price": 1933.21,
-    "signal": "HOLD",
-    "confidence": 38,
-    "score": -0.15,
-    "fg": 25,
-    "btc_price": 66304,
-    "btc_dominance": 56.8,
-    "candidates": [
-      "DEXE",
-      "NIGHT",
-      "MON",
-      "\u5e01\u5b89\u4eba\u751f",
-      "UB",
-      "VVV",
-      "ONDO",
-      "ETH",
-      "LDO"
-    ],
-    "alert": "Most swing candidates have already moved 20-50% this week. Chasing here carries elevated pullback risk. Wait for a retest."
-  },
-  {
     "ts": "2026-07-21T13:10:00.399152+00:00",
     "coin": "ETH",
     "price": 1941.01,
@@ -918,5 +895,28 @@
       "LDO"
     ],
     "alert": "CLARITY Act regulatory headlines creating uncertainty \u2014 monitor closely for sudden sentiment shifts"
+  },
+  {
+    "ts": "2026-07-23T05:10:00.317881+00:00",
+    "coin": "BONK",
+    "price": 2.94e-06,
+    "signal": "BUY",
+    "confidence": 52,
+    "score": 0.35,
+    "fg": 31,
+    "btc_price": 65578,
+    "btc_dominance": 56.6,
+    "candidates": [
+      "BCAP",
+      "DEXE",
+      "MON",
+      "NIGHT",
+      "AERO",
+      "BONK",
+      "UB",
+      "ETH",
+      "LDO"
+    ],
+    "alert": "High BTC dominance and macro headwinds make all alt trades higher risk \u2014 keep position sizes small and stops tight."
   }
 ]
