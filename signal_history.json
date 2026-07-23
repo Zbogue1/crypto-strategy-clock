@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-21T21:10:00.340551+00:00",
-    "coin": "BTC",
-    "price": 66325,
-    "signal": "HOLD",
-    "confidence": 30,
-    "score": -0.3,
-    "fg": 25,
-    "btc_price": 66325,
-    "btc_dominance": 56.8,
-    "candidates": [
-      "DEXE",
-      "NIGHT",
-      "\u5e01\u5b89\u4eba\u751f",
-      "MON",
-      "VVV",
-      "BONK",
-      "ONDO",
-      "ETH",
-      "LDO"
-    ],
-    "alert": "All swing candidates fail quality filters. Waiting for better setups."
-  },
-  {
     "ts": "2026-07-21T22:10:00.294287+00:00",
     "coin": "XRP",
     "price": 2.73,
@@ -915,6 +892,29 @@
       "KAITO",
       "NIGHT",
       "\u5e01\u5b89\u4eba\u751f",
+      "ETH",
+      "LDO"
+    ],
+    "alert": null
+  },
+  {
+    "ts": "2026-07-23T15:10:00.386994+00:00",
+    "coin": "ETH",
+    "price": 1890.55,
+    "signal": "BUY",
+    "confidence": 62,
+    "score": 0.45,
+    "fg": 31,
+    "btc_price": 64812,
+    "btc_dominance": 56.6,
+    "candidates": [
+      "BCAP",
+      "DEXE",
+      "MON",
+      "\u5e01\u5b89\u4eba\u751f",
+      "BONK",
+      "PRIME",
+      "KAITO",
       "ETH",
       "LDO"
     ],
