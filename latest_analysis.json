@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-07-23T20:10:00.387191+00:00",
+  "timestamp": "2026-07-23T21:10:00.405628+00:00",
   "selected_coin": "ETH",
   "selected_coin_name": "Ethereum",
-  "selected_coin_price": 1880.46,
+  "selected_coin_price": 1884.71,
   "confidence": 38,
-  "layman_headline": "Fear grips the crypto market \u2014 no strong swing trade setups today, patience is the play.",
-  "layman_explanation": "The overall crypto market is in a fearful state with Bitcoin dominance high at 56.7%, meaning money is flowing away from altcoins and into Bitcoin. Most of the swing trade candidates are either too risky (meme coins that crashed 100%), too extended after massive pumps (BCAP up 363%), or showing bearish chart patterns. Ethereum is the strongest candidate with a bullish Three White Soldiers candle pattern and decent risk/reward, but it's still in a broader downtrend and the market mood doesn't support an aggressive entry right now.",
-  "layman_action": "Wait on the sidelines. If Ethereum pulls back to around $1,850 and holds that level with volume, that could be a better entry point. Don't chase anything in this fearful market.",
-  "expert_reasoning": "The candidate pool this cycle is exceptionally weak. BCAP (+363%) has no technical data and is clearly overextended. GROK shows -100% change which signals a token collapse or data error \u2014 untradeable. BONK has an attractive RSI of 29 (oversold) but its chart bias is -0.70 with price below all MAs in a steep downtrend with -29.4% 5-day momentum, making it a falling knife. MON has a bullish engulfing candle and 2.87x R/R but is below all MAs with a neutral bias \u2014 not compelling enough. ETH stands out with a slightly bullish chart bias (+0.30), Three White Soldiers pattern, 2.55x risk/reward, and $1,900 support nearby. However, the broader market context \u2014 Fear index at 31, BTC dominance at 56.7% squeezing alts, and ETH still in a macro downtrend 62% off ATH \u2014 argues for patience rather than immediate entry. I'm setting this as HOLD with ETH as the top watchlist item, targeting a pullback entry near $1,850.",
+  "layman_headline": "Fearful market with geopolitical headwinds \u2014 no clean swing trade setups right now.",
+  "layman_explanation": "Bitcoin just slipped below $65K as tensions between Iran and oil markets are spooking investors. The overall crypto market is in 'Fear' mode at 31/100, and Bitcoin dominance at 56.7% means money is flowing out of altcoins and into Bitcoin for safety. The swing trade candidates today are either wildly overbought (BCAP up 363%), in freefall (GROK, BONK), or lacking solid technical structure. Ethereum has the best chart pattern \u2014 Three White Soldiers \u2014 but the geopolitical backdrop and weak RSI make it premature to enter.",
+  "layman_action": "Stay patient and keep cash ready. Wait for the Iran-oil situation to stabilize or for ETH to pull back to the $1,850 support zone before considering an entry. No rush \u2014 fear markets reward patience.",
+  "expert_reasoning": "Among the candidates, ETH stands out with a slightly bullish chart bias (+0.30), a Three White Soldiers pattern suggesting sustained buying pressure, and price sitting just above SMA20. However, RSI at 44 is neutral (not oversold enough for a high-conviction bounce trade), and the macro backdrop is deteriorating \u2014 CoinTelegraph reports Bitcoin sliding below $65K on Iran conflict fears driving $100 oil and surging bond yields. BTC dominance at 56.7% signals capital rotation away from alts. The Fear & Greed index at 31 is improving from 28.3 weekly average, which is historically a contrarian buy zone, but we need to see fear stabilize or reverse before committing capital. I'd want ETH to retest $1,850 support for a cleaner entry with a tighter stop.",
   "risk_factors": [
-    "BTC dominance at 56.7% continues to drain capital from altcoins including ETH",
-    "Fear & Greed at 31 could deteriorate further, causing another leg down across the market",
-    "ETH is still in a macro downtrend (-62% from ATH) \u2014 the bullish candle pattern could be a bear market rally"
+    "Iran conflict escalation could drive further risk-off selling across all crypto assets",
+    "BTC dominance at 56.7% and rising means altcoins including ETH face continued outflows",
+    "ETH is still 61.9% below ATH in a structural downtrend \u2014 the Three White Soldiers pattern needs confirmation above $2,000 resistance"
   ],
   "watch_list": [
-    "ETH price action at $1,900 support \u2014 a confirmed bounce with volume would trigger a BUY signal",
-    "Fear & Greed index trend \u2014 if it climbs above 35-40 it would confirm improving sentiment for an entry",
-    "BTC dominance \u2014 any pullback below 55% would signal rotation into alts and improve the ETH thesis"
+    "Iran-oil situation developments \u2014 any de-escalation could trigger a broad crypto relief rally",
+    "ETH price action at $1,900 support \u2014 a clean hold here with rising volume would strengthen the buy case",
+    "Fear & Greed index trajectory \u2014 if it continues improving toward 35-40, that confirms sentiment bottoming"
   ],
-  "market_context": "The crypto market is in a fear-driven consolidation phase with BTC at $64,966 and dominance elevated at 56.7%. Altcoins are broadly weak, and the Fear & Greed index at 31 is improving from last week's 28.3 but still signals caution.",
-  "context_banner": "Market fear and high BTC dominance create a hostile environment for altcoin swing trades \u2014 discipline demands waiting for a cleaner setup.",
-  "btc_price": 64966,
+  "market_context": "Crypto markets are under pressure from geopolitical risk as Iran tensions push oil toward $100 and bond yields surge, creating a risk-off environment. BTC at $65K with 56.7% dominance signals capital consolidation into the safety of Bitcoin while alts bleed.",
+  "context_banner": "Geopolitical headwinds and high BTC dominance make this a patience-over-action cycle \u2014 the best trade is waiting for a cleaner entry.",
+  "btc_price": 65076,
   "fear_greed": {
     "current": 31,
     "label": "Fear",
@@ -31,29 +31,29 @@
   "btc_dominance": 56.7,
   "key_signals": [
     {
+      "source": "CoinTelegraph",
+      "signal_type": "news",
+      "description": "Bitcoin sliding below $65K driven by Iran conflict fueling $100 oil and bond-yield surge \u2014 this macro headwind overrides individual coin technicals."
+    },
+    {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Fear & Greed at 31 (Fear) with improving trend from 28.3 weekly avg \u2014 not yet bullish enough to justify aggressive entries but trajectory is positive."
+      "description": "Fear & Greed at 31 (Fear) but improving from 28.3 weekly average \u2014 approaching contrarian buy territory but not quite there yet."
     },
     {
       "source": "RSI",
       "signal_type": "technical",
-      "description": "BONK RSI at 29 is deeply oversold but in a severe downtrend (-29.4% 5-day), making it a falling knife rather than a bounce play."
+      "description": "BONK RSI at 29 is the only oversold candidate, but its bearish chart structure (-0.70) and meme coin nature make it too risky without a catalyst."
     },
     {
       "source": "Chart Pattern Analysis",
       "signal_type": "technical",
-      "description": "ETH Three White Soldiers pattern with 2.55x risk/reward is the best technical setup in the candidate pool, supporting it as the top watchlist item."
+      "description": "ETH's Three White Soldiers pattern is the strongest bullish signal among candidates, but needs confirmation above $2,000 resistance."
     },
     {
       "source": "Blockworks",
       "signal_type": "news",
-      "description": "ETH derivatives reset narrative from Blockworks suggests positioning is cleaning up, which often precedes directional moves higher."
-    },
-    {
-      "source": "CoinTelegraph",
-      "signal_type": "news",
-      "description": "Goldman Sachs CEO backing the CLARITY Act and crypto contributing $55B to US economy signals institutional legitimacy, broadly supportive for majors like ETH."
+      "description": "ETH derivatives reset noted by Blockworks suggests positioning is cleaner, which could support a move higher once macro stabilizes."
     }
   ],
   "_mode": "HUNTING",
