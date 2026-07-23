@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-07-23T12:10:00.425513+00:00",
-  "selected_coin": "ETH",
-  "selected_coin_name": "Ethereum",
-  "selected_coin_price": 1924.18,
-  "confidence": 58,
-  "layman_headline": "Ethereum shows early recovery signs amid fearful market and geopolitical jitters.",
-  "layman_explanation": "The crypto market is in a cautious 'fear' mood with Bitcoin flat around $65,500 and oil spiking on Iran tensions. Most altcoins are bleeding, but Ethereum has quietly rallied nearly 20% over the past five days and is printing a bullish Three White Soldiers candlestick pattern\u2014a classic sign of sustained buying pressure. With a neutral RSI and strong support just below at $1,900, ETH offers one of the cleaner risk-reward setups on the board right now.",
-  "layman_action": "Consider a modest Ethereum position near the $1,900-$1,910 support level with a stop-loss at $1,850. Take profits around the $2,000 psychological resistance. Keep position size conservative given geopolitical uncertainty.",
-  "expert_reasoning": "ETH shows a Three White Soldiers candlestick pattern on the daily chart with 5-day momentum of +19.9%, suggesting a potential trend reversal from its broader downtrend. RSI at 44 is neutral\u2014not overheated\u2014leaving room for upside. The $1,900 support is only 1.5% below, while $2,000 resistance offers a 3.7% upside target, yielding a 2.55x risk/reward ratio. The macro backdrop is mixed\u2014Iran/oil headlines create headwinds, but the CLARITY Act progress and institutional moves (Mubadala tokenization, Coinbase Singapore expansion) are structurally bullish for ETH as the largest smart contract platform. BTC dominance at 56.6% is a headwind for alts, but ETH is the least vulnerable large-cap alt given its $41.9B TVL dominance.",
+  "timestamp": "2026-07-23T13:10:00.394795+00:00",
+  "selected_coin": "BONK",
+  "selected_coin_name": "Bonk",
+  "selected_coin_price": 2.96e-06,
+  "confidence": 52,
+  "layman_headline": "A beaten-down meme coin flashes oversold signals in a fearful market \u2014 setting up a potential bounce trade.",
+  "layman_explanation": "The crypto market is in a state of fear right now, with most coins down. Bonk (BONK), a popular Solana meme coin, has dropped nearly 17% in the past week and its RSI indicator has hit 29 \u2014 a level that historically signals a coin is oversold and due for a short-term bounce. While the overall trend is still bearish, these deep oversold readings during fearful markets have been reliable bounce signals in our trading history. This is a quick mean-reversion play, not a long-term hold.",
+  "layman_action": "Consider a small, speculative position in BONK with a tight stop-loss at $0.0000025. This is a higher-risk bounce trade \u2014 keep position size modest and be prepared to exit quickly if it breaks lower.",
+  "expert_reasoning": "BONK's RSI of 29.14 is the deepest oversold reading on the watchlist, and our signal credibility data shows RSI-based trades have an 83% win rate with +6.1% average return \u2014 making this our highest-confidence signal type. The Fear & Greed index at 31 (improving trend from 28.3 weekly avg) adds a secondary confirmed signal with 67% historical accuracy. The chart bias is bearish (-0.70), which is a concern, but for a mean-reversion bounce trade the oversold extremes matter more than trend direction. The 33.7% distance to resistance gives meaningful upside room. Key risk is high BTC dominance at 56.6% suppressing altcoin recovery, and BONK's meme status means it can stay oversold longer than fundamental tokens. Position sizing should be conservative.",
   "risk_factors": [
-    "Iran conflict escalation could trigger a broader risk-off move, dragging ETH below $1,900 support and invalidating the setup",
-    "BTC dominance at 56.6% and rising means capital continues flowing to Bitcoin over alts\u2014ETH could underperform even in a stable market",
-    "The $2,000 level is strong psychological resistance; rejection there could create a lower high and extend the downtrend"
+    "BTC dominance at 56.6% is actively suppressing altcoin performance \u2014 alts may continue underperforming even if BTC stabilizes",
+    "BONK's bearish chart structure (below all MAs, -0.70 bias score) means the downtrend could accelerate rather than reverse",
+    "Meme coins lack fundamental backing \u2014 sentiment can shift rapidly and liquidity can thin out during fear periods"
   ],
   "watch_list": [
-    "Oil prices and Iran/Middle East escalation headlines\u2014further spikes could trigger crypto sell-off",
-    "ETH daily close relative to $1,900 support\u2014a break below invalidates the bullish setup",
-    "CLARITY Act legislative progress and any institutional Ethereum ETF flow data"
+    "BONK RSI \u2014 watch for any further drop below 25 which could signal capitulation rather than a bounce setup",
+    "BTC price action around $65,000 \u2014 a breakdown below $64,000 would likely drag BONK lower regardless of oversold readings",
+    "Fear & Greed Index trend \u2014 continued improvement above 35 would support the bounce thesis, a drop below 25 would invalidate it"
   ],
-  "market_context": "The crypto market is in a cautious holding pattern with Fear & Greed at 31 (Fear) but improving from last week's 28. Geopolitical risk from Iran tensions and oil above $90 is weighing on risk assets, while positive regulatory signals from the CLARITY Act provide a counterbalance.",
-  "context_banner": "Ethereum's Three White Soldiers pattern and clean risk/reward setup offer a disciplined swing entry in a fearful but improving market.",
-  "btc_price": 65503,
+  "market_context": "Bitcoin is consolidating around $65K with the market in 'Fear' territory at 31/100, though the trend is improving from last week's 28.3 average. High BTC dominance at 56.6% continues to pressure altcoins, but the improving sentiment trajectory suggests the worst of the fear cycle may be passing.",
+  "context_banner": "Oversold altcoins in an improving-fear environment present tactical bounce opportunities for disciplined traders with tight risk management.",
+  "btc_price": 65065,
   "fear_greed": {
     "current": 31,
     "label": "Fear",
@@ -33,30 +33,30 @@
     {
       "source": "RSI",
       "signal_type": "technical",
-      "description": "ETH RSI at 44 is neutral and not overheated, confirming room for upside\u2014RSI is our most reliable signal at 83% win rate."
-    },
-    {
-      "source": "Chart Pattern Analysis",
-      "signal_type": "technical",
-      "description": "Three White Soldiers candlestick pattern on ETH daily chart signals sustained buying pressure and potential trend reversal from bearish to bullish."
+      "description": "BONK RSI at 29.14 is deeply oversold \u2014 our most reliable signal historically with 83% win rate and +6.1% avg return, strongly supporting a mean-reversion bounce entry."
     },
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Fear & Greed at 31 (Fear) but improving from weekly average of 28\u2014historically our second most reliable signal, contrarian entries during fear have 67% win rate."
+      "description": "Fear & Greed at 31 with an improving trend from 28.3 weekly average \u2014 our second-most reliable signal (67% win rate) suggests sentiment is bottoming and conditions favor contrarian entries."
     },
     {
-      "source": "CryptoSlate",
+      "source": "CoinTelegraph",
       "signal_type": "news",
-      "description": "CLARITY Act progress drove Coinbase and Circle up 8%+, signaling improving regulatory environment that benefits Ethereum's institutional adoption."
+      "description": "BitMEX token crash (-90%) and HYPE fund withdrawal news show risk-off behavior in smaller tokens, but BONK's already-oversold state suggests much of this pain is priced in."
+    },
+    {
+      "source": "Chart Pattern Analysis",
+      "signal_type": "technical",
+      "description": "Bearish chart bias (-0.70) with price below all MAs is a caution flag, but the 33.7% distance to resistance provides meaningful room for a bounce trade with favorable risk/reward."
     },
     {
       "source": "CoinDesk",
-      "signal_type": "macro",
-      "description": "Iran war expansion driving oil above $90 creates a risk-off headwind that limits position sizing confidence and demands tight stop-losses."
+      "signal_type": "news",
+      "description": "Bitcoin settling into a 'holding pattern' after its July rally suggests near-term stability in BTC, which reduces the risk of a cascading alt selloff from a BTC breakdown."
     }
   ],
   "_mode": "HUNTING",
-  "exit_target": 2000.0,
-  "stop_loss": 1850.0
+  "exit_target": 3.55e-06,
+  "stop_loss": 2.5e-06
 }
