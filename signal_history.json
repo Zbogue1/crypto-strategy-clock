@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-21T20:10:00.413195+00:00",
-    "coin": "XRP",
-    "price": 0.0,
-    "signal": "HOLD",
-    "confidence": 28,
-    "score": -0.35,
-    "fg": 25,
-    "btc_price": 66397,
-    "btc_dominance": 56.8,
-    "candidates": [
-      "DEXE",
-      "NIGHT",
-      "MON",
-      "\u5e01\u5b89\u4eba\u751f",
-      "VVV",
-      "BONK",
-      "ONDO",
-      "ETH",
-      "LDO"
-    ],
-    "alert": "Market in Extreme Fear with no clean swing setups. All oversold candidates show bearish chart structures; all momentum plays are extended. Capital preservation is priority."
-  },
-  {
     "ts": "2026-07-21T21:10:00.340551+00:00",
     "coin": "BTC",
     "price": 66325,
@@ -919,5 +896,28 @@
       "LDO"
     ],
     "alert": "High-risk trade in bearish alt environment \u2014 use reduced position size and strict stop-loss discipline."
+  },
+  {
+    "ts": "2026-07-23T14:10:00.296175+00:00",
+    "coin": "ETH",
+    "price": 1900.98,
+    "signal": "BUY",
+    "confidence": 62,
+    "score": 0.55,
+    "fg": 31,
+    "btc_price": 64912,
+    "btc_dominance": 56.6,
+    "candidates": [
+      "BCAP",
+      "DEXE",
+      "MON",
+      "BONK",
+      "KAITO",
+      "NIGHT",
+      "\u5e01\u5b89\u4eba\u751f",
+      "ETH",
+      "LDO"
+    ],
+    "alert": null
   }
 ]
