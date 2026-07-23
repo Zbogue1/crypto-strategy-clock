@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-21T23:10:00.261246+00:00",
-    "coin": "ETH",
-    "price": 1917.64,
-    "signal": "HOLD",
-    "confidence": 35,
-    "score": -0.15,
-    "fg": 25,
-    "btc_price": 66236,
-    "btc_dominance": 56.8,
-    "candidates": [
-      "DEXE",
-      "NIGHT",
-      "\u5e01\u5b89\u4eba\u751f",
-      "MON",
-      "BONK",
-      "VVV",
-      "UB",
-      "ETH",
-      "LDO"
-    ],
-    "alert": "Market in Extreme Fear \u2014 all swing candidates have flawed setups. Wait for ETH pullback to $1,800 support or BTC breakout above $68K before deploying capital."
-  },
-  {
     "ts": "2026-07-22T00:10:00.264589+00:00",
     "coin": "ETH",
     "price": 1933.39,
@@ -919,5 +896,28 @@
       "LDO"
     ],
     "alert": "No actionable swing trade setups meet minimum quality thresholds this cycle. All candidates carry excessive risk relative to reward."
+  },
+  {
+    "ts": "2026-07-23T17:10:00.402568+00:00",
+    "coin": "MON",
+    "price": 0.02258474,
+    "signal": "HOLD",
+    "confidence": 32,
+    "score": -0.15,
+    "fg": 31,
+    "btc_price": 64716,
+    "btc_dominance": 56.6,
+    "candidates": [
+      "BCAP",
+      "GROK",
+      "MON",
+      "\u5e01\u5b89\u4eba\u751f",
+      "BONK",
+      "PRIME",
+      "NIGHT",
+      "ETH",
+      "LDO"
+    ],
+    "alert": "No high-quality swing setup identified. All candidates have significant structural weaknesses or are overbought. Staying in cash."
   }
 ]
