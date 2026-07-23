@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-07-23T15:10:00.386994+00:00",
-  "selected_coin": "ETH",
-  "selected_coin_name": "Ethereum",
-  "selected_coin_price": 1890.55,
-  "confidence": 62,
-  "layman_headline": "Ethereum shows quiet strength in a fearful market \u2014 a cautious buy near support.",
-  "layman_explanation": "The overall crypto market is in 'Fear' mode with most coins falling, but Ethereum is holding relatively steady and showing bullish candlestick patterns (Three White Soldiers \u2014 three strong up candles in a row). It's sitting just above a key support level near $1,900 with room to run to $2,000. The broader news landscape is constructive with tokenization momentum from major institutions like BlackRock, Goldman Sachs, and Abu Dhabi's Mubadala, which directly benefits Ethereum as the leading smart contract platform.",
-  "layman_action": "Consider a small position in Ethereum around $1,885-$1,890. Set a stop-loss at $1,820 to limit downside to about 3.5%, and look to take profits near $2,000 for roughly a 6% gain. This is a moderate-conviction trade in a nervous market, so keep position size conservative.",
-  "expert_reasoning": "ETH at RSI 44 is in a neutral zone approaching oversold \u2014 historically a reliable entry signal per our credibility data (83% win rate on RSI signals). The Three White Soldiers candlestick pattern on the 5-day chart signals sustained buying pressure emerging from a downtrend. Support at $1,900 is just 1.5% below current price with resistance at $2,000 offering a 2.55x risk/reward ratio. The tokenization narrative is accelerating with multiple institutional players (BlackRock, Goldman, Mubadala, Uniswap permissioned pools) all building on Ethereum infrastructure, and the $3.8B RWA recovery reported by CryptoSlate confirms real capital flowing back into DeFi. Fear & Greed at 31 with an improving trend from a weekly average of 28.3 suggests the market is near a sentiment bottom \u2014 another historically reliable signal (67% win rate). High BTC dominance at 56.6% is the main headwind for alts, but ETH is the least vulnerable alt given its institutional backing and TVL moat.",
+  "timestamp": "2026-07-23T16:10:00.374392+00:00",
+  "selected_coin": "BONK",
+  "selected_coin_name": "Bonk",
+  "selected_coin_price": 2.93e-06,
+  "confidence": 32,
+  "layman_headline": "The market is fearful and weak \u2014 no safe entry exists right now, so we stay in cash.",
+  "layman_explanation": "The crypto market is in a fearful mood with most coins falling. Bitcoin dominance is high at 56.6%, which means money is flowing out of smaller coins (altcoins) and into Bitcoin or out of crypto entirely. Every candidate on the watchlist has significant problems \u2014 either they just pumped 363% and are wildly overbought, they're in steep downtrends, or they lack the chart structure for a confident swing trade. The smartest move right now is to wait for better setups.",
+  "layman_action": "Stay in cash. Don't chase anything. Wait for the fear index to bottom out and for a clear technical setup \u2014 like a confirmed oversold bounce with volume \u2014 before putting money to work.",
+  "expert_reasoning": "This cycle presents no compelling swing trade entries. BCAP is at RSI 93.81 after a 363% move \u2014 a textbook blow-off top, not a buy. GROK shows -100% change which signals data issues or a dead project. MON has a bullish engulfing candle but is below all MAs with neutral chart bias. BONK's RSI of 29 is deeply oversold (our highest-conviction signal historically), but the chart bias is -0.70, price is below all MAs, 5-day momentum is -29.4%, and there's no identifiable support level \u2014 this is a falling knife. AERO has the best chart structure (slightly bullish, above 2 MAs) but RSI is neutral at 50 and the risk/reward is only 0.86x. With Fear & Greed at 31 and BTC dominance at 56.6%, the macro backdrop actively suppresses altcoin setups. Discipline demands we wait.",
   "risk_factors": [
-    "BTC dominance at 56.6% continues to suppress alt performance \u2014 if BTC breaks below $64,000, ETH could lose $1,900 support quickly",
-    "Fear & Greed at 31 is improving but still in fear territory \u2014 another macro shock could push sentiment back to extreme fear and trigger broader liquidations",
-    "ETH derivatives reset noted by Blockworks could mean a flush of leveraged positions hasn't fully played out yet"
+    "BTC dominance at 56.6% is actively draining liquidity from altcoins \u2014 any altcoin trade faces structural headwinds",
+    "Fear & Greed at 31 and declining from yesterday suggests sentiment hasn't bottomed yet \u2014 could see further capitulation",
+    "No candidate has both a bullish chart structure AND an oversold RSI \u2014 the usual high-probability combo is absent"
   ],
   "watch_list": [
-    "BTC price action around $64,000-$65,000 \u2014 a decisive break below $64K would invalidate this ETH setup",
-    "Fear & Greed index trajectory \u2014 needs to continue improving above 35 to confirm sentiment bottom",
-    "ETH ability to hold $1,900 support and close daily candles above it over the next 48 hours"
+    "BONK RSI \u2014 if it drops below 25 while forming a bullish divergence on MACD, that would be a stronger entry signal",
+    "Fear & Greed index \u2014 watch for a move below 20 (extreme fear) which historically marks bottoming zones for mean-reversion trades",
+    "AERO price action near $0.40 support \u2014 if it holds and RSI dips toward 40 with volume, it becomes the best candidate"
   ],
-  "market_context": "The crypto market is in a 'Fear' state at 31/100 but improving from last week's 28.3 average. BTC is consolidating around $64,800 with high dominance at 56.6%, creating a selective environment where only fundamentally strong alts with institutional catalysts are worth entering.",
-  "context_banner": "Institutional tokenization momentum and a recovering fear index create a measured buying opportunity in Ethereum near key support.",
-  "btc_price": 64812,
+  "market_context": "The crypto market is in a fear-driven consolidation phase with BTC at $64,784 and high dominance (56.6%), signaling risk-off behavior. Altcoins are broadly bleeding while Bitcoin holds relatively steady \u2014 not the environment for aggressive altcoin swing trades.",
+  "context_banner": "Market fear is elevated and altcoin structures are weak \u2014 disciplined patience is the highest-edge strategy right now.",
+  "btc_price": 64784,
   "fear_greed": {
     "current": 31,
     "label": "Fear",
@@ -33,30 +33,30 @@
     {
       "source": "RSI",
       "signal_type": "technical",
-      "description": "ETH RSI at 44 is in neutral territory approaching oversold \u2014 our most reliable indicator at 83% win rate historically. Not yet screaming buy, but well-positioned for upside."
+      "description": "BONK RSI at 29 is deeply oversold (our most reliable signal at 83% win rate), but without supporting chart structure it's insufficient for entry."
     },
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Fear & Greed at 31 improving from weekly average of 28.3 \u2014 our second most reliable signal (67% win rate) suggests sentiment is bottoming and contrarian entries here tend to pay off."
-    },
-    {
-      "source": "CoinDesk",
-      "signal_type": "news",
-      "description": "Multiple institutional tokenization stories \u2014 BlackRock, Goldman Sachs, Mubadala Capital, Uniswap permissioned pools \u2014 all building on or adjacent to Ethereum infrastructure, providing fundamental demand tailwinds."
-    },
-    {
-      "source": "CryptoSlate",
-      "signal_type": "news",
-      "description": "RWA recovery to $3.8B after KelpDAO shock demonstrates DeFi resilience and continued capital inflows to Ethereum-based protocols."
+      "description": "Fear & Greed at 31 (Fear) and declining from yesterday's 33 suggests sentiment hasn't bottomed \u2014 improving weekly trend from 28.3 avg is a faint positive but not decisive."
     },
     {
       "source": "Chart Pattern Analysis",
       "signal_type": "technical",
-      "description": "Three White Soldiers candlestick pattern on ETH with 2.55x risk/reward to nearest support/resistance levels. Bullish reversal signal in a downtrend with 19.9% 5-day momentum."
+      "description": "Best chart structure belongs to AERO (bias +0.40, above 2 MAs) but risk/reward of 0.86x is below the 2.0x minimum for high-quality entries."
+    },
+    {
+      "source": "CoinTelegraph",
+      "signal_type": "news",
+      "description": "BitMEX token crashing 90% on exchange shutdown news underscores the risk environment \u2014 no positive catalysts are driving altcoin flows."
+    },
+    {
+      "source": "Blockworks",
+      "signal_type": "news",
+      "description": "'ETH derivatives reset' story suggests positioning is normalizing but hasn't translated into price strength yet \u2014 ETH flat on the week at -61.9% from ATH."
     }
   ],
   "_mode": "HUNTING",
-  "exit_target": 2000.0,
-  "stop_loss": 1820.0
+  "exit_target": 3.6e-06,
+  "stop_loss": 2.4e-06
 }
