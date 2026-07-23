@@ -1,27 +1,5 @@
 [
   {
-    "ts": "2026-07-21T07:10:00.278106+00:00",
-    "coin": "ETH",
-    "price": 1933.11,
-    "signal": "HOLD",
-    "confidence": 35,
-    "score": -0.3,
-    "fg": 25,
-    "btc_price": 65831,
-    "btc_dominance": 56.6,
-    "candidates": [
-      "NIGHT",
-      "MON",
-      "BONK",
-      "DEXE",
-      "UB",
-      "LDO",
-      "B",
-      "ETH"
-    ],
-    "alert": "Extreme Fear persists at 25 \u2014 avoid chasing bounces in structurally bearish altcoins"
-  },
-  {
     "ts": "2026-07-21T08:10:00.378122+00:00",
     "coin": "ETH",
     "price": 1932.5,
@@ -910,6 +888,29 @@
       "AERO",
       "BONK",
       "DASH",
+      "ETH",
+      "LDO"
+    ],
+    "alert": null
+  },
+  {
+    "ts": "2026-07-23T00:10:00.231381+00:00",
+    "coin": "ETH",
+    "price": 1935.33,
+    "signal": "BUY",
+    "confidence": 62,
+    "score": 0.45,
+    "fg": 31,
+    "btc_price": 66180,
+    "btc_dominance": 56.8,
+    "candidates": [
+      "MON",
+      "NIGHT",
+      "USDG",
+      "UB",
+      "AERO",
+      "BONK",
+      "WLD",
       "ETH",
       "LDO"
     ],
