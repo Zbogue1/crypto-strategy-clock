@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-21T15:10:00.638659+00:00",
-    "coin": "UB",
-    "price": 0.10423,
-    "signal": "BUY",
-    "confidence": 52,
-    "score": 0.45,
-    "fg": 25,
-    "btc_price": 66680,
-    "btc_dominance": 56.9,
-    "candidates": [
-      "DEXE",
-      "NIGHT",
-      "MON",
-      "\u5e01\u5b89\u4eba\u751f",
-      "ONDO",
-      "VVV",
-      "UB",
-      "ETH",
-      "LDO"
-    ],
-    "alert": "Extreme Fear at 25 \u2014 historically a contrarian buying zone, but position sizing must be conservative given macro uncertainty including US-Iran tensions."
-  },
-  {
     "ts": "2026-07-21T16:10:00.586790+00:00",
     "coin": "XRP",
     "price": 0.0,
@@ -919,5 +896,28 @@
       "LDO"
     ],
     "alert": "Multiple bridge hacks totaling $55M+ in last 24 hours \u2014 monitor DeFi contagion risk closely."
+  },
+  {
+    "ts": "2026-07-23T08:10:00.484447+00:00",
+    "coin": "ETH",
+    "price": 1916.38,
+    "signal": "BUY",
+    "confidence": 58,
+    "score": 0.45,
+    "fg": 31,
+    "btc_price": 65443,
+    "btc_dominance": 56.6,
+    "candidates": [
+      "BCAP",
+      "DEXE",
+      "MON",
+      "NIGHT",
+      "BONK",
+      "UB",
+      "AERO",
+      "ETH",
+      "LDO"
+    ],
+    "alert": "Multiple protocol exploits totaling $59M (AFX Trade + others) signal elevated smart contract risk across the ecosystem."
   }
 ]
