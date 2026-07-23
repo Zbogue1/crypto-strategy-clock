@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-07-23T17:10:00.402568+00:00",
-  "selected_coin": "MON",
-  "selected_coin_name": "Monad",
-  "selected_coin_price": 0.02258474,
-  "confidence": 32,
-  "layman_headline": "Fear grips the crypto market \u2014 no clear swing trade setup stands out right now.",
-  "layman_explanation": "The overall crypto market is in a fearful state with Bitcoin dominance high at 56.6%, which typically means altcoins underperform. Most of the swing candidates are either in strong downtrends with bearish chart structures, wildly overbought (PRIME at RSI 95), or are questionable micro-cap tokens with unreliable data (GROK showing -100%). The best relative candidate is Monad (MON), which shows a bullish engulfing candle and decent risk/reward at 2.87x, but it's still below all major moving averages in a downtrend. The setup isn't compelling enough to commit capital right now.",
-  "layman_action": "Stay in cash and wait. The market is fearful but hasn't shown a clear reversal signal yet. Watch for Fear & Greed to dip below 20 (extreme fear) or for BTC to stabilize and form a higher low \u2014 that would give altcoins room to bounce.",
-  "expert_reasoning": "Scanning all candidates: BCAP is a 363% pump with zero technicals \u2014 classic chase trap. GROK shows -100% change which appears to be a data anomaly or rug. PRIME has RSI at 95.34 \u2014 extremely overbought despite bullish chart, making it a sell not a buy. BONK has RSI 29 (oversold, a reliable signal historically) but the chart bias is bearish at -0.70 with no support level identified and a downtrend. NIGHT is similarly oversold but in a steep downtrend with bearish structure. MON stands out with a bullish engulfing candle, RSI 42 approaching oversold, and a 2.87x risk/reward ratio to nearest support/resistance. However, price is below all MAs in a downtrend, and BTC dominance at 56.6% suppresses alt rallies. Fear & Greed at 31 is improving (from 28.3 weekly avg) but hasn't reached the extreme fear capitulation zone that typically produces the best bounces. No position is warranted until we see either a confirmed trend reversal in MON or a broader market fear capitulation.",
+  "timestamp": "2026-07-23T18:10:00.363684+00:00",
+  "selected_coin": "ETH",
+  "selected_coin_name": "Ethereum",
+  "selected_coin_price": 1877.99,
+  "confidence": 62,
+  "layman_headline": "Ethereum shows bounce signals during a fearful market \u2014 a cautious entry opportunity.",
+  "layman_explanation": "The crypto market is in a fearful mood right now, which historically can be a good time to buy quality assets at a discount. Ethereum has pulled back about 3.4% today but its chart is showing a classic bullish pattern called 'Three White Soldiers' \u2014 three strong up-candles in a row suggesting buyers are stepping in. With its 5-day momentum up nearly 20% and the price sitting near $1,900 support, there's a reasonable bounce trade toward $2,000 resistance.",
+  "layman_action": "Consider a small position in Ethereum around $1,878 with a stop-loss at $1,800. If it reaches $2,000, take profits. This is a moderate-confidence trade \u2014 don't oversize it.",
+  "expert_reasoning": "ETH presents the cleanest swing setup among candidates. RSI at 44 is neutral \u2014 not overbought, not yet oversold \u2014 leaving room for upside. The Three White Soldiers pattern on the daily chart with 5-day momentum of +19.9% indicates a nascent trend reversal despite the broader downtrend label. Key support at $1,900 is only 1.5% below current price, while resistance at $2,000 offers 3.7% upside, yielding a 2.55x risk/reward ratio. The Fear & Greed index at 31 (Fear, improving from 28.3 weekly average) aligns with our historically reliable Fear_Greed signal (67% win rate). CoinTelegraph's report on ETH nearing a market bottom against BTC adds fundamental conviction. BTC dominance at 56.6% is a headwind for alts, but ETH is the least affected large-cap alt in such environments given its $41.5B TVL ecosystem stability.",
   "risk_factors": [
-    "BTC dominance at 56.6% continues to drain capital from altcoins \u2014 alts may underperform even if BTC stabilizes",
-    "Fear & Greed at 31 is improving but hasn't reached extreme fear levels where the highest-conviction bounce trades emerge",
-    "Most candidates lack sufficient chart data, volume metrics, or funding rate data to build high-conviction setups"
+    "BTC dominance at 56.6% continues to pressure altcoins \u2014 if BTC sells off further, ETH will likely follow with amplified losses",
+    "Fear & Greed at 31 could deteriorate further; the broader market may not have bottomed yet",
+    "ETH is still 62% below its all-time high and in a structural downtrend \u2014 this bounce could be a dead cat rally"
   ],
   "watch_list": [
-    "Fear & Greed index \u2014 watch for a drop below 20 (extreme fear) which historically produces the best mean-reversion entries",
-    "MON price action \u2014 if it holds above $0.020 support and prints another bullish candle, the engulfing pattern strengthens",
-    "BONK RSI \u2014 at 29 it's oversold; if RSI dips below 25 with a volume spike, that could be a capitulation bounce opportunity"
+    "BTC price action around $64,000 support \u2014 a breakdown below would drag ETH down with it",
+    "ETH ability to hold $1,900 support over the next 48 hours \u2014 a close below invalidates the Three White Soldiers pattern",
+    "Fear & Greed index trajectory \u2014 continued improvement above 35 would confirm risk appetite returning"
   ],
-  "market_context": "The crypto market is in a fear regime (F&G 31) with BTC at $64.7K showing mild weakness (-1.9% 24h). High BTC dominance at 56.6% signals capital rotation away from alts, making altcoin swing trades particularly risky right now.",
-  "context_banner": "Market fear is improving but not yet at capitulation levels \u2014 patience is the highest-conviction trade today.",
-  "btc_price": 64716,
+  "market_context": "The crypto market is in a 'Fear' state at 31/100, but the trend is improving from last week's 28.3 average. BTC is down 2.3% on the day at $64,688 with high dominance at 56.6%, making this a selective environment where only the highest-quality setups should be taken.",
+  "context_banner": "Fear is improving and Ethereum's chart structure suggests a bottom-fishing opportunity near $1,900 support with a clear $2,000 target.",
+  "btc_price": 64688,
   "fear_greed": {
     "current": 31,
     "label": "Fear",
@@ -31,32 +31,32 @@
   "btc_dominance": 56.6,
   "key_signals": [
     {
-      "source": "Fear_Greed",
-      "signal_type": "sentiment",
-      "description": "Fear & Greed at 31 (Fear) improving from weekly avg of 28.3, but not yet at extreme fear levels that produce reliable bounce entries."
+      "source": "CoinTelegraph",
+      "signal_type": "news",
+      "description": "CoinTelegraph reported Ethereum nearing a market bottom against Bitcoin per CryptoQuant data, providing fundamental support for a bounce trade \u2014 this source has a 67% win rate in our signal history."
     },
     {
-      "source": "RSI",
-      "signal_type": "technical",
-      "description": "BONK RSI at 29 is oversold (historically 83% win rate signal), but bearish chart structure (-0.70 bias) and no visible support make it too risky to act on alone."
+      "source": "Fear_Greed",
+      "signal_type": "sentiment",
+      "description": "Fear & Greed at 31 (Fear) but improving from 28.3 weekly average suggests sentiment is bottoming \u2014 our most reliable sentiment signal with 67% win rate and +2.6% avg return."
     },
     {
       "source": "Chart Pattern Analysis",
       "signal_type": "technical",
-      "description": "MON shows a bullish engulfing candle with 2.87x risk/reward, but price below all MAs in a downtrend prevents confirmation."
+      "description": "Three White Soldiers bullish candlestick pattern detected on ETH chart with 2.55x risk/reward ratio to nearest support/resistance levels \u2014 a high-quality reversal signal."
     },
     {
       "source": "RSI",
       "signal_type": "technical",
-      "description": "PRIME RSI at 95.34 is extremely overbought \u2014 despite bullish chart, this signals imminent correction risk and disqualifies it as a buy candidate."
+      "description": "ETH RSI at 44 is neutral with room to run higher, unlike BCAP (94) and PRIME (95) which are dangerously overbought \u2014 RSI is our most reliable signal at 83% win rate."
     },
     {
-      "source": "CoinTelegraph",
+      "source": "Blockworks",
       "signal_type": "news",
-      "description": "Ethereum nearing market bottom vs BTC per CryptoQuant, but key signals remain unconfirmed \u2014 supports waiting rather than acting prematurely on ETH or ETH-ecosystem plays."
+      "description": "Blockworks highlighted an ETH derivatives reset, suggesting overleveraged positions have been flushed out and the market is ready for fresh directional positioning."
     }
   ],
   "_mode": "HUNTING",
-  "exit_target": 0.029,
-  "stop_loss": 0.0178
+  "exit_target": 2000.0,
+  "stop_loss": 1800.0
 }
