@@ -1,18 +1,26 @@
 {
-  "timestamp": "2026-07-24T17:10:00.854293+00:00",
-  "selected_coin": "BTC",
-  "selected_coin_name": "Bitcoin",
-  "selected_coin_price": 63889,
-  "confidence": 0,
-  "layman_headline": "Service temporarily unavailable",
-  "layman_explanation": "Could not reach the analysis service.",
-  "layman_action": "Wait for the next update.",
-  "expert_reasoning": "HTTPSConnectionPool(host='api.anthropic.com', port=443): Read timed out. (read timeout=60)",
-  "risk_factors": [],
-  "watch_list": [],
-  "market_context": null,
-  "context_banner": null,
-  "btc_price": 63889,
+  "timestamp": "2026-07-24T18:10:00.869334+00:00",
+  "selected_coin": "ETH",
+  "selected_coin_name": "Ethereum",
+  "selected_coin_price": 1863.74,
+  "confidence": 32,
+  "layman_headline": "Crypto market gripped by fear \u2014 patience is the play right now.",
+  "layman_explanation": "The crypto market is in a fearful state with Bitcoin dropping under $64K on rising bond yields and rate-hike concerns. Most altcoins are bleeding even harder, with BTC dominance at 56.5% squeezing alternatives. Ethereum shows the best technical setup among candidates with a Three White Soldiers candle pattern and decent risk/reward, but the macro headwinds (surging bond yields, hawkish Fed expectations) make jumping in prematurely risky. We're watching and waiting for a clearer entry signal.",
+  "layman_action": "Stay in cash for now. Ethereum is the strongest candidate if market fear subsides \u2014 watch for BTC to stabilize above $64K and ETH to hold $1,850 support before considering an entry.",
+  "expert_reasoning": "Evaluating all 10 swing candidates: DEXE is a -88% collapse with zero technical data \u2014 untouchable. USDG is a stablecoin. STX has bearish chart bias (-0.70) and is below all MAs despite an attractive RSI of 35. MON shows a bullish engulfing but no momentum confirmation and bearish MA structure. AERO has a slightly bullish chart (0.40) but sub-1x R/R ratio (0.86x), violating Rule 9. VIRTUAL is bearish bias (-0.70) with poor R/R (0.67x). UB has already pumped 32% in 7 days. BONK is deeply oversold (RSI 29) but in a savage downtrend with -29.6% 5-day momentum and bearish chart bias. LDO has zero technical data. ETH stands out with Three White Soldiers pattern, 2.84x R/R, 19.7% 5-day momentum suggesting buying interest, and above SMA20. However, BTC dominance at 56.5% is a headwind for alts, Fear & Greed at 28 suggests risk-off environment, and the macro news (surging bond yields, rate-hike odds) creates downside risk. With no funding rate data, no MACD confirmation, and limited signal availability, I'm capping confidence appropriately per validated rules and recommending HOLD until macro clarity improves.",
+  "risk_factors": [
+    "Surging US bond yields and rising Fed rate-hike odds could push BTC below $62K, dragging ETH with it",
+    "BTC dominance at 56.5% and climbing means capital is rotating away from alts \u2014 ETH could underperform even if BTC stabilizes",
+    "EU sanctions targeting $120B crypto network and the Ledger security vulnerability could trigger additional selling pressure"
+  ],
+  "watch_list": [
+    "BTC price action around $63K-$64K support \u2014 a breakdown below $63K would invalidate any alt entry",
+    "Fear & Greed Index trajectory \u2014 needs to stabilize above 30 or show clear improving trend for confidence to increase",
+    "ETH ability to hold $1,850 support and whether the Three White Soldiers pattern leads to a $2,000 test"
+  ],
+  "market_context": "Market is in a fearful state (F&G 28) with BTC falling under $64K on macro headwinds from surging bond yields. BTC dominance at 56.5% indicates alt underperformance cycle, making new alt entries particularly risky.",
+  "context_banner": "Rising bond yields and hawkish Fed expectations are pressuring crypto \u2014 wait for macro clarity before deploying capital into alts.",
+  "btc_price": 64129,
   "fear_greed": {
     "current": 28,
     "label": "Fear",
@@ -21,8 +29,34 @@
     "trend": "improving"
   },
   "btc_dominance": 56.5,
-  "key_signals": [],
+  "key_signals": [
+    {
+      "source": "Fear_Greed",
+      "signal_type": "sentiment",
+      "description": "Fear & Greed at 28 (Fear) with declining trend from 31 yesterday \u2014 market risk appetite is low, favoring patience over new entries."
+    },
+    {
+      "source": "CoinTelegraph",
+      "signal_type": "news",
+      "description": "Bitcoin fell under $64K as surging US bond yields boost Fed rate-hike odds \u2014 this macro headwind is the primary reason to HOLD rather than BUY."
+    },
+    {
+      "source": "RSI",
+      "signal_type": "technical",
+      "description": "ETH RSI at 44 is neutral-to-low, not yet oversold enough for a high-conviction bounce play but better positioned than most candidates."
+    },
+    {
+      "source": "Chart Pattern Analysis",
+      "signal_type": "technical",
+      "description": "ETH showing Three White Soldiers bullish candle pattern with 2.84x risk/reward ratio \u2014 the strongest technical setup among all candidates."
+    },
+    {
+      "source": "CryptoSlate",
+      "signal_type": "news",
+      "description": "BlackRock's IBIT accounted for 90% of $225M Bitcoin ETF reversal after 7-day buying streak \u2014 institutional flows may be reversing, adding uncertainty."
+    }
+  ],
   "_mode": "HUNTING",
-  "exit_target": null,
-  "stop_loss": null
+  "exit_target": 2000.0,
+  "stop_loss": 1780.0
 }
