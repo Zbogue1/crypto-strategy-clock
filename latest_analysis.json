@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-07-24T18:10:00.869334+00:00",
+  "timestamp": "2026-07-24T19:10:01.277548+00:00",
   "selected_coin": "ETH",
   "selected_coin_name": "Ethereum",
-  "selected_coin_price": 1863.74,
-  "confidence": 32,
-  "layman_headline": "Crypto market gripped by fear \u2014 patience is the play right now.",
-  "layman_explanation": "The crypto market is in a fearful state with Bitcoin dropping under $64K on rising bond yields and rate-hike concerns. Most altcoins are bleeding even harder, with BTC dominance at 56.5% squeezing alternatives. Ethereum shows the best technical setup among candidates with a Three White Soldiers candle pattern and decent risk/reward, but the macro headwinds (surging bond yields, hawkish Fed expectations) make jumping in prematurely risky. We're watching and waiting for a clearer entry signal.",
-  "layman_action": "Stay in cash for now. Ethereum is the strongest candidate if market fear subsides \u2014 watch for BTC to stabilize above $64K and ETH to hold $1,850 support before considering an entry.",
-  "expert_reasoning": "Evaluating all 10 swing candidates: DEXE is a -88% collapse with zero technical data \u2014 untouchable. USDG is a stablecoin. STX has bearish chart bias (-0.70) and is below all MAs despite an attractive RSI of 35. MON shows a bullish engulfing but no momentum confirmation and bearish MA structure. AERO has a slightly bullish chart (0.40) but sub-1x R/R ratio (0.86x), violating Rule 9. VIRTUAL is bearish bias (-0.70) with poor R/R (0.67x). UB has already pumped 32% in 7 days. BONK is deeply oversold (RSI 29) but in a savage downtrend with -29.6% 5-day momentum and bearish chart bias. LDO has zero technical data. ETH stands out with Three White Soldiers pattern, 2.84x R/R, 19.7% 5-day momentum suggesting buying interest, and above SMA20. However, BTC dominance at 56.5% is a headwind for alts, Fear & Greed at 28 suggests risk-off environment, and the macro news (surging bond yields, rate-hike odds) creates downside risk. With no funding rate data, no MACD confirmation, and limited signal availability, I'm capping confidence appropriately per validated rules and recommending HOLD until macro clarity improves.",
+  "selected_coin_price": 1858.52,
+  "confidence": 30,
+  "layman_headline": "Fear grips the crypto market \u2014 patience is the best trade right now.",
+  "layman_explanation": "The crypto market is in a fearful state with Bitcoin sliding below $64K after rising US bond yields spooked investors. Most altcoins are bleeding, and Bitcoin dominance at 56.6% means money is flowing away from smaller coins. While Ethereum shows some early bullish chart signals like a 'Three White Soldiers' candlestick pattern, the broader environment is too hostile to commit capital with high conviction right now.",
+  "layman_action": "Wait on the sidelines. If Ethereum pulls back to the $1,800-$1,820 range and holds that support while the Fear & Greed Index stabilizes or improves, that would be a stronger entry point. Don't chase in a fearful market without clear confirmation.",
+  "expert_reasoning": "Evaluating the swing candidates: DEXE dropped 88.8% in 7 days \u2014 extreme volatility with data inconsistencies (current price listed as $3.87 but chart says $6.18, violating Rule 8's consistency check). BONK has the strongest RSI signal at 29.14 (oversold) but bearish chart bias and meme-coin risk in a risk-off environment make it unsuitable. STX is near oversold at 34.89 RSI but bearish structure with -96.2% from ATH signals structural decline. ETH stands out with a Three White Soldiers pattern, above SMA20, R/R of 2.55x, and $41B TVL stability. However, with Fear & Greed at 28, BTC dominance at 56.6% crushing alts, and the macro headline of rising bond yields/rate-hike odds, entering now lacks sufficient confirmation. Confidence capped at 30% given limited signal availability (no funding rates, no MACD crosses, no volume data across all candidates \u2014 per Rule 7).",
   "risk_factors": [
-    "Surging US bond yields and rising Fed rate-hike odds could push BTC below $62K, dragging ETH with it",
-    "BTC dominance at 56.5% and climbing means capital is rotating away from alts \u2014 ETH could underperform even if BTC stabilizes",
-    "EU sanctions targeting $120B crypto network and the Ledger security vulnerability could trigger additional selling pressure"
+    "Rising US bond yields and renewed Fed rate-hike expectations could trigger further crypto selloffs",
+    "BTC dominance at 56.6% actively suppresses altcoin performance \u2014 ETH could underperform even if BTC stabilizes",
+    "Ledger private key vulnerability news (CryptoSlate) could damage broader crypto confidence and trigger security-related selling"
   ],
   "watch_list": [
-    "BTC price action around $63K-$64K support \u2014 a breakdown below $63K would invalidate any alt entry",
-    "Fear & Greed Index trajectory \u2014 needs to stabilize above 30 or show clear improving trend for confidence to increase",
-    "ETH ability to hold $1,850 support and whether the Three White Soldiers pattern leads to a $2,000 test"
+    "BTC price action around $64K support \u2014 a break below $62K would invalidate any altcoin long setups",
+    "Fear & Greed Index trend \u2014 currently 28 and labeled 'improving'; needs to cross above 35 for safer entries",
+    "ETH price behavior at $1,900 support and $2,000 resistance \u2014 a close above $2,000 confirms the Three White Soldiers pattern"
   ],
-  "market_context": "Market is in a fearful state (F&G 28) with BTC falling under $64K on macro headwinds from surging bond yields. BTC dominance at 56.5% indicates alt underperformance cycle, making new alt entries particularly risky.",
-  "context_banner": "Rising bond yields and hawkish Fed expectations are pressuring crypto \u2014 wait for macro clarity before deploying capital into alts.",
-  "btc_price": 64129,
+  "market_context": "The crypto market is in a 'Fear' state (28/100) with BTC falling below $64K on macro headwinds from surging bond yields. Bitcoin dominance at 56.6% signals capital rotation away from altcoins, making this a hostile environment for new altcoin swing trades.",
+  "context_banner": "Macro headwinds from rising bond yields dominate \u2014 disciplined patience beats forced entries in a fearful, alt-unfriendly market.",
+  "btc_price": 64126,
   "fear_greed": {
     "current": 28,
     "label": "Fear",
@@ -28,35 +28,35 @@
     "week_avg": 28.4,
     "trend": "improving"
   },
-  "btc_dominance": 56.5,
+  "btc_dominance": 56.6,
   "key_signals": [
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Fear & Greed at 28 (Fear) with declining trend from 31 yesterday \u2014 market risk appetite is low, favoring patience over new entries."
+      "description": "Fear & Greed at 28 (Fear) with week average of 28.4 \u2014 persistent fear environment historically unfavorable for new long entries, though trend labeled 'improving' offers a glimmer of hope."
     },
     {
       "source": "CoinTelegraph",
       "signal_type": "news",
-      "description": "Bitcoin fell under $64K as surging US bond yields boost Fed rate-hike odds \u2014 this macro headwind is the primary reason to HOLD rather than BUY."
+      "description": "Bitcoin fell under $64K as surging US bond yields boosted Fed rate-hike odds \u2014 this macro headwind is the primary driver of current market weakness."
     },
     {
       "source": "RSI",
       "signal_type": "technical",
-      "description": "ETH RSI at 44 is neutral-to-low, not yet oversold enough for a high-conviction bounce play but better positioned than most candidates."
-    },
-    {
-      "source": "Chart Pattern Analysis",
-      "signal_type": "technical",
-      "description": "ETH showing Three White Soldiers bullish candle pattern with 2.84x risk/reward ratio \u2014 the strongest technical setup among all candidates."
+      "description": "ETH RSI at 43.95 is neutral but combined with a Three White Soldiers candlestick pattern suggests early bullish momentum building; BONK RSI at 29.14 is oversold but in a bearish structure."
     },
     {
       "source": "CryptoSlate",
       "signal_type": "news",
-      "description": "BlackRock's IBIT accounted for 90% of $225M Bitcoin ETF reversal after 7-day buying streak \u2014 institutional flows may be reversing, adding uncertainty."
+      "description": "Ledger 7-year bug allowing private key reconstruction from 5 signatures is a security shock that could weigh on crypto sentiment broadly."
+    },
+    {
+      "source": "Chart Pattern Analysis",
+      "signal_type": "technical",
+      "description": "ETH shows the best chart setup among candidates with a slightly bullish bias (+0.30), Three White Soldiers pattern, and 2.55x R/R ratio \u2014 but below-all-MAs structure on most alts confirms bearish broader trend."
     }
   ],
   "_mode": "HUNTING",
   "exit_target": 2000.0,
-  "stop_loss": 1780.0
+  "stop_loss": 1750.0
 }
