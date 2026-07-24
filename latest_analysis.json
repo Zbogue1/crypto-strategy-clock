@@ -1,8 +1,8 @@
 {
-  "timestamp": "2026-07-24T10:10:00.852066+00:00",
+  "timestamp": "2026-07-24T11:10:00.946374+00:00",
   "selected_coin": "BTC",
   "selected_coin_name": "Bitcoin",
-  "selected_coin_price": 65046,
+  "selected_coin_price": 64948,
   "confidence": 0,
   "layman_headline": "Service temporarily unavailable",
   "layman_explanation": "Could not reach the analysis service.",
@@ -12,7 +12,7 @@
   "watch_list": [],
   "market_context": null,
   "context_banner": null,
-  "btc_price": 65046,
+  "btc_price": 64948,
   "fear_greed": {
     "current": 28,
     "label": "Fear",
