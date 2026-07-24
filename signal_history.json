@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-22T07:10:00.275861+00:00",
-    "coin": "ETH",
-    "price": 1915.34,
-    "signal": "BUY",
-    "confidence": 62,
-    "score": 0.45,
-    "fg": 33,
-    "btc_price": 65861,
-    "btc_dominance": 56.8,
-    "candidates": [
-      "NIGHT",
-      "MON",
-      "\u5e01\u5b89\u4eba\u751f",
-      "BONK",
-      "USDG",
-      "AERO",
-      "KITE",
-      "ETH",
-      "LDO"
-    ],
-    "alert": null
-  },
-  {
     "ts": "2026-07-22T08:10:00.446394+00:00",
     "coin": "ETH",
     "price": 1921.14,
@@ -918,5 +895,28 @@
       "LDO"
     ],
     "alert": "Bitcoin below $65K on Iran conflict fears \u2014 monitor for potential cascade into extreme fear territory which would present buying opportunities."
+  },
+  {
+    "ts": "2026-07-24T02:10:01.334641+00:00",
+    "coin": "ETH",
+    "price": 1872.07,
+    "signal": "HOLD",
+    "confidence": 38,
+    "score": -0.15,
+    "fg": 28,
+    "btc_price": 65034,
+    "btc_dominance": 56.8,
+    "candidates": [
+      "BCAP",
+      "GROK",
+      "MON",
+      "\u5e01\u5b89\u4eba\u751f",
+      "KITE",
+      "UB",
+      "BONK",
+      "ETH",
+      "LDO"
+    ],
+    "alert": "Bitcoin dropped below $65K on Iran conflict escalation \u2014 monitor for potential cascade into $63K range before considering new positions."
   }
 ]
