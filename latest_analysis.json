@@ -1,26 +1,18 @@
 {
-  "timestamp": "2026-07-24T20:10:00.499629+00:00",
-  "selected_coin": "ETH",
-  "selected_coin_name": "Ethereum",
-  "selected_coin_price": 1861.69,
-  "confidence": 30,
-  "layman_headline": "Crypto market stuck in fearful limbo \u2014 no high-conviction setups right now.",
-  "layman_explanation": "The crypto market is in a 'Fear' state with Bitcoin dropping below $64K on rising US bond yields and Fed rate-hike concerns. Most altcoins are bleeding, with high Bitcoin dominance squeezing smaller coins. While Ethereum shows some short-term bullish candle patterns (Three White Soldiers), the broader trend is still bearish and the risk/reward on available setups isn't compelling enough to justify opening a new position right now.",
-  "layman_action": "Stay patient and wait for clearer signals. If you're watching ETH, a dip toward $1,820 with the Fear & Greed index staying stable or improving could be a better entry point. Don't chase anything in this fearful, uncertain environment.",
-  "expert_reasoning": "Analyzing all 10 swing candidates through the lens of validated rules: DEXE dropped 89% in 7 days \u2014 extreme capitulation but no chart data consistency (price listed as $3.70 but chart says $6.18, violating Rule 8). STX has RSI 34.9 approaching oversold but chart bias is -0.70 (bearish) and it's down 96% from ATH \u2014 catching a falling knife. MON has a bullish engulfing pattern and 2.87x R/R, but zero volume data and no funding rate. ETH stands out with Three White Soldiers, above SMA20, 2.55x R/R, and $41B ecosystem TVL. However, Fear & Greed at 28 with declining BTC (below $64K), high BTC dominance at 56.5%, and the CoinTelegraph headline about surging bond yields boosting rate-hike odds all create macro headwinds. Per Rule 9, I need structurally favorable R/R, and while ETH's 2.55x looks good on paper, the macro context weakens the setup. Multiple core signals (funding rate, MACD cross, volume vs avg) are null across all candidates, so per Rule 7, confidence is capped at 30%.",
-  "risk_factors": [
-    "Rising US bond yields and increasing Fed rate-hike probability could push risk assets lower across the board",
-    "BTC dominance at 56.5% continues to pressure altcoins \u2014 ETH could underperform even if BTC stabilizes",
-    "Fear & Greed at 28 with a declining trend suggests sentiment hasn't bottomed \u2014 could see further capitulation"
-  ],
-  "watch_list": [
-    "BTC price action around $63,500 support \u2014 a break below could trigger broader alt selloff",
-    "Fear & Greed Index \u2014 watch for a move below 25 (Extreme Fear) which historically precedes short-term downside continuation per Rule 2",
-    "ETH holding $1,900 support \u2014 a confirmed bounce here with volume would upgrade the setup to BUY"
-  ],
-  "market_context": "Crypto is in a bear-leaning consolidation with BTC below $64K, Fear & Greed at 28, and macro headwinds from surging bond yields. BlackRock's IBIT ETF saw a $225M reversal after a 7-day buying streak, signaling institutional hesitancy.",
-  "context_banner": "Market fear and rising rate-hike odds demand patience \u2014 quality setups require clearer confirmation before committing capital.",
-  "btc_price": 64156,
+  "timestamp": "2026-07-24T21:10:00.803816+00:00",
+  "selected_coin": "BTC",
+  "selected_coin_name": "Bitcoin",
+  "selected_coin_price": 64105,
+  "confidence": 0,
+  "layman_headline": "Analysis error \u2014 try again shortly",
+  "layman_explanation": "The system encountered an error this cycle.",
+  "layman_action": "No action recommended until next run.",
+  "expert_reasoning": null,
+  "risk_factors": [],
+  "watch_list": [],
+  "market_context": null,
+  "context_banner": null,
+  "btc_price": 64105,
   "fear_greed": {
     "current": 28,
     "label": "Fear",
@@ -28,35 +20,9 @@
     "week_avg": 28.4,
     "trend": "improving"
   },
-  "btc_dominance": 56.5,
-  "key_signals": [
-    {
-      "source": "Fear_Greed",
-      "signal_type": "sentiment",
-      "description": "Fear & Greed at 28 (Fear) with week average 28.4 \u2014 persistent fear without capitulation washout, per validated rules this warrants caution and confidence caps."
-    },
-    {
-      "source": "CoinTelegraph",
-      "signal_type": "news",
-      "description": "Bitcoin fell under $64K as surging US bond yields boost Fed rate-hike odds \u2014 macro headwind that pressures all risk assets including crypto."
-    },
-    {
-      "source": "RSI",
-      "signal_type": "technical",
-      "description": "ETH RSI at 44 is neutral but approaching the lower band; STX at 35 is more oversold but in a structural downtrend. No clear oversold bounce setup with confirmation."
-    },
-    {
-      "source": "Chart Pattern Analysis",
-      "signal_type": "technical",
-      "description": "ETH showing Three White Soldiers (strong bullish candle pattern) with 2.55x risk/reward, but overall trend remains classified as downtrend \u2014 pattern needs volume confirmation."
-    },
-    {
-      "source": "CryptoSlate",
-      "signal_type": "news",
-      "description": "BlackRock's IBIT accounted for 90% of a $225M Bitcoin ETF reversal after a 7-day buying streak \u2014 institutional flows turning negative adds to bearish near-term outlook."
-    }
-  ],
+  "btc_dominance": 56.6,
+  "key_signals": [],
   "_mode": "HUNTING",
-  "exit_target": 2000.0,
-  "stop_loss": 1750.0
+  "exit_target": null,
+  "stop_loss": null
 }
