@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-22T11:10:00.706657+00:00",
-    "coin": "ETH",
-    "price": 1927.73,
-    "signal": "BUY",
-    "confidence": 62,
-    "score": 0.45,
-    "fg": 33,
-    "btc_price": 65988,
-    "btc_dominance": 56.7,
-    "candidates": [
-      "MON",
-      "NIGHT",
-      "\u5e01\u5b89\u4eba\u751f",
-      "UB",
-      "AERO",
-      "BONK",
-      "USDG",
-      "ETH",
-      "LDO"
-    ],
-    "alert": null
-  },
-  {
     "ts": "2026-07-22T12:10:00.328017+00:00",
     "coin": "ETH",
     "price": 1921.86,
@@ -918,5 +895,28 @@
       "LDO"
     ],
     "alert": "Iran conflict fueling $100 oil and bond yield surge \u2014 monitor for escalation risk to crypto markets"
+  },
+  {
+    "ts": "2026-07-24T06:10:00.412743+00:00",
+    "coin": "BTC",
+    "price": 65240,
+    "signal": "HOLD",
+    "confidence": 0,
+    "score": null,
+    "fg": 28,
+    "btc_price": 65240,
+    "btc_dominance": 56.8,
+    "candidates": [
+      "GROK",
+      "KITE",
+      "MON",
+      "\u5e01\u5b89\u4eba\u751f",
+      "AERO",
+      "BONK",
+      "INJ",
+      "ETH",
+      "LDO"
+    ],
+    "alert": null
   }
 ]
