@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-23T01:10:00.304183+00:00",
-    "coin": "ETH",
-    "price": 1932.39,
-    "signal": "BUY",
-    "confidence": 62,
-    "score": 0.45,
-    "fg": 31,
-    "btc_price": 66058,
-    "btc_dominance": 56.7,
-    "candidates": [
-      "MON",
-      "NIGHT",
-      "USDG",
-      "UB",
-      "AERO",
-      "BONK",
-      "VIRTUAL",
-      "ETH",
-      "LDO"
-    ],
-    "alert": null
-  },
-  {
     "ts": "2026-07-23T02:10:00.330686+00:00",
     "coin": "ETH",
     "price": 1927.11,
@@ -923,5 +900,28 @@
       "BONK"
     ],
     "alert": "Bitcoin fell under $64K on surging bond yields \u2014 monitor $63K support closely. If broken, expect cascading alt liquidations."
+  },
+  {
+    "ts": "2026-07-24T19:10:01.277548+00:00",
+    "coin": "ETH",
+    "price": 1858.52,
+    "signal": "HOLD",
+    "confidence": 30,
+    "score": 0.15,
+    "fg": 28,
+    "btc_price": 64126,
+    "btc_dominance": 56.6,
+    "candidates": [
+      "DEXE",
+      "USDG",
+      "STX",
+      "AERO",
+      "MON",
+      "UB",
+      "BONK",
+      "ETH",
+      "LDO"
+    ],
+    "alert": "Bitcoin dropped below $64K on bond yield surge; EU sanctions targeting $120B crypto network add regulatory uncertainty. Monitor for further downside before deploying capital."
   }
 ]
