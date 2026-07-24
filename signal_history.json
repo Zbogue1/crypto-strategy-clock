@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-22T20:10:00.473692+00:00",
-    "coin": "ETH",
-    "price": 1925.2,
-    "signal": "BUY",
-    "confidence": 62,
-    "score": 0.45,
-    "fg": 33,
-    "btc_price": 65796,
-    "btc_dominance": 56.7,
-    "candidates": [
-      "MON",
-      "NIGHT",
-      "USDG",
-      "AERO",
-      "BONK",
-      "UB",
-      "ENA",
-      "ETH",
-      "LDO"
-    ],
-    "alert": null
-  },
-  {
     "ts": "2026-07-22T21:10:00.253073+00:00",
     "coin": "ETH",
     "price": 1928.4,
@@ -920,5 +897,29 @@
       "BONK"
     ],
     "alert": "No candidates meet minimum criteria for a swing entry. ETH is closest but needs a pullback to $1,800-$1,820 for proper risk/reward."
+  },
+  {
+    "ts": "2026-07-24T15:10:01.095027+00:00",
+    "coin": "ETH",
+    "price": 1854.35,
+    "signal": "BUY",
+    "confidence": 42,
+    "score": 0.35,
+    "fg": 28,
+    "btc_price": 63836,
+    "btc_dominance": 56.5,
+    "candidates": [
+      "DEXE",
+      "USDG",
+      "STX",
+      "MON",
+      "AERO",
+      "UB",
+      "VIRTUAL",
+      "ETH",
+      "LDO",
+      "BONK"
+    ],
+    "alert": "BTC broke below $64K on macro headwinds \u2014 all altcoin positions carry elevated risk. Size positions conservatively."
   }
 ]
