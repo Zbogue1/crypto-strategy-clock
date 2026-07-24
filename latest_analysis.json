@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-07-24T04:10:00.312795+00:00",
+  "timestamp": "2026-07-24T05:10:00.681755+00:00",
   "selected_coin": "ETH",
   "selected_coin_name": "Ethereum",
-  "selected_coin_price": 1879.44,
+  "selected_coin_price": 1877.73,
   "confidence": 30,
-  "layman_headline": "Market fear and geopolitical tension make this a wait-and-watch moment \u2014 no clear swing trade setup today.",
-  "layman_explanation": "The crypto market is in a fearful state with a Fear & Greed index of 28, and Bitcoin just slid below $65K on news of Iran conflict driving oil prices and bond yields higher. Most of the swing trade candidates are either way too extended (BCAP up 363%), in freefall (GROK, BONK), or have terrible risk/reward ratios. Ethereum shows the best chart structure with a Three White Soldiers pattern and a 2.55x risk/reward, but it's still in a broader downtrend with neutral RSI and high BTC dominance suppressing altcoins. The macro backdrop with geopolitical risk and no regulatory clarity from Congress adds uncertainty.",
-  "layman_action": "Stay in cash and watch. Ethereum near $1,850 could be an entry if it holds that support and the macro situation stabilizes. Don't chase anything in this environment.",
-  "expert_reasoning": "Evaluating all 9 swing candidates: BCAP (RSI 93.8, up 363% \u2014 extreme overbought, avoid), GROK (down 100%, 0.03x R/R \u2014 untradeable), KITE (bearish structure, -0.70 chart bias), MON (bullish engulfing but below all MAs, neutral bias), \u5e01\u5b89\u4eba\u751f (Evening Star bearish reversal, -0.90 bias), UB (no chart data, no RSI \u2014 insufficient signals per Rule 3), BONK (RSI 29 oversold but bearish structure and -94.9% from ATH \u2014 catching a falling knife), LDO (0.15x R/R \u2014 structurally unfavorable per Rule 9), ETH (best overall: Three White Soldiers, 2.55x R/R, RSI 44 neutral, above SMA20). However, Fear & Greed at 28 with BTC dominance at 56.8% and geopolitical headline risk (Iran/oil/$100 barrel) creates a hostile environment for altcoin longs. Per validated Rule 7, with limited core signals available (no funding rates, no MACD crosses, no volume_vs_avg data), confidence is capped at 30%. The prudent move is HOLD until ETH confirms support at $1,900 or drops to a better entry at $1,850.",
+  "layman_headline": "Crypto market in fear mode with geopolitical headwinds \u2014 patience is the play right now.",
+  "layman_explanation": "Bitcoin is holding around $65,000 despite an $800 billion AI stock selloff and rising tensions from an Iran conflict pushing oil prices toward $100. The crypto Fear & Greed index sits at 28 (Fear), which has been the weekly average too \u2014 the market is nervous but not panicking. Most altcoins are bleeding while Bitcoin dominance stays high at 56.8%, meaning this isn't a great environment for altcoin swing trades. The best approach right now is to wait for a clearer setup rather than force a trade into weakness.",
+  "layman_action": "Stay in cash and watch. If Ethereum pulls back to $1,850 and holds that support with the broader market stabilizing, that could be a reasonable entry. Don't chase anything in this fearful, headline-driven market.",
+  "expert_reasoning": "Analyzing the swing candidates through validated rules: GROK shows -100% changes (likely data error, untradeable). BONK has an oversold RSI at 29 but bearish chart structure with -29.4% 5-day momentum in a downtrend \u2014 catching falling knives in memecoins during Fear environments is high-risk. PRIME has RSI at 95.34 \u2014 extremely overbought, correction imminent despite bullish chart. MON has a bullish engulfing but is below all MAs in a downtrend. LDO already ran 56.9% in 5 days with poor 0.15x R/R \u2014 chasing. ETH is the most legitimate candidate with Three White Soldiers pattern, above SMA20, 2.55x R/R, and $41.3B ecosystem TVL. However, Fear & Greed at 28, BTC dominance at 56.8% suppressing alts, and the Iran/oil macro shock reported by CoinTelegraph all argue for patience. Per validated rules, with several core signals missing (no funding rates, no MACD crosses, limited volume data), I'm capping confidence at 30% and recommending HOLD until conditions improve.",
   "risk_factors": [
-    "Iran conflict escalation could drive Bitcoin below $63K, dragging all alts down 5-10%",
-    "BTC dominance at 56.8% and rising means capital is flowing away from altcoins",
-    "ETH still in a broader downtrend and 62% below ATH \u2014 bullish candle pattern may be a dead cat bounce"
+    "Iran conflict escalation could push oil past $100, triggering a broader risk-off move that drags BTC below $63K and ETH below $1,800",
+    "BTC dominance at 56.8% and rising means capital continues flowing out of alts \u2014 ETH could underperform even if BTC holds",
+    "Fear & Greed at 28 with declining trajectory (31 yesterday to 28 today) suggests sentiment hasn't bottomed yet"
   ],
   "watch_list": [
-    "BTC price action around $65K \u2014 a decisive break below $63K would trigger broader alt selloff",
-    "Iran/Middle East geopolitical developments over the weekend and their impact on oil/bonds",
-    "ETH holding $1,900 support \u2014 a bounce here with volume would validate the Three White Soldiers setup"
+    "BTC price action at $63,500-$65,000 support zone \u2014 a break below could trigger cascading alt liquidations",
+    "Iran-related geopolitical developments and oil price trajectory \u2014 de-escalation would be strongly bullish",
+    "Fear & Greed index recovery above 35 would signal sentiment stabilization and safer alt entry conditions"
   ],
-  "market_context": "Crypto markets are in Fear territory (28/100) with Bitcoin sliding below $65K on geopolitical tension from Iran conflict driving $100 oil and bond yield surges. BTC dominance at 56.8% signals risk-off rotation away from altcoins \u2014 unfavorable for swing entries.",
-  "context_banner": "Geopolitical risk and macro headwinds dominate \u2014 patient capital preservation beats forced entries in a fearful, high-dominance market.",
-  "btc_price": 65381,
+  "market_context": "Bitcoin is showing relative resilience at $65K despite a massive AI selloff and Iran conflict fears, but altcoins are broadly weak with BTC dominance at 56.8%. The market is in a 'Fear' regime (28/100) with macro headwinds from geopolitics and rising bond yields creating an unfavorable risk/reward for new swing entries.",
+  "context_banner": "Geopolitical tensions and macro headwinds dominate \u2014 Bitcoin holds but altcoins bleed, making patience the highest-conviction trade.",
+  "btc_price": 65314,
   "fear_greed": {
     "current": 28,
     "label": "Fear",
@@ -33,27 +33,27 @@
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Fear & Greed at 28 (Fear) with declining trend from 31 yesterday \u2014 market sentiment is deteriorating, historically a reliable directional indicator per 67% win rate."
+      "description": "Fear & Greed at 28 (Fear) with weekly average also at 28.4 \u2014 sustained fear environment with no sign of capitulation or recovery, favoring a wait-and-see approach."
     },
     {
       "source": "CoinTelegraph",
       "signal_type": "news",
-      "description": "Bitcoin slides below $65K as Iran conflict fuels $100 oil and bond-yield surge \u2014 direct macro catalyst for the current risk-off move across crypto."
-    },
-    {
-      "source": "RSI",
-      "signal_type": "technical",
-      "description": "ETH RSI at 44 is neutral but closest to a tradeable zone among candidates; BONK RSI 29 is oversold but chart structure is too bearish to act on. RSI signal has 83% historical win rate."
-    },
-    {
-      "source": "Chart Pattern Analysis",
-      "signal_type": "technical",
-      "description": "ETH Three White Soldiers pattern with 2.55x R/R is the only structurally favorable setup, but it conflicts with the broader downtrend and macro headwinds."
+      "description": "Bitcoin sliding below $65K as Iran conflict fuels $100 oil and bond-yield surge \u2014 this geopolitical catalyst creates significant downside risk for risk assets including crypto."
     },
     {
       "source": "CoinDesk",
       "signal_type": "news",
-      "description": "Clarity Act expected to miss Congress summer break window \u2014 regulatory uncertainty persists, removing a potential positive catalyst for the crypto market."
+      "description": "Bitcoin holding near $65K while $800B AI selloff leaves crypto largely untouched \u2014 shows relative strength but doesn't eliminate macro contagion risk."
+    },
+    {
+      "source": "RSI",
+      "signal_type": "technical",
+      "description": "ETH RSI at 44 is neutral, BONK RSI at 29 is oversold but in a strong downtrend \u2014 no clean oversold bounce setup with sufficient chart structure to justify entry."
+    },
+    {
+      "source": "Chart Pattern Analysis",
+      "signal_type": "technical",
+      "description": "ETH Three White Soldiers pattern with 2.55x R/R is the best technical setup, but below-MA structure and macro headwinds reduce conviction for immediate entry."
     }
   ],
   "_mode": "HUNTING",
