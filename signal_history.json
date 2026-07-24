@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-22T09:10:00.350168+00:00",
-    "coin": "BONK",
-    "price": 3.03e-06,
-    "signal": "BUY",
-    "confidence": 52,
-    "score": 0.35,
-    "fg": 33,
-    "btc_price": 65992,
-    "btc_dominance": 56.8,
-    "candidates": [
-      "NIGHT",
-      "MON",
-      "\u5e01\u5b89\u4eba\u751f",
-      "BONK",
-      "UB",
-      "USDG",
-      "AERO",
-      "ETH",
-      "LDO"
-    ],
-    "alert": "High BTC dominance environment is hostile to altcoins \u2014 keep position sizing small on this speculative bounce trade."
-  },
-  {
     "ts": "2026-07-22T10:10:00.310457+00:00",
     "coin": "ETH",
     "price": 1922.27,
@@ -918,5 +895,28 @@
       "LDO"
     ],
     "alert": "Bitcoin sliding below $65K on Iran/oil fears \u2014 monitor closely for further breakdown below $63K which would trigger portfolio-wide risk-off."
+  },
+  {
+    "ts": "2026-07-24T04:10:00.312795+00:00",
+    "coin": "ETH",
+    "price": 1879.44,
+    "signal": "HOLD",
+    "confidence": 30,
+    "score": 0.15,
+    "fg": 28,
+    "btc_price": 65381,
+    "btc_dominance": 56.8,
+    "candidates": [
+      "BCAP",
+      "GROK",
+      "KITE",
+      "MON",
+      "\u5e01\u5b89\u4eba\u751f",
+      "UB",
+      "BONK",
+      "ETH",
+      "LDO"
+    ],
+    "alert": "Bitcoin below $65K on Iran conflict escalation \u2014 monitor for potential cascade to $63K which would invalidate near-term alt setups."
   }
 ]
