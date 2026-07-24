@@ -1,26 +1,18 @@
 {
-  "timestamp": "2026-07-24T05:10:00.681755+00:00",
-  "selected_coin": "ETH",
-  "selected_coin_name": "Ethereum",
-  "selected_coin_price": 1877.73,
-  "confidence": 30,
-  "layman_headline": "Crypto market in fear mode with geopolitical headwinds \u2014 patience is the play right now.",
-  "layman_explanation": "Bitcoin is holding around $65,000 despite an $800 billion AI stock selloff and rising tensions from an Iran conflict pushing oil prices toward $100. The crypto Fear & Greed index sits at 28 (Fear), which has been the weekly average too \u2014 the market is nervous but not panicking. Most altcoins are bleeding while Bitcoin dominance stays high at 56.8%, meaning this isn't a great environment for altcoin swing trades. The best approach right now is to wait for a clearer setup rather than force a trade into weakness.",
-  "layman_action": "Stay in cash and watch. If Ethereum pulls back to $1,850 and holds that support with the broader market stabilizing, that could be a reasonable entry. Don't chase anything in this fearful, headline-driven market.",
-  "expert_reasoning": "Analyzing the swing candidates through validated rules: GROK shows -100% changes (likely data error, untradeable). BONK has an oversold RSI at 29 but bearish chart structure with -29.4% 5-day momentum in a downtrend \u2014 catching falling knives in memecoins during Fear environments is high-risk. PRIME has RSI at 95.34 \u2014 extremely overbought, correction imminent despite bullish chart. MON has a bullish engulfing but is below all MAs in a downtrend. LDO already ran 56.9% in 5 days with poor 0.15x R/R \u2014 chasing. ETH is the most legitimate candidate with Three White Soldiers pattern, above SMA20, 2.55x R/R, and $41.3B ecosystem TVL. However, Fear & Greed at 28, BTC dominance at 56.8% suppressing alts, and the Iran/oil macro shock reported by CoinTelegraph all argue for patience. Per validated rules, with several core signals missing (no funding rates, no MACD crosses, limited volume data), I'm capping confidence at 30% and recommending HOLD until conditions improve.",
-  "risk_factors": [
-    "Iran conflict escalation could push oil past $100, triggering a broader risk-off move that drags BTC below $63K and ETH below $1,800",
-    "BTC dominance at 56.8% and rising means capital continues flowing out of alts \u2014 ETH could underperform even if BTC holds",
-    "Fear & Greed at 28 with declining trajectory (31 yesterday to 28 today) suggests sentiment hasn't bottomed yet"
-  ],
-  "watch_list": [
-    "BTC price action at $63,500-$65,000 support zone \u2014 a break below could trigger cascading alt liquidations",
-    "Iran-related geopolitical developments and oil price trajectory \u2014 de-escalation would be strongly bullish",
-    "Fear & Greed index recovery above 35 would signal sentiment stabilization and safer alt entry conditions"
-  ],
-  "market_context": "Bitcoin is showing relative resilience at $65K despite a massive AI selloff and Iran conflict fears, but altcoins are broadly weak with BTC dominance at 56.8%. The market is in a 'Fear' regime (28/100) with macro headwinds from geopolitics and rising bond yields creating an unfavorable risk/reward for new swing entries.",
-  "context_banner": "Geopolitical tensions and macro headwinds dominate \u2014 Bitcoin holds but altcoins bleed, making patience the highest-conviction trade.",
-  "btc_price": 65314,
+  "timestamp": "2026-07-24T06:10:00.412743+00:00",
+  "selected_coin": "BTC",
+  "selected_coin_name": "Bitcoin",
+  "selected_coin_price": 65240,
+  "confidence": 0,
+  "layman_headline": "Service temporarily unavailable",
+  "layman_explanation": "Could not reach the analysis service.",
+  "layman_action": "Wait for the next update.",
+  "expert_reasoning": "HTTPSConnectionPool(host='api.anthropic.com', port=443): Read timed out. (read timeout=60)",
+  "risk_factors": [],
+  "watch_list": [],
+  "market_context": null,
+  "context_banner": null,
+  "btc_price": 65240,
   "fear_greed": {
     "current": 28,
     "label": "Fear",
@@ -29,34 +21,8 @@
     "trend": "improving"
   },
   "btc_dominance": 56.8,
-  "key_signals": [
-    {
-      "source": "Fear_Greed",
-      "signal_type": "sentiment",
-      "description": "Fear & Greed at 28 (Fear) with weekly average also at 28.4 \u2014 sustained fear environment with no sign of capitulation or recovery, favoring a wait-and-see approach."
-    },
-    {
-      "source": "CoinTelegraph",
-      "signal_type": "news",
-      "description": "Bitcoin sliding below $65K as Iran conflict fuels $100 oil and bond-yield surge \u2014 this geopolitical catalyst creates significant downside risk for risk assets including crypto."
-    },
-    {
-      "source": "CoinDesk",
-      "signal_type": "news",
-      "description": "Bitcoin holding near $65K while $800B AI selloff leaves crypto largely untouched \u2014 shows relative strength but doesn't eliminate macro contagion risk."
-    },
-    {
-      "source": "RSI",
-      "signal_type": "technical",
-      "description": "ETH RSI at 44 is neutral, BONK RSI at 29 is oversold but in a strong downtrend \u2014 no clean oversold bounce setup with sufficient chart structure to justify entry."
-    },
-    {
-      "source": "Chart Pattern Analysis",
-      "signal_type": "technical",
-      "description": "ETH Three White Soldiers pattern with 2.55x R/R is the best technical setup, but below-MA structure and macro headwinds reduce conviction for immediate entry."
-    }
-  ],
+  "key_signals": [],
   "_mode": "HUNTING",
-  "exit_target": 2000.0,
-  "stop_loss": 1780.0
+  "exit_target": null,
+  "stop_loss": null
 }
