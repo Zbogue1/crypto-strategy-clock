@@ -1,8 +1,8 @@
 {
-  "timestamp": "2026-07-24T08:10:00.485871+00:00",
+  "timestamp": "2026-07-24T09:10:00.912402+00:00",
   "selected_coin": "BTC",
   "selected_coin_name": "Bitcoin",
-  "selected_coin_price": 65396,
+  "selected_coin_price": 65131,
   "confidence": 0,
   "layman_headline": "Service temporarily unavailable",
   "layman_explanation": "Could not reach the analysis service.",
@@ -12,7 +12,7 @@
   "watch_list": [],
   "market_context": null,
   "context_banner": null,
-  "btc_price": 65396,
+  "btc_price": 65131,
   "fear_greed": {
     "current": 28,
     "label": "Fear",
@@ -20,7 +20,7 @@
     "week_avg": 28.4,
     "trend": "improving"
   },
-  "btc_dominance": 56.8,
+  "btc_dominance": 56.7,
   "key_signals": [],
   "_mode": "HUNTING",
   "exit_target": null,
