@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-23T04:10:00.272495+00:00",
-    "coin": "ETH",
-    "price": 1919.21,
-    "signal": "BUY",
-    "confidence": 58,
-    "score": 0.45,
-    "fg": 31,
-    "btc_price": 65586,
-    "btc_dominance": 56.7,
-    "candidates": [
-      "DEXE",
-      "EARNETH",
-      "MON",
-      "NIGHT",
-      "BONK",
-      "AERO",
-      "UB",
-      "ETH",
-      "LDO"
-    ],
-    "alert": "CLARITY Act regulatory headlines creating uncertainty \u2014 monitor closely for sudden sentiment shifts"
-  },
-  {
     "ts": "2026-07-23T05:10:00.317881+00:00",
     "coin": "BONK",
     "price": 2.94e-06,
@@ -920,6 +897,30 @@
       "MON",
       "UB",
       "VIRTUAL",
+      "ETH",
+      "LDO",
+      "BONK"
+    ],
+    "alert": null
+  },
+  {
+    "ts": "2026-07-24T22:10:00.320265+00:00",
+    "coin": "BTC",
+    "price": 64096,
+    "signal": "HOLD",
+    "confidence": 0,
+    "score": null,
+    "fg": 28,
+    "btc_price": 64096,
+    "btc_dominance": 56.6,
+    "candidates": [
+      "DEXE",
+      "USDG",
+      "STX",
+      "WLD",
+      "UB",
+      "AERO",
+      "MON",
       "ETH",
       "LDO",
       "BONK"
