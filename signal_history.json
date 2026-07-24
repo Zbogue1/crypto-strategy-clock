@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-22T17:10:00.802303+00:00",
-    "coin": "BONK",
-    "price": 3.11e-06,
-    "signal": "BUY",
-    "confidence": 58,
-    "score": 0.45,
-    "fg": 33,
-    "btc_price": 66207,
-    "btc_dominance": 56.7,
-    "candidates": [
-      "MON",
-      "NIGHT",
-      "USDG",
-      "AERO",
-      "BONK",
-      "UB",
-      "KITE",
-      "ETH",
-      "LDO"
-    ],
-    "alert": "High-risk trade: meme coin with bearish chart structure. Size position conservatively and respect stop-loss strictly."
-  },
-  {
     "ts": "2026-07-22T18:10:00.268632+00:00",
     "coin": "ETH",
     "price": 1936.28,
@@ -915,6 +892,29 @@
       "AERO",
       "BONK",
       "PRIME",
+      "ETH",
+      "LDO"
+    ],
+    "alert": null
+  },
+  {
+    "ts": "2026-07-24T12:10:00.939504+00:00",
+    "coin": "BTC",
+    "price": 64998,
+    "signal": "HOLD",
+    "confidence": 0,
+    "score": null,
+    "fg": 28,
+    "btc_price": 64998,
+    "btc_dominance": 56.7,
+    "candidates": [
+      "UB",
+      "STX",
+      "USDG",
+      "MON",
+      "AERO",
+      "BONK",
+      "VIRTUAL",
       "ETH",
       "LDO"
     ],
