@@ -1,26 +1,18 @@
 {
-  "timestamp": "2026-07-24T15:10:01.095027+00:00",
-  "selected_coin": "ETH",
-  "selected_coin_name": "Ethereum",
-  "selected_coin_price": 1854.35,
-  "confidence": 42,
-  "layman_headline": "Ethereum shows early recovery signs amid fearful market, but caution warranted with BTC under pressure.",
-  "layman_explanation": "The crypto market is in a 'Fear' zone at 28/100, with Bitcoin dropping below $64K on rising bond yields and geopolitical tensions (Trump-Iran oil threats pushing crude above $100). Most altcoins are bleeding, but Ethereum is showing a rare bullish candlestick pattern (Three White Soldiers) suggesting buying pressure is building after a prolonged downtrend. ETH has a 2.55x risk/reward ratio to the $2,000 resistance level, which is the best setup available among all candidates.",
-  "layman_action": "Consider a small, cautious position in Ethereum near $1,840 with a strict stop-loss at $1,750. This is a fearful market, so position size should be smaller than usual \u2014 think 50-70% of your normal allocation.",
-  "expert_reasoning": "ETH at $1,854 sits in a downtrend but shows strong 5-day momentum (+19.9%) with a Three White Soldiers pattern \u2014 a high-reliability reversal signal. RSI at 44 is neutral with room to run before overbought territory. The chart analysis shows support at $1,900 (chart price) with resistance at $2,000, giving a 2.55x R/R. BTC dominance at 56.5% is a headwind for alts, but ETH's massive TVL ($41.3B, stable week-over-week) provides a fundamental floor. The macro backdrop is concerning \u2014 rising bond yields, Iran tensions, and bear market conditions per Strategy/Saylor metrics \u2014 which caps confidence. I note the price discrepancy between the candidate price ($1,854) and chart analysis price ($1,928) \u2014 using the lower actual price which improves the R/R further. Per validated Rule #9, R/R here is approximately (2000-1854)/(1854-1750) = 146/104 = 1.4x, which is above 0.5x threshold but below ideal 2x.",
-  "risk_factors": [
-    "Bitcoin falling further below $64K on rising US bond yields and geopolitical tensions (Iran/oil) would drag ETH down regardless of its own technicals",
-    "BTC dominance at 56.5% and trending higher means capital is flowing out of alts into BTC \u2014 ETH could underperform even if crypto recovers",
-    "EU's massive sanctions package targeting $120B crypto network could create regulatory uncertainty and liquidity disruption across the ecosystem"
-  ],
-  "watch_list": [
-    "BTC price action around $63,000-$64,000 support \u2014 a breakdown below $63K would invalidate ETH's recovery setup",
-    "US bond yield trajectory and any Fed commentary on rate hikes \u2014 surging yields are the primary macro headwind",
-    "ETH holding $1,800 support \u2014 if this level breaks, stop-loss at $1,750 becomes critical"
-  ],
-  "market_context": "Crypto markets are in 'Fear' territory (28/100) with BTC declining below $64K driven by surging US bond yields boosting Fed rate-hike odds, plus geopolitical risk from Trump-Iran tensions pushing oil above $100. This is a defensive environment where only the highest-conviction setups with tight risk management should be traded.",
-  "context_banner": "Ethereum's bullish reversal pattern offers the best risk-adjusted entry in a fearful market, but macro headwinds from rising yields and geopolitical tensions demand conservative sizing and strict stop-losses.",
-  "btc_price": 63836,
+  "timestamp": "2026-07-24T16:10:01.007356+00:00",
+  "selected_coin": "BTC",
+  "selected_coin_name": "Bitcoin",
+  "selected_coin_price": 64068,
+  "confidence": 0,
+  "layman_headline": "Analysis error \u2014 try again shortly",
+  "layman_explanation": "The system encountered an error this cycle.",
+  "layman_action": "No action recommended until next run.",
+  "expert_reasoning": null,
+  "risk_factors": [],
+  "watch_list": [],
+  "market_context": null,
+  "context_banner": null,
+  "btc_price": 64068,
   "fear_greed": {
     "current": 28,
     "label": "Fear",
@@ -29,34 +21,8 @@
     "trend": "improving"
   },
   "btc_dominance": 56.5,
-  "key_signals": [
-    {
-      "source": "CoinTelegraph",
-      "signal_type": "news",
-      "description": "Bitcoin fell under $64K as surging US bond yields boosted Fed rate-hike odds \u2014 this is the dominant macro headwind suppressing risk appetite across crypto."
-    },
-    {
-      "source": "RSI",
-      "signal_type": "technical",
-      "description": "ETH RSI at 44 is neutral with room to run higher, combined with Three White Soldiers candlestick pattern indicating sustained buying pressure and potential trend reversal."
-    },
-    {
-      "source": "Chart Pattern Analysis",
-      "signal_type": "technical",
-      "description": "ETH chart shows 2.55x risk/reward with bullish Three White Soldiers pattern and +19.9% 5-day momentum \u2014 the strongest technical setup among all candidates."
-    },
-    {
-      "source": "Fear_Greed",
-      "signal_type": "sentiment",
-      "description": "Fear & Greed at 28 (Fear) with improving trend from yesterday's 31 \u2014 historically a zone where contrarian entries can work if paired with strong technical setups."
-    },
-    {
-      "source": "DeFiLlama",
-      "signal_type": "onchain",
-      "description": "Ethereum TVL stable at $41.3B with 0% change over 7 days \u2014 fundamental on-chain activity remains robust despite price weakness, supporting a floor for ETH value."
-    }
-  ],
+  "key_signals": [],
   "_mode": "HUNTING",
-  "exit_target": 2000.0,
-  "stop_loss": 1750.0
+  "exit_target": null,
+  "stop_loss": null
 }
