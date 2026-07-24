@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-22T23:10:00.399448+00:00",
-    "coin": "ETH",
-    "price": 1935.06,
-    "signal": "BUY",
-    "confidence": 62,
-    "score": 0.45,
-    "fg": 33,
-    "btc_price": 66021,
-    "btc_dominance": 56.7,
-    "candidates": [
-      "MON",
-      "NIGHT",
-      "USDG",
-      "UB",
-      "AERO",
-      "BONK",
-      "DASH",
-      "ETH",
-      "LDO"
-    ],
-    "alert": null
-  },
-  {
     "ts": "2026-07-23T00:10:00.231381+00:00",
     "coin": "ETH",
     "price": 1935.33,
@@ -920,6 +897,29 @@
       "ETH",
       "LDO",
       "BONK"
+    ],
+    "alert": null
+  },
+  {
+    "ts": "2026-07-24T17:10:00.854293+00:00",
+    "coin": "BTC",
+    "price": 63889,
+    "signal": "HOLD",
+    "confidence": 0,
+    "score": null,
+    "fg": 28,
+    "btc_price": 63889,
+    "btc_dominance": 56.5,
+    "candidates": [
+      "DEXE",
+      "USDG",
+      "STX",
+      "MON",
+      "AERO",
+      "BONK",
+      "VIRTUAL",
+      "ETH",
+      "LDO"
     ],
     "alert": null
   }
