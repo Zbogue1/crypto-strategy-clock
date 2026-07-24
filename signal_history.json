@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-23T05:10:00.317881+00:00",
-    "coin": "BONK",
-    "price": 2.94e-06,
-    "signal": "BUY",
-    "confidence": 52,
-    "score": 0.35,
-    "fg": 31,
-    "btc_price": 65578,
-    "btc_dominance": 56.6,
-    "candidates": [
-      "BCAP",
-      "DEXE",
-      "MON",
-      "NIGHT",
-      "AERO",
-      "BONK",
-      "UB",
-      "ETH",
-      "LDO"
-    ],
-    "alert": "High BTC dominance and macro headwinds make all alt trades higher risk \u2014 keep position sizes small and stops tight."
-  },
-  {
     "ts": "2026-07-23T06:10:00.336212+00:00",
     "coin": "ETH",
     "price": 1921.06,
@@ -921,6 +898,30 @@
       "UB",
       "AERO",
       "MON",
+      "ETH",
+      "LDO",
+      "BONK"
+    ],
+    "alert": null
+  },
+  {
+    "ts": "2026-07-24T23:10:00.786613+00:00",
+    "coin": "ETH",
+    "price": 1858.38,
+    "signal": "BUY",
+    "confidence": 42,
+    "score": 0.35,
+    "fg": 28,
+    "btc_price": 64104,
+    "btc_dominance": 56.6,
+    "candidates": [
+      "STX",
+      "USDG",
+      "WLD",
+      "MON",
+      "AERO",
+      "UB",
+      "VIRTUAL",
       "ETH",
       "LDO",
       "BONK"
