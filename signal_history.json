@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-24T03:10:00.724382+00:00",
-    "coin": "ETH",
-    "price": 1873.98,
-    "signal": "BUY",
-    "confidence": 58,
-    "score": 0.35,
-    "fg": 28,
-    "btc_price": 65228,
-    "btc_dominance": 56.8,
-    "candidates": [
-      "BCAP",
-      "GROK",
-      "KITE",
-      "MON",
-      "\u5e01\u5b89\u4eba\u751f",
-      "UB",
-      "BONK",
-      "ETH",
-      "LDO"
-    ],
-    "alert": "Bitcoin sliding below $65K on Iran/oil fears \u2014 monitor closely for further breakdown below $63K which would trigger portfolio-wide risk-off."
-  },
-  {
     "ts": "2026-07-24T04:10:00.312795+00:00",
     "coin": "ETH",
     "price": 1879.44,
@@ -938,6 +915,29 @@
       "SHIB",
       "XPL",
       "AERO",
+      "ETH",
+      "LDO"
+    ],
+    "alert": null
+  },
+  {
+    "ts": "2026-07-25T20:10:00.480382+00:00",
+    "coin": "BTC",
+    "price": 64306,
+    "signal": "HOLD",
+    "confidence": 0,
+    "score": null,
+    "fg": 27,
+    "btc_price": 64306,
+    "btc_dominance": 56.5,
+    "candidates": [
+      "DEXE",
+      "MON",
+      "SHIB",
+      "WLD",
+      "MORPHO",
+      "AERO",
+      "BONK",
       "ETH",
       "LDO"
     ],
