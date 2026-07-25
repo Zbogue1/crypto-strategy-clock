@@ -1,18 +1,26 @@
 {
-  "timestamp": "2026-07-25T15:10:00.671478+00:00",
-  "selected_coin": "BTC",
-  "selected_coin_name": "Bitcoin",
-  "selected_coin_price": 64162,
-  "confidence": 0,
-  "layman_headline": "Service temporarily unavailable",
-  "layman_explanation": "Could not reach the analysis service.",
-  "layman_action": "Wait for the next update.",
-  "expert_reasoning": "HTTPSConnectionPool(host='api.anthropic.com', port=443): Read timed out. (read timeout=60)",
-  "risk_factors": [],
-  "watch_list": [],
-  "market_context": null,
-  "context_banner": null,
-  "btc_price": 64162,
+  "timestamp": "2026-07-25T16:10:00.589996+00:00",
+  "selected_coin": "ETH",
+  "selected_coin_name": "Ethereum",
+  "selected_coin_price": 1865.02,
+  "confidence": 30,
+  "layman_headline": "Crypto market is fearful and flat \u2014 no clear swing trade setup worth entering right now.",
+  "layman_explanation": "The overall crypto market is in a 'Fear' state with the sentiment index at 27 and worsening. Bitcoin is hovering around $64,100 with almost no movement, and Bitcoin dominance is high at 56.5%, which means altcoins are struggling. While a few candidates show interesting technical signals \u2014 like TRUMP being deeply oversold or MORPHO showing strong bullish candle patterns \u2014 each has critical flaws that make entering risky right now. The best approach is to wait for a clearer setup.",
+  "layman_action": "Stay patient and keep cash ready. The market mood is fearful but not fearful enough for a contrarian bounce play. Wait for either a deeper dip that creates a genuine oversold opportunity, or a sentiment shift above 35 that signals buyers are returning.",
+  "expert_reasoning": "I evaluated all 9 candidates systematically. MORPHO has the highest chart bias (+1.80) with bullish engulfing and marubozu patterns, but its risk/reward is only 0.43x \u2014 per validated rule #9, this disqualifies it from a confident BUY. TRUMP has RSI at 24 (deeply oversold, score +2.0) with a Morning Star reversal, but its R/R is a catastrophic 0.11x with resistance just 0.6% away, and $17M in tokens moving to exchanges signals incoming sell pressure. ETH shows the best structural setup with Three White Soldiers, 2.55x R/R, and $41.3B TVL stability, but ETF outflows ending the 5-day streak is a near-term headwind. BTC dominance at 56.5% is actively suppressing altcoin performance. With Fear & Greed at 27 and worsening, and no funding rate data available for any candidate, I'm applying the conservative approach. Multiple core signals (funding rates, MACD crosses, volume vs average) are null across all candidates, triggering my data sufficiency concern per validated rule #7.",
+  "risk_factors": [
+    "Fear & Greed at 27 and worsening \u2014 could cascade into extreme fear territory below 25, dragging all assets lower",
+    "BTC dominance at 56.5% is actively crushing alt performance \u2014 any BTC weakness could amplify alt losses",
+    "ETH ETF outflows just broke a 5-day inflow streak \u2014 institutional sentiment may be turning negative short-term"
+  ],
+  "watch_list": [
+    "Fear & Greed index movement \u2014 if it drops below 25, apply validated rule #2 for bearish positioning; if it bounces above 35, look for entries",
+    "ETH price action at $1,900 support \u2014 a clean bounce with volume confirms the Three White Soldiers pattern and triggers a BUY",
+    "CLARITY Act vote progress \u2014 passage would be bullish for the entire crypto market; failure at 30% odds is already priced in"
+  ],
+  "market_context": "The crypto market is in a low-conviction fear state with BTC flat at $64K and high dominance squeezing alts. Sentiment is worsening but hasn't reached extreme fear levels that historically trigger contrarian bounces.",
+  "context_banner": "Market in fear with deteriorating sentiment \u2014 patience is the edge right now, waiting for a cleaner entry as conditions haven't reached capitulation levels.",
+  "btc_price": 64109,
   "fear_greed": {
     "current": 27,
     "label": "Fear",
@@ -21,8 +29,34 @@
     "trend": "worsening"
   },
   "btc_dominance": 56.5,
-  "key_signals": [],
+  "key_signals": [
+    {
+      "source": "Fear_Greed",
+      "signal_type": "sentiment",
+      "description": "Fear & Greed at 27 and worsening week-over-week (avg 28.7) \u2014 not yet extreme fear but trending there, keeping us cautious on new entries."
+    },
+    {
+      "source": "RSI",
+      "signal_type": "technical",
+      "description": "TRUMP RSI at 24 and BONK RSI at 29 show oversold conditions, but both have terrible risk/reward ratios (0.11x and negative chart bias) that disqualify them as swing entries."
+    },
+    {
+      "source": "CoinTelegraph",
+      "signal_type": "news",
+      "description": "Ethereum ETFs closed the week in the red, ending a 5-day inflow streak \u2014 this removes a key bullish catalyst for ETH in the near term."
+    },
+    {
+      "source": "CryptoSlate",
+      "signal_type": "news",
+      "description": "$17M in TRUMP tokens moving to exchanges signals potential sell pressure, reinforcing our decision to avoid that oversold bounce despite RSI at 24."
+    },
+    {
+      "source": "Chart Pattern Analysis",
+      "signal_type": "technical",
+      "description": "ETH Three White Soldiers pattern with 2.55x R/R is the strongest technical setup, but needs confirmation with a hold above $1,900 support before committing capital."
+    }
+  ],
   "_mode": "HUNTING",
-  "exit_target": null,
-  "stop_loss": null
+  "exit_target": 2000.0,
+  "stop_loss": 1780.0
 }
