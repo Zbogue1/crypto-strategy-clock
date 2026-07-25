@@ -1,62 +1,28 @@
 {
-  "timestamp": "2026-07-24T23:10:00.786613+00:00",
-  "selected_coin": "ETH",
-  "selected_coin_name": "Ethereum",
-  "selected_coin_price": 1858.38,
-  "confidence": 42,
-  "layman_headline": "Ethereum shows a rare bullish candle pattern amid fearful markets \u2014 cautious entry opportunity.",
-  "layman_explanation": "The crypto market is in a fear zone with most coins bleeding, but Ethereum is holding up relatively well with only a 1% weekly gain while showing a strong bullish candlestick pattern called 'Three White Soldiers' \u2014 three consecutive strong up-candles that often signal a trend reversal. The risk-to-reward ratio on the chart is 2.55x, meaning for every dollar risked, the potential gain is $2.55. BTC dominance is high at 56.6%, which normally hurts altcoins, but ETH as the #2 asset tends to be the first alt to recover.",
-  "layman_action": "Consider a small position in Ethereum around $1,850 with a firm stop-loss at $1,780. This is a moderate-confidence trade \u2014 don't go all in. Take profits near $2,000 if momentum holds.",
-  "expert_reasoning": "ETH presents the best risk-adjusted setup among all candidates. The Three White Soldiers pattern on the 5-day chart shows sustained buying pressure with 19.9% 5-day momentum, despite the broader downtrend label. RSI at 44 is neutral-to-slightly-oversold territory \u2014 not extended in either direction, leaving room for upside. Support at $1,900 is close (1.5% away) with resistance at $2,000 providing a clean 2.55x R/R setup. The $41.2B TVL on Ethereum is stable (0% 7-day change), confirming no capital flight from the ecosystem. High BTC dominance at 56.6% is a headwind for alts, which tempers confidence, but ETH historically leads alt recovery when BTC stabilizes. Confidence is capped at 42% given the fearful market environment (F&G 28) and missing signals (no funding rate, no MACD cross confirmation, no SMA50/200 data).",
-  "risk_factors": [
-    "BTC dominance at 56.6% continues to suppress altcoin performance \u2014 if BTC drops below $63K, ETH likely falls harder",
-    "Fear & Greed at 28 and declining from yesterday's 31 suggests the market hasn't found a bottom yet",
-    "EU sanctions on crypto networks (HTX exchange targeted) could trigger broader risk-off moves across the entire market"
-  ],
-  "watch_list": [
-    "BTC price action around $64,000 support \u2014 a break below $63,000 would invalidate the ETH setup",
-    "ETH ability to hold $1,900 support level over the next 48 hours",
-    "Fear & Greed Index trend \u2014 currently 28 with 'improving' label; needs to stay above 25 to avoid capitulation risk"
-  ],
-  "market_context": "The crypto market is in a Fear phase (28/100) with BTC down 1.6% in 24 hours and high BTC dominance at 56.6% pressuring altcoins. Most alts are bleeding 5-12% weekly, but ETH is showing relative strength with a slight positive weekly performance and bullish chart patterns emerging.",
-  "context_banner": "Ethereum's Three White Soldiers pattern and 2.55x risk/reward offer the cleanest swing entry in a fearful market that may be near a short-term bottom.",
+  "timestamp": "2026-07-25T00:10:00.294837+00:00",
+  "selected_coin": "BTC",
+  "selected_coin_name": "Bitcoin",
+  "selected_coin_price": 64104,
+  "confidence": 0,
+  "layman_headline": "Analysis error \u2014 try again shortly",
+  "layman_explanation": "The system encountered an error this cycle.",
+  "layman_action": "No action recommended until next run.",
+  "expert_reasoning": null,
+  "risk_factors": [],
+  "watch_list": [],
+  "market_context": null,
+  "context_banner": null,
   "btc_price": 64104,
   "fear_greed": {
-    "current": 28,
+    "current": 27,
     "label": "Fear",
-    "yesterday": 31,
-    "week_avg": 28.4,
-    "trend": "improving"
+    "yesterday": 28,
+    "week_avg": 28.7,
+    "trend": "worsening"
   },
-  "btc_dominance": 56.6,
-  "key_signals": [
-    {
-      "source": "Chart Pattern Analysis",
-      "signal_type": "technical",
-      "description": "Three White Soldiers candlestick pattern on ETH with 2.55x risk/reward ratio \u2014 the strongest bullish setup among all candidates, indicating sustained buying pressure."
-    },
-    {
-      "source": "RSI",
-      "signal_type": "technical",
-      "description": "ETH RSI at 44 is neutral with room to run higher, unlike LDO at 59 (overbought risk) or STX at 35 (still falling)."
-    },
-    {
-      "source": "Fear_Greed",
-      "signal_type": "sentiment",
-      "description": "Fear & Greed at 28 with 'improving' trend label \u2014 contrarian buy signal, though not yet at extreme fear (25) levels that would strengthen conviction."
-    },
-    {
-      "source": "Blockworks",
-      "signal_type": "news",
-      "description": "'ETH derivatives reset and the next retail trade' \u2014 suggests leveraged positions have been flushed, creating cleaner price action for directional moves."
-    },
-    {
-      "source": "DeFiLlama",
-      "signal_type": "onchain",
-      "description": "Ethereum TVL stable at $41.2B with 0% 7-day change \u2014 no capital flight from the ecosystem despite market fear, confirming fundamental floor."
-    }
-  ],
+  "btc_dominance": 56.5,
+  "key_signals": [],
   "_mode": "HUNTING",
-  "exit_target": 2000.0,
-  "stop_loss": 1780.0
+  "exit_target": null,
+  "stop_loss": null
 }
