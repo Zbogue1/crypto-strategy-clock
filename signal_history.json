@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-23T13:10:00.394795+00:00",
-    "coin": "BONK",
-    "price": 2.96e-06,
-    "signal": "BUY",
-    "confidence": 52,
-    "score": 0.35,
-    "fg": 31,
-    "btc_price": 65065,
-    "btc_dominance": 56.6,
-    "candidates": [
-      "BCAP",
-      "DEXE",
-      "MON",
-      "NIGHT",
-      "BONK",
-      "AERO",
-      "KITE",
-      "ETH",
-      "LDO"
-    ],
-    "alert": "High-risk trade in bearish alt environment \u2014 use reduced position size and strict stop-loss discipline."
-  },
-  {
     "ts": "2026-07-23T14:10:00.296175+00:00",
     "coin": "ETH",
     "price": 1900.98,
@@ -926,6 +903,30 @@
       "WLD",
       "MON",
       "STX",
+      "AERO",
+      "VIRTUAL",
+      "ETH",
+      "LDO",
+      "BONK"
+    ],
+    "alert": null
+  },
+  {
+    "ts": "2026-07-25T07:10:00.332701+00:00",
+    "coin": "BTC",
+    "price": 63968,
+    "signal": "HOLD",
+    "confidence": 0,
+    "score": null,
+    "fg": 27,
+    "btc_price": 63968,
+    "btc_dominance": 56.5,
+    "candidates": [
+      "DEXE",
+      "USDG",
+      "STX",
+      "WLD",
+      "MON",
       "AERO",
       "VIRTUAL",
       "ETH",
