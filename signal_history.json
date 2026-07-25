@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-23T15:10:00.386994+00:00",
-    "coin": "ETH",
-    "price": 1890.55,
-    "signal": "BUY",
-    "confidence": 62,
-    "score": 0.45,
-    "fg": 31,
-    "btc_price": 64812,
-    "btc_dominance": 56.6,
-    "candidates": [
-      "BCAP",
-      "DEXE",
-      "MON",
-      "\u5e01\u5b89\u4eba\u751f",
-      "BONK",
-      "PRIME",
-      "KAITO",
-      "ETH",
-      "LDO"
-    ],
-    "alert": null
-  },
-  {
     "ts": "2026-07-23T16:10:00.374392+00:00",
     "coin": "BONK",
     "price": 2.93e-06,
@@ -928,6 +905,30 @@
       "USDG",
       "MON",
       "STX",
+      "AERO",
+      "VIRTUAL",
+      "ETH",
+      "LDO",
+      "BONK"
+    ],
+    "alert": null
+  },
+  {
+    "ts": "2026-07-25T09:10:01.170851+00:00",
+    "coin": "BTC",
+    "price": 63787,
+    "signal": "HOLD",
+    "confidence": 0,
+    "score": null,
+    "fg": 27,
+    "btc_price": 63787,
+    "btc_dominance": 56.5,
+    "candidates": [
+      "DEXE",
+      "MON",
+      "WLD",
+      "STX",
+      "USDG",
       "AERO",
       "VIRTUAL",
       "ETH",
