@@ -1,18 +1,26 @@
 {
-  "timestamp": "2026-07-25T21:10:00.937398+00:00",
-  "selected_coin": "BTC",
-  "selected_coin_name": "Bitcoin",
-  "selected_coin_price": 64269,
-  "confidence": 0,
-  "layman_headline": "Analysis error \u2014 try again shortly",
-  "layman_explanation": "The system encountered an error this cycle.",
-  "layman_action": "No action recommended until next run.",
-  "expert_reasoning": null,
-  "risk_factors": [],
-  "watch_list": [],
-  "market_context": null,
-  "context_banner": null,
-  "btc_price": 64269,
+  "timestamp": "2026-07-25T22:10:01.216460+00:00",
+  "selected_coin": "ETH",
+  "selected_coin_name": "Ethereum",
+  "selected_coin_price": 1873.09,
+  "confidence": 42,
+  "layman_headline": "Ethereum shows quiet strength with a bullish chart pattern while the broader market remains fearful.",
+  "layman_explanation": "The crypto market is in a 'Fear' state at 27/100, which means most people are nervous and prices are generally depressed. Ethereum is one of the few assets showing positive momentum \u2014 it's up slightly over the past week while many altcoins are bleeding. Its chart is forming a classic bullish pattern called 'Three White Soldiers,' which is three consecutive strong up-candles suggesting sustained buying pressure. The risk-reward ratio to the next resistance at $2,000 versus support at $1,900 looks favorable at 2.55x.",
+  "layman_action": "Consider a cautious entry into Ethereum near $1,860 with a firm stop-loss at $1,780. This is a moderate-confidence trade \u2014 don't bet the farm. If ETH breaks above $2,000, you could see further upside, but be ready to exit if broader market fear intensifies.",
+  "expert_reasoning": "ETH presents the most balanced swing trade setup among all candidates. RSI at 44 is neutral \u2014 neither overbought nor oversold \u2014 providing room for upside without chasing. The Three White Soldiers pattern on the daily chart is a high-reliability bullish reversal signal, appearing after a broader downtrend with 5-day momentum at +19.9%. The 2.55x risk/reward to $2,000 resistance vs $1,900 support is the best structural setup available. BTC dominance at 56.5% is a headwind for alts, but ETH's massive $41.3B TVL and relative stability (+0.8% 7d vs broad alt weakness) suggest it's the safest alt exposure. Fear & Greed at 27 and worsening is a concern, but historically fear environments with emerging bullish technicals can produce sharp rallies. Confidence is capped at 42% reflecting the fearful macro environment, high BTC dominance headwind, and missing data points (no funding rate, no MACD cross, no SMA50/200).",
+  "risk_factors": [
+    "Fear & Greed at 27 and worsening \u2014 if sentiment deteriorates further toward Extreme Fear (<25), ETH could break below $1,900 support and accelerate downward",
+    "BTC dominance at 56.5% is actively suppressing alt performance \u2014 a further dominance surge would drag ETH down regardless of its individual technicals",
+    "Multiple data points missing (funding rate, MACD, SMA50/200) \u2014 the bullish thesis rests on limited signals, reducing conviction"
+  ],
+  "watch_list": [
+    "Fear & Greed Index \u2014 if it drops below 25 into Extreme Fear, consider tightening stop-loss or exiting early",
+    "ETH price action around $1,900 support \u2014 a clean break below invalidates the Three White Soldiers pattern",
+    "BTC price stability around $64,000 \u2014 a sharp BTC decline would drag ETH down regardless of ETH-specific signals"
+  ],
+  "market_context": "The crypto market sits in a Fear state (27/100) with worsening sentiment. BTC is flat near $64,300 with 56.5% dominance, creating a challenging environment for altcoins \u2014 but pockets of strength are emerging in ETH and select tokens.",
+  "context_banner": "Ethereum's bullish Three White Soldiers pattern emerges against a fearful market backdrop, offering a cautious swing trade with 2.55x risk/reward to the $2,000 level.",
+  "btc_price": 64338,
   "fear_greed": {
     "current": 27,
     "label": "Fear",
@@ -21,8 +29,34 @@
     "trend": "worsening"
   },
   "btc_dominance": 56.5,
-  "key_signals": [],
+  "key_signals": [
+    {
+      "source": "RSI",
+      "signal_type": "technical",
+      "description": "ETH RSI at 44 is neutral with room to expand \u2014 not overbought like INJ (65) or LDO (59), and not in a falling-knife oversold zone like DEXE or BONK."
+    },
+    {
+      "source": "Chart Pattern Analysis",
+      "signal_type": "technical",
+      "description": "Three White Soldiers candlestick pattern on ETH chart indicates sustained buying pressure and potential trend reversal from the broader downtrend, with 5-day momentum of +19.9%."
+    },
+    {
+      "source": "Fear_Greed",
+      "signal_type": "sentiment",
+      "description": "Fear & Greed at 27 (Fear) and worsening \u2014 contrarian opportunity but demands strict risk management. Applied validated rule to cap confidence given limited signal availability."
+    },
+    {
+      "source": "DeFiLlama",
+      "signal_type": "onchain",
+      "description": "Ethereum ecosystem TVL stable at $41.3B \u2014 the largest DeFi ecosystem by far, providing fundamental support that meme coins and smaller alts lack."
+    },
+    {
+      "source": "CryptoSlate",
+      "signal_type": "news",
+      "description": "Samsung Wallet native stablecoin integration reaching 800M potential users is a significant adoption catalyst for Ethereum-based infrastructure."
+    }
+  ],
   "_mode": "HUNTING",
-  "exit_target": null,
-  "stop_loss": null
+  "exit_target": 2000.0,
+  "stop_loss": 1780.0
 }
