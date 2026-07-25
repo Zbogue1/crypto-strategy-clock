@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-24T04:10:00.312795+00:00",
-    "coin": "ETH",
-    "price": 1879.44,
-    "signal": "HOLD",
-    "confidence": 30,
-    "score": 0.15,
-    "fg": 28,
-    "btc_price": 65381,
-    "btc_dominance": 56.8,
-    "candidates": [
-      "BCAP",
-      "GROK",
-      "KITE",
-      "MON",
-      "\u5e01\u5b89\u4eba\u751f",
-      "UB",
-      "BONK",
-      "ETH",
-      "LDO"
-    ],
-    "alert": "Bitcoin below $65K on Iran conflict escalation \u2014 monitor for potential cascade to $63K which would invalidate near-term alt setups."
-  },
-  {
     "ts": "2026-07-24T05:10:00.681755+00:00",
     "coin": "ETH",
     "price": 1877.73,
@@ -929,6 +906,29 @@
     "score": null,
     "fg": 27,
     "btc_price": 64306,
+    "btc_dominance": 56.5,
+    "candidates": [
+      "DEXE",
+      "MON",
+      "SHIB",
+      "WLD",
+      "MORPHO",
+      "AERO",
+      "BONK",
+      "ETH",
+      "LDO"
+    ],
+    "alert": null
+  },
+  {
+    "ts": "2026-07-25T21:10:00.937398+00:00",
+    "coin": "BTC",
+    "price": 64269,
+    "signal": "HOLD",
+    "confidence": 0,
+    "score": null,
+    "fg": 27,
+    "btc_price": 64269,
     "btc_dominance": 56.5,
     "candidates": [
       "DEXE",
