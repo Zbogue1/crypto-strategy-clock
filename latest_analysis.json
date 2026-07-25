@@ -1,18 +1,26 @@
 {
-  "timestamp": "2026-07-25T02:10:00.324989+00:00",
-  "selected_coin": "BTC",
-  "selected_coin_name": "Bitcoin",
-  "selected_coin_price": 64032,
-  "confidence": 0,
-  "layman_headline": "Analysis error \u2014 try again shortly",
-  "layman_explanation": "The system encountered an error this cycle.",
-  "layman_action": "No action recommended until next run.",
-  "expert_reasoning": null,
-  "risk_factors": [],
-  "watch_list": [],
-  "market_context": null,
-  "context_banner": null,
-  "btc_price": 64032,
+  "timestamp": "2026-07-25T04:10:00.901625+00:00",
+  "selected_coin": "ETH",
+  "selected_coin_name": "Ethereum",
+  "selected_coin_price": 1858.94,
+  "confidence": 30,
+  "layman_headline": "Fearful market keeps us on the sidelines \u2014 waiting for a clearer entry on Ethereum.",
+  "layman_explanation": "The crypto market is in a 'Fear' state with a score of 27 out of 100, and most altcoins are bleeding. Bitcoin is down about 1.6% today and sitting around $64,000 with high dominance at 56.5%, meaning money is flowing away from altcoins. Ethereum is showing the best technical setup among candidates \u2014 it has a bullish 'Three White Soldiers' candle pattern and decent risk/reward \u2014 but the broader environment is hostile for new entries. We're watching and waiting for a pullback to better prices before committing capital.",
+  "layman_action": "Do not open new positions right now. Keep cash ready. If Ethereum dips toward $1,800-$1,820, that could be a strong entry point. Watch over the weekend for any market stabilization or Fear & Greed improvement above 30.",
+  "expert_reasoning": "Applying validated rules: Fear & Greed at 27 is near the extreme fear threshold (Rule 2), warranting caution. While multiple signals are available (RSI, Fear & Greed, chart patterns), the overall environment is bearish for alts with BTC dominance at 56.5%. ETH stands out with a Three White Soldiers pattern (strong bullish signal from our reliable Chart Pattern Analysis track record at 67% win rate), RSI at 44 (neutral, room to run), and above SMA20. However, the R/R of 2.55x is measured to $2,000 resistance which is a psychological barrier. The macro backdrop \u2014 EU sanctions on HTX, Strategy's bear market metrics overhaul, Senate crypto debates \u2014 creates uncertainty. I'm issuing HOLD rather than BUY because the fear environment + high BTC dominance historically suppresses alt performance, and entering during worsening fear trend (28\u219227) risks catching a falling knife. A dip to $1,820 would improve R/R to ~3.5x and bring RSI closer to oversold.",
+  "risk_factors": [
+    "Fear & Greed trending downward (28\u219227) \u2014 could continue deteriorating and drag all assets lower",
+    "BTC dominance at 56.5% actively punishing altcoins \u2014 ETH could underperform even if BTC stabilizes",
+    "EU sanctions on HTX and broader regulatory uncertainty could trigger sudden sell-offs across crypto"
+  ],
+  "watch_list": [
+    "Fear & Greed Index: watch for stabilization above 30 or deterioration below 25 (extreme fear trigger)",
+    "ETH price action at $1,900 support \u2014 a breakdown below invalidates the bullish candle pattern",
+    "BTC dominance: any move above 57% would be a stronger signal to avoid alts entirely"
+  ],
+  "market_context": "The crypto market is in a Fear state (27/100) with worsening sentiment. BTC dominance at 56.5% is squeezing altcoins, and regulatory headlines (EU sanctions, congressional crypto bills) are adding uncertainty without providing clear bullish catalysts.",
+  "context_banner": "Fear-driven market with high BTC dominance \u2014 patience is the highest-conviction trade right now.",
+  "btc_price": 64064,
   "fear_greed": {
     "current": 27,
     "label": "Fear",
@@ -21,8 +29,34 @@
     "trend": "worsening"
   },
   "btc_dominance": 56.5,
-  "key_signals": [],
+  "key_signals": [
+    {
+      "source": "Fear_Greed",
+      "signal_type": "sentiment",
+      "description": "Fear & Greed at 27 and trending down from 28.7 weekly average \u2014 near extreme fear boundary, historically a zone where short-term downside continues before reversal (validated rule, 67% reliable signal)."
+    },
+    {
+      "source": "RSI",
+      "signal_type": "technical",
+      "description": "ETH RSI at 44 is neutral with room to decline further, while BONK at 29 is deeply oversold but lacks chart structure. RSI is our most reliable signal at 83% win rate but needs confluence."
+    },
+    {
+      "source": "Chart Pattern Analysis",
+      "signal_type": "technical",
+      "description": "ETH showing Three White Soldiers (strong bullish reversal pattern) with +19.9% 5-day momentum \u2014 the only candidate with a positive chart bias score (+0.30). 67% reliable signal."
+    },
+    {
+      "source": "CoinDesk",
+      "signal_type": "news",
+      "description": "EU's 21st sanctions package targeting $120B crypto network and Strategy overhauling BTC metrics amid bear market \u2014 macro headwinds for the entire space."
+    },
+    {
+      "source": "Blockworks",
+      "signal_type": "news",
+      "description": "'ETH derivatives reset' article suggests leverage flush creating cleaner positioning \u2014 potential setup for next directional move once sentiment stabilizes."
+    }
+  ],
   "_mode": "HUNTING",
-  "exit_target": null,
-  "stop_loss": null
+  "exit_target": 2000.0,
+  "stop_loss": 1750.0
 }
