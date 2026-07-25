@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-07-25T18:10:00.331275+00:00",
-  "selected_coin": "BTC",
-  "selected_coin_name": "Bitcoin",
-  "selected_coin_price": 64312,
-  "confidence": 25,
-  "layman_headline": "Fear grips the crypto market \u2014 no compelling swing trade setup found today.",
-  "layman_explanation": "The crypto market is in a fearful state with the sentiment index at 27 out of 100 and worsening. Bitcoin is flat around $64,300 while most altcoins are struggling or showing mixed signals. The candidates we screened either have terrible chart structures (like DEXE down 87% in a week), are overbought after recent runs (LDO, INJ), or lack enough data to form a conviction trade. High Bitcoin dominance at 56.5% means money is flowing away from altcoins, making alt swing trades riskier right now.",
-  "layman_action": "Stay patient and keep cash ready. The market mood is fearful but not at extreme panic levels where great buying opportunities typically emerge. Wait for clearer setups with better risk/reward ratios before deploying capital.",
-  "expert_reasoning": "Systematic review of all 9 candidates reveals no setup meeting swing trade criteria. BONK's RSI of 29 is the strongest single signal (RSI is 83% reliable per our signal credibility data), but the bearish chart bias (-0.7), downtrend structure, and -29.4% 5-day momentum suggest the oversold reading reflects genuine selling pressure rather than a bounce setup. AERO and INJ have slightly bullish chart structures but R/R ratios of 0.86x and 1.0x respectively \u2014 per validated Rule #9, sub-0.5x R/R should be rejected, and even 0.86-1.0x is structurally unfavorable for swing trading where we target 2:1 minimum. Fear & Greed at 27 with worsening trend suggests further downside risk. BTC dominance at 56.5% creates a hostile environment for altcoin longs. The prudent action is to wait for either deeper fear (sub-20) for contrarian entries or technical confirmation of trend reversals.",
+  "timestamp": "2026-07-25T19:10:00.927921+00:00",
+  "selected_coin": "ETH",
+  "selected_coin_name": "Ethereum",
+  "selected_coin_price": 1873.79,
+  "confidence": 30,
+  "layman_headline": "Market fear is keeping us on the sidelines \u2014 no clear swing trade setup yet.",
+  "layman_explanation": "The crypto market is in a 'Fear' state with sentiment trending worse day by day. Bitcoin is flat around $64,360 while most altcoins are weak. A few coins show interesting patterns \u2014 Ethereum has a bullish 'Three White Soldiers' candle pattern and MORPHO has strong chart signals \u2014 but the overall environment of high Bitcoin dominance and fearful sentiment makes it risky to jump into altcoins right now. We're watching closely but not pulling the trigger.",
+  "layman_action": "Stay patient. No new positions recommended this cycle. If you're looking to buy, wait for either fear to ease or for prices to dip closer to key support levels where risk/reward improves significantly.",
+  "expert_reasoning": "Evaluating all 9 candidates: MORPHO has the highest chart bias (+1.80) with Bullish Marubozu and Engulfing patterns, but its R/R is only 0.43x \u2014 per validated rule #9, trades below 0.5x R/R should be downgraded or capped at 35% confidence. This disqualifies MORPHO as a BUY. ETH offers R/R of 2.55x with Three White Soldiers and support at $1,900, but RSI at 44 is neutral, it's in a structural downtrend, and BTC dominance at 56.5% is actively hurting alts. SHIB's RSI of 28 (oversold) is interesting but it already surged 20% in 7 days \u2014 a classic divergence suggesting the RSI reading may be stale or the bounce already happened. Fear & Greed at 27 (worsening trend) combined with high BTC dominance creates a hostile environment for alt entries. No candidate presents a compelling enough setup to deploy capital.",
   "risk_factors": [
-    "Fear & Greed trending lower could push market into extreme fear territory, creating a sharp selloff across all alts",
-    "BTC dominance at 56.5% and rising squeezes altcoin liquidity \u2014 any BTC weakness would hit alts disproportionately",
-    "Ethereum ETF outflows ending their inflow streak may signal institutional risk-off positioning"
+    "Fear & Greed at 27 and worsening \u2014 could slip to Extreme Fear territory triggering further selling",
+    "BTC dominance at 56.5% actively suppressing altcoin performance across the board",
+    "Missing funding rate data on all candidates means we can't assess leverage positioning risk"
   ],
   "watch_list": [
-    "Fear & Greed Index \u2014 if it drops below 20 (Extreme Fear), contrarian BTC or ETH entries become viable",
-    "BONK RSI \u2014 if it stays below 30 while price stabilizes and forms a base, a bounce trade could emerge",
-    "BTC price action at $63,000 support \u2014 a breakdown there would invalidate all alt setups"
+    "ETH holding $1,900 support \u2014 a confirmed bounce here with improving volume would be actionable",
+    "Fear & Greed index \u2014 if it drops to 25 or below, apply validated rule #2 for BTC downside continuation",
+    "MORPHO price action \u2014 if it breaks above $2.10 resistance with volume, the R/R recalibrates favorably"
   ],
-  "market_context": "Crypto markets are in a fearful, risk-off environment with BTC flat at $64.3K and high dominance squeezing altcoins. No clear directional catalyst is present \u2014 the market is drifting lower in a low-conviction environment.",
-  "context_banner": "Fear-driven market with no swing setups meeting minimum risk/reward thresholds \u2014 capital preservation is the optimal strategy today.",
-  "btc_price": 64312,
+  "market_context": "Crypto market is in a fear state (27/100, worsening) with BTC flat at $64,360 and high dominance at 56.5%. Altcoins are broadly weak with the exception of meme coins DOGE and SHIB seeing short-term bounces, but these are chasing moves rather than clean setups.",
+  "context_banner": "Fear-driven market with high BTC dominance creates a hostile environment for new alt positions \u2014 discipline demands patience over action.",
+  "btc_price": 64360,
   "fear_greed": {
     "current": 27,
     "label": "Fear",
@@ -33,30 +33,30 @@
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Fear & Greed at 27 (Fear) with worsening trend from 28.7 weekly average \u2014 not yet extreme enough for contrarian buys but creates hostile environment for new longs."
+      "description": "Fear & Greed at 27 and worsening from yesterday's 28 and weekly average of 28.7 \u2014 sentiment deterioration argues against new positions."
     },
     {
       "source": "RSI",
       "signal_type": "technical",
-      "description": "BONK RSI at 29 is the only oversold reading among candidates, but bearish chart structure (-0.7 bias) and -29.4% 5-day momentum suggest this is a falling knife, not a bounce setup."
+      "description": "SHIB RSI at 28 is oversold but already bounced 20% in 7 days, suggesting the reversal may be priced in. ETH RSI at 44 is neutral \u2014 no extreme to trade."
     },
     {
       "source": "Chart Pattern Analysis",
       "signal_type": "technical",
-      "description": "Best R/R ratio among candidates is MON at 2.87x but with zero chart bias and no RSI data \u2014 insufficient conviction. AERO (0.86x) and LDO (0.15x) have structurally unfavorable R/R ratios."
+      "description": "MORPHO shows Bullish Marubozu + Engulfing with +1.80 bias but critically poor 0.43x R/R ratio disqualifies it per validated rule #9."
     },
     {
       "source": "CoinTelegraph",
       "signal_type": "news",
-      "description": "Ethereum ETFs closing the week in the red and ending a 5-day inflow streak signals institutional caution, reducing the bullish case for ETH and ETH-ecosystem plays like LDO and AERO."
+      "description": "Regulatory momentum (GENIUS Act, CLARITY Act, Bitcoin advocacy in State Dept) is positive medium-term but not an immediate catalyst for altcoin entries."
     },
     {
-      "source": "CoinDesk",
+      "source": "CryptoSlate",
       "signal_type": "news",
-      "description": "Sberbank crypto infrastructure and World Network funding are constructive long-term narratives but lack the immediacy needed for swing trade catalysts in the current fearful environment."
+      "description": "Samsung Wallet native stablecoin integration could drive massive adoption \u2014 bullish for crypto broadly but timeline uncertain."
     }
   ],
   "_mode": "HUNTING",
-  "exit_target": null,
-  "stop_loss": null
+  "exit_target": 2000.0,
+  "stop_loss": 1780.0
 }
