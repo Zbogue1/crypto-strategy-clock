@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-24T06:10:00.412743+00:00",
-    "coin": "BTC",
-    "price": 65240,
-    "signal": "HOLD",
-    "confidence": 0,
-    "score": null,
-    "fg": 28,
-    "btc_price": 65240,
-    "btc_dominance": 56.8,
-    "candidates": [
-      "GROK",
-      "KITE",
-      "MON",
-      "\u5e01\u5b89\u4eba\u751f",
-      "AERO",
-      "BONK",
-      "INJ",
-      "ETH",
-      "LDO"
-    ],
-    "alert": null
-  },
-  {
     "ts": "2026-07-24T07:10:00.676552+00:00",
     "coin": "BTC",
     "price": 65533,
@@ -942,5 +919,28 @@
       "LDO"
     ],
     "alert": null
+  },
+  {
+    "ts": "2026-07-25T23:10:00.934062+00:00",
+    "coin": "MORPHO",
+    "price": 2.0,
+    "signal": "HOLD",
+    "confidence": 30,
+    "score": 0.35,
+    "fg": 27,
+    "btc_price": 64362,
+    "btc_dominance": 56.5,
+    "candidates": [
+      "DEXE",
+      "SHIB",
+      "MON",
+      "Q",
+      "MORPHO",
+      "BONK",
+      "AERO",
+      "ETH",
+      "LDO"
+    ],
+    "alert": "Market fear worsening (27 \u2192 trending toward Extreme Fear). Monitor for potential capitulation event that could create high-conviction entries."
   }
 ]
