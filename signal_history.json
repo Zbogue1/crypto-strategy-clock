@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-23T08:10:00.484447+00:00",
-    "coin": "ETH",
-    "price": 1916.38,
-    "signal": "BUY",
-    "confidence": 58,
-    "score": 0.45,
-    "fg": 31,
-    "btc_price": 65443,
-    "btc_dominance": 56.6,
-    "candidates": [
-      "BCAP",
-      "DEXE",
-      "MON",
-      "NIGHT",
-      "BONK",
-      "UB",
-      "AERO",
-      "ETH",
-      "LDO"
-    ],
-    "alert": "Multiple protocol exploits totaling $59M (AFX Trade + others) signal elevated smart contract risk across the ecosystem."
-  },
-  {
     "ts": "2026-07-23T09:10:00.403757+00:00",
     "coin": "ETH",
     "price": 1928.17,
@@ -924,6 +901,30 @@
       "VIRTUAL",
       "AERO",
       "DASH",
+      "ETH",
+      "LDO",
+      "BONK"
+    ],
+    "alert": null
+  },
+  {
+    "ts": "2026-07-25T02:10:00.324989+00:00",
+    "coin": "BTC",
+    "price": 64032,
+    "signal": "HOLD",
+    "confidence": 0,
+    "score": null,
+    "fg": 27,
+    "btc_price": 64032,
+    "btc_dominance": 56.5,
+    "candidates": [
+      "DEXE",
+      "STX",
+      "USDG",
+      "WLD",
+      "MON",
+      "AERO",
+      "VIRTUAL",
       "ETH",
       "LDO",
       "BONK"
