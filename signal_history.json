@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-23T22:10:00.311144+00:00",
-    "coin": "ETH",
-    "price": 1882.07,
-    "signal": "HOLD",
-    "confidence": 38,
-    "score": 0.15,
-    "fg": 31,
-    "btc_price": 65156,
-    "btc_dominance": 56.7,
-    "candidates": [
-      "BCAP",
-      "GROK",
-      "UB",
-      "\u5e01\u5b89\u4eba\u751f",
-      "MON",
-      "BONK",
-      "AERO",
-      "ETH",
-      "LDO"
-    ],
-    "alert": "Bitcoin below $65K on Iran conflict escalation \u2014 avoid new alt positions until macro stabilizes"
-  },
-  {
     "ts": "2026-07-23T23:10:00.767699+00:00",
     "coin": "ETH",
     "price": 1882.52,
@@ -942,5 +919,28 @@
       "BONK"
     ],
     "alert": null
+  },
+  {
+    "ts": "2026-07-25T16:10:00.589996+00:00",
+    "coin": "ETH",
+    "price": 1865.02,
+    "signal": "HOLD",
+    "confidence": 30,
+    "score": 0.15,
+    "fg": 27,
+    "btc_price": 64109,
+    "btc_dominance": 56.5,
+    "candidates": [
+      "MON",
+      "WLD",
+      "AERO",
+      "PRIME",
+      "TRUMP",
+      "MORPHO",
+      "BONK",
+      "ETH",
+      "LDO"
+    ],
+    "alert": "Fear & Greed trending toward extreme fear (27, worsening). If it breaks below 25 with BTC in the $60-65K range, historical pattern suggests further downside \u2014 prepare defensive positioning."
   }
 ]
