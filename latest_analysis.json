@@ -1,26 +1,18 @@
 {
-  "timestamp": "2026-07-25T19:10:00.927921+00:00",
-  "selected_coin": "ETH",
-  "selected_coin_name": "Ethereum",
-  "selected_coin_price": 1873.79,
-  "confidence": 30,
-  "layman_headline": "Market fear is keeping us on the sidelines \u2014 no clear swing trade setup yet.",
-  "layman_explanation": "The crypto market is in a 'Fear' state with sentiment trending worse day by day. Bitcoin is flat around $64,360 while most altcoins are weak. A few coins show interesting patterns \u2014 Ethereum has a bullish 'Three White Soldiers' candle pattern and MORPHO has strong chart signals \u2014 but the overall environment of high Bitcoin dominance and fearful sentiment makes it risky to jump into altcoins right now. We're watching closely but not pulling the trigger.",
-  "layman_action": "Stay patient. No new positions recommended this cycle. If you're looking to buy, wait for either fear to ease or for prices to dip closer to key support levels where risk/reward improves significantly.",
-  "expert_reasoning": "Evaluating all 9 candidates: MORPHO has the highest chart bias (+1.80) with Bullish Marubozu and Engulfing patterns, but its R/R is only 0.43x \u2014 per validated rule #9, trades below 0.5x R/R should be downgraded or capped at 35% confidence. This disqualifies MORPHO as a BUY. ETH offers R/R of 2.55x with Three White Soldiers and support at $1,900, but RSI at 44 is neutral, it's in a structural downtrend, and BTC dominance at 56.5% is actively hurting alts. SHIB's RSI of 28 (oversold) is interesting but it already surged 20% in 7 days \u2014 a classic divergence suggesting the RSI reading may be stale or the bounce already happened. Fear & Greed at 27 (worsening trend) combined with high BTC dominance creates a hostile environment for alt entries. No candidate presents a compelling enough setup to deploy capital.",
-  "risk_factors": [
-    "Fear & Greed at 27 and worsening \u2014 could slip to Extreme Fear territory triggering further selling",
-    "BTC dominance at 56.5% actively suppressing altcoin performance across the board",
-    "Missing funding rate data on all candidates means we can't assess leverage positioning risk"
-  ],
-  "watch_list": [
-    "ETH holding $1,900 support \u2014 a confirmed bounce here with improving volume would be actionable",
-    "Fear & Greed index \u2014 if it drops to 25 or below, apply validated rule #2 for BTC downside continuation",
-    "MORPHO price action \u2014 if it breaks above $2.10 resistance with volume, the R/R recalibrates favorably"
-  ],
-  "market_context": "Crypto market is in a fear state (27/100, worsening) with BTC flat at $64,360 and high dominance at 56.5%. Altcoins are broadly weak with the exception of meme coins DOGE and SHIB seeing short-term bounces, but these are chasing moves rather than clean setups.",
-  "context_banner": "Fear-driven market with high BTC dominance creates a hostile environment for new alt positions \u2014 discipline demands patience over action.",
-  "btc_price": 64360,
+  "timestamp": "2026-07-25T20:10:00.480382+00:00",
+  "selected_coin": "BTC",
+  "selected_coin_name": "Bitcoin",
+  "selected_coin_price": 64306,
+  "confidence": 0,
+  "layman_headline": "Analysis error \u2014 try again shortly",
+  "layman_explanation": "The system encountered an error this cycle.",
+  "layman_action": "No action recommended until next run.",
+  "expert_reasoning": null,
+  "risk_factors": [],
+  "watch_list": [],
+  "market_context": null,
+  "context_banner": null,
+  "btc_price": 64306,
   "fear_greed": {
     "current": 27,
     "label": "Fear",
@@ -29,34 +21,8 @@
     "trend": "worsening"
   },
   "btc_dominance": 56.5,
-  "key_signals": [
-    {
-      "source": "Fear_Greed",
-      "signal_type": "sentiment",
-      "description": "Fear & Greed at 27 and worsening from yesterday's 28 and weekly average of 28.7 \u2014 sentiment deterioration argues against new positions."
-    },
-    {
-      "source": "RSI",
-      "signal_type": "technical",
-      "description": "SHIB RSI at 28 is oversold but already bounced 20% in 7 days, suggesting the reversal may be priced in. ETH RSI at 44 is neutral \u2014 no extreme to trade."
-    },
-    {
-      "source": "Chart Pattern Analysis",
-      "signal_type": "technical",
-      "description": "MORPHO shows Bullish Marubozu + Engulfing with +1.80 bias but critically poor 0.43x R/R ratio disqualifies it per validated rule #9."
-    },
-    {
-      "source": "CoinTelegraph",
-      "signal_type": "news",
-      "description": "Regulatory momentum (GENIUS Act, CLARITY Act, Bitcoin advocacy in State Dept) is positive medium-term but not an immediate catalyst for altcoin entries."
-    },
-    {
-      "source": "CryptoSlate",
-      "signal_type": "news",
-      "description": "Samsung Wallet native stablecoin integration could drive massive adoption \u2014 bullish for crypto broadly but timeline uncertain."
-    }
-  ],
+  "key_signals": [],
   "_mode": "HUNTING",
-  "exit_target": 2000.0,
-  "stop_loss": 1780.0
+  "exit_target": null,
+  "stop_loss": null
 }
