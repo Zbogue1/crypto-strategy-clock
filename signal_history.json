@@ -1,29 +1,5 @@
 [
   {
-    "ts": "2026-07-25T04:10:00.901625+00:00",
-    "coin": "ETH",
-    "price": 1858.94,
-    "signal": "HOLD",
-    "confidence": 30,
-    "score": 0.15,
-    "fg": 27,
-    "btc_price": 64064,
-    "btc_dominance": 56.5,
-    "candidates": [
-      "DEXE",
-      "USDG",
-      "STX",
-      "WLD",
-      "MON",
-      "AERO",
-      "VIRTUAL",
-      "ETH",
-      "LDO",
-      "BONK"
-    ],
-    "alert": "Fear & Greed at 27 and worsening \u2014 approaching extreme fear territory where capitulation selling can accelerate. Stay defensive."
-  },
-  {
     "ts": "2026-07-25T05:10:00.620082+00:00",
     "coin": "BTC",
     "price": 64112,
@@ -941,6 +917,30 @@
       "MON",
       "AERO",
       "AAVE",
+      "ETH",
+      "LDO",
+      "BONK"
+    ],
+    "alert": null
+  },
+  {
+    "ts": "2026-07-26T21:10:00.468623+00:00",
+    "coin": "BTC",
+    "price": 64628,
+    "signal": "HOLD",
+    "confidence": 0,
+    "score": null,
+    "fg": 26,
+    "btc_price": 64628,
+    "btc_dominance": 56.4,
+    "candidates": [
+      "DEXE",
+      "KAITO",
+      "UB",
+      "INJ",
+      "MON",
+      "AAVE",
+      "AERO",
       "ETH",
       "LDO",
       "BONK"
