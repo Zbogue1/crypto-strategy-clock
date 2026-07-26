@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-24T19:10:01.277548+00:00",
-    "coin": "ETH",
-    "price": 1858.52,
-    "signal": "HOLD",
-    "confidence": 30,
-    "score": 0.15,
-    "fg": 28,
-    "btc_price": 64126,
-    "btc_dominance": 56.6,
-    "candidates": [
-      "DEXE",
-      "USDG",
-      "STX",
-      "AERO",
-      "MON",
-      "UB",
-      "BONK",
-      "ETH",
-      "LDO"
-    ],
-    "alert": "Bitcoin dropped below $64K on bond yield surge; EU sanctions targeting $120B crypto network add regulatory uncertainty. Monitor for further downside before deploying capital."
-  },
-  {
     "ts": "2026-07-24T20:10:00.499629+00:00",
     "coin": "ETH",
     "price": 1861.69,
@@ -937,6 +914,30 @@
       "SHIB",
       "Q",
       "KAITO",
+      "VVV",
+      "PEPE",
+      "MON",
+      "ETH",
+      "LDO",
+      "BONK"
+    ],
+    "alert": null
+  },
+  {
+    "ts": "2026-07-26T12:10:00.487075+00:00",
+    "coin": "BTC",
+    "price": 64587,
+    "signal": "HOLD",
+    "confidence": 0,
+    "score": null,
+    "fg": 26,
+    "btc_price": 64587,
+    "btc_dominance": 56.5,
+    "candidates": [
+      "DEXE",
+      "PIEVERSE",
+      "KAITO",
+      "SHIB",
       "VVV",
       "PEPE",
       "MON",
