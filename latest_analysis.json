@@ -1,8 +1,8 @@
 {
-  "timestamp": "2026-07-26T06:10:00.974616+00:00",
+  "timestamp": "2026-07-26T07:10:00.480813+00:00",
   "selected_coin": "BTC",
   "selected_coin_name": "Bitcoin",
-  "selected_coin_price": 64326,
+  "selected_coin_price": 64368,
   "confidence": 0,
   "layman_headline": "Analysis error \u2014 try again shortly",
   "layman_explanation": "The system encountered an error this cycle.",
@@ -12,7 +12,7 @@
   "watch_list": [],
   "market_context": null,
   "context_banner": null,
-  "btc_price": 64326,
+  "btc_price": 64368,
   "fear_greed": {
     "current": 26,
     "label": "Fear",
