@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-07-24T09:10:00.912402+00:00",
-    "coin": "BTC",
-    "price": 65131,
-    "signal": "HOLD",
-    "confidence": 0,
-    "score": null,
-    "fg": 28,
-    "btc_price": 65131,
-    "btc_dominance": 56.7,
-    "candidates": [
-      "STX",
-      "MON",
-      "AERO",
-      "\u5e01\u5b89\u4eba\u751f",
-      "BONK",
-      "KITE",
-      "INJ",
-      "ETH",
-      "LDO"
-    ],
-    "alert": null
-  },
-  {
     "ts": "2026-07-24T10:10:00.852066+00:00",
     "coin": "BTC",
     "price": 65046,
@@ -941,5 +918,28 @@
       "LDO"
     ],
     "alert": null
+  },
+  {
+    "ts": "2026-07-26T02:10:00.924426+00:00",
+    "coin": "BTC",
+    "price": 64387,
+    "signal": "HOLD",
+    "confidence": 25,
+    "score": -0.35,
+    "fg": 26,
+    "btc_price": 64387,
+    "btc_dominance": 56.5,
+    "candidates": [
+      "DEXE",
+      "SHIB",
+      "MON",
+      "MORPHO",
+      "AERO",
+      "KAITO",
+      "BONK",
+      "ETH",
+      "LDO"
+    ],
+    "alert": "Fear & Greed trending toward Extreme Fear (26 \u2192 worsening). Monitor for potential capitulation buying opportunity if index drops below 20."
   }
 ]
