@@ -1,26 +1,18 @@
 {
-  "timestamp": "2026-07-26T04:10:00.664410+00:00",
-  "selected_coin": "ETH",
-  "selected_coin_name": "Ethereum",
-  "selected_coin_price": 1880.54,
-  "confidence": 28,
-  "layman_headline": "Fear grips the crypto market \u2014 patience beats impulse right now.",
-  "layman_explanation": "The overall crypto market is in a fearful state with a Fear & Greed index of 26 and worsening. Bitcoin dominance at 56.5% means money is flowing away from altcoins and toward Bitcoin, which makes altcoin swing trades riskier. Most candidates on the watchlist are either already overbought after recent rallies (KAITO at RSI 83, Q at RSI 77) or have terrible risk/reward ratios. The best approach is to wait for a cleaner setup rather than force a trade in unfavorable conditions.",
-  "layman_action": "Stay in cash and wait. If Ethereum drops to the $1,800 support level with rising volume, that could be a strong entry point. Don't chase coins that have already pumped 20-30% this week.",
-  "expert_reasoning": "Systematic review of all 10 candidates reveals no high-conviction swing entry. KAITO (RSI 83) and Q (RSI 77) are overbought \u2014 per validated rules, RSI is our most reliable signal at 83% win rate, and overbought readings are a clear avoid. DEXE dropped 89.7% in 7 days which looks like a structural break, not a bounce candidate. SHIB and BONK already pumped 30% and 13% respectively. MORPHO has a 0.25x R/R ratio \u2014 per Rule #9, trades below 0.5x R/R should be downgraded to HOLD. ETH is the cleanest candidate with RSI 41, stable price action, and $1,800 support \u2014 but at current price ($1,880) the R/R is only 0.34x, making immediate entry unfavorable. The correct play is to wait for a pullback to $1,800 support where R/R improves to ~1.0x.",
-  "risk_factors": [
-    "Fear & Greed at 26 and worsening could push to Extreme Fear territory, triggering further market-wide selloffs",
-    "BTC dominance at 56.5% actively suppresses altcoin performance \u2014 this headwind persists until rotation occurs",
-    "No funding rate data available for any candidate, reducing conviction on positioning dynamics"
-  ],
-  "watch_list": [
-    "ETH price action at $1,800 support \u2014 a bounce with volume would trigger a BUY signal",
-    "Fear & Greed index \u2014 if it drops below 20 (Extreme Fear), contrarian buy opportunities may emerge",
-    "BTC dominance trend \u2014 a reversal below 55% would signal the start of altcoin rotation"
-  ],
-  "market_context": "The crypto market is in a fear state (26/100, worsening trend) with Bitcoin dominance high at 56.5%, creating a hostile environment for altcoin swing trades. Most altcoins are either already extended from recent pumps or stuck in bearish structures.",
-  "context_banner": "Market fear and high BTC dominance create a 'wait for better entry' environment \u2014 discipline over impulse.",
-  "btc_price": 64481,
+  "timestamp": "2026-07-26T05:10:00.955594+00:00",
+  "selected_coin": "BTC",
+  "selected_coin_name": "Bitcoin",
+  "selected_coin_price": 64450,
+  "confidence": 0,
+  "layman_headline": "Analysis error \u2014 try again shortly",
+  "layman_explanation": "The system encountered an error this cycle.",
+  "layman_action": "No action recommended until next run.",
+  "expert_reasoning": null,
+  "risk_factors": [],
+  "watch_list": [],
+  "market_context": null,
+  "context_banner": null,
+  "btc_price": 64450,
   "fear_greed": {
     "current": 26,
     "label": "Fear",
@@ -29,34 +21,8 @@
     "trend": "worsening"
   },
   "btc_dominance": 56.5,
-  "key_signals": [
-    {
-      "source": "Fear_Greed",
-      "signal_type": "sentiment",
-      "description": "Fear & Greed at 26 and worsening for the past week (avg 28.4) \u2014 market conditions unfavorable for aggressive altcoin entries."
-    },
-    {
-      "source": "RSI",
-      "signal_type": "technical",
-      "description": "KAITO RSI 83 and Q RSI 77 are overbought, ruling out the two strongest-momentum candidates. ETH RSI 41 is approaching oversold but not yet at the entry sweet spot."
-    },
-    {
-      "source": "Chart Pattern Analysis",
-      "signal_type": "technical",
-      "description": "MORPHO (0.25x R/R) and ETH (0.34x R/R) both fail the 0.5x minimum R/R threshold from validated Rule #9, mechanically capping confidence and preventing entry."
-    },
-    {
-      "source": "CryptoSlate",
-      "signal_type": "news",
-      "description": "Samsung Wallet native stablecoin integration could benefit Ethereum ecosystem long-term, but is not an immediate catalyst for price movement."
-    },
-    {
-      "source": "Blockworks",
-      "signal_type": "news",
-      "description": "ETH derivatives reset signals potential positioning cleanup, which could precede a directional move \u2014 worth monitoring for timing the next entry."
-    }
-  ],
+  "key_signals": [],
   "_mode": "HUNTING",
-  "exit_target": 2050.0,
-  "stop_loss": 1720.0
+  "exit_target": null,
+  "stop_loss": null
 }
