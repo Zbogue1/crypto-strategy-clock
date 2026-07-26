@@ -1,18 +1,26 @@
 {
-  "timestamp": "2026-07-26T16:10:00.379240+00:00",
-  "selected_coin": "BTC",
-  "selected_coin_name": "Bitcoin",
-  "selected_coin_price": 64668,
-  "confidence": 0,
-  "layman_headline": "Analysis error \u2014 try again shortly",
-  "layman_explanation": "The system encountered an error this cycle.",
-  "layman_action": "No action recommended until next run.",
-  "expert_reasoning": null,
-  "risk_factors": [],
-  "watch_list": [],
-  "market_context": null,
-  "context_banner": null,
-  "btc_price": 64668,
+  "timestamp": "2026-07-26T17:10:00.312565+00:00",
+  "selected_coin": "ETH",
+  "selected_coin_name": "Ethereum",
+  "selected_coin_price": 1912.98,
+  "confidence": 28,
+  "layman_headline": "Fear grips the crypto market \u2014 no clear swing trade setups yet, patience is the play.",
+  "layman_explanation": "The crypto market is in a fearful state with the Fear & Greed index at 26 and worsening. Bitcoin is flat around $64,600 while most altcoins show bearish chart structures. Some coins like SHIB and KAITO have already surged 20%+ this week making them risky to chase, while the oversold coins like DEXE crashed 89% in a week \u2014 that's a structural collapse, not a dip to buy. The best potential setup is Ethereum near $1,900 with an RSI approaching oversold, but its risk/reward ratio at current levels is only 0.38x, which is structurally unfavorable.",
+  "layman_action": "Stay in cash for now. If Ethereum pulls back to $1,800 support, that becomes a much better entry with a proper risk/reward ratio. Don't chase coins that already pumped this week.",
+  "expert_reasoning": "Applying validated rules systematically: Fear & Greed at 26 is near the extreme fear threshold of 25 (Rule #2), suggesting continued short-term downside risk. ETH's chart R/R is 0.38x, well below the 0.5x threshold from Rule #9, which mandates HOLD or confidence cap at 35%. BTC dominance at 56.4% is headwind for altcoins. KAITO at RSI 83 is overbought \u2014 chasing a +23% weekly move is high-risk. DEXE's -89% weekly crash signals fundamental distress, not a mean-reversion opportunity. SHIB lacks RSI data and chart analysis, failing the circuit breaker logic (Rule #3). The best actionable plan is to wait for ETH to reach $1,800 support where the setup becomes favorable.",
+  "risk_factors": [
+    "Fear & Greed trending toward extreme fear (26 \u2192 potentially sub-25) could trigger further market-wide selling",
+    "BTC dominance at 56.4% and rising means altcoin capital rotation is unfavorable \u2014 alts underperform in this regime",
+    "ETH's R/R at current price is only 0.38x \u2014 entering here means risking more than you stand to gain near-term"
+  ],
+  "watch_list": [
+    "ETH price approaching $1,800 support \u2014 that's where the swing entry becomes actionable with proper R/R",
+    "Fear & Greed index \u2014 if it drops below 25 into Extreme Fear, expect short-term downside continuation per validated Rule #2",
+    "SHIB momentum \u2014 the 36% surge driven by South Korean traders could signal broader meme rotation if it sustains"
+  ],
+  "market_context": "Market is in a fear state with BTC flat at $64.6K and high BTC dominance squeezing alts. The Blockworks note on ETH derivatives resetting hints at potential positioning shifts, but macro sentiment remains cautious with the Fear & Greed index worsening day-over-day.",
+  "context_banner": "Fear-driven market with no high-conviction swing setups \u2014 disciplined patience beats forced entries when risk/reward is below 0.5x.",
+  "btc_price": 64652,
   "fear_greed": {
     "current": 26,
     "label": "Fear",
@@ -21,8 +29,34 @@
     "trend": "worsening"
   },
   "btc_dominance": 56.4,
-  "key_signals": [],
+  "key_signals": [
+    {
+      "source": "Fear_Greed",
+      "signal_type": "sentiment",
+      "description": "Fear & Greed at 26 and worsening \u2014 near the extreme fear threshold of 25, historically preceding short-term downside continuation per validated rules."
+    },
+    {
+      "source": "RSI",
+      "signal_type": "technical",
+      "description": "ETH RSI at 41 is approaching oversold territory, making it the strongest potential bounce candidate \u2014 but only at lower price levels with better R/R."
+    },
+    {
+      "source": "Chart Pattern Analysis",
+      "signal_type": "technical",
+      "description": "ETH chart shows 0.38x risk/reward at current price \u2014 Rule #9 mandates HOLD when R/R is below 0.5x regardless of other signals."
+    },
+    {
+      "source": "CoinTelegraph",
+      "signal_type": "news",
+      "description": "Bitcoin OG selling easing with dormant BTC movement at 4-year low suggests reduced sell pressure \u2014 mildly constructive for medium-term but doesn't offset near-term fear."
+    },
+    {
+      "source": "Blockworks",
+      "signal_type": "news",
+      "description": "ETH derivatives reset flagged \u2014 could signal positioning flush that precedes a bounce, supporting the thesis to buy ETH at support rather than chase current levels."
+    }
+  ],
   "_mode": "HUNTING",
-  "exit_target": null,
-  "stop_loss": null
+  "exit_target": 2050.0,
+  "stop_loss": 1720.0
 }
