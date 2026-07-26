@@ -1,26 +1,18 @@
 {
-  "timestamp": "2026-07-26T00:10:01.223163+00:00",
+  "timestamp": "2026-07-26T01:10:00.665836+00:00",
   "selected_coin": "BTC",
   "selected_coin_name": "Bitcoin",
-  "selected_coin_price": 64370,
-  "confidence": 25,
-  "layman_headline": "Fear grips the crypto market \u2014 no clear swing trade setup stands out right now.",
-  "layman_explanation": "The crypto market is in a state of fear with the Fear & Greed Index at 26 and trending worse. Bitcoin is hovering around $64,370 with high dominance at 56.5%, which means altcoins are generally getting squeezed. All the swing trade candidates show bearish chart structures \u2014 prices below their moving averages, downtrends, and no strong reversal signals. The best move right now is patience.",
-  "layman_action": "Stay on the sidelines and keep your cash ready. Wait for the market fear to stabilize or for a clear technical reversal pattern before jumping in. There's no rush \u2014 better setups will come.",
-  "expert_reasoning": "Systematic review of all 9 candidates reveals uniformly bearish chart structures. DEXE dropped 86.6% in 7 days \u2014 while mean-reversion is tempting, the RSI at 39 isn't even oversold yet, and catching a falling knife with no support confirmation violates risk management. BONK and PENGU have RSIs near 30 with bullish engulfing on BONK, but these are meme coins in a high-BTC-dominance environment \u2014 historically the worst time for meme coin longs. ETH has a 0.34x risk/reward ratio per its own chart analysis, which per validated rule #9 should cap confidence at 35% or downgrade to HOLD. LDO's 0.42x R/R is similarly unfavorable. The Fear & Greed at 26 (near the validated rule threshold of 25 for bearish continuation) with a worsening trend adds macro headwind. No funding rate data is available for any candidate, removing a key signal. With fewer than 3 core signals returning valid data for most candidates, the responsible action per validated rule #3 is to exercise extreme caution.",
-  "risk_factors": [
-    "Fear & Greed at 26 and worsening \u2014 could drop to Extreme Fear territory, triggering further selloffs",
-    "BTC dominance at 56.5% actively suppressing altcoin performance \u2014 any BTC weakness would hit alts harder",
-    "All candidates below key moving averages with no confirmed reversal patterns \u2014 buying here is catching knives"
-  ],
-  "watch_list": [
-    "Fear & Greed Index \u2014 watch for stabilization above 30 or capitulation below 20 as actionable signals",
-    "BONK RSI approaching 30 with bullish engulfing \u2014 if RSI drops below 25 with volume confirmation, could be a bounce trade",
-    "Samsung stablecoin integration news \u2014 could catalyze specific token if the 'one token' for 800M users is identified"
-  ],
-  "market_context": "The crypto market is in a fear-driven consolidation phase with BTC at $64,370 and dominance rising. Altcoins are broadly weak, making this a poor environment for new swing entries until either fear capitulates or BTC dominance rolls over.",
-  "context_banner": "Market fear is intensifying with no clear reversal signals \u2014 disciplined traders wait for better setups rather than force trades in hostile conditions.",
-  "btc_price": 64370,
+  "selected_coin_price": 64442,
+  "confidence": 0,
+  "layman_headline": "Analysis error \u2014 try again shortly",
+  "layman_explanation": "The system encountered an error this cycle.",
+  "layman_action": "No action recommended until next run.",
+  "expert_reasoning": null,
+  "risk_factors": [],
+  "watch_list": [],
+  "market_context": null,
+  "context_banner": null,
+  "btc_price": 64442,
   "fear_greed": {
     "current": 26,
     "label": "Fear",
@@ -29,33 +21,7 @@
     "trend": "worsening"
   },
   "btc_dominance": 56.5,
-  "key_signals": [
-    {
-      "source": "Fear_Greed",
-      "signal_type": "sentiment",
-      "description": "Fear & Greed at 26 with worsening trend (yesterday 27, week avg 28.4) \u2014 approaching extreme fear threshold of 25 which historically precedes further downside per validated rules."
-    },
-    {
-      "source": "RSI",
-      "signal_type": "technical",
-      "description": "Best RSI readings are BONK (30.7) and PENGU (30.4) approaching oversold, but neither has confirmed reversal \u2014 RSI alone isn't sufficient without volume and pattern confirmation."
-    },
-    {
-      "source": "Chart Pattern Analysis",
-      "signal_type": "technical",
-      "description": "All candidates show bearish chart bias scores (-0.4 to -1.4) with prices below moving averages \u2014 no bullish chart setup exists among the candidates."
-    },
-    {
-      "source": "CryptoSlate",
-      "signal_type": "news",
-      "description": "Samsung Wallet native stablecoin integration for 800M users is a significant adoption catalyst but the beneficiary token is unclear and the impact is medium-term, not swing-tradeable today."
-    },
-    {
-      "source": "CoinTelegraph",
-      "signal_type": "news",
-      "description": "Legislative progress (GENIUS Act, CLARITY Act) and institutional moves (Fidelity, Robinhood) are constructive for crypto broadly but not generating immediate price catalysts for specific tokens."
-    }
-  ],
+  "key_signals": [],
   "_mode": "HUNTING",
   "exit_target": null,
   "stop_loss": null
