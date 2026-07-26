@@ -1,26 +1,18 @@
 {
-  "timestamp": "2026-07-26T20:10:00.404332+00:00",
-  "selected_coin": "ETH",
-  "selected_coin_name": "Ethereum",
-  "selected_coin_price": 1912.24,
-  "confidence": 28,
-  "layman_headline": "Fearful market with no compelling setups \u2014 patience is the play right now.",
-  "layman_explanation": "The crypto market is in a 'Fear' state with the sentiment index at 26 and worsening. Bitcoin is stuck around $64,600, and most altcoins are either in downtrends or have already bounced too far to offer good entry points. While Ethereum has a mildly oversold RSI and some positive momentum, the risk/reward on the chart is poor at just 0.38x, and Bitcoin dominance at 56.4% means money is flowing away from altcoins. No candidate passes enough quality checks to justify deploying capital today.",
-  "layman_action": "Stay in cash and wait. The market is fearful but hasn't reached the kind of extreme levels that reliably produce bounce trades. Watch for Ethereum to pull back toward $1,800 support \u2014 that would be a much better entry with proper risk/reward.",
-  "expert_reasoning": "Applying validated rules: Fear & Greed at 26 is near the extreme fear threshold (Rule 2) but BTC is at $64.6K which is in the historically cautious $60K-$65K range. Most candidates suffer from either bearish chart structures (DEXE -0.7, AERO -1.4, MON -0.7) or are overbought after rallies (KAITO RSI 83, SHIB +28.9% 7d). ETH is the best relative setup but Rule 9 mandates caution when R/R is below 0.5x \u2014 the chart shows 0.38x R/R. Multiple signals lack funding rate data, and no MACD crosses are confirmed across any candidate. With BTC dominance at 56.4% compressing alt performance and Fear & Greed worsening, the environment favors waiting for a deeper pullback to support rather than chasing current levels. Confidence capped per Rule 7 given limited signal availability across candidates.",
-  "risk_factors": [
-    "Fear & Greed trending worse (27\u219226) could accelerate into extreme fear below 25, triggering further sell pressure",
-    "BTC dominance at 56.4% continues to drain liquidity from altcoins \u2014 any BTC weakness amplifies alt drawdowns",
-    "No funding rate data available for any candidate \u2014 we cannot assess leverage positioning or liquidation risk"
-  ],
-  "watch_list": [
-    "ETH price action at $1,800 support \u2014 a test and hold there with RSI below 35 would be an actionable buy setup",
-    "Fear & Greed Index \u2014 if it drops below 20 (extreme fear), contrarian bounce setups become more probable",
-    "SHIB follow-through \u2014 if the South Korean-driven rally sustains above +30% weekly with volume confirmation, it could have legs"
-  ],
-  "market_context": "The crypto market is in a Fear state (26/100, worsening) with BTC consolidating near $64,600 and high dominance at 56.4% suppressing altcoin performance. Most altcoins are in structural downtrends with poor risk/reward at current levels.",
-  "context_banner": "Fear-driven market with no high-conviction swing setups \u2014 disciplined patience protects capital better than forced entries.",
-  "btc_price": 64651,
+  "timestamp": "2026-07-26T21:10:00.468623+00:00",
+  "selected_coin": "BTC",
+  "selected_coin_name": "Bitcoin",
+  "selected_coin_price": 64628,
+  "confidence": 0,
+  "layman_headline": "Analysis error \u2014 try again shortly",
+  "layman_explanation": "The system encountered an error this cycle.",
+  "layman_action": "No action recommended until next run.",
+  "expert_reasoning": null,
+  "risk_factors": [],
+  "watch_list": [],
+  "market_context": null,
+  "context_banner": null,
+  "btc_price": 64628,
   "fear_greed": {
     "current": 26,
     "label": "Fear",
@@ -29,34 +21,8 @@
     "trend": "worsening"
   },
   "btc_dominance": 56.4,
-  "key_signals": [
-    {
-      "source": "Fear_Greed",
-      "signal_type": "sentiment",
-      "description": "Fear & Greed at 26 (Fear) and worsening from 27 yesterday \u2014 approaching extreme fear territory that has historically preceded short-term downside continuation in the $60K-$65K BTC range."
-    },
-    {
-      "source": "RSI",
-      "signal_type": "technical",
-      "description": "ETH RSI at 41.24 is the best oversold reading among liquid candidates, but not yet at the 30 level that produces high-probability bounce trades."
-    },
-    {
-      "source": "Chart Pattern Analysis",
-      "signal_type": "technical",
-      "description": "ETH chart shows 0.38x risk/reward ratio \u2014 per validated Rule 9, trades below 0.5x R/R should be downgraded or confidence capped, making current levels unfavorable for entry."
-    },
-    {
-      "source": "CoinDesk",
-      "signal_type": "news",
-      "description": "Shiba Inu 36% surge driven by South Korean traders is speculative momentum without sustainable catalyst; BitMart shutdown removes liquidity but is exchange-specific."
-    },
-    {
-      "source": "CoinTelegraph",
-      "signal_type": "news",
-      "description": "Bitcoin OG selling easing with dormant BTC movement at 4-year low suggests reduced sell pressure from long-term holders \u2014 mildly supportive for BTC stabilization."
-    }
-  ],
+  "key_signals": [],
   "_mode": "HUNTING",
-  "exit_target": 2050.0,
-  "stop_loss": 1720.0
+  "exit_target": null,
+  "stop_loss": null
 }
