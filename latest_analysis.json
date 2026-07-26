@@ -1,8 +1,8 @@
 {
-  "timestamp": "2026-07-26T15:10:00.336851+00:00",
+  "timestamp": "2026-07-26T16:10:00.379240+00:00",
   "selected_coin": "BTC",
   "selected_coin_name": "Bitcoin",
-  "selected_coin_price": 64665,
+  "selected_coin_price": 64668,
   "confidence": 0,
   "layman_headline": "Analysis error \u2014 try again shortly",
   "layman_explanation": "The system encountered an error this cycle.",
@@ -12,7 +12,7 @@
   "watch_list": [],
   "market_context": null,
   "context_banner": null,
-  "btc_price": 64665,
+  "btc_price": 64668,
   "fear_greed": {
     "current": 26,
     "label": "Fear",
@@ -20,7 +20,7 @@
     "week_avg": 28.4,
     "trend": "worsening"
   },
-  "btc_dominance": 56.5,
+  "btc_dominance": 56.4,
   "key_signals": [],
   "_mode": "HUNTING",
   "exit_target": null,
