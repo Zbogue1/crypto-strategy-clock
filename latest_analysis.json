@@ -1,31 +1,31 @@
 {
-  "timestamp": "2026-07-25T23:10:00.934062+00:00",
-  "selected_coin": "MORPHO",
-  "selected_coin_name": "Morpho",
-  "selected_coin_price": 2.0,
-  "confidence": 30,
-  "layman_headline": "Fear grips the market \u2014 best to wait for a cleaner setup before jumping in.",
-  "layman_explanation": "The crypto market is sitting in 'Fear' territory with a score of 27 out of 100, and that mood has been getting worse all week. Bitcoin is flat around $64,300 while most altcoins are struggling under high Bitcoin dominance. The best-looking chart right now is Morpho, which shows strong bullish candle patterns, but its risk-to-reward ratio of only 0.43x means the potential upside doesn't justify the downside risk for a new entry. No candidate today offers a compelling enough setup to risk capital.",
-  "layman_action": "Stay on the sidelines for now. Keep cash ready. If Morpho pulls back to around $1.95 or the Fear & Greed index drops below 20 (extreme fear), that could create a better buying opportunity. Patience pays in fearful markets.",
-  "expert_reasoning": "Applying validated Rule #9: MORPHO's risk/reward ratio is 0.43x, which is below the 0.5x threshold. This mechanically caps confidence at 35% and warrants a HOLD rather than a BUY regardless of the bullish chart patterns. The Fear & Greed index at 27 with a worsening trend adds macro headwinds \u2014 per validated rules, this is a weak bearish signal for the overall market. BTC dominance at 56.5% is hostile to altcoin trades. While MORPHO's +1.80 chart bias is genuinely strong (Bullish Marubozu + Bullish Engulfing are high-conviction patterns per our signal credibility data showing 67% win rate for chart patterns), the resistance at $2.10 is only 1.4% away versus 3.4% to support \u2014 entering here means chasing into resistance. ETH showed a decent Three White Soldiers pattern with a better 2.55x R/R, but its chart bias is only +0.30 and RSI is neutral, making it a weaker overall setup. DEXE's -86.4% weekly crash is a falling knife, not a mean-reversion setup. The prudent call is to wait for MORPHO to retest $1.95 support or for broader market fear to capitulate.",
+  "timestamp": "2026-07-26T00:10:01.223163+00:00",
+  "selected_coin": "BTC",
+  "selected_coin_name": "Bitcoin",
+  "selected_coin_price": 64370,
+  "confidence": 25,
+  "layman_headline": "Fear grips the crypto market \u2014 no clear swing trade setup stands out right now.",
+  "layman_explanation": "The crypto market is in a state of fear with the Fear & Greed Index at 26 and trending worse. Bitcoin is hovering around $64,370 with high dominance at 56.5%, which means altcoins are generally getting squeezed. All the swing trade candidates show bearish chart structures \u2014 prices below their moving averages, downtrends, and no strong reversal signals. The best move right now is patience.",
+  "layman_action": "Stay on the sidelines and keep your cash ready. Wait for the market fear to stabilize or for a clear technical reversal pattern before jumping in. There's no rush \u2014 better setups will come.",
+  "expert_reasoning": "Systematic review of all 9 candidates reveals uniformly bearish chart structures. DEXE dropped 86.6% in 7 days \u2014 while mean-reversion is tempting, the RSI at 39 isn't even oversold yet, and catching a falling knife with no support confirmation violates risk management. BONK and PENGU have RSIs near 30 with bullish engulfing on BONK, but these are meme coins in a high-BTC-dominance environment \u2014 historically the worst time for meme coin longs. ETH has a 0.34x risk/reward ratio per its own chart analysis, which per validated rule #9 should cap confidence at 35% or downgrade to HOLD. LDO's 0.42x R/R is similarly unfavorable. The Fear & Greed at 26 (near the validated rule threshold of 25 for bearish continuation) with a worsening trend adds macro headwind. No funding rate data is available for any candidate, removing a key signal. With fewer than 3 core signals returning valid data for most candidates, the responsible action per validated rule #3 is to exercise extreme caution.",
   "risk_factors": [
-    "Fear & Greed worsening trend (27 \u2192 potentially sub-25 Extreme Fear) could trigger broader sell-offs that drag even bullish-chart coins lower",
-    "BTC dominance at 56.5% creates sustained headwinds for all altcoin positions",
-    "MORPHO's 0.43x R/R means a losing trade would cost more than a winning trade would gain \u2014 structurally unfavorable"
+    "Fear & Greed at 26 and worsening \u2014 could drop to Extreme Fear territory, triggering further selloffs",
+    "BTC dominance at 56.5% actively suppressing altcoin performance \u2014 any BTC weakness would hit alts harder",
+    "All candidates below key moving averages with no confirmed reversal patterns \u2014 buying here is catching knives"
   ],
   "watch_list": [
-    "MORPHO price action near $2.00 support \u2014 a bounce here with volume would create a proper entry",
-    "Fear & Greed index trajectory \u2014 if it drops to Extreme Fear (<20), contrarian opportunities emerge",
-    "ETH breaking above $2,000 resistance \u2014 would confirm Three White Soldiers pattern and signal broader alt recovery"
+    "Fear & Greed Index \u2014 watch for stabilization above 30 or capitulation below 20 as actionable signals",
+    "BONK RSI approaching 30 with bullish engulfing \u2014 if RSI drops below 25 with volume confirmation, could be a bounce trade",
+    "Samsung stablecoin integration news \u2014 could catalyze specific token if the 'one token' for 800M users is identified"
   ],
-  "market_context": "The crypto market is in a fearful state (F&G: 27, worsening) with BTC flat at $64.3K and high dominance at 56.5%, creating a hostile environment for altcoin swing trades. Most candidates show bearish chart structures with poor risk/reward ratios.",
-  "context_banner": "Fear-driven market with high BTC dominance makes altcoin entries structurally risky \u2014 discipline demands patience over FOMO.",
-  "btc_price": 64362,
+  "market_context": "The crypto market is in a fear-driven consolidation phase with BTC at $64,370 and dominance rising. Altcoins are broadly weak, making this a poor environment for new swing entries until either fear capitulates or BTC dominance rolls over.",
+  "context_banner": "Market fear is intensifying with no clear reversal signals \u2014 disciplined traders wait for better setups rather than force trades in hostile conditions.",
+  "btc_price": 64370,
   "fear_greed": {
-    "current": 27,
+    "current": 26,
     "label": "Fear",
-    "yesterday": 28,
-    "week_avg": 28.7,
+    "yesterday": 27,
+    "week_avg": 28.4,
     "trend": "worsening"
   },
   "btc_dominance": 56.5,
@@ -33,30 +33,30 @@
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Fear & Greed at 27 with worsening trend from 28.7 weekly average signals continued risk-off sentiment \u2014 per validated rules this is a weak bearish signal."
-    },
-    {
-      "source": "Chart Pattern Analysis",
-      "signal_type": "technical",
-      "description": "MORPHO's +1.80 chart bias with Bullish Marubozu and Bullish Engulfing is the strongest bullish signal across all candidates, but undermined by 0.43x R/R."
+      "description": "Fear & Greed at 26 with worsening trend (yesterday 27, week avg 28.4) \u2014 approaching extreme fear threshold of 25 which historically precedes further downside per validated rules."
     },
     {
       "source": "RSI",
       "signal_type": "technical",
-      "description": "SHIB RSI at 28 (oversold) is notable but the meme coin has already rallied 17% in 7 days, suggesting the oversold reading is lagging \u2014 unreliable bounce signal."
+      "description": "Best RSI readings are BONK (30.7) and PENGU (30.4) approaching oversold, but neither has confirmed reversal \u2014 RSI alone isn't sufficient without volume and pattern confirmation."
+    },
+    {
+      "source": "Chart Pattern Analysis",
+      "signal_type": "technical",
+      "description": "All candidates show bearish chart bias scores (-0.4 to -1.4) with prices below moving averages \u2014 no bullish chart setup exists among the candidates."
+    },
+    {
+      "source": "CryptoSlate",
+      "signal_type": "news",
+      "description": "Samsung Wallet native stablecoin integration for 800M users is a significant adoption catalyst but the beneficiary token is unclear and the impact is medium-term, not swing-tradeable today."
     },
     {
       "source": "CoinTelegraph",
       "signal_type": "news",
-      "description": "Regulatory momentum with GENIUS Act and CLARITY Act pushing through Senate suggests medium-term structural tailwinds, but no immediate catalyst for current swing candidates."
-    },
-    {
-      "source": "CoinDesk",
-      "signal_type": "news",
-      "description": "Sberbank crypto infrastructure plans and Robinhood Chain RWA growth signal institutional adoption progress, but these are macro themes not tied to any swing candidate's short-term price action."
+      "description": "Legislative progress (GENIUS Act, CLARITY Act) and institutional moves (Fidelity, Robinhood) are constructive for crypto broadly but not generating immediate price catalysts for specific tokens."
     }
   ],
   "_mode": "HUNTING",
-  "exit_target": 2.2,
-  "stop_loss": 1.85
+  "exit_target": null,
+  "stop_loss": null
 }
