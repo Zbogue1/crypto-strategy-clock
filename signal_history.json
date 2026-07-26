@@ -1,29 +1,5 @@
 [
   {
-    "ts": "2026-07-24T15:10:01.095027+00:00",
-    "coin": "ETH",
-    "price": 1854.35,
-    "signal": "BUY",
-    "confidence": 42,
-    "score": 0.35,
-    "fg": 28,
-    "btc_price": 63836,
-    "btc_dominance": 56.5,
-    "candidates": [
-      "DEXE",
-      "USDG",
-      "STX",
-      "MON",
-      "AERO",
-      "UB",
-      "VIRTUAL",
-      "ETH",
-      "LDO",
-      "BONK"
-    ],
-    "alert": "BTC broke below $64K on macro headwinds \u2014 all altcoin positions carry elevated risk. Size positions conservatively."
-  },
-  {
     "ts": "2026-07-24T16:10:01.007356+00:00",
     "coin": "BTC",
     "price": 64068,
@@ -939,6 +915,30 @@
       "VVV",
       "PEPE",
       "MON",
+      "ETH",
+      "LDO",
+      "BONK"
+    ],
+    "alert": null
+  },
+  {
+    "ts": "2026-07-26T08:10:00.421069+00:00",
+    "coin": "BTC",
+    "price": 64308,
+    "signal": "HOLD",
+    "confidence": 0,
+    "score": null,
+    "fg": 26,
+    "btc_price": 64308,
+    "btc_dominance": 56.4,
+    "candidates": [
+      "DEXE",
+      "PIEVERSE",
+      "SHIB",
+      "Q",
+      "PEPE",
+      "MON",
+      "VVV",
       "ETH",
       "LDO",
       "BONK"
