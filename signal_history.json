@@ -1,29 +1,5 @@
 [
   {
-    "ts": "2026-07-25T05:10:00.620082+00:00",
-    "coin": "BTC",
-    "price": 64112,
-    "signal": "HOLD",
-    "confidence": 0,
-    "score": null,
-    "fg": 27,
-    "btc_price": 64112,
-    "btc_dominance": 56.5,
-    "candidates": [
-      "DEXE",
-      "USDG",
-      "WLD",
-      "STX",
-      "MON",
-      "AERO",
-      "VIRTUAL",
-      "ETH",
-      "LDO",
-      "BONK"
-    ],
-    "alert": null
-  },
-  {
     "ts": "2026-07-25T06:10:00.690114+00:00",
     "coin": "BTC",
     "price": 63988,
@@ -941,6 +917,30 @@
       "MON",
       "AAVE",
       "AERO",
+      "ETH",
+      "LDO",
+      "BONK"
+    ],
+    "alert": null
+  },
+  {
+    "ts": "2026-07-26T22:10:00.338467+00:00",
+    "coin": "BTC",
+    "price": 65106,
+    "signal": "HOLD",
+    "confidence": 0,
+    "score": null,
+    "fg": 26,
+    "btc_price": 65106,
+    "btc_dominance": 56.4,
+    "candidates": [
+      "DEXE",
+      "KAITO",
+      "UB",
+      "MON",
+      "SHIB",
+      "AAVE",
+      "PEPE",
       "ETH",
       "LDO",
       "BONK"
