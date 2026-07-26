@@ -1,29 +1,5 @@
 [
   {
-    "ts": "2026-07-24T20:10:00.499629+00:00",
-    "coin": "ETH",
-    "price": 1861.69,
-    "signal": "HOLD",
-    "confidence": 30,
-    "score": 0.15,
-    "fg": 28,
-    "btc_price": 64156,
-    "btc_dominance": 56.5,
-    "candidates": [
-      "DEXE",
-      "USDG",
-      "STX",
-      "UB",
-      "AERO",
-      "MON",
-      "VIRTUAL",
-      "ETH",
-      "LDO",
-      "BONK"
-    ],
-    "alert": "BTC fell under $64K on surging bond yields \u2014 monitor for potential acceleration to downside if $63,500 support breaks."
-  },
-  {
     "ts": "2026-07-24T21:10:00.803816+00:00",
     "coin": "BTC",
     "price": 64105,
@@ -941,6 +917,30 @@
       "VVV",
       "PEPE",
       "MON",
+      "ETH",
+      "LDO",
+      "BONK"
+    ],
+    "alert": null
+  },
+  {
+    "ts": "2026-07-26T13:10:00.499591+00:00",
+    "coin": "BTC",
+    "price": 64379,
+    "signal": "HOLD",
+    "confidence": 0,
+    "score": null,
+    "fg": 26,
+    "btc_price": 64379,
+    "btc_dominance": 56.4,
+    "candidates": [
+      "DEXE",
+      "KAITO",
+      "SHIB",
+      "PEPE",
+      "VVV",
+      "MON",
+      "AVAX",
       "ETH",
       "LDO",
       "BONK"
