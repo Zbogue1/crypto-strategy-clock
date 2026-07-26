@@ -1,29 +1,5 @@
 [
   {
-    "ts": "2026-07-25T01:10:01.036014+00:00",
-    "coin": "BTC",
-    "price": 64044,
-    "signal": "HOLD",
-    "confidence": 0,
-    "score": null,
-    "fg": 27,
-    "btc_price": 64044,
-    "btc_dominance": 56.5,
-    "candidates": [
-      "DEXE",
-      "STX",
-      "USDG",
-      "WLD",
-      "VIRTUAL",
-      "AERO",
-      "DASH",
-      "ETH",
-      "LDO",
-      "BONK"
-    ],
-    "alert": null
-  },
-  {
     "ts": "2026-07-25T02:10:00.324989+00:00",
     "coin": "BTC",
     "price": 64032,
@@ -946,5 +922,29 @@
       "BONK"
     ],
     "alert": "ETH risk/reward at current price is 0.38x \u2014 below the 0.5x threshold. Wait for $1,800 support before entering."
+  },
+  {
+    "ts": "2026-07-26T19:10:00.209012+00:00",
+    "coin": "BTC",
+    "price": 64670,
+    "signal": "HOLD",
+    "confidence": 0,
+    "score": null,
+    "fg": 26,
+    "btc_price": 64670,
+    "btc_dominance": 56.4,
+    "candidates": [
+      "DEXE",
+      "KAITO",
+      "MON",
+      "AERO",
+      "INJ",
+      "AAVE",
+      "PEPE",
+      "ETH",
+      "LDO",
+      "BONK"
+    ],
+    "alert": null
   }
 ]
