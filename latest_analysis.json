@@ -1,26 +1,18 @@
 {
-  "timestamp": "2026-07-26T02:10:00.924426+00:00",
+  "timestamp": "2026-07-26T03:10:00.840104+00:00",
   "selected_coin": "BTC",
   "selected_coin_name": "Bitcoin",
-  "selected_coin_price": 64387,
-  "confidence": 25,
-  "layman_headline": "Fear grips the crypto market \u2014 no strong setups worth risking capital on right now.",
-  "layman_explanation": "The crypto market is in a fearful state with the Fear & Greed Index at 26 and trending worse. Bitcoin is flat around $64,400 while dominating the market at 56.5%, which means altcoins are generally struggling. Every swing candidate we analyzed has significant problems \u2014 either they've already pumped too much (KAITO up 21% and overbought), crashed too hard with no reversal signal yet (DEXE down 88%), or have terrible risk/reward ratios (ETH at 0.34x). It's a market where patience is the best strategy.",
-  "layman_action": "Stay in cash and wait for better setups. The market fear is not yet extreme enough to blindly buy, and no individual coin is presenting a clean entry with good risk/reward. Watch for Fear & Greed to drop below 20 or for a clear technical reversal pattern to form.",
-  "expert_reasoning": "Systematic evaluation of all 9 swing candidates reveals no trade meeting minimum quality thresholds. DEXE's -88.4% 7d move screams potential delisting/structural event rather than mean-reversion opportunity \u2014 RSI at 39 isn't even oversold despite that collapse, suggesting sustained selling. KAITO has momentum but RSI 83.4 is dangerously overbought with +57% 5-day momentum \u2014 chasing here violates swing trading discipline. ETH's 0.34x R/R ratio triggers validated rule #9 (cap confidence at 35% when R/R < 0.5x, or downgrade to HOLD). MON has the best structural setup (RSI 38.7, R/R 2.6x) but in a Fear environment with high BTC dominance, small-cap alts face additional headwinds and we lack critical data (funding rate, volume vs avg, MACD). Fear & Greed at 26 with worsening trend per validated rule #2 suggests short-term downside risk remains.",
-  "risk_factors": [
-    "Fear & Greed at 26 and worsening could cascade into Extreme Fear territory, pushing all assets lower",
-    "BTC dominance at 56.5% actively suppresses altcoin performance \u2014 any BTC weakness would hit alts harder",
-    "Missing data on funding rates, volume comparisons, and MACD across all candidates limits conviction on any directional call"
-  ],
-  "watch_list": [
-    "Fear & Greed Index \u2014 if it drops below 20 (Extreme Fear), contrarian BTC/ETH buys become attractive per historical pattern",
-    "MON price action near $0.0185 support \u2014 a bounce there with volume confirmation could create a clean 2.6x R/R swing entry",
-    "Samsung Wallet stablecoin integration news \u2014 could catalyze specific token if the 'one token' is identified"
-  ],
-  "market_context": "Crypto market in Fear territory (26/100, trending worse) with BTC flat at $64.4K and dominating at 56.5%. Altcoins broadly weak with bearish chart structures across most candidates \u2014 a defensive posture is warranted until sentiment or technicals improve.",
-  "context_banner": "Market fear is intensifying with no clean swing entries \u2014 capital preservation beats forced trades in this environment.",
-  "btc_price": 64387,
+  "selected_coin_price": 64439,
+  "confidence": 0,
+  "layman_headline": "Analysis error \u2014 try again shortly",
+  "layman_explanation": "The system encountered an error this cycle.",
+  "layman_action": "No action recommended until next run.",
+  "expert_reasoning": null,
+  "risk_factors": [],
+  "watch_list": [],
+  "market_context": null,
+  "context_banner": null,
+  "btc_price": 64439,
   "fear_greed": {
     "current": 26,
     "label": "Fear",
@@ -29,33 +21,7 @@
     "trend": "worsening"
   },
   "btc_dominance": 56.5,
-  "key_signals": [
-    {
-      "source": "Fear_Greed",
-      "signal_type": "sentiment",
-      "description": "Fear & Greed at 26 and worsening week-over-week (avg 28.4) \u2014 approaching Extreme Fear territory which historically precedes either capitulation or contrarian bounce, but currently in no-man's-land."
-    },
-    {
-      "source": "RSI",
-      "signal_type": "technical",
-      "description": "Best RSI readings are MON (38.7) and DEXE (39.4) approaching oversold, but KAITO at 83.4 is dangerously overbought \u2014 the oversold readings lack confirmation signals to act on."
-    },
-    {
-      "source": "Chart Pattern Analysis",
-      "signal_type": "technical",
-      "description": "AERO shows Three Black Crows (strong bearish continuation), BONK shows Bullish Engulfing (potential reversal), ETH shows 0.34x R/R \u2014 overall chart landscape is bearish with isolated reversal candles lacking confirmation."
-    },
-    {
-      "source": "CoinDesk",
-      "signal_type": "news",
-      "description": "Sberbank crypto infrastructure, Robinhood Chain RWA growth, and Samsung Wallet stablecoins represent institutional adoption but lack immediate price catalyst for any specific tradeable token."
-    },
-    {
-      "source": "CoinTelegraph",
-      "signal_type": "news",
-      "description": "Bitcoin advocacy joining State Department digital freedom program is longer-term bullish for BTC legitimacy but not a short-term swing catalyst."
-    }
-  ],
+  "key_signals": [],
   "_mode": "HUNTING",
   "exit_target": null,
   "stop_loss": null
