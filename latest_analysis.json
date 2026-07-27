@@ -1,28 +1,62 @@
 {
-  "timestamp": "2026-07-26T23:10:00.386043+00:00",
-  "selected_coin": "BTC",
-  "selected_coin_name": "Bitcoin",
-  "selected_coin_price": 65452,
-  "confidence": 0,
-  "layman_headline": "Analysis error \u2014 try again shortly",
-  "layman_explanation": "The system encountered an error this cycle.",
-  "layman_action": "No action recommended until next run.",
-  "expert_reasoning": null,
-  "risk_factors": [],
-  "watch_list": [],
-  "market_context": null,
-  "context_banner": null,
-  "btc_price": 65452,
+  "timestamp": "2026-07-27T00:10:00.331742+00:00",
+  "selected_coin": "ETH",
+  "selected_coin_name": "Ethereum",
+  "selected_coin_price": 1948.3,
+  "confidence": 28,
+  "layman_headline": "Market is fearful and most candidates are either overextended or lacking clear setups \u2014 patience is the play.",
+  "layman_explanation": "The crypto market is in a 'Fear' state with a score of 30/100, which is improving from last week's 26. Bitcoin sits around $65,200, and most altcoins on our radar have either already surged significantly (KAITO +26%, SHIB +28%, UB +66%) making them risky entries, or are in freefall (DEXE -90%). Ethereum shows the most balanced setup with RSI approaching oversold territory, but its chart structure is still slightly bearish with a poor 0.34x risk/reward ratio at current levels. No candidate meets our quality threshold for entry today.",
+  "layman_action": "Wait for a better entry. If Ethereum pulls back to the $1,800-$1,850 support zone, that would create a much more favorable risk/reward for a swing trade. Set price alerts at those levels rather than chasing current prices.",
+  "expert_reasoning": "Applying validated rules strictly: Rule #9 states that when R/R is below 0.5x, the prediction should be downgraded to HOLD or confidence capped at 35%. ETH's chart shows a 0.34x R/R ratio, which mechanically disqualifies a BUY signal. KAITO is overbought at RSI 83 \u2014 a reliable SELL signal per our RSI track record (83% win rate). UB and SHIB have moved +66% and +28% in 7 days respectively, making them extended. DEXE's -90% collapse is a falling knife with no confirmed bottom. BONK shows a bullish engulfing pattern at RSI 31, but lacks sufficient data (no SMA structure, no funding rate) and is in a structural downtrend. The Fear & Greed improving from 26\u219230 is a mildly constructive signal, but BTC dominance at 56.5% continues to suppress altcoin performance. Best approach: wait for ETH to retest $1,800-$1,850 support for a proper 2x+ R/R setup.",
+  "risk_factors": [
+    "BTC dominance at 56.5% continues to drain capital from altcoins \u2014 any BTC weakness could drag ETH disproportionately lower",
+    "Fear & Greed at 30 is improving but still in Fear territory \u2014 sentiment can reverse quickly on negative macro headlines",
+    "Multiple swing candidates have already made significant moves, suggesting this bounce may be near exhaustion without fresh catalysts"
+  ],
+  "watch_list": [
+    "ETH price action at $1,800 support level \u2014 a bounce there with rising volume would be an ideal entry signal",
+    "Fear & Greed Index crossing above 40 would confirm improving sentiment and support a BUY decision",
+    "SHIB momentum \u2014 CoinDesk reports South Korean trader-fueled 36% surge; watch for continuation or reversal as this could signal broader alt rotation"
+  ],
+  "market_context": "Crypto market is in Fear (30/100) but improving week-over-week from 26. BTC dominance at 56.5% keeps pressure on altcoins, while selective altcoin rallies (SHIB, KAITO, UB) suggest speculative rotation rather than broad-based strength.",
+  "context_banner": "Fear is easing but no swing candidate offers favorable risk/reward at current prices \u2014 discipline demands patience for pullback entries.",
+  "btc_price": 65197,
   "fear_greed": {
-    "current": 26,
+    "current": 30,
     "label": "Fear",
-    "yesterday": 27,
-    "week_avg": 28.4,
-    "trend": "worsening"
+    "yesterday": 26,
+    "week_avg": 28.6,
+    "trend": "improving"
   },
   "btc_dominance": 56.5,
-  "key_signals": [],
+  "key_signals": [
+    {
+      "source": "RSI",
+      "signal_type": "technical",
+      "description": "ETH RSI at 41 is approaching oversold territory, historically a reliable signal (83% win rate), but current price sits too close to resistance for favorable entry."
+    },
+    {
+      "source": "Fear_Greed",
+      "signal_type": "sentiment",
+      "description": "Fear & Greed at 30, improving from 26 last week \u2014 the upward trend is constructive but still in Fear zone, suggesting caution rather than aggression."
+    },
+    {
+      "source": "Chart Pattern Analysis",
+      "signal_type": "technical",
+      "description": "ETH chart shows 0.34x risk/reward ratio at current price \u2014 per validated Rule #9, this mechanically disqualifies a BUY signal and caps confidence below 35%."
+    },
+    {
+      "source": "CoinDesk",
+      "signal_type": "news",
+      "description": "SHIB surging 36% on South Korean trader activity signals speculative rotation into meme coins, but such moves are typically unsustainable and not suitable for disciplined swing entries."
+    },
+    {
+      "source": "Blockworks",
+      "signal_type": "news",
+      "description": "ETH derivatives reset narrative suggests positioning has cleared, potentially setting up the next leg \u2014 but needs price confirmation at support before acting."
+    }
+  ],
   "_mode": "HUNTING",
-  "exit_target": null,
-  "stop_loss": null
+  "exit_target": 2100.0,
+  "stop_loss": 1780.0
 }
