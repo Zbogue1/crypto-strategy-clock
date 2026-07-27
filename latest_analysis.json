@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-07-27T00:10:00.331742+00:00",
+  "timestamp": "2026-07-27T01:10:00.347929+00:00",
   "selected_coin": "ETH",
   "selected_coin_name": "Ethereum",
-  "selected_coin_price": 1948.3,
+  "selected_coin_price": 1945.02,
   "confidence": 28,
-  "layman_headline": "Market is fearful and most candidates are either overextended or lacking clear setups \u2014 patience is the play.",
-  "layman_explanation": "The crypto market is in a 'Fear' state with a score of 30/100, which is improving from last week's 26. Bitcoin sits around $65,200, and most altcoins on our radar have either already surged significantly (KAITO +26%, SHIB +28%, UB +66%) making them risky entries, or are in freefall (DEXE -90%). Ethereum shows the most balanced setup with RSI approaching oversold territory, but its chart structure is still slightly bearish with a poor 0.34x risk/reward ratio at current levels. No candidate meets our quality threshold for entry today.",
-  "layman_action": "Wait for a better entry. If Ethereum pulls back to the $1,800-$1,850 support zone, that would create a much more favorable risk/reward for a swing trade. Set price alerts at those levels rather than chasing current prices.",
-  "expert_reasoning": "Applying validated rules strictly: Rule #9 states that when R/R is below 0.5x, the prediction should be downgraded to HOLD or confidence capped at 35%. ETH's chart shows a 0.34x R/R ratio, which mechanically disqualifies a BUY signal. KAITO is overbought at RSI 83 \u2014 a reliable SELL signal per our RSI track record (83% win rate). UB and SHIB have moved +66% and +28% in 7 days respectively, making them extended. DEXE's -90% collapse is a falling knife with no confirmed bottom. BONK shows a bullish engulfing pattern at RSI 31, but lacks sufficient data (no SMA structure, no funding rate) and is in a structural downtrend. The Fear & Greed improving from 26\u219230 is a mildly constructive signal, but BTC dominance at 56.5% continues to suppress altcoin performance. Best approach: wait for ETH to retest $1,800-$1,850 support for a proper 2x+ R/R setup.",
+  "layman_headline": "Market is fearful and most altcoins have already run up \u2014 patience is the play right now.",
+  "layman_explanation": "The crypto market is in a 'Fear' state at 30/100, but improving from last week's deeper fear readings. Most swing trade candidates have already surged 10-70% in the past week, meaning the easy money has been made and chasing here carries high risk of a pullback. Bitcoin dominance at 56.4% means capital is flowing to BTC over altcoins, making alt trades riskier. Ethereum is the most interesting potential setup with RSI near oversold and massive TVL backing, but its chart risk/reward ratio is poor at current levels.",
+  "layman_action": "Stay on the sidelines and wait for a pullback. If Ethereum dips to the $1,850 area with support holding, that could be a good entry. Don't chase coins that are already up 20-70% this week.",
+  "expert_reasoning": "Applying validated Rule #9: ETH's chart R/R is 0.34x, well below the 0.5x threshold \u2014 this mechanically caps confidence and argues against entry at current levels. The RSI at 41 is approaching oversold and RSI has an 83% win rate in our signal credibility data, making it the most trustworthy signal here. However, BTC dominance at 56.4% creates a headwind for alts, and most candidates (KAITO RSI 83 overbought, UB +69% in 7d, SHIB +29% in 7d, AAVE +13% in 7d) are extended. Fear & Greed at 30 is improving from 26 yesterday \u2014 this trend is constructive but not yet signaling a clear reversal. The best approach is to wait for ETH to pull back to $1,850 support where the R/R improves to roughly 3.5x with a stop at $1,780.",
   "risk_factors": [
-    "BTC dominance at 56.5% continues to drain capital from altcoins \u2014 any BTC weakness could drag ETH disproportionately lower",
-    "Fear & Greed at 30 is improving but still in Fear territory \u2014 sentiment can reverse quickly on negative macro headlines",
-    "Multiple swing candidates have already made significant moves, suggesting this bounce may be near exhaustion without fresh catalysts"
+    "BTC dominance at 56.4% continues to suppress altcoin performance \u2014 capital rotation into alts hasn't begun",
+    "Fear & Greed at 30 is improving but still in Fear territory \u2014 sentiment could reverse back toward Extreme Fear on any negative catalyst",
+    "No funding rate data available for any candidate, removing a key signal for gauging leverage positioning"
   ],
   "watch_list": [
-    "ETH price action at $1,800 support level \u2014 a bounce there with rising volume would be an ideal entry signal",
-    "Fear & Greed Index crossing above 40 would confirm improving sentiment and support a BUY decision",
-    "SHIB momentum \u2014 CoinDesk reports South Korean trader-fueled 36% surge; watch for continuation or reversal as this could signal broader alt rotation"
+    "ETH price action near $1,850 support \u2014 a bounce there with rising volume would be an actionable entry",
+    "Fear & Greed movement toward 40+ would confirm sentiment recovery and reduce risk for alt entries",
+    "BTC dominance trend \u2014 a drop below 55% would signal rotation into alts and improve alt swing trade odds"
   ],
-  "market_context": "Crypto market is in Fear (30/100) but improving week-over-week from 26. BTC dominance at 56.5% keeps pressure on altcoins, while selective altcoin rallies (SHIB, KAITO, UB) suggest speculative rotation rather than broad-based strength.",
-  "context_banner": "Fear is easing but no swing candidate offers favorable risk/reward at current prices \u2014 discipline demands patience for pullback entries.",
-  "btc_price": 65197,
+  "market_context": "Crypto market in Fear (30/100) but improving from Extreme Fear last week. BTC stable near $65K while alts show mixed signals \u2014 many have already rallied significantly, making fresh entries risky without a pullback.",
+  "context_banner": "Market fear is easing but most swing candidates are already extended \u2014 disciplined patience and waiting for pullback entries offers the best risk-adjusted opportunity.",
+  "btc_price": 65117,
   "fear_greed": {
     "current": 30,
     "label": "Fear",
@@ -28,32 +28,32 @@
     "week_avg": 28.6,
     "trend": "improving"
   },
-  "btc_dominance": 56.5,
+  "btc_dominance": 56.4,
   "key_signals": [
     {
       "source": "RSI",
       "signal_type": "technical",
-      "description": "ETH RSI at 41 is approaching oversold territory, historically a reliable signal (83% win rate), but current price sits too close to resistance for favorable entry."
+      "description": "ETH RSI at 41 approaching oversold territory \u2014 our most reliable signal (83% win rate) \u2014 but the 0.34x chart R/R at current price makes immediate entry structurally unfavorable per Rule #9."
     },
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Fear & Greed at 30, improving from 26 last week \u2014 the upward trend is constructive but still in Fear zone, suggesting caution rather than aggression."
+      "description": "Fear & Greed at 30 improving from 26 yesterday and 28.6 weekly average \u2014 trend is constructive but not yet a clear reversal signal. 67% reliable per our track record."
     },
     {
       "source": "Chart Pattern Analysis",
       "signal_type": "technical",
-      "description": "ETH chart shows 0.34x risk/reward ratio at current price \u2014 per validated Rule #9, this mechanically disqualifies a BUY signal and caps confidence below 35%."
-    },
-    {
-      "source": "CoinDesk",
-      "signal_type": "news",
-      "description": "SHIB surging 36% on South Korean trader activity signals speculative rotation into meme coins, but such moves are typically unsustainable and not suitable for disciplined swing entries."
+      "description": "KAITO overbought at RSI 83, UB +69% in 7d, SHIB/AAVE extended \u2014 all candidates either overheated or have poor R/R ratios, leaving no clean entry."
     },
     {
       "source": "Blockworks",
       "signal_type": "news",
-      "description": "ETH derivatives reset narrative suggests positioning has cleared, potentially setting up the next leg \u2014 but needs price confirmation at support before acting."
+      "description": "ETH derivatives reset article suggests positioning is clearing out \u2014 could set up a cleaner move once price reaches support at $1,850."
+    },
+    {
+      "source": "CoinDesk",
+      "signal_type": "news",
+      "description": "SHIB surge driven by South Korean traders appears speculative and momentum-driven rather than fundamental \u2014 high risk of reversal after +29% weekly move."
     }
   ],
   "_mode": "HUNTING",
