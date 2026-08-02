@@ -458,5 +458,26 @@
       "TRUMP"
     ],
     "alert": "Fear & Greed at 27 and worsening \u2014 approaching extreme fear threshold of 25 where short-term direction becomes highly unpredictable."
+  },
+  {
+    "ts": "2026-08-02T20:11:32.581141+00:00",
+    "coin": "BTC",
+    "price": 63384,
+    "signal": "HOLD",
+    "confidence": 0,
+    "score": null,
+    "fg": 27,
+    "btc_price": 63384,
+    "btc_dominance": 56.3,
+    "candidates": [
+      "KAITO",
+      "DEXE",
+      "ENA",
+      "UB",
+      "WLD",
+      "BONK",
+      "PENGU"
+    ],
+    "alert": null
   }
 ]
