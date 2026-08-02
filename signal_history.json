@@ -332,5 +332,26 @@
       "PENGU"
     ],
     "alert": "Coldcard cold-wallet exploit has spread to 4,500 addresses with $89M in losses \u2014 monitor for contagion risk to broader market."
+  },
+  {
+    "ts": "2026-08-02T14:11:32.551396+00:00",
+    "coin": "BTC",
+    "price": 63016,
+    "signal": "HOLD",
+    "confidence": 25,
+    "score": -0.5,
+    "fg": 27,
+    "btc_price": 63016,
+    "btc_dominance": 56.3,
+    "candidates": [
+      "UB",
+      "ENA",
+      "BONK",
+      "PEPE",
+      "TRUMP",
+      "KAITO",
+      "FET"
+    ],
+    "alert": "Coldcard exploit affecting 4,500+ BTC addresses with $89M in losses \u2014 monitor for contagion effects on exchange flows and broader sentiment."
   }
 ]
