@@ -227,5 +227,26 @@
       "PENGU"
     ],
     "alert": "Fear & Greed at 27 with worsening trend approaching the critical 25 threshold \u2014 monitor closely for potential capitulation or reversal."
+  },
+  {
+    "ts": "2026-08-02T09:11:32.554281+00:00",
+    "coin": "BTC",
+    "price": 63163,
+    "signal": "HOLD",
+    "confidence": 22,
+    "score": -0.6,
+    "fg": 27,
+    "btc_price": 63163,
+    "btc_dominance": 56.2,
+    "candidates": [
+      "KAITO",
+      "BONK",
+      "ENA",
+      "TRUMP",
+      "FET",
+      "LDO",
+      "PEPE"
+    ],
+    "alert": "Coldcard cold-wallet hack has spread to 4,500 addresses with losses approaching $89M \u2014 monitor for contagion effects on broader market sentiment."
   }
 ]
