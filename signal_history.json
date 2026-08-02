@@ -59,5 +59,26 @@
       "BONK"
     ],
     "alert": "All swing candidates show either overbought extremes or bearish chart structures \u2014 no quality setup meets risk/reward criteria this cycle."
+  },
+  {
+    "ts": "2026-08-02T01:11:32.495723+00:00",
+    "coin": "AAVE",
+    "price": 91.01,
+    "signal": "HOLD",
+    "confidence": 25,
+    "score": -0.2,
+    "fg": 27,
+    "btc_price": 62859,
+    "btc_dominance": 56.3,
+    "candidates": [
+      "KAITO",
+      "FET",
+      "TRUMP",
+      "ENA",
+      "LDO",
+      "AAVE",
+      "MON"
+    ],
+    "alert": "Fear & Greed at 27 and worsening toward Extreme Fear territory \u2014 do not deploy capital without a confirmed reversal signal."
   }
 ]
