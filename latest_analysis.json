@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-08-02T07:11:32.471207+00:00",
+  "timestamp": "2026-08-02T08:11:32.505515+00:00",
   "selected_coin": "BTC",
   "selected_coin_name": "Bitcoin",
-  "selected_coin_price": 63429,
-  "confidence": 25,
-  "layman_headline": "Fear grips the crypto market \u2014 no clear swing trade setup warrants risking capital right now.",
-  "layman_explanation": "The overall crypto market is sitting in 'Fear' territory at 27 out of 100, and it's been stuck there all week with a worsening trend. Bitcoin is down slightly over the past week, and most altcoins are bleeding harder \u2014 many are down 90-98% from their all-time highs. While a few coins like BONK and TRUMP show oversold RSI readings that sometimes precede bounces, their charts are firmly bearish with no signs of a bottom forming yet. The one coin showing strength (KAITO) is dangerously overbought with an RSI of 87, making it a poor entry point.",
-  "layman_action": "Stay in cash and wait. The market hasn't shown signs of stabilizing yet, and chasing oversold bounces in a fearful market with high Bitcoin dominance is how swing traders get caught in falling knives. Watch for the Fear & Greed Index to start climbing back above 35 and for oversold coins to form actual reversal patterns before committing capital.",
-  "expert_reasoning": "Per validated Rule #3, when Fear & Greed is at or near 25, the short-term outlook is genuinely ambiguous and HOLD is the safest call. At 27 with a worsening trend, we're approaching that danger zone. The two oversold RSI candidates (BONK at 29.35, TRUMP at 26.94) would normally be interesting given RSI's 71% historical win rate, but both show bearish engulfing candles, prices below all major MAs, and strong negative momentum (-26.5% and -8.8% 5-day). The risk/reward ratios are poor at 0.67x for both. BTC dominance at 56.3% is crushing alts, and with ETF outflows of $265M and no positive catalyst in the news cycle, this is not the environment to force a trade. KAITO's RSI of 87 is a screaming sell signal despite bullish chart patterns \u2014 chasing a +87% 5-day move is not swing trading, it's gambling.",
+  "selected_coin_price": 63454,
+  "confidence": 22,
+  "layman_headline": "Fear grips the crypto market \u2014 no safe swing trade setups right now.",
+  "layman_explanation": "The crypto market is in a fearful mood with the Fear & Greed Index sitting at 27 and worsening. Almost every altcoin on the watchlist is in a downtrend with bearish chart patterns. Bitcoin dominance is high at 56.3%, which means money is flowing away from smaller coins and toward Bitcoin \u2014 a bad environment for altcoin swing trades. Meanwhile, negative news like an $89 million cold-wallet attack and $265 million in Bitcoin ETF outflows are weighing on sentiment.",
+  "layman_action": "Stay in cash and wait. The market is too fearful and trending down for most altcoins. Trying to catch a bounce in this environment is risky. Wait for the Fear & Greed Index to stabilize or turn upward, and for chart patterns to show actual reversal confirmation before committing capital.",
+  "expert_reasoning": "The best candidates by RSI are BONK (29.35), TRUMP (26.94), and PENGU (28.37) \u2014 all deeply oversold. However, my signal credibility data shows RSI has a 71% win rate, which is the strongest signal available. The problem is that every one of these oversold candidates has a strongly bearish chart bias (-1.4 to -1.7), bearish candlestick patterns (Bearish Engulfing on BONK, Evening Star on PENGU and ENA), and price below all major moving averages. RSI oversold in a persistent downtrend often signals momentum continuation, not reversal. BTC dominance at 56.3% further suppresses alt performance. The Fear & Greed at 27 with a worsening trend sits just above my validated rule threshold of 25, where the outlook becomes genuinely ambiguous. Without a confirming catalyst or reversal pattern, entering any of these would be catching a falling knife.",
   "risk_factors": [
-    "Fear & Greed could deteriorate further below 25, triggering cascading liquidations and deeper alt selloffs",
-    "Bitcoin cold-wallet attack ($89M losses) could shake market confidence and trigger additional selling pressure",
-    "High BTC dominance (56.3%) means capital continues flowing out of alts \u2014 oversold alts can stay oversold much longer"
+    "Fear & Greed at 27 and worsening \u2014 could drop below 25 triggering further panic selling",
+    "Coldcard hack and ETF outflows creating negative sentiment overhang that may worsen",
+    "High BTC dominance (56.3%) means alt recovery could lag even if BTC stabilizes"
   ],
   "watch_list": [
-    "Fear & Greed Index \u2014 watch for any move above 35 which would signal sentiment stabilization and make oversold bounces more reliable",
-    "BONK and TRUMP RSI levels \u2014 if RSI drops below 25 while price holds support, that would be a stronger reversal setup",
-    "ADA momentum \u2014 up 12.8% in 7 days with 9.6% daily gain, bucking the trend; watch if this strength spreads to other alts as a rotation signal"
+    "Fear & Greed Index \u2014 watch for stabilization above 30 or further deterioration below 25",
+    "BONK and TRUMP RSI \u2014 if they hold oversold territory while forming bullish reversal candles (hammer, morning star), that would be an actionable setup",
+    "ADA momentum \u2014 up 9.3% in 24h and 12% in 7 days, bucking the market trend; watch if this is a genuine breakout or a trap"
   ],
-  "market_context": "Crypto market is in a fear state (27/100) with worsening sentiment, high BTC dominance squeezing alts, and negative news flow including $265M ETF outflows and a major cold-wallet exploit. Most alts are down 90%+ from ATHs with no bottom formation visible yet.",
-  "context_banner": "Market fear is intensifying with no reversal catalyst \u2014 patience and capital preservation are the highest-conviction plays right now.",
-  "btc_price": 63429,
+  "market_context": "Crypto markets are in a fearful, risk-off environment with BTC down 1.5% on the week, ETF outflows of $265M, and a major cold-wallet hack dominating headlines. High BTC dominance and worsening sentiment make this a poor environment for altcoin swing trades.",
+  "context_banner": "Market fear is elevated with no confirmed reversal signals \u2014 capital preservation takes priority over catching oversold bounces.",
+  "btc_price": 63454,
   "fear_greed": {
     "current": 27,
     "label": "Fear",
@@ -33,27 +33,27 @@
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Fear & Greed at 27 with worsening weekly trend (avg 27.9) \u2014 per validated Rule #3, near-25 readings make the outlook too ambiguous to take directional bets."
+      "description": "Fear & Greed at 27 with worsening weekly trend (avg 27.9) \u2014 market in fear but not yet at extreme levels where contrarian bounces become more likely."
     },
     {
       "source": "RSI",
       "signal_type": "technical",
-      "description": "BONK (29.35) and TRUMP (26.94) are oversold \u2014 historically a 71% reliable bounce signal \u2014 but both have strongly bearish chart structures that contradict the RSI signal."
+      "description": "BONK (29.3), TRUMP (26.9), and PENGU (28.4) all oversold, but RSI oversold readings in persistent downtrends without reversal candles typically signal more downside, not buying opportunities."
     },
     {
       "source": "CryptoSlate",
       "signal_type": "news",
-      "description": "Bitcoin ETFs bled $265M in 24 hours, signaling institutional risk-off positioning that typically pressures the broader market."
+      "description": "Bitcoin ETFs bled $265M in 24 hours, signaling institutional risk-off positioning that could pressure prices further."
     },
     {
       "source": "CoinDesk",
       "signal_type": "news",
-      "description": "Bitcoin cold-wallet attack spread to 4,500 addresses with losses near $89M \u2014 a security scare that adds to negative sentiment."
+      "description": "Coldcard cold-wallet attack spreading to 4,500 addresses with losses near $89M is damaging trust and adding selling pressure."
     },
     {
       "source": "volume_breakout",
       "signal_type": "technical",
-      "description": "No volume breakout signals detected on any candidate; ADA's 12.8% weekly gain with $492M volume is the only notable positive outlier but wasn't on the swing candidate list."
+      "description": "ADA is the lone outlier with +9.3% in 24h and +12% over 7d on elevated volume ($517M), but without chart analysis data available, the setup cannot be confirmed as a valid entry."
     }
   ],
   "_mode": "HUNTING",
