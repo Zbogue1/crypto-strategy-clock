@@ -143,5 +143,26 @@
       "MON"
     ],
     "alert": "All swing candidates show either overbought exhaustion or bearish downtrend structures \u2014 no actionable entry exists this cycle."
+  },
+  {
+    "ts": "2026-08-02T05:11:32.579501+00:00",
+    "coin": "BTC",
+    "price": 63428,
+    "signal": "HOLD",
+    "confidence": 22,
+    "score": -0.65,
+    "fg": 27,
+    "btc_price": 63428,
+    "btc_dominance": 56.3,
+    "candidates": [
+      "KAITO",
+      "ENA",
+      "FET",
+      "TRUMP",
+      "PEPE",
+      "PENGU",
+      "DASH"
+    ],
+    "alert": "Market in sustained fear zone (F&G 27, worsening trend) with major negative catalysts \u2014 avoid new positions until sentiment stabilizes or a clear technical reversal emerges."
   }
 ]
