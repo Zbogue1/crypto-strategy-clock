@@ -206,5 +206,26 @@
       "PEPE"
     ],
     "alert": "Fear & Greed at 27 with worsening trend approaching critical 25 threshold \u2014 heightened risk of further downside across all alts."
+  },
+  {
+    "ts": "2026-08-02T08:11:32.505515+00:00",
+    "coin": "BTC",
+    "price": 63454,
+    "signal": "HOLD",
+    "confidence": 22,
+    "score": -0.6,
+    "fg": 27,
+    "btc_price": 63454,
+    "btc_dominance": 56.3,
+    "candidates": [
+      "KAITO",
+      "ENA",
+      "BONK",
+      "TRUMP",
+      "FET",
+      "PEPE",
+      "PENGU"
+    ],
+    "alert": "Fear & Greed at 27 with worsening trend approaching the critical 25 threshold \u2014 monitor closely for potential capitulation or reversal."
   }
 ]
