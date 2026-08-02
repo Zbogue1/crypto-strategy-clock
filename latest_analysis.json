@@ -1,62 +1,62 @@
 {
-  "timestamp": "2026-07-27T02:10:00.309322+00:00",
+  "timestamp": "2026-08-02T00:04:27.876497+00:00",
   "selected_coin": "ETH",
   "selected_coin_name": "Ethereum",
-  "selected_coin_price": 1945.57,
-  "confidence": 30,
-  "layman_headline": "Market fear is easing but no clear entry yet \u2014 staying patient for a better setup.",
-  "layman_explanation": "The crypto market is still in 'Fear' mode at 30/100, though sentiment is slowly improving from extreme lows last week. Most altcoins are showing bearish chart structures with Bitcoin dominating capital flows at 56.5%. While a few coins like AAVE and ETH have bounced recently, the rallies lack volume confirmation and the risk/reward ratios on most setups are poor. This is a time to watch and wait rather than chase.",
-  "layman_action": "No new trades recommended right now. Keep cash ready for a better entry if ETH pulls back toward $1,800-$1,850, which would offer much better risk/reward. Watch for sentiment to cross above 40 as a sign the market is stabilizing.",
-  "expert_reasoning": "Applying validated Rule #9: ETH's chart analysis shows a risk/reward ratio of 0.34x, well below the 0.5x threshold that should trigger a downgrade to HOLD or cap confidence at 35%. The chart bias is slightly bearish (-0.40), price is below most MAs in a downtrend, and the nearest resistance at $1,900 is only 1.4% away while support at $1,800 is 4% below. The Fear & Greed index at 30 is improving (from 26 yesterday) but still in Fear territory. BTC dominance at 56.5% signals capital rotation away from alts, making alt entries higher risk. Among candidates, KAITO is overbought (RSI 83), DEXE crashed 90% in 7 days (catching falling knife), and AAVE/LDO already moved 10-13% this week. No candidate offers a compelling risk-adjusted entry.",
+  "selected_coin_price": 1844.61,
+  "confidence": 35,
+  "layman_headline": "Fear grips the crypto market \u2014 no compelling entry found, staying in cash for now.",
+  "layman_explanation": "The entire crypto market is in a fearful mood with most coins dropping over the past week. Bitcoin dominance is high at 56.3%, which means altcoins are getting hit harder than Bitcoin itself. Every candidate on our watchlist either has a bearish chart structure or is extremely overbought after a parabolic run. The smart move right now is to wait for a cleaner setup rather than force a trade into weakness.",
+  "layman_action": "Stay patient and keep cash ready. Wait for either a deeper oversold bounce with chart confirmation, or a clear catalyst that shifts market sentiment. Don't chase falling knives in this environment.",
+  "expert_reasoning": "I evaluated all 9 candidates systematically. KAITO has a bullish chart (+1.10) but RSI at 87 is dangerously overbought \u2014 our signal credibility data shows RSI is 83% reliable, so this extreme reading strongly argues against entry. TRUMP and BONK have oversold RSI readings (27 and 29 respectively) which normally trigger bounce trades, but both have heavily bearish chart structures (-0.70 and -1.40) with price below all moving averages \u2014 catching a falling knife. FET and BONK both show bearish engulfing patterns, confirming seller control. ETH is the best risk-adjusted candidate with RSI at 41, above SMA20, and stable TVL, but the chart bias is -0.40 and risk/reward to nearest levels is only 0.84x. In a Fear environment with worsening trend and high BTC dominance crushing alts, the highest-EV play is to wait for a better entry. AAVE has a neutral RSI and slightly bullish chart but lacks any catalyst.",
   "risk_factors": [
-    "BTC dominance at 56.5% continues to pressure altcoin performance \u2014 capital is flowing to BTC not alts",
-    "Fear & Greed at 30 could still deteriorate if negative catalysts emerge (BitMart shutdown, exploit news)",
-    "ETH chart structure remains in a downtrend with price below most moving averages \u2014 a lower low is possible"
+    "BTC dominance at 56.3% and rising continues to suppress altcoin performance across the board",
+    "Fear & Greed at 27 with worsening trend suggests further downside before capitulation bounce",
+    "Cold-wallet attack news ($89M losses) could trigger broader security concerns and sell pressure"
   ],
   "watch_list": [
-    "ETH price action around $1,800 support \u2014 a test and hold there would create a much better entry with 2x+ R/R",
-    "Fear & Greed Index crossing above 40 \u2014 would signal meaningful sentiment recovery and safer alt entries",
-    "BTC dominance trend \u2014 a drop below 55% would signal capital rotation back into alts"
+    "ETH price action at $1,800 support \u2014 a successful bounce with volume confirmation would trigger a BUY",
+    "Fear & Greed index \u2014 watch for extreme fear below 20 which historically marks short-term bottoms",
+    "BTC dominance trend \u2014 any reversal below 55% would signal rotation back into alts"
   ],
-  "market_context": "The crypto market is in a Fear phase with sentiment at 30/100, improving from extreme fear last week. BTC is consolidating around $65K with 56.5% dominance, while alts show mixed signals \u2014 some bouncing but without volume confirmation or favorable risk/reward setups.",
-  "context_banner": "Improving sentiment from extreme fear but risk/reward ratios across swing candidates remain structurally unfavorable \u2014 patience will be rewarded with better entries.",
-  "btc_price": 65129,
+  "market_context": "The crypto market is in a fear-driven consolidation with BTC at $62.8K showing modest weakness (-2.5% weekly). High BTC dominance at 56.3% is crushing altcoin performance, and most top-20 tokens are red on the week, making this a poor environment for aggressive alt entries.",
+  "context_banner": "Market fear persists with no clear reversal signal \u2014 disciplined patience outperforms forced entries in this environment.",
+  "btc_price": 62803,
   "fear_greed": {
-    "current": 30,
+    "current": 27,
     "label": "Fear",
-    "yesterday": 26,
-    "week_avg": 28.6,
-    "trend": "improving"
+    "yesterday": 27,
+    "week_avg": 27.9,
+    "trend": "worsening"
   },
-  "btc_dominance": 56.5,
+  "btc_dominance": 56.3,
   "key_signals": [
-    {
-      "source": "Fear_Greed",
-      "signal_type": "sentiment",
-      "description": "Fear & Greed at 30 improving from 26 yesterday and 28.6 weekly average \u2014 sentiment recovering but still in Fear zone, suggesting caution before new entries."
-    },
     {
       "source": "RSI",
       "signal_type": "technical",
-      "description": "ETH RSI at 41 approaching oversold territory, but needs a pullback to $1,800-$1,850 support to create favorable R/R. Current 0.34x R/R violates the 0.5x minimum threshold."
+      "description": "RSI readings across candidates are polarized: KAITO at 87 (dangerously overbought), TRUMP at 27 and BONK at 29 (oversold but in confirmed downtrends), ETH at 41 (approaching oversold but not there yet). No clean RSI bounce setup exists."
+    },
+    {
+      "source": "Fear_Greed",
+      "signal_type": "sentiment",
+      "description": "Fear & Greed at 27 with a worsening weekly trend from 27.9 to 27 \u2014 sentiment hasn't capitulated enough for a high-conviction contrarian entry. Our 67% win rate on this signal suggests waiting for extreme fear."
     },
     {
       "source": "Chart Pattern Analysis",
       "signal_type": "technical",
-      "description": "All top candidates show bearish or neutral chart bias scores (-0.7 to -0.1). No candidate has a bullish chart structure with confirmed breakout."
+      "description": "FET and BONK both show bearish engulfing candle patterns confirming seller dominance. KAITO shows Three White Soldiers but at RSI 87 this is a blow-off top risk, not an entry. No bullish reversal patterns at support levels."
     },
     {
-      "source": "CoinTelegraph",
+      "source": "CoinDesk",
       "signal_type": "news",
-      "description": "Multiple negative headlines \u2014 Garden Finance exploit ($450K), Storj bankruptcy, WEMIX breach ($724K), BitMart shutdown \u2014 create headwind for risk appetite in altcoins."
+      "description": "Bitcoin cold-wallet attack spreading to 4,500 addresses with $89M losses creates negative sentiment overhang. Mining difficulty dropping 14% signals miner capitulation pressure on BTC price."
     },
     {
       "source": "Blockworks",
       "signal_type": "news",
-      "description": "ETH derivatives reset article suggests positioning is clearing out, which could set up a cleaner long entry on the next pullback but hasn't triggered yet."
+      "description": "ETH derivatives reset noted by Blockworks could set up a cleaner bounce opportunity once positioning is flushed \u2014 worth monitoring for next cycle's entry timing."
     }
   ],
   "_mode": "HUNTING",
-  "exit_target": 2100.0,
-  "stop_loss": 1780.0
+  "exit_target": 2000.0,
+  "stop_loss": 1720.0
 }
