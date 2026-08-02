@@ -80,5 +80,26 @@
       "MON"
     ],
     "alert": "Fear & Greed at 27 and worsening toward Extreme Fear territory \u2014 do not deploy capital without a confirmed reversal signal."
+  },
+  {
+    "ts": "2026-08-02T02:11:32.523644+00:00",
+    "coin": "BTC",
+    "price": 63302,
+    "signal": "HOLD",
+    "confidence": 18,
+    "score": -0.45,
+    "fg": 27,
+    "btc_price": 63302,
+    "btc_dominance": 0.0,
+    "candidates": [
+      "KAITO",
+      "FET",
+      "LDO",
+      "TRUMP",
+      "ENA",
+      "MON",
+      "DASH"
+    ],
+    "alert": "All swing candidates either overbought or in confirmed downtrends. No position meets minimum risk/reward criteria."
   }
 ]
