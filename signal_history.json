@@ -353,5 +353,26 @@
       "FET"
     ],
     "alert": "Coldcard exploit affecting 4,500+ BTC addresses with $89M in losses \u2014 monitor for contagion effects on exchange flows and broader sentiment."
+  },
+  {
+    "ts": "2026-08-02T15:11:32.747377+00:00",
+    "coin": "BTC",
+    "price": 63043,
+    "signal": "HOLD",
+    "confidence": 22,
+    "score": -0.3,
+    "fg": 27,
+    "btc_price": 63043,
+    "btc_dominance": 56.2,
+    "candidates": [
+      "KAITO",
+      "ENA",
+      "UB",
+      "BONK",
+      "TRUMP",
+      "PEPE",
+      "LDO"
+    ],
+    "alert": "Coldcard cold-wallet hack ($89M) is spreading to 4,500+ addresses \u2014 monitor for contagion effects on broader market confidence."
   }
 ]
