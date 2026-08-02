@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-08-02T09:11:32.554281+00:00",
+  "timestamp": "2026-08-02T10:11:32.418493+00:00",
   "selected_coin": "BTC",
   "selected_coin_name": "Bitcoin",
-  "selected_coin_price": 63163,
+  "selected_coin_price": 63188,
   "confidence": 22,
-  "layman_headline": "Fear grips the crypto market \u2014 no good entries right now, patience is the play.",
-  "layman_explanation": "The crypto market is in a fearful mood (27/100 on the Fear & Greed Index) and has been stuck there all week. Bitcoin is down about 2% over seven days, and altcoins are getting hit even harder \u2014 most candidates are in clear downtrends with bearish chart patterns. A major Bitcoin cold-wallet hack worth $70-89 million is spooking investors, and Bitcoin ETFs just saw $265 million in outflows. This is not the time to catch falling knives.",
-  "layman_action": "Stay in cash and wait. The market is scared and trending down. Better entry prices are likely coming, or at minimum we need to see fear stabilize and a clear reversal signal before committing money.",
-  "expert_reasoning": "Reviewing all seven candidates systematically: KAITO has RSI 87 (extremely overbought, high correction risk despite bullish chart \u2014 chasing here violates risk management). BONK has RSI 29 (oversold, our most reliable signal) but the chart bias is -1.4 with bearish engulfing pattern and -26.5% 5-day momentum \u2014 this is a falling knife, not a bounce setup. ENA has a strongly bearish chart (-1.7 bias) with an evening star reversal despite today's 8% pop. FET and LDO are both in downtrends below all MAs with bearish patterns. TRUMP and PEPE lack chart data entirely. The Fear & Greed Index at 27 with a worsening trend, combined with BTC dominance at 56.2% (unfavorable for alts), and negative news flow (Coldcard hack, ETF outflows, mining difficulty drop) all argue against opening new positions. Per my validated rules, F&G near 25 in ambiguous territory warrants HOLD over forced entries.",
+  "layman_headline": "Market fear is running high and none of the trade setups look clean enough to risk real money on.",
+  "layman_explanation": "The overall crypto market mood is in 'Fear' territory at 27 out of 100 and has been worsening all week. Bitcoin is drifting slightly lower, down about 2% over the past week, and most altcoins are in confirmed downtrends with bearish chart patterns. While a couple of coins like TRUMP and PENGU have oversold RSI readings that could trigger a bounce, their charts are ugly \u2014 prices are below all moving averages and showing bearish reversal patterns. KAITO is the only coin with bullish momentum, but its RSI at 87 screams overbought and chasing it here would be reckless.",
+  "layman_action": "Stay in cash and wait. The market is fearful and trending down. There's no rush to buy when most charts look bearish \u2014 better setups will come when the fear starts to lift or when oversold coins show actual reversal confirmation rather than just falling knives.",
+  "expert_reasoning": "Applying validated rules: Fear & Greed at 27 is just above the 25 threshold where Rule #3 says the outlook is genuinely ambiguous. The worsening trend (week avg 27.9, trending down) suggests we could breach 25 soon. Per signal credibility intelligence, RSI is my most reliable indicator (71% win rate), and it tells two contradictory stories \u2014 KAITO at 87 is a strong sell signal, while TRUMP at 27 and PENGU at 28 are in bounce territory. However, the chart bias scores for TRUMP (-0.70) and PENGU (-1.70) are deeply bearish, and both are below all moving averages with no bullish candlestick reversal patterns. An oversold RSI in a downtrend without reversal confirmation is a falling knife, not a trade setup. The macro news backdrop is negative with the cold-wallet hack creating security fears and Trump Media liquidating BTC. I'll wait for either: (1) RSI oversold + bullish reversal candle + support hold, or (2) Fear & Greed stabilization/uptick.",
   "risk_factors": [
-    "The Coldcard hack ($70-89M in losses) could escalate further, eroding trust and triggering more selling",
-    "Bitcoin ETF outflows of $265M signal institutional risk-off behavior that could accelerate",
-    "Fear & Greed at 27 with worsening trend could slide toward extreme fear (<20), pushing prices significantly lower"
+    "Cold-wallet hack spreading to 4,500 addresses could escalate further and trigger broader sell-off",
+    "Fear & Greed trending toward extreme fear (sub-25) could lead to capitulation selling",
+    "Trump Media selling down BTC holdings adds sustained sell pressure on the market's primary asset"
   ],
   "watch_list": [
-    "Fear & Greed Index \u2014 watch for a drop below 25 (extreme fear capitulation) or stabilization above 30 (potential bottom forming)",
-    "BONK RSI \u2014 if it drops below 25 while showing a bullish divergence or hammer candle on support, that would be an actionable oversold bounce setup",
-    "Bitcoin ETF flow data over next 48 hours \u2014 continued outflows = more downside; a reversal to inflows = potential market bottom signal"
+    "Fear & Greed Index \u2014 if it drops below 25, expect further downside; if it bounces above 30, conditions improve",
+    "TRUMP and PENGU RSI \u2014 watch for bullish reversal candles (hammer, morning star) while RSI stays under 30 for a potential bounce trade",
+    "Cold-wallet hack news \u2014 if losses expand beyond $89M or more wallets are affected, risk-off sentiment will intensify"
   ],
-  "market_context": "The crypto market is in a fear-driven downturn with BTC at $63,163 and most alts bleeding harder. Negative catalysts (Coldcard hack, ETF outflows, mining difficulty collapse) are dominating headlines with no offsetting bullish drivers, though ADA's +12.5% weekly gain is a notable exception worth monitoring.",
-  "context_banner": "Market fear is elevated and worsening with no clear reversal signals \u2014 disciplined traders stay in cash and wait for better setups.",
-  "btc_price": 63163,
+  "market_context": "The crypto market is in a fear-driven drift lower with BTC at $63,188 and most altcoins in confirmed downtrends. Negative news catalysts (cold-wallet hack, BTC selling by Trump Media, Russia mining ban expansion) are outweighing any bullish narratives, and there's no clear bottom signal yet.",
+  "context_banner": "Fear dominates with no clean setups \u2014 patience is the highest-conviction trade right now.",
+  "btc_price": 63188,
   "fear_greed": {
     "current": 27,
     "label": "Fear",
@@ -28,32 +28,32 @@
     "week_avg": 27.9,
     "trend": "worsening"
   },
-  "btc_dominance": 56.2,
+  "btc_dominance": 0.0,
   "key_signals": [
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Fear & Greed at 27 with worsening weekly trend \u2014 market is fearful but not yet at extreme capitulation levels, suggesting more downside is possible before a bottom forms."
+      "description": "Fear & Greed at 27 with a worsening weekly trend indicates sustained bearish sentiment; per validated rules, near the 25 threshold where short-term direction is genuinely ambiguous."
     },
     {
       "source": "RSI",
       "signal_type": "technical",
-      "description": "KAITO RSI at 87 (extremely overbought, avoid) and BONK RSI at 29 (oversold but chart structure is too bearish to buy) \u2014 no candidate has a clean RSI-based setup."
-    },
-    {
-      "source": "CoinTelegraph",
-      "signal_type": "news",
-      "description": "Coldcard Bitcoin hack estimated at $70M+ is the largest sub-1 BTC theft since FTX collapse, creating significant negative sentiment overhang."
-    },
-    {
-      "source": "CryptoSlate",
-      "signal_type": "news",
-      "description": "Bitcoin ETFs bled $265M in 24 hours, signaling institutional risk-off positioning that typically precedes further price weakness."
+      "description": "KAITO RSI at 87 (overbought, don't chase) and TRUMP/PENGU RSI at 27-28 (oversold but unconfirmed reversal) \u2014 RSI is the most reliable signal at 71% win rate but gives no actionable entry today."
     },
     {
       "source": "CoinDesk",
       "signal_type": "news",
-      "description": "Bitcoin mining difficulty dropped 14% from yearly highs as operators pivot away from mining \u2014 a sign of network stress and reduced confidence in near-term BTC profitability."
+      "description": "Bitcoin cold-wallet attack spreading to 4,500 addresses with $89M in losses creates security fear and risk-off sentiment across the market."
+    },
+    {
+      "source": "CoinTelegraph",
+      "signal_type": "news",
+      "description": "Trump Media sold another 2,628 BTC reducing holdings to 4,261 BTC \u2014 a notable institutional seller adding downward pressure."
+    },
+    {
+      "source": "volume_breakout",
+      "signal_type": "technical",
+      "description": "No volume breakout signals detected across candidates; ADA's 9% daily pump and 13.9% weekly gain with $540M volume is notable but wasn't on the swing candidate list for full analysis."
     }
   ],
   "_mode": "HUNTING",
