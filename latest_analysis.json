@@ -1,26 +1,18 @@
 {
-  "timestamp": "2026-08-02T19:11:32.549363+00:00",
+  "timestamp": "2026-08-02T20:11:32.581141+00:00",
   "selected_coin": "BTC",
   "selected_coin_name": "Bitcoin",
-  "selected_coin_price": 63310,
-  "confidence": 22,
-  "layman_headline": "Fear dominates crypto markets \u2014 no good swing trade setups right now.",
-  "layman_explanation": "The crypto market is in a fearful mood with Bitcoin down about 2% over the past week and most altcoins down even more. While a couple of coins show oversold readings that might suggest a bounce, the overall market structure is bearish with high Bitcoin dominance squeezing altcoins. A Coldcard wallet exploit worth $89 million is rattling confidence and distorting market signals \u2014 not the environment for confident entries.",
-  "layman_action": "Stay patient with cash on hand. Wait for the fear to either peak and reverse (look for Fear & Greed dropping below 20 then bouncing back above 30) or for a clear technical setup with volume confirmation before committing capital.",
-  "expert_reasoning": "I evaluated all seven swing candidates against validated rules and signal credibility data. TRUMP has the best RSI reading (27 \u2014 oversold, and RSI is my most reliable signal at 71% win rate), but the chart bias is -0.70 with poor risk/reward (0.67x) and price below all MAs. Per swing trading principles, a good setup needs clear downside limits and favorable risk/reward. DEXE's -30.4% weekly drop suggests mean reversion potential, but Three Black Crows pattern with -1.40 chart bias indicates selling is accelerating. WLD offers the best risk/reward at 4.35x, but its 5-day momentum is -19% despite being labeled 'uptrend,' creating conflicting signals. Fear & Greed at 27 is near the 25 threshold where my Rule #3 says the outlook is genuinely ambiguous. BTC dominance at 56.2% actively suppresses altcoin recovery. With no funding rate data, no MACD crosses confirmed, and most chart biases negative, the responsible call is HOLD.",
-  "risk_factors": [
-    "Coldcard $89M exploit is still unfolding and could trigger further selling pressure as users move BTC to exchanges",
-    "Fear & Greed at 27 trending worse \u2014 could break below 25 into extreme fear territory, dragging all assets lower",
-    "BTC dominance at 56.2% means altcoins are likely to underperform even if Bitcoin stabilizes"
-  ],
-  "watch_list": [
-    "Fear & Greed Index \u2014 if it drops below 25, expect more downside; if it bounces above 32, altcoin entries become viable",
-    "ADA momentum \u2014 up 14.9% weekly with strong volume ($638M), monitor if this strength broadens to other alts",
-    "Coldcard exploit aftermath \u2014 watch for resolution or further contagion affecting market confidence"
-  ],
-  "market_context": "Crypto markets are in a fear-driven consolidation with BTC at $63,310 and dominance at 56.2%. The Coldcard exploit and Trump Media BTC sales are adding negative pressure, while most altcoins are down 5-30% over the past week.",
-  "context_banner": "Market fear is elevated with no high-conviction swing setups \u2014 capital preservation is the priority until conditions improve.",
-  "btc_price": 63310,
+  "selected_coin_price": 63384,
+  "confidence": 0,
+  "layman_headline": "Analysis error \u2014 try again shortly",
+  "layman_explanation": "The system encountered an error this cycle.",
+  "layman_action": "No action recommended until next run.",
+  "expert_reasoning": null,
+  "risk_factors": [],
+  "watch_list": [],
+  "market_context": null,
+  "context_banner": null,
+  "btc_price": 63384,
   "fear_greed": {
     "current": 27,
     "label": "Fear",
@@ -28,34 +20,8 @@
     "week_avg": 27.9,
     "trend": "worsening"
   },
-  "btc_dominance": 56.2,
-  "key_signals": [
-    {
-      "source": "Fear_Greed",
-      "signal_type": "sentiment",
-      "description": "Fear & Greed at 27 with worsening trend \u2014 near the 25 threshold where Rule #3 says outlook is genuinely ambiguous, favoring HOLD over new entries."
-    },
-    {
-      "source": "RSI",
-      "signal_type": "technical",
-      "description": "TRUMP RSI at 27 is the only oversold reading among candidates, but poor chart structure (0.67x R/R, bearish bias) undermines the signal quality."
-    },
-    {
-      "source": "CoinTelegraph",
-      "signal_type": "news",
-      "description": "Coldcard hack triggered biggest sub-1 BTC movement since FTX \u2014 negative sentiment catalyst distorting normal market signals."
-    },
-    {
-      "source": "CoinTelegraph",
-      "signal_type": "news",
-      "description": "Trump Media sold 2,628 more BTC reducing holdings to 4,261 \u2014 direct selling pressure on Bitcoin."
-    },
-    {
-      "source": "CoinDesk",
-      "signal_type": "news",
-      "description": "Coldcard exploit has investors sending bitcoin back to exchanges, suggesting risk-off behavior and potential further selling."
-    }
-  ],
+  "btc_dominance": 56.3,
+  "key_signals": [],
   "_mode": "HUNTING",
   "exit_target": null,
   "stop_loss": null
