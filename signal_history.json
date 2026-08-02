@@ -269,5 +269,26 @@
       "PENGU"
     ],
     "alert": "Market fear at 27 and worsening \u2014 approaching extreme fear territory where capitulation risk increases. Monitor closely."
+  },
+  {
+    "ts": "2026-08-02T11:11:32.440035+00:00",
+    "coin": "BTC",
+    "price": 63122,
+    "signal": "HOLD",
+    "confidence": 25,
+    "score": -0.3,
+    "fg": 27,
+    "btc_price": 63122,
+    "btc_dominance": 56.3,
+    "candidates": [
+      "KAITO",
+      "ENA",
+      "BONK",
+      "FET",
+      "TRUMP",
+      "PEPE",
+      "PENGU"
+    ],
+    "alert": "Fear & Greed at 27 and worsening \u2014 approaching the extreme fear threshold (25) where Rule #3 mandates caution. All oversold alt candidates still show bearish chart structures without reversal confirmation."
   }
 ]
