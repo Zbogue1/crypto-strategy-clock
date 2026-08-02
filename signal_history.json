@@ -500,5 +500,26 @@
       "PEPE"
     ],
     "alert": "Fear & Greed at 27 and trending down \u2014 approaching the 25 threshold where my validated rules indicate maximum ambiguity. No entry recommended until sentiment stabilizes."
+  },
+  {
+    "ts": "2026-08-02T22:11:32.592996+00:00",
+    "coin": "BTC",
+    "price": 63632,
+    "signal": "HOLD",
+    "confidence": 0,
+    "score": null,
+    "fg": 27,
+    "btc_price": 63632,
+    "btc_dominance": 56.3,
+    "candidates": [
+      "KAITO",
+      "ENA",
+      "WLD",
+      "UB",
+      "BONK",
+      "TRUMP",
+      "AAVE"
+    ],
+    "alert": null
   }
 ]
