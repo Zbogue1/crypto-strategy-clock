@@ -101,5 +101,26 @@
       "DASH"
     ],
     "alert": "All swing candidates either overbought or in confirmed downtrends. No position meets minimum risk/reward criteria."
+  },
+  {
+    "ts": "2026-08-02T03:11:32.448796+00:00",
+    "coin": "BTC",
+    "price": 63351,
+    "signal": "HOLD",
+    "confidence": 22,
+    "score": -0.5,
+    "fg": 27,
+    "btc_price": 63351,
+    "btc_dominance": 56.3,
+    "candidates": [
+      "KAITO",
+      "TRUMP",
+      "FET",
+      "ENA",
+      "PUMP",
+      "LDO",
+      "PEPE"
+    ],
+    "alert": "Fear & Greed at 27 and worsening \u2014 approaching the extreme fear zone where bounce probability increases but timing is unreliable. Stay ready but stay patient."
   }
 ]
