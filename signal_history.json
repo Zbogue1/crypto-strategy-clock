@@ -311,5 +311,26 @@
       "PEPE"
     ],
     "alert": "Coldcard hardware wallet exploit has drained $89M across 4,500 addresses \u2014 the largest sub-1-BTC movement since FTX collapse. Monitor for contagion."
+  },
+  {
+    "ts": "2026-08-02T13:11:32.491999+00:00",
+    "coin": "BTC",
+    "price": 63051,
+    "signal": "HOLD",
+    "confidence": 22,
+    "score": -0.6,
+    "fg": 27,
+    "btc_price": 63051,
+    "btc_dominance": 56.3,
+    "candidates": [
+      "UB",
+      "ENA",
+      "BONK",
+      "PEPE",
+      "FET",
+      "TRUMP",
+      "PENGU"
+    ],
+    "alert": "Coldcard cold-wallet exploit has spread to 4,500 addresses with $89M in losses \u2014 monitor for contagion risk to broader market."
   }
 ]
