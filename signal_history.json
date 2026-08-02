@@ -416,5 +416,26 @@
       "FET"
     ],
     "alert": "Coldcard hardware wallet exploit has spread to 4,500 addresses with $89M in losses \u2014 monitor for contagion effects on broader market confidence."
+  },
+  {
+    "ts": "2026-08-02T18:11:32.572714+00:00",
+    "coin": "BTC",
+    "price": 63239,
+    "signal": "HOLD",
+    "confidence": 25,
+    "score": -0.3,
+    "fg": 27,
+    "btc_price": 63239,
+    "btc_dominance": 0.0,
+    "candidates": [
+      "DEXE",
+      "KAITO",
+      "ENA",
+      "UB",
+      "WLD",
+      "BONK",
+      "TRUMP"
+    ],
+    "alert": "Coldcard $89M exploit is spreading to 4,500+ addresses \u2014 monitor for contagion effects on broader market confidence."
   }
 ]
