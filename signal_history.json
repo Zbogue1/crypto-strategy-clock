@@ -521,5 +521,26 @@
       "AAVE"
     ],
     "alert": null
+  },
+  {
+    "ts": "2026-08-02T23:11:32.435871+00:00",
+    "coin": "BTC",
+    "price": 63320,
+    "signal": "HOLD",
+    "confidence": 0,
+    "score": null,
+    "fg": 27,
+    "btc_price": 63320,
+    "btc_dominance": 56.3,
+    "candidates": [
+      "KAITO",
+      "ENA",
+      "UB",
+      "BONK",
+      "AAVE",
+      "PENGU",
+      "PEPE"
+    ],
+    "alert": null
   }
 ]
