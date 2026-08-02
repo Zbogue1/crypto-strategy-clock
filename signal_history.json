@@ -437,5 +437,26 @@
       "TRUMP"
     ],
     "alert": "Coldcard $89M exploit is spreading to 4,500+ addresses \u2014 monitor for contagion effects on broader market confidence."
+  },
+  {
+    "ts": "2026-08-02T19:11:32.549363+00:00",
+    "coin": "BTC",
+    "price": 63310,
+    "signal": "HOLD",
+    "confidence": 22,
+    "score": -0.3,
+    "fg": 27,
+    "btc_price": 63310,
+    "btc_dominance": 56.2,
+    "candidates": [
+      "DEXE",
+      "KAITO",
+      "ENA",
+      "UB",
+      "BONK",
+      "WLD",
+      "TRUMP"
+    ],
+    "alert": "Fear & Greed at 27 and worsening \u2014 approaching extreme fear threshold of 25 where short-term direction becomes highly unpredictable."
   }
 ]
