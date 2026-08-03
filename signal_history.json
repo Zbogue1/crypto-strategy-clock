@@ -752,5 +752,26 @@
       "PEPE"
     ],
     "alert": "Market fear worsening with multiple negative catalysts (Coldcard hack, negative Coinbase premium streak, BTC weakness) \u2014 avoid catching falling knives."
+  },
+  {
+    "ts": "2026-08-03T10:11:32.553050+00:00",
+    "coin": "TRUMP",
+    "price": 1.45,
+    "signal": "HOLD",
+    "confidence": 28,
+    "score": -0.15,
+    "fg": 28,
+    "btc_price": 62712,
+    "btc_dominance": 56.2,
+    "candidates": [
+      "KAITO",
+      "UB",
+      "WLD",
+      "\u5e01\u5b89\u4eba\u751f",
+      "AAVE",
+      "TRUMP",
+      "PENGU"
+    ],
+    "alert": "Coldcard wallet vulnerability has caused ~$114M in losses; hardware wallet security concerns could weigh on broader crypto sentiment this week."
   }
 ]
