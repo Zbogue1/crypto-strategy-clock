@@ -626,5 +626,26 @@
       "AAVE"
     ],
     "alert": "Coldcard exploit has now hit a suspected 4th attack wave (389 BTC stolen per Galaxy). This ongoing security crisis is driving unusual exchange inflows and could trigger further sell pressure."
+  },
+  {
+    "ts": "2026-08-03T04:11:32.537739+00:00",
+    "coin": "ENA",
+    "price": 0.08783,
+    "signal": "HOLD",
+    "confidence": 32,
+    "score": 0.15,
+    "fg": 28,
+    "btc_price": 62818,
+    "btc_dominance": 56.2,
+    "candidates": [
+      "KAITO",
+      "UB",
+      "WLD",
+      "ENA",
+      "TRUMP",
+      "AAVE",
+      "BONK"
+    ],
+    "alert": "Coldcard hardware wallet exploit has stolen ~389 BTC across suspected 4 attack waves \u2014 monitor for further escalation that could trigger broader market selloff."
   }
 ]
