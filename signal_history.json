@@ -584,5 +584,26 @@
       "TRUMP"
     ],
     "alert": "Coldcard exploit causing unusual on-chain movement; monitor for cascading security fears that could push Fear & Greed below 25."
+  },
+  {
+    "ts": "2026-08-03T02:11:32.562293+00:00",
+    "coin": "ENA",
+    "price": 0.088042,
+    "signal": "HOLD",
+    "confidence": 32,
+    "score": 0.15,
+    "fg": 28,
+    "btc_price": 63127,
+    "btc_dominance": 56.3,
+    "candidates": [
+      "KAITO",
+      "UB",
+      "ENA",
+      "WLD",
+      "BONK",
+      "AAVE",
+      "TRUMP"
+    ],
+    "alert": "Coldcard exploit has caused 389+ BTC in losses across multiple attack waves \u2014 hardware wallet security concerns may suppress sentiment for days."
   }
 ]
