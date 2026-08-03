@@ -1,18 +1,26 @@
 {
-  "timestamp": "2026-08-03T07:11:32.585038+00:00",
-  "selected_coin": "BTC",
-  "selected_coin_name": "Bitcoin",
-  "selected_coin_price": 62599,
-  "confidence": 0,
-  "layman_headline": "Analysis error \u2014 try again shortly",
-  "layman_explanation": "The system encountered an error this cycle.",
-  "layman_action": "No action recommended until next run.",
-  "expert_reasoning": null,
-  "risk_factors": [],
-  "watch_list": [],
-  "market_context": null,
-  "context_banner": null,
-  "btc_price": 62599,
+  "timestamp": "2026-08-03T08:11:32.707789+00:00",
+  "selected_coin": "WLD",
+  "selected_coin_name": "Worldcoin",
+  "selected_coin_price": 0.308228,
+  "confidence": 28,
+  "layman_headline": "Market fear is keeping us on the sidelines \u2014 no strong buy setups yet.",
+  "layman_explanation": "The crypto market is in a fearful mood right now, with Bitcoin dropping below $63,000 and most altcoins down 5-12% over the past week. Negative news about hardware wallet vulnerabilities (Coldcard) and large BTC moves tied to Trump Media are spooking traders. While a few coins like BONK and WLD are getting cheap enough to be interesting, the overall trend is still pointing down and Bitcoin dominance is high, which means altcoins tend to suffer even more. We're watching and waiting for a clearer reversal signal before putting money to work.",
+  "layman_action": "Stay patient and keep cash ready. The market is dropping but hasn't shown signs of bottoming yet. Wait for fear to either spike into extreme territory (below 20) for a contrarian buy, or for prices to stabilize and start turning up before entering.",
+  "expert_reasoning": "The market environment is hostile for new alt positions: Fear & Greed at 28 with a worsening trend, BTC dominance at 56.2% compressing alts, and BTC itself down 4.4% on the week with negative Coinbase premium on a 77-day streak. Among candidates, BONK has the strongest RSI signal at 25 (oversold), which historically has a 71% win rate per our signal credibility data, but its chart bias is -0.7 with bearish structure and no visible support levels \u2014 making stop-loss placement dangerous. WLD presents a cleaner setup with defined support at $0.30, neutral RSI, and 2.4x risk/reward, but the broader macro headwinds (Coldcard vulnerabilities rattling sentiment, South Korean stablecoin outflows of $367M, ZeroStack survival risk) argue against initiating positions now. I'm issuing HOLD until we see either a Fear & Greed capitulation below 20 or a confirmed bounce off key support levels.",
+  "risk_factors": [
+    "Fear & Greed trend is worsening (28 \u2192 could drop further), historically ambiguous at these levels per validated rules",
+    "BTC dominance at 56.2% means capital is rotating out of alts \u2014 any new alt position faces structural headwinds",
+    "Coldcard security incidents and large BTC liquidations could trigger further cascading selloffs"
+  ],
+  "watch_list": [
+    "Fear & Greed Index \u2014 watch for either a drop below 20 (extreme fear = contrarian signal) or a reversal above 35 (stabilization)",
+    "BTC price action at $60,000 psychological support \u2014 a break below could accelerate alt selling",
+    "BONK RSI at 25 \u2014 if it drops to 20 or below while price holds, that would be a higher-conviction oversold bounce setup"
+  ],
+  "market_context": "The crypto market is in a fear-driven downturn with BTC under $63K, a 77-day negative Coinbase premium streak, and multiple negative catalysts including Coldcard security breaches and institutional stress signals. High BTC dominance at 56.2% is crushing altcoin performance across the board.",
+  "context_banner": "Broad-based crypto fear with no clear reversal signals \u2014 capital preservation takes priority over hunting for bounces.",
+  "btc_price": 62483,
   "fear_greed": {
     "current": 28,
     "label": "Fear",
@@ -20,9 +28,35 @@
     "week_avg": 27.6,
     "trend": "worsening"
   },
-  "btc_dominance": 0.0,
-  "key_signals": [],
+  "btc_dominance": 56.2,
+  "key_signals": [
+    {
+      "source": "Fear_Greed",
+      "signal_type": "sentiment",
+      "description": "Fear & Greed at 28 with worsening weekly trend (avg 27.6) \u2014 market hasn't found a bottom yet, and per validated rules this level is genuinely ambiguous for direction."
+    },
+    {
+      "source": "RSI",
+      "signal_type": "technical",
+      "description": "BONK RSI at 25 is the strongest oversold reading among candidates (71% historical win rate for RSI signals), but bearish chart structure makes it a risky catch."
+    },
+    {
+      "source": "CoinTelegraph",
+      "signal_type": "news",
+      "description": "Bitcoin hitting $62K with a 77-day negative Coinbase premium streak signals sustained institutional selling pressure, not a healthy dip to buy."
+    },
+    {
+      "source": "CoinDesk",
+      "signal_type": "news",
+      "description": "Coldcard hardware wallet losses and Trump Media BTC collateral moves are adding uncertainty and undermining market confidence."
+    },
+    {
+      "source": "volume_breakout",
+      "signal_type": "technical",
+      "description": "No volume breakout signals detected among candidates \u2014 all pullbacks are occurring on unremarkable volume, suggesting no accumulation phase has begun."
+    }
+  ],
   "_mode": "HUNTING",
-  "exit_target": null,
-  "stop_loss": null
+  "exit_target": 0.355,
+  "stop_loss": 0.275
 }
