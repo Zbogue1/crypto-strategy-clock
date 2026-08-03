@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-08-03T13:11:32.668275+00:00",
-  "selected_coin": "BTC",
-  "selected_coin_name": "Bitcoin",
-  "selected_coin_price": 62644,
-  "confidence": 25,
-  "layman_headline": "Market fear is high and most coins are bleeding \u2014 patience is the smartest play right now.",
-  "layman_explanation": "The crypto market is in a fearful state at 28/100, with Bitcoin down almost 4% this week and most altcoins performing even worse. There's negative news pressure from a Coldcard hardware wallet exploit dragging sentiment, Strategy selling Bitcoin, and uncertainty around the CLARITY Act in the Senate. None of the swing trade candidates present a clean, high-conviction setup \u2014 the best-looking ones either have too much momentum risk (UB up 33% in a week) or are in confirmed downtrends (TRUMP, WLD). The smart move is to wait for either the fear to deepen into a genuine capitulation buy opportunity, or for conditions to stabilize.",
-  "layman_action": "Stay in cash and wait. The market is nervous and falling, and there's no standout trade worth risking capital on right now. Watch for Bitcoin to find a floor or for fear to spike even lower, which could create better buying opportunities in the coming days.",
-  "expert_reasoning": "I evaluated all seven candidates systematically. UB has the strongest chart bias (+1.1) with Three White Soldiers and bullish structure, but it's already up 33% in 7 days \u2014 chasing extended momentum in a fearful market with 56.2% BTC dominance (hostile to alts) is high-risk. TRUMP has the best RSI signal at 26.2 (oversold), which historically has a 71% win rate per our signal credibility data, but its chart is bearish (-0.7 bias), it's below all moving averages, and it's down 98% from ATH \u2014 this is a falling knife, not a bounce setup. BEAT dropped 21% in a week but its RSI at 58 contradicts the dip narrative, suggesting structural weakness rather than oversold opportunity. AAVE is the most fundamentally sound (major DeFi protocol) but its chart is neutral-to-bearish with no catalyst. WLD has a decent risk/reward ratio (2.41x) but is below all MAs in bearish structure. The Fear & Greed at 28 with a worsening trend suggests further downside is possible. Per my validated rules, F&G near 25 makes the outlook genuinely ambiguous \u2014 HOLD is appropriate.",
+  "timestamp": "2026-08-03T14:11:32.612647+00:00",
+  "selected_coin": "ENA",
+  "selected_coin_name": "Ethena",
+  "selected_coin_price": 0.093068,
+  "confidence": 32,
+  "layman_headline": "Market fear is keeping us on the sidelines \u2014 no high-conviction trade today.",
+  "layman_explanation": "The overall crypto market is in a fearful state at 28/100, and has been worsening all week. Bitcoin is down nearly 3% over the past seven days and most altcoins are bleeding harder. While a few coins show interesting chart patterns, the macro backdrop is uninviting and the data quality across our candidates is thin \u2014 many are missing key technical indicators. The best-looking candidate is Ethena (ENA), which has bullish candlestick patterns and a neutral RSI, but its risk/reward ratio is poor at 0.56x and the broader downtrend hasn't convincingly reversed.",
+  "layman_action": "Stay patient and hold cash. The market mood is fearful and trending worse. Wait for either a clearer reversal signal or for Fear & Greed to drop into the teens where extreme oversold bounces become more probable. If ENA pulls back to the $0.085-0.088 range with the bullish chart structure intact, it could become actionable.",
+  "expert_reasoning": "I evaluated all seven swing candidates systematically. KAITO has bearish engulfing patterns and an RSI of 65 \u2014 reject. UB is up 38% in a week with zero chart data \u2014 classic chase setup, reject. BEAT crashed 25% in a week but RSI at 58 and price discrepancy between current ($3.12) and chart ($3.54) raises data integrity concerns. AAVE is neutral across the board with distant support making stop-loss impractical. TRUMP has no technicals and is down 98% from ATH. WLD has a decent R/R of 2.41x but bearish structure below all MAs. ENA stands out with the highest chart bias (+1.0), dual bullish candle confirmations, and room to run to $0.10 resistance \u2014 however, R/R at 0.56x is below the 2.0 minimum threshold for a proper swing entry. The Fear & Greed at 28 with a worsening trend, combined with bearish macro news (Strategy selling BTC, CLARITY Act risk), tilts the overall environment bearish. Per my validated rules, at F&G near 25-28 the outlook is genuinely ambiguous, favoring HOLD.",
   "risk_factors": [
-    "Coldcard exploit now in its 5th day could escalate and further damage crypto sentiment",
-    "CLARITY Act failure this week could trigger a broader sell-off per Bernstein's analysis",
-    "Strategy selling $105M in BTC while being a bellwether signals institutional caution"
+    "Fear & Greed has been worsening for a week (27\u219228\u219227.6 avg) and could break below 25, triggering broader capitulation",
+    "Bernstein warns of another leg lower if CLARITY Act stalls \u2014 regulatory risk is real and imminent",
+    "Strategy (formerly MicroStrategy) is actively selling Bitcoin, which could pressure the entire market further"
   ],
   "watch_list": [
-    "CLARITY Act Senate vote outcome before Friday \u2014 failure could accelerate selling",
-    "Fear & Greed Index: if it drops below 25, watch for capitulation buying opportunities",
-    "TRUMP RSI \u2014 if it drops below 20 with a bullish divergence, it could become a high-conviction oversold bounce play"
+    "Fear & Greed Index: watch for a drop below 25 (extreme fear) or a reversal above 35 (stabilization)",
+    "CLARITY Act legislative progress \u2014 Bernstein flagged this as the key catalyst for the next directional move",
+    "ENA price action at $0.085-0.088 support zone \u2014 a hold there with continued bullish candles would create a proper entry"
   ],
-  "market_context": "The crypto market is in a fear state (28/100, worsening) with BTC at $62.6K losing 3.8% this week. BTC dominance at 56.2% signals capital rotating away from alts, making altcoin swing trades especially risky right now.",
-  "context_banner": "Market fear is intensifying with active negative catalysts \u2014 capital preservation beats speculative entries until conditions stabilize.",
-  "btc_price": 62644,
+  "market_context": "The crypto market is in a fear-dominated regime with BTC at $63,188, down 2.8% weekly, and most altcoins falling harder. Macro news is mixed-to-bearish: Strategy is selling BTC, Morgan Stanley downgraded Circle, and regulatory uncertainty around the CLARITY Act threatens further downside.",
+  "context_banner": "Fear is deepening across crypto with structural sellers active \u2014 discipline demands patience over action right now.",
+  "btc_price": 63188,
   "fear_greed": {
     "current": 28,
     "label": "Fear",
@@ -28,35 +28,35 @@
     "week_avg": 27.6,
     "trend": "worsening"
   },
-  "btc_dominance": 56.2,
+  "btc_dominance": 0.0,
   "key_signals": [
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Fear & Greed at 28 with worsening trend (week avg 27.6) \u2014 close to the 25 threshold where my rules indicate genuine ambiguity, favoring HOLD over new entries."
-    },
-    {
-      "source": "RSI",
-      "signal_type": "technical",
-      "description": "TRUMP RSI at 26.2 is the only oversold reading among candidates, but it's contradicted by bearish chart structure below all MAs \u2014 oversold alone isn't enough without reversal confirmation."
-    },
-    {
-      "source": "CoinTelegraph",
-      "signal_type": "news",
-      "description": "CLARITY Act failure risk and 10x Research calling for a possible bear market bottom in August suggest more downside before a tradeable bounce."
+      "description": "Fear & Greed at 28 with a worsening weekly trend (avg 27.6) \u2014 market is fearful but not yet at the extreme levels where bounce probabilities increase significantly."
     },
     {
       "source": "CoinDesk",
       "signal_type": "news",
-      "description": "Strategy sold $105M of BTC while the Coldcard exploit enters day 5 \u2014 dual negative catalysts suppressing both institutional and retail confidence."
+      "description": "Strategy sold $105M of BTC last week and Bernstein warned of further crypto downside if CLARITY Act stalls \u2014 two bearish macro catalysts pressuring prices."
+    },
+    {
+      "source": "RSI",
+      "signal_type": "technical",
+      "description": "ENA's RSI at 44 is the most constructive among candidates \u2014 neutral territory with room to move up, unlike KAITO (65, overbought) or BEAT (58, elevated)."
+    },
+    {
+      "source": "CoinTelegraph",
+      "signal_type": "news",
+      "description": "CLARITY Act failure risk flagged by Bernstein as a potential catalyst for further crypto selloff \u2014 regulatory uncertainty is the dominant near-term narrative."
     },
     {
       "source": "volume_breakout",
       "signal_type": "technical",
-      "description": "No volume breakout signals detected among candidates \u2014 volume data is largely unavailable, reducing conviction in any potential entry."
+      "description": "ENA's bullish engulfing and marubozu patterns suggest strong buying conviction, but without volume confirmation data and with a 0.56x R/R ratio, the setup is incomplete."
     }
   ],
   "_mode": "HUNTING",
-  "exit_target": null,
-  "stop_loss": null
+  "exit_target": 0.105,
+  "stop_loss": 0.078
 }
