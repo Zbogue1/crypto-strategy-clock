@@ -1,24 +1,5 @@
 [
   {
-    "ts": "2026-06-17T23:41:34.521081+00:00",
-    "coin": "BTC",
-    "price": 64381,
-    "signal": "HOLD",
-    "confidence": 0,
-    "score": null,
-    "fg": 22,
-    "btc_price": 64381,
-    "btc_dominance": 56.1,
-    "candidates": [
-      "HYPE",
-      "ADA",
-      "ZEC",
-      "BTC",
-      "XMR"
-    ],
-    "alert": null
-  },
-  {
     "ts": "2026-06-17T23:43:36.769713+00:00",
     "coin": "BTC",
     "price": 64371,
@@ -836,5 +817,26 @@
       "WLD"
     ],
     "alert": "Multiple headwinds converging: Coldcard exploit ongoing, Strategy net-selling BTC, CLARITY Act vote uncertainty \u2014 avoid new positions until at least one resolves."
+  },
+  {
+    "ts": "2026-08-03T14:11:32.612647+00:00",
+    "coin": "ENA",
+    "price": 0.093068,
+    "signal": "HOLD",
+    "confidence": 32,
+    "score": 0.25,
+    "fg": 28,
+    "btc_price": 63188,
+    "btc_dominance": 0.0,
+    "candidates": [
+      "KAITO",
+      "UB",
+      "BEAT",
+      "AAVE",
+      "TRUMP",
+      "ENA",
+      "WLD"
+    ],
+    "alert": "Market fear is worsening and approaching the extreme zone (28/100). Strategy is actively selling Bitcoin. Wait for clearer bottoming signals before deploying capital."
   }
 ]
