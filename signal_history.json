@@ -773,5 +773,26 @@
       "PENGU"
     ],
     "alert": "Coldcard wallet vulnerability has caused ~$114M in losses; hardware wallet security concerns could weigh on broader crypto sentiment this week."
+  },
+  {
+    "ts": "2026-08-03T11:11:32.583145+00:00",
+    "coin": "BTC",
+    "price": 62528,
+    "signal": "HOLD",
+    "confidence": 25,
+    "score": -0.3,
+    "fg": 28,
+    "btc_price": 62528,
+    "btc_dominance": 56.2,
+    "candidates": [
+      "KAITO",
+      "UB",
+      "WLD",
+      "\u5e01\u5b89\u4eba\u751f",
+      "AAVE",
+      "TRUMP",
+      "PENGU"
+    ],
+    "alert": "Coldcard exploit now in its 5th day with potential $114M in losses \u2014 monitor for contagion risk to other wallet providers and broader market impact."
   }
 ]
