@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-08-03T08:11:32.707789+00:00",
-  "selected_coin": "WLD",
-  "selected_coin_name": "Worldcoin",
-  "selected_coin_price": 0.308228,
+  "timestamp": "2026-08-03T09:11:32.750669+00:00",
+  "selected_coin": "AAVE",
+  "selected_coin_name": "Aave",
+  "selected_coin_price": 91.68,
   "confidence": 28,
-  "layman_headline": "Market fear is keeping us on the sidelines \u2014 no strong buy setups yet.",
-  "layman_explanation": "The crypto market is in a fearful mood right now, with Bitcoin dropping below $63,000 and most altcoins down 5-12% over the past week. Negative news about hardware wallet vulnerabilities (Coldcard) and large BTC moves tied to Trump Media are spooking traders. While a few coins like BONK and WLD are getting cheap enough to be interesting, the overall trend is still pointing down and Bitcoin dominance is high, which means altcoins tend to suffer even more. We're watching and waiting for a clearer reversal signal before putting money to work.",
-  "layman_action": "Stay patient and keep cash ready. The market is dropping but hasn't shown signs of bottoming yet. Wait for fear to either spike into extreme territory (below 20) for a contrarian buy, or for prices to stabilize and start turning up before entering.",
-  "expert_reasoning": "The market environment is hostile for new alt positions: Fear & Greed at 28 with a worsening trend, BTC dominance at 56.2% compressing alts, and BTC itself down 4.4% on the week with negative Coinbase premium on a 77-day streak. Among candidates, BONK has the strongest RSI signal at 25 (oversold), which historically has a 71% win rate per our signal credibility data, but its chart bias is -0.7 with bearish structure and no visible support levels \u2014 making stop-loss placement dangerous. WLD presents a cleaner setup with defined support at $0.30, neutral RSI, and 2.4x risk/reward, but the broader macro headwinds (Coldcard vulnerabilities rattling sentiment, South Korean stablecoin outflows of $367M, ZeroStack survival risk) argue against initiating positions now. I'm issuing HOLD until we see either a Fear & Greed capitulation below 20 or a confirmed bounce off key support levels.",
+  "layman_headline": "Market fear is rising and no coin offers a clean entry right now \u2014 staying on the sidelines.",
+  "layman_explanation": "The crypto market is in a fearful state with Bitcoin dropping 4% this week to $62,500 and most altcoins falling even harder. News about a major hardware wallet hack ($114M+ in Coldcard losses) and concerns about Trump Media's Bitcoin collateral are adding to the negativity. While a few coins look tempting after big drops, none of them have the combination of oversold signals, bullish chart patterns, and a clear catalyst needed to justify jumping in during this environment.",
+  "layman_action": "Wait for the market to stabilize before committing capital. If AAVE pulls back to the $85 range with improving momentum, that could be an attractive entry. For now, keep cash ready and watch for a shift in market fear toward neutral.",
+  "expert_reasoning": "The Fear & Greed Index at 28 with a worsening trend (week avg 27.6) puts us in cautious territory per validated Rule #3 \u2014 at or near 25, short-term direction is genuinely ambiguous. BTC dominance at 56.2% signals continued capital rotation away from alts, making alt-only swing trades riskier. Among candidates: TRUMP has the best RSI signal (26, oversold) which aligns with our most reliable indicator (71% win rate), but its -98% ATH drawdown, bearish chart structure, and meme-coin nature make it a poor risk/reward. UB has strong momentum but +22% in 7 days with support 40% away creates terrible risk/reward (0.49x). KAITO is actively selling off with bearish engulfing on elevated RSI. AAVE offers the best balance \u2014 neutral RSI, above SMA20, real DeFi protocol with Ethereum TVL backing \u2014 but needs a deeper pullback to offer asymmetric upside. No candidate meets the threshold for a high-conviction swing entry.",
   "risk_factors": [
-    "Fear & Greed trend is worsening (28 \u2192 could drop further), historically ambiguous at these levels per validated rules",
-    "BTC dominance at 56.2% means capital is rotating out of alts \u2014 any new alt position faces structural headwinds",
-    "Coldcard security incidents and large BTC liquidations could trigger further cascading selloffs"
+    "Coldcard hack fallout ($114M+) could trigger broader security fears and further selling across crypto",
+    "BTC Coinbase premium has been negative for 77 consecutive days, indicating persistent US institutional selling pressure",
+    "Fear & Greed worsening trend could push below 25, historically associated with further 1-4% BTC downside"
   ],
   "watch_list": [
-    "Fear & Greed Index \u2014 watch for either a drop below 20 (extreme fear = contrarian signal) or a reversal above 35 (stabilization)",
-    "BTC price action at $60,000 psychological support \u2014 a break below could accelerate alt selling",
-    "BONK RSI at 25 \u2014 if it drops to 20 or below while price holds, that would be a higher-conviction oversold bounce setup"
+    "Fear & Greed Index \u2014 if it drops below 25, expect another leg down; if it rebounds above 35, conditions improve for entry",
+    "AAVE price action near $85-88 support zone \u2014 a bounce there with rising RSI would create a quality setup",
+    "US jobs data this week (per CoinDesk) \u2014 strong data could pressure risk assets, weak data could spark a relief rally"
   ],
-  "market_context": "The crypto market is in a fear-driven downturn with BTC under $63K, a 77-day negative Coinbase premium streak, and multiple negative catalysts including Coldcard security breaches and institutional stress signals. High BTC dominance at 56.2% is crushing altcoin performance across the board.",
-  "context_banner": "Broad-based crypto fear with no clear reversal signals \u2014 capital preservation takes priority over hunting for bounces.",
-  "btc_price": 62483,
+  "market_context": "The crypto market is in a fear-driven correction with BTC down 4.1% weekly to $62.5K and altcoins broadly underperforming. Negative Coinbase premium for 77 days and the Coldcard exploit news are compounding selling pressure, while no clear bullish catalyst is on the immediate horizon.",
+  "context_banner": "Fear is building but hasn't reached capitulation levels \u2014 the best swing trades emerge when fear peaks and reverses, not while it's still worsening.",
+  "btc_price": 62500,
   "fear_greed": {
     "current": 28,
     "label": "Fear",
@@ -33,30 +33,30 @@
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Fear & Greed at 28 with worsening weekly trend (avg 27.6) \u2014 market hasn't found a bottom yet, and per validated rules this level is genuinely ambiguous for direction."
+      "description": "Fear & Greed at 28 with worsening weekly trend (avg 27.6) \u2014 not yet at capitulation but approaching the danger zone where Rule #3 advises maximum caution."
     },
     {
       "source": "RSI",
       "signal_type": "technical",
-      "description": "BONK RSI at 25 is the strongest oversold reading among candidates (71% historical win rate for RSI signals), but bearish chart structure makes it a risky catch."
+      "description": "TRUMP RSI at 26 (oversold) is the strongest individual signal per our 71% win-rate track record, but the bearish chart structure and -98% ATH drawdown undermine the setup quality."
     },
     {
       "source": "CoinTelegraph",
       "signal_type": "news",
-      "description": "Bitcoin hitting $62K with a 77-day negative Coinbase premium streak signals sustained institutional selling pressure, not a healthy dip to buy."
+      "description": "Bitcoin hitting $62K with a 77-day negative Coinbase premium streak signals sustained institutional selling in the US market \u2014 a significant headwind for any long entry."
     },
     {
       "source": "CoinDesk",
       "signal_type": "news",
-      "description": "Coldcard hardware wallet losses and Trump Media BTC collateral moves are adding uncertainty and undermining market confidence."
+      "description": "Coldcard wallet losses potentially reaching $114M are rattling market confidence and could trigger further risk-off behavior across crypto."
     },
     {
-      "source": "volume_breakout",
-      "signal_type": "technical",
-      "description": "No volume breakout signals detected among candidates \u2014 all pullbacks are occurring on unremarkable volume, suggesting no accumulation phase has begun."
+      "source": "DeFiLlama",
+      "signal_type": "onchain",
+      "description": "Ethereum DeFi TVL remains strong at $40.5B with no 7-day change, suggesting DeFi fundamentals are stable even as token prices decline \u2014 supporting AAVE as the best candidate when conditions improve."
     }
   ],
   "_mode": "HUNTING",
-  "exit_target": 0.355,
-  "stop_loss": 0.275
+  "exit_target": 102.0,
+  "stop_loss": 78.0
 }
