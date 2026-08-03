@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-08-02T00:04:27.876497+00:00",
-    "coin": "ETH",
-    "price": 1844.61,
-    "signal": "HOLD",
-    "confidence": 35,
-    "score": -0.15,
-    "fg": 27,
-    "btc_price": 62803,
-    "btc_dominance": 56.3,
-    "candidates": [
-      "KAITO",
-      "FET",
-      "LDO",
-      "TRUMP",
-      "ENA",
-      "DASH",
-      "AAVE",
-      "ETH",
-      "BONK"
-    ],
-    "alert": "All swing candidates show either overbought extremes or bearish chart structures \u2014 no quality setup meets risk/reward criteria this cycle."
-  },
-  {
     "ts": "2026-08-02T01:11:32.495723+00:00",
     "coin": "AAVE",
     "price": 91.01,
@@ -840,5 +817,26 @@
       "TRUMP"
     ],
     "alert": "Fear & Greed at 28 with worsening trend and macro headwinds from yen intervention \u2014 avoid aggressive new positions until sentiment stabilizes."
+  },
+  {
+    "ts": "2026-08-03T16:11:32.693814+00:00",
+    "coin": "BTC",
+    "price": 63666,
+    "signal": "HOLD",
+    "confidence": 25,
+    "score": -0.3,
+    "fg": 28,
+    "btc_price": 63666,
+    "btc_dominance": 56.4,
+    "candidates": [
+      "BEAT",
+      "UB",
+      "AAVE",
+      "WLD",
+      "TRUMP",
+      "\u5e01\u5b89\u4eba\u751f",
+      "FET"
+    ],
+    "alert": "Macro headwinds building: yen carry trade fears, Strategy BTC sales, and potential Clarity Act stall could push markets lower. Stay defensive."
   }
 ]
