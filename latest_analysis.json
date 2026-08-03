@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-08-03T05:11:32.485358+00:00",
-  "selected_coin": "WLD",
-  "selected_coin_name": "Worldcoin",
-  "selected_coin_price": 0.318254,
+  "timestamp": "2026-08-03T06:11:33.037466+00:00",
+  "selected_coin": "AAVE",
+  "selected_coin_name": "Aave",
+  "selected_coin_price": 91.92,
   "confidence": 28,
-  "layman_headline": "Market fear is thick \u2014 no clear opportunity worth the risk right now.",
-  "layman_explanation": "The crypto market has been sliding for a week straight, with Bitcoin down nearly 4% and most altcoins down even more. The Fear & Greed Index sits at 28 and has been worsening all week, meaning traders are scared and selling. On top of that, a major hardware wallet exploit (Coldcard) is dominating headlines and shaking confidence. In this environment, catching a falling knife is dangerous \u2014 it's better to wait for the selling to exhaust itself before jumping in.",
-  "layman_action": "Stay patient and keep your cash ready. The market is in fear mode and prices could drop further before bouncing. Watch for the Fear & Greed Index to stop declining and for Bitcoin to find a floor \u2014 that's when real opportunities will emerge.",
-  "expert_reasoning": "The market environment is hostile for new long entries: Fear & Greed at 28 with a worsening trend, BTC dominance at 56.2% crushing altcoin performance, and the Coldcard exploit creating a negative news cycle that's driving BTC back to exchanges. Among candidates, TRUMP and BONK have oversold RSIs (26 and 25) which per signal credibility data is our most reliable indicator (71% win rate), but both are in severe structural downtrends with -98% and -95% from ATH respectively \u2014 these are catching-a-falling-knife setups. WLD has the cleanest risk/reward profile (2.4x with support at $0.30) and neutral RSI, but it's still below all major MAs in a bearish structure. Per my validated rules, Fear & Greed near 25-28 creates genuinely ambiguous short-term outlook where HOLD is the safest call. I'll watch for WLD to test $0.30 support with a volume reversal candle before entering.",
+  "layman_headline": "Crypto market is in fear mode \u2014 patience beats impulsiveness right now.",
+  "layman_explanation": "The overall crypto market has been sliding for about a week, with Bitcoin down nearly 4% and most altcoins doing worse. The market mood index reads 28 out of 100, firmly in 'Fear' territory, and it's been getting worse all week. Negative news around a Coldcard hardware wallet exploit and Bitcoin hitting $62K with a sustained negative Coinbase premium are adding to the anxiety. None of the coins on the watchlist present a clean, high-conviction setup right now.",
+  "layman_action": "Stay on the sidelines with cash ready. If AAVE drops closer to $85 or the Fear & Greed index dips below 20, that could create a better buying opportunity. Don't chase anything in this environment.",
+  "expert_reasoning": "The Fear & Greed index at 28 with a worsening weekly trend (avg 27.6) signals the market hasn't found a bottom yet. Per my validated rules, readings near 25 make the short-term outlook genuinely ambiguous, so a HOLD is warranted. BTC dominance at 56.2% is hostile to altcoins \u2014 capital is rotating into Bitcoin, not out of it. The Coinbase premium hitting a 77-day negative streak (CoinTelegraph) confirms persistent US institutional selling pressure. Among candidates, KAITO has bearish chart patterns with overbought RSI despite a -20% day \u2014 a classic falling knife. TRUMP has an oversold RSI of 26, which per signal credibility data (RSI 71% win rate) is normally attractive, but the chart is bearish, it's at -98% from ATH, and this is a meme token with no fundamental floor. UB has had a 130% 5-day run \u2014 chasing that is high risk. AAVE at RSI 49 with DeFi fundamentals is the cleanest potential setup, but needs a deeper pullback or a catalyst to trigger entry.",
   "risk_factors": [
-    "Coldcard exploit news cycle could worsen, driving further Bitcoin selling and dragging all alts lower",
-    "Fear & Greed trend is worsening (27 \u2192 28 but weekly avg 27.6), suggesting the sell-off may not be done",
-    "BTC dominance at 56.2% means capital is flowing out of alts \u2014 any new alt position fights the macro trend"
+    "Fear & Greed continues worsening toward extreme fear (sub-20), triggering broader capitulation selling",
+    "Coldcard exploit news could expand into broader security concerns, accelerating outflows from crypto",
+    "BTC dominance continues rising, crushing altcoin valuations further regardless of individual merit"
   ],
   "watch_list": [
-    "Fear & Greed Index: watch for stabilization above 30 or further decline toward 25 (extreme fear threshold)",
-    "BTC price action at $60,000 psychological support \u2014 a break below would accelerate alt selling",
-    "WLD price behavior at $0.30 support level \u2014 a bounce with volume would trigger a BUY signal"
+    "Fear & Greed Index \u2014 watch for a drop below 20 which historically precedes sharp reversals",
+    "AAVE price action near $85-88 support zone for a higher-conviction entry",
+    "Bitcoin Coinbase premium \u2014 if it turns positive, it signals US institutional buying returning"
   ],
-  "market_context": "The crypto market is in a fear-driven downturn with BTC at $62,768 (-3.8% weekly), amplified by the Coldcard hardware wallet exploit shaking confidence. High BTC dominance at 56.2% signals capital rotation away from altcoins, making alt entries particularly risky.",
-  "context_banner": "Market fear is deepening amid the Coldcard exploit fallout \u2014 capital preservation beats opportunistic buying until selling pressure exhausts.",
-  "btc_price": 62768,
+  "market_context": "Bitcoin at $62.8K with a 77-day negative Coinbase premium streak and Fear at 28 \u2014 the market is in a slow bleed with no clear reversal signal yet. High BTC dominance at 56.2% makes altcoin entries especially risky.",
+  "context_banner": "Market fear is building with no reversal catalyst in sight \u2014 capital preservation is the priority until sentiment stabilizes.",
+  "btc_price": 62797,
   "fear_greed": {
     "current": 28,
     "label": "Fear",
@@ -33,30 +33,30 @@
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Fear & Greed at 28 with worsening weekly trend (avg 27.6) signals sustained selling pressure \u2014 per validated rules, this ambiguous zone favors HOLD over new entries."
-    },
-    {
-      "source": "RSI",
-      "signal_type": "technical",
-      "description": "TRUMP (26) and BONK (25) show deeply oversold RSIs \u2014 our most reliable signal at 71% win rate \u2014 but structural downtrends (-98% from ATH) make these value traps rather than bounce candidates."
+      "description": "Fear & Greed at 28 with weekly average 27.6 and worsening trend \u2014 approaching the danger zone near 25 where short-term direction is most unpredictable."
     },
     {
       "source": "CoinTelegraph",
       "signal_type": "news",
-      "description": "Multiple Coldcard exploit stories dominating headlines with 448+ BTC stolen in suspected 4th attack wave, creating negative sentiment and driving Bitcoin back to exchanges."
+      "description": "Bitcoin's Coinbase premium hit a 77-day negative streak, confirming sustained US institutional selling pressure and no near-term demand recovery."
     },
     {
-      "source": "CoinDesk",
+      "source": "RSI",
+      "signal_type": "technical",
+      "description": "AAVE RSI at 49 (neutral) and TRUMP RSI at 26 (oversold) are the most actionable readings, but neither has a confirming catalyst or bullish chart structure."
+    },
+    {
+      "source": "CoinTelegraph",
       "signal_type": "news",
-      "description": "Reports of $89M Coldcard exploit causing investors to move BTC back to centralized exchanges \u2014 a reversal of the self-custody trend that signals fear-driven behavior."
+      "description": "Coldcard hardware wallet exploit affecting 448 BTC is fueling security concerns across the ecosystem, adding to bearish sentiment."
     },
     {
       "source": "volume_breakout",
       "signal_type": "technical",
-      "description": "No volume breakout signals detected across any candidates \u2014 absence of buying conviction confirms this is not the time to force an entry."
+      "description": "No volume breakouts detected among candidates \u2014 all moves are occurring on unconfirmed volume, reducing conviction in any directional bet."
     }
   ],
   "_mode": "HUNTING",
-  "exit_target": 0.355,
-  "stop_loss": 0.28
+  "exit_target": 102.0,
+  "stop_loss": 78.0
 }
