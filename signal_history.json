@@ -794,5 +794,26 @@
       "PENGU"
     ],
     "alert": "Coldcard exploit now in its 5th day with potential $114M in losses \u2014 monitor for contagion risk to other wallet providers and broader market impact."
+  },
+  {
+    "ts": "2026-08-03T12:11:32.542729+00:00",
+    "coin": "BTC",
+    "price": 62404,
+    "signal": "HOLD",
+    "confidence": 25,
+    "score": -0.3,
+    "fg": 28,
+    "btc_price": 62404,
+    "btc_dominance": 56.2,
+    "candidates": [
+      "UB",
+      "KAITO",
+      "WLD",
+      "AAVE",
+      "TRUMP",
+      "\u5e01\u5b89\u4eba\u751f",
+      "PENGU"
+    ],
+    "alert": "Strategy is actively selling Bitcoin while a hardware wallet exploit remains unresolved for 5 days \u2014 elevated risk of further downside."
   }
 ]
