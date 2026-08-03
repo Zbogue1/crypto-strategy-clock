@@ -1,26 +1,5 @@
 [
   {
-    "ts": "2026-08-02T07:11:32.471207+00:00",
-    "coin": "BTC",
-    "price": 63429,
-    "signal": "HOLD",
-    "confidence": 25,
-    "score": -0.3,
-    "fg": 27,
-    "btc_price": 63429,
-    "btc_dominance": 56.3,
-    "candidates": [
-      "KAITO",
-      "ENA",
-      "BONK",
-      "LDO",
-      "TRUMP",
-      "FET",
-      "PEPE"
-    ],
-    "alert": "Fear & Greed at 27 with worsening trend approaching critical 25 threshold \u2014 heightened risk of further downside across all alts."
-  },
-  {
     "ts": "2026-08-02T08:11:32.505515+00:00",
     "coin": "BTC",
     "price": 63454,
@@ -838,5 +817,26 @@
       "AAVE"
     ],
     "alert": "Market sentiment has been in Fear territory (27-28) for over a week with a worsening trend \u2014 approaching the extreme fear zone where my validated rules recommend maximum caution."
+  },
+  {
+    "ts": "2026-08-03T23:11:32.618253+00:00",
+    "coin": "BTC",
+    "price": 63528,
+    "signal": "HOLD",
+    "confidence": 22,
+    "score": -0.6,
+    "fg": 28,
+    "btc_price": 63528,
+    "btc_dominance": 56.4,
+    "candidates": [
+      "BTW",
+      "MON",
+      "USDG",
+      "AAVE",
+      "TRUMP",
+      "UB",
+      "WLD"
+    ],
+    "alert": "Fear & Greed at 28 and trending worse \u2014 approaching the danger zone where validated rules recommend extreme caution. Monitor for potential capitulation entry if F&G drops below 20."
   }
 ]
