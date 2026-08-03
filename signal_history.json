@@ -1,26 +1,5 @@
 [
   {
-    "ts": "2026-08-02T04:11:32.425349+00:00",
-    "coin": "BTC",
-    "price": 63466,
-    "signal": "HOLD",
-    "confidence": 22,
-    "score": -0.4,
-    "fg": 27,
-    "btc_price": 63466,
-    "btc_dominance": 56.4,
-    "candidates": [
-      "KAITO",
-      "FET",
-      "ENA",
-      "TRUMP",
-      "PEPE",
-      "DASH",
-      "MON"
-    ],
-    "alert": "All swing candidates show either overbought exhaustion or bearish downtrend structures \u2014 no actionable entry exists this cycle."
-  },
-  {
     "ts": "2026-08-02T05:11:32.579501+00:00",
     "coin": "BTC",
     "price": 63428,
@@ -838,5 +817,26 @@
       "FET"
     ],
     "alert": "Fear & Greed trending toward extreme fear territory (28 and worsening). Monitor for potential capitulation event that could create high-quality entry opportunities."
+  },
+  {
+    "ts": "2026-08-03T20:11:32.726527+00:00",
+    "coin": "BTC",
+    "price": 63834,
+    "signal": "HOLD",
+    "confidence": 25,
+    "score": -0.3,
+    "fg": 28,
+    "btc_price": 63834,
+    "btc_dominance": 56.4,
+    "candidates": [
+      "MON",
+      "TRUMP",
+      "USDG",
+      "UB",
+      "AAVE",
+      "FET",
+      "WLD"
+    ],
+    "alert": "Market fear is worsening (28 and trending down). If F&G drops below 25, watch for extreme fear capitulation setups but also be prepared for further downside."
   }
 ]
