@@ -815,5 +815,26 @@
       "PENGU"
     ],
     "alert": "Strategy is actively selling Bitcoin while a hardware wallet exploit remains unresolved for 5 days \u2014 elevated risk of further downside."
+  },
+  {
+    "ts": "2026-08-03T13:11:32.668275+00:00",
+    "coin": "BTC",
+    "price": 62644,
+    "signal": "HOLD",
+    "confidence": 25,
+    "score": -0.3,
+    "fg": 28,
+    "btc_price": 62644,
+    "btc_dominance": 56.2,
+    "candidates": [
+      "UB",
+      "KAITO",
+      "BEAT",
+      "TRUMP",
+      "AAVE",
+      "\u5e01\u5b89\u4eba\u751f",
+      "WLD"
+    ],
+    "alert": "Multiple headwinds converging: Coldcard exploit ongoing, Strategy net-selling BTC, CLARITY Act vote uncertainty \u2014 avoid new positions until at least one resolves."
   }
 ]
