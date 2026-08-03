@@ -710,5 +710,26 @@
       "BONK"
     ],
     "alert": null
+  },
+  {
+    "ts": "2026-08-03T08:11:32.707789+00:00",
+    "coin": "WLD",
+    "price": 0.308228,
+    "signal": "HOLD",
+    "confidence": 28,
+    "score": -0.35,
+    "fg": 28,
+    "btc_price": 62483,
+    "btc_dominance": 56.2,
+    "candidates": [
+      "KAITO",
+      "WLD",
+      "UB",
+      "PEPE",
+      "AAVE",
+      "TRUMP",
+      "BONK"
+    ],
+    "alert": "Market in sustained fear territory with worsening sentiment trend \u2014 avoid new positions until stabilization confirmed."
   }
 ]
