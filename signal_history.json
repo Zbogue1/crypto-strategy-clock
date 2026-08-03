@@ -605,5 +605,26 @@
       "TRUMP"
     ],
     "alert": "Coldcard exploit has caused 389+ BTC in losses across multiple attack waves \u2014 hardware wallet security concerns may suppress sentiment for days."
+  },
+  {
+    "ts": "2026-08-03T03:11:32.595111+00:00",
+    "coin": "BTC",
+    "price": 63064,
+    "signal": "HOLD",
+    "confidence": 25,
+    "score": -0.3,
+    "fg": 28,
+    "btc_price": 63064,
+    "btc_dominance": 56.3,
+    "candidates": [
+      "KAITO",
+      "UB",
+      "ENA",
+      "BONK",
+      "WLD",
+      "TRUMP",
+      "AAVE"
+    ],
+    "alert": "Coldcard exploit has now hit a suspected 4th attack wave (389 BTC stolen per Galaxy). This ongoing security crisis is driving unusual exchange inflows and could trigger further sell pressure."
   }
 ]
