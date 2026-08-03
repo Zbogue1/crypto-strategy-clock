@@ -668,5 +668,26 @@
       "ENA"
     ],
     "alert": "Coldcard hardware wallet exploit has stolen 448+ BTC across multiple attack waves \u2014 monitor for contagion effects on broader market confidence."
+  },
+  {
+    "ts": "2026-08-03T06:11:33.037466+00:00",
+    "coin": "AAVE",
+    "price": 91.92,
+    "signal": "HOLD",
+    "confidence": 28,
+    "score": -0.15,
+    "fg": 28,
+    "btc_price": 62797,
+    "btc_dominance": 56.2,
+    "candidates": [
+      "KAITO",
+      "UB",
+      "BONK",
+      "AAVE",
+      "TRUMP",
+      "WLD",
+      "PEPE"
+    ],
+    "alert": "Fear & Greed at 28 and worsening \u2014 approaching the 25 threshold where historical data suggests maximum ambiguity; avoid new positions without a clear catalyst."
   }
 ]
