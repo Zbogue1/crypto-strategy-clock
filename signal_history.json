@@ -647,5 +647,26 @@
       "BONK"
     ],
     "alert": "Coldcard hardware wallet exploit has stolen ~389 BTC across suspected 4 attack waves \u2014 monitor for further escalation that could trigger broader market selloff."
+  },
+  {
+    "ts": "2026-08-03T05:11:32.485358+00:00",
+    "coin": "WLD",
+    "price": 0.318254,
+    "signal": "HOLD",
+    "confidence": 28,
+    "score": -0.15,
+    "fg": 28,
+    "btc_price": 62768,
+    "btc_dominance": 56.2,
+    "candidates": [
+      "KAITO",
+      "UB",
+      "TRUMP",
+      "WLD",
+      "BONK",
+      "AAVE",
+      "ENA"
+    ],
+    "alert": "Coldcard hardware wallet exploit has stolen 448+ BTC across multiple attack waves \u2014 monitor for contagion effects on broader market confidence."
   }
 ]
