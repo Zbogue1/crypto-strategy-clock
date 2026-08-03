@@ -1,26 +1,5 @@
 [
   {
-    "ts": "2026-08-02T03:11:32.448796+00:00",
-    "coin": "BTC",
-    "price": 63351,
-    "signal": "HOLD",
-    "confidence": 22,
-    "score": -0.5,
-    "fg": 27,
-    "btc_price": 63351,
-    "btc_dominance": 56.3,
-    "candidates": [
-      "KAITO",
-      "TRUMP",
-      "FET",
-      "ENA",
-      "PUMP",
-      "LDO",
-      "PEPE"
-    ],
-    "alert": "Fear & Greed at 27 and worsening \u2014 approaching the extreme fear zone where bounce probability increases but timing is unreliable. Stay ready but stay patient."
-  },
-  {
     "ts": "2026-08-02T04:11:32.425349+00:00",
     "coin": "BTC",
     "price": 63466,
@@ -838,5 +817,26 @@
       "MON"
     ],
     "alert": "Data inconsistencies detected in BEAT candidate (chart shows $3.54 uptrend while actual price is $2.76 with -28.7% daily drop) \u2014 treat all candidate data with extra caution this cycle."
+  },
+  {
+    "ts": "2026-08-03T19:11:32.683338+00:00",
+    "coin": "BTC",
+    "price": 63828,
+    "signal": "HOLD",
+    "confidence": 25,
+    "score": -0.3,
+    "fg": 28,
+    "btc_price": 63828,
+    "btc_dominance": 56.4,
+    "candidates": [
+      "UB",
+      "BEAT",
+      "MON",
+      "WLD",
+      "TRUMP",
+      "AAVE",
+      "FET"
+    ],
+    "alert": "Fear & Greed trending toward extreme fear territory (28 and worsening). Monitor for potential capitulation event that could create high-quality entry opportunities."
   }
 ]
