@@ -1,26 +1,5 @@
 [
   {
-    "ts": "2026-08-02T01:11:32.495723+00:00",
-    "coin": "AAVE",
-    "price": 91.01,
-    "signal": "HOLD",
-    "confidence": 25,
-    "score": -0.2,
-    "fg": 27,
-    "btc_price": 62859,
-    "btc_dominance": 56.3,
-    "candidates": [
-      "KAITO",
-      "FET",
-      "TRUMP",
-      "ENA",
-      "LDO",
-      "AAVE",
-      "MON"
-    ],
-    "alert": "Fear & Greed at 27 and worsening toward Extreme Fear territory \u2014 do not deploy capital without a confirmed reversal signal."
-  },
-  {
     "ts": "2026-08-02T02:11:32.523644+00:00",
     "coin": "BTC",
     "price": 63302,
@@ -838,5 +817,26 @@
       "FET"
     ],
     "alert": "Macro headwinds building: yen carry trade fears, Strategy BTC sales, and potential Clarity Act stall could push markets lower. Stay defensive."
+  },
+  {
+    "ts": "2026-08-03T17:11:32.599712+00:00",
+    "coin": "BTC",
+    "price": 63750,
+    "signal": "HOLD",
+    "confidence": 25,
+    "score": -0.3,
+    "fg": 28,
+    "btc_price": 63750,
+    "btc_dominance": 56.4,
+    "candidates": [
+      "BEAT",
+      "UB",
+      "WLD",
+      "TRUMP",
+      "ENA",
+      "AAVE",
+      "\u5e01\u5b89\u4eba\u751f"
+    ],
+    "alert": "Market in sustained fear territory (28/100, worsening). No high-conviction setups available. Waiting for better risk/reward."
   }
 ]
