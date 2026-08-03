@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-08-03T17:11:32.599712+00:00",
-  "selected_coin": "BTC",
-  "selected_coin_name": "Bitcoin",
-  "selected_coin_price": 63750,
+  "timestamp": "2026-08-03T18:11:32.602739+00:00",
+  "selected_coin": "BEAT",
+  "selected_coin_name": "Audiera",
+  "selected_coin_price": 2.76,
   "confidence": 25,
-  "layman_headline": "Market fear is elevated and no swing candidate offers a clean enough setup to justify risking capital right now.",
-  "layman_explanation": "The overall crypto market is sitting in 'Fear' territory at 28 out of 100, and that mood has been worsening all week. Bitcoin is roughly flat while most altcoins are drifting lower. The candidates on the watchlist either have conflicting signals (like TRUMP being oversold but in a clear downtrend), are too illiquid or obscure to trust (BEAT, UB, \u5e01\u5b89\u4eba\u751f), or have already made their move (ADA up 21.8% this week). None of them offer the combination of a clean technical setup, a strong catalyst, and manageable risk that a good swing trade requires.",
-  "layman_action": "Stay in cash and wait. The market is fearful and trending down \u2014 trying to catch a falling knife here has poor odds. Watch for Fear & Greed to stabilize or for a clear oversold bounce on a quality asset before committing capital.",
-  "expert_reasoning": "Applying validated rules: Fear & Greed at 28 is close to the 25 threshold where Rule 3 says outlook is genuinely ambiguous. Weekly trend is worsening (27\u219228 today but avg 27.6). BTC dominance at 56.4% signals capital rotation into BTC and away from alts, which is bearish for every swing candidate on the list. TRUMP has the strongest single signal (RSI 26, which has a 71% win rate historically per signal credibility data), but the chart bias is -0.70 with price below all MAs in a confirmed downtrend \u2014 the RSI oversold signal alone cannot overcome bearish structure in a fearful market. BEAT shows a -39.7% weekly drop but RSI at 58 (not oversold), which is contradictory and suggests unreliable data. WLD has decent risk/reward (2.41x) but bearish chart structure and no catalyst. AAVE is the most legitimate DeFi project but is neutral on all indicators with no edge. The responsible decision is to preserve capital and wait for a higher-probability setup.",
+  "layman_headline": "Market fear is running high \u2014 no clear trade setups worth the risk right now.",
+  "layman_explanation": "The crypto market is in a fearful mood, with the Fear & Greed Index at 28 and trending worse over the past week. Bitcoin is down about 1.5% over seven days and most altcoins are showing weakness. The swing trade candidates today are either already overbought after big runs (BTW, UB), in steep freefall without clear bottoms (BEAT), stuck in bearish downtrends (TRUMP, MON), or just neutral without any compelling catalyst (AAVE, WLD). None of them offer a clean setup with a good risk-reward ratio and a reliable stop-loss.",
+  "layman_action": "Stay patient and keep your cash ready. The market hasn't found a bottom yet, and jumping in during this kind of fear without a clear setup is how losses happen. Wait for a better entry.",
+  "expert_reasoning": "Systematic review of all 7 candidates: BTW is overbought (RSI 69) after a 30% daily surge with terrible 0.29x risk/reward \u2014 classic chasing setup. UB has no technical data at all and is up 60% in a week, pure momentum chase. BEAT shows deeply conflicting data between its chart analysis ($3.54 uptrend) and actual price ($2.76, -28.7% daily), suggesting either a data error or extreme volatility that makes stops unreliable. TRUMP has the best RSI reading (26, oversold) per our validated signal credibility, but the chart is bearish (-0.70 bias), it's below all MAs, and the 98% drawdown from ATH suggests structural decline rather than a bounce opportunity. MON is approaching oversold (RSI 34) but in a confirmed downtrend with bearish chart bias. AAVE and WLD are neutral with no catalysts. The Fear & Greed at 28 with a worsening trend, combined with macro concerns (yen intervention, Clarity Act risk per Bernstein), makes this an environment to preserve capital.",
   "risk_factors": [
-    "Yen carry trade unwind could trigger broader risk-off selling across crypto, pushing BTC below $60K and dragging all alts further down",
-    "Bernstein warns of 'another leg lower' if the Clarity Act stalls in Congress \u2014 regulatory uncertainty is a real overhang",
-    "Fear & Greed worsening trend suggests sentiment hasn't bottomed yet \u2014 buying now risks catching a falling knife"
+    "Fear & Greed at 28 and worsening \u2014 markets could deteriorate further before any bounce materializes",
+    "Yen carry trade unwinding could trigger broader risk-off moves that hit crypto especially hard",
+    "Bernstein warns of another leg lower if the Clarity Act stalls, adding regulatory uncertainty"
   ],
   "watch_list": [
-    "Fear & Greed Index: watch for stabilization above 30 or a capitulation drop below 20 (both could signal a turning point)",
-    "ADA after its 21.8% weekly run \u2014 if it pulls back to support with RSI dropping toward 40, it could offer a quality entry in a coin with real momentum",
-    "BTC price action around $62,000 support \u2014 a clean hold there with rising volume would signal the broader market is stabilizing"
+    "Fear & Greed Index \u2014 watch for a drop below 25 (extreme fear) or a reversal back above 35 as potential turning point",
+    "Bitcoin price action around $62,000-$63,000 support \u2014 a decisive break lower would signal more pain across altcoins",
+    "ADA momentum \u2014 up 20.7% in 7 days against a bearish market, may present a swing setup if it pulls back to support"
   ],
-  "market_context": "Crypto markets are in a fearful, risk-off environment with BTC dominance rising and altcoins broadly underperforming. Macro headwinds from yen intervention fears and regulatory uncertainty (Clarity Act) are suppressing sentiment, while institutional activity (BlackRock tokenization, Bitmine ETH buys) provides a longer-term floor.",
-  "context_banner": "Fear is elevated and worsening \u2014 capital preservation takes priority over chasing setups in a deteriorating market.",
-  "btc_price": 63750,
+  "market_context": "The crypto market is in a fear-driven consolidation phase with BTC at $63,844 and most altcoins bleeding. Macro headwinds from potential yen intervention and regulatory uncertainty (Clarity Act) are keeping risk appetite suppressed.",
+  "context_banner": "Fear dominates with no clean swing setups \u2014 capital preservation is the highest-conviction play until the market stabilizes.",
+  "btc_price": 63844,
   "fear_greed": {
     "current": 28,
     "label": "Fear",
@@ -28,32 +28,32 @@
     "week_avg": 27.6,
     "trend": "worsening"
   },
-  "btc_dominance": 56.4,
+  "btc_dominance": 0.0,
   "key_signals": [
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Fear & Greed at 28 and worsening (weekly avg 27.6) signals sustained bearish sentiment \u2014 historically ambiguous for direction but argues against aggressive entries."
+      "description": "Fear & Greed at 28 with a worsening weekly trend (avg 27.6) signals persistent market anxiety \u2014 not ideal for new entries without strong technical confirmation."
     },
     {
       "source": "RSI",
       "signal_type": "technical",
-      "description": "TRUMP RSI at 26 is the only oversold reading among candidates, but the bearish chart structure (-0.70 bias, below all MAs) undermines the bounce thesis despite RSI's 71% historical win rate."
+      "description": "Our most reliable signal (71% win rate) \u2014 TRUMP's RSI at 26 is oversold but contradicted by bearish chart structure (-0.70 bias), making it a low-conviction setup."
     },
     {
       "source": "CoinDesk",
       "signal_type": "news",
-      "description": "Bernstein warns of 'another leg lower' if the Clarity Act stalls, and yen carry trade fears add macro headwinds \u2014 both are bearish catalysts with no offsetting bullish news for swing candidates."
+      "description": "Bernstein warns of another leg lower for crypto if the Clarity Act stalls, adding a meaningful regulatory risk catalyst to the downside."
+    },
+    {
+      "source": "CoinDesk",
+      "signal_type": "macro",
+      "description": "U.S.-Japan intervention reviving yen carry trade fears threatens a broader risk-off move that could pressure all crypto assets."
     },
     {
       "source": "CoinTelegraph",
       "signal_type": "news",
-      "description": "BlackRock launching tokenized money market funds is structurally bullish for crypto infrastructure but not a short-term price catalyst for any specific swing candidate."
-    },
-    {
-      "source": "volume_breakout",
-      "signal_type": "technical",
-      "description": "No volume breakout signals detected among candidates \u2014 volume data is largely missing, reducing confidence in any potential entry."
+      "description": "BlackRock launching tokenized money market funds is structurally bullish for crypto adoption but provides no short-term price catalyst for swing trades."
     }
   ],
   "_mode": "HUNTING",
