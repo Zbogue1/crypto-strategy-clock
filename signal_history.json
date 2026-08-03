@@ -731,5 +731,26 @@
       "BONK"
     ],
     "alert": "Market in sustained fear territory with worsening sentiment trend \u2014 avoid new positions until stabilization confirmed."
+  },
+  {
+    "ts": "2026-08-03T09:11:32.750669+00:00",
+    "coin": "AAVE",
+    "price": 91.68,
+    "signal": "HOLD",
+    "confidence": 28,
+    "score": -0.15,
+    "fg": 28,
+    "btc_price": 62500,
+    "btc_dominance": 56.2,
+    "candidates": [
+      "KAITO",
+      "WLD",
+      "UB",
+      "TRUMP",
+      "AAVE",
+      "\u5e01\u5b89\u4eba\u751f",
+      "PEPE"
+    ],
+    "alert": "Market fear worsening with multiple negative catalysts (Coldcard hack, negative Coinbase premium streak, BTC weakness) \u2014 avoid catching falling knives."
   }
 ]
