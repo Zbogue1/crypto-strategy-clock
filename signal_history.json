@@ -1,24 +1,5 @@
 [
   {
-    "ts": "2026-06-17T23:43:36.769713+00:00",
-    "coin": "BTC",
-    "price": 64371,
-    "signal": "HOLD",
-    "confidence": 0,
-    "score": null,
-    "fg": 22,
-    "btc_price": 64371,
-    "btc_dominance": 56.1,
-    "candidates": [
-      "HYPE",
-      "ADA",
-      "ZEC",
-      "BTC",
-      "XLM"
-    ],
-    "alert": null
-  },
-  {
     "ts": "2026-08-02T00:04:27.876497+00:00",
     "coin": "ETH",
     "price": 1844.61,
@@ -838,5 +819,26 @@
       "WLD"
     ],
     "alert": "Market fear is worsening and approaching the extreme zone (28/100). Strategy is actively selling Bitcoin. Wait for clearer bottoming signals before deploying capital."
+  },
+  {
+    "ts": "2026-08-03T15:11:32.653641+00:00",
+    "coin": "ENA",
+    "price": 0.092703,
+    "signal": "HOLD",
+    "confidence": 32,
+    "score": 0.15,
+    "fg": 28,
+    "btc_price": 63764,
+    "btc_dominance": 56.5,
+    "candidates": [
+      "KAITO",
+      "UB",
+      "BEAT",
+      "AAVE",
+      "WLD",
+      "ENA",
+      "TRUMP"
+    ],
+    "alert": "Fear & Greed at 28 with worsening trend and macro headwinds from yen intervention \u2014 avoid aggressive new positions until sentiment stabilizes."
   }
 ]
