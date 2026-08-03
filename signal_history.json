@@ -542,5 +542,26 @@
       "PEPE"
     ],
     "alert": null
+  },
+  {
+    "ts": "2026-08-03T00:11:32.468973+00:00",
+    "coin": "BTC",
+    "price": 63387,
+    "signal": "HOLD",
+    "confidence": 0,
+    "score": null,
+    "fg": 28,
+    "btc_price": 63387,
+    "btc_dominance": 56.3,
+    "candidates": [
+      "KAITO",
+      "ENA",
+      "UB",
+      "WLD",
+      "BONK",
+      "AAVE",
+      "TRUMP"
+    ],
+    "alert": null
   }
 ]
