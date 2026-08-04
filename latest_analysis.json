@@ -1,26 +1,18 @@
 {
-  "timestamp": "2026-08-04T22:11:33.232775+00:00",
+  "timestamp": "2026-08-04T23:11:32.548909+00:00",
   "selected_coin": "BTC",
   "selected_coin_name": "Bitcoin",
-  "selected_coin_price": 64162,
-  "confidence": 22,
-  "layman_headline": "Market fear is intense \u2014 staying on the sidelines until the dust settles.",
-  "layman_explanation": "The crypto market is gripped by extreme fear (25/100 and worsening), which means most traders are panicking. Bitcoin is holding around $64,000 but faces a critical test at the $63,000 support level. The candidates for a swing trade are either too beaten down with no clear bottom (LDO down 26% in a week), already overextended after huge rallies (BTW, PUMP), or lacking enough data to analyze properly. This is not the time to force a trade.",
-  "layman_action": "Do nothing right now. Keep your cash ready. If Bitcoin holds $63,000 and fear starts to ease, better entry opportunities will appear in the next few days.",
-  "expert_reasoning": "Fear & Greed at 25 with a worsening trend triggers Validated Rule #3: at 25 or below, the short-term outlook is genuinely ambiguous and the safest call is HOLD. Multiple swing candidates lack critical data \u2014 ETHFI, PUMP, MON, UB have no RSI, no MACD, no chart analysis, and no funding rates, meaning fewer than three core data sources are available for proper analysis (Rule #4 consideration). LDO is the most interesting candidate with a -25.8% weekly drop and 2.91x risk/reward to support/resistance, but RSI at 43 is neutral, not oversold, and the chart bias is -0.10 (neutral). BTW and PUMP have already run 44.7% and 26.2% respectively \u2014 chasing momentum in extreme fear environments is high-risk. The Treasury liquidity drain news from CryptoSlate adds a macro headwind for tomorrow. BTC dominance at 56.6% confirms capital is rotating out of alts into BTC, making alt entries especially dangerous right now.",
-  "risk_factors": [
-    "Fear & Greed could deteriorate below 20, triggering further capitulation selling across alts",
-    "$77B Treasury liquidity drain could push BTC below the critical $63,000 support, dragging the entire market lower",
-    "High BTC dominance (56.6%) means alts face disproportionate selling pressure even if BTC stabilizes"
-  ],
-  "watch_list": [
-    "Bitcoin's defense of $63,000 support \u2014 a break below could accelerate selling across all candidates",
-    "Fear & Greed Index trajectory over the next 48 hours \u2014 stabilization above 25 or recovery toward 30 would signal a potential entry window",
-    "LDO price action near $0.30 support \u2014 if it holds with rising RSI and volume, it becomes the top bounce candidate"
-  ],
-  "market_context": "Extreme Fear (25, worsening from 28 yesterday) dominates the market while BTC consolidates at $64K near the critical $63K battle zone flagged by Glassnode. A looming $77B Treasury liquidity drain adds macro pressure, and institutional stablecoin/tokenization news has not translated into risk-on sentiment.",
-  "context_banner": "Extreme fear with worsening momentum and macro liquidity headwinds \u2014 discipline demands patience over action.",
-  "btc_price": 64162,
+  "selected_coin_price": 64347,
+  "confidence": 0,
+  "layman_headline": "Analysis error \u2014 try again shortly",
+  "layman_explanation": "The system encountered an error this cycle.",
+  "layman_action": "No action recommended until next run.",
+  "expert_reasoning": null,
+  "risk_factors": [],
+  "watch_list": [],
+  "market_context": null,
+  "context_banner": null,
+  "btc_price": 64347,
   "fear_greed": {
     "current": 25,
     "label": "Extreme Fear",
@@ -28,34 +20,8 @@
     "week_avg": 27.0,
     "trend": "worsening"
   },
-  "btc_dominance": 56.6,
-  "key_signals": [
-    {
-      "source": "Fear_Greed",
-      "signal_type": "sentiment",
-      "description": "Fear & Greed at 25 (Extreme Fear), down from 28 yesterday with a worsening weekly trend \u2014 triggers Rule #3 to HOLD rather than force entries in ambiguous conditions."
-    },
-    {
-      "source": "CryptoSlate",
-      "signal_type": "macro",
-      "description": "US Treasury quietly draining $77B from bank reserves tomorrow creates a near-term liquidity headwind that could pressure BTC below $63K support."
-    },
-    {
-      "source": "RSI",
-      "signal_type": "technical",
-      "description": "LDO RSI at 43 is neutral, not oversold \u2014 despite a 26% weekly drop, there's no RSI confirmation of a bottom, reducing confidence in a mean-reversion entry."
-    },
-    {
-      "source": "CoinDesk",
-      "signal_type": "news",
-      "description": "Glassnode identifies $63,000 as Bitcoin's key battleground \u2014 a break below would invalidate any alt-coin bounce thesis."
-    },
-    {
-      "source": "volume_breakout",
-      "signal_type": "technical",
-      "description": "No volume confirmation on any candidate: BTW and PUMP ran on unclear volume, while beaten-down LDO and ETHFI show no accumulation signals."
-    }
-  ],
+  "btc_dominance": 0.0,
+  "key_signals": [],
   "_mode": "HUNTING",
   "exit_target": null,
   "stop_loss": null
