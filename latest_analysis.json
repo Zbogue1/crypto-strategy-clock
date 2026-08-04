@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-08-04T03:11:32.470884+00:00",
+  "timestamp": "2026-08-04T04:11:32.458921+00:00",
   "selected_coin": "ENA",
   "selected_coin_name": "Ethena",
-  "selected_coin_price": 0.091235,
-  "confidence": 28,
-  "layman_headline": "Market fear is at extreme levels \u2014 patience beats impulse right now.",
-  "layman_explanation": "The crypto market is gripped by extreme fear, with the sentiment index at 25 out of 100 and worsening day over day. Bitcoin is holding around $63,700 but dominance is high at 56.4%, meaning money is flowing away from smaller coins and into Bitcoin for safety. News is mixed \u2014 macro concerns about yen carry trade unwinding and regulatory uncertainty (Clarity Act potentially stalling) are weighing on sentiment, while institutional players like BlackRock and Mastercard continue building. In this environment, chasing any trade carries outsized risk of catching a falling knife.",
-  "layman_action": "Stay in cash and wait. The fear index is at the boundary where our rules say ambiguity is too high to act confidently. If fear drops further (below 20) or reverses sharply upward, better opportunities will present themselves with clearer signals.",
-  "expert_reasoning": "Applying validated rules: Fear & Greed at 25 triggers Rule #3, which states the short-term outlook is genuinely ambiguous at this level and the safest call is HOLD. Rule #7 notes that at extreme fear readings, BTC tends to drift down 1-4% further, which would drag alts down harder given 56.4% BTC dominance. ENA's bullish candlestick patterns (marubozu + engulfing) and +1.0 chart bias are genuinely attractive, but the risk/reward to nearest levels is only 0.56x \u2014 well below the 2.0x threshold we want. RSI at 44 is neutral, not oversold, meaning there's no capitulation-level entry here. The macro backdrop is concerning: Bernstein warns of another leg lower if Clarity Act stalls, yen carry trade fears are resurfacing, and Strategy (formerly MicroStrategy) is actively selling Bitcoin. I'd need to see ENA pull back to the $0.08-0.085 range while maintaining its bullish structure before entering.",
+  "selected_coin_price": 0.091604,
+  "confidence": 32,
+  "layman_headline": "Market fear is at extreme levels \u2014 sitting on the sidelines until the fog clears.",
+  "layman_explanation": "The overall crypto market is in 'Extreme Fear' territory at 25 out of 100, and that mood has been getting worse all week. Bitcoin is holding steady around $63,700 but altcoins are struggling under high Bitcoin dominance. While a few coins like ENA show promising chart patterns, the broader environment is too hostile and uncertain to justify putting money to work right now. News headlines about potential regulatory stalls, yen carry trade fears, and major players selling Bitcoin add to the caution.",
+  "layman_action": "Wait. Do not open new positions in this fearful market. If you're watching ENA or ADA, set price alerts and revisit when fear subsides or a clear catalyst emerges.",
+  "expert_reasoning": "Per my validated rules, when Fear & Greed hits 25 or below, the short-term outlook is genuinely ambiguous and the safest call is HOLD. The worsening trend (28 \u2192 25, week avg 27) reinforces this. ENA is the strongest candidate technically \u2014 bullish marubozu and engulfing patterns, price reclaiming SMA20, RSI at 44 leaving room to run \u2014 but BTC dominance at 56.4% is crushing alt performance. Bernstein warning about another leg lower if the Clarity Act stalls, combined with yen carry trade fears and Strategy selling $395M in BTC, creates meaningful downside risk. I'd want to see Fear & Greed recover above 30 and ENA hold above $0.085 before entering.",
   "risk_factors": [
-    "Fear & Greed at 25 and worsening \u2014 historically ambiguous zone where further downside is as likely as a bounce",
-    "BTC dominance at 56.4% actively suppresses altcoin performance \u2014 ENA could lose ground even if BTC holds steady",
-    "Bernstein warns of another leg lower if crypto regulation (Clarity Act) stalls in Congress"
+    "Fear & Greed at 25 and worsening \u2014 historically ambiguous but could signal further capitulation",
+    "BTC dominance at 56.4% actively suppressing altcoin performance, ENA down 94% from ATH",
+    "Bernstein warns of another leg lower if Clarity Act stalls \u2014 regulatory overhang could accelerate selling"
   ],
   "watch_list": [
-    "Fear & Greed Index movement \u2014 a bounce above 30 or a crash below 20 would clarify direction",
-    "ENA price action at $0.085-0.090 support \u2014 if it holds during any market dip, the bullish setup strengthens",
-    "U.S. Clarity Act legislative progress \u2014 Bernstein flagged this as the key catalyst for the next major move"
+    "Fear & Greed Index \u2014 need to see stabilization above 28-30 before considering entries",
+    "ENA price action at $0.085-0.090 support \u2014 if bullish candle patterns hold, this becomes actionable",
+    "U.S. Clarity Act legislative progress \u2014 Bernstein flagged this as a potential catalyst for another leg down"
   ],
-  "market_context": "Extreme Fear (25/100, worsening) with high BTC dominance at 56.4% creates a hostile environment for altcoin swing trades. Macro headwinds from yen carry trade fears and regulatory uncertainty are keeping risk appetite suppressed.",
-  "context_banner": "Extreme fear at the 25 threshold demands patience \u2014 the best swing trade is the one you don't force in a fearful market.",
-  "btc_price": 63710,
+  "market_context": "Crypto market is in Extreme Fear (25/100, worsening), with BTC holding $63.7K but alts bleeding. High BTC dominance at 56.4%, bearish macro headlines including yen carry trade fears and Strategy selling BTC create a risk-off environment.",
+  "context_banner": "Extreme Fear at 25 with a worsening trend demands patience \u2014 the best trade right now is no trade.",
+  "btc_price": 63704,
   "fear_greed": {
     "current": 25,
     "label": "Extreme Fear",
@@ -33,27 +33,27 @@
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Fear & Greed at 25 with worsening trend (yesterday 28, week avg 27) \u2014 at the exact threshold where Rule #3 mandates a HOLD due to genuine ambiguity about short-term direction."
+      "description": "Fear & Greed at 25 (Extreme Fear), down from 28 yesterday with week average of 27 \u2014 validated rule says HOLD when at or below 25 due to ambiguous short-term direction."
     },
     {
       "source": "RSI",
       "signal_type": "technical",
-      "description": "ENA RSI at 44 is neutral and not yet oversold, meaning there's no capitulation signal to justify a contrarian entry despite bullish chart patterns."
+      "description": "ENA RSI at 44 is the most attractive among candidates \u2014 neutral with room to run, unlike BTW (69, overbought) or TRUMP (26, oversold but bearish chart)."
     },
     {
       "source": "CoinDesk",
       "signal_type": "news",
-      "description": "Yen carry trade fears revived by U.S.-Japan intervention could trigger broad risk-off selling across crypto markets."
+      "description": "Bernstein warns of another leg lower for crypto if Clarity Act stalls, adding legislative risk to an already fearful market."
     },
     {
-      "source": "CoinTelegraph",
+      "source": "CryptoSlate",
       "signal_type": "news",
-      "description": "Mastercard's $1.8B BVNK acquisition signals institutional commitment to stablecoins but doesn't directly support risk-on altcoin positioning."
+      "description": "Strategy sold $395M in BTC and MSTR stock \u2014 large institutional selling pressure signals caution on near-term BTC price."
     },
     {
-      "source": "volume_breakout",
-      "signal_type": "technical",
-      "description": "No volume data available for swing candidates and DeFi TVL shows 0% weekly change across all tracked chains \u2014 no signs of fresh capital inflow to support new positions."
+      "source": "CoinDesk",
+      "signal_type": "macro",
+      "description": "U.S.-Japan intervention reviving yen carry trade fears could trigger risk-off across crypto as leveraged positions unwind."
     }
   ],
   "_mode": "HUNTING",
