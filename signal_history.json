@@ -1,26 +1,5 @@
 [
   {
-    "ts": "2026-08-03T01:11:32.511245+00:00",
-    "coin": "ENA",
-    "price": 0.088904,
-    "signal": "HOLD",
-    "confidence": 32,
-    "score": 0.15,
-    "fg": 28,
-    "btc_price": 63203,
-    "btc_dominance": 56.3,
-    "candidates": [
-      "KAITO",
-      "ENA",
-      "WLD",
-      "UB",
-      "BONK",
-      "AAVE",
-      "TRUMP"
-    ],
-    "alert": "Coldcard exploit causing unusual on-chain movement; monitor for cascading security fears that could push Fear & Greed below 25."
-  },
-  {
     "ts": "2026-08-03T02:11:32.562293+00:00",
     "coin": "ENA",
     "price": 0.088042,
@@ -827,6 +806,27 @@
     "score": null,
     "fg": 25,
     "btc_price": 63963,
+    "btc_dominance": 56.5,
+    "candidates": [
+      "LDO",
+      "BTW",
+      "ETHFI",
+      "ZRO",
+      "MON",
+      "AAVE",
+      "USDG"
+    ],
+    "alert": null
+  },
+  {
+    "ts": "2026-08-04T17:11:32.612399+00:00",
+    "coin": "BTC",
+    "price": 64097,
+    "signal": "HOLD",
+    "confidence": 0,
+    "score": null,
+    "fg": 25,
+    "btc_price": 64097,
     "btc_dominance": 56.5,
     "candidates": [
       "LDO",
