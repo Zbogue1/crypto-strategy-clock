@@ -1,26 +1,18 @@
 {
-  "timestamp": "2026-08-04T04:11:32.458921+00:00",
-  "selected_coin": "ENA",
-  "selected_coin_name": "Ethena",
-  "selected_coin_price": 0.091604,
-  "confidence": 32,
-  "layman_headline": "Market fear is at extreme levels \u2014 sitting on the sidelines until the fog clears.",
-  "layman_explanation": "The overall crypto market is in 'Extreme Fear' territory at 25 out of 100, and that mood has been getting worse all week. Bitcoin is holding steady around $63,700 but altcoins are struggling under high Bitcoin dominance. While a few coins like ENA show promising chart patterns, the broader environment is too hostile and uncertain to justify putting money to work right now. News headlines about potential regulatory stalls, yen carry trade fears, and major players selling Bitcoin add to the caution.",
-  "layman_action": "Wait. Do not open new positions in this fearful market. If you're watching ENA or ADA, set price alerts and revisit when fear subsides or a clear catalyst emerges.",
-  "expert_reasoning": "Per my validated rules, when Fear & Greed hits 25 or below, the short-term outlook is genuinely ambiguous and the safest call is HOLD. The worsening trend (28 \u2192 25, week avg 27) reinforces this. ENA is the strongest candidate technically \u2014 bullish marubozu and engulfing patterns, price reclaiming SMA20, RSI at 44 leaving room to run \u2014 but BTC dominance at 56.4% is crushing alt performance. Bernstein warning about another leg lower if the Clarity Act stalls, combined with yen carry trade fears and Strategy selling $395M in BTC, creates meaningful downside risk. I'd want to see Fear & Greed recover above 30 and ENA hold above $0.085 before entering.",
-  "risk_factors": [
-    "Fear & Greed at 25 and worsening \u2014 historically ambiguous but could signal further capitulation",
-    "BTC dominance at 56.4% actively suppressing altcoin performance, ENA down 94% from ATH",
-    "Bernstein warns of another leg lower if Clarity Act stalls \u2014 regulatory overhang could accelerate selling"
-  ],
-  "watch_list": [
-    "Fear & Greed Index \u2014 need to see stabilization above 28-30 before considering entries",
-    "ENA price action at $0.085-0.090 support \u2014 if bullish candle patterns hold, this becomes actionable",
-    "U.S. Clarity Act legislative progress \u2014 Bernstein flagged this as a potential catalyst for another leg down"
-  ],
-  "market_context": "Crypto market is in Extreme Fear (25/100, worsening), with BTC holding $63.7K but alts bleeding. High BTC dominance at 56.4%, bearish macro headlines including yen carry trade fears and Strategy selling BTC create a risk-off environment.",
-  "context_banner": "Extreme Fear at 25 with a worsening trend demands patience \u2014 the best trade right now is no trade.",
-  "btc_price": 63704,
+  "timestamp": "2026-08-04T05:11:32.466451+00:00",
+  "selected_coin": "BTC",
+  "selected_coin_name": "Bitcoin",
+  "selected_coin_price": 63876,
+  "confidence": 0,
+  "layman_headline": "Analysis error \u2014 try again shortly",
+  "layman_explanation": "The system encountered an error this cycle.",
+  "layman_action": "No action recommended until next run.",
+  "expert_reasoning": null,
+  "risk_factors": [],
+  "watch_list": [],
+  "market_context": null,
+  "context_banner": null,
+  "btc_price": 63876,
   "fear_greed": {
     "current": 25,
     "label": "Extreme Fear",
@@ -28,35 +20,9 @@
     "week_avg": 27.0,
     "trend": "worsening"
   },
-  "btc_dominance": 56.4,
-  "key_signals": [
-    {
-      "source": "Fear_Greed",
-      "signal_type": "sentiment",
-      "description": "Fear & Greed at 25 (Extreme Fear), down from 28 yesterday with week average of 27 \u2014 validated rule says HOLD when at or below 25 due to ambiguous short-term direction."
-    },
-    {
-      "source": "RSI",
-      "signal_type": "technical",
-      "description": "ENA RSI at 44 is the most attractive among candidates \u2014 neutral with room to run, unlike BTW (69, overbought) or TRUMP (26, oversold but bearish chart)."
-    },
-    {
-      "source": "CoinDesk",
-      "signal_type": "news",
-      "description": "Bernstein warns of another leg lower for crypto if Clarity Act stalls, adding legislative risk to an already fearful market."
-    },
-    {
-      "source": "CryptoSlate",
-      "signal_type": "news",
-      "description": "Strategy sold $395M in BTC and MSTR stock \u2014 large institutional selling pressure signals caution on near-term BTC price."
-    },
-    {
-      "source": "CoinDesk",
-      "signal_type": "macro",
-      "description": "U.S.-Japan intervention reviving yen carry trade fears could trigger risk-off across crypto as leveraged positions unwind."
-    }
-  ],
+  "btc_dominance": 56.5,
+  "key_signals": [],
   "_mode": "HUNTING",
-  "exit_target": 0.1,
-  "stop_loss": 0.07
+  "exit_target": null,
+  "stop_loss": null
 }
