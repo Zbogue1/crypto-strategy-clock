@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-08-04T21:11:32.523292+00:00",
+  "timestamp": "2026-08-04T22:11:33.232775+00:00",
   "selected_coin": "BTC",
   "selected_coin_name": "Bitcoin",
-  "selected_coin_price": 64269,
-  "confidence": 18,
-  "layman_headline": "Market fear is extreme and none of today's trade setups are worth the risk.",
-  "layman_explanation": "The crypto market is in 'Extreme Fear' territory at 25 out of 100, and the mood has been getting worse all week. Bitcoin is holding around $64,000 but altcoins are getting crushed \u2014 many down 10-25% in a week. The coins flagged as possible trades are either already pumped too far (like BTW up 43%) or crashing without clear support levels (like LDO down 25%). None of them have enough reliable data \u2014 no RSI readings, no chart patterns, no funding rates \u2014 to justify risking real money.",
-  "layman_action": "Stay in cash and wait. This is a market where patience gets rewarded. When fear is this high and the data is this thin, the smartest move is no move at all.",
-  "expert_reasoning": "Applying validated Rule #3: Fear and Greed at 25 makes the short-term outlook genuinely ambiguous \u2014 HOLD is the safest call. Rule #7 suggests BTC may drift down another 1-4% at these fear levels, making new alt entries especially risky. Among candidates: BTW and PUMP have already run 30-43% in a week with RSI approaching overbought \u2014 chasing extended moves violates swing trading discipline. LDO (-25.4% 7d) and ETHFI (-13.1% 7d) look like potential mean-reversion plays but have zero chart analysis, no RSI, no funding rate, and no identifiable support levels \u2014 we cannot define a stop-loss, which violates core risk management. BTC dominance at 56.6% confirms capital is rotating out of alts into BTC, making alt entries doubly dangerous. High-conviction setups require at least RSI + chart pattern + defined support \u2014 none of these candidates meet that bar.",
+  "selected_coin_price": 64162,
+  "confidence": 22,
+  "layman_headline": "Market fear is intense \u2014 staying on the sidelines until the dust settles.",
+  "layman_explanation": "The crypto market is gripped by extreme fear (25/100 and worsening), which means most traders are panicking. Bitcoin is holding around $64,000 but faces a critical test at the $63,000 support level. The candidates for a swing trade are either too beaten down with no clear bottom (LDO down 26% in a week), already overextended after huge rallies (BTW, PUMP), or lacking enough data to analyze properly. This is not the time to force a trade.",
+  "layman_action": "Do nothing right now. Keep your cash ready. If Bitcoin holds $63,000 and fear starts to ease, better entry opportunities will appear in the next few days.",
+  "expert_reasoning": "Fear & Greed at 25 with a worsening trend triggers Validated Rule #3: at 25 or below, the short-term outlook is genuinely ambiguous and the safest call is HOLD. Multiple swing candidates lack critical data \u2014 ETHFI, PUMP, MON, UB have no RSI, no MACD, no chart analysis, and no funding rates, meaning fewer than three core data sources are available for proper analysis (Rule #4 consideration). LDO is the most interesting candidate with a -25.8% weekly drop and 2.91x risk/reward to support/resistance, but RSI at 43 is neutral, not oversold, and the chart bias is -0.10 (neutral). BTW and PUMP have already run 44.7% and 26.2% respectively \u2014 chasing momentum in extreme fear environments is high-risk. The Treasury liquidity drain news from CryptoSlate adds a macro headwind for tomorrow. BTC dominance at 56.6% confirms capital is rotating out of alts into BTC, making alt entries especially dangerous right now.",
   "risk_factors": [
-    "Fear and Greed at 25 and worsening \u2014 market could cascade lower if BTC loses the $63K support level flagged by Glassnode",
-    "BTC dominance at 56.6% means alts are actively underperforming \u2014 any alt entry faces a structural headwind",
-    "Most swing candidates lack basic technical data (RSI, MACD, chart patterns), making it impossible to properly define risk/reward"
+    "Fear & Greed could deteriorate below 20, triggering further capitulation selling across alts",
+    "$77B Treasury liquidity drain could push BTC below the critical $63,000 support, dragging the entire market lower",
+    "High BTC dominance (56.6%) means alts face disproportionate selling pressure even if BTC stabilizes"
   ],
   "watch_list": [
-    "Bitcoin's $63,000 support level \u2014 a break below could trigger another wave of alt selling",
-    "Fear and Greed Index \u2014 if it drops below 20, watch for capitulation-level entries; if it recovers above 30, setups may start to form",
-    "LDO price stabilization \u2014 if it finds support and RSI data becomes available showing oversold conditions below 30, it could become a valid mean-reversion trade"
+    "Bitcoin's defense of $63,000 support \u2014 a break below could accelerate selling across all candidates",
+    "Fear & Greed Index trajectory over the next 48 hours \u2014 stabilization above 25 or recovery toward 30 would signal a potential entry window",
+    "LDO price action near $0.30 support \u2014 if it holds with rising RSI and volume, it becomes the top bounce candidate"
   ],
-  "market_context": "Extreme Fear (25/100, worsening trend) with BTC dominance at 56.6% signals a risk-off environment where capital is fleeing alts for Bitcoin. Institutional news is positive (Wells Fargo tokenization, BNY crypto staking) but hasn't translated to alt demand yet.",
-  "context_banner": "Extreme fear and poor-quality alt setups make patience the highest-edge strategy right now.",
-  "btc_price": 64269,
+  "market_context": "Extreme Fear (25, worsening from 28 yesterday) dominates the market while BTC consolidates at $64K near the critical $63K battle zone flagged by Glassnode. A looming $77B Treasury liquidity drain adds macro pressure, and institutional stablecoin/tokenization news has not translated into risk-on sentiment.",
+  "context_banner": "Extreme fear with worsening momentum and macro liquidity headwinds \u2014 discipline demands patience over action.",
+  "btc_price": 64162,
   "fear_greed": {
     "current": 25,
     "label": "Extreme Fear",
@@ -33,27 +33,27 @@
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Fear and Greed at 25 (Extreme Fear) and worsening from 28 yesterday \u2014 per validated Rule #3, this makes short-term direction ambiguous and favors HOLD."
+      "description": "Fear & Greed at 25 (Extreme Fear), down from 28 yesterday with a worsening weekly trend \u2014 triggers Rule #3 to HOLD rather than force entries in ambiguous conditions."
+    },
+    {
+      "source": "CryptoSlate",
+      "signal_type": "macro",
+      "description": "US Treasury quietly draining $77B from bank reserves tomorrow creates a near-term liquidity headwind that could pressure BTC below $63K support."
     },
     {
       "source": "RSI",
       "signal_type": "technical",
-      "description": "BTW RSI at 69 (near overbought) after a 43% weekly run \u2014 our most reliable signal source (71% win rate) is flashing caution, not opportunity."
+      "description": "LDO RSI at 43 is neutral, not oversold \u2014 despite a 26% weekly drop, there's no RSI confirmation of a bottom, reducing confidence in a mean-reversion entry."
     },
     {
       "source": "CoinDesk",
       "signal_type": "news",
-      "description": "Glassnode identifies $63K as a key battleground for Bitcoin buyers \u2014 if this level breaks, the alt bloodbath could intensify significantly."
-    },
-    {
-      "source": "CoinTelegraph",
-      "signal_type": "news",
-      "description": "BNY offering institutional crypto staking via Galaxy and US/UK supporting stablecoins/tokenization are medium-term positives but not immediate catalysts for alt recovery."
+      "description": "Glassnode identifies $63,000 as Bitcoin's key battleground \u2014 a break below would invalidate any alt-coin bounce thesis."
     },
     {
       "source": "volume_breakout",
       "signal_type": "technical",
-      "description": "No volume-confirmed breakouts detected among candidates \u2014 volume data is missing for most, and those with price momentum (BTW, PUMP) show chase-risk rather than fresh breakout characteristics."
+      "description": "No volume confirmation on any candidate: BTW and PUMP ran on unclear volume, while beaten-down LDO and ETHFI show no accumulation signals."
     }
   ],
   "_mode": "HUNTING",
