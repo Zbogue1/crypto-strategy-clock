@@ -1,26 +1,5 @@
 [
   {
-    "ts": "2026-08-02T14:11:32.551396+00:00",
-    "coin": "BTC",
-    "price": 63016,
-    "signal": "HOLD",
-    "confidence": 25,
-    "score": -0.5,
-    "fg": 27,
-    "btc_price": 63016,
-    "btc_dominance": 56.3,
-    "candidates": [
-      "UB",
-      "ENA",
-      "BONK",
-      "PEPE",
-      "TRUMP",
-      "KAITO",
-      "FET"
-    ],
-    "alert": "Coldcard exploit affecting 4,500+ BTC addresses with $89M in losses \u2014 monitor for contagion effects on exchange flows and broader sentiment."
-  },
-  {
     "ts": "2026-08-02T15:11:32.747377+00:00",
     "coin": "BTC",
     "price": 63043,
@@ -838,5 +817,26 @@
       "AAVE"
     ],
     "alert": null
+  },
+  {
+    "ts": "2026-08-04T06:11:32.561632+00:00",
+    "coin": "LDO",
+    "price": 0.331597,
+    "signal": "HOLD",
+    "confidence": 28,
+    "score": -0.15,
+    "fg": 25,
+    "btc_price": 63777,
+    "btc_dominance": 56.4,
+    "candidates": [
+      "BTW",
+      "MON",
+      "USDG",
+      "PUMP",
+      "UNI",
+      "LDO",
+      "TRUMP"
+    ],
+    "alert": "Fear & Greed at 25 with worsening trend \u2014 Rule #3 dictates HOLD. Wait for sentiment stabilization or a clear capitulation event before deploying capital."
   }
 ]
