@@ -1,26 +1,5 @@
 [
   {
-    "ts": "2026-08-03T05:11:32.485358+00:00",
-    "coin": "WLD",
-    "price": 0.318254,
-    "signal": "HOLD",
-    "confidence": 28,
-    "score": -0.15,
-    "fg": 28,
-    "btc_price": 62768,
-    "btc_dominance": 56.2,
-    "candidates": [
-      "KAITO",
-      "UB",
-      "TRUMP",
-      "WLD",
-      "BONK",
-      "AAVE",
-      "ENA"
-    ],
-    "alert": "Coldcard hardware wallet exploit has stolen 448+ BTC across multiple attack waves \u2014 monitor for contagion effects on broader market confidence."
-  },
-  {
     "ts": "2026-08-03T06:11:33.037466+00:00",
     "coin": "AAVE",
     "price": 91.92,
@@ -838,5 +817,26 @@
       "PUMP"
     ],
     "alert": "Market fear is at the threshold of Rule #3 (F&G \u2264 25). Outlook is genuinely ambiguous \u2014 holding cash is the correct risk management decision."
+  },
+  {
+    "ts": "2026-08-04T21:11:32.523292+00:00",
+    "coin": "BTC",
+    "price": 64269,
+    "signal": "HOLD",
+    "confidence": 18,
+    "score": -0.5,
+    "fg": 25,
+    "btc_price": 64269,
+    "btc_dominance": 56.6,
+    "candidates": [
+      "BTW",
+      "LDO",
+      "UB",
+      "ETHFI",
+      "PUMP",
+      "USDG",
+      "MON"
+    ],
+    "alert": "Fear and Greed at 25 with worsening trend \u2014 approaching levels where sharp moves in either direction become likely. No positions recommended until setups improve."
   }
 ]
