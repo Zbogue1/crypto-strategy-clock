@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-08-04T12:11:32.626508+00:00",
+  "timestamp": "2026-08-04T13:11:33.186134+00:00",
   "selected_coin": "BTC",
   "selected_coin_name": "Bitcoin",
-  "selected_coin_price": 63790,
-  "confidence": 25,
-  "layman_headline": "Market fear is near extreme levels \u2014 patience is the smartest play right now.",
-  "layman_explanation": "The crypto market is gripped by deep fear, with the Fear and Greed Index at 25 and worsening daily. Bitcoin is holding steady around $64K with a small bounce today, but altcoins are generally struggling with high BTC dominance squeezing them. The best swing candidates are either already overbought after big runs (BTW up 57% in a week), in confirmed downtrends (MON, ZRO), or lack enough data to build conviction. None present a clean risk-reward setup worth entering right now.",
-  "layman_action": "Stay in cash and wait. The fear levels suggest the market hasn't found a bottom yet, and rushing into weak setups during extreme fear is how losses happen. Watch for a fear capitulation event or a clear technical reversal before committing capital.",
-  "expert_reasoning": "Per validated Rule #3, when Fear and Greed is at 25 or below, the short-term outlook is genuinely ambiguous and the safest call is HOLD. Per Rule #7, early evidence suggests BTC may drift down 1-4% more at these fear levels. Reviewing candidates: BTW is overbought (RSI 69) after a 57% weekly run with terrible risk/reward (0.29x) \u2014 classic chase setup. ZRO has the best RSI signal (30, oversold) which is my most reliable indicator (71% win rate), but the chart is bearish (-0.70 bias), price is below all MAs, and BTC dominance at 56.5% actively punishes altcoins. LDO dropped 21.6% but has zero chart data \u2014 can't define stop-loss or targets. MON is in a downtrend with bearish structure. WLD has decent R/R (2.41x) but below all MAs with bearish structure. PUMP and USDG are non-starters. No candidate combines oversold conditions with bullish chart structure and a clear catalyst.",
+  "selected_coin_price": 63926,
+  "confidence": 22,
+  "layman_headline": "Fear is gripping the crypto market \u2014 patience is the smartest move right now.",
+  "layman_explanation": "The overall mood in crypto is at 'Extreme Fear' (25 out of 100) and getting worse by the day. While Bitcoin itself is holding up okay with a small bounce today, altcoins are in rough shape \u2014 most are deep below their all-time highs and showing bearish chart structures. The candidates on the watchlist either just pumped too hard (BTW up 58% in a week), are in freefall with no chart data to confirm a bottom (LDO down 23%), or are in clear downtrends (ZRO, MON). None present a clean swing trade setup with a favorable risk-reward ratio.",
+  "layman_action": "Do nothing right now. Keep your cash ready. When fear is this extreme and worsening, prices can still drop further before finding a real bottom. Wait for signs that the panic is fading (Fear & Greed climbing back above 30) and for a candidate to show a clear technical reversal pattern before committing money.",
+  "expert_reasoning": "Applying validated rules: Rule 3 states that when Fear & Greed is at or below 25, the short-term outlook is genuinely ambiguous and HOLD is the safest call. Rule 7 notes BTC tends to drift down another 1-4% in these conditions, though the sample is small. The RSI signal \u2014 our most reliable indicator at 71% win rate \u2014 is oversold on ZRO (29.76), which would normally be interesting, but the chart bias is -0.70 (bearish), price is below all MAs, and the risk/reward to nearest support/resistance is only 1.31x \u2014 well below the 2.0x minimum for a quality setup. BTC dominance at 56.5% further argues against alt exposure. High BTC dominance during extreme fear historically means alts underperform. No funding rate data is available to confirm any contrarian squeeze thesis. I am choosing capital preservation over a marginal setup.",
   "risk_factors": [
-    "Fear and Greed trending lower (28\u219225) suggests further downside is possible before any meaningful bounce",
-    "BTC dominance at 56.5% is actively suppressing altcoin performance \u2014 altcoin entries carry extra risk",
-    "CLARITY legislation odds dropping to 27% could trigger a broader regulatory-fear selloff in crypto"
+    "Fear & Greed at 25 and worsening \u2014 market could cascade further if CLARITY Act fails or macro deteriorates",
+    "BTC dominance at 56.5% means capital is fleeing alts \u2014 any alt entry faces structural headwinds",
+    "CLARITY Act legislation odds at 27% could trigger another selloff if it officially dies"
   ],
   "watch_list": [
-    "Fear and Greed Index \u2014 watch for a drop below 20 (capitulation signal) or recovery above 30 (stabilization)",
-    "ZRO price action at $0.70 support \u2014 if it holds and RSI stays oversold, a bounce trade becomes viable",
-    "BTC behavior around $64K \u2014 a confirmed break above with volume could shift the macro picture bullish"
+    "ZRO RSI approaching deep oversold \u2014 if it drops to 25 or below with a bullish reversal candle near $0.70 support, that could be a high-quality mean-reversion entry",
+    "Fear & Greed Index \u2014 watch for a turn back above 30 which would signal the worst of the panic is passing",
+    "ADA momentum \u2014 up 23.9% in 7 days against a fearful market, monitor if this strength persists or reverses as a gauge of alt appetite"
   ],
-  "market_context": "The crypto market is in an Extreme Fear zone (25/100, worsening) with BTC dominance high at 56.5%, signaling a risk-off environment that punishes altcoins. Mixed headlines \u2014 institutional tokenization progress (BlackRock) offset by ETF closures, exploit concerns, and fading regulatory momentum.",
-  "context_banner": "Extreme Fear at 25 with worsening trend and high BTC dominance \u2014 no swing candidates meet the bar for entry; capital preservation is the priority.",
-  "btc_price": 63790,
+  "market_context": "Crypto is in an extreme fear environment (25/100, worsening trend) with BTC dominance elevated at 56.5%, signaling risk-off rotation out of altcoins. Bitcoin is relatively stable (+2.2% today) but altcoin candidates show weak structures, and regulatory uncertainty around the CLARITY Act adds a macro overhang.",
+  "context_banner": "Extreme Fear at 25 with worsening trend and no clean alt setups \u2014 disciplined patience beats marginal trades.",
+  "btc_price": 63926,
   "fear_greed": {
     "current": 25,
     "label": "Extreme Fear",
@@ -33,27 +33,27 @@
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Fear and Greed Index at 25 (Extreme Fear), down from 28 yesterday with weekly average of 27 \u2014 per validated Rule #3, this level demands a HOLD rather than forced entry."
+      "description": "Fear & Greed at 25 (Extreme Fear), down from 28 yesterday with week average of 27 \u2014 Rule 3 triggers a HOLD recommendation at this level due to genuinely ambiguous short-term outlook."
     },
     {
       "source": "RSI",
       "signal_type": "technical",
-      "description": "ZRO RSI at 30 (oversold) is the strongest technical signal available and historically reliable (71% win rate), but conflicting bearish chart structure (-0.70) prevents acting on it alone."
+      "description": "ZRO RSI at 29.76 is oversold (our most reliable signal at 71% win rate), but the bearish chart structure and poor 1.31x risk/reward prevent acting on it \u2014 the setup quality is insufficient."
+    },
+    {
+      "source": "CryptoSlate",
+      "signal_type": "news",
+      "description": "CLARITY Act odds sinking to 27% removes a key potential bullish catalyst for the broader crypto market and adds regulatory uncertainty."
     },
     {
       "source": "CoinDesk",
       "signal_type": "news",
-      "description": "First US spot BTC ETF closing due to dwindling inflows signals cooling institutional demand, a bearish macro signal for the entire market."
+      "description": "BNY adding crypto staking to custody is a constructive institutional signal but provides no immediate price catalyst for watchlist coins."
     },
     {
-      "source": "CryptoSlate",
-      "signal_type": "macro",
-      "description": "CLARITY crypto legislation passage odds sinking to 27% as key government officials depart \u2014 removes a potential bullish catalyst and adds regulatory uncertainty."
-    },
-    {
-      "source": "CoinTelegraph",
-      "signal_type": "macro",
-      "description": "US yen intervention warning puts Bitcoin and risk assets on notice for liquidity disruptions, adding another reason to stay sidelined."
+      "source": "volume_breakout",
+      "signal_type": "technical",
+      "description": "No volume breakout signals detected across any candidate \u2014 lack of conviction buying during extreme fear suggests the bottom is not yet confirmed."
     }
   ],
   "_mode": "HUNTING",
