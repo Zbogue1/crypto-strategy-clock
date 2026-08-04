@@ -1,26 +1,5 @@
 [
   {
-    "ts": "2026-08-02T20:11:32.581141+00:00",
-    "coin": "BTC",
-    "price": 63384,
-    "signal": "HOLD",
-    "confidence": 0,
-    "score": null,
-    "fg": 27,
-    "btc_price": 63384,
-    "btc_dominance": 56.3,
-    "candidates": [
-      "KAITO",
-      "DEXE",
-      "ENA",
-      "UB",
-      "WLD",
-      "BONK",
-      "PENGU"
-    ],
-    "alert": null
-  },
-  {
     "ts": "2026-08-02T21:11:32.429939+00:00",
     "coin": "BTC",
     "price": 63468,
@@ -838,5 +817,26 @@
       "WLD"
     ],
     "alert": "Fear & Greed at 25 (critical threshold) and worsening \u2014 per validated rules, short-term direction is ambiguous and HOLD is appropriate until conditions clarify."
+  },
+  {
+    "ts": "2026-08-04T12:11:32.626508+00:00",
+    "coin": "BTC",
+    "price": 63790,
+    "signal": "HOLD",
+    "confidence": 25,
+    "score": -0.3,
+    "fg": 25,
+    "btc_price": 63790,
+    "btc_dominance": 56.5,
+    "candidates": [
+      "BTW",
+      "LDO",
+      "MON",
+      "USDG",
+      "ZRO",
+      "PUMP",
+      "WLD"
+    ],
+    "alert": "Fear and Greed at 25 and falling \u2014 approaching levels where historical data (limited) suggests further BTC downside of 1-4%. Wait for stabilization before deploying capital."
   }
 ]
