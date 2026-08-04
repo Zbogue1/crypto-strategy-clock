@@ -1,26 +1,18 @@
 {
-  "timestamp": "2026-08-04T14:11:32.632607+00:00",
+  "timestamp": "2026-08-04T15:11:32.698008+00:00",
   "selected_coin": "BTC",
   "selected_coin_name": "Bitcoin",
-  "selected_coin_price": 63684,
-  "confidence": 22,
-  "layman_headline": "Market fear is at extreme levels \u2014 no clear swing trade setup exists right now.",
-  "layman_explanation": "The overall crypto market is gripped by extreme fear, with the sentiment index at 25 and worsening day by day. Bitcoin is holding relatively steady around $63,700, but altcoins are getting crushed \u2014 many are down 90%+ from their all-time highs. The swing trade candidates on our watchlist either already ran up too fast (BTW up 60% in a week), crashed too hard without clear bottoms (LDO down 23%), or have almost no technical data to analyze. Prominent voices like Michael Terpin are calling for Bitcoin to drop to $43,500, and CME just froze a major Bitcoin product launch, adding regulatory uncertainty.",
-  "layman_action": "Stay in cash and wait. The fear is real, and while bargains may be forming, there's no clear, low-risk entry right now. Watch for the Fear & Greed Index to stabilize or bounce above 30 before committing capital.",
-  "expert_reasoning": "Applying validated Rule #3: Fear and Greed at 25 means the short-term outlook is genuinely ambiguous, and the safest call is HOLD. BTW is the only candidate with any chart data, but its RSI at 69 is overbought (our most reliable signal per credibility intelligence, and it's flashing caution), it's already up 60% in 7 days, and its risk/reward ratio is a terrible 0.29x. LDO's -23.3% weekly drop looks like a mean-reversion candidate, but with zero chart data, no RSI, no support levels, and 95.9% below ATH, this could easily be a falling knife. BTC dominance at 56.4% confirms capital is flowing away from alts, making altcoin longs especially risky. The worsening fear trend (28\u219225, weekly avg 27) with bearish headlines (Terpin's $43.5K call, CME freeze, quantum concerns) suggests further downside risk. Per Rule #7, early evidence suggests BTC could drift down another 1-4% from here, but the sample size is too small to trade on.",
-  "risk_factors": [
-    "Fear & Greed continues worsening below 25, triggering a deeper market selloff",
-    "CME freezing Nasdaq's Bitcoin product could signal broader regulatory headwinds",
-    "Prominent bearish calls (BTC to $43.5K) could become self-fulfilling if retail panic accelerates"
-  ],
-  "watch_list": [
-    "Fear & Greed Index \u2014 watch for stabilization above 28 or further deterioration below 22",
-    "BTC price action around $62,000 support \u2014 a break below could accelerate alt selling",
-    "ADA's +21.2% weekly move \u2014 if it holds and consolidates, it could present a swing setup"
-  ],
-  "market_context": "Crypto market is in extreme fear (25/100, worsening) with BTC relatively flat but alts heavily beaten down. High BTC dominance at 56.4% signals risk-off rotation away from altcoins, and bearish macro headlines dominate the news cycle.",
-  "context_banner": "Extreme fear with worsening sentiment and no clean technical setups \u2014 capital preservation is the highest-probability play right now.",
-  "btc_price": 63684,
+  "selected_coin_price": 64085,
+  "confidence": 0,
+  "layman_headline": "Analysis error \u2014 try again shortly",
+  "layman_explanation": "The system encountered an error this cycle.",
+  "layman_action": "No action recommended until next run.",
+  "expert_reasoning": null,
+  "risk_factors": [],
+  "watch_list": [],
+  "market_context": null,
+  "context_banner": null,
+  "btc_price": 64085,
   "fear_greed": {
     "current": 25,
     "label": "Extreme Fear",
@@ -28,34 +20,8 @@
     "week_avg": 27.0,
     "trend": "worsening"
   },
-  "btc_dominance": 56.4,
-  "key_signals": [
-    {
-      "source": "Fear_Greed",
-      "signal_type": "sentiment",
-      "description": "Fear & Greed at 25 (extreme fear), down from 28 yesterday with weekly average of 27 and worsening trend \u2014 per Rule #3, this ambiguity favors holding over new entries."
-    },
-    {
-      "source": "RSI",
-      "signal_type": "technical",
-      "description": "The only candidate with RSI data (BTW at 69) is overbought \u2014 our most reliable signal (71% win rate) is flashing caution, not opportunity."
-    },
-    {
-      "source": "CoinTelegraph",
-      "signal_type": "news",
-      "description": "Michael Terpin calling for BTC drop to $43,500 and Jim Cramer selling BTC over quantum fears add bearish narrative pressure to an already fearful market."
-    },
-    {
-      "source": "CryptoSlate",
-      "signal_type": "news",
-      "description": "CME froze Nasdaq's major Bitcoin product launch over legal loophole concerns \u2014 a potential regulatory headwind that could suppress near-term institutional demand."
-    },
-    {
-      "source": "volume_breakout",
-      "signal_type": "technical",
-      "description": "No volume breakout signals detected among candidates \u2014 volume data is largely missing, and no confirmed breakout setups exist in the current watchlist."
-    }
-  ],
+  "btc_dominance": 0.0,
+  "key_signals": [],
   "_mode": "HUNTING",
   "exit_target": null,
   "stop_loss": null
