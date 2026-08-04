@@ -1,26 +1,5 @@
 [
   {
-    "ts": "2026-08-02T10:11:32.418493+00:00",
-    "coin": "BTC",
-    "price": 63188,
-    "signal": "HOLD",
-    "confidence": 22,
-    "score": -0.3,
-    "fg": 27,
-    "btc_price": 63188,
-    "btc_dominance": 0.0,
-    "candidates": [
-      "KAITO",
-      "ENA",
-      "BONK",
-      "TRUMP",
-      "FET",
-      "PEPE",
-      "PENGU"
-    ],
-    "alert": "Market fear at 27 and worsening \u2014 approaching extreme fear territory where capitulation risk increases. Monitor closely."
-  },
-  {
     "ts": "2026-08-02T11:11:32.440035+00:00",
     "coin": "BTC",
     "price": 63122,
@@ -838,5 +817,26 @@
       "WLD"
     ],
     "alert": "Fear & Greed at 25 and declining \u2014 approaching the danger zone where validated rules mandate extreme caution."
+  },
+  {
+    "ts": "2026-08-04T02:11:32.596406+00:00",
+    "coin": "BTC",
+    "price": 63704,
+    "signal": "HOLD",
+    "confidence": 0,
+    "score": null,
+    "fg": 25,
+    "btc_price": 63704,
+    "btc_dominance": 56.4,
+    "candidates": [
+      "BTW",
+      "MON",
+      "USDG",
+      "TRUMP",
+      "WLD",
+      "AAVE",
+      "ENA"
+    ],
+    "alert": null
   }
 ]
