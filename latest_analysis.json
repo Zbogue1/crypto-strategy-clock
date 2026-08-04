@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-08-04T10:11:32.651759+00:00",
-  "selected_coin": "BTC",
-  "selected_coin_name": "Bitcoin",
-  "selected_coin_price": 63481,
-  "confidence": 25,
-  "layman_headline": "Market fear is at extreme levels \u2014 patience is the smartest play right now.",
-  "layman_explanation": "The crypto market is gripped by extreme fear with a score of 25 out of 100 and worsening day by day. Bitcoin is holding around $63,500 but faces a critical test at $65,000 before Friday's jobs data, which could send it lower to $60,000. The swing trade candidates available right now are either already overbought after big runs (like Bitway up 45% in a week), lacking reliable chart data, or in clear downtrends. None of them offer a setup worth risking capital on in this environment.",
-  "layman_action": "Stay in cash and wait. The market mood is deteriorating, and Friday's US jobs data could create a much better buying opportunity if prices dip further. Don't chase anything that's already run up.",
-  "expert_reasoning": "Per validated Rule #3, when Fear & Greed drops to 25 or below, the short-term outlook is genuinely ambiguous and the safest call is HOLD. Per Rule #7, early evidence suggests BTC tends to drift down another 1-4% when F&G is at this level. The candidate analysis: BTW has RSI 69 (overbought, our most reliable signal at 71% win rate says avoid), up 45.6% in 7 days with a terrible risk/reward of 0.29x. MON has a bearish chart bias of -0.70 and is below all MAs. AAVE is neutral but in a 5-day downtrend with -5.3% weekly. LDO is down 18% weekly with no chart data at all. The macro backdrop includes US-Japan yen intervention testing carry-trade fears and a first US spot BTC ETF closing due to dwindling inflows \u2014 both bearish signals. BTC dominance at 56.4% is hostile to altcoin positions. CryptoSlate's warning about BTC needing $65K before Friday or risking $60K adds urgency to staying sidelined.",
+  "timestamp": "2026-08-04T11:11:32.577703+00:00",
+  "selected_coin": "LDO",
+  "selected_coin_name": "Lido DAO",
+  "selected_coin_price": 0.301608,
+  "confidence": 28,
+  "layman_headline": "Market fear is at extreme levels \u2014 patience beats impulse right now.",
+  "layman_explanation": "The crypto market is gripped by extreme fear with a score of 25 out of 100 and worsening. While Bitcoin is holding around $63,700 with a small bounce, altcoins are getting hammered \u2014 Bitcoin dominance at 56.4% means money is flowing away from smaller coins. There are a few interesting setups forming, particularly LDO after a sharp 22% weekly drop, but the overall environment is hostile for new entries. The smart move is to wait for fear to stabilize or reverse before committing capital.",
+  "layman_action": "Stay in cash for now. The market is panicking and conditions are too uncertain to justify opening new positions. Watch for fear to bottom out and stabilize \u2014 that's when the real opportunities emerge.",
+  "expert_reasoning": "Per my validated rules, when Fear & Greed is at 25 (right at the threshold), the short-term outlook is genuinely ambiguous and the safest call is HOLD. BTC dominance at 56.4% is actively hostile to altcoin positions. LDO is the most compelling candidate with a 22% weekly drawdown and approaching key support at $0.30, but the chart bias is neutral-to-negative (-0.10), it's in a downtrend, and price is below all major MAs. ZRO has an oversold RSI at 30 (a historically reliable signal per my credibility data), but its bearish chart bias of -0.70 and poor risk/reward of 1.31x make it a low-quality setup. BTW and PUMP have already run significantly and carry elevated correction risk. No funding rate data is available for any candidate, which removes a key confirmation tool.",
   "risk_factors": [
-    "Friday US jobs data could trigger a sharp move in either direction \u2014 a miss could send BTC to $60,000",
-    "US-Japan yen intervention could unwind carry trades and cause broad risk-asset liquidation",
-    "First US spot BTC ETF closing signals institutional flow reversal that could accelerate"
+    "Fear & Greed at 25 and worsening \u2014 historical pattern suggests another 1-4% BTC drawdown possible, which would crush alts further",
+    "BTC dominance at 56.4% means capital rotation is actively moving away from altcoins into Bitcoin",
+    "US-Japan yen intervention creating macro uncertainty that could trigger broader risk-off liquidations across crypto"
   ],
   "watch_list": [
-    "BTC price action at $65,000 resistance \u2014 a breakout above would shift the picture bullish",
-    "Friday US jobs data release and immediate market reaction",
-    "Fear & Greed Index trend \u2014 if it drops below 20, capitulation buying opportunities may emerge"
+    "Fear & Greed Index \u2014 watch for stabilization above 30 as a signal the worst panic is passing",
+    "LDO price action at $0.30 support \u2014 a strong bounce with volume would confirm the mean-reversion thesis",
+    "BTC price action around $64,000 resistance \u2014 rejection here could trigger another leg down in alts"
   ],
-  "market_context": "Extreme Fear at 25 and worsening, with BTC at a critical juncture below $65K resistance. Macro headwinds from yen intervention and ETF outflows create a hostile environment for new risk positions.",
-  "context_banner": "Extreme Fear with worsening trend and critical macro events ahead \u2014 capital preservation takes priority over chasing extended moves.",
-  "btc_price": 63481,
+  "market_context": "Extreme Fear (25/100, worsening) with BTC holding near $63,700 but altcoins broadly weak. High BTC dominance at 56.4% and macro headwinds from potential US-Japan yen intervention create a hostile environment for new altcoin entries.",
+  "context_banner": "Extreme fear at the 25 threshold demands patience \u2014 the best swing trades emerge after panic stabilizes, not during it.",
+  "btc_price": 63683,
   "fear_greed": {
     "current": 25,
     "label": "Extreme Fear",
@@ -33,30 +33,30 @@
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Fear & Greed at 25 (Extreme Fear) and worsening from 28 yesterday \u2014 per validated rules, this level demands a HOLD rather than forcing entries."
-    },
-    {
-      "source": "CryptoSlate",
-      "signal_type": "news",
-      "description": "BTC must clear $65,000 before Friday or jobs data could turn $62,000 into a trapdoor to $60,000 \u2014 defines clear downside risk for the week."
+      "description": "Fear & Greed at 25 and trending down from 28 yesterday \u2014 right at the threshold where my validated rules say direction is ambiguous and HOLD is safest."
     },
     {
       "source": "RSI",
       "signal_type": "technical",
-      "description": "The best-performing swing candidate BTW has RSI at 69 (overbought), and RSI is our most reliable signal at 71% win rate \u2014 this warns against entry."
+      "description": "ZRO RSI at 30 is technically oversold (71% win rate signal historically), but bearish chart structure (-0.70 bias) and poor risk/reward (1.31x) prevent acting on it."
     },
     {
       "source": "CoinDesk",
       "signal_type": "news",
-      "description": "US-Japan yen intervention testing carry-trade fears adds macro uncertainty, and a first US spot BTC ETF closing signals weakening institutional demand."
+      "description": "First US spot Bitcoin ETF closing as investors chase AI returns signals structural demand shift that could suppress crypto prices near-term."
     },
     {
-      "source": "CoinDesk",
+      "source": "CoinTelegraph",
       "signal_type": "macro",
-      "description": "First US spot BTC ETF closing as inflows dwindle and investors chase AI returns \u2014 signals a structural shift in institutional flow away from crypto."
+      "description": "US yen intervention putting Bitcoin and risk assets on notice for liquidity flux \u2014 macro headwind that adds uncertainty to any new position."
+    },
+    {
+      "source": "volume_breakout",
+      "signal_type": "technical",
+      "description": "No volume breakout signals detected across any candidates \u2014 without volume confirmation, bounce setups in LDO and ZRO remain speculative."
     }
   ],
   "_mode": "HUNTING",
-  "exit_target": null,
-  "stop_loss": null
+  "exit_target": 0.365,
+  "stop_loss": 0.265
 }
