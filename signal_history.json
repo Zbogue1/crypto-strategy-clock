@@ -1,26 +1,5 @@
 [
   {
-    "ts": "2026-08-02T19:11:32.549363+00:00",
-    "coin": "BTC",
-    "price": 63310,
-    "signal": "HOLD",
-    "confidence": 22,
-    "score": -0.3,
-    "fg": 27,
-    "btc_price": 63310,
-    "btc_dominance": 56.2,
-    "candidates": [
-      "DEXE",
-      "KAITO",
-      "ENA",
-      "UB",
-      "BONK",
-      "WLD",
-      "TRUMP"
-    ],
-    "alert": "Fear & Greed at 27 and worsening \u2014 approaching extreme fear threshold of 25 where short-term direction becomes highly unpredictable."
-  },
-  {
     "ts": "2026-08-02T20:11:32.581141+00:00",
     "coin": "BTC",
     "price": 63384,
@@ -838,5 +817,26 @@
       "AAVE"
     ],
     "alert": "Fear & Greed at 25 and declining. Friday jobs data is a binary risk event. Stay sidelined until clarity emerges."
+  },
+  {
+    "ts": "2026-08-04T11:11:32.577703+00:00",
+    "coin": "LDO",
+    "price": 0.301608,
+    "signal": "HOLD",
+    "confidence": 28,
+    "score": -0.15,
+    "fg": 25,
+    "btc_price": 63683,
+    "btc_dominance": 56.4,
+    "candidates": [
+      "BTW",
+      "LDO",
+      "MON",
+      "USDG",
+      "PUMP",
+      "ZRO",
+      "WLD"
+    ],
+    "alert": "Fear & Greed at 25 (critical threshold) and worsening \u2014 per validated rules, short-term direction is ambiguous and HOLD is appropriate until conditions clarify."
   }
 ]
