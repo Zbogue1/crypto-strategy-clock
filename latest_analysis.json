@@ -1,26 +1,18 @@
 {
-  "timestamp": "2026-08-04T01:11:32.496238+00:00",
-  "selected_coin": "ENA",
-  "selected_coin_name": "Ethena",
-  "selected_coin_price": 0.092037,
-  "confidence": 28,
-  "layman_headline": "Market fear is at extreme levels \u2014 staying on the sidelines until conditions improve.",
-  "layman_explanation": "The crypto market is gripped by extreme fear, with the mood index at 25 out of 100 and getting worse day by day. Bitcoin is holding around $63,400 but most altcoins are bleeding. While a couple of coins like ENA and ADA are showing some life, the overall environment is hostile to new trades. Headlines about workforce cuts, company departures, and potential regulatory stalls paint a gloomy picture.",
-  "layman_action": "Do not open new positions right now. Wait for fear to stabilize or reverse before committing capital. If you already hold crypto, make sure you have stop-losses in place.",
-  "expert_reasoning": "Per my validated rules, when Fear & Greed is at 25 (borderline extreme fear threshold), the short-term outlook is genuinely ambiguous and the safest call is HOLD. BTC dominance at 56.4% signals capital rotation away from alts, making altcoin entries riskier. ENA is the most compelling candidate with its bullish engulfing pattern, marubozu candle, and +1.0 chart bias, but the risk/reward to nearest levels is only 0.56x \u2014 well below the 2.0x threshold for ideal setups. News flow is decidedly bearish: Bernstein warns of further downside if Clarity Act stalls, Strategy is selling Bitcoin, miners face cash crunches, and key personnel are departing crypto-adjacent roles. No funding rate data is available for any candidate, adding another blind spot. I will watch ENA for a pullback toward $0.085 where risk/reward improves meaningfully.",
-  "risk_factors": [
-    "Fear & Greed at 25 and worsening \u2014 markets could cascade lower on any negative catalyst",
-    "BTC dominance at 56.4% actively suppresses altcoin performance, making alt entries higher risk",
-    "Bernstein warns of 'another leg lower' if the Clarity Act stalls, suggesting systemic downside risk"
-  ],
-  "watch_list": [
-    "Fear & Greed Index \u2014 watch for stabilization above 30 or further deterioration below 20",
-    "ENA price action near $0.085 support zone for potential entry with better risk/reward",
-    "ADA momentum \u2014 up 23.2% in 7 days, could signal selective alt strength if it holds"
-  ],
-  "market_context": "Extreme Fear dominates with the index at 25 and trending worse. Bitcoin holds $63.4K but bearish news flow (Strategy selling BTC, miner dilution, regulatory uncertainty) and high BTC dominance create a hostile environment for new altcoin positions.",
-  "context_banner": "Extreme Fear at 25 with worsening trend demands patience \u2014 no high-conviction entries available until risk/reward improves.",
-  "btc_price": 63392,
+  "timestamp": "2026-08-04T02:11:32.596406+00:00",
+  "selected_coin": "BTC",
+  "selected_coin_name": "Bitcoin",
+  "selected_coin_price": 63704,
+  "confidence": 0,
+  "layman_headline": "Analysis error \u2014 try again shortly",
+  "layman_explanation": "The system encountered an error this cycle.",
+  "layman_action": "No action recommended until next run.",
+  "expert_reasoning": null,
+  "risk_factors": [],
+  "watch_list": [],
+  "market_context": null,
+  "context_banner": null,
+  "btc_price": 63704,
   "fear_greed": {
     "current": 25,
     "label": "Extreme Fear",
@@ -29,34 +21,8 @@
     "trend": "worsening"
   },
   "btc_dominance": 56.4,
-  "key_signals": [
-    {
-      "source": "Fear_Greed",
-      "signal_type": "sentiment",
-      "description": "Fear & Greed at 25 (Extreme Fear) and worsening from 28 yesterday \u2014 per validated Rule #3, this level makes the short-term outlook ambiguous and favors holding."
-    },
-    {
-      "source": "CoinDesk",
-      "signal_type": "news",
-      "description": "Bernstein warns of 'another leg lower' if the Clarity Act stalls, and U.S.-Japan intervention revives yen carry trade fears \u2014 both bearish macro catalysts."
-    },
-    {
-      "source": "CryptoSlate",
-      "signal_type": "news",
-      "description": "Strategy selling $395M in BTC and MSTR stock while miner Sphere 3D prepares 50% shareholder dilution \u2014 signals institutional stress and selling pressure."
-    },
-    {
-      "source": "RSI",
-      "signal_type": "technical",
-      "description": "ENA RSI at 44 is neutral with room to run, and its bullish engulfing pattern is the strongest technical setup among candidates, but risk/reward at 0.56x is inadequate for entry."
-    },
-    {
-      "source": "volume_breakout",
-      "signal_type": "technical",
-      "description": "No volume breakout confirmation on any candidate \u2014 ADA's 23% weekly gain lacks volume data to validate, and BTC dominance at 56.4% suppresses alt flows."
-    }
-  ],
+  "key_signals": [],
   "_mode": "HUNTING",
-  "exit_target": 0.1,
-  "stop_loss": 0.07
+  "exit_target": null,
+  "stop_loss": null
 }
