@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-08-04T09:11:32.642495+00:00",
+  "timestamp": "2026-08-04T10:11:32.651759+00:00",
   "selected_coin": "BTC",
   "selected_coin_name": "Bitcoin",
-  "selected_coin_price": 63501,
-  "confidence": 22,
-  "layman_headline": "Market fear is extreme and getting worse \u2014 not the time to jump in.",
-  "layman_explanation": "The crypto market is in a state of deep fear, scoring only 25 out of 100 on the sentiment scale and trending downward. Bitcoin is holding around $63,500 but faces a critical test at $65,000 \u2014 if it can't break through before Friday's jobs data, analysts warn it could slide to $60,000. The altcoin candidates on our watchlist are either already overextended after big rallies, or stuck in bearish downtrends with no clear reversal signal. None of the setups offer a compelling risk-reward for a new swing trade right now.",
-  "layman_action": "Stay in cash and wait. The market mood is worsening and there's a major potential catalyst (jobs data) coming that could push prices sharply in either direction. Better setups will come when fear starts turning around or when a clear technical reversal forms.",
-  "expert_reasoning": "Per my validated rules, Fear & Greed at 25 makes the short-term outlook genuinely ambiguous (Rule 3), and the safest call is HOLD rather than forcing a trade. BTC dominance at 56.4% is crushing altcoins, making alt entries especially risky. BTW and PUMP have already run 42% and 41% in 5 days respectively \u2014 chasing overbought momentum in extreme fear conditions is a recipe for getting caught in a reversal. MON and FET have RSIs approaching oversold (~34 and ~37) but both are in confirmed bearish structures below all moving averages with no reversal candle patterns. AAVE and LDO lack sufficient chart data to even evaluate. The CryptoSlate headline explicitly frames the $62K-$65K zone as a binary outcome dependent on Friday's macro data \u2014 this is not a setup with definable risk, it's a coin flip. I'm staying flat.",
+  "selected_coin_price": 63481,
+  "confidence": 25,
+  "layman_headline": "Market fear is at extreme levels \u2014 patience is the smartest play right now.",
+  "layman_explanation": "The crypto market is gripped by extreme fear with a score of 25 out of 100 and worsening day by day. Bitcoin is holding around $63,500 but faces a critical test at $65,000 before Friday's jobs data, which could send it lower to $60,000. The swing trade candidates available right now are either already overbought after big runs (like Bitway up 45% in a week), lacking reliable chart data, or in clear downtrends. None of them offer a setup worth risking capital on in this environment.",
+  "layman_action": "Stay in cash and wait. The market mood is deteriorating, and Friday's US jobs data could create a much better buying opportunity if prices dip further. Don't chase anything that's already run up.",
+  "expert_reasoning": "Per validated Rule #3, when Fear & Greed drops to 25 or below, the short-term outlook is genuinely ambiguous and the safest call is HOLD. Per Rule #7, early evidence suggests BTC tends to drift down another 1-4% when F&G is at this level. The candidate analysis: BTW has RSI 69 (overbought, our most reliable signal at 71% win rate says avoid), up 45.6% in 7 days with a terrible risk/reward of 0.29x. MON has a bearish chart bias of -0.70 and is below all MAs. AAVE is neutral but in a 5-day downtrend with -5.3% weekly. LDO is down 18% weekly with no chart data at all. The macro backdrop includes US-Japan yen intervention testing carry-trade fears and a first US spot BTC ETF closing due to dwindling inflows \u2014 both bearish signals. BTC dominance at 56.4% is hostile to altcoin positions. CryptoSlate's warning about BTC needing $65K before Friday or risking $60K adds urgency to staying sidelined.",
   "risk_factors": [
-    "Friday jobs data could trigger a sharp move to $60K if BTC fails to clear $65K beforehand",
-    "Strategy (formerly MicroStrategy) is actively selling BTC \u2014 $395M sold \u2014 which creates persistent overhead supply",
-    "Coldcard theft topping $100M across 3 attack waves could further erode retail confidence in self-custody"
+    "Friday US jobs data could trigger a sharp move in either direction \u2014 a miss could send BTC to $60,000",
+    "US-Japan yen intervention could unwind carry trades and cause broad risk-asset liquidation",
+    "First US spot BTC ETF closing signals institutional flow reversal that could accelerate"
   ],
   "watch_list": [
-    "BTC price action around $65,000 resistance \u2014 a clean break above with volume would shift the outlook bullish",
-    "Fear & Greed Index \u2014 if it stabilizes or ticks up from 25, it could signal a local bottom forming",
-    "Friday US jobs data release \u2014 the key macro catalyst that will likely determine the next 5-10% move"
+    "BTC price action at $65,000 resistance \u2014 a breakout above would shift the picture bullish",
+    "Friday US jobs data release and immediate market reaction",
+    "Fear & Greed Index trend \u2014 if it drops below 20, capitulation buying opportunities may emerge"
   ],
-  "market_context": "Bitcoin is consolidating at $63,500 in extreme fear (25/100, worsening trend). High BTC dominance at 56.4% is draining capital from altcoins, and a binary macro event on Friday makes this a poor time to initiate new positions.",
-  "context_banner": "Extreme fear with a critical macro catalyst approaching \u2014 patience is the highest-probability trade right now.",
-  "btc_price": 63501,
+  "market_context": "Extreme Fear at 25 and worsening, with BTC at a critical juncture below $65K resistance. Macro headwinds from yen intervention and ETF outflows create a hostile environment for new risk positions.",
+  "context_banner": "Extreme Fear with worsening trend and critical macro events ahead \u2014 capital preservation takes priority over chasing extended moves.",
+  "btc_price": 63481,
   "fear_greed": {
     "current": 25,
     "label": "Extreme Fear",
@@ -33,27 +33,27 @@
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Fear & Greed at 25 (Extreme Fear), down from 28 yesterday with week average of 27 \u2014 worsening trend signals continued risk-off behavior and per Rule 3, the outlook is genuinely ambiguous at this level."
+      "description": "Fear & Greed at 25 (Extreme Fear) and worsening from 28 yesterday \u2014 per validated rules, this level demands a HOLD rather than forcing entries."
     },
     {
       "source": "CryptoSlate",
       "signal_type": "news",
-      "description": "Bitcoin must clear $65K before Friday or jobs data could turn $62K into a trapdoor to $60K \u2014 this binary setup makes pre-positioning extremely risky."
-    },
-    {
-      "source": "CoinDesk",
-      "signal_type": "news",
-      "description": "Strategy sold $395M in BTC and MSTR stock, creating meaningful sell pressure on Bitcoin at a time when sentiment is already fragile."
+      "description": "BTC must clear $65,000 before Friday or jobs data could turn $62,000 into a trapdoor to $60,000 \u2014 defines clear downside risk for the week."
     },
     {
       "source": "RSI",
       "signal_type": "technical",
-      "description": "Best oversold candidates (MON at 34, FET at 37) are both in bearish chart structures below all moving averages \u2014 oversold alone is not sufficient without reversal confirmation, per RSI signal credibility data."
+      "description": "The best-performing swing candidate BTW has RSI at 69 (overbought), and RSI is our most reliable signal at 71% win rate \u2014 this warns against entry."
     },
     {
-      "source": "CoinTelegraph",
+      "source": "CoinDesk",
       "signal_type": "news",
-      "description": "Coldcard Bitcoin theft exceeding $100M across 3 attack waves adds a security fear narrative that could further suppress retail participation during extreme fear conditions."
+      "description": "US-Japan yen intervention testing carry-trade fears adds macro uncertainty, and a first US spot BTC ETF closing signals weakening institutional demand."
+    },
+    {
+      "source": "CoinDesk",
+      "signal_type": "macro",
+      "description": "First US spot BTC ETF closing as inflows dwindle and investors chase AI returns \u2014 signals a structural shift in institutional flow away from crypto."
     }
   ],
   "_mode": "HUNTING",
