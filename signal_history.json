@@ -1,26 +1,5 @@
 [
   {
-    "ts": "2026-08-02T23:11:32.435871+00:00",
-    "coin": "BTC",
-    "price": 63320,
-    "signal": "HOLD",
-    "confidence": 0,
-    "score": null,
-    "fg": 27,
-    "btc_price": 63320,
-    "btc_dominance": 56.3,
-    "candidates": [
-      "KAITO",
-      "ENA",
-      "UB",
-      "BONK",
-      "AAVE",
-      "PENGU",
-      "PEPE"
-    ],
-    "alert": null
-  },
-  {
     "ts": "2026-08-03T00:11:32.468973+00:00",
     "coin": "BTC",
     "price": 63387,
@@ -838,5 +817,26 @@
       "PUMP"
     ],
     "alert": "Fear & Greed at 25 and worsening \u2014 per validated rules, this is an ambiguous zone where HOLD is the safest action. Multiple bearish headlines compound the risk."
+  },
+  {
+    "ts": "2026-08-04T15:11:32.698008+00:00",
+    "coin": "BTC",
+    "price": 64085,
+    "signal": "HOLD",
+    "confidence": 0,
+    "score": null,
+    "fg": 25,
+    "btc_price": 64085,
+    "btc_dominance": 0.0,
+    "candidates": [
+      "BTW",
+      "LDO",
+      "ZRO",
+      "MON",
+      "USDG",
+      "ETHFI",
+      "PUMP"
+    ],
+    "alert": null
   }
 ]
