@@ -1,26 +1,5 @@
 [
   {
-    "ts": "2026-08-02T21:11:32.429939+00:00",
-    "coin": "BTC",
-    "price": 63468,
-    "signal": "HOLD",
-    "confidence": 25,
-    "score": -0.3,
-    "fg": 27,
-    "btc_price": 63468,
-    "btc_dominance": 56.3,
-    "candidates": [
-      "KAITO",
-      "ENA",
-      "WLD",
-      "UB",
-      "BONK",
-      "PENGU",
-      "PEPE"
-    ],
-    "alert": "Fear & Greed at 27 and trending down \u2014 approaching the 25 threshold where my validated rules indicate maximum ambiguity. No entry recommended until sentiment stabilizes."
-  },
-  {
     "ts": "2026-08-02T22:11:32.592996+00:00",
     "coin": "BTC",
     "price": 63632,
@@ -838,5 +817,26 @@
       "WLD"
     ],
     "alert": "Fear and Greed at 25 and falling \u2014 approaching levels where historical data (limited) suggests further BTC downside of 1-4%. Wait for stabilization before deploying capital."
+  },
+  {
+    "ts": "2026-08-04T13:11:33.186134+00:00",
+    "coin": "BTC",
+    "price": 63926,
+    "signal": "HOLD",
+    "confidence": 22,
+    "score": -0.3,
+    "fg": 25,
+    "btc_price": 63926,
+    "btc_dominance": 56.5,
+    "candidates": [
+      "BTW",
+      "LDO",
+      "ZRO",
+      "MON",
+      "USDG",
+      "PUMP",
+      "UNI"
+    ],
+    "alert": "Fear & Greed at 25 and declining \u2014 approaching the extreme danger zone where Rule 3 and Rule 7 caution against new entries without strong confirming signals."
   }
 ]
