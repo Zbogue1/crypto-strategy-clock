@@ -1,26 +1,5 @@
 [
   {
-    "ts": "2026-08-02T15:11:32.747377+00:00",
-    "coin": "BTC",
-    "price": 63043,
-    "signal": "HOLD",
-    "confidence": 22,
-    "score": -0.3,
-    "fg": 27,
-    "btc_price": 63043,
-    "btc_dominance": 56.2,
-    "candidates": [
-      "KAITO",
-      "ENA",
-      "UB",
-      "BONK",
-      "TRUMP",
-      "PEPE",
-      "LDO"
-    ],
-    "alert": "Coldcard cold-wallet hack ($89M) is spreading to 4,500+ addresses \u2014 monitor for contagion effects on broader market confidence."
-  },
-  {
     "ts": "2026-08-02T16:11:32.563610+00:00",
     "coin": "BTC",
     "price": 63061,
@@ -838,5 +817,26 @@
       "TRUMP"
     ],
     "alert": "Fear & Greed at 25 with worsening trend \u2014 Rule #3 dictates HOLD. Wait for sentiment stabilization or a clear capitulation event before deploying capital."
+  },
+  {
+    "ts": "2026-08-04T07:11:32.677310+00:00",
+    "coin": "ENA",
+    "price": 0.09234,
+    "signal": "HOLD",
+    "confidence": 28,
+    "score": 0.15,
+    "fg": 25,
+    "btc_price": 63584,
+    "btc_dominance": 0.0,
+    "candidates": [
+      "BTW",
+      "MON",
+      "PUMP",
+      "USDG",
+      "UNI",
+      "LDO",
+      "ENA"
+    ],
+    "alert": "Fear and Greed Index at critical 25 level and deteriorating \u2014 per validated rules, this is a HOLD zone until conditions clarify."
   }
 ]
