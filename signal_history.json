@@ -1,26 +1,5 @@
 [
   {
-    "ts": "2026-08-03T03:11:32.595111+00:00",
-    "coin": "BTC",
-    "price": 63064,
-    "signal": "HOLD",
-    "confidence": 25,
-    "score": -0.3,
-    "fg": 28,
-    "btc_price": 63064,
-    "btc_dominance": 56.3,
-    "candidates": [
-      "KAITO",
-      "UB",
-      "ENA",
-      "BONK",
-      "WLD",
-      "TRUMP",
-      "AAVE"
-    ],
-    "alert": "Coldcard exploit has now hit a suspected 4th attack wave (389 BTC stolen per Galaxy). This ongoing security crisis is driving unusual exchange inflows and could trigger further sell pressure."
-  },
-  {
     "ts": "2026-08-03T04:11:32.537739+00:00",
     "coin": "ENA",
     "price": 0.08783,
@@ -838,5 +817,26 @@
       "ZRO"
     ],
     "alert": "Fear and Greed at 25 and deteriorating. BTC $63K support is the key level to watch \u2014 a break below could accelerate selling across the board."
+  },
+  {
+    "ts": "2026-08-04T19:11:32.550147+00:00",
+    "coin": "BTC",
+    "price": 64286,
+    "signal": "HOLD",
+    "confidence": 22,
+    "score": -0.3,
+    "fg": 25,
+    "btc_price": 64286,
+    "btc_dominance": 0.0,
+    "candidates": [
+      "LDO",
+      "BTW",
+      "UB",
+      "ETHFI",
+      "MON",
+      "USDG",
+      "AAVE"
+    ],
+    "alert": "Fear & Greed at 25 with worsening trend. Per validated rules, this is a HOLD zone. Monitor for further deterioration below 20 which could signal capitulation buying opportunity."
   }
 ]
