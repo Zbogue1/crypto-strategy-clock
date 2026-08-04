@@ -1,26 +1,5 @@
 [
   {
-    "ts": "2026-08-03T06:11:33.037466+00:00",
-    "coin": "AAVE",
-    "price": 91.92,
-    "signal": "HOLD",
-    "confidence": 28,
-    "score": -0.15,
-    "fg": 28,
-    "btc_price": 62797,
-    "btc_dominance": 56.2,
-    "candidates": [
-      "KAITO",
-      "UB",
-      "BONK",
-      "AAVE",
-      "TRUMP",
-      "WLD",
-      "PEPE"
-    ],
-    "alert": "Fear & Greed at 28 and worsening \u2014 approaching the 25 threshold where historical data suggests maximum ambiguity; avoid new positions without a clear catalyst."
-  },
-  {
     "ts": "2026-08-03T07:11:32.585038+00:00",
     "coin": "BTC",
     "price": 62599,
@@ -838,5 +817,26 @@
       "MON"
     ],
     "alert": "Fear and Greed at 25 with worsening trend \u2014 approaching levels where sharp moves in either direction become likely. No positions recommended until setups improve."
+  },
+  {
+    "ts": "2026-08-04T22:11:33.232775+00:00",
+    "coin": "BTC",
+    "price": 64162,
+    "signal": "HOLD",
+    "confidence": 22,
+    "score": -0.3,
+    "fg": 25,
+    "btc_price": 64162,
+    "btc_dominance": 56.6,
+    "candidates": [
+      "LDO",
+      "BTW",
+      "UB",
+      "ETHFI",
+      "PUMP",
+      "MON",
+      "USDG"
+    ],
+    "alert": "Fear & Greed at 25 with worsening trend and Treasury liquidity drain imminent \u2014 elevated risk of further downside. No swing entries meet quality criteria."
   }
 ]
