@@ -1,26 +1,5 @@
 [
   {
-    "ts": "2026-08-02T08:11:32.505515+00:00",
-    "coin": "BTC",
-    "price": 63454,
-    "signal": "HOLD",
-    "confidence": 22,
-    "score": -0.6,
-    "fg": 27,
-    "btc_price": 63454,
-    "btc_dominance": 56.3,
-    "candidates": [
-      "KAITO",
-      "ENA",
-      "BONK",
-      "TRUMP",
-      "FET",
-      "PEPE",
-      "PENGU"
-    ],
-    "alert": "Fear & Greed at 27 with worsening trend approaching the critical 25 threshold \u2014 monitor closely for potential capitulation or reversal."
-  },
-  {
     "ts": "2026-08-02T09:11:32.554281+00:00",
     "coin": "BTC",
     "price": 63163,
@@ -838,5 +817,26 @@
       "WLD"
     ],
     "alert": "Fear & Greed at 28 and trending worse \u2014 approaching the danger zone where validated rules recommend extreme caution. Monitor for potential capitulation entry if F&G drops below 20."
+  },
+  {
+    "ts": "2026-08-04T00:11:32.512050+00:00",
+    "coin": "ENA",
+    "price": 0.093165,
+    "signal": "HOLD",
+    "confidence": 28,
+    "score": -0.15,
+    "fg": 25,
+    "btc_price": 63498,
+    "btc_dominance": 56.4,
+    "candidates": [
+      "BTW",
+      "MON",
+      "USDG",
+      "TRUMP",
+      "ENA",
+      "AAVE",
+      "UNI"
+    ],
+    "alert": "Fear and Greed at 25 (threshold for extreme caution per validated rules). Worsening trend from 28 yesterday. Standing aside until conditions stabilize."
   }
 ]
