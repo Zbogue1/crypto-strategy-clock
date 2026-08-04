@@ -1,26 +1,5 @@
 [
   {
-    "ts": "2026-08-02T13:11:32.491999+00:00",
-    "coin": "BTC",
-    "price": 63051,
-    "signal": "HOLD",
-    "confidence": 22,
-    "score": -0.6,
-    "fg": 27,
-    "btc_price": 63051,
-    "btc_dominance": 56.3,
-    "candidates": [
-      "UB",
-      "ENA",
-      "BONK",
-      "PEPE",
-      "FET",
-      "TRUMP",
-      "PENGU"
-    ],
-    "alert": "Coldcard cold-wallet exploit has spread to 4,500 addresses with $89M in losses \u2014 monitor for contagion risk to broader market."
-  },
-  {
     "ts": "2026-08-02T14:11:32.551396+00:00",
     "coin": "BTC",
     "price": 63016,
@@ -838,5 +817,26 @@
       "FET"
     ],
     "alert": "Fear & Greed at 25 and deteriorating. Per validated rules, HOLD is the correct call when fear is this extreme and direction is ambiguous."
+  },
+  {
+    "ts": "2026-08-04T05:11:32.466451+00:00",
+    "coin": "BTC",
+    "price": 63876,
+    "signal": "HOLD",
+    "confidence": 0,
+    "score": null,
+    "fg": 25,
+    "btc_price": 63876,
+    "btc_dominance": 56.5,
+    "candidates": [
+      "BTW",
+      "MON",
+      "USDG",
+      "UNI",
+      "ENA",
+      "TRUMP",
+      "AAVE"
+    ],
+    "alert": null
   }
 ]
