@@ -1,26 +1,5 @@
 [
   {
-    "ts": "2026-08-03T07:11:32.585038+00:00",
-    "coin": "BTC",
-    "price": 62599,
-    "signal": "HOLD",
-    "confidence": 0,
-    "score": null,
-    "fg": 28,
-    "btc_price": 62599,
-    "btc_dominance": 0.0,
-    "candidates": [
-      "KAITO",
-      "UB",
-      "WLD",
-      "PEPE",
-      "TRUMP",
-      "AAVE",
-      "BONK"
-    ],
-    "alert": null
-  },
-  {
     "ts": "2026-08-03T08:11:32.707789+00:00",
     "coin": "WLD",
     "price": 0.308228,
@@ -838,5 +817,26 @@
       "USDG"
     ],
     "alert": "Fear & Greed at 25 with worsening trend and Treasury liquidity drain imminent \u2014 elevated risk of further downside. No swing entries meet quality criteria."
+  },
+  {
+    "ts": "2026-08-04T23:11:32.548909+00:00",
+    "coin": "BTC",
+    "price": 64347,
+    "signal": "HOLD",
+    "confidence": 0,
+    "score": null,
+    "fg": 25,
+    "btc_price": 64347,
+    "btc_dominance": 0.0,
+    "candidates": [
+      "LDO",
+      "BTW",
+      "UB",
+      "ETHFI",
+      "PUMP",
+      "USDG",
+      "MON"
+    ],
+    "alert": null
   }
 ]
