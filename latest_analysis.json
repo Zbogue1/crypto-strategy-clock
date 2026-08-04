@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-08-04T07:11:32.677310+00:00",
-  "selected_coin": "ENA",
-  "selected_coin_name": "Ethena",
-  "selected_coin_price": 0.09234,
-  "confidence": 28,
-  "layman_headline": "Market fear is at extreme levels \u2014 patience beats impulse right now.",
-  "layman_explanation": "The overall crypto market is gripped by extreme fear, with the Fear and Greed Index at 25 and trending worse day by day. Bitcoin is holding near $63,600 but the mood is fragile. While a few coins like ADA and ENA are showing short-term strength, the broader environment makes it risky to commit money. Strategy (formerly MicroStrategy) selling Bitcoin adds to the uncertain backdrop. The safest move is to wait for the fear to stabilize or for a clearer technical setup before entering.",
-  "layman_action": "Do not open new positions right now. Keep your cash ready. If ENA pulls back to around $0.085 while the market stabilizes, that could become a compelling entry. Otherwise, wait for the Fear and Greed Index to stop deteriorating.",
-  "expert_reasoning": "Per validated Rule #3, when Fear and Greed drops to 25 or below, the short-term outlook is genuinely ambiguous and HOLD is the safest call. The index is at exactly 25 and worsening (yesterday 28, week avg 27), which means conditions haven't bottomed yet. ENA is the most technically attractive candidate with bullish engulfing + marubozu patterns and a +1.0 chart bias, but the risk/reward to nearest levels is only 0.56x which is far below the 2.0x ideal threshold. Additionally, its 7-day move of +10.3% suggests it may be extended. I would need a pullback toward $0.085 support combined with Fear and Greed stabilization above 25 before committing capital. No other candidates offer clean setups: MON is in a bearish structure, UNI has a terrible 0.43x R/R, PUMP is already extended, BTW lacks any technical data, and LDO has no chart analysis.",
+  "timestamp": "2026-08-04T08:11:32.579585+00:00",
+  "selected_coin": "BTC",
+  "selected_coin_name": "Bitcoin",
+  "selected_coin_price": 63609,
+  "confidence": 22,
+  "layman_headline": "Market fear is at extreme levels \u2014 not the time to force a trade.",
+  "layman_explanation": "The overall crypto market is gripped by extreme fear, with the sentiment index at 25 out of 100 and getting worse day by day. Bitcoin is holding around $64,000 but altcoins are struggling \u2014 Bitcoin dominance is high at 56.4%, meaning money is flowing away from smaller coins. The swing trade candidates available right now are either already overbought after big rallies (BTW up 40% in a week), stuck in downtrends (MON, FET), or lack enough data to analyze properly (LDO). None present a clean risk-reward setup worth entering in this fearful environment.",
+  "layman_action": "Stay in cash and wait. When the market is this fearful and no clear setup exists, the best move is patience. Watch for fear to stabilize or a high-quality oversold bounce with volume confirmation before entering.",
+  "expert_reasoning": "Applying validated Rule #3: Fear and Greed at 25 means the short-term outlook is genuinely ambiguous, and the safest call is HOLD rather than forcing a buy or sell. RSI \u2014 my most reliable signal at 71% win rate \u2014 shows no candidate in a clean oversold-bounce setup: BTW is overbought at 69, UNI elevated at 62, MON and FET are approaching oversold (34 and 37) but their charts are bearish with price below all MAs, which contradicts a bounce thesis. BTC dominance at 56.4% further argues against alt exposure. The news cycle is mixed-to-negative (Strategy selling BTC, Coldcard $100M+ theft, miner dilution). No DeFi TVL change data is available for the 7-day window. Without a clear technical setup, favorable sentiment, or a strong catalyst, capital preservation is the correct strategy.",
   "risk_factors": [
-    "Fear and Greed Index at 25 and worsening \u2014 historically ambiguous and could resolve with further downside",
-    "Strategy selling $395M in BTC creates sell pressure overhang on the entire market",
-    "ENA is 94% below ATH suggesting deep structural weakness, and the 0.56x risk/reward is unfavorable"
+    "Fear and Greed could deteriorate further below 25, triggering a broader selloff that drags all candidates lower",
+    "BTC dominance at 56.4% and rising means alts face continued capital outflows regardless of individual setups",
+    "Strategy's $395M BTC sale and Coldcard theft headlines could erode confidence and push BTC below $60K support"
   ],
   "watch_list": [
-    "Fear and Greed Index trajectory \u2014 need stabilization or reversal above 28 before considering entries",
-    "ENA price action at $0.085-0.090 zone \u2014 a successful retest and hold would create a better entry",
-    "BTC behavior around $64,000 resistance \u2014 a breakout would lift market sentiment broadly"
+    "Fear and Greed Index \u2014 watch for stabilization above 30 or further deterioration below 20 as a directional signal",
+    "BTC price action around $60,000 support \u2014 a clean bounce with volume there would create a high-quality entry across the board",
+    "ADA momentum \u2014 up 24.3% in 7 days with strong volume ($693M), could offer a pullback entry if it retraces to a defined support level"
   ],
-  "market_context": "Crypto markets are in extreme fear (25/100, worsening) with Bitcoin near $63,600. Strategy's $395M BTC sale and ongoing Coldcard theft news ($100M+) are weighing on sentiment despite some isolated altcoin strength in ADA (+25% weekly) and privacy coins.",
-  "context_banner": "Extreme fear at the 25 threshold demands patience \u2014 the best swing trades emerge when fear stabilizes, not while it's still intensifying.",
-  "btc_price": 63584,
+  "market_context": "The crypto market is in Extreme Fear (25/100, worsening trend) with BTC holding near $64K but negative headlines dominating \u2014 Strategy selling BTC, $100M+ Coldcard theft, and miner dilution. High BTC dominance at 56.4% signals a risk-off rotation away from altcoins.",
+  "context_banner": "Extreme Fear at 25 with worsening trend and no clean swing setups \u2014 disciplined patience is the edge right now.",
+  "btc_price": 63609,
   "fear_greed": {
     "current": 25,
     "label": "Extreme Fear",
@@ -28,35 +28,35 @@
     "week_avg": 27.0,
     "trend": "worsening"
   },
-  "btc_dominance": 0.0,
+  "btc_dominance": 56.4,
   "key_signals": [
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Fear and Greed at 25 (extreme fear) and worsening from 28 yesterday \u2014 per validated Rule #3, this boundary condition calls for holding rather than buying or selling."
+      "description": "Fear and Greed Index at 25 (Extreme Fear) with a worsening week-over-week trend from 28 to 25, triggering validated Rule #3 to default to HOLD."
     },
     {
       "source": "RSI",
       "signal_type": "technical",
-      "description": "ENA RSI at 44 is neutral with room to move higher, and RSI has a 71% win rate in signal credibility data \u2014 making it the most reliable indicator available."
+      "description": "Most reliable signal (71% win rate) shows no clean oversold bounce setup \u2014 BTW overbought at 69, MON/FET approaching oversold but in confirmed downtrends below all MAs."
     },
     {
-      "source": "CoinDesk",
+      "source": "CryptoSlate",
       "signal_type": "news",
-      "description": "Strategy selling $395M in BTC and MSTR stock creates market-wide sell pressure overhang that increases risk for any new long position."
+      "description": "Strategy sold $395M in BTC and MSTR stock, and Bitcoin miner Sphere 3D preparing 50% share dilution \u2014 both bearish headlines undermining market confidence."
     },
     {
       "source": "CoinTelegraph",
       "signal_type": "news",
-      "description": "Mastercard's $1.8B BVNK acquisition validates stablecoin infrastructure, which could benefit DeFi protocols like Ethena medium-term."
+      "description": "Coldcard Bitcoin theft exceeding $100M across 3 confirmed attack waves adds security fear to an already fragile market sentiment."
     },
     {
-      "source": "volume_breakout",
-      "signal_type": "technical",
-      "description": "ENA's bullish engulfing and marubozu candle patterns on the chart suggest strong buying conviction, but the 0.56x risk/reward ratio makes immediate entry unattractive."
+      "source": "CoinDesk",
+      "signal_type": "news",
+      "description": "BTC holding near $64K despite headwinds, with dormant wallets moving $31M \u2014 mixed signals that don't provide a clear directional catalyst."
     }
   ],
   "_mode": "HUNTING",
-  "exit_target": 0.1,
-  "stop_loss": 0.07
+  "exit_target": null,
+  "stop_loss": null
 }
