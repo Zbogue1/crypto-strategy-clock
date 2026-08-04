@@ -1,26 +1,5 @@
 [
   {
-    "ts": "2026-08-02T12:11:32.552518+00:00",
-    "coin": "BTC",
-    "price": 63066,
-    "signal": "HOLD",
-    "confidence": 25,
-    "score": -0.3,
-    "fg": 27,
-    "btc_price": 63066,
-    "btc_dominance": 56.3,
-    "candidates": [
-      "KAITO",
-      "UB",
-      "BONK",
-      "ENA",
-      "FET",
-      "TRUMP",
-      "PEPE"
-    ],
-    "alert": "Coldcard hardware wallet exploit has drained $89M across 4,500 addresses \u2014 the largest sub-1-BTC movement since FTX collapse. Monitor for contagion."
-  },
-  {
     "ts": "2026-08-02T13:11:32.491999+00:00",
     "coin": "BTC",
     "price": 63051,
@@ -838,5 +817,26 @@
       "ENA"
     ],
     "alert": "Fear & Greed at 25 (worsening trend) \u2014 Rule #3 triggered. Ambiguous conditions warrant HOLD over forced entry."
+  },
+  {
+    "ts": "2026-08-04T04:11:32.458921+00:00",
+    "coin": "ENA",
+    "price": 0.091604,
+    "signal": "HOLD",
+    "confidence": 32,
+    "score": 0.15,
+    "fg": 25,
+    "btc_price": 63704,
+    "btc_dominance": 56.4,
+    "candidates": [
+      "BTW",
+      "MON",
+      "USDG",
+      "UNI",
+      "TRUMP",
+      "ENA",
+      "FET"
+    ],
+    "alert": "Fear & Greed at 25 and deteriorating. Per validated rules, HOLD is the correct call when fear is this extreme and direction is ambiguous."
   }
 ]
