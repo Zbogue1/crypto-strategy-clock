@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-08-04T18:11:33.772638+00:00",
+  "timestamp": "2026-08-04T19:11:32.550147+00:00",
   "selected_coin": "BTC",
   "selected_coin_name": "Bitcoin",
-  "selected_coin_price": 64075,
+  "selected_coin_price": 64286,
   "confidence": 22,
-  "layman_headline": "Market fear is at extreme levels \u2014 staying on the sidelines until conditions stabilize.",
-  "layman_explanation": "The crypto market is gripped by extreme fear, with the mood index at 25 out of 100 and getting worse day by day. Bitcoin is hovering around $64,000 with a prominent analyst calling for a drop to $43,500. The altcoin candidates on the watchlist are mostly beaten-down tokens with very limited technical data available \u2014 no RSI readings, no MACD crosses, no funding rates, and no chart analysis for most of them. Without enough reliable signals, entering a trade here would be gambling, not trading.",
-  "layman_action": "Do nothing right now. Keep your cash ready. Wait for fear to stabilize or reverse, and for clearer technical setups to emerge before committing capital.",
-  "expert_reasoning": "Per validated Rule #3, when Fear and Greed is at 25 or below, the short-term outlook is genuinely ambiguous \u2014 HOLD is the safest call. Per Rule #7, early evidence suggests BTC may drift down another 1-4% at these fear levels. Of the 7 swing candidates, only LDO has any chart analysis data (neutral bias at -0.10), while the other 6 have zero chart data, zero RSI, zero MACD, and zero funding rate information. This effectively means fewer than 3 core data sources are functioning for most candidates, triggering Rule #4 caution. BTC dominance at 56.5% is hostile to altcoin positions. The CoinTelegraph headline citing a $43,500 BTC target from Michael Terpin adds bearish sentiment pressure, though single analyst calls should be weighted lightly.",
+  "layman_headline": "Market fear is at extreme levels \u2014 sitting on the sidelines until the picture clears up.",
+  "layman_explanation": "The crypto market is deep in 'Extreme Fear' territory at 25/100, and the mood has been getting worse all week. Bitcoin is holding around $64K but a prominent analyst just called for a drop to $43.5K. The swing trade candidates today are either low-quality setups (missing key technical data like RSI and chart patterns) or already overextended. LDO dropped 25% in a week which looks like a potential bounce play, but without reliable RSI confirmation, funding rate data, or chart patterns on most candidates, the risk of catching a falling knife is too high.",
+  "layman_action": "Do nothing right now. Keep your cash ready. If Fear & Greed drops further or Bitcoin breaks below $63K, there may be better entries ahead. If the market stabilizes and fear starts to ease, that's the safer time to deploy capital.",
+  "expert_reasoning": "Applying validated Rule #3: Fear & Greed at 25 means the short-term outlook is genuinely ambiguous, so HOLD is the safest call. Rule #7 notes that at extreme fear readings like this, BTC tends to drift down another 1-4% over the following week, though this is based on limited observations. Of the swing candidates, LDO has the best risk/reward ratio (2.91x) and a sharp mean-reversion setup after -24.9% in 7 days, but RSI at 43 is not yet in the oversold zone (sub-30) that our signal credibility data shows as reliable (71% win rate). BTW is overbought at RSI 69 with a terrible 0.29x risk/reward \u2014 a clear avoid. ETHFI, AAVE, MON, and UB all lack RSI data, chart analysis, and funding rates, meaning we'd be flying blind. The macro backdrop is mixed: institutional adoption news (BNY staking, Wells Fargo tokenization) is constructive longer-term, but the Terpin $43.5K call and HYPE ETF outflows signal near-term risk-off behavior.",
   "risk_factors": [
-    "Fear and Greed at 25 and worsening \u2014 historically ambiguous but could cascade into deeper sell-off",
-    "BTC dominance at 56.5% actively suppressing altcoin performance",
-    "Most swing candidates lack basic technical data (RSI, MACD, funding rates), making informed entry impossible"
+    "BTC $63K support break could trigger cascading liquidations and drag all alts down 15-30%",
+    "Worsening Fear & Greed trend (28\u219225 in one day) suggests sentiment hasn't bottomed yet",
+    "Most swing candidates lack critical technical data (RSI, MACD, funding rates), making any entry essentially a blind bet"
   ],
   "watch_list": [
-    "Fear and Greed Index trajectory \u2014 watch for stabilization above 30 or further deterioration below 20",
-    "BTC price action around $63,000 support level flagged by Glassnode as key battleground",
-    "LDO price behavior near $0.30 support \u2014 if it holds with improving RSI, could become actionable"
+    "Fear & Greed Index trajectory \u2014 watch for a reversal above 30 as a potential stabilization signal",
+    "Bitcoin price action around $63,000 support level identified by Glassnode",
+    "LDO price near $0.30 support \u2014 if it holds with rising volume and RSI drops below 30, it becomes a high-quality mean-reversion entry"
   ],
-  "market_context": "Extreme fear (25/100, worsening) dominates with BTC flat at $64K and alts bleeding. Institutional news is constructive (BNY staking, Wells Fargo tokenization) but hasn't translated to price action yet \u2014 the market is ignoring bullish headlines.",
-  "context_banner": "Extreme fear and insufficient technical data across candidates make this a clear wait-and-watch cycle \u2014 capital preservation is the priority.",
-  "btc_price": 64075,
+  "market_context": "Extreme Fear at 25/100 and worsening. BTC is consolidating around $64K but faces a critical $63K support test. Institutional news is positive (BNY staking, tokenization) but near-term sentiment is fragile with prominent bearish calls circulating.",
+  "context_banner": "Extreme Fear dominates the market \u2014 capital preservation takes priority over chasing setups with incomplete data.",
+  "btc_price": 64286,
   "fear_greed": {
     "current": 25,
     "label": "Extreme Fear",
@@ -28,32 +28,32 @@
     "week_avg": 27.0,
     "trend": "worsening"
   },
-  "btc_dominance": 56.5,
+  "btc_dominance": 0.0,
   "key_signals": [
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Fear and Greed at 25 (Extreme Fear), down from 28 yesterday with weekly average of 27 \u2014 worsening trend triggers validated Rule #3 to HOLD rather than act."
+      "description": "Fear & Greed at 25 (Extreme Fear), down from 28 yesterday with weekly average of 27 \u2014 per validated Rule #3, ambiguous outlook means HOLD is safest."
     },
     {
       "source": "CoinTelegraph",
       "signal_type": "news",
-      "description": "Michael Terpin calling for Bitcoin to drop to $43,500 adds to bearish narrative, though single-analyst calls have mixed reliability (57% signal accuracy)."
-    },
-    {
-      "source": "CoinDesk",
-      "signal_type": "news",
-      "description": "Glassnode identifies $63,000 as a key battleground for BTC buyers \u2014 a break below would invalidate near-term support and likely drag alts further down."
+      "description": "Michael Terpin's $43.5K BTC call adds to bearish narrative, while BTC coiling at $64K near Glassnode's key $63K battleground creates binary risk."
     },
     {
       "source": "RSI",
       "signal_type": "technical",
-      "description": "Only LDO provided RSI data (42.7, neutral) \u2014 the most reliable signal type at 71% win rate has insufficient data across candidates to generate a trade."
+      "description": "LDO RSI at 43 is the only readable RSI among candidates \u2014 not yet oversold enough to trigger our highest-confidence signal (71% win rate requires sub-30 RSI)."
     },
     {
-      "source": "volume_breakout",
-      "signal_type": "technical",
-      "description": "No volume-vs-average data available for any swing candidate, removing a key confirmation signal from the analysis."
+      "source": "CoinDesk",
+      "signal_type": "news",
+      "description": "Wells Fargo and BNY institutional moves are constructive for medium-term crypto adoption but not sufficient to override near-term fear-driven selling pressure."
+    },
+    {
+      "source": "CryptoSlate",
+      "signal_type": "sentiment",
+      "description": "HYPE ETFs seeing 12 consecutive days of zero inflows and $30M outflows signals institutional risk-off positioning in the altcoin space."
     }
   ],
   "_mode": "HUNTING",
