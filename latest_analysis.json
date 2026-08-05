@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-08-05T11:11:32.617360+00:00",
+  "timestamp": "2026-08-05T12:11:32.705954+00:00",
   "selected_coin": "BTC",
   "selected_coin_name": "Bitcoin",
-  "selected_coin_price": 64063,
-  "confidence": 25,
-  "layman_headline": "The market is scared and the candidates are sketchy \u2014 staying on the sidelines for now.",
-  "layman_explanation": "The overall crypto market is in a state of fear (27/100) and has been getting worse all week. Bitcoin is underperforming traditional stocks, which are hitting record highs, and Bitcoin dominance at 56.5% means altcoins are getting crushed even harder. The coins flagged as swing trade candidates are either tiny, illiquid tokens that have already surged (UB, BTW, PUMP) or beaten-down altcoins with no chart data and no clear bottom (LDO, KAITO, ETHFI). None of them offer a high-confidence setup with a clear stop-loss.",
-  "layman_action": "Do nothing right now. Wait for fear to stabilize or reverse, and for a quality setup with proper technical confirmation to appear. Capital preservation is the priority in this environment.",
-  "expert_reasoning": "Applying validated rules: Fear & Greed at 27 is just above the 25 threshold where Rule 3 says the outlook is genuinely ambiguous and HOLD is safest. The trend is worsening (yesterday was 25, week avg 26.7). BTC dominance at 56.5% is suppressing altcoin performance. Of the swing candidates, UB has the best chart score (+1.1) but RSI is neutral at 56, the risk/reward to nearest levels is only 0.49x (poor), and it's a micro-cap with no funding rate or volume data. BTW is RSI-overbought at 69 after a 79.7% weekly move \u2014 classic chase setup. LDO and KAITO have sharp dips (-20.6% and -25.1%) that could be mean-reversion plays, but with zero chart analysis data, no RSI readings, and no support levels identified, entering would be gambling. Per Rule 4 and my validated rules, I should not make a confident call when core data sources are missing for most candidates. The news flow is net bearish: BTC underperforming equities, longest Glassnode capitulation since FTX, Coldcard hack undermining custody narrative, and Ethereum's proposed issuance cut creating DeFi uncertainty.",
+  "selected_coin_price": 64094,
+  "confidence": 22,
+  "layman_headline": "Market fear is thick and none of these swing candidates are worth the risk right now.",
+  "layman_explanation": "The overall crypto market is stuck in 'Fear' mode with a score of 27 out of 100, and it's been getting worse over the past week. Bitcoin itself is barely moving while altcoins are getting punished \u2014 Bitcoin dominance at 56.5% means money is flowing away from smaller coins. The swing trade candidates on our watchlist are either tiny, obscure tokens that have already surged (BTW up 88%, PUMP up 34%) or tokens that have crashed hard without enough chart data to confirm a bottom (KAITO down 27%, LDO down 19%). None of them have reliable RSI readings, chart analysis, or funding rate data to build a real thesis around.",
+  "layman_action": "Stay in cash and wait. The market mood is fearful and worsening, and the available trade setups lack the data quality needed to take a confident position. Watch for Fear & Greed to stabilize or improve before hunting for entries.",
+  "expert_reasoning": "Applying validated rules: Fear & Greed at 27 is just above the 25 threshold where Rule #3 says the outlook is genuinely ambiguous. The worsening trend (yesterday was 25, weekly avg 26.7) suggests we could easily dip below that threshold. Rule #4 requires at least three core data sources working \u2014 while we have price data, news, and Fear & Greed, the swing candidates themselves are missing critical technical indicators (RSI available for only 1 of 7, no MACD crosses, no funding rates, empty chart analysis for 6 of 7). BTC dominance at 56.5% creates a hostile environment for alt trades. The one candidate with actual chart data (UB) shows a bullish Three White Soldiers pattern but has already moved +130% in 5 days with a poor risk/reward ratio of 0.49x to nearest levels \u2014 chasing after that kind of move in a fear market is how you get caught in a trap. Per signal credibility intelligence, RSI is the most reliable signal (71% win rate), and we only have one RSI reading across all candidates.",
   "risk_factors": [
-    "Fear & Greed trending toward extreme fear (25 yesterday) \u2014 further downside likely if it breaks below 25",
-    "Bitcoin underperforming global equities suggests capital is rotating out of crypto, not in",
-    "Most swing candidates are illiquid micro-caps where a sudden sell-off could cause outsized losses with no exit liquidity"
+    "Fear & Greed trending toward Extreme Fear territory \u2014 could trigger broader selloff",
+    "High BTC dominance (56.5%) actively suppressing altcoin performance",
+    "Glassnode flagging longest Bitcoin capitulation signal since FTX \u2014 systemic risk backdrop"
   ],
   "watch_list": [
-    "Fear & Greed Index \u2014 if it drops below 25 into extreme fear, expect another leg down; if it bounces above 30, conditions may improve",
-    "Bitcoin vs. S&P 500 relative performance \u2014 crypto needs to stop lagging equities for any altcoin trade to work",
-    "ADA price action \u2014 up 18.5% on the week in a fearful market, could signal selective altcoin strength worth investigating"
+    "Fear & Greed Index direction \u2014 if it drops below 25, expect further alt weakness per Rule #3 and #7",
+    "Bitcoin price action around $63,000-$64,000 support \u2014 a breakdown here could drag alts down 10-20%",
+    "ADA's +19.1% weekly move \u2014 if it consolidates and holds, could present the next swing setup with proper chart data"
   ],
-  "market_context": "Crypto is in a fear-driven regime with Bitcoin at $64K lagging record-high equity markets. BTC dominance at 56.5% and the longest Glassnode capitulation signal since FTX suggest altcoins face continued headwinds until sentiment shifts.",
-  "context_banner": "Fear is intensifying and Bitcoin is underperforming stocks \u2014 this is a capital preservation environment, not a swing trade environment.",
-  "btc_price": 64063,
+  "market_context": "Bitcoin is underperforming traditional equities which are hitting record highs, while the crypto Fear & Greed index sits at 27 and worsening. Glassnode reports the longest price-metric capitulation since FTX, suggesting the market hasn't found its footing yet.",
+  "context_banner": "Fearful market with worsening sentiment and no high-conviction swing setups \u2014 capital preservation is the priority.",
+  "btc_price": 64094,
   "fear_greed": {
     "current": 27,
     "label": "Fear",
@@ -33,27 +33,27 @@
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Fear & Greed at 27 with worsening trend (yesterday 25) signals market stress approaching extreme levels \u2014 per validated rules, ambiguous outlook favors holding."
-    },
-    {
-      "source": "CoinDesk",
-      "signal_type": "news",
-      "description": "Bitcoin failing to keep pace with record-high global equities indicates capital rotation away from crypto, a bearish macro signal."
+      "description": "Fear & Greed at 27 (Fear) and worsening from 25 yesterday with weekly avg of 26.7 \u2014 approaching Extreme Fear territory where Rule #3 says outlook is ambiguous."
     },
     {
       "source": "CoinTelegraph",
       "signal_type": "news",
-      "description": "Glassnode reports the longest Bitcoin price-metric capitulation since FTX, suggesting sustained seller exhaustion that hasn't yet found a floor."
+      "description": "Bitcoin price-metric basket shows longest capitulation since FTX per Glassnode, signaling the market is in a sustained drawdown phase."
+    },
+    {
+      "source": "CoinDesk",
+      "signal_type": "news",
+      "description": "Bitcoin and broader crypto market failing to keep pace with record-high global equities \u2014 relative weakness suggests institutional money is not flowing into crypto."
+    },
+    {
+      "source": "volume_breakout",
+      "signal_type": "technical",
+      "description": "No volume breakout signals confirmed across any candidates \u2014 combined with missing RSI/MACD data for 6 of 7 candidates, technical conviction is near zero."
     },
     {
       "source": "RSI",
       "signal_type": "technical",
-      "description": "Only two candidates have RSI data \u2014 UB at 56 (neutral) and BTW at 69 (overbought). Neither presents a classic oversold bounce setup which is the highest-reliability signal per track record."
-    },
-    {
-      "source": "CryptoSlate",
-      "signal_type": "news",
-      "description": "Ethereum's proposed 54% staking reward cut threatens DeFi yield strategies, adding fundamental uncertainty to ETH-ecosystem tokens like LDO and ETHFI."
+      "description": "Only UB has an RSI reading (55.77, neutral) \u2014 insufficient technical data across the candidate pool to identify a high-probability entry using our most reliable signal."
     }
   ],
   "_mode": "HUNTING",
