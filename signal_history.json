@@ -1,26 +1,5 @@
 [
   {
-    "ts": "2026-08-04T03:11:32.470884+00:00",
-    "coin": "ENA",
-    "price": 0.091235,
-    "signal": "HOLD",
-    "confidence": 28,
-    "score": -0.15,
-    "fg": 25,
-    "btc_price": 63710,
-    "btc_dominance": 56.4,
-    "candidates": [
-      "BTW",
-      "MON",
-      "USDG",
-      "WLD",
-      "TRUMP",
-      "AAVE",
-      "ENA"
-    ],
-    "alert": "Fear & Greed at 25 (worsening trend) \u2014 Rule #3 triggered. Ambiguous conditions warrant HOLD over forced entry."
-  },
-  {
     "ts": "2026-08-04T04:11:32.458921+00:00",
     "coin": "ENA",
     "price": 0.091604,
@@ -838,5 +817,26 @@
       "PUMP"
     ],
     "alert": "Fear & Greed dropped to 25 yesterday and is trending worse \u2014 monitor for potential extreme fear conditions that historically precede either capitulation or reversal."
+  },
+  {
+    "ts": "2026-08-05T19:11:32.644472+00:00",
+    "coin": "BTC",
+    "price": 64816,
+    "signal": "HOLD",
+    "confidence": 0,
+    "score": null,
+    "fg": 27,
+    "btc_price": 64816,
+    "btc_dominance": 0.0,
+    "candidates": [
+      "UB",
+      "BTW",
+      "KAITO",
+      "LDO",
+      "MON",
+      "USDG",
+      "\u5e01\u5b89\u4eba\u751f"
+    ],
+    "alert": null
   }
 ]
