@@ -1,26 +1,5 @@
 [
   {
-    "ts": "2026-08-03T16:11:32.693814+00:00",
-    "coin": "BTC",
-    "price": 63666,
-    "signal": "HOLD",
-    "confidence": 25,
-    "score": -0.3,
-    "fg": 28,
-    "btc_price": 63666,
-    "btc_dominance": 56.4,
-    "candidates": [
-      "BEAT",
-      "UB",
-      "AAVE",
-      "WLD",
-      "TRUMP",
-      "\u5e01\u5b89\u4eba\u751f",
-      "FET"
-    ],
-    "alert": "Macro headwinds building: yen carry trade fears, Strategy BTC sales, and potential Clarity Act stall could push markets lower. Stay defensive."
-  },
-  {
     "ts": "2026-08-03T17:11:32.599712+00:00",
     "coin": "BTC",
     "price": 63750,
@@ -838,5 +817,26 @@
       "BEAT"
     ],
     "alert": "Market fear trending toward extreme levels (yesterday hit 25). No swing candidates meet minimum data requirements for entry. Waiting for better setups."
+  },
+  {
+    "ts": "2026-08-05T08:11:32.907840+00:00",
+    "coin": "LDO",
+    "price": 0.293735,
+    "signal": "HOLD",
+    "confidence": 28,
+    "score": -0.15,
+    "fg": 27,
+    "btc_price": 64110,
+    "btc_dominance": 56.5,
+    "candidates": [
+      "UB",
+      "LDO",
+      "USDG",
+      "PUMP",
+      "ETHFI",
+      "BTW",
+      "\u5e01\u5b89\u4eba\u751f"
+    ],
+    "alert": "Fear & Greed was 25 yesterday, right at the extreme fear boundary. If sentiment deteriorates further, expect accelerated altcoin selling."
   }
 ]
