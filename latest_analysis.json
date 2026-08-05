@@ -1,26 +1,18 @@
 {
-  "timestamp": "2026-08-05T08:11:32.907840+00:00",
-  "selected_coin": "LDO",
-  "selected_coin_name": "Lido DAO",
-  "selected_coin_price": 0.293735,
-  "confidence": 28,
-  "layman_headline": "Market fear is keeping us on the sidelines \u2014 no strong enough setup to risk real money today.",
-  "layman_explanation": "The crypto market is sitting in a 'Fear' zone at 27 out of 100, and the trend is getting worse week over week. Bitcoin is flat around $64,000 while Bitcoin dominance at 56.5% is squeezing altcoins. The candidates on our watchlist are either too volatile and data-poor (UB, PUMP, BTW, BinanceLife) or lack enough technical confirmation (LDO, ETHFI). LDO has the best risk/reward ratio on paper at nearly 3:1, but without RSI being oversold, without MACD confirmation, and with missing chart data on most candidates, the conviction isn't there to deploy capital.",
-  "layman_action": "Stay patient and keep your cash ready. The fear in the market could push prices lower, creating better entries in the coming days. Watch LDO around $0.28 and BNB/ZEC which are showing relative strength in the top 20.",
-  "expert_reasoning": "Applying validated rules: Fear & Greed at 27 is just above the 25 threshold where Rule 3 says the outlook is genuinely ambiguous. The worsening trend (yesterday was 25, week avg 26.7) suggests we could dip below that threshold soon. BTC dominance at 56.5% is hostile to altcoin positions. Among the candidates, most lack critical data \u2014 UB had a -38.3% daily crash despite chart showing uptrend (data inconsistency), PUMP is already extended +34.6% in 7 days, BTW and BinanceLife have zero chart analysis or RSI data. LDO is the most analyzable with RSI at 43 (neutral, not oversold), support at $0.30, resistance at $0.40, and a 2.91x R/R. However, per Signal Credibility Intelligence, RSI is our most reliable signal (71% win rate) and it's not giving a buy signal here \u2014 it's neutral. Without an oversold RSI reading or MACD cross, entering during a fearful, BTC-dominant market with incomplete data on most candidates would be speculation, not a trade setup.",
-  "risk_factors": [
-    "Fear & Greed trending toward extreme fear (25 yesterday) could trigger further altcoin selloffs",
-    "BTC dominance at 56.5% actively compresses altcoin valuations \u2014 LDO down 96% from ATH shows structural weakness",
-    "Most swing candidates lack essential technical data (RSI, MACD, chart analysis), making proper risk assessment impossible"
-  ],
-  "watch_list": [
-    "LDO price action near $0.30 support \u2014 a bounce with volume confirmation and RSI dipping below 35 would be actionable",
-    "Fear & Greed Index \u2014 if it drops below 25, expect further downside; if it rebounds above 30, altcoin setups improve",
-    "ZEC and BNB momentum \u2014 both showing relative strength (+10.8% and +5.0% weekly) and may offer setups if they pull back"
-  ],
-  "market_context": "Bitcoin is consolidating at $64,000 in a fear-driven market with high BTC dominance at 56.5%, creating a hostile environment for altcoins. The Fear & Greed Index at 27 and worsening suggests we haven't found a bottom in sentiment yet.",
-  "context_banner": "Fear is intensifying with BTC dominance squeezing alts \u2014 patience and capital preservation are the highest-conviction plays right now.",
-  "btc_price": 64110,
+  "timestamp": "2026-08-05T09:11:32.627338+00:00",
+  "selected_coin": "BTC",
+  "selected_coin_name": "Bitcoin",
+  "selected_coin_price": 64097,
+  "confidence": 0,
+  "layman_headline": "Analysis error \u2014 try again shortly",
+  "layman_explanation": "The system encountered an error this cycle.",
+  "layman_action": "No action recommended until next run.",
+  "expert_reasoning": null,
+  "risk_factors": [],
+  "watch_list": [],
+  "market_context": null,
+  "context_banner": null,
+  "btc_price": 64097,
   "fear_greed": {
     "current": 27,
     "label": "Fear",
@@ -28,35 +20,9 @@
     "week_avg": 26.7,
     "trend": "worsening"
   },
-  "btc_dominance": 56.5,
-  "key_signals": [
-    {
-      "source": "Fear_Greed",
-      "signal_type": "sentiment",
-      "description": "Fear & Greed at 27 with worsening trend (yesterday 25, week avg 26.7) \u2014 approaching extreme fear territory where outcomes are highly uncertain per validated Rule 3."
-    },
-    {
-      "source": "RSI",
-      "signal_type": "technical",
-      "description": "Our most reliable signal (71% win rate) shows no oversold readings on any candidate \u2014 LDO at 43, UB at 56, PUMP at 56 \u2014 meaning no high-probability bounce setups exist right now."
-    },
-    {
-      "source": "CoinDesk",
-      "signal_type": "news",
-      "description": "'The worst chart for bitcoin bulls right now' headline and SpaceX posting $540M loss on BTC holdings reinforce the cautious, risk-off narrative."
-    },
-    {
-      "source": "Blockworks",
-      "signal_type": "news",
-      "description": "'ETH derivatives reset and the next retail trade' suggests potential ETH ecosystem catalyst developing \u2014 relevant to LDO watchlist position."
-    },
-    {
-      "source": "volume_breakout",
-      "signal_type": "technical",
-      "description": "No volume breakout signals detected on any candidate; ZEC (+10.8% 7d, $226M volume) is the closest to showing momentum but wasn't in the swing candidate list."
-    }
-  ],
+  "btc_dominance": 0.0,
+  "key_signals": [],
   "_mode": "HUNTING",
-  "exit_target": 0.38,
-  "stop_loss": 0.255
+  "exit_target": null,
+  "stop_loss": null
 }
