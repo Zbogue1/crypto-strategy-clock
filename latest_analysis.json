@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-08-05T02:11:32.917334+00:00",
+  "timestamp": "2026-08-05T03:11:32.961108+00:00",
   "selected_coin": "BTC",
   "selected_coin_name": "Bitcoin",
-  "selected_coin_price": 64401,
+  "selected_coin_price": 64359,
   "confidence": 25,
-  "layman_headline": "Fear lingers in the crypto market \u2014 no clean swing trade setups worth the risk right now.",
-  "layman_explanation": "The crypto market is sitting in 'Fear' territory at 27 out of 100, and that fear has been worsening over the past week. Bitcoin is holding around $64,000 with Glassnode flagging $63,000 as a key battleground. The swing trade candidates on the watchlist are either low-quality micro-caps with missing data (no RSI, no chart analysis, no funding rates) or have already run up sharply and look extended. With Bitcoin dominance high at 56.6%, altcoins are struggling to outperform, making it a tough environment for alt swing trades.",
-  "layman_action": "Stay patient and keep your cash ready. The market mood is fearful but not panicked enough to signal a clear contrarian buy, and the available trade setups lack the data quality needed to enter with confidence. Wait for a cleaner opportunity.",
-  "expert_reasoning": "Applying validated rules: Fear & Greed at 27 is just above the 25 threshold where Rule #3 says the outlook is 'genuinely ambiguous.' The trend is worsening (yesterday was 25, week avg 26.7). Per Rule #4, I need at least three core data sources working \u2014 while I do have price data, news, and Fear & Greed, the swing candidates themselves are severely data-deficient: only 2 of 7 have RSI readings, none have funding rates, and only 2 have chart analysis. RSI is my most reliable signal (71% win rate per signal credibility data), and it reads neutral (55-56) on the two coins that have it. BTC dominance at 56.6% actively suppresses altcoin performance. UB's -33% daily drop contradicts its bullish chart pattern, suggesting either a rug pull risk or stale chart data. BTW and PUMP have already run 43% and 22% in 7 days respectively \u2014 chasing these violates swing trading discipline. DEXE and ETHFI are down 95%+ from ATH with no chart data to identify support levels. The prudent action is to HOLD and wait for a setup with confirming signals across multiple reliable indicators.",
+  "layman_headline": "Market fear is running high and none of the trade setups are convincing enough to risk money on right now.",
+  "layman_explanation": "The overall crypto market is in a fearful state, with the Fear & Greed Index sitting at 27 and trending worse over the past week. Bitcoin is holding steady around $64,000 but altcoins are getting hammered \u2014 many of the candidates on our watchlist have dropped 10-25% in a week. While sharp dips can sometimes create buying opportunities, the candidates we're seeing either lack enough data to analyze properly (no RSI, no chart patterns, no funding rates) or have already bounced hard and look extended. Without clear technical setups and with sentiment deteriorating, it's smarter to wait for better conditions.",
+  "layman_action": "Stay in cash for now. The market is fearful and the available trade setups lack the data quality needed to make a confident call. Wait for sentiment to stabilize or a clear technical setup to emerge before deploying capital.",
+  "expert_reasoning": "Fear & Greed at 27 is near the danger zone per my validated rules (Rule 3: at 25 or below, hold rather than buy or sell). The index has been worsening (yesterday was 25, weekly average 26.7), suggesting we could easily tip into extreme fear. BTC dominance at 56.6% is actively punishing altcoins \u2014 this is confirmed by LDO (-22.5%), ETHFI (-12.8%), and UB (-28.9% 24h). The only candidate with RSI data is LDO at 42.71, which is neutral \u2014 not oversold enough for a high-conviction mean-reversion play. BTW (+39.4% 7d) and PUMP (+25.3% 7d) are already extended and chasing them here violates swing trading discipline. The news flow shows institutional interest in stablecoins and tokenization (Wells Fargo, Samsung, BNY), which is long-term positive but doesn't create an immediate trading catalyst for any specific alt. Per Rule 4, fewer than three core data sources are providing actionable technical data for these candidates, reinforcing the HOLD decision.",
   "risk_factors": [
-    "Fear & Greed could deteriorate below 25, triggering broader selling and dragging BTC below the $63,000 support level Glassnode identified",
-    "High BTC dominance (56.6%) means any market weakness disproportionately crushes altcoins \u2014 the exact category of our swing candidates",
-    "Most swing candidates are micro-cap tokens with severe data gaps, making any entry essentially a blind bet"
+    "Fear & Greed could drop below 25, triggering further panic selling across altcoins",
+    "BTC dominance at 56.6% and rising could continue crushing alt performance even if BTC holds steady",
+    "Hashdex Bitcoin ETF shutdown and GameStop Bitcoin collateral risk headlines could amplify negative sentiment"
   ],
   "watch_list": [
-    "Fear & Greed Index \u2014 if it drops to 25 or below, expect continued downward drift per Rule #7; if it recovers above 35, the environment improves for entries",
-    "Bitcoin price action around $63,000 support \u2014 a breakdown could cascade into altcoin selling, while a strong bounce could create real opportunities",
-    "ADA's +18.1% weekly move \u2014 if it consolidates with rising volume rather than reversing, it could become a valid swing candidate on the next cycle"
+    "Fear & Greed Index \u2014 if it drops to 20 or below, expect more downside; if it rebounds above 35, alt setups become more viable",
+    "Bitcoin $63,000 support level flagged by Glassnode \u2014 a break below could cascade through alts",
+    "LDO price action around $0.28-0.30 support \u2014 if it holds and RSI drops below 30, it becomes a stronger mean-reversion candidate"
   ],
-  "market_context": "The crypto market is in a fearful but not panicked state, with BTC holding $64K amid institutional news flow around stablecoins and tokenization. High BTC dominance (56.6%) signals capital is rotating into Bitcoin and away from alts, making this a poor environment for altcoin swing trades.",
-  "context_banner": "Market fear is rising and altcoin candidates lack sufficient data for a high-conviction entry \u2014 capital preservation is the best trade today.",
-  "btc_price": 64401,
+  "market_context": "The crypto market is in a fear-driven consolidation phase with BTC holding $64K but altcoins bleeding heavily. High BTC dominance (56.6%) and worsening sentiment (F&G trending from 27 toward 25) make this a dangerous environment for new altcoin positions.",
+  "context_banner": "Fear is intensifying and altcoin candidates lack the technical data quality needed for a confident swing entry \u2014 patience is the edge here.",
+  "btc_price": 64359,
   "fear_greed": {
     "current": 27,
     "label": "Fear",
@@ -33,27 +33,27 @@
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Fear & Greed at 27 with a worsening weekly trend (yesterday 25, avg 26.7) \u2014 not yet at the extreme-fear levels that historically precede bounces, but close enough to demand caution."
+      "description": "Fear & Greed at 27 (Fear), down from prior days with weekly average 26.7 and worsening trend \u2014 approaching the 25 threshold where my validated rules mandate holding rather than trading."
     },
     {
       "source": "RSI",
       "signal_type": "technical",
-      "description": "The only two candidates with RSI data (UB at 55.8, PUMP at 56.2) both read neutral, providing no oversold bounce signal \u2014 and RSI is our most reliable indicator at 71% win rate."
+      "description": "LDO RSI at 42.71 is the only RSI reading available across all candidates \u2014 it's neutral, not oversold enough to trigger a high-conviction mean-reversion entry despite the -22.5% weekly drop."
     },
     {
       "source": "CoinDesk",
       "signal_type": "news",
-      "description": "Glassnode identifies Bitcoin's $63,000 zone as a key buyer battleground \u2014 if this level breaks, altcoins will suffer disproportionately given high BTC dominance."
+      "description": "Glassnode identifies Bitcoin's $63,000 zone as a key battleground for buyers, establishing a critical support level that will determine near-term market direction."
     },
     {
       "source": "CoinTelegraph",
       "signal_type": "news",
-      "description": "BNY offering institutional crypto staking and US-UK stablecoin regulatory support are positive long-term but not generating immediate altcoin price catalysts."
+      "description": "BNY offering institutional crypto staking through Galaxy and US/UK supporting stablecoins are long-term positive but don't create immediate swing trade catalysts."
     },
     {
-      "source": "volume_breakout",
-      "signal_type": "technical",
-      "description": "No volume-vs-average data available for any swing candidate, making it impossible to confirm breakout quality \u2014 a critical missing signal given 60% historical reliability."
+      "source": "CryptoSlate",
+      "signal_type": "news",
+      "description": "Hashdex shutting down its Bitcoin ETF and GameStop's $1.4B stock swap with Bitcoin collateral risk add negative headline pressure that could worsen sentiment further."
     }
   ],
   "_mode": "HUNTING",
