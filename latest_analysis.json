@@ -1,26 +1,18 @@
 {
-  "timestamp": "2026-08-05T22:11:32.640377+00:00",
-  "selected_coin": "LDO",
-  "selected_coin_name": "Lido DAO",
-  "selected_coin_price": 0.292047,
-  "confidence": 28,
-  "layman_headline": "Fear is thick in crypto markets \u2014 no clear setup worth risking money on right now.",
-  "layman_explanation": "The overall crypto market is gripped by fear, with the Fear & Greed Index at 27 and trending worse over the past week. Bitcoin is holding relatively steady around $64,600, but it's sucking capital away from smaller coins (56.6% dominance). The swing trade candidates are a mix of already-pumped small tokens and beaten-down projects with no clear bottom \u2014 none offer a compelling risk/reward right now. Solana ETFs seeing five straight days of zero flows signals institutional caution spreading beyond just sentiment.",
-  "layman_action": "Stay in cash and wait. The market mood is fearful and worsening, and none of the available trades have strong enough setups to justify risking capital. Watch for Fear & Greed to stabilize or improve, and for a clearer technical setup on coins like LDO if they pull back closer to support.",
-  "expert_reasoning": "None of the candidates clear the bar for a swing entry in this environment. UB (+131% 5-day momentum) and BTW (+108.7% 7-day, RSI 69) are classic chase setups with poor risk/reward ratios (0.48x and 0.30x respectively). KAITO is down 28.8% but has zero chart data and no RSI \u2014 a complete blind spot. MON and KITE are in confirmed downtrends below all MAs. LDO is the closest to actionable with RSI 43, above SMA20, and a 2.95x R/R, but the overall chart bias is -0.10 (neutral) and the broader downtrend hasn't reversed. With Fear & Greed at 27 and worsening (Rule 3), the safest call is HOLD. Per my validated rules, ambiguous conditions near F&G 25 warrant holding rather than forcing a trade.",
-  "risk_factors": [
-    "Fear & Greed trending from 25 to 27 \u2014 still near the danger zone where Rule 3 advises caution, and further deterioration could trigger broader selling",
-    "BTC dominance at 56.6% actively suppresses alt performance \u2014 even good alt setups can fail when BTC is absorbing capital",
-    "Solana ETF zero flows for 5 consecutive days signals institutional risk-off behavior that could spread to broader DeFi/alt sentiment"
-  ],
-  "watch_list": [
-    "Fear & Greed Index: watch for stabilization above 30 or further decline below 25 \u2014 either would clarify the next move",
-    "LDO price action around $0.30 support: if it holds and RSI dips below 35 on a retest, that becomes a higher-quality entry",
-    "BTC dominance: any decline below 55% would signal capital rotating back into alts and improve the setup for alt trades"
-  ],
-  "market_context": "Crypto markets are in a fear-driven consolidation phase with BTC stable but dominant at 56.6%. Institutional caution is evident from zero Solana ETF flows, and legislative uncertainty (CLARITY Act, Senator Warren's AI/crypto scrutiny) adds macro headwinds.",
-  "context_banner": "Market fear is worsening with no clear reversal signal \u2014 capital preservation takes priority over forced entries.",
-  "btc_price": 64627,
+  "timestamp": "2026-08-05T23:11:32.623174+00:00",
+  "selected_coin": "BTC",
+  "selected_coin_name": "Bitcoin",
+  "selected_coin_price": 64606,
+  "confidence": 0,
+  "layman_headline": "Analysis error \u2014 try again shortly",
+  "layman_explanation": "The system encountered an error this cycle.",
+  "layman_action": "No action recommended until next run.",
+  "expert_reasoning": null,
+  "risk_factors": [],
+  "watch_list": [],
+  "market_context": null,
+  "context_banner": null,
+  "btc_price": 64606,
   "fear_greed": {
     "current": 27,
     "label": "Fear",
@@ -29,34 +21,8 @@
     "trend": "worsening"
   },
   "btc_dominance": 56.6,
-  "key_signals": [
-    {
-      "source": "Fear_Greed",
-      "signal_type": "sentiment",
-      "description": "Fear & Greed at 27 with worsening trend (week avg 26.7) \u2014 per validated Rule 3, this ambiguous zone warrants holding rather than buying or selling."
-    },
-    {
-      "source": "RSI",
-      "signal_type": "technical",
-      "description": "Best candidate LDO has RSI 43 (neutral), while BTW is overbought at 69 \u2014 no oversold bounce setups available among candidates with reliable data."
-    },
-    {
-      "source": "CryptoSlate",
-      "signal_type": "news",
-      "description": "Five consecutive days of zero net flows in all six US Solana ETFs signals institutional risk aversion spreading across the alt market."
-    },
-    {
-      "source": "volume_breakout",
-      "signal_type": "technical",
-      "description": "No volume confirmation data available for any candidates \u2014 volume_vs_avg is null across the board, reducing confidence in any breakout signal."
-    },
-    {
-      "source": "CoinDesk",
-      "signal_type": "news",
-      "description": "Strategy's STRC rebounding 30% and BTC price stabilizing provides a floor, but the Coldcard exploit news adds security concerns that may weigh on sentiment."
-    }
-  ],
+  "key_signals": [],
   "_mode": "HUNTING",
-  "exit_target": 0.36,
-  "stop_loss": 0.255
+  "exit_target": null,
+  "stop_loss": null
 }
