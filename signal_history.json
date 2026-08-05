@@ -1,26 +1,5 @@
 [
   {
-    "ts": "2026-08-04T02:11:32.596406+00:00",
-    "coin": "BTC",
-    "price": 63704,
-    "signal": "HOLD",
-    "confidence": 0,
-    "score": null,
-    "fg": 25,
-    "btc_price": 63704,
-    "btc_dominance": 56.4,
-    "candidates": [
-      "BTW",
-      "MON",
-      "USDG",
-      "TRUMP",
-      "WLD",
-      "AAVE",
-      "ENA"
-    ],
-    "alert": null
-  },
-  {
     "ts": "2026-08-04T03:11:32.470884+00:00",
     "coin": "ENA",
     "price": 0.091235,
@@ -838,5 +817,26 @@
       "KITE"
     ],
     "alert": "Fear & Greed has been at or near 25-27 for a week with a worsening trend. This is approaching the danger zone where Rule 3 applies \u2014 hold and wait for clarity."
+  },
+  {
+    "ts": "2026-08-05T18:11:32.867785+00:00",
+    "coin": "BTC",
+    "price": 64624,
+    "signal": "HOLD",
+    "confidence": 25,
+    "score": -0.3,
+    "fg": 27,
+    "btc_price": 64624,
+    "btc_dominance": 56.6,
+    "candidates": [
+      "UB",
+      "KAITO",
+      "LDO",
+      "BTW",
+      "USDG",
+      "MON",
+      "PUMP"
+    ],
+    "alert": "Fear & Greed dropped to 25 yesterday and is trending worse \u2014 monitor for potential extreme fear conditions that historically precede either capitulation or reversal."
   }
 ]
