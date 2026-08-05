@@ -1,26 +1,5 @@
 [
   {
-    "ts": "2026-08-03T09:11:32.750669+00:00",
-    "coin": "AAVE",
-    "price": 91.68,
-    "signal": "HOLD",
-    "confidence": 28,
-    "score": -0.15,
-    "fg": 28,
-    "btc_price": 62500,
-    "btc_dominance": 56.2,
-    "candidates": [
-      "KAITO",
-      "WLD",
-      "UB",
-      "TRUMP",
-      "AAVE",
-      "\u5e01\u5b89\u4eba\u751f",
-      "PEPE"
-    ],
-    "alert": "Market fear worsening with multiple negative catalysts (Coldcard hack, negative Coinbase premium streak, BTC weakness) \u2014 avoid catching falling knives."
-  },
-  {
     "ts": "2026-08-03T10:11:32.553050+00:00",
     "coin": "TRUMP",
     "price": 1.45,
@@ -838,5 +817,26 @@
       "MON"
     ],
     "alert": "Fear & Greed dropped to 25 yesterday and is averaging 26.7 for the week \u2014 approaching extreme fear territory where validated rules recommend caution."
+  },
+  {
+    "ts": "2026-08-05T01:11:32.508301+00:00",
+    "coin": "BTC",
+    "price": 63974,
+    "signal": "HOLD",
+    "confidence": 0,
+    "score": null,
+    "fg": 27,
+    "btc_price": 63974,
+    "btc_dominance": 56.6,
+    "candidates": [
+      "UB",
+      "LDO",
+      "BTW",
+      "ETHFI",
+      "USDG",
+      "PUMP",
+      "MON"
+    ],
+    "alert": null
   }
 ]
