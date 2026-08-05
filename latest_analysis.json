@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-08-05T17:11:32.788087+00:00",
+  "timestamp": "2026-08-05T18:11:32.867785+00:00",
   "selected_coin": "BTC",
   "selected_coin_name": "Bitcoin",
-  "selected_coin_price": 64569,
+  "selected_coin_price": 64624,
   "confidence": 25,
-  "layman_headline": "Market fear is high and the swing trade candidates are too risky \u2014 staying on the sidelines for now.",
-  "layman_explanation": "The overall crypto market is in a state of fear (27/100), which has been worsening over the past week. Bitcoin is holding relatively steady at $64,569, but altcoins are getting crushed \u2014 Bitcoin dominance is at 56.6%, meaning money is flowing out of smaller coins and into Bitcoin. The swing trade candidates available right now are mostly low-quality: some have already run up too much (BTW +49% in a week), others lack critical technical data (no RSI, no chart analysis), and the ones with data show conflicting signals. This is not a good environment to chase altcoin trades.",
-  "layman_action": "Do nothing right now. Wait for the Fear & Greed Index to either stabilize above 30 (confirming recovery) or drop below 20 (potential capitulation bounce). Keep cash ready for a better setup.",
-  "expert_reasoning": "I evaluated all seven candidates systematically. UB shows a bullish chart structure (Three White Soldiers, above two MAs) but the 29.9% daily drop is a massive red flag that invalidates the pattern \u2014 this looks like a pump-and-dump unwind. KAITO's RSI at 65 with a bearish marubozu despite being down 28% weekly suggests distribution, not accumulation. BTW is up 49% in a week with zero technical data \u2014 classic overextension. LDO has no chart data despite being a known DeFi protocol (Lido DAO). MON, KITE, and USDG lack sufficient data for any meaningful analysis. With Fear & Greed at 27 (per Rule 3, short-term outlook is genuinely ambiguous at these levels), BTC dominance at 56.6% suppressing alts, and no strong risk/reward setup exceeding 2x, the correct call is to preserve capital and wait.",
+  "layman_headline": "Fear grips the crypto market \u2014 no clear entry point yet, staying patient.",
+  "layman_explanation": "The overall crypto market is in a state of fear, with the sentiment index at 27 out of 100 and worsening over the past week. Bitcoin is holding relatively steady around $64,600, but altcoins are getting mixed results \u2014 some are up big (like ZEC +12% and ADA +17% on the week) while others are getting crushed (KAITO -32%, LDO -16%). The swing trade candidates presented today are mostly low-quality: several lack any chart data or technical indicators, and the ones with momentum have already run too far to chase safely. High Bitcoin dominance at 56.6% means money is flowing out of altcoins and into Bitcoin, making alt trades riskier.",
+  "layman_action": "Wait on the sidelines. The market is fearful and the available setups don't offer good enough risk/reward ratios to justify entering a new position right now. Keep cash ready for when a clearer opportunity emerges.",
+  "expert_reasoning": "Applying validated rules: Fear & Greed at 27 is just above the 25 threshold where Rule #3 says the outlook is genuinely ambiguous. The worsening trend (week avg 26.7, yesterday 25) suggests we could dip below 25 soon. BTC dominance at 56.6% is a headwind for all altcoin positions. Among candidates, UB is the only one with chart analysis, showing a bullish Three White Soldiers pattern, but the 0.48x risk/reward is unacceptable for swing trading \u2014 we need at least 2.0x. Most candidates lack RSI, MACD, SMA, and funding rate data, making it impossible to build conviction. Per Rule #4 and my known blind spots, I should be cautious when data is thin. The news cycle shows institutional activity (Strategy rebounding, Ondo hiring, Western Union stablecoins) but nothing that provides an immediate price catalyst for any specific swing candidate.",
   "risk_factors": [
-    "Fear & Greed could deteriorate further toward extreme fear (<20), dragging all assets down including any new position",
-    "BTC dominance at 56.6% means altcoin trades face a structural headwind \u2014 capital is rotating to BTC, not alts",
-    "Most candidates lack critical data (RSI, MACD, funding rates, chart analysis) making any entry essentially a blind guess"
+    "Fear & Greed trending toward extreme fear (25 yesterday) \u2014 further market-wide selloffs could hit any new position",
+    "BTC dominance at 56.6% actively draining liquidity from altcoins, making alt swing trades inherently riskier",
+    "Most swing candidates lack critical technical data (RSI, MACD, SMAs, funding rates), making informed entry decisions impossible"
   ],
   "watch_list": [
-    "Fear & Greed Index trajectory \u2014 watch for either stabilization above 30 or capitulation below 20",
-    "BTC price action around $65,000 resistance \u2014 a breakout could signal broader market recovery and better alt entries",
-    "CryptoQuant whale accumulation data \u2014 if confirmed, late-stage bear bottoming could create strong mean-reversion setups within 1-2 weeks"
+    "Fear & Greed Index \u2014 if it stabilizes above 30 and starts trending up, conditions improve for entries",
+    "ZEC and ADA momentum \u2014 both showing strong 7-day gains (+12% and +17%) and could offer pullback entries if they consolidate",
+    "BTC price action around $65,000 resistance \u2014 a breakout could lift overall market sentiment"
   ],
-  "market_context": "The crypto market is in a fear state (27/100, worsening trend) with Bitcoin relatively stable at $64.5K but altcoins under pressure from high BTC dominance at 56.6%. Institutional narratives are building (stablecoins, treasury strategies) but haven't translated to price momentum yet.",
-  "context_banner": "Fear is elevated and altcoin conditions are hostile \u2014 disciplined patience beats forced entries in this environment.",
-  "btc_price": 64569,
+  "market_context": "The crypto market is in a fear-dominated environment with worsening sentiment. Bitcoin is stable near $64,600 but gold is hitting 6-week highs on China demand while BTC ignores the S&P 500 record, suggesting risk appetite is low and crypto is underperforming traditional assets.",
+  "context_banner": "Market fear is deepening with no high-quality swing setups available \u2014 capital preservation takes priority over forced entries.",
+  "btc_price": 64624,
   "fear_greed": {
     "current": 27,
     "label": "Fear",
@@ -33,27 +33,27 @@
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Fear & Greed at 27 with a worsening weekly trend (avg 26.7) \u2014 per validated Rule 3, short-term outlook is genuinely ambiguous at these levels, favoring HOLD over new entries."
-    },
-    {
-      "source": "RSI",
-      "signal_type": "technical",
-      "description": "The only candidate with RSI data (UB at 56, KAITO at 65) show neutral-to-overbought readings, with no oversold bounce setups available \u2014 the most reliable signal type per paper trading history shows no actionable setup."
+      "description": "Fear & Greed at 27 with worsening trend (yesterday 25, week avg 26.7) \u2014 market is fearful and getting worse, making new entries risky."
     },
     {
       "source": "CoinTelegraph",
       "signal_type": "news",
-      "description": "CryptoQuant whale accumulation report suggests the bear market may be in its late stages, a forward-looking bullish signal but not yet actionable for immediate swing trades."
+      "description": "Crypto whales accumulating as bear market nears late stage per CryptoQuant \u2014 suggests smart money is positioning but timing is uncertain."
     },
     {
-      "source": "volume_breakout",
+      "source": "RSI",
       "signal_type": "technical",
-      "description": "No volume data (volume_vs_avg is null for all candidates) \u2014 cannot confirm any breakout setups, reducing confidence in all candidates."
+      "description": "Only UB provided RSI data (55.67, neutral) \u2014 most candidates completely lack technical indicators, preventing proper analysis."
     },
     {
       "source": "CoinDesk",
       "signal_type": "news",
-      "description": "Strategy's STRC 30% rebound and Bitcoin price stabilization suggest institutional demand is forming a floor, but the broader market fear environment prevents aggressive positioning."
+      "description": "Gold hitting 6-week highs while Bitcoin ignores S&P 500 records \u2014 crypto is underperforming, indicating weak risk appetite."
+    },
+    {
+      "source": "volume_breakout",
+      "signal_type": "technical",
+      "description": "No volume confirmation available for any candidate \u2014 volume_vs_avg is null across all swing candidates, removing a key quality filter."
     }
   ],
   "_mode": "HUNTING",
