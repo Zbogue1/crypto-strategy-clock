@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-08-05T13:11:32.769268+00:00",
+  "timestamp": "2026-08-05T14:11:32.798549+00:00",
   "selected_coin": "BTC",
   "selected_coin_name": "Bitcoin",
-  "selected_coin_price": 64211,
-  "confidence": 25,
-  "layman_headline": "Market fear is building and the available swing trades are too risky to justify an entry right now.",
-  "layman_explanation": "The overall crypto market is in a 'Fear' state at 27 out of 100, and it's been getting worse over the past week. Bitcoin is basically flat, holding around $64,200, while Bitcoin dominance is high at 56.6%, meaning money is flowing out of altcoins and into Bitcoin. The swing trade candidates are either tiny, illiquid tokens with huge recent moves (BTW up 86%, PUMP up 35%) making them prone to sharp reversals, or coins showing bearish chart signals (KAITO). None present a clean risk-reward setup with a reliable stop-loss.",
-  "layman_action": "Stay in cash and wait. The market mood is fearful and worsening, and none of today's trade candidates offer a safe enough entry point. A better opportunity will come when fear peaks and reverses, or when a quality coin pulls back to clear support with volume confirmation.",
-  "expert_reasoning": "Fear & Greed at 27 with a worsening trend (yesterday 25, weekly avg 26.7) signals genuine market stress but not yet capitulation-level panic. Per validated Rule #3, when F&G is near 25, the outlook is ambiguous and holding is safer than forcing a trade. BTC dominance at 56.6% is hostile to altcoin trades. The swing candidates lack critical data: UB has a bullish chart but just dropped 38% in 24 hours with questionable liquidity; BTW is overbought at RSI 69 after an 86% weekly surge; KAITO shows bearish engulfing and marubozu patterns contradicting its bounce thesis; LDO is down 96% from ATH with no chart data. Signal credibility data shows RSI is the most reliable indicator (71% win rate), and none of these setups present a clean oversold RSI bounce \u2014 the best signals aren't firing.",
+  "selected_coin_price": 64426,
+  "confidence": 22,
+  "layman_headline": "Fear is gripping the market and none of the swing candidates are compelling enough to risk capital right now.",
+  "layman_explanation": "The crypto market is in a fearful state with the Fear and Greed Index at 27, trending worse over the past week. Bitcoin is essentially flat, treading water around $64,400. The swing trade candidates available are mostly obscure, low-liquidity tokens that either just pumped hard (BTW up 87%, PUMP up 38%) making them risky to chase, or are in deep decline from all-time highs with no chart data or RSI readings to properly evaluate. There is no clear, high-conviction setup worth entering.",
+  "layman_action": "Stay patient and keep cash ready. The market mood is negative and the available opportunities are too risky or too poorly supported by data to justify a new position. Wait for fear to stabilize or reverse, and for a quality setup with proper technical confirmation.",
+  "expert_reasoning": "Applying validated rules: Fear and Greed at 27 is close to the 25 threshold where Rule 3 says the outlook is genuinely ambiguous. Most swing candidates lack critical data \u2014 no RSI, no MACD cross, no chart analysis, no funding rates. UB is the only candidate with a full chart analysis, but there's a glaring price discrepancy (chart says $0.167, current price $0.127, 24h change -37.1%), suggesting a flash crash that invalidates the bullish chart read. BTW is overbought at RSI 69 after an 87% weekly run \u2014 chasing this contradicts the RSI signal which has a validated 71% win rate. LDO and ETHFI show pullbacks but are down 95%+ from ATH with zero chart or RSI data. Signal credibility intelligence confirms RSI is the most reliable indicator, yet only two candidates even have RSI data, and neither is showing an oversold bounce setup.",
   "risk_factors": [
-    "Fear & Greed worsening trend could push toward extreme fear (sub-25), dragging all assets lower",
-    "High BTC dominance at 56.6% means altcoins face headwinds even if BTC stabilizes",
-    "Swing candidates are predominantly micro-cap tokens with thin liquidity and unreliable price action"
+    "Fear and Greed trending worse (25 yesterday, 27 today, week avg 26.7) could deteriorate further into extreme fear territory",
+    "Most swing candidates are low-liquidity, obscure tokens with incomplete data \u2014 high risk of manipulation or sudden dumps",
+    "Macro news is bearish-leaning: Galaxy losses, Circle revenue miss, and institutional caution suggest further downside pressure"
   ],
   "watch_list": [
-    "Fear & Greed Index: watch for a drop below 20 (potential capitulation) or reversal above 35 (sentiment shift)",
-    "CLARITY Act legislative deadline \u2014 Bitwise suggests missing it could paradoxically trigger a rally",
-    "ADA: up 18.5% on the week \u2014 monitor if this momentum continues or if it pulls back to offer an entry"
+    "Fear and Greed Index \u2014 watch for drop below 25 (extreme fear) or reversal above 35 (potential bounce signal)",
+    "BTC price action around $64,000 support \u2014 a break below could accelerate altcoin selling",
+    "BlackRock ETHA reverse split execution and its impact on ETH sentiment and flows"
   ],
-  "market_context": "The crypto market is in a fear phase with worsening sentiment, flat BTC price action, and high Bitcoin dominance squeezing altcoins. News is mixed with institutional adoption signals (BlackRock fund rating, ETF inflows) offset by security incidents and earnings misses (Galaxy Digital, Circle).",
-  "context_banner": "Market fear is intensifying with no clear reversal signal \u2014 patience is the highest-conviction trade right now.",
-  "btc_price": 64211,
+  "market_context": "The crypto market is in a fear state (27/100) with a worsening trend. BTC is flat at $64.4K while most altcoins are drifting sideways to down, with a few speculative micro-caps seeing volatile moves that are too risky to chase.",
+  "context_banner": "Market fear is elevated and worsening \u2014 no high-conviction swing trade setup exists among current candidates; capital preservation is the priority.",
+  "btc_price": 64426,
   "fear_greed": {
     "current": 27,
     "label": "Fear",
@@ -28,32 +28,32 @@
     "week_avg": 26.7,
     "trend": "worsening"
   },
-  "btc_dominance": 56.6,
+  "btc_dominance": 0.0,
   "key_signals": [
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Fear & Greed at 27 with a worsening weekly trend (avg 26.7, yesterday 25) \u2014 not yet extreme panic but trending toward it, making directional bets risky."
+      "description": "Fear and Greed at 27 with worsening trend (yesterday 25, week avg 26.7) signals sustained risk-off environment \u2014 not ideal for new entries."
     },
     {
       "source": "RSI",
       "signal_type": "technical",
-      "description": "Our most reliable signal (71% win rate) is not firing bullish on any candidate \u2014 UB neutral at 56, BTW overbought at 69, KAITO elevated at 65. No oversold bounce setup available."
-    },
-    {
-      "source": "CoinTelegraph",
-      "signal_type": "news",
-      "description": "Glassnode reports the longest Bitcoin price-metric capitulation since FTX, suggesting sustained selling pressure that hasn't fully resolved."
+      "description": "Only reliable signal per track record (71% win rate), but no candidate shows a classic oversold bounce \u2014 UB at 56 is neutral, BTW at 69 is overbought."
     },
     {
       "source": "CoinDesk",
       "signal_type": "news",
-      "description": "The $120M Coldcard hack and Galaxy Digital's 5% share decline add negative sentiment headwinds to an already fearful market."
+      "description": "Galaxy Digital reporting $85M net loss and AI agent token collapse reflect broader market weakness and speculative excess unwinding."
+    },
+    {
+      "source": "CoinTelegraph",
+      "signal_type": "news",
+      "description": "Circle Q2 revenue missing estimates and Binance suing RedotPay signal institutional headwinds across crypto infrastructure."
     },
     {
       "source": "volume_breakout",
       "signal_type": "technical",
-      "description": "No volume confirmation data available on any swing candidate \u2014 without volume validation, breakout signals are unreliable per our 60% historical accuracy on this indicator."
+      "description": "No volume-vs-average data available for any candidate, preventing confirmation of any potential breakout setup."
     }
   ],
   "_mode": "HUNTING",
