@@ -1,26 +1,5 @@
 [
   {
-    "ts": "2026-08-03T14:11:32.612647+00:00",
-    "coin": "ENA",
-    "price": 0.093068,
-    "signal": "HOLD",
-    "confidence": 32,
-    "score": 0.25,
-    "fg": 28,
-    "btc_price": 63188,
-    "btc_dominance": 0.0,
-    "candidates": [
-      "KAITO",
-      "UB",
-      "BEAT",
-      "AAVE",
-      "TRUMP",
-      "ENA",
-      "WLD"
-    ],
-    "alert": "Market fear is worsening and approaching the extreme zone (28/100). Strategy is actively selling Bitcoin. Wait for clearer bottoming signals before deploying capital."
-  },
-  {
     "ts": "2026-08-03T15:11:32.653641+00:00",
     "coin": "ENA",
     "price": 0.092703,
@@ -838,5 +817,26 @@
       "MON"
     ],
     "alert": "Market Fear & Greed at 27 and trending worse (week avg 26.7). Approaching the 25 threshold where historical data suggests genuine ambiguity. Exercise extreme caution."
+  },
+  {
+    "ts": "2026-08-05T06:11:32.593322+00:00",
+    "coin": "LDO",
+    "price": 0.285106,
+    "signal": "HOLD",
+    "confidence": 28,
+    "score": 0.35,
+    "fg": 27,
+    "btc_price": 64272,
+    "btc_dominance": 0.0,
+    "candidates": [
+      "UB",
+      "LDO",
+      "BTW",
+      "USDG",
+      "ETHFI",
+      "PUMP",
+      "MON"
+    ],
+    "alert": "Fear & Greed has been at or near 25-27 for over a week with a worsening trend. Historical pattern (limited data) suggests BTC could drift down 1-4% further. Wait for sentiment stabilization before deploying capital."
   }
 ]
