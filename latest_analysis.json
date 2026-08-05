@@ -1,26 +1,18 @@
 {
-  "timestamp": "2026-08-05T18:11:32.867785+00:00",
+  "timestamp": "2026-08-05T19:11:32.644472+00:00",
   "selected_coin": "BTC",
   "selected_coin_name": "Bitcoin",
-  "selected_coin_price": 64624,
-  "confidence": 25,
-  "layman_headline": "Fear grips the crypto market \u2014 no clear entry point yet, staying patient.",
-  "layman_explanation": "The overall crypto market is in a state of fear, with the sentiment index at 27 out of 100 and worsening over the past week. Bitcoin is holding relatively steady around $64,600, but altcoins are getting mixed results \u2014 some are up big (like ZEC +12% and ADA +17% on the week) while others are getting crushed (KAITO -32%, LDO -16%). The swing trade candidates presented today are mostly low-quality: several lack any chart data or technical indicators, and the ones with momentum have already run too far to chase safely. High Bitcoin dominance at 56.6% means money is flowing out of altcoins and into Bitcoin, making alt trades riskier.",
-  "layman_action": "Wait on the sidelines. The market is fearful and the available setups don't offer good enough risk/reward ratios to justify entering a new position right now. Keep cash ready for when a clearer opportunity emerges.",
-  "expert_reasoning": "Applying validated rules: Fear & Greed at 27 is just above the 25 threshold where Rule #3 says the outlook is genuinely ambiguous. The worsening trend (week avg 26.7, yesterday 25) suggests we could dip below 25 soon. BTC dominance at 56.6% is a headwind for all altcoin positions. Among candidates, UB is the only one with chart analysis, showing a bullish Three White Soldiers pattern, but the 0.48x risk/reward is unacceptable for swing trading \u2014 we need at least 2.0x. Most candidates lack RSI, MACD, SMA, and funding rate data, making it impossible to build conviction. Per Rule #4 and my known blind spots, I should be cautious when data is thin. The news cycle shows institutional activity (Strategy rebounding, Ondo hiring, Western Union stablecoins) but nothing that provides an immediate price catalyst for any specific swing candidate.",
-  "risk_factors": [
-    "Fear & Greed trending toward extreme fear (25 yesterday) \u2014 further market-wide selloffs could hit any new position",
-    "BTC dominance at 56.6% actively draining liquidity from altcoins, making alt swing trades inherently riskier",
-    "Most swing candidates lack critical technical data (RSI, MACD, SMAs, funding rates), making informed entry decisions impossible"
-  ],
-  "watch_list": [
-    "Fear & Greed Index \u2014 if it stabilizes above 30 and starts trending up, conditions improve for entries",
-    "ZEC and ADA momentum \u2014 both showing strong 7-day gains (+12% and +17%) and could offer pullback entries if they consolidate",
-    "BTC price action around $65,000 resistance \u2014 a breakout could lift overall market sentiment"
-  ],
-  "market_context": "The crypto market is in a fear-dominated environment with worsening sentiment. Bitcoin is stable near $64,600 but gold is hitting 6-week highs on China demand while BTC ignores the S&P 500 record, suggesting risk appetite is low and crypto is underperforming traditional assets.",
-  "context_banner": "Market fear is deepening with no high-quality swing setups available \u2014 capital preservation takes priority over forced entries.",
-  "btc_price": 64624,
+  "selected_coin_price": 64816,
+  "confidence": 0,
+  "layman_headline": "Analysis error \u2014 try again shortly",
+  "layman_explanation": "The system encountered an error this cycle.",
+  "layman_action": "No action recommended until next run.",
+  "expert_reasoning": null,
+  "risk_factors": [],
+  "watch_list": [],
+  "market_context": null,
+  "context_banner": null,
+  "btc_price": 64816,
   "fear_greed": {
     "current": 27,
     "label": "Fear",
@@ -28,34 +20,8 @@
     "week_avg": 26.7,
     "trend": "worsening"
   },
-  "btc_dominance": 56.6,
-  "key_signals": [
-    {
-      "source": "Fear_Greed",
-      "signal_type": "sentiment",
-      "description": "Fear & Greed at 27 with worsening trend (yesterday 25, week avg 26.7) \u2014 market is fearful and getting worse, making new entries risky."
-    },
-    {
-      "source": "CoinTelegraph",
-      "signal_type": "news",
-      "description": "Crypto whales accumulating as bear market nears late stage per CryptoQuant \u2014 suggests smart money is positioning but timing is uncertain."
-    },
-    {
-      "source": "RSI",
-      "signal_type": "technical",
-      "description": "Only UB provided RSI data (55.67, neutral) \u2014 most candidates completely lack technical indicators, preventing proper analysis."
-    },
-    {
-      "source": "CoinDesk",
-      "signal_type": "news",
-      "description": "Gold hitting 6-week highs while Bitcoin ignores S&P 500 records \u2014 crypto is underperforming, indicating weak risk appetite."
-    },
-    {
-      "source": "volume_breakout",
-      "signal_type": "technical",
-      "description": "No volume confirmation available for any candidate \u2014 volume_vs_avg is null across all swing candidates, removing a key quality filter."
-    }
-  ],
+  "btc_dominance": 0.0,
+  "key_signals": [],
   "_mode": "HUNTING",
   "exit_target": null,
   "stop_loss": null
