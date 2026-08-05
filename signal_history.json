@@ -1,26 +1,5 @@
 [
   {
-    "ts": "2026-08-03T23:11:32.618253+00:00",
-    "coin": "BTC",
-    "price": 63528,
-    "signal": "HOLD",
-    "confidence": 22,
-    "score": -0.6,
-    "fg": 28,
-    "btc_price": 63528,
-    "btc_dominance": 56.4,
-    "candidates": [
-      "BTW",
-      "MON",
-      "USDG",
-      "AAVE",
-      "TRUMP",
-      "UB",
-      "WLD"
-    ],
-    "alert": "Fear & Greed at 28 and trending worse \u2014 approaching the danger zone where validated rules recommend extreme caution. Monitor for potential capitulation entry if F&G drops below 20."
-  },
-  {
     "ts": "2026-08-04T00:11:32.512050+00:00",
     "coin": "ENA",
     "price": 0.093165,
@@ -838,5 +817,26 @@
       "KITE"
     ],
     "alert": "Most swing candidates have critically incomplete data (no RSI, no chart analysis, no funding rates). Data pipeline issues persist for smaller tokens."
+  },
+  {
+    "ts": "2026-08-05T15:11:32.816340+00:00",
+    "coin": "BTC",
+    "price": 64538,
+    "signal": "HOLD",
+    "confidence": 18,
+    "score": -0.5,
+    "fg": 27,
+    "btc_price": 64538,
+    "btc_dominance": 56.6,
+    "candidates": [
+      "UB",
+      "BTW",
+      "USDG",
+      "PUMP",
+      "LDO",
+      "KITE",
+      "MON"
+    ],
+    "alert": "All swing candidates lack sufficient technical data for a responsible entry. Waiting for better setups."
   }
 ]
