@@ -1,26 +1,5 @@
 [
   {
-    "ts": "2026-08-04T05:11:32.466451+00:00",
-    "coin": "BTC",
-    "price": 63876,
-    "signal": "HOLD",
-    "confidence": 0,
-    "score": null,
-    "fg": 25,
-    "btc_price": 63876,
-    "btc_dominance": 56.5,
-    "candidates": [
-      "BTW",
-      "MON",
-      "USDG",
-      "UNI",
-      "ENA",
-      "TRUMP",
-      "AAVE"
-    ],
-    "alert": null
-  },
-  {
     "ts": "2026-08-04T06:11:32.561632+00:00",
     "coin": "LDO",
     "price": 0.331597,
@@ -838,5 +817,26 @@
       "\u5e01\u5b89\u4eba\u751f"
     ],
     "alert": "Market Fear & Greed at 27 with worsening trend \u2014 avoid new alt entries until sentiment stabilizes."
+  },
+  {
+    "ts": "2026-08-05T21:11:32.727713+00:00",
+    "coin": "BTC",
+    "price": 64716,
+    "signal": "HOLD",
+    "confidence": 25,
+    "score": -0.3,
+    "fg": 27,
+    "btc_price": 64716,
+    "btc_dominance": 56.6,
+    "candidates": [
+      "UB",
+      "BTW",
+      "KAITO",
+      "LDO",
+      "USDG",
+      "MON",
+      "KITE"
+    ],
+    "alert": "Fear & Greed Index at 27 with worsening trend \u2014 approaching the 25 danger zone where short-term direction becomes highly uncertain."
   }
 ]
