@@ -1,26 +1,5 @@
 [
   {
-    "ts": "2026-08-03T20:11:32.726527+00:00",
-    "coin": "BTC",
-    "price": 63834,
-    "signal": "HOLD",
-    "confidence": 25,
-    "score": -0.3,
-    "fg": 28,
-    "btc_price": 63834,
-    "btc_dominance": 56.4,
-    "candidates": [
-      "MON",
-      "TRUMP",
-      "USDG",
-      "UB",
-      "AAVE",
-      "FET",
-      "WLD"
-    ],
-    "alert": "Market fear is worsening (28 and trending down). If F&G drops below 25, watch for extreme fear capitulation setups but also be prepared for further downside."
-  },
-  {
     "ts": "2026-08-03T21:11:32.652072+00:00",
     "coin": "BTC",
     "price": 63690,
@@ -838,5 +817,26 @@
       "ETHFI"
     ],
     "alert": "Fear & Greed hit 25 yesterday (extreme fear boundary) and the weekly trend is worsening. Monitor closely for a break below 25 which historically precedes further downside."
+  },
+  {
+    "ts": "2026-08-05T12:11:32.705954+00:00",
+    "coin": "BTC",
+    "price": 64094,
+    "signal": "HOLD",
+    "confidence": 22,
+    "score": -0.3,
+    "fg": 27,
+    "btc_price": 64094,
+    "btc_dominance": 56.5,
+    "candidates": [
+      "UB",
+      "BTW",
+      "KAITO",
+      "USDG",
+      "LDO",
+      "PUMP",
+      "\u5e01\u5b89\u4eba\u751f"
+    ],
+    "alert": "Fear & Greed at 27 and trending down toward Extreme Fear. Swing candidates lack critical technical data. Staying in cash until conditions improve."
   }
 ]
