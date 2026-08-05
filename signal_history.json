@@ -1,26 +1,5 @@
 [
   {
-    "ts": "2026-08-04T07:11:32.677310+00:00",
-    "coin": "ENA",
-    "price": 0.09234,
-    "signal": "HOLD",
-    "confidence": 28,
-    "score": 0.15,
-    "fg": 25,
-    "btc_price": 63584,
-    "btc_dominance": 0.0,
-    "candidates": [
-      "BTW",
-      "MON",
-      "PUMP",
-      "USDG",
-      "UNI",
-      "LDO",
-      "ENA"
-    ],
-    "alert": "Fear and Greed Index at critical 25 level and deteriorating \u2014 per validated rules, this is a HOLD zone until conditions clarify."
-  },
-  {
     "ts": "2026-08-04T08:11:32.579585+00:00",
     "coin": "BTC",
     "price": 63609,
@@ -838,5 +817,26 @@
       "KITE"
     ],
     "alert": "Fear & Greed at 27 and trending down from 25 yesterday \u2014 approaching the critical 25 threshold where historical data (limited) suggests further BTC downside of 1-4%."
+  },
+  {
+    "ts": "2026-08-05T23:11:32.623174+00:00",
+    "coin": "BTC",
+    "price": 64606,
+    "signal": "HOLD",
+    "confidence": 0,
+    "score": null,
+    "fg": 27,
+    "btc_price": 64606,
+    "btc_dominance": 56.6,
+    "candidates": [
+      "UB",
+      "BTW",
+      "KAITO",
+      "LDO",
+      "USDG",
+      "MON",
+      "KITE"
+    ],
+    "alert": null
   }
 ]
