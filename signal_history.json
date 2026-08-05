@@ -1,26 +1,5 @@
 [
   {
-    "ts": "2026-08-03T12:11:32.542729+00:00",
-    "coin": "BTC",
-    "price": 62404,
-    "signal": "HOLD",
-    "confidence": 25,
-    "score": -0.3,
-    "fg": 28,
-    "btc_price": 62404,
-    "btc_dominance": 56.2,
-    "candidates": [
-      "UB",
-      "KAITO",
-      "WLD",
-      "AAVE",
-      "TRUMP",
-      "\u5e01\u5b89\u4eba\u751f",
-      "PENGU"
-    ],
-    "alert": "Strategy is actively selling Bitcoin while a hardware wallet exploit remains unresolved for 5 days \u2014 elevated risk of further downside."
-  },
-  {
     "ts": "2026-08-03T13:11:32.668275+00:00",
     "coin": "BTC",
     "price": 62644,
@@ -838,5 +817,26 @@
       "ZRO"
     ],
     "alert": "Fear & Greed Index at 27 and worsening toward the 25 extreme-fear threshold \u2014 monitor closely for potential cascade or contrarian opportunity."
+  },
+  {
+    "ts": "2026-08-05T04:11:32.589974+00:00",
+    "coin": "LDO",
+    "price": 0.281175,
+    "signal": "HOLD",
+    "confidence": 28,
+    "score": -0.15,
+    "fg": 27,
+    "btc_price": 64095,
+    "btc_dominance": 56.6,
+    "candidates": [
+      "UB",
+      "LDO",
+      "BTW",
+      "ETHFI",
+      "USDG",
+      "PUMP",
+      "AAVE"
+    ],
+    "alert": "Ethereum staking narrative risk: researchers proposing staking limits could specifically pressure LDO and ETHFI \u2014 monitor closely before any DeFi staking entries."
   }
 ]
