@@ -1,26 +1,5 @@
 [
   {
-    "ts": "2026-08-04T04:11:32.458921+00:00",
-    "coin": "ENA",
-    "price": 0.091604,
-    "signal": "HOLD",
-    "confidence": 32,
-    "score": 0.15,
-    "fg": 25,
-    "btc_price": 63704,
-    "btc_dominance": 56.4,
-    "candidates": [
-      "BTW",
-      "MON",
-      "USDG",
-      "UNI",
-      "TRUMP",
-      "ENA",
-      "FET"
-    ],
-    "alert": "Fear & Greed at 25 and deteriorating. Per validated rules, HOLD is the correct call when fear is this extreme and direction is ambiguous."
-  },
-  {
     "ts": "2026-08-04T05:11:32.466451+00:00",
     "coin": "BTC",
     "price": 63876,
@@ -838,5 +817,26 @@
       "\u5e01\u5b89\u4eba\u751f"
     ],
     "alert": null
+  },
+  {
+    "ts": "2026-08-05T20:11:32.612694+00:00",
+    "coin": "BTC",
+    "price": 64827,
+    "signal": "HOLD",
+    "confidence": 22,
+    "score": -0.6,
+    "fg": 27,
+    "btc_price": 64827,
+    "btc_dominance": 56.6,
+    "candidates": [
+      "UB",
+      "BTW",
+      "KAITO",
+      "LDO",
+      "MON",
+      "USDG",
+      "\u5e01\u5b89\u4eba\u751f"
+    ],
+    "alert": "Market Fear & Greed at 27 with worsening trend \u2014 avoid new alt entries until sentiment stabilizes."
   }
 ]
