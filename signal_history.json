@@ -1,26 +1,5 @@
 [
   {
-    "ts": "2026-08-03T17:11:32.599712+00:00",
-    "coin": "BTC",
-    "price": 63750,
-    "signal": "HOLD",
-    "confidence": 25,
-    "score": -0.3,
-    "fg": 28,
-    "btc_price": 63750,
-    "btc_dominance": 56.4,
-    "candidates": [
-      "BEAT",
-      "UB",
-      "WLD",
-      "TRUMP",
-      "ENA",
-      "AAVE",
-      "\u5e01\u5b89\u4eba\u751f"
-    ],
-    "alert": "Market in sustained fear territory (28/100, worsening). No high-conviction setups available. Waiting for better risk/reward."
-  },
-  {
     "ts": "2026-08-03T18:11:32.602739+00:00",
     "coin": "BEAT",
     "price": 2.76,
@@ -838,5 +817,26 @@
       "\u5e01\u5b89\u4eba\u751f"
     ],
     "alert": "Fear & Greed was 25 yesterday, right at the extreme fear boundary. If sentiment deteriorates further, expect accelerated altcoin selling."
+  },
+  {
+    "ts": "2026-08-05T09:11:32.627338+00:00",
+    "coin": "BTC",
+    "price": 64097,
+    "signal": "HOLD",
+    "confidence": 0,
+    "score": null,
+    "fg": 27,
+    "btc_price": 64097,
+    "btc_dominance": 0.0,
+    "candidates": [
+      "UB",
+      "BTW",
+      "LDO",
+      "KAITO",
+      "USDG",
+      "ETHFI",
+      "PUMP"
+    ],
+    "alert": null
   }
 ]
