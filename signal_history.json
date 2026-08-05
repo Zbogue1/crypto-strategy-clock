@@ -1,26 +1,5 @@
 [
   {
-    "ts": "2026-08-03T19:11:32.683338+00:00",
-    "coin": "BTC",
-    "price": 63828,
-    "signal": "HOLD",
-    "confidence": 25,
-    "score": -0.3,
-    "fg": 28,
-    "btc_price": 63828,
-    "btc_dominance": 56.4,
-    "candidates": [
-      "UB",
-      "BEAT",
-      "MON",
-      "WLD",
-      "TRUMP",
-      "AAVE",
-      "FET"
-    ],
-    "alert": "Fear & Greed trending toward extreme fear territory (28 and worsening). Monitor for potential capitulation event that could create high-quality entry opportunities."
-  },
-  {
     "ts": "2026-08-03T20:11:32.726527+00:00",
     "coin": "BTC",
     "price": 63834,
@@ -838,5 +817,26 @@
       "PUMP"
     ],
     "alert": "Glassnode reports the longest Bitcoin metric capitulation since the FTX collapse \u2014 monitor for potential trend acceleration in either direction."
+  },
+  {
+    "ts": "2026-08-05T11:11:32.617360+00:00",
+    "coin": "BTC",
+    "price": 64063,
+    "signal": "HOLD",
+    "confidence": 25,
+    "score": -0.3,
+    "fg": 27,
+    "btc_price": 64063,
+    "btc_dominance": 56.5,
+    "candidates": [
+      "UB",
+      "BTW",
+      "LDO",
+      "KAITO",
+      "USDG",
+      "PUMP",
+      "ETHFI"
+    ],
+    "alert": "Fear & Greed hit 25 yesterday (extreme fear boundary) and the weekly trend is worsening. Monitor closely for a break below 25 which historically precedes further downside."
   }
 ]
