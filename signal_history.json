@@ -1,26 +1,5 @@
 [
   {
-    "ts": "2026-08-03T22:11:32.593603+00:00",
-    "coin": "BTC",
-    "price": 63433,
-    "signal": "HOLD",
-    "confidence": 22,
-    "score": -0.35,
-    "fg": 28,
-    "btc_price": 63433,
-    "btc_dominance": 56.4,
-    "candidates": [
-      "BTW",
-      "MON",
-      "TRUMP",
-      "UB",
-      "WLD",
-      "USDG",
-      "AAVE"
-    ],
-    "alert": "Market sentiment has been in Fear territory (27-28) for over a week with a worsening trend \u2014 approaching the extreme fear zone where my validated rules recommend maximum caution."
-  },
-  {
     "ts": "2026-08-03T23:11:32.618253+00:00",
     "coin": "BTC",
     "price": 63528,
@@ -838,5 +817,26 @@
       "KITE"
     ],
     "alert": "Fear & Greed at 27 and worsening \u2014 approaching the danger zone where Rule #3 advises against directional bets. Monitor for capitulation or reversal."
+  },
+  {
+    "ts": "2026-08-05T14:11:32.798549+00:00",
+    "coin": "BTC",
+    "price": 64426,
+    "signal": "HOLD",
+    "confidence": 22,
+    "score": -0.3,
+    "fg": 27,
+    "btc_price": 64426,
+    "btc_dominance": 0.0,
+    "candidates": [
+      "UB",
+      "BTW",
+      "USDG",
+      "PUMP",
+      "LDO",
+      "ETHFI",
+      "KITE"
+    ],
+    "alert": "Most swing candidates have critically incomplete data (no RSI, no chart analysis, no funding rates). Data pipeline issues persist for smaller tokens."
   }
 ]
