@@ -1,26 +1,5 @@
 [
   {
-    "ts": "2026-08-04T06:11:32.561632+00:00",
-    "coin": "LDO",
-    "price": 0.331597,
-    "signal": "HOLD",
-    "confidence": 28,
-    "score": -0.15,
-    "fg": 25,
-    "btc_price": 63777,
-    "btc_dominance": 56.4,
-    "candidates": [
-      "BTW",
-      "MON",
-      "USDG",
-      "PUMP",
-      "UNI",
-      "LDO",
-      "TRUMP"
-    ],
-    "alert": "Fear & Greed at 25 with worsening trend \u2014 Rule #3 dictates HOLD. Wait for sentiment stabilization or a clear capitulation event before deploying capital."
-  },
-  {
     "ts": "2026-08-04T07:11:32.677310+00:00",
     "coin": "ENA",
     "price": 0.09234,
@@ -838,5 +817,26 @@
       "KITE"
     ],
     "alert": "Fear & Greed Index at 27 with worsening trend \u2014 approaching the 25 danger zone where short-term direction becomes highly uncertain."
+  },
+  {
+    "ts": "2026-08-05T22:11:32.640377+00:00",
+    "coin": "LDO",
+    "price": 0.292047,
+    "signal": "HOLD",
+    "confidence": 28,
+    "score": -0.15,
+    "fg": 27,
+    "btc_price": 64627,
+    "btc_dominance": 56.6,
+    "candidates": [
+      "UB",
+      "BTW",
+      "KAITO",
+      "LDO",
+      "USDG",
+      "MON",
+      "KITE"
+    ],
+    "alert": "Fear & Greed at 27 and trending down from 25 yesterday \u2014 approaching the critical 25 threshold where historical data (limited) suggests further BTC downside of 1-4%."
   }
 ]
