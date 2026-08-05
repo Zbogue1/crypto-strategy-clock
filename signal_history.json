@@ -1,26 +1,5 @@
 [
   {
-    "ts": "2026-08-03T15:11:32.653641+00:00",
-    "coin": "ENA",
-    "price": 0.092703,
-    "signal": "HOLD",
-    "confidence": 32,
-    "score": 0.15,
-    "fg": 28,
-    "btc_price": 63764,
-    "btc_dominance": 56.5,
-    "candidates": [
-      "KAITO",
-      "UB",
-      "BEAT",
-      "AAVE",
-      "WLD",
-      "ENA",
-      "TRUMP"
-    ],
-    "alert": "Fear & Greed at 28 with worsening trend and macro headwinds from yen intervention \u2014 avoid aggressive new positions until sentiment stabilizes."
-  },
-  {
     "ts": "2026-08-03T16:11:32.693814+00:00",
     "coin": "BTC",
     "price": 63666,
@@ -838,5 +817,26 @@
       "MON"
     ],
     "alert": "Fear & Greed has been at or near 25-27 for over a week with a worsening trend. Historical pattern (limited data) suggests BTC could drift down 1-4% further. Wait for sentiment stabilization before deploying capital."
+  },
+  {
+    "ts": "2026-08-05T07:11:32.824223+00:00",
+    "coin": "BTC",
+    "price": 64162,
+    "signal": "HOLD",
+    "confidence": 25,
+    "score": -0.3,
+    "fg": 27,
+    "btc_price": 64162,
+    "btc_dominance": 56.6,
+    "candidates": [
+      "UB",
+      "LDO",
+      "USDG",
+      "BTW",
+      "ETHFI",
+      "PUMP",
+      "BEAT"
+    ],
+    "alert": "Market fear trending toward extreme levels (yesterday hit 25). No swing candidates meet minimum data requirements for entry. Waiting for better setups."
   }
 ]
