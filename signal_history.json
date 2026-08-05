@@ -1,26 +1,5 @@
 [
   {
-    "ts": "2026-08-03T18:11:32.602739+00:00",
-    "coin": "BEAT",
-    "price": 2.76,
-    "signal": "HOLD",
-    "confidence": 25,
-    "score": -0.15,
-    "fg": 28,
-    "btc_price": 63844,
-    "btc_dominance": 0.0,
-    "candidates": [
-      "BTW",
-      "BEAT",
-      "UB",
-      "TRUMP",
-      "AAVE",
-      "WLD",
-      "MON"
-    ],
-    "alert": "Data inconsistencies detected in BEAT candidate (chart shows $3.54 uptrend while actual price is $2.76 with -28.7% daily drop) \u2014 treat all candidate data with extra caution this cycle."
-  },
-  {
     "ts": "2026-08-03T19:11:32.683338+00:00",
     "coin": "BTC",
     "price": 63828,
@@ -838,5 +817,26 @@
       "PUMP"
     ],
     "alert": null
+  },
+  {
+    "ts": "2026-08-05T10:11:32.577998+00:00",
+    "coin": "BTC",
+    "price": 64126,
+    "signal": "HOLD",
+    "confidence": 25,
+    "score": -0.3,
+    "fg": 27,
+    "btc_price": 64126,
+    "btc_dominance": 56.5,
+    "candidates": [
+      "UB",
+      "BTW",
+      "LDO",
+      "DEXE",
+      "USDG",
+      "ETHFI",
+      "PUMP"
+    ],
+    "alert": "Glassnode reports the longest Bitcoin metric capitulation since the FTX collapse \u2014 monitor for potential trend acceleration in either direction."
   }
 ]
