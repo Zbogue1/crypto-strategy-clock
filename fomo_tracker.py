@@ -76,7 +76,7 @@ BUY_ALERT_EXPIRY_MINUTES = 15   # memecoins move fast -- signal goes stale if un
 
 # Relayed-signal parsing (manually forwarded emails / notes via Telegram text)
 ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY", "")
-AI_MODEL          = "claude-opus-4-6"
+AI_MODEL          = "claude-sonnet-4-5"
 QUOTE_MINTS = {
     "So11111111111111111111111111111111111111112": "SOL",
     "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v": "USDC",
