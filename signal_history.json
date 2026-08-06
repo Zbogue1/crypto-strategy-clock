@@ -265,5 +265,26 @@
       "FET"
     ],
     "alert": "CRITICAL: Prediction systems offline due to missing funding rates, corrupted price feeds, and absent momentum indicators. This is not a HOLD recommendation based on market analysis - this is a mandatory safety halt. DO NOT TRADE until my data quality threshold is restored above 60%."
+  },
+  {
+    "ts": "2026-08-06T14:09:11.865065+00:00",
+    "coin": "BTC",
+    "price": 64422,
+    "signal": "HOLD",
+    "confidence": 0,
+    "score": 0.0,
+    "fg": 25,
+    "btc_price": 64422,
+    "btc_dominance": 56.6,
+    "candidates": [
+      "UB",
+      "BTW",
+      "USDG",
+      "BEAT",
+      "LDO",
+      "FET",
+      "AAVE"
+    ],
+    "alert": "CRITICAL: Prediction pipeline halted due to insufficient data quality. Funding rates missing, MACD null, MA coverage incomplete, macro data empty. Current signal availability 37.5% vs required 60% minimum. This is exactly the scenario that produced my 2026-06-20 failure. DO NOT TRADE until data restoration confirmed."
   }
 ]
