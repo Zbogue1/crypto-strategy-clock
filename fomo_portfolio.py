@@ -42,7 +42,7 @@ GITHUB_DATA_BRANCH = "data"
 
 FOMO_PORTFOLIO_FILE  = "fomo_portfolio.json"
 FOMO_LESSONS_FILE    = "fomo_lessons.json"
-FOMO_STARTING_CASH   = 500.0
+FOMO_STARTING_CASH   = 1000.0
 FOMO_MAX_POSITION_PCT = 0.30   # max 30% of FOMO cash per trade
 FOMO_TAKER_FEE       = 0.001   # 0.1% per side
 FOMO_AUTO_EXIT_HOURS = 24      # auto-exit if original trader hasn't sold
