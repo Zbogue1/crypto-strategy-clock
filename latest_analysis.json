@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-08-06T16:09:11.940341+00:00",
-  "selected_coin": "BTC",
-  "selected_coin_name": "Bitcoin",
-  "selected_coin_price": 64607,
+  "timestamp": "2026-08-06T17:09:11.684985+00:00",
+  "selected_coin": "LDO",
+  "selected_coin_name": "Lido DAO",
+  "selected_coin_price": 0.291571,
   "confidence": 0,
-  "layman_headline": "System failure prevents market analysis - no prediction possible",
-  "layman_explanation": "My data collection systems have failed catastrophically. I'm missing funding rates for all candidates, MACD signals, proper volume data, accurate price readings (multiple candidates show severe price discrepancies in their chart analysis vs current price), and critical on-chain metrics. Making a prediction in this state would be pure gambling that corrupts my learning.",
-  "layman_action": "Wait for the next analysis cycle when data systems are restored before taking any position",
-  "expert_reasoning": "CRITICAL INFRASTRUCTURE FAILURE: This cycle exhibits the exact failure mode I've committed to avoiding. Of my 8 core signal categories, I'm missing: (1) funding rates entirely, (2) MACD cross data for all candidates, (3) volume_vs_avg for every coin, (4) reliable price data (UB shows $0.1553 current but $0.1670 in chart; BTW shows $0.1800 current but $0.0801 in chart; BEAT shows $2.14 current but $3.54 in chart), (5) moving average coverage beyond SMA20 for most coins. I have less than 5 of 8 core signals working. Per my learned rules, I must halt predictions entirely rather than proceeding with corrupted inputs. The extreme fear reading (25/100) is meaningless without funding rate confirmation of whether this represents capitulation or justified concern.",
+  "layman_headline": "Critical system failure: Cannot make trading recommendations without core market data",
+  "layman_explanation": "My data collection systems have failed catastrophically. I'm missing funding rates (trader positioning costs), MACD crossovers (momentum signals), volume confirmations, and complete moving average data across all candidates. The only working inputs are RSI readings and basic price charts\u2014that's 2 out of 8 required signals. Making predictions on 25% of normal data would be pure gambling, not analysis.",
+  "layman_action": "Do not take any trading action based on this analysis. Wait for the next cycle when data systems are fully operational.",
+  "expert_reasoning": "CRITICAL INFRASTRUCTURE FAILURE DETECTED: This analysis is running with severe data gaps. Missing inputs: (1) funding_rate data across all 7 candidates\u2014cannot assess trader positioning or liquidation risk, (2) MACD crossover signals\u2014no momentum confirmation available, (3) volume_vs_avg\u2014cannot validate breakout quality, (4) incomplete moving average coverage\u2014only 2 of 3 MAs populated, eliminating golden cross/death cross detection, (5) macro data completely empty\u2014no economic context. Based on my learned rules #1, #2, #8, and #12: when fewer than 5 of 8 core signal types are operational, I must abort prediction rather than proceed. Current operational signals: RSI (working), basic chart patterns (partial), Fear & Greed (working), news (working) = 4/8. This falls below the mandatory 5/8 threshold established after my June system failures.",
   "risk_factors": [
-    "Data provider authentication/API failures have eliminated critical signal inputs across funding rates, MACD, volume analysis, and accurate pricing",
-    "Proceeding with a prediction based on incomplete data would violate learned rule #2 requiring 5 of 8 core signals operational",
-    "Price discrepancies between current and chart analysis data indicate severe data pipeline corruption that makes any technical analysis unreliable"
+    "Proceeding with this prediction would repeat the exact pattern that led to my 2026-06-20 failure when I made uninformed guesses during authentication errors",
+    "Any directional call made without funding rate data has historically shown 50/50 random accuracy\u2014indistinguishable from a coin flip",
+    "Missing volume and MACD data eliminates my ability to distinguish real breakouts from false moves, as learned from prior BTW and UB analysis errors"
   ],
   "watch_list": [
-    "Monitor data pipeline restoration - particularly funding rate providers and price feed accuracy",
-    "Verify authentication credentials for all API endpoints before next prediction cycle",
-    "Implement automatic circuit breaker that halts prediction pipeline when >60% of core signals are missing"
+    "System health monitoring: Verify API authentication and data pipeline restoration before next prediction cycle",
+    "LDO support at $0.30 and AAVE support at $58\u2014these would be primary watchlist entries if data were available",
+    "BTC dominance holding at 56.7% in extreme fear environment\u2014suggests alt entries require exceptional setup quality"
   ],
-  "market_context": "Unable to assess market context reliably due to infrastructure failures preventing access to funding rates, accurate volume data, and consistent price feeds across candidates",
-  "context_banner": "NO PREDICTION POSSIBLE - critical data infrastructure failure requires pipeline restoration before analysis can proceed",
-  "btc_price": 64607,
+  "market_context": "Extreme fear (25/100) persists with BTC consolidating at $64.7K and high dominance (56.7%) suppressing alt momentum. However, these observations are insufficient for trading decisions without funding rates and momentum confirmation.",
+  "context_banner": "DATA INFRASTRUCTURE FAILURE: Prediction systems offline\u2014no valid trading recommendation possible this cycle.",
+  "btc_price": 64714,
   "fear_greed": {
     "current": 25,
     "label": "Extreme Fear",
@@ -33,27 +33,27 @@
     {
       "source": "System_Health_Monitoring",
       "signal_type": "technical",
-      "description": "Critical failure detected: 0% of candidates have funding rate data, creating blind spot to overleveraged market conditions that historically precede liquidation cascades"
+      "description": "Critical failure detected: funding_rate data missing across all candidates, eliminating ability to assess overleveraged positioning that drives short-term price action"
     },
     {
-      "source": "Price_Feed_Integrity",
+      "source": "MACD",
       "signal_type": "technical",
-      "description": "Severe data corruption: UB price discrepancy ($0.1553 vs $0.1670), BTW ($0.1800 vs $0.0801), BEAT ($2.14 vs $3.54) - technical analysis invalid with unreliable price feeds"
-    },
-    {
-      "source": "Fear_Greed",
-      "signal_type": "sentiment",
-      "description": "Extreme fear at 25/100 detected, but per learned rules this requires funding rate + positioning data confirmation before actionable - confirmation signals unavailable"
-    },
-    {
-      "source": "Minimum_Data_Threshold",
-      "signal_type": "technical",
-      "description": "Only 3 of 8 core signal types operational (basic RSI, partial chart patterns, sentiment gauge) - below 5-signal minimum threshold required for safe prediction"
+      "description": "MACD crossover data completely unavailable\u2014cannot confirm momentum shifts or validate trend continuation/reversal setups"
     },
     {
       "source": "volume_breakout",
       "signal_type": "technical",
-      "description": "Volume analysis impossible: all candidates show null for volume_vs_avg, eliminating ability to confirm breakout quality or detect accumulation/distribution patterns"
+      "description": "Volume vs average data missing\u2014prevents distinguishing high-quality accumulation breakouts from low-volume false moves"
+    },
+    {
+      "source": "Fear_Greed",
+      "signal_type": "sentiment",
+      "description": "Extreme Fear at 25/100 detected, but learned rules #3, #6, and #9 require at least two confirming signals (funding rates + momentum) before acting on sentiment alone\u2014those confirmations are unavailable"
+    },
+    {
+      "source": "Minimum_Data_Threshold",
+      "signal_type": "technical",
+      "description": "Only 4 of 8 core signal types operational (RSI, partial charts, Fear/Greed, news)\u2014below mandatory 5/8 threshold that triggers automatic prediction halt per rule #12"
     }
   ],
   "_mode": "HUNTING",
