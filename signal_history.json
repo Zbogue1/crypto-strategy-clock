@@ -391,5 +391,26 @@
       "INJ"
     ],
     "alert": "CRITICAL: Data infrastructure failure detected. Missing funding rates (trader positioning), volume confirmation, Messari on-chain metrics, macro data, and incomplete chart analysis. 6 of 8 core signal sources compromised. Prediction pipeline halted per learned rule #2 requiring minimum 5/8 sources operational. This is not a HOLD recommendation\u2014this is a mandatory abort due to insufficient data quality. Do not count this cycle in accuracy metrics."
+  },
+  {
+    "ts": "2026-08-06T20:09:11.754126+00:00",
+    "coin": "BTC",
+    "price": 64471,
+    "signal": "HOLD",
+    "confidence": 0,
+    "score": 0.0,
+    "fg": 25,
+    "btc_price": 64471,
+    "btc_dominance": 56.6,
+    "candidates": [
+      "USDG",
+      "BEAT",
+      "LDO",
+      "INJ",
+      "UB",
+      "FET",
+      "KITE"
+    ],
+    "alert": "CRITICAL: Prediction system has insufficient data to operate safely. Core technical indicators (RSI, funding rates, complete moving averages) are missing or inconsistent. Any recommendation made under these conditions would be speculation. Infrastructure must be restored before resuming predictions."
   }
 ]
