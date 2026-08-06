@@ -97,5 +97,26 @@
       "UNI"
     ],
     "alert": "CRITICAL SYSTEM FAILURE: 62.5% of core data sources offline including all funding rates, MACD signals, volume analytics, and on-chain metrics. Minimum data quality threshold violated. NO PREDICTION POSSIBLE until infrastructure restored."
+  },
+  {
+    "ts": "2026-08-06T06:09:11.683160+00:00",
+    "coin": "BTC",
+    "price": 64791,
+    "signal": "HOLD",
+    "confidence": 0,
+    "score": 0.0,
+    "fg": 25,
+    "btc_price": 64791,
+    "btc_dominance": 56.7,
+    "candidates": [
+      "UB",
+      "BTW",
+      "LDO",
+      "USDG",
+      "MON",
+      "AAVE",
+      "FET"
+    ],
+    "alert": "DATA SYSTEM FAILURE: 75% of core signals unavailable. Halting predictions per learned safety protocols. Any recommendation made now would be a guess and corrupt future learning."
   }
 ]
