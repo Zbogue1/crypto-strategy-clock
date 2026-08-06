@@ -920,9 +920,12 @@ def delete_helius_webhook(webhook_id):
 
 
 def sync_helius_webhooks(webhook_base_url):
+    """Register Helius webhooks for ALL confirmed Solana wallets (tier A and B).
+    Tier B wallets are monitored for context/learning even if we don't auto-trade them.
+    Webhooks are only deleted if a wallet is fully removed from the config."""
     data    = load_trusted_wallets()
     changed = False
-    for w in data.get("tier_a", []):
+    for w in data.get("tier_a", []) + data.get("tier_b", []):
         addr = w.get("wallet", "")
         if addr.startswith("FILL_IN") or w.get("chain", "base") != "solana":
             continue
@@ -930,11 +933,6 @@ def sync_helius_webhooks(webhook_base_url):
             wid = register_helius_webhook(addr, webhook_base_url)
             if wid:
                 w["alchemy_webhook_id"] = wid
-                changed = True
-    for w in data.get("tier_b", []):
-        if w.get("chain", "base") == "solana" and w.get("alchemy_webhook_id"):
-            if delete_helius_webhook(w["alchemy_webhook_id"]):
-                w["alchemy_webhook_id"] = None
                 changed = True
     if changed:
         save_trusted_wallets(data)

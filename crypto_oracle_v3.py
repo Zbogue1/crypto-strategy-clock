@@ -100,7 +100,7 @@ try:
         run_fomo_postmortem,
         run_fomo_ai_postmortem,
     )
-    from fomo_tracker import sync_alchemy_webhooks, check_wallet_promotions
+    from fomo_tracker import sync_alchemy_webhooks, sync_helius_webhooks, check_wallet_promotions
     HAS_FOMO = True
 except ImportError:
     HAS_FOMO = False
@@ -111,6 +111,7 @@ except ImportError:
     def run_fomo_postmortem(*a, **kw): return None
     def run_fomo_ai_postmortem(*a, **kw): return None
     def sync_alchemy_webhooks(*a, **kw): pass
+    def sync_helius_webhooks(*a, **kw): pass
     def check_wallet_promotions(): return []
 
 try:
@@ -1872,10 +1873,12 @@ def run_cycle(expert_mode: bool = False):
         for _alias in check_wallet_promotions():
             log.info(f"FOMO: {_alias} promoted to Tier A")
 
-        # Sync Alchemy webhooks for Tier A wallets
+        # Sync webhooks for tracked wallets (Alchemy for EVM, Helius for Solana)
         webhook_base = os.environ.get("RAILWAY_PUBLIC_DOMAIN", "")
+        log.info(f"RAILWAY_PUBLIC_DOMAIN='{webhook_base}' HELIUS_API_KEY={'SET' if os.environ.get('HELIUS_API_KEY') else 'MISSING'}")
         if webhook_base:
             sync_alchemy_webhooks(f"https://{webhook_base}")
+            sync_helius_webhooks(f"https://{webhook_base}")
 
         fomo_stats = get_fomo_stats()
         fomo_grad  = get_fomo_graduation_status()
