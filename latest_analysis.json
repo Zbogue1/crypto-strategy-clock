@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-08-06T15:09:11.739242+00:00",
+  "timestamp": "2026-08-06T16:09:11.940341+00:00",
   "selected_coin": "BTC",
   "selected_coin_name": "Bitcoin",
-  "selected_coin_price": 64822,
+  "selected_coin_price": 64607,
   "confidence": 0,
-  "layman_headline": "NO PREDICTION POSSIBLE - Critical data infrastructure failure prevents analysis",
-  "layman_explanation": "My prediction systems have suffered catastrophic failures across multiple data sources. I cannot access funding rates (which show trader positioning), volume confirmation data, MACD signals, or complete moving average analysis for any candidate. The chart analysis shows massive price discrepancies (UB shows current price $0.1670 vs market price $0.1564, BTW shows $0.0801 vs $0.1798) indicating stale or corrupted data feeds. Without these core signals, any prediction would be pure guessing.",
-  "layman_action": "DO NOT TRADE based on this analysis. Wait for my systems to recover and provide a prediction with actual confidence levels above 0%.",
-  "expert_reasoning": "MANDATORY ABORT: I currently have access to only 2 of my 8 required core data sources (basic price data and Fear & Greed index). Funding rates are completely unavailable across all candidates. Chart analysis shows corrupted pricing (30-50% discrepancies between 'current' and actual prices). Volume vs average is null for every candidate. MACD cross data is missing universally. Only partial moving average data exists. This violates my learned Rule #2 requiring at least 5 of 8 core signals before proceeding. Per Rules #1, #8, and #10, I must halt prediction pipeline immediately rather than generate false signals that will corrupt my future learning.",
+  "layman_headline": "System failure prevents market analysis - no prediction possible",
+  "layman_explanation": "My data collection systems have failed catastrophically. I'm missing funding rates for all candidates, MACD signals, proper volume data, accurate price readings (multiple candidates show severe price discrepancies in their chart analysis vs current price), and critical on-chain metrics. Making a prediction in this state would be pure gambling that corrupts my learning.",
+  "layman_action": "Wait for the next analysis cycle when data systems are restored before taking any position",
+  "expert_reasoning": "CRITICAL INFRASTRUCTURE FAILURE: This cycle exhibits the exact failure mode I've committed to avoiding. Of my 8 core signal categories, I'm missing: (1) funding rates entirely, (2) MACD cross data for all candidates, (3) volume_vs_avg for every coin, (4) reliable price data (UB shows $0.1553 current but $0.1670 in chart; BTW shows $0.1800 current but $0.0801 in chart; BEAT shows $2.14 current but $3.54 in chart), (5) moving average coverage beyond SMA20 for most coins. I have less than 5 of 8 core signals working. Per my learned rules, I must halt predictions entirely rather than proceeding with corrupted inputs. The extreme fear reading (25/100) is meaningless without funding rate confirmation of whether this represents capitulation or justified concern.",
   "risk_factors": [
-    "Proceeding with this prediction would violate my own learned circuit breaker rules and poison my accuracy metrics",
-    "The 30-50% price discrepancies in chart analysis indicate my data feeds are hours or days stale, making any technical analysis meaningless",
-    "Without funding rate data, I cannot distinguish between healthy corrections and overleveraged positions ready to cascade"
+    "Data provider authentication/API failures have eliminated critical signal inputs across funding rates, MACD, volume analysis, and accurate pricing",
+    "Proceeding with a prediction based on incomplete data would violate learned rule #2 requiring 5 of 8 core signals operational",
+    "Price discrepancies between current and chart analysis data indicate severe data pipeline corruption that makes any technical analysis unreliable"
   ],
   "watch_list": [
-    "Monitor data feed restoration - particularly funding rates and real-time pricing accuracy",
-    "Verify authentication status with all API providers before next prediction cycle",
-    "Check backup data source configuration - should have kicked in automatically"
+    "Monitor data pipeline restoration - particularly funding rate providers and price feed accuracy",
+    "Verify authentication credentials for all API endpoints before next prediction cycle",
+    "Implement automatic circuit breaker that halts prediction pipeline when >60% of core signals are missing"
   ],
-  "market_context": "Extreme Fear (25/100) with high BTC dominance (56.7%) typically signals alt-season headwinds, but I cannot validate this signal without confirming data from trader positioning and technical momentum indicators.",
-  "context_banner": "CRITICAL: Data infrastructure failure - minimum prediction threshold not met.",
-  "btc_price": 64822,
+  "market_context": "Unable to assess market context reliably due to infrastructure failures preventing access to funding rates, accurate volume data, and consistent price feeds across candidates",
+  "context_banner": "NO PREDICTION POSSIBLE - critical data infrastructure failure requires pipeline restoration before analysis can proceed",
+  "btc_price": 64607,
   "fear_greed": {
     "current": 25,
     "label": "Extreme Fear",
@@ -33,27 +33,27 @@
     {
       "source": "System_Health_Monitoring",
       "signal_type": "technical",
-      "description": "Only 2 of 8 required core data sources operational (25% vs 62.5% minimum threshold) - circuit breaker triggered per learned Rule #2"
+      "description": "Critical failure detected: 0% of candidates have funding rate data, creating blind spot to overleveraged market conditions that historically precede liquidation cascades"
     },
     {
-      "source": "funding_rate",
+      "source": "Price_Feed_Integrity",
       "signal_type": "technical",
-      "description": "Funding rate data completely unavailable across all 7 candidates - cannot assess trader positioning or liquidation risk"
-    },
-    {
-      "source": "Chart_Data_Integrity",
-      "signal_type": "technical",
-      "description": "Chart analysis showing 30-50% price discrepancies (UB: $0.167 vs $0.156, BTW: $0.080 vs $0.180) indicating stale or corrupted data feeds"
+      "description": "Severe data corruption: UB price discrepancy ($0.1553 vs $0.1670), BTW ($0.1800 vs $0.0801), BEAT ($2.14 vs $3.54) - technical analysis invalid with unreliable price feeds"
     },
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Extreme Fear at 25/100 visible but unusable per Rule #3 - requires confirmation from at least two independent technical signals which are currently unavailable"
+      "description": "Extreme fear at 25/100 detected, but per learned rules this requires funding rate + positioning data confirmation before actionable - confirmation signals unavailable"
+    },
+    {
+      "source": "Minimum_Data_Threshold",
+      "signal_type": "technical",
+      "description": "Only 3 of 8 core signal types operational (basic RSI, partial chart patterns, sentiment gauge) - below 5-signal minimum threshold required for safe prediction"
     },
     {
       "source": "volume_breakout",
       "signal_type": "technical",
-      "description": "Volume vs average data null for all candidates - cannot confirm breakout authenticity or detect distribution patterns"
+      "description": "Volume analysis impossible: all candidates show null for volume_vs_avg, eliminating ability to confirm breakout quality or detect accumulation/distribution patterns"
     }
   ],
   "_mode": "HUNTING",
