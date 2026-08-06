@@ -349,5 +349,26 @@
       "AAVE"
     ],
     "alert": "CRITICAL: Insufficient data quality detected. 5 of 8 required signal sources are missing or incomplete. This analysis violates minimum data threshold rules #2, #8, and #12 established from prior system failures. DO NOT TRADE on this recommendation."
+  },
+  {
+    "ts": "2026-08-06T18:09:12.432497+00:00",
+    "coin": "LDO",
+    "price": 0.286399,
+    "signal": "HOLD",
+    "confidence": 0,
+    "score": 0.0,
+    "fg": 25,
+    "btc_price": 64431,
+    "btc_dominance": 56.6,
+    "candidates": [
+      "UB",
+      "USDG",
+      "LDO",
+      "BEAT",
+      "INJ",
+      "AAVE",
+      "FET"
+    ],
+    "alert": "SYSTEM FAILURE: Multiple critical data sources offline. Cannot make evidence-based predictions. Halting all trading recommendations until data quality restored to minimum threshold."
   }
 ]
