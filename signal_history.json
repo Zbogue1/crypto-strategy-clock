@@ -223,5 +223,26 @@
       "AAVE"
     ],
     "alert": "SYSTEM FAILURE: 92% data loss across funding rates, RSI, MACD, volume metrics, and on-chain data. Prediction pipeline halted per minimum quality threshold rules."
+  },
+  {
+    "ts": "2026-08-06T12:09:12.011907+00:00",
+    "coin": "BTC",
+    "price": 64457,
+    "signal": "HOLD",
+    "confidence": 0,
+    "score": 0.0,
+    "fg": 25,
+    "btc_price": 64457,
+    "btc_dominance": 56.7,
+    "candidates": [
+      "UB",
+      "BEAT",
+      "BTW",
+      "USDG",
+      "LDO",
+      "FET",
+      "AAVE"
+    ],
+    "alert": "CRITICAL: 62.5% of core data sources offline including funding rates, on-chain metrics, MACD, and volume analysis. Chart data shows significant price mismatches indicating pipeline corruption. Aborting prediction cycle per learned rule #2 (minimum 5/8 sources required) and rule #10 (system errors must produce NO PREDICTION POSSIBLE output). This case will be excluded from accuracy tracking."
   }
 ]
