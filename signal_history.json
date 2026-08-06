@@ -202,5 +202,26 @@
       "FET"
     ],
     "alert": "CRITICAL: Prediction system offline due to data provider failures. 7 of 8 core signals unavailable. No position changes recommended until data restored."
+  },
+  {
+    "ts": "2026-08-06T11:09:11.706183+00:00",
+    "coin": "BTC",
+    "price": 64449,
+    "signal": "HOLD",
+    "confidence": 0,
+    "score": 0.0,
+    "fg": 25,
+    "btc_price": 64449,
+    "btc_dominance": 56.7,
+    "candidates": [
+      "BTW",
+      "UB",
+      "BEAT",
+      "USDG",
+      "LDO",
+      "FET",
+      "AAVE"
+    ],
+    "alert": "SYSTEM FAILURE: 92% data loss across funding rates, RSI, MACD, volume metrics, and on-chain data. Prediction pipeline halted per minimum quality threshold rules."
   }
 ]
