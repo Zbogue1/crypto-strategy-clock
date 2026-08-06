@@ -1,28 +1,62 @@
 {
-  "timestamp": "2026-08-05T23:11:32.623174+00:00",
-  "selected_coin": "BTC",
-  "selected_coin_name": "Bitcoin",
-  "selected_coin_price": 64606,
-  "confidence": 0,
-  "layman_headline": "Analysis error \u2014 try again shortly",
-  "layman_explanation": "The system encountered an error this cycle.",
-  "layman_action": "No action recommended until next run.",
-  "expert_reasoning": null,
-  "risk_factors": [],
-  "watch_list": [],
-  "market_context": null,
-  "context_banner": null,
-  "btc_price": 64606,
+  "timestamp": "2026-08-06T04:02:23.197166+00:00",
+  "selected_coin": "UB",
+  "selected_coin_name": "Unibase",
+  "selected_coin_price": 0.136061,
+  "confidence": 35,
+  "layman_headline": "Market paralysis: extreme fear meets no clear direction as Bitcoin flatlines",
+  "layman_explanation": "The crypto market is stuck in extreme fear (25/100) but Bitcoin is barely moving\u2014up just 0.2% in 24 hours and 0.5% over 7 days. This creates a paradox: sentiment screams panic, but price action shows complete stagnation. High Bitcoin dominance (56.7%) means money is flowing away from altcoins into Bitcoin's perceived safety. The candidates show mixed signals\u2014BTW is overextended after a 95% rally, UB has bullish chart patterns but minimal momentum, and established coins like AAVE and LDO are bleeding. Without confirming data from momentum indicators, derivatives positioning, or news catalysts, this extreme fear reading is a coin flip.",
+  "layman_action": "Wait on the sidelines. Extreme fear without price capitulation or volume spikes suggests the market hasn't found its bottom yet. Monitor for a clear catalyst\u2014either Bitcoin breaking direction decisively or a major news event that shifts sentiment.",
+  "expert_reasoning": "This market presents a classic data-sparse environment where my learned rules dictate extreme caution. Extreme fear (25) without corresponding price capitulation\u2014BTC is essentially flat over 7 days\u2014suggests either: (a) fear is unjustified and we're at a bottom, or (b) the real decline hasn't started. My accumulated intelligence warns that extreme sentiment readings require confirmation from at least three sources: momentum indicators (mixed\u2014RSI neutral to oversold but no MACD data), trader positioning (no funding rate data available), and miner behavior (not accessible). With only partial technical data and zero derivatives/on-chain confirmation, this becomes a 50/50 proposition. UB's Three White Soldiers pattern is genuinely bullish, but the 56.7% BTC dominance creates structural headwinds for all alts. The risk/reward at 0.48x to nearest levels is poor. Strategy's STRC rebound news is positive but lacks direct impact on swing candidates. My post-mortem analysis shows I need 60%+ data availability before making predictions\u2014currently I'm missing funding rates, MACD crosses, full MA structure, volume breakout data, and on-chain metrics across all candidates.",
+  "risk_factors": [
+    "BTC dominance at 56.7% creates systematic headwind for all altcoins regardless of individual technical setups",
+    "Extreme fear without price capitulation or volume spikes historically leads to further decline 50% of the time when confirmation signals are absent",
+    "Missing critical data (funding rates, MACD, on-chain metrics) means I cannot distinguish between justified fear and fear-driven opportunity"
+  ],
+  "watch_list": [
+    "Bitcoin price action in next 48h\u2014break above $65,500 or below $63,500 would provide directional clarity",
+    "Fear & Greed Index movement\u2014further drop below 20 with volume spike could signal capitulation bottom",
+    "BTC dominance trend\u2014decline below 55% would signal money rotating back into alts and validate swing trades"
+  ],
+  "market_context": "Crypto markets frozen in extreme fear despite minimal price movement\u2014BTC flat, alts struggling under high dominance, waiting for catalyst to break stalemate.",
+  "context_banner": "Data insufficiency meets extreme fear: without confirmation from derivatives and on-chain metrics, this market snapshot offers no high-probability swing setups.",
+  "btc_price": 64458,
   "fear_greed": {
-    "current": 27,
-    "label": "Fear",
-    "yesterday": 25,
-    "week_avg": 26.7,
-    "trend": "worsening"
+    "current": 25,
+    "label": "Extreme Fear",
+    "yesterday": 27,
+    "week_avg": 26.3,
+    "trend": "flat"
   },
-  "btc_dominance": 56.6,
-  "key_signals": [],
+  "btc_dominance": 56.7,
+  "key_signals": [
+    {
+      "source": "Fear_Greed",
+      "signal_type": "sentiment",
+      "description": "Extreme fear at 25/100, but without supporting technical confirmation this is a 50/50 directional indicator per my learned rules\u2014needs momentum and positioning data to validate whether this is capitulation or justified fear."
+    },
+    {
+      "source": "BTC Dominance",
+      "signal_type": "macro",
+      "description": "56.7% dominance indicates capital flowing from alts to Bitcoin's perceived safety, creating systematic headwind for all swing candidates regardless of individual chart setups."
+    },
+    {
+      "source": "UB Chart Pattern (Three White Soldiers)",
+      "signal_type": "technical",
+      "description": "Bullish candlestick pattern showing sustained buying pressure over 3 sessions with +131.5% 5-day momentum, but lacks volume confirmation and occurs against unfavorable macro backdrop."
+    },
+    {
+      "source": "RSI",
+      "signal_type": "technical",
+      "description": "Mixed readings across candidates (BTW overbought at 69, FET approaching oversold at 37, UB neutral at 56) but without MACD and funding rate confirmation, cannot determine if oversold levels represent entry points or continued weakness."
+    },
+    {
+      "source": "Data Availability Assessment",
+      "signal_type": "technical",
+      "description": "Critical infrastructure gap\u2014missing funding rates for all candidates, incomplete MACD data, no on-chain metrics, and partial moving average structure\u2014falls below 60% threshold requiring 'insufficient data' status per rule #2."
+    }
+  ],
   "_mode": "HUNTING",
-  "exit_target": null,
-  "stop_loss": null
+  "exit_target": 0.165,
+  "stop_loss": 0.12
 }
