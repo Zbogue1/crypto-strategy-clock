@@ -286,5 +286,26 @@
       "AAVE"
     ],
     "alert": "CRITICAL: Prediction pipeline halted due to insufficient data quality. Funding rates missing, MACD null, MA coverage incomplete, macro data empty. Current signal availability 37.5% vs required 60% minimum. This is exactly the scenario that produced my 2026-06-20 failure. DO NOT TRADE until data restoration confirmed."
+  },
+  {
+    "ts": "2026-08-06T15:09:11.739242+00:00",
+    "coin": "BTC",
+    "price": 64822,
+    "signal": "HOLD",
+    "confidence": 0,
+    "score": 0.0,
+    "fg": 25,
+    "btc_price": 64822,
+    "btc_dominance": 56.7,
+    "candidates": [
+      "UB",
+      "BTW",
+      "USDG",
+      "BEAT",
+      "LDO",
+      "FET",
+      "AAVE"
+    ],
+    "alert": "PREDICTION SYSTEM OFFLINE - Core data feeds corrupted or unavailable. Cannot make informed trading decision. This is NOT a HOLD recommendation based on market analysis - this is an abort due to system failure."
   }
 ]
