@@ -42,6 +42,8 @@ from fomo_portfolio import (
     sync_fomo_state_from_github,
     FOMO_MAX_CONCURRENT_POSITIONS,
 )
+from fomo_research import research_token, ResearchVerdict
+from fomo_social import start_social_poller, parse_channel_message
 
 # ─── CONFIG ───────────────────────────────────────────────────────────────────
 
@@ -123,6 +125,16 @@ def get_wallet_info(address: str) -> Optional[dict]:
         if waddr == addr and not waddr.startswith("fill_in"):
             return w
     return None
+
+
+def _get_wallet_meta(alias: str) -> dict:
+    """Return trusted_wallets entry for alias, or empty dict."""
+    data = load_trusted_wallets()
+    for tier in ("tier_a", "tier_b"):
+        for w in data.get(tier, []):
+            if w.get("alias") == alias:
+                return w
+    return {}
 
 
 def update_wallet_stats(alias: str, outcome: str, profit_pct: float):
@@ -532,18 +544,35 @@ def handle_relayed_text_message(message: dict):
                 f"skipping duplicate relayed buy signal."
             )
             return
-        catalyst_data = scan_catalyst(token_data["symbol"], contract)
-        lessons = get_wallet_lessons(matched_alias)
-        best    = lessons.get("best_conditions", {})
+        # Deep research on relayed signal
+        _relay_alias = matched_alias or "unknown"
+        _relay_wallet_info = _get_wallet_meta(_relay_alias)
+        signal_ctx = {
+            "alias":        _relay_alias,
+            "tier":         _relay_wallet_info.get("tier", "B"),
+            "bankroll_usd": _relay_wallet_info.get("bankroll_usd"),
+            "action":       "BUY",
+            "symbol":       token_data["symbol"],
+            "source":       "email",
+            "timestamp":    datetime.now(timezone.utc).isoformat(),
+            "original_text": raw_text if "raw_text" in dir() else "",
+        }
+        verdict = research_token(contract, "solana", signal_ctx)
+        lessons     = get_wallet_lessons(matched_alias)
+        best        = lessons.get("best_conditions", {})
         skip_reason = None
-        if best.get("min_catalyst_score_for_win") and catalyst_data["score"] < best["min_catalyst_score_for_win"] - 2:
-            skip_reason = (f"Catalyst score {catalyst_data['score']} below "
+        if not verdict.go:
+            skip_reason = verdict.skip_reason
+        elif (best.get("min_catalyst_score_for_win") and
+              verdict.final_score < best["min_catalyst_score_for_win"] - 2):
+            skip_reason = (f"Research score {verdict.final_score} below "
                            f"{matched_alias}'s historical win threshold")
         if skip_reason:
             send_telegram(
-                f"\u26a0\ufe0f <b>Relayed Signal Filtered by Lessons</b>\n"
+                f"\u26a0\ufe0f <b>Relayed Signal Filtered</b>\n"
                 f"{matched_alias} bought {token_data['symbol']}\n"
-                f"Reason: {skip_reason}"
+                f"Reason: {skip_reason}\n"
+                + verdict.to_telegram_summary()
             )
             return
 
@@ -554,8 +583,8 @@ def handle_relayed_text_message(message: dict):
             "wallet_alias":     matched_alias,
             "wallet_address":   "",
             "contract_address": contract,
-            "catalyst":         catalyst_data["catalyst"],
-            "catalyst_score":   catalyst_data["score"],
+            "catalyst":         verdict.go_reason,
+            "catalyst_score":   verdict.final_score,
             "market_cap":       token_data.get("market_cap"),
             "liquidity_usd":    token_data.get("liquidity_usd"),
             "token_age_days":   token_data.get("age_days"),
@@ -979,9 +1008,24 @@ def telegram_webhook():
     update = request.json or {}
     callback = update.get("callback_query")
     if not callback:
-        message = update.get("message")
+        message = update.get("message") or update.get("channel_post")
         if message:
-            handle_relayed_text_message(message)
+            chat      = message.get("chat", {})
+            chat_type = chat.get("type", "private")  # private / group / supergroup / channel
+            text      = message.get("text", "")
+            if chat_type in ("channel", "group", "supergroup") and text:
+                # Message from a monitored channel/group — parse for social signal
+                chan_username = chat.get("username")
+                chan_title    = chat.get("title", "")
+                signal = parse_channel_message(text, chan_title, chan_username)
+                if signal:
+                    log.info(f"Telegram channel signal: {signal['alias']} {signal['action']} ${signal.get('token_symbol','?')} from {chan_title}")
+                    process_social_signal(signal)
+                else:
+                    log.debug(f"Telegram channel message from {chan_title}: no signal detected")
+            else:
+                # Direct message from user — existing relay handling
+                handle_relayed_text_message(message)
         return jsonify({"ok": True})
 
     callback_id = callback["id"]
@@ -1205,21 +1249,34 @@ def helius_webhook():
                 log.info("FOMO Solana: skipping %s buy - %s",
                          alias, token_data.get("reject_reason"))
                 continue
-            catalyst_data = scan_catalyst(token_data["symbol"], contract)
+            # Deep research engine — replaces basic catalyst scanner
+            signal_ctx = {
+                "alias":        alias,
+                "tier":         wallet_info.get("tier", "A"),
+                "bankroll_usd": wallet_info.get("bankroll_usd"),
+                "action":       "BUY",
+                "symbol":       token_data["symbol"],
+                "source":       "on-chain",
+                "timestamp":    datetime.now(timezone.utc).isoformat(),
+            }
+            verdict = research_token(contract, "solana", signal_ctx)
 
-            # Check wallet lessons — avoid known bad patterns for this trader
-            lessons = get_wallet_lessons(alias)
-            best    = lessons.get("best_conditions", {})
+            lessons     = get_wallet_lessons(alias)
+            best        = lessons.get("best_conditions", {})
             skip_reason = None
-            if best.get("min_catalyst_score_for_win") and catalyst_data["score"] < best["min_catalyst_score_for_win"] - 2:
-                skip_reason = (f"Catalyst score {catalyst_data['score']} below "
+            if not verdict.go:
+                skip_reason = verdict.skip_reason
+            elif (best.get("min_catalyst_score_for_win") and
+                  verdict.final_score < best["min_catalyst_score_for_win"] - 2):
+                skip_reason = (f"Research score {verdict.final_score} below "
                                f"{alias}'s historical win threshold")
             if skip_reason:
-                log.info("FOMO Solana: skipping %s buy - learned filter: %s", alias, skip_reason)
+                log.info("FOMO Solana: skipping %s buy - %s", alias, skip_reason)
                 send_telegram(
-                    f"\u26a0\ufe0f <b>FOMO Signal Filtered by Lessons</b>\n"
+                    f"\u26a0\ufe0f <b>FOMO Signal Filtered</b>\n"
                     f"{alias} bought {token_data['symbol']}\n"
-                    f"Reason: {skip_reason}"
+                    f"Reason: {skip_reason}\n"
+                    + verdict.to_telegram_summary()
                 )
                 continue
 
@@ -1231,21 +1288,18 @@ def helius_webhook():
                 "wallet_alias":     alias,
                 "wallet_address":   wallet_addr,
                 "contract_address": contract,
-                "catalyst":         catalyst_data["catalyst"],
-                "catalyst_score":   catalyst_data["score"],
+                "catalyst":         verdict.go_reason,
+                "catalyst_score":   verdict.final_score,
                 "market_cap":       token_data.get("market_cap"),
                 "liquidity_usd":    token_data.get("liquidity_usd"),
                 "token_age_days":   token_data.get("age_days"),
                 "volume_spike_pct": token_data.get("volume_spike_pct"),
             })
             send_telegram_button(
-                "\U0001f6a8 <b>BUY SIGNAL: " + token_data["symbol"] + " @ $"
+                "\U0001f6a8 <b>ON-CHAIN SIGNAL: " + token_data["symbol"] + " @ $"
                 + "{:.8f}".format(token_data["price"]) + "</b>\n"
-                + "Following: " + alias + "\n"
-                + "Catalyst (" + str(catalyst_data["score"]) + "/10): "
-                + catalyst_data["catalyst"] + "\n"
-                + "Mcap: $" + "{:,.0f}".format(token_data.get("market_cap") or 0)
-                + " | Liq: $" + "{:,.0f}".format(token_data.get("liquidity_usd") or 0) + "\n"
+                + "Following: " + alias + " (on-chain)\n"
+                + verdict.to_telegram_summary() + "\n"
                 + "\u23f1 Expires in " + str(BUY_ALERT_EXPIRY_MINUTES) + " min",
                 "EXECUTE",
                 f"buy_show:{alert_id}",
@@ -1329,32 +1383,39 @@ def alchemy_webhook():
                 )
                 continue
 
-            # Scan for catalyst
-            catalyst_data = scan_catalyst(token_data["symbol"], contract)
+            # Deep research engine — replaces basic catalyst scanner
+            signal_ctx = {
+                "alias":        alias,
+                "tier":         wallet_info.get("tier", "A"),
+                "bankroll_usd": wallet_info.get("bankroll_usd"),
+                "action":       "BUY",
+                "symbol":       token_data["symbol"],
+                "source":       "on-chain",
+                "timestamp":    datetime.now(timezone.utc).isoformat(),
+            }
+            verdict = research_token(contract, "base", signal_ctx)
 
-            # Check wallet lessons — avoid known bad patterns for this trader
-            lessons = get_wallet_lessons(alias)
-            avoid   = lessons.get("avoid_when", [])
-            best    = lessons.get("best_conditions", {})
-
-            # Apply learned filters
+            lessons     = get_wallet_lessons(alias)
+            best        = lessons.get("best_conditions", {})
             skip_reason = None
-            if best.get("min_catalyst_score_for_win") and catalyst_data["score"] < best["min_catalyst_score_for_win"] - 2:
-                skip_reason = (f"Catalyst score {catalyst_data['score']} below "
+            if not verdict.go:
+                skip_reason = verdict.skip_reason
+            elif (best.get("min_catalyst_score_for_win") and
+                  verdict.final_score < best["min_catalyst_score_for_win"] - 2):
+                skip_reason = (f"Research score {verdict.final_score} below "
                                f"{alias}'s historical win threshold")
 
             if skip_reason:
-                log.info(f"FOMO: Skipping {alias} buy — learned filter: {skip_reason}")
+                log.info(f"FOMO: Skipping {alias} buy — {skip_reason}")
                 send_telegram(
-                    f"⚠️ <b>FOMO Signal Filtered by Lessons</b>\n"
+                    f"⚠️ <b>FOMO Signal Filtered</b>\n"
                     f"{alias} bought {token_data['symbol']}\n"
-                    f"Reason: {skip_reason}"
+                    f"Reason: {skip_reason}\n"
+                    + verdict.to_telegram_summary()
                 )
                 continue
 
             # Don't auto-buy -- store the signal and let the human tap EXECUTE.
-            stats    = wallet_info.get("stats", {})
-            win_rate = stats.get("win_rate_30d", "N/A")
             alert_id = create_pending_buy_alert({
                 "token_ticker":     token_data["symbol"],
                 "token_name":       token_data["name"],
@@ -1362,19 +1423,19 @@ def alchemy_webhook():
                 "wallet_alias":     alias,
                 "wallet_address":   wallet_addr,
                 "contract_address": contract,
-                "catalyst":         catalyst_data["catalyst"],
-                "catalyst_score":   catalyst_data["score"],
+                "catalyst":         verdict.go_reason,
+                "catalyst_score":   verdict.final_score,
                 "market_cap":       token_data.get("market_cap"),
                 "liquidity_usd":    token_data.get("liquidity_usd"),
                 "token_age_days":   token_data.get("age_days"),
                 "volume_spike_pct": token_data.get("volume_spike_pct"),
             })
             send_telegram_button(
-                f"🚨 <b>BUY SIGNAL: {token_data['symbol']} @ ${token_data['price']:.8f}</b>\n"
-                f"Following: {alias} (30d win rate: {win_rate}%)\n"
-                f"Catalyst ({catalyst_data['score']}/10): {catalyst_data['catalyst']}\n"
-                f"Mcap: ${token_data['market_cap']:,.0f} | Liq: ${token_data['liquidity_usd']:,.0f}\n"
-                f"⏱ Expires in {BUY_ALERT_EXPIRY_MINUTES} min",
+                "🚨 <b>ON-CHAIN SIGNAL: " + token_data["symbol"] + " @ $"
+                + "{:.8f}".format(token_data["price"]) + "</b>\n"
+                + "Following: " + alias + " (Base chain)\n"
+                + verdict.to_telegram_summary() + "\n"
+                + "⏱ Expires in " + str(BUY_ALERT_EXPIRY_MINUTES) + " min",
                 "EXECUTE",
                 f"buy_show:{alert_id}",
             )
@@ -1474,8 +1535,155 @@ def sync_alchemy_webhooks(webhook_base_url: str):
 
 # ─── ENTRY POINT ──────────────────────────────────────────────────────────────
 
+# ─── SOCIAL SIGNAL PROCESSOR ──────────────────────────────────────────────────────────────────────────────
+
+def process_social_signal(signal: dict):
+    """
+    Process a social media signal (Twitter or Telegram channel) through the
+    same research + execution pipeline as on-chain webhook signals.
+
+    Called by the background social poller and by the Telegram webhook handler
+    when a message arrives from a monitored channel.
+
+    signal keys: alias, tier, chain, bankroll_usd, action, token_symbol,
+                 contract_address, confidence, source, timestamp, original_text
+    """
+    alias    = signal.get("alias", "unknown")
+    action   = (signal.get("action") or "").upper()
+    symbol   = signal.get("token_symbol")
+    contract = signal.get("contract_address")
+    source   = signal.get("source", "social")
+    chain    = signal.get("chain", "solana")
+
+    log.info(f"Social signal: {alias} {action} ${symbol or '?'} via {source}")
+
+    # Need at least a symbol or contract to proceed
+    if not symbol and not contract:
+        log.info(f"Social signal from {alias}: no token identified, skipping")
+        return
+
+    # If no contract, try DexScreener lookup
+    if not contract and symbol:
+        contract = _lookup_contract_by_symbol(symbol)
+        if contract:
+            log.info(f"Social: resolved ${symbol} → {contract}")
+        else:
+            send_telegram(
+                f"🤔 <b>Social signal: ${symbol}</b> from {alias} ({source})\n"
+                f"Couldn't find a contract address for ${symbol}. "
+                f"Forward the CA directly to research it."
+            )
+            return
+
+    # Validate token basics
+    token_data = validate_token(contract)
+    if not token_data["valid"]:
+        send_telegram(
+            f"⚠️ <b>Social signal filtered</b> ({alias} via {source})\n"
+            f"${symbol}: {token_data.get('reject_reason', 'failed validation')}"
+        )
+        return
+
+    sync_fomo_state_from_github()
+    portfolio = load_fomo_portfolio()
+    holdings  = portfolio.get("holdings", [])
+
+    if action == "BUY":
+        if len(holdings) >= FOMO_MAX_CONCURRENT_POSITIONS:
+            send_telegram(
+                f"⚠️ Social signal from {alias}: at max positions, "
+                f"skipping ${token_data['symbol']} buy."
+            )
+            return
+        if _find_holding(holdings, contract):
+            log.info(f"Social: already holding {token_data['symbol']}, ignoring duplicate")
+            return
+
+        # Deep research
+        signal_ctx = {
+            "alias":        alias,
+            "tier":         signal.get("tier", "B"),
+            "bankroll_usd": signal.get("bankroll_usd"),
+            "action":       "BUY",
+            "symbol":       token_data["symbol"],
+            "source":       source,
+            "timestamp":    signal.get("timestamp", datetime.now(timezone.utc).isoformat()),
+            "original_text": signal.get("original_text", ""),
+        }
+        verdict = research_token(contract, chain, signal_ctx)
+
+        lessons     = get_wallet_lessons(alias)
+        best        = lessons.get("best_conditions", {})
+        skip_reason = None
+        if not verdict.go:
+            skip_reason = verdict.skip_reason
+        elif (best.get("min_catalyst_score_for_win") and
+              verdict.final_score < best["min_catalyst_score_for_win"] - 2):
+            skip_reason = f"Score {verdict.final_score} below {alias}'s win threshold"
+
+        source_icon = "🐦" if source == "twitter" else "📢"  # bird or megaphone
+
+        if skip_reason:
+            send_telegram(
+                f"⚠️ <b>Social Signal Filtered</b> {source_icon}\n"
+                f"{alias} posted about ${token_data['symbol']} on {source}\n"
+                f"Reason: {skip_reason}\n"
+                + verdict.to_telegram_summary()
+            )
+            return
+
+        alert_id = create_pending_buy_alert({
+            "token_ticker":     token_data["symbol"],
+            "token_name":       token_data["name"],
+            "entry_price":      token_data["price"],
+            "wallet_alias":     alias,
+            "wallet_address":   "",
+            "contract_address": contract,
+            "catalyst":         verdict.go_reason,
+            "catalyst_score":   verdict.final_score,
+            "market_cap":       token_data.get("market_cap"),
+            "liquidity_usd":    token_data.get("liquidity_usd"),
+            "token_age_days":   token_data.get("age_days"),
+            "volume_spike_pct": token_data.get("volume_spike_pct"),
+        })
+        send_telegram_button(
+            source_icon + " <b>SOCIAL SIGNAL: " + token_data["symbol"] + " @ $"
+            + "{:.8f}".format(token_data["price"]) + "</b>\n"
+            + alias + " posted on " + source + "\n"
+            + (f"Post: \"{signal.get('signal_text', '')[:80]}\"\n" if signal.get("signal_text") else "")
+            + verdict.to_telegram_summary() + "\n"
+            + "⏱ Expires in " + str(BUY_ALERT_EXPIRY_MINUTES) + " min",
+            "EXECUTE",
+            f"buy_show:{alert_id}",
+        )
+
+    elif action == "SELL":
+        holding = _find_holding(holdings, contract)
+        if not holding:
+            # Not holding this — but notify anyway so user knows their trader sold
+            send_telegram(
+                source_icon + f" <b>{alias} sold ${token_data['symbol']}</b> ({source})\n"
+                f"You're not holding this token."
+            ) if "source_icon" in dir() else None
+            return
+        alert_id = create_pending_sell_alert({
+            "token_ticker":     holding["token_ticker"],
+            "wallet_alias":     alias,
+            "contract_address": holding.get("contract_address"),
+            "price_at_signal":  token_data.get("price") or holding["entry_price"],
+        })
+        send_telegram_button(
+            "🔔 <b>" + alias + " sold " + holding["token_ticker"] + "</b> (" + source + ")\n"
+            + "Tap to confirm your exit.",
+            "EXECUTE",
+            f"sell_exec:{alert_id}",
+        )
+
+
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     log.info(f"FOMO Tracker starting on port {port}")
     register_telegram_webhook()
+    # Start background social poller (Twitter every 15 min)
+    start_social_poller(callback=process_social_signal)
     app.run(host="0.0.0.0", port=port, debug=False)
