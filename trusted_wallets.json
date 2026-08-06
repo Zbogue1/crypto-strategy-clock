@@ -6,7 +6,7 @@
       "fomo_profile": "@continuity",
       "tier": "A",
       "chain": "solana",
-      "alchemy_webhook_id": null,
+      "alchemy_webhook_id": "304b4113-220c-421b-82f9-94f166f405c6",
       "notes": "Rank #1 on fomo.family. +$62K PnL. 363 trades. Joined Mar 2026. Wallet identified via FINNY sell tx 5eADx... (15.85M FINNY, 53.35 SOL balance).",
       "stats": {
         "trades_followed": 0,
@@ -207,5 +207,5 @@
     "min_days_observed": 14,
     "min_bankroll_usd": 50000
   },
-  "last_updated": "2026-07-06T01:15:53.941859+00:00"
+  "last_updated": "2026-08-06T04:09:02.167101+00:00"
 }
