@@ -305,6 +305,7 @@ class ResearchVerdict:
     go:                  bool = False
     go_reason:           str  = ""
     skip_reason:         str  = ""
+    suggested_position_pct: float = 15.0  # % of FOMO cash to allocate
 
     def compute_final_score(self):
         """Weighted composite: conviction 30%, fundamentals 25%, liquidity 20%, culture 15%, CT 10%."""
@@ -340,7 +341,11 @@ class ResearchVerdict:
             lines.append("⚠️ " + " | ".join(self.warnings[:3]))
         if self.evidence:
             lines.append("✔ " + " | ".join(self.evidence[:2]))
-        verdict = f"✅ {self.go_reason}" if self.go else f"❌ SKIP: {self.skip_reason}"
+        if self.go:
+            size_bar = "█" * int(self.suggested_position_pct / 5) + "░" * (6 - int(self.suggested_position_pct / 5))
+            verdict = f"✅ {self.go_reason}\n💰 Position: {self.suggested_position_pct:.0f}% FOMO cash [{size_bar}]"
+        else:
+            verdict = f"❌ SKIP: {self.skip_reason}"
         lines.append(f"\n{verdict}")
         return "\n".join(lines)
 
@@ -768,24 +773,49 @@ def research_token(
     # ── 7. Final score + GO / NO-GO ───────────────────────────────────────────
     v.compute_final_score()
 
-    # Hard vetos — override score
+    # ── Hard vetos (ONLY these block execution) ──────────────────────────────
+    # Philosophy: research score drives POSITION SIZE, not whether to trade.
+    # Volatility is the FOMO game. Only genuine rug indicators block execution.
+    hard_veto = False
     if v.liquidity_usd is not None and v.liquidity_usd < 30_000:
+        hard_veto     = True
         v.go          = False
-        v.skip_reason = f"Liquidity too thin (${v.liquidity_usd:,.0f})"
+        v.skip_reason = f"RUG GUARD: Liquidity ${v.liquidity_usd:,.0f} — exit impossible"
     elif v.token_age_days is not None and v.token_age_days < 1:
+        hard_veto     = True
         v.go          = False
-        v.skip_reason = "Token < 1 day old — rug risk too high"
+        v.skip_reason = "RUG GUARD: Token < 1 day old — bonding curve not proven"
     elif v.top10_holder_pct is not None and v.top10_holder_pct > 90:
+        hard_veto     = True
         v.go          = False
-        v.skip_reason = f"Whale trap: top-10 hold {v.top10_holder_pct:.0f}%"
-    elif v.final_score >= 5:
-        v.go       = True
-        ev         = ", ".join(v.evidence[:2]) if v.evidence else "research passes"
+        v.skip_reason = f"RUG GUARD: Top-10 hold {v.top10_holder_pct:.0f}% — whale trap"
+
+    if not hard_veto:
+        # Always GO — score only determines position size
+        v.go = True
+        ev   = ", ".join(v.evidence[:2]) if v.evidence else "tracked wallet signal"
         v.go_reason = f"Score {v.final_score}/10 — {ev}"
+
+    # ── Position size recommendation (drives % of FOMO cash to allocate) ─────
+    # Score 8-10 = high conviction  → up to 25% (cross-wallet or Tier A + chart)
+    # Score 5-7  = solid signal     → 15%
+    # Score 3-4  = low conviction   → 10% (small bet, learn from it)
+    # Score 1-2  = minimal signal   → 5%  (tiny speculative position)
+    # Hard veto  = 0%               → skip
+    if hard_veto:
+        v.suggested_position_pct = 0.0
+    elif v.final_score >= 8:
+        v.suggested_position_pct = 25.0
+    elif v.final_score >= 5:
+        v.suggested_position_pct = 15.0
+    elif v.final_score >= 3:
+        v.suggested_position_pct = 10.0
     else:
-        v.go          = False
-        wn            = ", ".join(v.warnings[:2]) if v.warnings else "below threshold"
-        v.skip_reason = f"Score {v.final_score}/10 — {wn}"
+        v.suggested_position_pct = 5.0
+
+    # Cross-wallet conviction bonus — always max position
+    if v.cross_wallet_hits >= 2:
+        v.suggested_position_pct = min(30.0, v.suggested_position_pct + 5.0)
 
     log.info(
         "Research %s $%s | %d/10 | GO=%s | "

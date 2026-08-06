@@ -1612,45 +1612,47 @@ def process_social_signal(signal: dict):
         }
         verdict = research_token(contract, chain, signal_ctx)
 
-        lessons     = get_wallet_lessons(alias)
-        best        = lessons.get("best_conditions", {})
-        skip_reason = None
+        # Hard veto only — research score drives position size, not execution gate
+        source_icon = "🐦" if source == "twitter" else "📢" if source == "telegram" else "📧"
+
         if not verdict.go:
-            skip_reason = verdict.skip_reason
-        elif (best.get("min_catalyst_score_for_win") and
-              verdict.final_score < best["min_catalyst_score_for_win"] - 2):
-            skip_reason = f"Score {verdict.final_score} below {alias}'s win threshold"
-
-        source_icon = "🐦" if source == "twitter" else "📢"  # bird or megaphone
-
-        if skip_reason:
+            # Genuine rug guard triggered — do not execute
             send_telegram(
-                f"⚠️ <b>Social Signal Filtered</b> {source_icon}\n"
-                f"{alias} posted about ${token_data['symbol']} on {source}\n"
-                f"Reason: {skip_reason}\n"
+                f"🛡️ <b>RUG GUARD: {token_data['symbol']} blocked</b> {source_icon}\n"
+                f"Trader: {alias} | Source: {source}\n"
+                f"Reason: {verdict.skip_reason}\n"
                 + verdict.to_telegram_summary()
             )
             return
 
+        pos_pct = getattr(verdict, "suggested_position_pct", 15.0)
         alert_id = create_pending_buy_alert({
-            "token_ticker":     token_data["symbol"],
-            "token_name":       token_data["name"],
-            "entry_price":      token_data["price"],
-            "wallet_alias":     alias,
-            "wallet_address":   "",
-            "contract_address": contract,
-            "catalyst":         verdict.go_reason,
-            "catalyst_score":   verdict.final_score,
-            "market_cap":       token_data.get("market_cap"),
-            "liquidity_usd":    token_data.get("liquidity_usd"),
-            "token_age_days":   token_data.get("age_days"),
-            "volume_spike_pct": token_data.get("volume_spike_pct"),
+            "token_ticker":          token_data["symbol"],
+            "token_name":            token_data["name"],
+            "entry_price":           token_data["price"],
+            "wallet_alias":          alias,
+            "wallet_address":        "",
+            "contract_address":      contract,
+            "catalyst":              verdict.go_reason,
+            "catalyst_score":        verdict.final_score,
+            "market_cap":            token_data.get("market_cap"),
+            "liquidity_usd":         token_data.get("liquidity_usd"),
+            "token_age_days":        token_data.get("age_days"),
+            "volume_spike_pct":      token_data.get("volume_spike_pct"),
+            "suggested_position_pct": pos_pct,
         })
+        # Conviction label for the Telegram message
+        if pos_pct >= 25:
+            conv_label = "🔥 HIGH CONVICTION"
+        elif pos_pct >= 15:
+            conv_label = "⚡ SOLID SIGNAL"
+        else:
+            conv_label = "🔎 SPECULATIVE"
         send_telegram_button(
-            source_icon + " <b>SOCIAL SIGNAL: " + token_data["symbol"] + " @ $"
-            + "{:.8f}".format(token_data["price"]) + "</b>\n"
-            + alias + " posted on " + source + "\n"
-            + (f"Post: \"{signal.get('signal_text', '')[:80]}\"\n" if signal.get("signal_text") else "")
+            source_icon + " <b>FOMO SIGNAL: " + token_data["symbol"] + "</b>  " + conv_label + "\n"
+            + "Trader: " + alias + " (" + source + ")  |  "
+            + "Suggested: <b>" + str(int(pos_pct)) + "% FOMO cash</b>\n"
+            + (f"Signal: \"{signal.get('signal_text', '')[:80]}\"\n" if signal.get("signal_text") else "")
             + verdict.to_telegram_summary() + "\n"
             + "⏱ Expires in " + str(BUY_ALERT_EXPIRY_MINUTES) + " min",
             "EXECUTE",
