@@ -181,5 +181,26 @@
       "FET"
     ],
     "alert": "CRITICAL: Prediction systems offline. Missing funding rates, complete RSI data, volume analysis, MACD signals, and full chart coverage. Cannot proceed with trade recommendation per validated safety rules. This is not a market call\u2014it's an infrastructure failure requiring immediate attention."
+  },
+  {
+    "ts": "2026-08-06T10:09:11.712313+00:00",
+    "coin": "AAVE",
+    "price": 87.71,
+    "signal": "HOLD",
+    "confidence": 0,
+    "score": 0.0,
+    "fg": 25,
+    "btc_price": 64575,
+    "btc_dominance": 56.7,
+    "candidates": [
+      "UB",
+      "BEAT",
+      "BTW",
+      "USDG",
+      "LDO",
+      "AAVE",
+      "FET"
+    ],
+    "alert": "CRITICAL: Prediction system offline due to data provider failures. 7 of 8 core signals unavailable. No position changes recommended until data restored."
   }
 ]
