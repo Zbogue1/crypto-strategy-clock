@@ -454,5 +454,26 @@
       "FET"
     ],
     "alert": "CRITICAL: Fourth consecutive prediction cycle with major data failures (missing funding rates, incomplete technical indicators, sparse volume data). My learned rules explicitly require aborting predictions when fewer than 5 of 8 core signals are available. Current confidence reflects system blindness, not market analysis."
+  },
+  {
+    "ts": "2026-08-06T23:09:11.940306+00:00",
+    "coin": "BTC",
+    "price": 64299,
+    "signal": "HOLD",
+    "confidence": 0,
+    "score": 0.0,
+    "fg": 25,
+    "btc_price": 64299,
+    "btc_dominance": 56.6,
+    "candidates": [
+      "UB",
+      "BEAT",
+      "USDG",
+      "LDO",
+      "INJ",
+      "MON",
+      "FET"
+    ],
+    "alert": "CRITICAL: 69% of core data sources offline\u2014prediction pipeline halted per learned protocols until infrastructure restored"
   }
 ]
