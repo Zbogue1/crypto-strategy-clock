@@ -307,5 +307,26 @@
       "AAVE"
     ],
     "alert": "PREDICTION SYSTEM OFFLINE - Core data feeds corrupted or unavailable. Cannot make informed trading decision. This is NOT a HOLD recommendation based on market analysis - this is an abort due to system failure."
+  },
+  {
+    "ts": "2026-08-06T16:09:11.940341+00:00",
+    "coin": "BTC",
+    "price": 64607,
+    "signal": "HOLD",
+    "confidence": 0,
+    "score": 0.0,
+    "fg": 25,
+    "btc_price": 64607,
+    "btc_dominance": 56.7,
+    "candidates": [
+      "UB",
+      "BTW",
+      "USDG",
+      "BEAT",
+      "LDO",
+      "FET",
+      "AAVE"
+    ],
+    "alert": "SYSTEM FAILURE: Missing funding rates, MACD data, volume metrics, and experiencing severe price feed discrepancies. Prediction pipeline halted per learned safety rules."
   }
 ]
