@@ -370,5 +370,26 @@
       "FET"
     ],
     "alert": "SYSTEM FAILURE: Multiple critical data sources offline. Cannot make evidence-based predictions. Halting all trading recommendations until data quality restored to minimum threshold."
+  },
+  {
+    "ts": "2026-08-06T19:09:11.761974+00:00",
+    "coin": "BTC",
+    "price": 64372,
+    "signal": "HOLD",
+    "confidence": 0,
+    "score": 0.0,
+    "fg": 25,
+    "btc_price": 64372,
+    "btc_dominance": 56.6,
+    "candidates": [
+      "UB",
+      "USDG",
+      "LDO",
+      "BEAT",
+      "KAITO",
+      "FET",
+      "INJ"
+    ],
+    "alert": "CRITICAL: Data infrastructure failure detected. Missing funding rates (trader positioning), volume confirmation, Messari on-chain metrics, macro data, and incomplete chart analysis. 6 of 8 core signal sources compromised. Prediction pipeline halted per learned rule #2 requiring minimum 5/8 sources operational. This is not a HOLD recommendation\u2014this is a mandatory abort due to insufficient data quality. Do not count this cycle in accuracy metrics."
   }
 ]
