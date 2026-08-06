@@ -433,5 +433,26 @@
       "KITE"
     ],
     "alert": "SYSTEM FAILURE: Core data sources offline. Prediction pipeline halted. Do not trade on this output."
+  },
+  {
+    "ts": "2026-08-06T22:09:11.636401+00:00",
+    "coin": "UB",
+    "price": 0.163893,
+    "signal": "HOLD",
+    "confidence": 15,
+    "score": -0.4,
+    "fg": 25,
+    "btc_price": 64373,
+    "btc_dominance": 56.6,
+    "candidates": [
+      "BEAT",
+      "UB",
+      "USDG",
+      "LDO",
+      "KITE",
+      "MON",
+      "FET"
+    ],
+    "alert": "CRITICAL: Fourth consecutive prediction cycle with major data failures (missing funding rates, incomplete technical indicators, sparse volume data). My learned rules explicitly require aborting predictions when fewer than 5 of 8 core signals are available. Current confidence reflects system blindness, not market analysis."
   }
 ]
