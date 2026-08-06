@@ -244,5 +244,26 @@
       "AAVE"
     ],
     "alert": "CRITICAL: 62.5% of core data sources offline including funding rates, on-chain metrics, MACD, and volume analysis. Chart data shows significant price mismatches indicating pipeline corruption. Aborting prediction cycle per learned rule #2 (minimum 5/8 sources required) and rule #10 (system errors must produce NO PREDICTION POSSIBLE output). This case will be excluded from accuracy tracking."
+  },
+  {
+    "ts": "2026-08-06T13:09:11.660020+00:00",
+    "coin": "BTC",
+    "price": 64192,
+    "signal": "HOLD",
+    "confidence": 0,
+    "score": 0.0,
+    "fg": 25,
+    "btc_price": 64192,
+    "btc_dominance": 56.6,
+    "candidates": [
+      "GLIDR",
+      "BTW",
+      "UB",
+      "BEAT",
+      "USDG",
+      "LDO",
+      "FET"
+    ],
+    "alert": "CRITICAL: Prediction systems offline due to missing funding rates, corrupted price feeds, and absent momentum indicators. This is not a HOLD recommendation based on market analysis - this is a mandatory safety halt. DO NOT TRADE until my data quality threshold is restored above 60%."
   }
 ]
