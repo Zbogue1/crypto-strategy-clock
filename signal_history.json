@@ -118,5 +118,26 @@
       "FET"
     ],
     "alert": "DATA SYSTEM FAILURE: 75% of core signals unavailable. Halting predictions per learned safety protocols. Any recommendation made now would be a guess and corrupt future learning."
+  },
+  {
+    "ts": "2026-08-06T07:09:11.645472+00:00",
+    "coin": "BTC",
+    "price": 64772,
+    "signal": "HOLD",
+    "confidence": 0,
+    "score": 0.0,
+    "fg": 25,
+    "btc_price": 64772,
+    "btc_dominance": 56.7,
+    "candidates": [
+      "UB",
+      "BTW",
+      "KAITO",
+      "BEAT",
+      "USDG",
+      "LDO",
+      "MON"
+    ],
+    "alert": "CRITICAL: Multiple data source failures detected. DeFi TVL showing impossible 0% changes, funding rates unavailable, price discrepancies across feeds, volume data missing. Prediction pipeline halted per safety protocols."
   }
 ]
