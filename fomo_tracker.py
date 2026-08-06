@@ -1686,4 +1686,6 @@ if __name__ == "__main__":
     register_telegram_webhook()
     # Start background social poller (Twitter every 15 min)
     start_social_poller(callback=process_social_signal)
+    from fomo_email import start_email_poller
+    start_email_poller(callback=process_social_signal)
     app.run(host="0.0.0.0", port=port, debug=False)
