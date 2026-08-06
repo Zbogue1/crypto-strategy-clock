@@ -1,26 +1,26 @@
 {
-  "timestamp": "2026-08-06T14:09:11.865065+00:00",
+  "timestamp": "2026-08-06T15:09:11.739242+00:00",
   "selected_coin": "BTC",
   "selected_coin_name": "Bitcoin",
-  "selected_coin_price": 64422,
+  "selected_coin_price": 64822,
   "confidence": 0,
-  "layman_headline": "Critical system failure: prediction impossible without core market data",
-  "layman_explanation": "My data pipeline has completely failed this cycle. I'm missing funding rates (which tell us if the market is overleveraged), I have no MACD crossover data (momentum signals), and moving average confirmations are incomplete across all candidates. The extreme fear reading (25/100) would normally be interesting, but my own learning shows it's only 50/50 accurate without supporting signals about trader positioning and price momentum\u2014both of which I cannot see right now. Making a directional call with 3 out of 8 core signals missing would be pure gambling.",
-  "layman_action": "Wait for the next analysis cycle when data systems are restored\u2014trading blind is how accounts get destroyed",
-  "expert_reasoning": "System integrity check failed: funding_rate = null across all candidates (cannot assess leverage risk), macd_cross = null (no momentum confirmation), incomplete MA coverage (above_sma50 and above_sma200 both null), and macro data completely empty. Chart analysis shows UB with +1.1 bias and Three White Soldiers pattern, but without funding rate confirmation I cannot distinguish between genuine accumulation versus overleveraged longs about to liquidate. BTW's +117.7% weekly move with 69 RSI screams exhaustion, but again\u2014no funding data means I'm guessing whether shorts are being squeezed or longs are about to cascade. My Rule #2 requires 5 of 8 core signals functional before predictions proceed; currently only 3 are working (basic price data, partial RSI, Fear & Greed). Continuing would violate my learned protocol and contaminate future accuracy tracking with random noise.",
+  "layman_headline": "NO PREDICTION POSSIBLE - Critical data infrastructure failure prevents analysis",
+  "layman_explanation": "My prediction systems have suffered catastrophic failures across multiple data sources. I cannot access funding rates (which show trader positioning), volume confirmation data, MACD signals, or complete moving average analysis for any candidate. The chart analysis shows massive price discrepancies (UB shows current price $0.1670 vs market price $0.1564, BTW shows $0.0801 vs $0.1798) indicating stale or corrupted data feeds. Without these core signals, any prediction would be pure guessing.",
+  "layman_action": "DO NOT TRADE based on this analysis. Wait for my systems to recover and provide a prediction with actual confidence levels above 0%.",
+  "expert_reasoning": "MANDATORY ABORT: I currently have access to only 2 of my 8 required core data sources (basic price data and Fear & Greed index). Funding rates are completely unavailable across all candidates. Chart analysis shows corrupted pricing (30-50% discrepancies between 'current' and actual prices). Volume vs average is null for every candidate. MACD cross data is missing universally. Only partial moving average data exists. This violates my learned Rule #2 requiring at least 5 of 8 core signals before proceeding. Per Rules #1, #8, and #10, I must halt prediction pipeline immediately rather than generate false signals that will corrupt my future learning.",
   "risk_factors": [
-    "Operating with only 37.5% of required data inputs\u2014below my mandatory 60% minimum threshold established after prior blind prediction failures",
-    "Extreme fear reading present but no confirmation signals available to distinguish capitulation bottom from rational concern about further declines",
-    "High BTC dominance (56.6%) creating hostile environment for alts, but cannot assess which candidates have defensive positioning without funding rate data"
+    "Proceeding with this prediction would violate my own learned circuit breaker rules and poison my accuracy metrics",
+    "The 30-50% price discrepancies in chart analysis indicate my data feeds are hours or days stale, making any technical analysis meaningless",
+    "Without funding rate data, I cannot distinguish between healthy corrections and overleveraged positions ready to cascade"
   ],
   "watch_list": [
-    "Data pipeline restoration: verify funding rate feeds, MACD calculations, and complete moving average coverage return before next cycle",
-    "If systems restore: UB's Three White Soldiers pattern with +1.1 chart bias becomes primary candidate requiring funding rate check",
-    "Emergency protocol: if data failures persist beyond 48 hours, implement backup provider configuration per Rule #5"
+    "Monitor data feed restoration - particularly funding rates and real-time pricing accuracy",
+    "Verify authentication status with all API providers before next prediction cycle",
+    "Check backup data source configuration - should have kicked in automatically"
   ],
-  "market_context": "Bitcoin holding $64,422 in extreme fear conditions, but critical trader positioning and momentum data unavailable for directional assessment",
-  "context_banner": "ABORT PREDICTION: Core data systems offline\u2014proceeding would violate learned protocols against blind trading.",
-  "btc_price": 64422,
+  "market_context": "Extreme Fear (25/100) with high BTC dominance (56.7%) typically signals alt-season headwinds, but I cannot validate this signal without confirming data from trader positioning and technical momentum indicators.",
+  "context_banner": "CRITICAL: Data infrastructure failure - minimum prediction threshold not met.",
+  "btc_price": 64822,
   "fear_greed": {
     "current": 25,
     "label": "Extreme Fear",
@@ -28,32 +28,32 @@
     "week_avg": 26.3,
     "trend": "flat"
   },
-  "btc_dominance": 56.6,
+  "btc_dominance": 56.7,
   "key_signals": [
     {
       "source": "System_Health_Monitoring",
       "signal_type": "technical",
-      "description": "Pipeline integrity check failed: funding_rate, macd_cross, and complete moving average data all unavailable across entire candidate set\u2014below minimum viable threshold"
+      "description": "Only 2 of 8 required core data sources operational (25% vs 62.5% minimum threshold) - circuit breaker triggered per learned Rule #2"
+    },
+    {
+      "source": "funding_rate",
+      "signal_type": "technical",
+      "description": "Funding rate data completely unavailable across all 7 candidates - cannot assess trader positioning or liquidation risk"
+    },
+    {
+      "source": "Chart_Data_Integrity",
+      "signal_type": "technical",
+      "description": "Chart analysis showing 30-50% price discrepancies (UB: $0.167 vs $0.156, BTW: $0.080 vs $0.180) indicating stale or corrupted data feeds"
     },
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Extreme fear at 25/100 detected, but per Rule #3 this requires two independent confirmations (trader positioning + momentum) which are currently unavailable"
+      "description": "Extreme Fear at 25/100 visible but unusable per Rule #3 - requires confirmation from at least two independent technical signals which are currently unavailable"
     },
     {
-      "source": "Minimum_Data_Threshold",
+      "source": "volume_breakout",
       "signal_type": "technical",
-      "description": "Only 3 of 8 required core signals functional (price data, partial RSI, sentiment)\u2014Rule #2 mandates 5 minimum before predictions proceed"
-    },
-    {
-      "source": "Chart_Pattern_UB",
-      "signal_type": "technical",
-      "description": "Three White Soldiers pattern on UB with +1.1 bullish bias would normally be compelling, but cannot validate without funding rate to rule out overleveraged long trap"
-    },
-    {
-      "source": "BTC_Dominance",
-      "signal_type": "macro",
-      "description": "Bitcoin dominance at 56.6% creates hostile conditions for altcoin entries, reinforcing decision to wait for better data visibility before deployment"
+      "description": "Volume vs average data null for all candidates - cannot confirm breakout authenticity or detect distribution patterns"
     }
   ],
   "_mode": "HUNTING",
