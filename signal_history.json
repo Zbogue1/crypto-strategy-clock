@@ -38,43 +38,24 @@
     "alert": null
   },
   {
-    "ts": "2026-06-20T01:57:36.061044+00:00",
-    "coin": "BTC",
-    "price": 63523,
+    "ts": "2026-08-07T16:07:03.252805+00:00",
+    "coin": "ADA",
+    "price": 0.0,
     "signal": "HOLD",
-    "confidence": 0,
-    "score": null,
-    "fg": 23,
-    "btc_price": 63523,
-    "btc_dominance": 56.2,
-    "candidates": [
-      "HYPE",
-      "TRX",
-      "BTC",
-      "XLM",
-      "BNB"
-    ],
-    "alert": null
-  },
-  {
-    "ts": "2026-08-07T08:03:40.192684+00:00",
-    "coin": "BTC",
-    "price": 64264,
-    "signal": "HOLD",
-    "confidence": 0,
-    "score": 0.0,
+    "confidence": 35,
+    "score": -0.3,
     "fg": 29,
-    "btc_price": 64264,
-    "btc_dominance": 56.6,
+    "btc_price": 64925,
+    "btc_dominance": 56.8,
     "candidates": [
       "UB",
-      "BEAT",
-      "USDG",
+      "XAUT",
+      "FDUSD",
+      "PAXG",
+      "KAITO",
       "LDO",
-      "BONK",
-      "FET",
       "MON"
     ],
-    "alert": "CRITICAL SYSTEM FAILURE: 60-70% of market data feeds are non-functional or returning null values. I cannot make responsible trading recommendations without macro data, funding rates, complete technical indicators, and volume analysis. This is not market caution\u2014this is infrastructure breakdown. Do not trade based on this analysis."
+    "alert": "No actionable swing setups this cycle \u2014 all candidates lack confirmed reversals or carry excessive risk. Staying in hunting mode."
   }
 ]
