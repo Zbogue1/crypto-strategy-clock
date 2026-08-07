@@ -1742,4 +1742,6 @@ if __name__ == "__main__":
     start_discovery_poller()
     from fomo_exit import start_exit_monitor
     start_exit_monitor()
+    from fomo_scanner import start_scanner
+    start_scanner(callback=process_social_signal)
     app.run(host="0.0.0.0", port=port, debug=False)
