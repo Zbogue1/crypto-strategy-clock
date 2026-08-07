@@ -46,7 +46,7 @@ PARSE_BASE_URL = "https://api.parse.bot/scraper/fd0acc27-2d9b-49ca-b8ff-216a1b3c
 CHAIN          = "sol"
 
 # Discovery quality filters — copy-trade safe at $1K scale
-MIN_WIN_RATE        = 0.65   # 65%+
+MIN_WIN_RATE        = 0.60   # 60%+ (precision traders rarely top raw-PnL leaderboards)
 MAX_OPEN_POSITIONS  = 20     # not scatter-shot
 MAX_FAST_TX_RATIO   = 0.30   # not a bot
 MIN_TRADES_30D      = 20     # actually active
@@ -244,7 +244,7 @@ def discover_traders(period: str = "7d", limit: int = 50) -> list:
     data = _get("get_wallet_rankings", {
         "chain":   CHAIN,
         "period":  period,
-        "orderby": f"pnl_{period}",
+        "orderby": "winrate",
         "limit":   limit,
     })
     if not data:
