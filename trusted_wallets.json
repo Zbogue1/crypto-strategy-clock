@@ -317,6 +317,32 @@
       "demoted_at": null
     },
     {
+      "wallet": "8xL8S7P4QLdTGRquHas8NP5EVjp2qUGbmSgrkh97mvmq",
+      "alias": "0xAvast",
+      "fomo_profile": "@0xAvast",
+      "tier": "B",
+      "chain": "solana",
+      "alchemy_webhook_id": null,
+      "copy_trade": false,
+      "copy_trade_reason": "47.5% win rate, -$59,656 realized PnL — spray-and-pray whale. $1.97M unrealized portfolio, 32 open positions. Narrative watch only: loading MarsCoin, CASHCAT, tomochi, CLIPPY, SPCXB.",
+      "bankroll_usd": 1967694.85,
+      "notes": "128K followers. Co-founder Tomochi TROUPE KZ. Rank #7 on 24H leaderboard (+$125K). 2h avg hold, 198 trades. Negative realized PnL but massive unrealized bags. Watch his accumulation themes.",
+      "stats": {
+        "trades_followed": 0,
+        "wins": 0,
+        "losses": 0,
+        "win_rate_30d": null,
+        "win_rate_7d": null,
+        "avg_return": null,
+        "consecutive_losses": 0,
+        "last_trade_at": null,
+        "last_outcome": null
+      },
+      "added_at": "2026-08-07T00:00:00Z",
+      "promoted_at": null,
+      "demoted_at": null
+    },
+    {
       "wallet": "JDFDma1TMb1tWNFY1pruwCsHBybMdzwxveythZB2dcaG",
       "alias": "loganlim_x",
       "fomo_profile": "@loganlim",
