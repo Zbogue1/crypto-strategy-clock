@@ -1764,6 +1764,25 @@ if __name__ == "__main__":
     start_scanner(callback=process_social_signal)
 
     # ── Health-check endpoint ──────────────────────────────────────────────
+    @app.route("/gmgn-debug")
+    def gmgn_debug():
+        """Dump raw GMGN leaderboard response so we can see actual field names."""
+        import json as _json
+        from fomo_gmgn import _get, CHAIN
+        data = _get("get_wallet_rankings", {
+            "chain":   CHAIN,
+            "period":  "7d",
+            "orderby": "winrate",
+            "limit":   5,
+        })
+        if not data:
+            return _json.dumps({"error": "no data returned"}), 200, {"Content-Type": "application/json"}
+        rankings = data.get("rank") or []
+        # Return first 3 entries raw so we can see all field names
+        sample = rankings[:3] if rankings else []
+        result = {"total_returned": len(rankings), "sample": sample, "top_level_keys": list(data.keys())}
+        return _json.dumps(result, indent=2, default=str), 200, {"Content-Type": "application/json"}
+
     @app.route("/discover")
     def trigger_discovery():
         """Manually trigger GMGN trader discovery — runs both copy-trade and whale scans."""
