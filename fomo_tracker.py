@@ -1764,6 +1764,20 @@ if __name__ == "__main__":
     start_scanner(callback=process_social_signal)
 
     # ── Health-check endpoint ──────────────────────────────────────────────
+    @app.route("/discover")
+    def trigger_discovery():
+        """Manually trigger GMGN trader discovery — runs both copy-trade and whale scans."""
+        import threading as _threading
+        import json as _json
+        def _run():
+            try:
+                run_weekly_discovery()
+            except Exception as e:
+                log.error(f"Manual discovery error: {e}")
+        _threading.Thread(target=_run, daemon=True, name="manual-discovery").start()
+        send_telegram("🔍 <b>Manual discovery triggered</b>\nScanning GMGN leaderboard for copy-trade candidates and narrative whales...\nResults will appear here in a few minutes.")
+        return _json.dumps({"status": "discovery started — watch Telegram"}), 200, {"Content-Type": "application/json"}
+
     @app.route("/healthcheck")
     def healthcheck():
         import json as _json
