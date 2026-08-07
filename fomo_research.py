@@ -29,6 +29,7 @@ import anthropic
 import requests
 
 from fomo_chart import analyze_chart, chart_should_enter, chart_should_exit, ChartSignal
+from fomo_gmgn import get_token_security, get_smart_money_in_token, security_hard_veto
 
 log = logging.getLogger(__name__)
 
@@ -770,7 +771,29 @@ def research_token(
     except Exception as e:
         log.debug(f"Chart analysis error: {e}")
 
-    # ── 7. Final score + GO / NO-GO ───────────────────────────────────────────
+    # ── 7. GMGN security + smart money cross-check ─────────────────────────
+    try:
+        gmgn_sec = get_token_security(contract)
+        veto_reason = security_hard_veto(gmgn_sec)
+        if veto_reason:
+            v.go = False
+            v.skip_reason = veto_reason
+            return v
+        if gmgn_sec.get("renounced_mint"):
+            v.evidence.append("GMGN: mint renounced (safe)")
+            v.fundamentals_score = min(10, v.fundamentals_score + 1)
+        smart_money = get_smart_money_in_token(contract)
+        if len(smart_money) >= 2:
+            v.evidence.append(f"GMGN: {len(smart_money)} smart money wallets holding")
+            v.fundamentals_score = min(10, v.fundamentals_score + 2)
+            v.cross_wallet_hits = getattr(v, "cross_wallet_hits", 0) + len(smart_money)
+        elif len(smart_money) == 1:
+            v.evidence.append(f"GMGN: 1 smart money wallet holding")
+            v.fundamentals_score = min(10, v.fundamentals_score + 1)
+    except Exception as e:
+        log.debug(f"GMGN check error: {e}")
+
+    # ── 8. Final score + GO / NO-GO ───────────────────────────────────────────
     v.compute_final_score()
 
     # ── Hard vetos (ONLY these block execution) ──────────────────────────────
