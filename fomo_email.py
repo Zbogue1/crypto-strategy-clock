@@ -70,7 +70,15 @@ def _build_name_map() -> dict[str, dict]:
     """
     Build a case-insensitive map of Solscan display name -> wallet entry.
     Solscan uses whatever name you gave when adding the watchlist address.
-    We assume the name matches the alias field in trusted_wallets.json.
+
+    We register multiple key variants per alias so minor mismatches between
+    what the user typed on Solscan and our alias field don't silently break
+    signal detection. Variants added per alias:
+        - exact lowercase            e.g. "poorgoat_"
+        - trailing underscores stripped  e.g. "poorgoat"
+        - all underscores stripped   e.g. "poorgoat"
+        - all hyphens stripped       e.g. "dopaminefeen"
+        - fomo_profile handle (without @) e.g. "poorgoat_"
     """
     mapping: dict[str, dict] = {}
     try:
@@ -79,14 +87,36 @@ def _build_name_map() -> dict[str, dict]:
         for tier in ("tier_a", "tier_b"):
             for w in data.get(tier, []):
                 alias = w.get("alias", "")
-                if alias:
-                    mapping[alias.lower()] = {
-                        "alias":        alias,
-                        "tier":         w.get("tier", "B"),
-                        "chain":        w.get("chain", "solana"),
-                        "bankroll_usd": w.get("bankroll_usd"),
-                        "wallet":       w.get("wallet", ""),
-                    }
+                if not alias:
+                    continue
+                entry = {
+                    "alias":        alias,
+                    "tier":         w.get("tier", "B"),
+                    "chain":        w.get("chain", "solana"),
+                    "bankroll_usd": w.get("bankroll_usd"),
+                    "wallet":       w.get("wallet", ""),
+                }
+                # Build a set of lowercase key variants to register
+                keys = set()
+                base = alias.lower()
+                keys.add(base)                            # exact
+                keys.add(base.strip("_"))                 # trailing/leading underscores
+                keys.add(base.replace("_", ""))           # all underscores removed
+                keys.add(base.replace("-", ""))           # all hyphens removed
+                keys.add(base.replace("_", "").replace("-", ""))  # both removed
+
+                # Also register the fomo_profile handle (strip leading @)
+                profile = w.get("fomo_profile", "")
+                if profile:
+                    handle = profile.lstrip("@").lower()
+                    keys.add(handle)
+                    keys.add(handle.strip("_"))
+                    keys.add(handle.replace("_", ""))
+
+                for key in keys:
+                    if key and key not in mapping:
+                        mapping[key] = entry
+
     except Exception as e:
         log.warning(f"Email: could not load wallet map: {e}")
     return mapping

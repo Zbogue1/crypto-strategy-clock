@@ -171,7 +171,7 @@
       "bankroll_usd": null
     },
     {
-      "wallet": "FILL_IN_Binkieee_WALLET_ADDRESS",
+      "wallet": "6zMVSeukMUMKu5tDsECh4QMqrCRZqTbTvuawztFfwNti",
       "alias": "Binkieee",
       "fomo_profile": "@Binkieee",
       "tier": "B",
@@ -297,7 +297,7 @@
       "tier": "B",
       "chain": "solana",
       "alchemy_webhook_id": null,
-      "bankroll_usd": 1014893.45,
+      "bankroll_usd": 191642.30,
       "notes": "Rank #1 (24h). 116 trades, 16d 13h avg hold, joined May 2025. 3,639 followers. Bio: 'Crypto/Memes since 2017. Always Early.' Top trade: CURB +$921,002.82 (406.14%). Wallet not yet verified on-chain. | Wallet confirmed via on-chain cross-reference (Rudi buy tx match, May 6 2026).",
       "stats": {
         "trades_followed": 0,
@@ -321,7 +321,7 @@
       "tier": "B",
       "chain": "solana",
       "alchemy_webhook_id": null,
-      "bankroll_usd": 1365104.33,
+      "bankroll_usd": 1910727.59,
       "notes": "Rank #2 (24h). 433 trades, 1d 12h avg hold, joined Nov 2025. 50,713 followers. Top trade: +$1,257,064.58 (4,250.12%). Wallet not yet verified on-chain. | Wallet confirmed via on-chain cross-reference (Slop buy tx match, Jun 9 2026).",
       "stats": {
         "trades_followed": 0,
