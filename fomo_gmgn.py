@@ -41,7 +41,7 @@ import requests
 
 log = logging.getLogger(__name__)
 
-PARSE_API_KEY  = os.environ.get("PARSE_API_KEY", "").strip()
+PARSE_API_KEY  = (os.environ.get("PARSE_BOT_API_KEY") or os.environ.get("PARSE_API_KEY") or "").strip()
 PARSE_BASE_URL = "https://api.parse.bot/scraper/fd0acc27-2d9b-49ca-b8ff-216a1b3ce0e0"
 CHAIN          = "sol"
 
