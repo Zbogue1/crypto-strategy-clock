@@ -1615,6 +1615,16 @@ def process_social_signal(signal: dict):
         # Hard veto only — research score drives position size, not execution gate
         source_icon = "🐦" if source == "twitter" else "📢" if source == "telegram" else "📧"
 
+        # Narrative-watch wallets: inform but never execute
+        if not signal.get("copy_trade", True):
+            ct_reason = signal.get("copy_trade_reason", "narrative watch only")
+            send_telegram(
+                f"👁️ <b>{alias} {action} {token_data['symbol']}</b> {source_icon}\n"
+                f"<i>Narrative watch — not copy-trading ({ct_reason[:100]})</i>\n"
+                + verdict.to_telegram_summary()
+            )
+            return
+
         if not verdict.go:
             # Genuine rug guard triggered — do not execute
             send_telegram(

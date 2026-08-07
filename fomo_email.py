@@ -95,6 +95,8 @@ def _build_name_map() -> dict[str, dict]:
                     "chain":        w.get("chain", "solana"),
                     "bankroll_usd": w.get("bankroll_usd"),
                     "wallet":       w.get("wallet", ""),
+                    "copy_trade":   w.get("copy_trade", True),
+                    "copy_trade_reason": w.get("copy_trade_reason", ""),
                 }
                 # Build a set of lowercase key variants to register
                 keys = set()
@@ -250,6 +252,8 @@ def _parse_solscan_email(subject: str, body: str, name_map: dict) -> Optional[di
         "tier":             wallet_info["tier"],
         "chain":            wallet_info["chain"],
         "bankroll_usd":     wallet_info["bankroll_usd"],
+        "copy_trade":       wallet_info.get("copy_trade", True),
+        "copy_trade_reason": wallet_info.get("copy_trade_reason", ""),
         "action":           primary["direction"],
         "token_symbol":     None,   # contract only — research_token will resolve symbol
         "contract_address": primary["contract"],

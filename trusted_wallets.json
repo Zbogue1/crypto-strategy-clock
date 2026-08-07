@@ -298,7 +298,9 @@
       "chain": "solana",
       "alchemy_webhook_id": null,
       "bankroll_usd": 191642.30,
-      "notes": "Rank #1 (24h). 116 trades, 16d 13h avg hold, joined May 2025. 3,639 followers. Bio: 'Crypto/Memes since 2017. Always Early.' Top trade: CURB +$921,002.82 (406.14%). Wallet not yet verified on-chain. | Wallet confirmed via on-chain cross-reference (Rudi buy tx match, May 6 2026).",
+      "copy_trade": false,
+      "copy_trade_reason": "Long avg hold (16d), low win rate — narrative watch only. Use his entries to identify accumulating narratives, not to copy-trade directly at $1K scale.",
+      "notes": "Rank #1 (24h). 116 trades, 16d 13h avg hold, joined May 2025. 3,639 followers. Bio: 'Crypto/Memes since 2017. Always Early.' Top trade: CURB +$921,002.82 (406.14%). Wallet confirmed via on-chain cross-reference (Rudi buy tx match, May 6 2026).",
       "stats": {
         "trades_followed": 0,
         "wins": 0,
@@ -322,7 +324,9 @@
       "chain": "solana",
       "alchemy_webhook_id": null,
       "bankroll_usd": 1910727.59,
-      "notes": "Rank #2 (24h). 433 trades, 1d 12h avg hold, joined Nov 2025. 50,713 followers. Top trade: +$1,257,064.58 (4,250.12%). Wallet not yet verified on-chain. | Wallet confirmed via on-chain cross-reference (Slop buy tx match, Jun 9 2026).",
+      "copy_trade": false,
+      "copy_trade_reason": "Spray-and-pray strategy — 79 open positions, 40.7% win rate, 1,992 trades. Works at $1.9M scale, brutal at $1K. Watch for narrative themes (e.g. CATE accumulation) but do not copy entries directly.",
+      "notes": "Rank #1 (7D leaderboard). 868 trades, 1d 15h avg hold, joined Nov 2025. 252K followers. Top trades: CATE +$953K (+1399%), ANSEM +$640K. Wallet confirmed via on-chain cross-reference (Slop buy tx match, Jun 9 2026).",
       "stats": {
         "trades_followed": 0,
         "wins": 0,
