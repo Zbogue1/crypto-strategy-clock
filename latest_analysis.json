@@ -1,62 +1,62 @@
 {
-  "timestamp": "2026-08-06T23:09:11.940306+00:00",
+  "timestamp": "2026-08-07T00:09:11.640341+00:00",
   "selected_coin": "BTC",
   "selected_coin_name": "Bitcoin",
-  "selected_coin_price": 64299,
+  "selected_coin_price": 64345,
   "confidence": 0,
-  "layman_headline": "Market conditions too unclear to make responsible predictions\u2014my systems are handicapped by missing critical data",
-  "layman_explanation": "I'm required to be honest when I can't see clearly. Right now I'm missing fundamental data sources that would normally guide swing trade decisions: funding rates (which show if markets are overleveraged), volume breakout confirmations, and reliable on-chain metrics. The extreme fear reading (25/100) would normally be interesting, but my validated rules show this signal has only 50/50 accuracy without supporting data on trader positioning and price momentum\u2014both of which I currently lack. Making a directional bet without these inputs would be pure guessing.",
-  "layman_action": "Wait for better market visibility before deploying capital into new positions",
-  "expert_reasoning": "This situation directly triggers my learned rule: 'I need at least 5 of my 8 core data sources working before making any prediction\u2014anything less and I'm just guessing.' Current data availability: (1) price momentum indicators = partial (RSI available but MACD missing), (2) trader positioning costs = MISSING (no funding rates), (3) network mining activity = MISSING, (4) economic conditions = MISSING (empty macro object), (5) market sentiment = available (Fear & Greed), (6) volume analysis = MISSING (volume_vs_avg null across all candidates), (7) on-chain metrics = MISSING, (8) chart patterns = available. Only 2.5 of 8 sources functional. My accumulated intelligence explicitly warns: 'When my data providers fail, I need backup sources already configured to kick in automatically rather than continuing with missing information.' The extreme fear environment (25/100) combined with high BTC dominance (56.6%) typically signals altcoin weakness, but without funding rates to confirm whether fear represents capitulation or rational concern, any directional call would violate my core learning about sentiment-only predictions being coin flips.",
+  "layman_headline": "System failure: Missing critical data required for safe trading decisions",
+  "layman_explanation": "My data collection systems are experiencing major failures right now. I'm missing RSI readings, funding rates, MACD signals, volume analysis, and detailed chart patterns on most candidates. The few technical indicators I can see are contradictory\u2014some coins show oversold RSI but strongly bearish chart structures. Without complete data to confirm whether these are genuine reversal setups or falling knives, making a trade would be pure gambling.",
+  "layman_action": "Do not trade until my systems are fully operational. Wait for the next analysis cycle when data pipelines are restored.",
+  "expert_reasoning": "ABORTING PREDICTION: My minimum data quality threshold requires 5 of 8 core signal types operational. Current status: RSI (partial - only 5/7 coins), funding rates (0% coverage), MACD (0% coverage), volume analysis (0% coverage), moving average crosses (incomplete), on-chain metrics (missing), news sentiment (present but unquantified), chart patterns (incomplete). This represents approximately 25% data availability across critical technical signals. Rule #2 from my validated intelligence explicitly prohibits predictions when fewer than 5 core data sources are working. MON shows oversold RSI (26) but has strongly bearish chart bias (-1.4) and bearish engulfing pattern\u2014without funding rate data to confirm if this represents capitulation or justified selling, I cannot distinguish reversal from continuation. LDO similarly shows oversold RSI (34) with sharp -20.9% weekly drop, but chart bias is -0.7 bearish and price is below all MAs\u2014this could be either a bounce setup or a collapsing project, and I lack the positioning/volume data to tell which. Rule #10 requires 'NO PREDICTION POSSIBLE' output with mandatory accuracy metric exclusion when signal inputs are eliminated by system errors.",
   "risk_factors": [
-    "Making predictions with 69% of core data sources unavailable violates minimum data threshold requirements established from prior system failures",
-    "Extreme fear readings without trader positioning confirmation have shown 50/50 directional accuracy in historical analysis",
-    "High BTC dominance (56.6%) during extreme fear typically pressures altcoins, but this pattern requires volume and funding rate confirmation which are currently unavailable"
+    "Data pipeline failures have eliminated 75% of technical signal coverage, making any directional call equivalent to a coin flip",
+    "High BTC dominance (56.6%) creates hostile environment for altcoin trades even if technical setups were clear",
+    "Fear gauge at 29 without supporting trader positioning data provides no actionable directional intelligence per Rule #3"
   ],
   "watch_list": [
-    "Monitor for restoration of funding rate data feeds\u2014critical for assessing market leverage and short squeeze potential",
-    "Track whether extreme fear (25/100) persists or intensifies\u2014sustained capitulation could signal bottom formation but requires volume confirmation",
-    "Watch for data pipeline restoration across volume analysis and on-chain metrics before resuming active position hunting"
+    "Restore authentication and API connections to funding rate providers, MACD calculators, and volume analysis systems",
+    "Implement backup data sources for critical technical indicators before next prediction cycle",
+    "Monitor whether current oversold RSI readings (MON at 26, LDO at 34) develop into reversal patterns once full data visibility returns"
   ],
-  "market_context": "Extreme fear environment (25/100) with high Bitcoin dominance (56.6%) typically creates altcoin weakness, but critical data infrastructure failures prevent confident directional assessment of whether this represents capitulation opportunity or justified concern.",
-  "context_banner": "System integrity failure: insufficient data quality to meet minimum prediction standards\u2014no recommendation possible.",
-  "btc_price": 64299,
+  "market_context": "BTC stable at $64,345 (-0.4% daily) with high dominance creating altcoin headwinds. Market fear (29/100) improving from yesterday (25) but lacks confirming signals for directional bias.",
+  "context_banner": "CIRCUIT BREAKER TRIGGERED: Insufficient data quality for evidence-based trading decisions.",
+  "btc_price": 64345,
   "fear_greed": {
-    "current": 25,
-    "label": "Extreme Fear",
-    "yesterday": 27,
-    "week_avg": 26.3,
-    "trend": "flat"
+    "current": 29,
+    "label": "Fear",
+    "yesterday": 25,
+    "week_avg": 26.9,
+    "trend": "improving"
   },
   "btc_dominance": 56.6,
   "key_signals": [
     {
+      "source": "System_Health_Monitoring",
+      "signal_type": "technical",
+      "description": "Critical data failures: funding rates (0% coverage), MACD (0%), volume analysis (0%), complete RSI coverage (71%), moving averages (partial) - below minimum threshold"
+    },
+    {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Extreme fear at 25/100 detected, but historical analysis shows this signal requires confirmation from trader positioning (funding rates) and momentum data\u2014both currently unavailable\u2014making it unreliable in isolation"
-    },
-    {
-      "source": "funding_rate",
-      "signal_type": "technical",
-      "description": "Funding rate data completely missing across all candidates\u2014eliminates ability to assess whether market is overleveraged long (vulnerable to cascade) or crowded short (squeeze potential)"
-    },
-    {
-      "source": "volume_breakout",
-      "signal_type": "technical",
-      "description": "Volume vs average data null for all swing candidates\u2014cannot confirm whether price moves are supported by genuine accumulation or just low-liquidity noise"
+      "description": "Market fear at 29/100 improving from 25 yesterday, but Rule #3 prohibits using this for direction without at least two confirming signal types from positioning/momentum data"
     },
     {
       "source": "RSI",
       "signal_type": "technical",
-      "description": "RSI data available but shows mixed signals (UB=56, BEAT=58 overbought, MON=34 oversold, FET=37 oversold)\u2014without volume and funding confirmation, these technical readings lack actionable context"
+      "description": "MON (26) and LDO (34) show oversold readings, but without funding rates or volume confirmation, cannot distinguish capitulation reversal from justified continuation selling"
     },
     {
-      "source": "Messari",
-      "signal_type": "onchain",
-      "description": "Messari on-chain metrics completely empty across all candidates\u2014missing critical network health, token velocity, and holder behavior data that would normally validate or invalidate setups"
+      "source": "BTC Dominance",
+      "signal_type": "macro",
+      "description": "Bitcoin dominance at 56.6% indicates capital concentrating in BTC rather than flowing to alts - structurally bearish for altcoin swing trades regardless of individual technicals"
+    },
+    {
+      "source": "chart_analysis",
+      "signal_type": "technical",
+      "description": "Contradictory signals: oversold RSI candidates (MON, LDO) both show strongly bearish chart structures (-1.4, -0.7) with bearish engulfing patterns - need volume/positioning data to resolve conflict"
     }
   ],
   "_mode": "HUNTING",
-  "exit_target": null,
-  "stop_loss": null
+  "exit_target": 0,
+  "stop_loss": 0
 }
