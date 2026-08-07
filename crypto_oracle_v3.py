@@ -68,12 +68,10 @@ except ImportError:
 try:
     from paper_portfolio import (
         execute_buy, execute_sell,
-        check_stop_loss, check_take_profit, check_time_exit,
-        check_partial_take, check_drawdown_halt,
+        check_stop_loss, check_take_profit,
         get_portfolio_value, get_portfolio_summary_lines,
         build_portfolio_html, reset_portfolio,
-        load_portfolio, MAX_POSITIONS,
-        update_btc_benchmark, update_fear_counter, get_graduation_status,
+        load_portfolio, MAX_POSITIONS
     )
     HAS_PAPER = True
 except ImportError:
@@ -91,36 +89,6 @@ except ImportError:
     def log_trade_exit(*a, **kw): pass
     def build_credibility_context(): return ""
 
-try:
-    from fomo_portfolio import (
-        check_fomo_auto_exits,
-        get_fomo_stats,
-        get_fomo_graduation_status,
-        get_pending_postmortems,
-        run_fomo_postmortem,
-        run_fomo_ai_postmortem,
-    )
-    from fomo_tracker import sync_alchemy_webhooks, sync_helius_webhooks, check_wallet_promotions
-    HAS_FOMO = True
-except ImportError:
-    HAS_FOMO = False
-    def check_fomo_auto_exits(*a, **kw): return None
-    def get_fomo_stats(): return {}
-    def get_fomo_graduation_status(): return {}
-    def get_pending_postmortems(): return []
-    def run_fomo_postmortem(*a, **kw): return None
-    def run_fomo_ai_postmortem(*a, **kw): return None
-    def sync_alchemy_webhooks(*a, **kw): pass
-    def sync_helius_webhooks(*a, **kw): pass
-    def check_wallet_promotions(): return []
-
-try:
-    from chart_analysis import analyze_chart
-    HAS_CHART_ANALYSIS = True
-except ImportError:
-    HAS_CHART_ANALYSIS = False
-    def analyze_chart(ohlc, ticker=""): return {}
-
 # ─── CONFIG ──────────────────────────────────────────────────────────────────
 ANTHROPIC_API_KEY   = os.environ.get("ANTHROPIC_API_KEY", "")
 FRED_API_KEY        = os.environ.get("FRED_API_KEY", "")
@@ -128,11 +96,11 @@ ALERT_EMAIL         = os.environ.get("ALERT_EMAIL", "")
 ALERT_EMAIL_PASS    = os.environ.get("ALERT_EMAIL_PASSWORD", "")
 ALERT_EMAIL_TO      = os.environ.get("ALERT_EMAIL_TO", ALERT_EMAIL)
 DISCORD_WEBHOOK_URL = os.environ.get("DISCORD_WEBHOOK_URL", "")
-GITHUB_TOKEN        = os.environ.get("GITHUB_TOKEN", "").strip()
+GITHUB_TOKEN        = os.environ.get("GITHUB_TOKEN", "")
 GITHUB_REPO         = "Zbogue1/crypto-strategy-clock"
 GITHUB_DATA_BRANCH  = "data"   # separate branch for persistent data — never touched by code deploys
 
-MODEL      = "claude-sonnet-4-5"
+MODEL      = "claude-opus-4-6"
 LOG_FILE   = "crypto_history.jsonl"
 HTML_FILE  = "crypto_dashboard.html"
 
@@ -146,7 +114,7 @@ NEWS_SOURCES = [
     ("https://cryptoslate.com/feed/",                     "CryptoSlate"),
 ]
 
-# REDDIT_SUBS removed — Reddit API restrictions prevent reliable data retrieval
+REDDIT_SUBS = ["CryptoCurrency", "Bitcoin", "ethereum", "solana", "altcoin"]
 
 HEADERS = {"User-Agent": "CryptoOracle/3.0 (swing trading research; non-commercial)"}
 
@@ -235,7 +203,7 @@ class MarketSnapshot:
     btc_price:      float           = 0.0
     btc_dominance:  float           = 0.0
     news:           list            = field(default_factory=list)   # all sources
-    reddit_posts:   list            = field(default_factory=list)   # unused — Reddit API restricted
+    reddit_posts:   list            = field(default_factory=list)
     all_signals:    List[Signal]    = field(default_factory=list)   # aggregate
 
 
@@ -318,14 +286,8 @@ def select_candidates(snap: MarketSnapshot) -> List[CoinScan]:
     """
     scored = []
     for c in snap.top_coins:
-        if c.ticker in (
-            # Stablecoins
-            "USDT", "USDC", "BUSD", "DAI", "TUSD", "USDP", "FDUSD", "RLUSD",
-            "USDD", "FRAX", "LUSD", "CRVUSD", "PYUSD", "GUSD", "USDJ",
-            # Tokenized gold / synthetic USD (not swing tradable)
-            "XAUT", "PAXG", "XGOLD", "APXUSD", "SUSD", "EURC", "EURS",
-        ):
-            continue  # skip stablecoins and gold tokens
+        if c.ticker in ("USDT", "USDC", "BUSD", "DAI", "TUSD", "USDP"):
+            continue  # skip stablecoins
 
         # Mean-reversion play: significant 7d dip
         dip_score = max(0, -c.change_7d / 5)
@@ -361,68 +323,20 @@ def select_candidates(snap: MarketSnapshot) -> List[CoinScan]:
     return candidates
 
 
-# ─── PRICE VALIDATION ────────────────────────────────────────────────────────
-
-def get_coinpaprika_price(coin_ticker: str, coin_id: str) -> float:
-    """
-    Fetch price from CoinPaprika as a secondary source to cross-validate CoinGecko.
-    Returns price float or None if unavailable.
-    """
-    # Try common ID pattern: {ticker_lower}-{coingecko_id}
-    paprika_id = f"{coin_ticker.lower()}-{coin_id}"
-    try:
-        r = requests.get(
-            f"https://api.coinpaprika.com/v1/tickers/{paprika_id}",
-            timeout=8
-        )
-        if r.status_code == 200:
-            return float(r.json()["quotes"]["USD"]["price"])
-    except Exception:
-        pass
-
-    # Fallback: search by symbol and pick the matching result
-    try:
-        r = requests.get(
-            f"https://api.coinpaprika.com/v1/search?q={coin_ticker}&c=currencies&limit=5",
-            timeout=8
-        )
-        if r.status_code == 200:
-            for result in r.json().get("currencies", []):
-                if result.get("symbol", "").upper() == coin_ticker.upper():
-                    r2 = requests.get(
-                        f"https://api.coinpaprika.com/v1/tickers/{result['id']}",
-                        timeout=8
-                    )
-                    if r2.status_code == 200:
-                        return float(r2.json()["quotes"]["USD"]["price"])
-    except Exception:
-        pass
-
-    return None
-
-
 # ─── PHASE 2: DEEP DIVE ON CANDIDATES ────────────────────────────────────────
 
 def collect_coin_ohlc(coin: CoinScan):
-    """CoinGecko OHLC for one coin — 90 days of daily candles. Retries once on 429."""
-    for attempt in range(2):
-        try:
-            r = requests.get(
-                f"https://api.coingecko.com/api/v3/coins/{coin.id}/ohlc",
-                params={"vs_currency": "usd", "days": 90},
-                timeout=12, headers=HEADERS)
-            if r.status_code == 429:
-                wait = 20 if attempt == 0 else 40
-                log.warning(f"OHLC {coin.ticker}: 429 — waiting {wait}s before retry")
-                time.sleep(wait)
-                continue
-            r.raise_for_status()
-            coin.ohlc = r.json()
-            break
-        except Exception as e:
-            log.warning(f"OHLC {coin.ticker}: {e}")
-            break
-    time.sleep(2)  # brief gap after each OHLC regardless of outcome
+    """CoinGecko OHLC for one coin — 90 days of daily candles."""
+    try:
+        r = requests.get(
+            f"https://api.coingecko.com/api/v3/coins/{coin.id}/ohlc",
+            params={"vs_currency": "usd", "days": 90},
+            timeout=12, headers=HEADERS)
+        r.raise_for_status()
+        coin.ohlc = r.json()
+        time.sleep(1.3)  # respect rate limit
+    except Exception as e:
+        log.warning(f"OHLC {coin.ticker}: {e}")
 
 
 def collect_messari_metrics(coin: CoinScan):
@@ -518,13 +432,6 @@ def build_technicals_for_coin(coin: CoinScan):
     if t.get("sma_200"): t["above_sma200"] = price > t["sma_200"]
 
     coin.technicals = t
-
-    # ── Chart pattern analysis (full technical read on the chart) ────────────
-    if HAS_CHART_ANALYSIS and coin.ohlc:
-        try:
-            coin.technicals["chart_analysis"] = analyze_chart(coin.ohlc, coin.ticker)
-        except Exception as e:
-            log.warning(f"Chart analysis {coin.ticker}: {e}")
 
 
 def build_signals_for_coin(coin: CoinScan, snap: MarketSnapshot) -> List[Signal]:
@@ -630,43 +537,6 @@ def build_signals_for_coin(coin: CoinScan, snap: MarketSnapshot) -> List[Signal]
                  "TVL declining = capital leaving the ecosystem. Bearish." if v < 0 else "TVL stable."),
                 "onchain"))
 
-    # ── FUNDING RATE ──────────────────────────────────────────────────────────
-    funding_rates = snap.macro.get("funding_rates", {})
-    fr = funding_rates.get(coin.ticker)
-    if fr:
-        rate = fr["rate_pct"]
-        signal_map = {
-            "bullish":          1.5,
-            "slightly_bullish": 0.5,
-            "neutral":          0.0,
-            "slightly_bearish": -0.5,
-            "bearish":         -1.5,
-        }
-        v = signal_map.get(fr["signal"], 0)
-        sigs.append(Signal(
-            "Funding Rate (Binance)",
-            v, 0.9, "Binance Futures",
-            (f"{coin.ticker} funding rate is {rate:+.4f}%/8h ({fr['bias'].replace('_', ' ')}). " +
-             ("Shorts are crowded — squeeze potential if price rises." if v > 0 else
-              "Longs are heavily leveraged — flush risk if price drops." if v < -1 else
-              "Slightly elevated longs — watch for long liquidations." if v < 0 else
-              "Funding is neutral — no extreme leverage bias.")),
-            "macro"
-        ))
-
-    # ── CHART PATTERN BIAS ────────────────────────────────────────────────────
-    chart = t.get("chart_analysis", {})
-    if chart and "signal_bias" in chart:
-        bias = chart["signal_bias"]
-        if abs(bias) >= 0.3:
-            v = max(-2.0, min(2.0, bias))
-            sigs.append(Signal(
-                "Chart Pattern Analysis",
-                v, 0.85, "OHLC",
-                chart.get("summary", f"Chart bias: {bias:+.2f}").split("\n")[0],
-                "momentum"
-            ))
-
     coin.signals = sigs
     return sigs
 
@@ -770,81 +640,31 @@ def collect_news(snap: MarketSnapshot):
     log.info(f"News: {len(snap.news)} headlines from {len(NEWS_SOURCES)} sources")
 
 
-# Reddit removed — API restrictions prevent reliable data retrieval.
-
-
-# ─── FUNDING RATES (BINANCE FUTURES) ─────────────────────────────────────────
-
-def collect_funding_rates(snap: MarketSnapshot):
-    """
-    Fetch perpetual futures funding rates from Bybit (no API key, US-accessible).
-    Funding rate tells us how overleveraged the market is:
-      > +0.05% per 8h = crowded longs = correction risk
-      < -0.05% per 8h = crowded shorts = short squeeze risk
-    """
-    # Map our coin tickers to Bybit linear perpetual symbols
-    symbols = {
-        "BTC": "BTCUSDT", "ETH": "ETHUSDT", "SOL": "SOLUSDT",
-        "BNB": "BNBUSDT", "XRP": "XRPUSDT", "ADA": "ADAUSDT",
-        "AVAX": "AVAXUSDT", "DOGE": "DOGEUSDT", "DOT": "DOTUSDT",
-        "LINK": "LINKUSDT", "MATIC": "MATICUSDT", "ATOM": "ATOMUSDT",
-        "UNI": "UNIUSDT", "LTC": "LTCUSDT", "NEAR": "NEARUSDT",
-        "INJ": "INJUSDT", "ENA": "ENAUSDT", "WLD": "WLDUSDT",
-    }
-    rates = {}
-    try:
-        # Bybit v5 tickers — returns funding rate for all linear perpetuals
-        # Use neutral headers — Bybit blocks custom User-Agent strings
-        bybit_headers = {"User-Agent": "Mozilla/5.0 (compatible; python-requests)"}
-        r = requests.get(
-            "https://api.bybit.com/v5/market/tickers",
-            params={"category": "linear"},
-            timeout=10, headers=bybit_headers
-        )
-        if r.status_code != 200:
-            # 403/451 = geo-blocked (Railway US servers). Skip silently.
-            log.debug(f"Funding rates unavailable (HTTP {r.status_code}) — skipping")
-            return
-        data = r.json()
-        items = data.get("result", {}).get("list", [])
-        log.info(f"Funding rates: Bybit returned {len(items)} tickers")
-        for item in items:
-            sym = item.get("symbol", "")
-            rate = item.get("fundingRate")
-            if not rate and rate != 0:
-                continue
-            try:
-                rate_pct = round(float(rate) * 100, 4)
-            except (ValueError, TypeError):
-                continue
-            for ticker, bsym in symbols.items():
-                if bsym == sym:
-                    rates[ticker] = {
-                        "rate_pct":   rate_pct,
-                        "annualized": round(rate_pct * 3 * 365, 1),
-                        "bias": (
-                            "heavily_long"  if rate_pct >  0.05 else
-                            "lightly_long"  if rate_pct >  0.01 else
-                            "neutral"       if abs(rate_pct) <= 0.01 else
-                            "lightly_short" if rate_pct > -0.05 else
-                            "heavily_short"
-                        ),
-                        "signal": (
-                            "bearish"          if rate_pct >  0.05 else
-                            "slightly_bearish" if rate_pct >  0.01 else
-                            "neutral"          if abs(rate_pct) <= 0.01 else
-                            "slightly_bullish" if rate_pct > -0.05 else
-                            "bullish"
-                        ),
-                    }
-        if rates:
-            snap.macro["funding_rates"] = rates
-            btc_rate = rates.get("BTC", {}).get("rate_pct", 0)
-            log.info(f"Funding rates: {len(rates)} coins. BTC: {btc_rate:+.4f}%/8h")
-        else:
-            log.warning("Funding rates: no matching tickers from Bybit")
-    except Exception as e:
-        log.warning(f"Funding rates: {e}")
+def collect_reddit(snap: MarketSnapshot):
+    """Reddit hot posts from key crypto subreddits. No auth needed."""
+    posts = []
+    for sub in REDDIT_SUBS[:3]:  # limit to 3 to stay in rate limits
+        try:
+            r = requests.get(
+                f"https://www.reddit.com/r/{sub}/hot.json",
+                params={"limit": 10},
+                timeout=10, headers=HEADERS)
+            if r.status_code == 200:
+                data = r.json().get("data", {}).get("children", [])
+                for post in data[:5]:
+                    p = post["data"]
+                    posts.append({
+                        "title":  p.get("title", ""),
+                        "score":  p.get("score", 0),
+                        "sub":    sub,
+                        "comments": p.get("num_comments", 0),
+                        "upvote_ratio": p.get("upvote_ratio", 0),
+                    })
+            time.sleep(0.8)
+        except Exception as e:
+            log.warning(f"Reddit r/{sub}: {e}")
+    snap.reddit_posts = posts
+    log.info(f"Reddit: {len(posts)} posts from {len(REDDIT_SUBS[:3])} subreddits")
 
 
 # ─── AGGREGATE SIGNAL SCORE ──────────────────────────────────────────────────
@@ -886,11 +706,6 @@ def ask_claude(snap: MarketSnapshot) -> dict:
     candidate_summaries = []
     for c in snap.candidates:
         t = c.technicals
-        # Chart analysis summary for Claude
-        chart = t.get("chart_analysis", {})
-        chart_summary = chart.get("summary", "") if chart else ""
-        chart_bias    = chart.get("signal_bias", 0) if chart else 0
-
         candidate_summaries.append({
             "ticker":        c.ticker,
             "name":          c.name,
@@ -905,9 +720,6 @@ def ask_claude(snap: MarketSnapshot) -> dict:
             "above_sma200":  t.get("above_sma200"),
             "ath_change_pct": c.ath_change_pct,
             "messari":       c.messari,
-            "chart_analysis": chart_summary,
-            "chart_bias_score": chart_bias,
-            "funding_rate":  snap.macro.get("funding_rates", {}).get(c.ticker),
             "signals":       [{"name": s.name, "score": s.value, "text": s.plain_english} for s in c.signals],
         })
 
@@ -915,16 +727,16 @@ def ask_claude(snap: MarketSnapshot) -> dict:
     top_overview = [
         {"ticker": c.ticker, "change_24h": c.change_24h, "change_7d": c.change_7d,
          "volume_m": round(c.volume_24h / 1e6, 1)}
-        for c in snap.top_coins if c.ticker not in (
-            "USDT", "USDC", "BUSD", "DAI", "TUSD", "USDP", "FDUSD", "RLUSD",
-            "USDD", "FRAX", "XAUT", "PAXG", "PYUSD", "GUSD",
-        )
+        for c in snap.top_coins if c.ticker not in ("USDT", "USDC", "BUSD", "DAI")
     ][:15]
 
     # News by source
     news_by_source = {}
     for h in snap.news[:20]:
         news_by_source.setdefault(h["source"], []).append(h["title"])
+
+    # Reddit trending
+    reddit_titles = [p["title"] for p in sorted(snap.reddit_posts, key=lambda x: x["score"], reverse=True)[:10]]
 
     # DeFi TVL highlights
     defi_highlights = {
@@ -941,6 +753,7 @@ def ask_claude(snap: MarketSnapshot) -> dict:
         "top_20_overview":     top_overview,
         "swing_candidates":    candidate_summaries,
         "news":                news_by_source,
+        "reddit_trending":     reddit_titles,
         "defi_chain_tvl":      defi_highlights,
         "investment_position": pos_ctx,
     }
@@ -963,23 +776,10 @@ SWING TRADING PRINCIPLES:
 - Timing: news catalysts and community momentum drive short-term price action
 - Do not duplicate coins already held. Do not open a position without a clear stop-loss.
 
-CHART READING GUIDANCE (chart_analysis field in each candidate):
-- candlestick_patterns: single/multi-candle formations. Hammer/Morning Star = bullish reversal. Shooting Star/Evening Star = bearish reversal. Engulfing patterns = momentum shift.
-- chart_patterns: Double Bottom / Inverse H&S = strong bullish reversal. Double Top / H&S = strong bearish reversal. Bull Flag = bullish continuation. Triangles signal imminent breakout.
-- support_resistance: trade entries near support, exits near resistance. risk_reward > 2 is ideal.
-- moving_averages: golden cross = major buy signal. Price above all 3 MAs = bull structure. Death cross = avoid or short.
-- volume_analysis: OBV divergence catches hidden accumulation/distribution. Volume-confirmed breakouts are highest quality.
-- chart_bias_score: -2.0 (strongly bearish chart) to +2.0 (strongly bullish chart). Weight heavily in decisions.
-
-FUNDING RATE GUIDANCE (funding_rate field):
-- > +0.05%/8h = market is overleveraged long. Longs will be liquidated on any dip. SELL signal / avoid buying.
-- -0.05% to +0.05% = neutral. Safe to trade based on other signals.
-- < -0.05%/8h = crowded shorts. Short squeeze could ignite a rapid rally. Adds to bullish case.
-
 For any new entry candidate, analyze:
-1. Chart patterns and technical setup (RSI, MACD, candlestick patterns, support/resistance)
-2. Funding rate (is the market overleveraged in one direction?)
-3. News catalyst (what's driving momentum or creating opportunity)
+1. Technical setup (RSI, MACD, volume, trend)
+2. News catalyst (what's driving momentum or creating opportunity)
+3. Community interest (Reddit buzz, sentiment direction)
 4. DeFi health if applicable (TVL trends)
 5. Market context (BTC dominance, overall Fear & Greed)
 
@@ -1074,7 +874,7 @@ def display_layman(analysis: dict, snap: MarketSnapshot, perf: dict = None):
     conf         = analysis.get("confidence", 0)
     coin_ticker  = analysis.get("selected_coin", "?")
     coin_name    = analysis.get("selected_coin_name", "")
-    coin_price   = analysis.get("selected_coin_price") or snap.btc_price or 0
+    coin_price   = analysis.get("selected_coin_price", snap.btc_price)
     color, label, _ = SIGNAL_STYLES.get(display_sig, SIGNAL_STYLES["HOLD"])
 
     W      = 60
@@ -1300,7 +1100,7 @@ def generate_html_report(analysis: dict, snap: MarketSnapshot, perf: dict = None
     conf         = analysis.get("confidence", 0)
     coin_ticker  = analysis.get("selected_coin", "BTC")
     coin_name    = analysis.get("selected_coin_name", "Bitcoin")
-    coin_price   = analysis.get("selected_coin_price") or snap.btc_price or 0
+    coin_price   = analysis.get("selected_coin_price", snap.btc_price)
 
     sig_hex = {"BUY": "#00c853", "HOLD": "#ff9800", "WAIT": "#f44336",
                "SELL": "#ef5350", "SELL NOW": "#ff1744",
@@ -1355,8 +1155,16 @@ def generate_html_report(analysis: dict, snap: MarketSnapshot, perf: dict = None
         items = "".join(f"<li>{t}</li>" for t in titles[:3])
         news_html += f'<div class="news-source"><div class="news-src-lbl">{source}</div><ul>{items}</ul></div>'
 
-    # Paper portfolio card — pass full price map so BTC benchmark renders correctly
-    portfolio_html = build_portfolio_html({c.ticker: c.price for c in snap.top_coins}) if HAS_PAPER else ""
+    # Reddit trending
+    reddit_html = ""
+    if snap.reddit_posts:
+        top_posts = sorted(snap.reddit_posts, key=lambda x: x["score"], reverse=True)[:5]
+        reddit_items = "".join(f'<li>{p["title"]} <span class="hl-src">r/{p["sub"]} · {p["score"]} pts</span></li>'
+                               for p in top_posts)
+        reddit_html = f'<div class="card"><div class="card-label">Reddit Trending</div><ul>{reddit_items}</ul></div>'
+
+    # Paper portfolio card
+    portfolio_html = build_portfolio_html(coin_price) if HAS_PAPER else ""
 
     # Performance/learning section
     perf_html = _build_performance_html(perf) if perf and perf.get("evaluated", 0) >= 3 else ""
@@ -1463,6 +1271,8 @@ body{{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,sans-ser
   {risk_html}
   {'<div class="card"><div class="card-label">Watch Next 48 Hours</div><ul>' + watch_items + '</ul></div>' if watch_items else ""}
   {'<div class="card"><div class="card-label">Latest News</div>' + news_html + '</div>' if news_html else ""}
+  {reddit_html}
+
   <div class="footer">Crypto Strategy Clock · Powered by Claude AI · Not financial advice</div>
 </div>
 </body>
@@ -1599,7 +1409,7 @@ def send_alerts(analysis: dict, snap: MarketSnapshot):
     sig   = analysis.get("signal", "HOLD")
     alert = analysis.get("alert")
     coin  = analysis.get("selected_coin", "CRYPTO")
-    price = analysis.get("selected_coin_price") or snap.btc_price or 0
+    price = analysis.get("selected_coin_price", 0)
     conf  = analysis.get("confidence", 0)
 
     should_alert = sig in ("STRONG_BUY", "STRONG_SELL") or \
@@ -1687,7 +1497,7 @@ def run_cycle(expert_mode: bool = False):
     collect_macro(snap)
     collect_defi_summary(snap)
     collect_news(snap)
-    collect_funding_rates(snap)  # Binance futures funding rates
+    collect_reddit(snap)
 
     # ── 2. Top-20 scan ───────────────────────────────────────
     scan_top_coins(snap)
@@ -1700,13 +1510,9 @@ def run_cycle(expert_mode: bool = False):
     snap.candidates = candidates
 
     # ── 4. Deep dive on each candidate ───────────────────────
-    # Let CoinGecko rate-limit window reset after the 150-coin market scan
-    log.info("Cooling down 30s after market scan before OHLC deep dives...")
-    time.sleep(30)
     for coin in candidates:
         log.info(f"Deep dive: {coin.ticker}")
         collect_coin_ohlc(coin)
-        time.sleep(6)          # CoinGecko free tier: 30 req/min — 6s gap keeps us safe
         collect_messari_metrics(coin)
         build_technicals_for_coin(coin)
 
@@ -1729,7 +1535,7 @@ def run_cycle(expert_mode: bool = False):
     if HAS_POSITION:
         signal     = analysis.get("signal", "HOLD")
         confidence = analysis.get("confidence", 0)
-        coin_price = analysis.get("selected_coin_price") or snap.btc_price or 0
+        coin_price = analysis.get("selected_coin_price", snap.btc_price)
         pre_trade_mode = analysis.get("_mode", "HUNTING")  # capture BEFORE pm changes it
         new_mode   = pm_process_signal(signal, coin_price, confidence)
         analysis["_mode"] = new_mode
@@ -1752,64 +1558,26 @@ def run_cycle(expert_mode: bool = False):
         # Build a price map for all coins in this snapshot (ticker → price)
         price_map = {c.ticker: c.price for c in snap.top_coins}
 
-        # ── Update BTC benchmark (no-op after first call) ────────────────────
-        update_btc_benchmark(snap.btc_price)
-
-        # ── Update bear market regime counter ─────────────────────────────────
-        fear_cycles = update_fear_counter(snap.fear_greed.get("current") if isinstance(snap.fear_greed, dict) else snap.fear_greed)
-        in_bear_regime = fear_cycles >= 3
-        if in_bear_regime:
-            log.warning(f"BEAR REGIME: Fear & Greed < 20 for {fear_cycles} consecutive cycles — new BUYs paused.")
-
-        # ── Price-driven exits: stop-loss, take-profit, and time exit ─────────
+        # ── Price-driven exits: check stop-loss and take-profit for every holding ──
         held_state = load_portfolio()
         for held_info in held_state.get("holdings", []):
             held_ticker = held_info.get("coin_ticker", "")
             held_price_ = price_map.get(held_ticker)
             if not held_price_ or held_price_ <= 0:
-                # No live price — can't execute any exit this cycle
-                log.warning(f"PAPER: No price for {held_ticker} in snapshot — skipping exit checks.")
                 continue
-            # Sanity check: reject prices that dropped >70% from entry in one cycle —
-            # that's a CoinGecko data error, not a real move.
-            entry_price_ = held_info.get("entry_price", 0)
-            if entry_price_ and held_price_ < entry_price_ * 0.30:
-                log.warning(
-                    f"PAPER: Skipping {held_ticker} stop-loss — price ${held_price_:.4f} is "
-                    f">70% below entry ${entry_price_:.4f}. Likely bad data from CoinGecko."
-                )
-                continue
-            # Cross-validate with CoinPaprika before acting on any exit
-            paprika_price = get_coinpaprika_price(held_ticker, held_info.get("coin_id", held_ticker.lower()))
-            if paprika_price is not None:
-                divergence = abs(held_price_ - paprika_price) / paprika_price
-                if divergence > 0.20:
-                    log.warning(
-                        f"PAPER: Price validation failed for {held_ticker} — "
-                        f"CoinGecko ${held_price_:.4f} vs CoinPaprika ${paprika_price:.4f} "
-                        f"({divergence*100:.1f}% divergence). Skipping exit check this cycle."
-                    )
-                    continue
-            # Partial take at 50% of target (fires once, then stop moves to breakeven)
-            partial_trade = check_partial_take(held_ticker, held_price_)
-            if partial_trade:
-                log_trade_exit(profit_pct=partial_trade.get("profit_pct", 0.0),
-                               won=partial_trade.get("result", "WIN") == "WIN")
-            # Full exits (stop-loss, take-profit, time exit) checked every cycle
             sl_trade = check_stop_loss(held_ticker, held_price_)
             if sl_trade:
-                log_trade_exit(profit_pct=sl_trade.get("profit_pct", 0.0),
-                               won=sl_trade.get("result", "LOSS") == "WIN")
+                log_trade_exit(
+                    profit_pct=sl_trade.get("profit_pct", 0.0),
+                    won=sl_trade.get("result", "LOSS") == "WIN",
+                )
             else:
                 tp_trade = check_take_profit(held_ticker, held_price_)
                 if tp_trade:
-                    log_trade_exit(profit_pct=tp_trade.get("profit_pct", 0.0),
-                                   won=tp_trade.get("result", "WIN") == "WIN")
-                else:
-                    time_trade = check_time_exit(held_ticker, held_price_)
-                    if time_trade:
-                        log_trade_exit(profit_pct=time_trade.get("profit_pct", 0.0),
-                                       won=time_trade.get("result", "LOSS") == "WIN")
+                    log_trade_exit(
+                        profit_pct=tp_trade.get("profit_pct", 0.0),
+                        won=tp_trade.get("result", "WIN") == "WIN",
+                    )
 
         # ── Signal-driven exits: sell any coins Claude flagged ──
         for ticker_to_sell in analysis.get("sell_coins", []):
@@ -1817,81 +1585,25 @@ def run_cycle(expert_mode: bool = False):
             if sell_price_ and sell_price_ > 0:
                 sold = execute_sell(ticker_to_sell, sell_price_, signal_, reason="signal")
                 if sold:
-                    log_trade_exit(profit_pct=sold.get("profit_pct", 0.0),
-                                   won=sold.get("result", "LOSS") == "WIN")
+                    log_trade_exit(
+                        profit_pct=sold.get("profit_pct", 0.0),
+                        won=sold.get("result", "LOSS") == "WIN",
+                    )
             else:
                 log.warning(f"PAPER: sell_coins included {ticker_to_sell} but no price found in snapshot")
 
-        # ── Drawdown circuit breaker: suspend BUYs if portfolio is 15%+ below peak ──
-        in_drawdown_halt = check_drawdown_halt(price_map)
-
-        # ── Signal-driven entry: blocked in bear regime or drawdown halt ──
+        # ── Signal-driven entry: open new position if BUY and slots available ──
         current_holdings = load_portfolio().get("holdings", [])
         if signal_ in ("BUY", "STRONG_BUY") and len(current_holdings) < MAX_POSITIONS:
-            if in_drawdown_halt:
-                log.warning(f"PAPER: BUY signal for {coin_ticker} blocked — drawdown circuit breaker active.")
-            elif in_bear_regime:
-                log.warning(f"PAPER: BUY signal for {coin_ticker} blocked — bear market regime active.")
-            else:
-                execute_buy(coin_ticker, coin_id, coin_price_, signal_, confidence_,
-                            entry_target=entry_target_, exit_target=exit_target_,
-                            stop_loss=stop_loss_, expected_days=expected_d_)
-                log_trade_entry(
-                    coin=coin_ticker,
-                    key_signals=analysis.get("key_signals", []),
-                    confidence=confidence_,
-                )
+            execute_buy(coin_ticker, coin_id, coin_price_, signal_, confidence_,
+                        entry_target=entry_target_, exit_target=exit_target_,
+                        stop_loss=stop_loss_, expected_days=expected_d_)
+            log_trade_entry(
+                coin=coin_ticker,
+                key_signals=analysis.get("key_signals", []),
+                confidence=confidence_,
+            )
 
-        # ── Graduation readiness check ────────────────────────────────────────
-        grad = get_graduation_status()
-        analysis["_graduation"] = grad
-        if grad["ready"]:
-            log.info(f"🎓 GRADUATION READY: All criteria met ({grad['score']}) — agent may be ready for real money.")
-        else:
-            log.info(f"Learning progress: {grad['score']} criteria met | {grad['days_running']}d running")
-
-
-    # ── 9b. FOMO portfolio maintenance ───────────────────────────────────────
-    if HAS_FOMO:
-        # Auto-exit open FOMO position if time limit or hard stop triggered
-        price_map = {c.ticker.upper(): c.price for c in snap.top_coins}
-        fomo_exit = check_fomo_auto_exits(price_map)
-        if fomo_exit:
-            log.info(f"FOMO auto-exit: {fomo_exit}")
-
-        # Post-mortems on any completed FOMO trades -- rule-based + AI deep dive.
-        # Runs on the side after the fact; never blocks a buy, sell, or exit.
-        pending_fomo_pm = get_pending_postmortems()
-        for _trade in pending_fomo_pm:
-            run_fomo_postmortem(_trade)
-            run_fomo_ai_postmortem(_trade)
-            time.sleep(2)
-        if pending_fomo_pm:
-            log.info(f"FOMO: completed {len(pending_fomo_pm)} post-mortem(s)")
-
-        # Promote Tier B wallets that have earned Tier A trust
-        for _alias in check_wallet_promotions():
-            log.info(f"FOMO: {_alias} promoted to Tier A")
-
-        # Sync webhooks for tracked wallets (Alchemy for EVM, Helius for Solana)
-        webhook_base = os.environ.get("RAILWAY_PUBLIC_DOMAIN", "")
-        log.info(f"RAILWAY_PUBLIC_DOMAIN='{webhook_base}' HELIUS_API_KEY={'SET' if os.environ.get('HELIUS_API_KEY') else 'MISSING'}")
-        if webhook_base:
-            sync_alchemy_webhooks(f"https://{webhook_base}")
-            sync_helius_webhooks(f"https://{webhook_base}")
-
-        fomo_stats = get_fomo_stats()
-        fomo_grad  = get_fomo_graduation_status()
-        analysis["_fomo_stats"]      = fomo_stats
-        analysis["_fomo_graduation"] = fomo_grad
-
-        log.info(
-            f"FOMO portfolio: ${fomo_stats.get('total_value', 500):.2f} "
-            f"({fomo_stats.get('total_pnl_pct', 0):+.1f}%) | "
-            f"{fomo_stats.get('total_trades', 0)} trades | "
-            f"{fomo_stats.get('win_rate', 0):.0f}% win rate | "
-            f"Grad: {fomo_grad.get('score','0/7')}"
-        )
 
     # ── 10. Save prediction ──────────────────────────────────
     if HAS_MEMORY:
@@ -1935,7 +1647,7 @@ def pull_state_from_github():
     }
     base_url = f"https://api.github.com/repos/{GITHUB_REPO}/contents"
 
-    for filename in ("paper_portfolio.json", "signal_credibility.json", "position_state.json", "fomo_portfolio.json", "fomo_lessons.json", "trusted_wallets.json"):
+    for filename in ("paper_portfolio.json", "signal_credibility.json", "position_state.json"):
         try:
             r = requests.get(f"{base_url}/{filename}?ref={GITHUB_DATA_BRANCH}", headers=gh_headers, timeout=10)
             if r.status_code == 200:
@@ -1964,6 +1676,7 @@ def push_results_to_github(analysis: dict, snap: MarketSnapshot):
     # Build latest_analysis.json — everything the dashboard needs
     latest = {
         "timestamp":            snap.timestamp,
+        "signal":               analysis.get("signal"),
         "selected_coin":        analysis.get("selected_coin"),
         "selected_coin_name":   analysis.get("selected_coin_name"),
         "selected_coin_price":  analysis.get("selected_coin_price"),
@@ -1999,7 +1712,7 @@ def push_results_to_github(analysis: dict, snap: MarketSnapshot):
     base_url = f"https://api.github.com/repos/{GITHUB_REPO}/contents"
 
     # Also push position_state.json and signal_history.json
-    for fname in ("position_state.json", "fomo_portfolio.json", "fomo_lessons.json", "trusted_wallets.json"):
+    for fname in ("position_state.json",):
         if os.path.exists(fname):
             with open(fname) as f:
                 to_push.append((fname, f.read()))
@@ -2029,8 +1742,8 @@ def push_results_to_github(analysis: dict, snap: MarketSnapshot):
 
             payload = {
                 "message": f"[bot] {filename} — {snap.timestamp[:16]}",
+                "content": base64.b64encode(content.encode()).decode(),
                 "branch":  GITHUB_DATA_BRANCH,
-                "content": base64.b64encode(content.encode("utf-8")).decode("ascii"),
             }
             if sha:
                 payload["sha"] = sha

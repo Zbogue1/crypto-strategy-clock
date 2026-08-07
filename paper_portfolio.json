@@ -8,8 +8,5 @@
   "losing_trades": 0,
   "total_fees": 0.0,
   "trade_history": [],
-  "started_at": "2026-06-27T04:01:55.705284+00:00",
-  "btc_benchmark_price": null,
-  "btc_benchmark_units": null,
-  "consecutive_fear_cycles": 0
+  "started_at": "2026-06-27T00:00:00+00:00"
 }

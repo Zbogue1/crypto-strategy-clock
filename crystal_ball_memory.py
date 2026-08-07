@@ -34,7 +34,7 @@ LESSONS_FILE      = "crystal_ball_lessons.json"
 POSTMORTEMS_FILE  = "crystal_ball_postmortems.jsonl"
 
 ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY", "")
-MODEL             = "claude-sonnet-4-5"
+MODEL             = "claude-opus-4-6"
 
 # ─── CORRECTNESS THRESHOLDS ───────────────────────────────────────────────────
 # How we define whether a prediction was right.
@@ -234,27 +234,22 @@ def _get_coin_price_at(target_dt: datetime, coin_id: str = "bitcoin") -> Optiona
     Fetch historical price for any coin via CoinGecko.
     coin_id is the CoinGecko ID (e.g. "bitcoin", "ethereum", "solana").
     Used for outcome evaluation of swing trade predictions.
-    Retries up to 3 times with exponential backoff on 429 rate limits.
     """
-    date_str = target_dt.strftime("%d-%m-%Y")
-    for attempt in range(3):
-        try:
-            r = requests.get(
-                f"https://api.coingecko.com/api/v3/coins/{coin_id}/history",
-                params={"date": date_str, "localization": "false"},
-                timeout=10
-            )
-            r.raise_for_status()
-            data  = r.json()
-            price = data.get("market_data", {}).get("current_price", {}).get("usd")
-            time.sleep(2)   # always space calls even on success
-            return float(price) if price else None
-        except Exception as e:
-            wait = 2 ** attempt * 3   # 3s, 6s, 12s
-            log.warning(f"Historical price fetch failed for {coin_id} on {date_str} "
-                        f"(attempt {attempt+1}/3): {e} — retrying in {wait}s")
-            time.sleep(wait)
-    return None
+    try:
+        date_str = target_dt.strftime("%d-%m-%Y")
+        r = requests.get(
+            f"https://api.coingecko.com/api/v3/coins/{coin_id}/history",
+            params={"date": date_str, "localization": "false"},
+            timeout=10
+        )
+        r.raise_for_status()
+        data = r.json()
+        price = data.get("market_data", {}).get("current_price", {}).get("usd")
+        time.sleep(1.5)  # respect rate limit
+        return float(price) if price else None
+    except Exception as e:
+        log.warning(f"Historical price fetch failed for {coin_id} on {date_str}: {e}")
+        return None
 
 # Keep legacy alias for backwards compatibility
 def _get_btc_price_at(target_dt: datetime) -> Optional[float]:
@@ -339,23 +334,13 @@ def evaluate_pending_predictions(current_price: float) -> List[Dict]:
     now        = datetime.now(timezone.utc)
     newly_eval = []
 
-    # Ticker → CoinGecko ID mapping (in case old records saved ticker instead of ID)
-    TICKER_TO_CG_ID = {
-        "btc": "bitcoin", "eth": "ethereum", "sol": "solana",
-        "bnb": "binancecoin", "xrp": "ripple", "ada": "cardano",
-        "avax": "avalanche-2", "doge": "dogecoin", "dot": "polkadot",
-        "link": "chainlink", "near": "near", "inj": "injective-protocol",
-        "ena": "ethena", "wld": "worldcoin-wld",
-    }
-
     for rec in records:
         ts = datetime.fromisoformat(rec["timestamp"].replace("Z", "+00:00"))
         signal = rec.get("signal", "HOLD")
         price0 = rec.get("price_at_pred", 0)
         updated = False
 
-        raw_id  = rec.get("coin_id", "bitcoin")
-        coin_id = TICKER_TO_CG_ID.get(raw_id.lower(), raw_id)
+        coin_id = rec.get("coin_id", "bitcoin")
 
         # 7-day evaluation
         if not rec.get("evaluated_7d") and (now - ts).days >= 7:
@@ -872,9 +857,6 @@ def run_learning_cycle(current_price: float) -> Dict:
     Returns updated performance stats.
     """
     log.info("Running learning cycle...")
-
-    # Wait for CoinGecko rate-limit window to recover after deep-dive OHLC calls
-    time.sleep(30)
 
     # Evaluate predictions that have matured
     newly_resolved = evaluate_pending_predictions(current_price)
