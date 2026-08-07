@@ -475,5 +475,26 @@
       "FET"
     ],
     "alert": "CRITICAL: 69% of core data sources offline\u2014prediction pipeline halted per learned protocols until infrastructure restored"
+  },
+  {
+    "ts": "2026-08-07T00:09:11.640341+00:00",
+    "coin": "BTC",
+    "price": 64345,
+    "signal": "HOLD",
+    "confidence": 0,
+    "score": 0.0,
+    "fg": 29,
+    "btc_price": 64345,
+    "btc_dominance": 56.6,
+    "candidates": [
+      "KAU",
+      "UB",
+      "BEAT",
+      "USDG",
+      "LDO",
+      "INJ",
+      "MON"
+    ],
+    "alert": "CRITICAL: Data infrastructure failures have eliminated 75% of technical signal coverage. My validated rules require aborting predictions when fewer than 5 of 8 core data sources are operational. Current availability: ~25%. This prediction will NOT be counted in accuracy metrics per Rule #10."
   }
 ]
