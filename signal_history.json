@@ -57,5 +57,26 @@
       "MON"
     ],
     "alert": "No actionable swing setups this cycle \u2014 all candidates lack confirmed reversals or carry excessive risk. Staying in hunting mode."
+  },
+  {
+    "ts": "2026-08-07T20:01:29.357358+00:00",
+    "coin": "BTC",
+    "price": 64925,
+    "signal": "HOLD",
+    "confidence": 30,
+    "score": -0.3,
+    "fg": 29,
+    "btc_price": 64925,
+    "btc_dominance": 56.8,
+    "candidates": [
+      "KAG",
+      "KAU",
+      "UB",
+      "XAUT",
+      "FDUSD",
+      "PAXG",
+      "BEAT"
+    ],
+    "alert": null
   }
 ]
