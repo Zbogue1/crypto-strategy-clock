@@ -1762,4 +1762,65 @@ if __name__ == "__main__":
     start_exit_monitor()
     from fomo_scanner import start_scanner
     start_scanner(callback=process_social_signal)
+
+    # ── Health-check endpoint ──────────────────────────────────────────────
+    @app.route("/healthcheck")
+    def healthcheck():
+        import json as _json
+        results = {}
+
+        # 1. Telegram
+        try:
+            send_telegram("🧪 <b>Golem health check started</b>\nTesting all systems...")
+            results["telegram"] = "ok"
+        except Exception as e:
+            results["telegram"] = f"FAIL: {e}"
+
+        # 2. DexScreener
+        try:
+            import requests as _req
+            r = _req.get("https://api.dexscreener.com/token-boosts/top/v1", timeout=10)
+            results["dexscreener"] = "ok" if r.status_code == 200 else f"HTTP {r.status_code}"
+        except Exception as e:
+            results["dexscreener"] = f"FAIL: {e}"
+
+        # 3. GMGN / parse.bot
+        try:
+            from fomo_gmgn import get_token_security, PARSE_API_KEY
+            if not PARSE_API_KEY:
+                results["gmgn"] = "FAIL: PARSE_BOT_API_KEY not set"
+            else:
+                # BONK is a stable known token -- good connectivity test
+                sec = get_token_security("DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263")
+                results["gmgn"] = "ok" if sec else "FAIL: empty response"
+        except Exception as e:
+            results["gmgn"] = f"FAIL: {e}"
+
+        # 4. Portfolio
+        try:
+            from fomo_portfolio import load_fomo_portfolio
+            state = load_fomo_portfolio()
+            cash = state.get("cash", 0)
+            holdings = len(state.get("holdings", []))
+            results["portfolio"] = f"ok — cash=${cash:.2f}, positions={holdings}"
+        except Exception as e:
+            results["portfolio"] = f"FAIL: {e}"
+
+        # 5. Gmail env vars present
+        import os as _os
+        results["gmail"] = (
+            "ok" if _os.environ.get("GMAIL_ADDRESS") and _os.environ.get("GMAIL_APP_PASSWORD")
+            else "WARN: GMAIL_ADDRESS or GMAIL_APP_PASSWORD not set"
+        )
+
+        # Send summary to Telegram
+        lines = ["🧪 <b>Golem Health Check Results</b>"]
+        icons = {"ok": "✅", "FAIL": "❌", "WARN": "⚠️"}
+        for k, v in results.items():
+            icon = next((ic for tag, ic in icons.items() if v.startswith(tag)), "ℹ️")
+            lines.append(f"{icon} <b>{k}</b>: {v}")
+        send_telegram("\n".join(lines))
+
+        return _json.dumps(results, indent=2), 200, {"Content-Type": "application/json"}
+
     app.run(host="0.0.0.0", port=port, debug=False)
