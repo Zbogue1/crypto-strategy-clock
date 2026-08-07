@@ -225,16 +225,16 @@ def _passes_copy_trade_filter(profile: dict) -> tuple[bool, str]:
     return True, ""
 
 
-def discover_traders(period: str = "7d", limit: int = 50) -> list:
+def discover_traders(period: str = "7d", limit: int = 100) -> list:
     """
     Scan GMGN leaderboard and return wallets that pass all copy-trade filters.
-    period: "7d" or "30d"
-    limit:  how many leaderboard entries to check
+    Uses leaderboard data directly — no per-wallet profile credit spend.
 
-    Each result: {"wallet": str, "winrate": float, "pnl": float,
-                  "fast_tx_ratio": float, "twitter": str, "tags": list}
-
-    Typical use: run weekly, send candidates to Telegram for user approval.
+    Filters applied from leaderboard data:
+        winrate_7d  >= 60%          (precision trader)
+        buy_7d      <= 2000         (not machine-speed)
+        tags        no wash_trader  (exclude manipulators)
+        realized_profit_7d > $1K   (actually making money)
     """
     if not PARSE_API_KEY:
         log.debug("GMGN discover: PARSE_API_KEY not set")
@@ -253,47 +253,46 @@ def discover_traders(period: str = "7d", limit: int = 50) -> list:
 
     rankings = data.get("rank") or []
     candidates = []
+    BAD_TAGS = {"wash_trader", "bot", "sniper"}
 
     for entry in rankings:
         wallet = entry.get("wallet_address") or entry.get("address", "")
         if not wallet:
             continue
 
-        winrate = entry.get(f"winrate_{period}") or entry.get("winrate") or 0
-        pnl     = entry.get(f"pnl_{period}") or 0
-        ftr     = entry.get("fast_tx_ratio") or 0
+        winrate  = entry.get("winrate_7d") or entry.get("winrate_30d") or 0
+        buys_7d  = entry.get("buy_7d") or 0
+        tags     = set(t.lower() for t in (entry.get("tags") or []))
+        realized = float(entry.get("realized_profit_7d") or 0)
+        pnl      = float(entry.get("pnl_7d") or 0)
+        twitter  = entry.get("twitter_username") or entry.get("name") or ""
 
-        # Quick pre-filter on leaderboard data before spending API credits
         if winrate < MIN_WIN_RATE:
             continue
-        if ftr > MAX_FAST_TX_RATIO:
+        if buys_7d > 2000:
+            log.debug(f"GMGN: {wallet[:8]}... filtered — {buys_7d} buys/7d (bot-speed)")
             continue
-
-        # Fetch full profile for detailed check
-        time.sleep(_RATE_LIMIT_DELAY)
-        profile = get_wallet_profile(wallet)
-        if not profile:
+        if tags & BAD_TAGS:
+            log.debug(f"GMGN: {wallet[:8]}... filtered — bad tags: {tags & BAD_TAGS}")
             continue
-
-        passes, reason = _passes_copy_trade_filter(profile)
-        if not passes:
-            log.debug(f"GMGN: {wallet[:8]}... filtered — {reason}")
+        if realized < 1000:
+            log.debug(f"GMGN: {wallet[:8]}... filtered — realized profit ${realized:.0f} too low")
             continue
 
         candidates.append({
-            "wallet":        wallet,
-            "winrate":       winrate,
-            "pnl":           pnl,
-            "fast_tx_ratio": ftr,
-            "twitter":       profile.get("twitter") or "",
-            "tags":          profile.get("tags") or [],
-            "pnl_30d":       profile.get("pnl_30d"),
-            "realized_profit": profile.get("realized_profit"),
+            "wallet":           wallet,
+            "winrate":          winrate,
+            "pnl":              pnl,
+            "realized_profit":  realized,
+            "fast_tx_ratio":    0,
+            "twitter":          twitter,
+            "tags":             list(tags),
+            "buys_7d":          buys_7d,
         })
         log.info(
             f"GMGN candidate: {wallet[:8]}... "
-            f"WR={winrate*100:.0f}% PnL={pnl:+.0f} "
-            f"twitter={profile.get('twitter','?')}"
+            f"WR={winrate*100:.0f}% realized=${realized:,.0f} "
+            f"twitter=@{twitter}"
         )
 
     log.info(f"GMGN discovery: {len(candidates)} candidates from {len(rankings)} checked")
@@ -402,7 +401,7 @@ def format_discovery_telegram(candidates: list, existing_wallets: set) -> str:
     """
     new = [c for c in candidates if c["wallet"] not in existing_wallets]
     if not new:
-        return "🔍 GMGN scan complete — no new traders found above 65% win rate."
+        return f"🔍 GMGN scan complete — no new traders found above {MIN_WIN_RATE*100:.0f}% win rate."
 
     lines = [f"🔍 <b>GMGN Discovery: {len(new)} new trader(s)</b>\n"]
     for c in new[:5]:   # cap at 5 per message
