@@ -1692,6 +1692,54 @@ def process_social_signal(signal: dict):
         )
 
 
+def run_weekly_discovery():
+    """
+    Scan GMGN leaderboard for high win-rate traders not yet in our watchlist.
+    Sends Telegram message with candidates for user approval.
+    Results are informational only — user pastes wallet address to add.
+    """
+    from fomo_gmgn import discover_traders, format_discovery_telegram
+    log.info("GMGN weekly discovery: starting scan...")
+    try:
+        candidates = discover_traders(period="7d", limit=50)
+        # Load existing wallet addresses to filter out ones we already track
+        existing = set()
+        try:
+            with open(TRUSTED_WALLETS_FILE) as f:
+                data = json.load(f)
+            for tier in ("tier_a", "tier_b"):
+                for w in data.get(tier, []):
+                    existing.add(w.get("wallet", "").lower())
+        except Exception:
+            pass
+
+        msg = format_discovery_telegram(candidates, existing)
+        send_telegram(msg)
+        log.info(f"GMGN weekly discovery: sent {len(candidates)} candidate(s) to Telegram")
+    except Exception as e:
+        log.error(f"GMGN weekly discovery error: {e}")
+
+
+def start_discovery_poller():
+    """
+    Background thread that runs GMGN trader discovery once per week.
+    First run is delayed 2 hours after startup so the service is stable.
+    """
+    import threading, time as _time
+    WEEK_SECONDS = 7 * 24 * 60 * 60
+
+    def _loop():
+        log.info("GMGN discovery poller started (weekly)")
+        _time.sleep(2 * 60 * 60)   # 2-hour startup delay
+        while True:
+            run_weekly_discovery()
+            _time.sleep(WEEK_SECONDS)
+
+    t = threading.Thread(target=_loop, daemon=True, name="fomo-gmgn-discovery")
+    t.start()
+    return t
+
+
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     log.info(f"FOMO Tracker starting on port {port}")
@@ -1700,4 +1748,5 @@ if __name__ == "__main__":
     start_social_poller(callback=process_social_signal)
     from fomo_email import start_email_poller
     start_email_poller(callback=process_social_signal)
+    start_discovery_poller()
     app.run(host="0.0.0.0", port=port, debug=False)
