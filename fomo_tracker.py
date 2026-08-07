@@ -1672,24 +1672,15 @@ def process_social_signal(signal: dict):
     elif action == "SELL":
         holding = _find_holding(holdings, contract)
         if not holding:
-            # Not holding this — but notify anyway so user knows their trader sold
             send_telegram(
                 source_icon + f" <b>{alias} sold ${token_data['symbol']}</b> ({source})\n"
                 f"You're not holding this token."
-            ) if "source_icon" in dir() else None
+            )
             return
-        alert_id = create_pending_sell_alert({
-            "token_ticker":     holding["token_ticker"],
-            "wallet_alias":     alias,
-            "contract_address": holding.get("contract_address"),
-            "price_at_signal":  token_data.get("price") or holding["entry_price"],
-        })
-        send_telegram_button(
-            "🔔 <b>" + alias + " sold " + holding["token_ticker"] + "</b> (" + source + ")\n"
-            + "Tap to confirm your exit.",
-            "EXECUTE",
-            f"sell_exec:{alert_id}",
-        )
+        # Tranche-aware exit — respects already-sold tranches
+        current_price = token_data.get("price") or holding["entry_price"]
+        from fomo_exit import handle_tracker_sell
+        handle_tracker_sell(contract, current_price, ticker=token_data["symbol"])
 
 
 def run_weekly_discovery():
@@ -1749,4 +1740,6 @@ if __name__ == "__main__":
     from fomo_email import start_email_poller
     start_email_poller(callback=process_social_signal)
     start_discovery_poller()
+    from fomo_exit import start_exit_monitor
+    start_exit_monitor()
     app.run(host="0.0.0.0", port=port, debug=False)

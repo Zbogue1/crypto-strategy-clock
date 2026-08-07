@@ -46,7 +46,7 @@ FOMO_STARTING_CASH   = 1000.0
 FOMO_MAX_POSITION_PCT = 0.30   # max 30% of FOMO cash per trade
 FOMO_TAKER_FEE       = 0.001   # 0.1% per side
 FOMO_AUTO_EXIT_HOURS = 24      # auto-exit if original trader hasn't sold
-FOMO_HARD_STOP_PCT   = -0.15   # -15% hard stop
+FOMO_HARD_STOP_PCT   = -0.35   # -35% hard stop
 FOMO_MAX_CONCURRENT_POSITIONS = 5   # cap on simultaneously open positions
 
 # Graduation thresholds
@@ -295,6 +295,11 @@ def execute_fomo_buy(
         "auto_exit_at":     (datetime.now(timezone.utc) + timedelta(hours=FOMO_AUTO_EXIT_HOURS)).isoformat(),
         "source":           "fomo_copy",
         "partial_taken":    False,
+        # Tranche exit tracking (managed by fomo_exit.py)
+        "peak_price":             entry_price,
+        "tranche_1_sold":         False,   # 2x → sell 33%
+        "tranche_2_sold":         False,   # 3x → sell another 33%
+        "trailing_stop_active":   False,   # armed after tranche 2 sold
     }
 
     state["cash"] -= spend
