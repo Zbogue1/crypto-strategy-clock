@@ -315,9 +315,10 @@ def format_discovery_telegram(candidates: list, existing_wallets: set) -> str:
         pnl = f"+${c['pnl']:,.0f}" if c['pnl'] >= 0 else f"-${abs(c['pnl']):,.0f}"
         tw  = f"@{c['twitter']}" if c['twitter'] else "no twitter"
         lines.append(
-            f"• <code>{c['wallet'][:12]}...</code>\n"
-            f"  WR: {wr} | 7D PnL: {pnl} | {tw}\n"
-            f"  Tags: {', '.join(c['tags']) or 'none'}"
+            f"• {tw}\n"
+            f"  WR: {wr} | 7D PnL: {pnl}\n"
+            f"  Tags: {', '.join(c['tags']) or 'none'}\n"
+            f"  <code>{c['wallet']}</code>"
         )
-    lines.append("\nPaste any wallet address here to add to watchlist.")
+    lines.append("\nCopy any address above and paste it here with the trader name to add to watchlist.")
     return "\n".join(lines)
