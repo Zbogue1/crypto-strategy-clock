@@ -104,6 +104,9 @@ def _build_name_map() -> dict[str, dict]:
                 keys.add(base.replace("_", ""))           # all underscores removed
                 keys.add(base.replace("-", ""))           # all hyphens removed
                 keys.add(base.replace("_", "").replace("-", ""))  # both removed
+                # Handle common 0/O confusion in crypto handles
+                keys.add(base.replace("0", "o"))
+                keys.add(base.replace("o", "0"))
 
                 # Also register the fomo_profile handle (strip leading @)
                 profile = w.get("fomo_profile", "")
@@ -112,6 +115,8 @@ def _build_name_map() -> dict[str, dict]:
                     keys.add(handle)
                     keys.add(handle.strip("_"))
                     keys.add(handle.replace("_", ""))
+                    keys.add(handle.replace("0", "o"))
+                    keys.add(handle.replace("o", "0"))
 
                 for key in keys:
                     if key and key not in mapping:
