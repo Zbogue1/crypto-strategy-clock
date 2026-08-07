@@ -1685,30 +1685,48 @@ def process_social_signal(signal: dict):
 
 def run_weekly_discovery():
     """
-    Scan GMGN leaderboard for high win-rate traders not yet in our watchlist.
-    Sends Telegram message with candidates for user approval.
-    Results are informational only — user pastes wallet address to add.
+    Scan GMGN leaderboard weekly.
+    Run 1: copy-trade candidates (65%+ win rate, low bot ratio).
+    Run 2: narrative whales (high profit, spray-and-pray, copy_trade: false).
+    Both results sent to Telegram for user review -- nothing is added automatically.
     """
-    from fomo_gmgn import discover_traders, format_discovery_telegram
-    log.info("GMGN weekly discovery: starting scan...")
+    from fomo_gmgn import (
+        discover_traders, format_discovery_telegram,
+        discover_narrative_whales, format_whale_telegram,
+    )
+    log.info("GMGN weekly discovery: starting both scans...")
+
+    # Load existing wallet addresses once
+    existing = set()
+    try:
+        with open(TRUSTED_WALLETS_FILE) as f:
+            data = json.load(f)
+        for tier in ("tier_a", "tier_b"):
+            for w in data.get(tier, []):
+                existing.add(w.get("wallet", "").lower())
+    except Exception:
+        pass
+
+    # Scan 1: copy-trade candidates (65%+ win rate)
     try:
         candidates = discover_traders(period="7d", limit=50)
-        # Load existing wallet addresses to filter out ones we already track
-        existing = set()
-        try:
-            with open(TRUSTED_WALLETS_FILE) as f:
-                data = json.load(f)
-            for tier in ("tier_a", "tier_b"):
-                for w in data.get(tier, []):
-                    existing.add(w.get("wallet", "").lower())
-        except Exception:
-            pass
-
         msg = format_discovery_telegram(candidates, existing)
         send_telegram(msg)
-        log.info(f"GMGN weekly discovery: sent {len(candidates)} candidate(s) to Telegram")
+        log.info(f"GMGN copy-trade discovery: {len(candidates)} candidate(s) sent")
     except Exception as e:
-        log.error(f"GMGN weekly discovery error: {e}")
+        log.error(f"GMGN copy-trade discovery error: {e}")
+
+    # Scan 2: narrative whales (high profit, spray-and-pray style)
+    try:
+        whales = discover_narrative_whales(period="30d", limit=50)
+        whale_msg = format_whale_telegram(whales, existing)
+        if whale_msg:
+            send_telegram(whale_msg)
+            log.info(f"GMGN whale discovery: {len(whales)} whale(s) sent")
+        else:
+            log.info("GMGN whale discovery: no new whales found")
+    except Exception as e:
+        log.error(f"GMGN whale discovery error: {e}")
 
 
 def start_discovery_poller():

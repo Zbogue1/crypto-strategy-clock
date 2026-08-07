@@ -300,6 +300,101 @@ def discover_traders(period: str = "7d", limit: int = 50) -> list:
     return candidates
 
 
+def discover_narrative_whales(period: str = "30d", limit: int = 50) -> list:
+    """
+    Find big-fish narrative traders — whales who move markets but aren't
+    ideal for direct copy-trading at $1K scale (high trade count, diverse positions).
+
+    These get added as copy_trade: false (👁️ narrative watch), not copy targets.
+    They tell us WHAT narratives smart money is loading up on.
+
+    Filters (opposite of copy-trade filters):
+        realized_profit  >= $100K   (genuinely big fish)
+        trades_30d       >= 100     (very active, spreading across narratives)
+        win_rate         < 60%      (spray-and-pray confirms narrative style)
+        fast_tx_ratio    <= 0.5     (not a pure bot)
+    """
+    if not PARSE_API_KEY:
+        return []
+
+    log.info("GMGN: scanning for narrative whales...")
+    # Sort by realized profit to find the biggest players
+    data = _get("get_wallet_rankings", {
+        "chain":   CHAIN,
+        "period":  period,
+        "orderby": "realized_profit",
+        "limit":   limit,
+    })
+    if not data:
+        return []
+
+    rankings = data.get("rank") or []
+    whales = []
+
+    for entry in rankings:
+        wallet = entry.get("wallet_address") or entry.get("address", "")
+        if not wallet:
+            continue
+
+        realized = entry.get("realized_profit") or 0
+        winrate  = entry.get("winrate") or 0
+        ftr      = entry.get("fast_tx_ratio") or 0
+
+        # Pre-filter on leaderboard data
+        if realized < 100_000:
+            continue
+        if ftr > 0.5:
+            continue
+        if winrate >= 0.65:
+            continue   # this is a copy-trade candidate, not a whale
+
+        time.sleep(_RATE_LIMIT_DELAY)
+        profile = get_wallet_profile(wallet)
+        if not profile:
+            continue
+
+        whales.append({
+            "wallet":           wallet,
+            "realized_profit":  realized,
+            "winrate":          winrate,
+            "fast_tx_ratio":    ftr,
+            "twitter":          profile.get("twitter") or "",
+            "tags":             profile.get("tags") or [],
+            "pnl_30d":          profile.get("pnl_30d"),
+            "copy_trade":       False,
+            "copy_trade_reason": (
+                f"Narrative whale — ${realized:,.0f} realized profit, "
+                f"{winrate*100:.0f}% win rate. "
+                f"Watch for narrative themes, not copy-trade entries."
+            ),
+        })
+        log.info(f"GMGN whale: {wallet[:8]}... realized=${realized:,.0f} WR={winrate*100:.0f}%")
+
+    log.info(f"GMGN whale discovery: {len(whales)} found")
+    return whales
+
+
+def format_whale_telegram(whales: list, existing_wallets: set) -> str:
+    """Format narrative whale discoveries as a Telegram message."""
+    new = [w for w in whales if w["wallet"] not in existing_wallets]
+    if not new:
+        return ""
+
+    lines = [f"🐋 <b>Narrative Whales Found: {len(new)}</b>\n"
+             f"<i>These move markets — watch their narratives, don't copy entries</i>\n"]
+    for w in new[:5]:
+        profit = f"${w['realized_profit']:,.0f}"
+        wr     = f"{w['winrate']*100:.0f}%"
+        tw     = f"@{w['twitter']}" if w['twitter'] else "no twitter"
+        lines.append(
+            f"• {tw}\n"
+            f"  Realized: {profit} | WR: {wr} (spray & pray)\n"
+            f"  <code>{w['wallet']}</code>"
+        )
+    lines.append("\nPaste address + name here to add as 👁️ narrative watch.")
+    return "\n".join(lines)
+
+
 def format_discovery_telegram(candidates: list, existing_wallets: set) -> str:
     """
     Format discovered traders as a Telegram message for user approval.
