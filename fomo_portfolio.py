@@ -82,6 +82,9 @@ def _migrate_to_multi_position(state: dict) -> dict:
     if "holdings" not in state:
         old = state.pop("holding", None)
         state["holdings"] = [old] if old else []
+    # Key rename: old files used "cash_usd", new schema uses "cash"
+    if "cash" not in state and "cash_usd" in state:
+        state["cash"] = state.pop("cash_usd")
     return state
 
 
