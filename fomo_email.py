@@ -185,7 +185,7 @@ def _parse_solscan_email(subject: str, body: str, name_map: dict) -> Optional[di
     raw_name = name_match.group(1).strip()
     wallet_info = name_map.get(raw_name.lower())
     if not wallet_info:
-        log.debug(f"Email: wallet '{raw_name}' not in tracked list — skipping")
+        log.warning(f"Email: wallet '{raw_name}' not in tracked list — known aliases: {list(name_map.keys())[:10]}")
         return None
 
     # ── Extract balance change lines ──────────────────────────────────────────
