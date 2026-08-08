@@ -1,32 +1,32 @@
 {
   "open_trade": {
     "coin": "SOL",
-    "entry_time": "2026-08-08T16:05:24.164645+00:00",
+    "entry_time": "2026-08-08T20:01:22.218162+00:00",
     "key_signals": [
-      {
-        "source": "Fear_Greed",
-        "signal_type": "sentiment",
-        "description": "Fear & Greed at 30 and improving from 27.3 weekly average \u2014 contrarian buy window opening as fear begins to lift."
-      },
-      {
-        "source": "volume_breakout",
-        "signal_type": "technical",
-        "description": "SOL trading $1.55B in 24h volume with +3.6% daily gain, showing strong institutional-grade participation and momentum leadership among top alts."
-      },
       {
         "source": "CoinDesk",
         "signal_type": "news",
-        "description": "US Senate advancing CLARITY Act crypto legislation provides a regulatory tailwind for legitimate blockchain platforms like Solana."
+        "description": "US spot Bitcoin ETFs posted their best week since April with $1B in inflows, signaling renewed institutional appetite and likely rotation into quality alts."
+      },
+      {
+        "source": "Fear_Greed",
+        "signal_type": "sentiment",
+        "description": "Fear & Greed at 30 (Fear) but trending up from 27.3 weekly average \u2014 classic contrarian setup where buying during fear has historically rewarded swing traders."
       },
       {
         "source": "CoinTelegraph",
         "signal_type": "news",
-        "description": "Nansen founder claims Bitcoin will never fall below $60K again, reinforcing the BTC floor thesis that supports alt positioning."
+        "description": "Nansen founder claims Bitcoin will never fall below $60K again, and the CLARITY Act advancing in the Senate adds regulatory clarity tailwinds."
+      },
+      {
+        "source": "volume_breakout",
+        "signal_type": "technical",
+        "description": "SOL's $1.45B daily volume is the highest among altcoins and its +3.6% daily gain with +7% weekly shows strong momentum with institutional-level liquidity."
       },
       {
         "source": "CryptoSlate",
         "signal_type": "news",
-        "description": "Institutional bear market narrative and liquidity drainage concerns warrant tight risk management and modest position sizing."
+        "description": "BlackRock accounted for 80% of the $1B ETF inflow week, indicating the world's largest asset manager is aggressively accumulating \u2014 a powerful signal for sustained recovery."
       }
     ],
     "confidence": 62
@@ -36,23 +36,23 @@
       "source": "Fear_Greed",
       "signal_type": "sentiment",
       "wins": 6,
-      "losses": 4,
-      "total": 10,
-      "win_rate": 0.6,
-      "total_pct": 21.9,
-      "avg_return": 2.19,
-      "last_seen": "2026-08-02T00:10:47.087988+00:00"
+      "losses": 5,
+      "total": 11,
+      "win_rate": 0.545,
+      "total_pct": -21.81,
+      "avg_return": -1.9827,
+      "last_seen": "2026-08-08T20:01:22.216769+00:00"
     },
     "CoinDesk__news": {
       "source": "CoinDesk",
       "signal_type": "news",
       "wins": 4,
-      "losses": 4,
-      "total": 8,
-      "win_rate": 0.5,
-      "total_pct": -10.08,
-      "avg_return": -1.26,
-      "last_seen": "2026-08-02T00:10:47.087999+00:00"
+      "losses": 5,
+      "total": 9,
+      "win_rate": 0.444,
+      "total_pct": -53.79,
+      "avg_return": -5.9767,
+      "last_seen": "2026-08-08T20:01:22.216784+00:00"
     },
     "CoinTelegraph__onchain": {
       "source": "CoinTelegraph",
@@ -69,12 +69,12 @@
       "source": "volume_breakout",
       "signal_type": "technical",
       "wins": 3,
-      "losses": 2,
-      "total": 5,
-      "win_rate": 0.6,
-      "total_pct": 15.32,
-      "avg_return": 3.064,
-      "last_seen": "2026-07-16T04:10:06.180580+00:00"
+      "losses": 3,
+      "total": 6,
+      "win_rate": 0.5,
+      "total_pct": -28.39,
+      "avg_return": -4.7317,
+      "last_seen": "2026-08-08T20:01:22.216779+00:00"
     },
     "Blockworks__macro": {
       "source": "Blockworks",
@@ -124,12 +124,12 @@
       "source": "CoinTelegraph",
       "signal_type": "news",
       "wins": 4,
-      "losses": 3,
-      "total": 7,
-      "win_rate": 0.571,
-      "total_pct": 21.52,
-      "avg_return": 3.0743,
-      "last_seen": "2026-08-02T00:10:47.087992+00:00"
+      "losses": 4,
+      "total": 8,
+      "win_rate": 0.5,
+      "total_pct": -22.19,
+      "avg_return": -2.7738,
+      "last_seen": "2026-08-08T20:01:22.216788+00:00"
     },
     "Chart Pattern Analysis__technical": {
       "source": "Chart Pattern Analysis",
@@ -179,14 +179,14 @@
       "source": "CryptoSlate",
       "signal_type": "news",
       "wins": 1,
-      "losses": 0,
-      "total": 1,
-      "win_rate": 1.0,
-      "total_pct": 8.88,
-      "avg_return": 8.88,
-      "last_seen": "2026-07-21T03:13:48.859467+00:00"
+      "losses": 1,
+      "total": 2,
+      "win_rate": 0.5,
+      "total_pct": -34.83,
+      "avg_return": -17.415,
+      "last_seen": "2026-08-08T20:01:22.216790+00:00"
     }
   },
-  "trade_count": 10,
-  "last_updated": "2026-08-08T16:05:24.164652+00:00"
+  "trade_count": 11,
+  "last_updated": "2026-08-08T20:01:22.218169+00:00"
 }
