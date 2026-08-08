@@ -189,7 +189,7 @@ def _parse_solscan_email(subject: str, body: str, name_map: dict) -> Optional[di
     # Pattern: anything before "has a transaction"
     name_match = re.search(r'([A-Za-z0-9_\-]+)\s+has a transaction', subject_clean, re.IGNORECASE)
     if not name_match:
-        log.debug(f"Email: no wallet name found in subject: {subject_clean[:80]}")
+        log.warning(f"Email: no wallet name found in subject: {subject_clean[:80]}")
         return None
 
     raw_name = name_match.group(1).strip()
