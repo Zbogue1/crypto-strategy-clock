@@ -53,7 +53,7 @@ SOLSCAN_SENDER = "noreply@mailer.solscan.io"
 
 # Known stablecoins and native tokens on Solana -- skip these as trade signals
 SKIP_CONTRACTS = {
-    "EPJFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",   # USDC
+    "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",   # USDC
     "Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB",    # USDT
     "So11111111111111111111111111111111111111112",        # Wrapped SOL
     "mSoLzYCxHdYgdzU16g5QSh3i5K3z3KZK7ytfqcJm7So",    # mSOL
