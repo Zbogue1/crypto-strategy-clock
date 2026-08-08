@@ -57,5 +57,26 @@
       "USDG"
     ],
     "alert": "All swing candidates today have zero technical indicator data (no RSI, MACD, or volume metrics) \u2014 no high-confidence setups available."
+  },
+  {
+    "ts": "2026-08-08T16:04:46.398720+00:00",
+    "coin": "SOL",
+    "price": 135.0,
+    "signal": "BUY",
+    "confidence": 62,
+    "score": 0.55,
+    "fg": 30,
+    "btc_price": 65045,
+    "btc_dominance": 56.7,
+    "candidates": [
+      "FDUSD",
+      "BTW",
+      "BEAT",
+      "BONK",
+      "INJ",
+      "PENGU",
+      "FET"
+    ],
+    "alert": null
   }
 ]
