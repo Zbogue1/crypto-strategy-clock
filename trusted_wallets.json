@@ -50,7 +50,7 @@
     },
     {
       "wallet": "9BMzTpSo4URse1oN666pmexhdjpU1vA5p7LtroCFQdLU",
-      "alias": "Aurelius",
+      "alias": "Aurelius0121",
       "fomo_profile": "@AureliusO121",
       "tier": "A",
       "chain": "solana",
@@ -353,6 +353,32 @@
       "copy_trade_reason": "50.6% win rate — below 65% copy-trade threshold. 1,757 trades, $205K realized PnL, 84K followers. Narrative watch: high volume trader worth monitoring for market themes.",
       "bankroll_usd": null,
       "notes": "84K followers. $205,121 realized PnL all-time. $3.6M volume. 1,757 trades. $41 avg PnL/trade. Wallet verified on fomo.family. Added as narrative watch — 50.6% WR below copy-trade threshold.",
+      "stats": {
+        "trades_followed": 0,
+        "wins": 0,
+        "losses": 0,
+        "win_rate_30d": null,
+        "win_rate_7d": null,
+        "avg_return": null,
+        "consecutive_losses": 0,
+        "last_trade_at": null,
+        "last_outcome": null
+      },
+      "added_at": "2026-08-07T00:00:00Z",
+      "promoted_at": null,
+      "demoted_at": null
+    },
+    {
+      "wallet": "4fZFcK8ms3bFMpo1ACzEUz8bH741fQW4zhAMGd5yZMHu",
+      "alias": "CryptoRilsio",
+      "fomo_profile": "@CryptoRilsio",
+      "tier": "B",
+      "chain": "solana",
+      "alchemy_webhook_id": null,
+      "copy_trade": true,
+      "copy_trade_reason": "70% win rate on GMGN leaderboard — above 60% copy-trade threshold.",
+      "bankroll_usd": null,
+      "notes": "Added from GMGN discovery scan. 70% WR. On Solscan watchlist as CryptoRilsio. Tier B pending observed track record.",
       "stats": {
         "trades_followed": 0,
         "wins": 0,

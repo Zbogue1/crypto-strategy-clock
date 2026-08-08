@@ -405,12 +405,13 @@ def format_discovery_telegram(candidates: list, existing_wallets: set) -> str:
 
     lines = [f"🔍 <b>GMGN Discovery: {len(new)} new trader(s)</b>\n"]
     for c in new[:5]:   # cap at 5 per message
-        wr  = f"{c['winrate']*100:.0f}%"
-        pnl = f"+${c['pnl']:,.0f}" if c['pnl'] >= 0 else f"-${abs(c['pnl']):,.0f}"
-        tw  = f"@{c['twitter']}" if c['twitter'] else "no twitter"
+        wr       = f"{c['winrate']*100:.0f}%"
+        realized = c.get("realized_profit") or 0
+        pnl_str  = f"+${realized:,.0f}" if realized >= 0 else f"-${abs(realized):,.0f}"
+        tw       = f"@{c['twitter']}" if c['twitter'] else "no twitter"
         lines.append(
             f"• {tw}\n"
-            f"  WR: {wr} | 7D PnL: {pnl}\n"
+            f"  WR: {wr} | 7D Realized: {pnl_str}\n"
             f"  Tags: {', '.join(c['tags']) or 'none'}\n"
             f"  <code>{c['wallet']}</code>"
         )
