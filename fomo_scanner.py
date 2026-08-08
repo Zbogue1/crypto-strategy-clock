@@ -238,8 +238,9 @@ def run_scan(callback) -> int:
             unique_tokens.append(c)
 
     candidates = []
-    for contract in unique_tokens:
-        # Step 2a: Get pair data (free)
+    for contract in unique_tokens[:30]:   # cap at 30 to avoid DexScreener 429
+        # Step 2a: Get pair data (free, but rate-limited — pace requests)
+        time.sleep(0.75)
         token_data = _fetch_pair_data(contract)
         if not token_data:
             continue
