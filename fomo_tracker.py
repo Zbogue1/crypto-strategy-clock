@@ -1813,7 +1813,7 @@ if __name__ == "__main__":
         try:
             import requests as _req
             r = _req.get("https://api.dexscreener.com/token-boosts/top/v1", timeout=10)
-            results["dexscreener"] = "ok" if r.status_code == 200 else f"HTTP {r.status_code}"
+            results["dexscreener"] = "ok" if r.status_code in (200, 429) else f"HTTP {r.status_code}"  # 429 = rate-limited but alive
         except Exception as e:
             results["dexscreener"] = f"FAIL: {e}"
 
