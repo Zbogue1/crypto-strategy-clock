@@ -38,24 +38,24 @@
     "alert": null
   },
   {
-    "ts": "2026-08-08T04:02:17.202506+00:00",
-    "coin": "ADA",
-    "price": 0.0,
+    "ts": "2026-08-08T08:03:13.102572+00:00",
+    "coin": "SOL",
+    "price": 0,
     "signal": "HOLD",
-    "confidence": 30,
+    "confidence": 25,
     "score": -0.3,
     "fg": 30,
-    "btc_price": 64986,
+    "btc_price": 64924,
     "btc_dominance": 56.8,
     "candidates": [
+      "BTW",
       "XAUT",
       "FDUSD",
       "UB",
       "PAXG",
-      "USDG",
-      "MON",
-      "EURC"
+      "PIEVERSE",
+      "USDG"
     ],
-    "alert": null
+    "alert": "All swing candidates today have zero technical indicator data (no RSI, MACD, or volume metrics) \u2014 no high-confidence setups available."
   }
 ]
