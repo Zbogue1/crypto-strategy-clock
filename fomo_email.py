@@ -145,22 +145,32 @@ def _decode_subject(msg) -> str:
 
 
 def _extract_body(msg) -> str:
-    """Extract plain text body from email (handles multipart)."""
-    body = ""
+    """Extract body from email — prefers plain text, falls back to HTML."""
+    text_body = ""
+    html_body = ""
     if msg.is_multipart():
         for part in msg.walk():
             ct = part.get_content_type()
-            if ct == "text/plain":
+            if ct == "text/plain" and not text_body:
                 try:
-                    body += part.get_payload(decode=True).decode("utf-8", errors="replace")
+                    text_body = part.get_payload(decode=True).decode("utf-8", errors="replace")
+                except Exception:
+                    pass
+            elif ct == "text/html" and not html_body:
+                try:
+                    html_body = part.get_payload(decode=True).decode("utf-8", errors="replace")
                 except Exception:
                     pass
     else:
         try:
-            body = msg.get_payload(decode=True).decode("utf-8", errors="replace")
+            raw = msg.get_payload(decode=True).decode("utf-8", errors="replace")
+            if "<html" in raw.lower():
+                html_body = raw
+            else:
+                text_body = raw
         except Exception:
             pass
-    return body
+    return text_body if text_body.strip() else html_body
 
 
 def _parse_solscan_email(subject: str, body: str, name_map: dict) -> Optional[dict]:
@@ -189,13 +199,34 @@ def _parse_solscan_email(subject: str, body: str, name_map: dict) -> Optional[di
         return None
 
     # ── Extract balance change lines ──────────────────────────────────────────
-    # Format: "+ 0.034997 EPJFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"
-    # or:     "- 0.5 So11111111111111111111111111111111111111112"
-    balance_pattern = re.compile(
-        r'([+\-])\s*([\d,]+\.?\d*)\s+([A-Za-z0-9]{30,50})',
+    # Solscan emails can be plain text or HTML. Two formats:
+    #
+    # Plain text (old):
+    #   + 0.034997 EPJFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v
+    #
+    # HTML (current):
+    #   🟢 + 0.002249429 <a href="https://solscan.io/token/PreweJYE...">
+    #   🔴 - 1.5 <a href="https://solscan.io/token/So11111...">
+
+    changes = []
+
+    # Try HTML format first: extract contract from solscan.io/token/ href
+    html_pattern = re.compile(
+        r'(🟢|🔴)[^+\-]*([+\-])\s*([\d,]+\.?\d*)\s*<a[^>]+solscan\.io/token/([A-Za-z0-9]{30,50})"',
         re.MULTILINE
     )
-    changes = balance_pattern.findall(body)
+    for emoji, sign, amount, contract in html_pattern.findall(body):
+        # 🟢 = received (BUY), 🔴 = sent (SELL)
+        direction = "+" if emoji == "🟢" else "-"
+        changes.append((direction, amount, contract))
+
+    # Fallback: plain text format
+    if not changes:
+        plain_pattern = re.compile(
+            r'([+\-])\s*([\d,]+\.?\d*)\s+([A-Za-z0-9]{30,50})',
+            re.MULTILINE
+        )
+        changes = plain_pattern.findall(body)
 
     if not changes:
         log.warning(f"Email: no balance changes found for {wallet_info['alias']} — raw body snippet: {repr(body[:300])}")
