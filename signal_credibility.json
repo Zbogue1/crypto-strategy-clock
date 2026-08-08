@@ -1,5 +1,36 @@
 {
-  "open_trade": null,
+  "open_trade": {
+    "coin": "SOL",
+    "entry_time": "2026-08-08T16:05:24.164645+00:00",
+    "key_signals": [
+      {
+        "source": "Fear_Greed",
+        "signal_type": "sentiment",
+        "description": "Fear & Greed at 30 and improving from 27.3 weekly average \u2014 contrarian buy window opening as fear begins to lift."
+      },
+      {
+        "source": "volume_breakout",
+        "signal_type": "technical",
+        "description": "SOL trading $1.55B in 24h volume with +3.6% daily gain, showing strong institutional-grade participation and momentum leadership among top alts."
+      },
+      {
+        "source": "CoinDesk",
+        "signal_type": "news",
+        "description": "US Senate advancing CLARITY Act crypto legislation provides a regulatory tailwind for legitimate blockchain platforms like Solana."
+      },
+      {
+        "source": "CoinTelegraph",
+        "signal_type": "news",
+        "description": "Nansen founder claims Bitcoin will never fall below $60K again, reinforcing the BTC floor thesis that supports alt positioning."
+      },
+      {
+        "source": "CryptoSlate",
+        "signal_type": "news",
+        "description": "Institutional bear market narrative and liquidity drainage concerns warrant tight risk management and modest position sizing."
+      }
+    ],
+    "confidence": 62
+  },
   "signal_stats": {
     "Fear_Greed__sentiment": {
       "source": "Fear_Greed",
@@ -157,5 +188,5 @@
     }
   },
   "trade_count": 10,
-  "last_updated": "2026-08-02T00:10:47.088056+00:00"
+  "last_updated": "2026-08-08T16:05:24.164652+00:00"
 }
