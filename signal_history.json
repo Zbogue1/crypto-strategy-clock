@@ -38,66 +38,24 @@
     "alert": null
   },
   {
-    "ts": "2026-08-07T16:07:03.252805+00:00",
-    "coin": "ADA",
-    "price": 0.0,
-    "signal": "HOLD",
-    "confidence": 35,
-    "score": -0.3,
-    "fg": 29,
-    "btc_price": 64925,
-    "btc_dominance": 56.8,
-    "candidates": [
-      "UB",
-      "XAUT",
-      "FDUSD",
-      "PAXG",
-      "KAITO",
-      "LDO",
-      "MON"
-    ],
-    "alert": "No actionable swing setups this cycle \u2014 all candidates lack confirmed reversals or carry excessive risk. Staying in hunting mode."
-  },
-  {
-    "ts": "2026-08-07T20:01:29.357358+00:00",
-    "coin": "BTC",
-    "price": 64925,
-    "signal": "HOLD",
-    "confidence": 30,
-    "score": -0.3,
-    "fg": 29,
-    "btc_price": 64925,
-    "btc_dominance": 56.8,
-    "candidates": [
-      "KAG",
-      "KAU",
-      "UB",
-      "XAUT",
-      "FDUSD",
-      "PAXG",
-      "BEAT"
-    ],
-    "alert": null
-  },
-  {
-    "ts": "2026-08-08T00:01:25.784889+00:00",
+    "ts": "2026-08-08T04:02:17.202506+00:00",
     "coin": "ADA",
     "price": 0.0,
     "signal": "HOLD",
     "confidence": 30,
     "score": -0.3,
     "fg": 30,
-    "btc_price": 64884,
+    "btc_price": 64986,
     "btc_dominance": 56.8,
     "candidates": [
-      "KAU",
       "XAUT",
       "FDUSD",
+      "UB",
       "PAXG",
-      "EURC",
       "USDG",
-      "MON"
+      "MON",
+      "EURC"
     ],
-    "alert": "Swing candidate pool contains only stablecoins, gold tokens, and a suspicious 117% pump \u2014 no legitimate swing entries available."
+    "alert": null
   }
 ]
