@@ -198,7 +198,7 @@ def _parse_solscan_email(subject: str, body: str, name_map: dict) -> Optional[di
     changes = balance_pattern.findall(body)
 
     if not changes:
-        log.debug(f"Email: no balance changes found for {wallet_info['alias']}")
+        log.warning(f"Email: no balance changes found for {wallet_info['alias']} — raw body snippet: {repr(body[:300])}")
         return None
 
     # ── Extract timestamp ─────────────────────────────────────────────────────
@@ -229,6 +229,7 @@ def _parse_solscan_email(subject: str, body: str, name_map: dict) -> Optional[di
 
     # If only stablecoins moved, log context and return None (no trade signal)
     if not signals:
+        log.warning(f"Email: {wallet_info['alias']} — all balance changes were stablecoins/SOL, no memecoin signal")
         if stable_flows:
             # Stablecoin inflow after a sell = contextually useful (profit-taking)
             flow_desc = ", ".join(
