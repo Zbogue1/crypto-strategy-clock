@@ -322,26 +322,19 @@ class ResearchVerdict:
     def to_telegram_summary(self) -> str:
         icon  = "🟢" if self.go else "🔴"
         lines = [f"{icon} <b>Research: ${self.token_symbol}</b>  Score {self.final_score}/10"]
-        if self.token_age_days is not None:
-            lines.append(f"📅 Age: {self.token_age_days:.1f}d")
-        if self.liquidity_usd:
-            lines.append(f"💧 Liquidity: ${self.liquidity_usd:,.0f}")
-        if self.market_cap_usd:
-            lines.append(f"📊 MCap: ${self.market_cap_usd:,.0f}")
-        if self.top10_holder_pct is not None:
-            tag = " ⚠️ WHALE RISK" if self.top10_holder_pct > 75 else ""
-            lines.append(f"🐋 Top-10 holders: {self.top10_holder_pct:.0f}%{tag}")
+        # Cross-wallet confirmation is the highest-value signal — always show
         if self.cross_wallet_hits > 0:
             names = ", ".join(self.cross_wallet_names)
             lines.append(f"🔥 <b>Cross-wallet: {names} also in this token</b>")
+        # Whale concentration warning — only show if risky
+        if self.top10_holder_pct is not None and self.top10_holder_pct > 75:
+            lines.append(f"🐋 Top-10 holders: {self.top10_holder_pct:.0f}% ⚠️ WHALE RISK")
         if self.ct_summary:
             lines.append(f"🐦 CT: {self.ct_summary}")
         if self.culture_insight:
             lines.append(f"🧠 {self.culture_insight}")
         if self.warnings:
-            lines.append("⚠️ " + " | ".join(self.warnings[:3]))
-        if self.evidence:
-            lines.append("✔ " + " | ".join(self.evidence[:2]))
+            lines.append("⚠️ " + " | ".join(self.warnings[:2]))
         if self.go:
             size_bar = "█" * int(self.suggested_position_pct / 5) + "░" * (6 - int(self.suggested_position_pct / 5))
             verdict = f"✅ {self.go_reason}\n💰 Position: {self.suggested_position_pct:.0f}% FOMO cash [{size_bar}]"
