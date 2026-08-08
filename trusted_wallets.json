@@ -245,7 +245,7 @@
     {
       "wallet": "FILL_IN_remus_WALLET_ADDRESS",
       "alias": "remus",
-      "fomo_profile": "@rtrd/acc",
+      "fomo_profile": "@rtrd",
       "tier": "B",
       "chain": "solana",
       "alchemy_webhook_id": null,
