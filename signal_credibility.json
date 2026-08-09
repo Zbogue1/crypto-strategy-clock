@@ -1,32 +1,32 @@
 {
   "open_trade": {
     "coin": "SOL",
-    "entry_time": "2026-08-09T12:05:27.411945+00:00",
+    "entry_time": "2026-08-09T16:01:54.889331+00:00",
     "key_signals": [
-      {
-        "source": "CryptoSlate",
-        "signal_type": "news",
-        "description": "A $1.8B leverage trap building on Solana with 11-month high funding rates creates a binary catalyst \u2014 breakout above $78 could trigger a short squeeze."
-      },
       {
         "source": "Fear_Greed",
         "signal_type": "sentiment",
-        "description": "Fear index at 31 but trending up from 27.9 weekly average \u2014 classic contrarian buy window as sentiment improves from deep fear."
+        "description": "Fear & Greed at 31 improving from weekly avg of 27.9 \u2014 sentiment bottoming pattern that has historically preceded bounces in quality assets."
       },
       {
         "source": "CoinTelegraph",
         "signal_type": "news",
-        "description": "US spot Bitcoin ETFs posted best week since April with $1B inflows, indicating strong institutional demand supporting the broader market floor."
-      },
-      {
-        "source": "CoinDesk",
-        "signal_type": "news",
-        "description": "BIP-110 fork attempt stalled after only two blocks, removing a significant source of market uncertainty and systemic risk for BTC."
+        "description": "US spot Bitcoin ETFs posted best week since April with $1B inflows, signaling institutional demand returning and providing a macro tailwind for the entire crypto market."
       },
       {
         "source": "volume_breakout",
         "signal_type": "technical",
-        "description": "SOL 24h volume of $1.175B is robust among altcoins, and its +4.4% 7-day outperformance vs BTC and ETH signals capital rotation into the asset."
+        "description": "SOL maintaining $1.06B daily volume while gaining 5.9% weekly shows strong buyer participation, not just low-liquidity drift."
+      },
+      {
+        "source": "CoinDesk",
+        "signal_type": "news",
+        "description": "BlackRock's IBIT attracted the bulk of $853M single-day ETF inflows \u2014 smart money accumulation at these levels is a bullish signal."
+      },
+      {
+        "source": "CoinDesk",
+        "signal_type": "macro",
+        "description": "Over 100 crypto projects folding in 2026 represents a shakeout that concentrates capital into surviving quality projects like SOL \u2014 destructive but ultimately bullish for survivors."
       }
     ],
     "confidence": 62
@@ -188,5 +188,5 @@
     }
   },
   "trade_count": 11,
-  "last_updated": "2026-08-09T12:05:27.411959+00:00"
+  "last_updated": "2026-08-09T16:01:54.889347+00:00"
 }
