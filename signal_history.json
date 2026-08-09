@@ -210,5 +210,27 @@
       "SOL"
     ],
     "alert": null
+  },
+  {
+    "ts": "2026-08-09T20:03:55.764621+00:00",
+    "coin": "SOL",
+    "price": 77.16,
+    "signal": "BUY",
+    "confidence": 52,
+    "score": 0.35,
+    "fg": 31,
+    "btc_price": 65140,
+    "btc_dominance": 56.7,
+    "candidates": [
+      "FDUSD",
+      "BTW",
+      "PUMP",
+      "USDD",
+      "BONK",
+      "CRV",
+      "PENGU",
+      "SOL"
+    ],
+    "alert": null
   }
 ]
