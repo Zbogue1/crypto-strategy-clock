@@ -1,32 +1,32 @@
 {
   "open_trade": {
     "coin": "SOL",
-    "entry_time": "2026-08-08T20:01:22.218162+00:00",
+    "entry_time": "2026-08-09T00:02:03.490267+00:00",
     "key_signals": [
-      {
-        "source": "CoinDesk",
-        "signal_type": "news",
-        "description": "US spot Bitcoin ETFs posted their best week since April with $1B in inflows, signaling renewed institutional appetite and likely rotation into quality alts."
-      },
       {
         "source": "Fear_Greed",
         "signal_type": "sentiment",
-        "description": "Fear & Greed at 30 (Fear) but trending up from 27.3 weekly average \u2014 classic contrarian setup where buying during fear has historically rewarded swing traders."
-      },
-      {
-        "source": "CoinTelegraph",
-        "signal_type": "news",
-        "description": "Nansen founder claims Bitcoin will never fall below $60K again, and the CLARITY Act advancing in the Senate adds regulatory clarity tailwinds."
-      },
-      {
-        "source": "volume_breakout",
-        "signal_type": "technical",
-        "description": "SOL's $1.45B daily volume is the highest among altcoins and its +3.6% daily gain with +7% weekly shows strong momentum with institutional-level liquidity."
+        "description": "Fear & Greed at 31 (Fear) but trending up from 27.9 weekly average \u2014 contrarian buy signal as sentiment improves off depressed levels."
       },
       {
         "source": "CryptoSlate",
         "signal_type": "news",
-        "description": "BlackRock accounted for 80% of the $1B ETF inflow week, indicating the world's largest asset manager is aggressively accumulating \u2014 a powerful signal for sustained recovery."
+        "description": "Bitcoin and Ethereum ETFs broke $1B in weekly inflows (best since April) with BlackRock driving 80%, signaling major institutional re-engagement."
+      },
+      {
+        "source": "volume_breakout",
+        "signal_type": "technical",
+        "description": "SOL trading $1.41B daily volume \u2014 third highest in top 20 \u2014 with +3.1% 24h gain indicates strong buying pressure and liquidity."
+      },
+      {
+        "source": "CoinTelegraph",
+        "signal_type": "news",
+        "description": "Nansen founder stated 'Bitcoin will never fall below $60K again' while Senate advances CLARITY Act, creating a bullish narrative floor."
+      },
+      {
+        "source": "CoinDesk",
+        "signal_type": "news",
+        "description": "Bitwise's Matt Hougan projects trillions in institutional money flowing into Bitcoin, reinforcing the macro tailwind for crypto broadly."
       }
     ],
     "confidence": 62
@@ -188,5 +188,5 @@
     }
   },
   "trade_count": 11,
-  "last_updated": "2026-08-08T20:01:22.218169+00:00"
+  "last_updated": "2026-08-09T00:02:03.490282+00:00"
 }
