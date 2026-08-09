@@ -1,35 +1,35 @@
 {
   "open_trade": {
     "coin": "SOL",
-    "entry_time": "2026-08-09T04:03:37.496640+00:00",
+    "entry_time": "2026-08-09T08:03:35.134212+00:00",
     "key_signals": [
-      {
-        "source": "Fear_Greed",
-        "signal_type": "sentiment",
-        "description": "Fear at 31 but improving from 28 weekly average \u2014 contrarian buy signal as sentiment lifts from oversold territory."
-      },
       {
         "source": "CryptoSlate",
         "signal_type": "news",
-        "description": "Bitcoin and Ethereum ETFs broke $1B in weekly inflows with BlackRock driving 80%, signaling strong institutional re-engagement."
+        "description": "Bitcoin and Ethereum ETFs broke $1B in weekly inflows (best since April) with BlackRock driving 80% \u2014 institutional re-engagement is a strong macro tailwind."
+      },
+      {
+        "source": "Fear_Greed",
+        "signal_type": "sentiment",
+        "description": "Fear & Greed at 31 improving from 27.9 weekly average \u2014 bottoming fear with improving trajectory is historically a favorable entry window for swing trades."
       },
       {
         "source": "CoinTelegraph",
         "signal_type": "news",
-        "description": "Nansen founder stated Bitcoin will never fall below $60K again, reinforcing an institutional floor thesis that supports alt positioning."
+        "description": "Nansen founder states Bitcoin will never fall below $60K again, reinforcing a higher floor thesis that supports risk-on positioning in quality alts."
       },
       {
         "source": "volume_breakout",
         "signal_type": "technical",
-        "description": "SOL's $1.3B daily volume is disproportionately strong relative to its market cap, indicating active accumulation interest."
+        "description": "SOL trading $1.25B daily volume while gaining 4% weekly \u2014 strong volume confirms genuine demand rather than low-liquidity drift."
       },
       {
         "source": "CoinDesk",
         "signal_type": "news",
-        "description": "US Senate opening CLARITY Act voting provides a near-term regulatory catalyst that could boost the entire crypto market in coming weeks."
+        "description": "Bitwise's Matt Hougan projects trillions in institutional money flowing into Bitcoin \u2014 if even partially realized, this creates sustained tailwinds for the broader crypto ecosystem."
       }
     ],
-    "confidence": 58
+    "confidence": 62
   },
   "signal_stats": {
     "Fear_Greed__sentiment": {
@@ -188,5 +188,5 @@
     }
   },
   "trade_count": 11,
-  "last_updated": "2026-08-09T04:03:37.496653+00:00"
+  "last_updated": "2026-08-09T08:03:35.134228+00:00"
 }
