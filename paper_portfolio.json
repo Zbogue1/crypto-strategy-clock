@@ -1,5 +1,5 @@
 {
-  "cash": 626.0175,
+  "cash": 469.5175,
   "holdings": [
     {
       "coin_ticker": "SOL",
@@ -15,6 +15,21 @@
       "stop_loss": 69.5,
       "entry_target": 74.5,
       "expected_days": 10
+    },
+    {
+      "coin_ticker": "MON",
+      "coin_id": "mon",
+      "units": 6921.780408178445,
+      "entry_price": 0.02258718,
+      "entry_date": "2026-08-10T12:01:20.246545+00:00",
+      "entry_signal": "BUY",
+      "entry_confidence": 62,
+      "allocated_usd": 156.5,
+      "fee_paid": 0.1565,
+      "exit_target": 0.0265,
+      "stop_loss": 0.0195,
+      "entry_target": 0.022,
+      "expected_days": 7
     }
   ],
   "realized_pnl": -165.3125,
@@ -22,7 +37,7 @@
   "total_trades": 17,
   "winning_trades": 7,
   "losing_trades": 10,
-  "total_fees": 4.0262,
+  "total_fees": 4.1827,
   "trade_history": [
     {
       "trade_num": 1,
