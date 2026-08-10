@@ -1,32 +1,32 @@
 {
   "open_trade": {
-    "coin": "SOL",
-    "entry_time": "2026-08-10T08:04:01.778214+00:00",
+    "coin": "MON",
+    "entry_time": "2026-08-10T12:01:20.247199+00:00",
     "key_signals": [
+      {
+        "source": "RSI",
+        "signal_type": "technical",
+        "description": "MON RSI at 26.44 is deeply oversold \u2014 our most reliable signal with 71% win rate and +5% avg return, historically marking short-term bounce zones."
+      },
       {
         "source": "Fear_Greed",
         "signal_type": "sentiment",
-        "description": "Fear at 30 with improving trend (up from 28.1 weekly avg) suggests we're near a local sentiment bottom \u2014 historically favorable for entries."
+        "description": "Fear & Greed at 30 ('Fear') but trending up from weekly avg of 28.1, suggesting sentiment is bottoming and conditions may improve for risk assets."
       },
       {
         "source": "CoinDesk",
         "signal_type": "news",
-        "description": "BTC above $65K with inflation data pending this week \u2014 the market is pricing in cautious optimism ahead of macro catalysts."
+        "description": "Bitcoin steadying above $65K as Iran-Oman deal talks ease Hormuz concerns \u2014 this geopolitical de-escalation supports risk-on positioning across crypto."
       },
       {
-        "source": "volume_breakout",
-        "signal_type": "technical",
-        "description": "SOL's $1.17B daily volume is robust and supports the 6% weekly price move, suggesting the rally has real buying behind it rather than thin-market drift."
-      },
-      {
-        "source": "CryptoSlate",
-        "signal_type": "macro",
-        "description": "Yields spiking toward 5.2% is a headwind, but the article notes Bitcoin has historically ignored bond market stress \u2014 reducing the macro risk somewhat."
-      },
-      {
-        "source": "Blockworks",
+        "source": "CoinDesk",
         "signal_type": "news",
-        "description": "ETH derivatives reset and DePIN/gaming rebound narratives suggest broader alt ecosystem recovery is underway, benefiting SOL's ecosystem."
+        "description": "CME hedge funds abandoning structural shorts to bet on Bitcoin rally \u2014 institutional positioning shift is a bullish macro signal for the entire market."
+      },
+      {
+        "source": "CoinTelegraph",
+        "signal_type": "macro",
+        "description": "Markets positioning for Fed rate-hike pause ahead of CPI \u2014 a dovish outcome would be a tailwind for speculative assets including oversold alts."
       }
     ],
     "confidence": 62
@@ -188,5 +188,5 @@
     }
   },
   "trade_count": 11,
-  "last_updated": "2026-08-10T08:04:01.778227+00:00"
+  "last_updated": "2026-08-10T12:01:20.247208+00:00"
 }
