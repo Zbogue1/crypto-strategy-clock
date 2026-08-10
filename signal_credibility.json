@@ -1,35 +1,35 @@
 {
   "open_trade": {
     "coin": "SOL",
-    "entry_time": "2026-08-10T04:02:12.633369+00:00",
+    "entry_time": "2026-08-10T08:04:01.778214+00:00",
     "key_signals": [
       {
         "source": "Fear_Greed",
         "signal_type": "sentiment",
-        "description": "Fear at 30 but improving from 28 weekly average \u2014 contrarian buy signal as sentiment bottoms tend to precede rallies."
+        "description": "Fear at 30 with improving trend (up from 28.1 weekly avg) suggests we're near a local sentiment bottom \u2014 historically favorable for entries."
       },
       {
         "source": "CoinDesk",
         "signal_type": "news",
-        "description": "Bitcoin spot ETF inflows of $853M led by BlackRock's IBIT signal strong institutional demand that typically rotates into large-cap alts."
+        "description": "BTC above $65K with inflation data pending this week \u2014 the market is pricing in cautious optimism ahead of macro catalysts."
       },
       {
         "source": "volume_breakout",
         "signal_type": "technical",
-        "description": "SOL maintaining $1.19B daily volume while gaining 4.8% weekly shows sustained buying pressure, not a thin-market spike."
+        "description": "SOL's $1.17B daily volume is robust and supports the 6% weekly price move, suggesting the rally has real buying behind it rather than thin-market drift."
       },
       {
         "source": "CryptoSlate",
-        "signal_type": "news",
-        "description": "Grayscale shutting down three altcoin ETFs is a negative signal for alt sentiment but may already be priced in given current fear levels."
+        "signal_type": "macro",
+        "description": "Yields spiking toward 5.2% is a headwind, but the article notes Bitcoin has historically ignored bond market stress \u2014 reducing the macro risk somewhat."
       },
       {
-        "source": "CoinDesk",
+        "source": "Blockworks",
         "signal_type": "news",
-        "description": "BIP-110 fork stalling after 2 blocks removes a potential Bitcoin uncertainty catalyst, supporting near-term stability."
+        "description": "ETH derivatives reset and DePIN/gaming rebound narratives suggest broader alt ecosystem recovery is underway, benefiting SOL's ecosystem."
       }
     ],
-    "confidence": 58
+    "confidence": 62
   },
   "signal_stats": {
     "Fear_Greed__sentiment": {
@@ -188,5 +188,5 @@
     }
   },
   "trade_count": 11,
-  "last_updated": "2026-08-10T04:02:12.633384+00:00"
+  "last_updated": "2026-08-10T08:04:01.778227+00:00"
 }
