@@ -254,5 +254,27 @@
       "SOL"
     ],
     "alert": "No actionable swing setups this cycle \u2014 all candidates are either overbought, stablecoins, or lack sufficient technical data for risk-defined entries."
+  },
+  {
+    "ts": "2026-08-10T04:01:34.363345+00:00",
+    "coin": "SOL",
+    "price": 76.54,
+    "signal": "BUY",
+    "confidence": 58,
+    "score": 0.45,
+    "fg": 30,
+    "btc_price": 64920,
+    "btc_dominance": 56.7,
+    "candidates": [
+      "FDUSD",
+      "USDG",
+      "BEAT",
+      "USDD",
+      "PUMP",
+      "CRV",
+      "LDO",
+      "SOL"
+    ],
+    "alert": null
   }
 ]
