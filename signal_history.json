@@ -276,5 +276,27 @@
       "SOL"
     ],
     "alert": null
+  },
+  {
+    "ts": "2026-08-10T08:03:22.408680+00:00",
+    "coin": "SOL",
+    "price": 76.96,
+    "signal": "BUY",
+    "confidence": 62,
+    "score": 5.8,
+    "fg": 30,
+    "btc_price": 65198,
+    "btc_dominance": 56.7,
+    "candidates": [
+      "USDG",
+      "FDUSD",
+      "BTW",
+      "WLD",
+      "BEAT",
+      "PUMP",
+      "UB",
+      "SOL"
+    ],
+    "alert": null
   }
 ]
