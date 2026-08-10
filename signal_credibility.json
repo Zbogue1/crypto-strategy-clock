@@ -1,35 +1,35 @@
 {
   "open_trade": {
     "coin": "SOL",
-    "entry_time": "2026-08-09T20:04:39.462888+00:00",
+    "entry_time": "2026-08-10T04:02:12.633369+00:00",
     "key_signals": [
       {
         "source": "Fear_Greed",
         "signal_type": "sentiment",
-        "description": "Fear & Greed at 31 (Fear) but improving from weekly average of 27.9 \u2014 trend reversal from extreme fear supports cautious risk-on positioning."
-      },
-      {
-        "source": "CoinTelegraph",
-        "signal_type": "news",
-        "description": "US spot Bitcoin ETFs posted best week since April with $1B inflows, signaling institutional confidence returning to crypto markets."
-      },
-      {
-        "source": "volume_breakout",
-        "signal_type": "technical",
-        "description": "SOL trading $1.04B daily volume while gaining 5% on the week \u2014 strong volume backing the move suggests genuine demand, not thin-market noise."
+        "description": "Fear at 30 but improving from 28 weekly average \u2014 contrarian buy signal as sentiment bottoms tend to precede rallies."
       },
       {
         "source": "CoinDesk",
         "signal_type": "news",
-        "description": "Over 100 crypto projects have folded in 2026 in a dot-com style shakeout \u2014 this favors established L1s like SOL that survive the culling."
+        "description": "Bitcoin spot ETF inflows of $853M led by BlackRock's IBIT signal strong institutional demand that typically rotates into large-cap alts."
       },
       {
-        "source": "Blockworks",
+        "source": "volume_breakout",
+        "signal_type": "technical",
+        "description": "SOL maintaining $1.19B daily volume while gaining 4.8% weekly shows sustained buying pressure, not a thin-market spike."
+      },
+      {
+        "source": "CryptoSlate",
         "signal_type": "news",
-        "description": "ETH derivatives reset narrative and DePIN/gaming rebound suggest sector rotation into utility chains, which benefits Solana's ecosystem positioning."
+        "description": "Grayscale shutting down three altcoin ETFs is a negative signal for alt sentiment but may already be priced in given current fear levels."
+      },
+      {
+        "source": "CoinDesk",
+        "signal_type": "news",
+        "description": "BIP-110 fork stalling after 2 blocks removes a potential Bitcoin uncertainty catalyst, supporting near-term stability."
       }
     ],
-    "confidence": 52
+    "confidence": 58
   },
   "signal_stats": {
     "Fear_Greed__sentiment": {
@@ -188,5 +188,5 @@
     }
   },
   "trade_count": 11,
-  "last_updated": "2026-08-09T20:04:39.462904+00:00"
+  "last_updated": "2026-08-10T04:02:12.633384+00:00"
 }
