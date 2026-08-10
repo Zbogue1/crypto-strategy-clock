@@ -342,5 +342,27 @@
       "SOL"
     ],
     "alert": "Weak candidate pool and missing technical indicators reduce confidence \u2014 size positions conservatively."
+  },
+  {
+    "ts": "2026-08-10T20:03:36.332499+00:00",
+    "coin": "SOL",
+    "price": 76.12,
+    "signal": "BUY",
+    "confidence": 58,
+    "score": 0.42,
+    "fg": 30,
+    "btc_price": 63977,
+    "btc_dominance": 56.5,
+    "candidates": [
+      "KAU",
+      "BEAT",
+      "MON",
+      "USDG",
+      "FDUSD",
+      "UB",
+      "XAUT",
+      "SOL"
+    ],
+    "alert": null
   }
 ]
