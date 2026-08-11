@@ -452,5 +452,27 @@
       "SOL"
     ],
     "alert": "CPI week ahead with BTC at key support \u2014 avoid new positions until macro clarity emerges."
+  },
+  {
+    "ts": "2026-08-11T16:00:11.521299+00:00",
+    "coin": "SOL",
+    "price": 74.85,
+    "signal": "HOLD",
+    "confidence": 32,
+    "score": 2.1,
+    "fg": 29,
+    "btc_price": 63543,
+    "btc_dominance": 0.0,
+    "candidates": [
+      "BEAT",
+      "VELVET",
+      "CYS",
+      "FDUSD",
+      "PAXG",
+      "XAUT",
+      "MON",
+      "SOL"
+    ],
+    "alert": "No high-conviction swing setups this cycle. All candidates are either overextended, structurally broken, or lack clear entry triggers."
   }
 ]
