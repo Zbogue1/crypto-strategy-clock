@@ -44,6 +44,7 @@ from fomo_portfolio import (
 )
 from fomo_research import research_token, ResearchVerdict, _ct_sentiment
 from fomo_wallet_stats import get_wallet_leaderboard
+from fomo_first_buy import check_and_record as check_first_buy
 from fomo_social import start_social_poller, parse_channel_message
 
 # ─── CONFIG ───────────────────────────────────────────────────────────────────
@@ -1697,6 +1698,9 @@ def process_social_signal(signal: dict):
             return
 
         # Deep research
+        # First-buy detection — flag if wallet has never bought this contract before
+        is_first_buy = check_first_buy(alias, contract)
+
         signal_ctx = {
             "alias":        alias,
             "tier":         signal.get("tier", "B"),
@@ -1706,11 +1710,13 @@ def process_social_signal(signal: dict):
             "source":       source,
             "timestamp":    signal.get("timestamp", datetime.now(timezone.utc).isoformat()),
             "original_text": signal.get("original_text", ""),
+            "is_first_buy": is_first_buy,
         }
         verdict = research_token(contract, chain, signal_ctx)
 
         # Hard veto only — research score drives position size, not execution gate
-        source_icon = "🐦" if source == "twitter" else "📢" if source == "telegram" else "📧"
+        source_icon  = "🐦" if source == "twitter" else "📢" if source == "telegram" else "📧"
+        first_buy_badge = " 🆕 FIRST BUY" if is_first_buy else " 📈 adding to position"
 
         # Narrative-watch wallets: inform but never execute
         if not signal.get("copy_trade", True):
@@ -1756,7 +1762,7 @@ def process_social_signal(signal: dict):
         else:
             conv_label = "🔎 SPECULATIVE"
         send_telegram_button(
-            source_icon + " <b>FOMO SIGNAL: " + token_data["symbol"] + "</b>  " + conv_label + "\n"
+            source_icon + " <b>FOMO SIGNAL: " + token_data["symbol"] + "</b>  " + conv_label + first_buy_badge + "\n"
             + "Trader: " + alias + " (" + source + ")  |  "
             + "Suggested: <b>" + str(int(pos_pct)) + "% FOMO cash</b>\n"
             + (f"Signal: \"{signal.get('signal_text', '')[:80]}\"\n" if signal.get("signal_text") else "")
