@@ -474,5 +474,27 @@
       "SOL"
     ],
     "alert": "No high-conviction swing setups this cycle. All candidates are either overextended, structurally broken, or lack clear entry triggers."
+  },
+  {
+    "ts": "2026-08-11T20:01:16.413626+00:00",
+    "coin": "SOL",
+    "price": 75.61,
+    "signal": "HOLD",
+    "confidence": 32,
+    "score": -0.3,
+    "fg": 29,
+    "btc_price": 63471,
+    "btc_dominance": 56.3,
+    "candidates": [
+      "BEAT",
+      "VELVET",
+      "FDUSD",
+      "PAXG",
+      "USDG",
+      "MON",
+      "RLUSD",
+      "SOL"
+    ],
+    "alert": "No high-conviction swing setups available. All candidates lack critical technical data (RSI/MACD). Recommend staying in cash until clearer setups emerge."
   }
 ]
