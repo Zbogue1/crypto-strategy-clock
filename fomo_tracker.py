@@ -42,7 +42,7 @@ from fomo_portfolio import (
     sync_fomo_state_from_github,
     FOMO_MAX_CONCURRENT_POSITIONS,
 )
-from fomo_research import research_token, ResearchVerdict
+from fomo_research import research_token, ResearchVerdict, _ct_sentiment
 from fomo_social import start_social_poller, parse_channel_message
 
 # ─── CONFIG ───────────────────────────────────────────────────────────────────
@@ -464,6 +464,92 @@ def parse_relayed_signal(raw_text: str) -> dict:
         return _parse_relayed_signal_fallback(raw_text)
 
 
+def send_positions_update():
+    """
+    Called when the user sends /positions or 'my positions' via Telegram.
+    Fetches live price + fresh CT sentiment for every open holding.
+    """
+    sync_fomo_state_from_github()
+    portfolio = load_fomo_portfolio()
+    holdings  = portfolio.get("holdings", [])
+    cash      = portfolio.get("cash", 0)
+
+    if not holdings:
+        send_telegram(f"📭 <b>No open positions.</b>\nCash: ${cash:.2f}")
+        return
+
+    send_telegram(f"🔄 Fetching live data on {len(holdings)} position(s)...")
+    lines = ["📊 <b>LIVE POSITION UPDATE</b>\n"]
+
+    for h in holdings:
+        contract = h.get("contract_address", "")
+        ticker   = h.get("token_ticker", "???")
+        entry    = h.get("entry_price", 0)
+        units    = h.get("units", 0)
+        spent    = h.get("spent", 0)
+        stop     = h.get("stop_loss", 0)
+        target   = h.get("exit_target", 0)
+        wallet   = h.get("wallet_alias", "unknown")
+        tranches = h.get("tranches_taken", [])
+
+        live_data     = validate_token(contract) if contract else {}
+        current_price = live_data.get("price", 0)
+
+        if current_price and entry:
+            pnl_pct     = (current_price - entry) / entry * 100
+            current_val = units * current_price
+            unrealized  = current_val - spent
+            pnl_emoji   = "🟢" if pnl_pct >= 0 else "🔴"
+            pnl_str     = f"{pnl_emoji} {pnl_pct:+.1f}% (${unrealized:+.2f})"
+            stop_dist   = (stop - current_price) / current_price * 100 if current_price else 0
+            target_dist = (target - current_price) / current_price * 100 if current_price else 0
+            price_str   = f"${current_price:.8f}"
+        else:
+            pnl_str     = "⚠️ price unavailable"
+            price_str   = "N/A"
+            stop_dist   = 0
+            target_dist = 0
+            current_val = spent
+
+        ct      = _ct_sentiment(ticker)
+        ct_line = ct.get("summary", "N/A")
+
+        if "tranche_1_2x" in tranches and "tranche_2_3x" in tranches:
+            tranche_str = "✅ 2x + 3x taken — trailing stop active"
+        elif "tranche_1_2x" in tranches:
+            tranche_str = "✅ 2x taken — riding to 3x"
+        elif tranches:
+            tranche_str = "✅ " + ", ".join(tranches)
+        else:
+            tranche_str = "None yet"
+
+        lines.append(
+            f"<b>${ticker}</b> | Following {wallet}\n"
+            f"Price: {price_str} | {pnl_str}\n"
+            f"Invested: ${spent:.0f} → Now: ${current_val:.2f}\n"
+            f"Stop: {stop_dist:+.1f}% away | Target: {target_dist:+.1f}% away\n"
+            f"🐦 CT: {ct_line}\n"
+            f"Tranches: {tranche_str}\n"
+        )
+        time.sleep(0.5)
+
+    total_spent = sum(h.get("spent", 0) for h in holdings)
+    total_val   = sum(
+        h.get("units", 0) * (validate_token(h.get("contract_address", "")).get("price") or h.get("entry_price", 0))
+        for h in holdings
+    )
+    total_pnl   = total_val - total_spent
+    tot_emoji   = "🟢" if total_pnl >= 0 else "🔴"
+
+    lines.append(
+        f"───────────────\n"
+        f"Cash: ${cash:.2f} | Positions: ${total_val:.2f}\n"
+        f"Total P&L: {tot_emoji} ${total_pnl:+.2f}"
+    )
+
+    send_telegram("\n".join(lines))
+
+
 def handle_relayed_text_message(message: dict):
     """A plain text message (not a button tap) arrived on the Telegram webhook --
     treat it as a manually relayed signal (forwarded email or a quick note) and
@@ -477,6 +563,11 @@ def handle_relayed_text_message(message: dict):
     # Only respond in your own chat -- don't let a random sender burn API calls
     if TELEGRAM_CHAT_ID and str(chat_id) != str(TELEGRAM_CHAT_ID):
         log.warning(f"FOMO: ignoring text message from unrecognized chat_id {chat_id}")
+        return
+
+    # -- /positions command --
+    if any(kw in text.lower() for kw in ("/positions", "my positions", "/update")):
+        send_positions_update()
         return
 
     log.info(f"FOMO: relayed text message received ({len(text)} chars)")
