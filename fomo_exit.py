@@ -25,6 +25,7 @@ from datetime import datetime, timezone
 from typing import Optional
 
 import requests
+from fomo_wallet_stats import record_trade_outcome
 
 log = logging.getLogger(__name__)
 
@@ -177,6 +178,20 @@ def _execute_full_sell(
 
     save_fomo_portfolio(state)
     sync_fomo_state_to_github()
+
+    # Record outcome against the wallet that triggered this trade
+    try:
+        record_trade_outcome(
+            alias       = holding.get("wallet_alias", "unknown"),
+            token       = holding.get("token_ticker", "?"),
+            win         = gain_pct > 0,
+            pnl_pct     = round(gain_pct, 2),
+            pnl_usd     = round(net - holding.get("spent", 0), 2),
+            exit_reason = reason,
+        )
+    except Exception as e:
+        log.warning(f"WalletStats: record_trade_outcome failed: {e}")
+
     return net
 
 

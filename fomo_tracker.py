@@ -43,6 +43,7 @@ from fomo_portfolio import (
     FOMO_MAX_CONCURRENT_POSITIONS,
 )
 from fomo_research import research_token, ResearchVerdict, _ct_sentiment
+from fomo_wallet_stats import get_wallet_leaderboard
 from fomo_social import start_social_poller, parse_channel_message
 
 # ─── CONFIG ───────────────────────────────────────────────────────────────────
@@ -568,6 +569,11 @@ def handle_relayed_text_message(message: dict):
     # -- /positions command --
     if any(kw in text.lower() for kw in ("/positions", "my positions", "/update")):
         send_positions_update()
+        return
+
+    # -- /leaderboard command --
+    if any(kw in text.lower() for kw in ("/leaderboard", "leaderboard", "/stats")):
+        send_telegram(get_wallet_leaderboard())
         return
 
     log.info(f"FOMO: relayed text message received ({len(text)} chars)")
