@@ -1,35 +1,35 @@
 {
   "open_trade": {
     "coin": "SOL",
-    "entry_time": "2026-08-10T20:04:14.426022+00:00",
+    "entry_time": "2026-08-11T00:03:43.500137+00:00",
     "key_signals": [
       {
         "source": "Fear_Greed",
         "signal_type": "sentiment",
-        "description": "Fear & Greed at 30 (Fear) but improving from 28.1 weekly average \u2014 historically a contrarian buying zone for quality assets."
+        "description": "Fear & Greed at 29 with improving trend (up from 28.7 weekly avg) suggests potential sentiment floor forming, historically a contrarian buying zone."
       },
       {
         "source": "CoinDesk",
         "signal_type": "news",
-        "description": "Jupiter's dual-yield feature and Solstice Finance's Strategy product on Solana signal growing ecosystem utility and institutional adoption."
+        "description": "Jupiter's dual-yield lending feature on Solana ('same dollar earns twice') provides a real DeFi catalyst driving SOL utility demand."
       },
       {
         "source": "CoinTelegraph",
         "signal_type": "news",
-        "description": "Bitcoin price slip on oil surge and Strategy selling BTC creates short-term pressure but SOL showed relative strength through the dip."
+        "description": "Bitcoin price slip on oil surge and Hormuz tensions adds macro headwind \u2014 trade must account for continued risk-off flows."
       },
       {
         "source": "volume_breakout",
         "signal_type": "technical",
-        "description": "SOL maintaining $1.45B in 24h volume while showing positive 7d momentum (+2.8%) indicates sustained buying interest despite fear."
+        "description": "SOL 24h volume at $1.4B remains healthy relative to market cap, suggesting sustained institutional interest despite the pullback."
       },
       {
-        "source": "Blockworks",
+        "source": "CoinDesk",
         "signal_type": "news",
-        "description": "ETH derivatives reset narrative and DePIN/gaming rebound coverage suggest improving alt sentiment that could benefit SOL ecosystem."
+        "description": "Grayscale dropping ADA, DOT, and HBAR ETF plans signals institutional capital concentrating into fewer alts \u2014 SOL likely a beneficiary."
       }
     ],
-    "confidence": 58
+    "confidence": 52
   },
   "signal_stats": {
     "Fear_Greed__sentiment": {
@@ -188,5 +188,5 @@
     }
   },
   "trade_count": 11,
-  "last_updated": "2026-08-10T20:04:14.426038+00:00"
+  "last_updated": "2026-08-11T00:03:43.500153+00:00"
 }
