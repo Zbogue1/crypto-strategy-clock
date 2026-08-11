@@ -2,7 +2,7 @@
   "version": "golem-v1",
   "reset_date": "2026-08-08",
   "reset_reason": "FOMO Golem launch \u2014 fresh $1,000 paper portfolio, FOMO-only strategy",
-  "cash": 850.0,
+  "cash": 800.0,
   "starting_cash": 1000.0,
   "peak_value": 1000.0,
   "total_trades": 0,
@@ -65,9 +65,37 @@
       "tranche_1_sold": false,
       "tranche_2_sold": false,
       "trailing_stop_active": false
+    },
+    {
+      "position_id": "ed63b29c",
+      "token_ticker": "ALON",
+      "token_name": "alon",
+      "entry_price": 0.006608,
+      "units": 7559.019370460049,
+      "spent": 50.0,
+      "stop_loss": 0.0042952,
+      "exit_target": 0.0085904,
+      "wallet_alias": "Aurelius0121",
+      "wallet_address": "",
+      "contract_address": "8XtRWb4uAAJFMP4QQhoYYCWR6XXb7ybcCdiqPwz9s5WS",
+      "catalyst": "Score 6/10 \u2014 Established: 868.7d old, Deep liq $731,935",
+      "catalyst_score": 6,
+      "market_cap": 6595064,
+      "liquidity_usd": 731934.8,
+      "token_age_days": 868.6904372278491,
+      "holder_count": null,
+      "volume_spike_pct": 41.15952835022054,
+      "entered_at": "2026-08-11T18:58:03.562879+00:00",
+      "auto_exit_at": "2026-08-12T18:58:03.562890+00:00",
+      "source": "fomo_copy",
+      "partial_taken": false,
+      "peak_price": 0.006608,
+      "tranche_1_sold": false,
+      "tranche_2_sold": false,
+      "trailing_stop_active": false
     }
   ],
   "trade_history": [],
   "archived_history_note": "Prior July 2026 paper trades archived before this reset.",
-  "last_updated": "2026-08-10T19:53:16.254981+00:00"
+  "last_updated": "2026-08-11T18:58:03.562902+00:00"
 }
