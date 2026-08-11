@@ -430,5 +430,27 @@
       "SOL"
     ],
     "alert": "Low-conviction setup due to missing technical indicators and hostile alt environment \u2014 position size accordingly."
+  },
+  {
+    "ts": "2026-08-11T12:02:51.344398+00:00",
+    "coin": "SOL",
+    "price": 76.17,
+    "signal": "HOLD",
+    "confidence": 32,
+    "score": -0.3,
+    "fg": 29,
+    "btc_price": 64346,
+    "btc_dominance": 56.5,
+    "candidates": [
+      "BEAT",
+      "VELVET",
+      "FDUSD",
+      "CYS",
+      "MON",
+      "PAXG",
+      "XAUT",
+      "SOL"
+    ],
+    "alert": "CPI week ahead with BTC at key support \u2014 avoid new positions until macro clarity emerges."
   }
 ]
