@@ -43,6 +43,8 @@ log = logging.getLogger(__name__)
 
 GMAIL_ADDRESS      = os.environ.get("GMAIL_ADDRESS", "").strip()
 GMAIL_APP_PASSWORD = os.environ.get("GMAIL_APP_PASSWORD", "").strip()
+GMAIL_ADDRESS_2      = os.environ.get("GMAIL_ADDRESS_2", "").strip()
+GMAIL_APP_PASSWORD_2 = os.environ.get("GMAIL_APP_PASSWORD_2", "").strip()
 TRUSTED_WALLETS_FILE = "trusted_wallets.json"
 
 IMAP_HOST = "imap.gmail.com"
@@ -301,12 +303,90 @@ def _parse_solscan_email(subject: str, body: str, name_map: dict) -> Optional[di
 
 # ─── IMAP POLLER ─────────────────────────────────────────────────────────────
 
+def _poll_one_account(address: str, app_password: str, name_map: dict, callback: Callable) -> int:
+    """Poll a single Gmail account for unread Solscan alerts. Returns signals emitted."""
+    signals_emitted = 0
+    try:
+        mail = imaplib.IMAP4_SSL(IMAP_HOST, IMAP_PORT)
+        mail.login(address, app_password)
+        mail.select("inbox")
+
+        _, search_data = mail.search(None, f'(UNSEEN FROM "{SOLSCAN_SENDER}")')
+        email_ids = search_data[0].split()
+
+        if not email_ids or email_ids == [b""]:
+            log.debug(f"Email [{address}]: no new Solscan alerts")
+            mail.logout()
+            return 0
+
+        log.info(f"Email [{address}]: {len(email_ids)} new Solscan alert(s)")
+
+        for eid in email_ids:
+            try:
+                _, msg_data = mail.fetch(eid, "(RFC822)")
+                raw = msg_data[0][1]
+                msg = email.message_from_bytes(raw)
+
+                subject = _decode_subject(msg)
+                body    = _extract_body(msg)
+                signal  = _parse_solscan_email(subject, body, name_map)
+
+                mail.store(eid, "+FLAGS", "\\Seen")
+
+                if signal:
+                    log.info(
+                        f"Email SIGNAL [{address}]: {signal['alias']} "
+                        f"{signal['action']} {signal['contract_address'][:8]}..."
+                    )
+                    try:
+                        callback(signal)
+                        signals_emitted += 1
+                    except Exception as e:
+                        log.error(f"Email: callback error: {e}")
+
+            except Exception as e:
+                log.error(f"Email: error processing message {eid} ({address}): {e}")
+                continue
+
+        mail.logout()
+
+    except imaplib.IMAP4.error as e:
+        log.error(f"Email: IMAP auth/connection error ({address}): {e}")
+    except Exception as e:
+        log.error(f"Email: unexpected error ({address}): {e}")
+
+    return signals_emitted
+
+
 def poll_gmail(callback: Callable) -> int:
     """
-    Connect to Gmail via IMAP, fetch unread Solscan alerts, parse each one,
-    and call callback(signal) for every real memecoin signal found.
-    Returns count of signals emitted.
+    Poll all configured Gmail accounts for unread Solscan alerts.
+    Supports up to two accounts via GMAIL_ADDRESS/GMAIL_ADDRESS_2 env vars.
+    Returns total signals emitted across all accounts.
     """
+    name_map = _build_name_map()
+    if not name_map:
+        log.warning("Email: no wallets in name map — check trusted_wallets.json")
+        return 0
+
+    accounts = []
+    if GMAIL_ADDRESS and GMAIL_APP_PASSWORD:
+        accounts.append((GMAIL_ADDRESS, GMAIL_APP_PASSWORD))
+    if GMAIL_ADDRESS_2 and GMAIL_APP_PASSWORD_2:
+        accounts.append((GMAIL_ADDRESS_2, GMAIL_APP_PASSWORD_2))
+
+    if not accounts:
+        log.debug("Email: no Gmail credentials configured — skipping")
+        return 0
+
+    total = 0
+    for address, password in accounts:
+        total += _poll_one_account(address, password, name_map, callback)
+    return total
+
+
+def _poll_gmail_legacy(callback: Callable) -> int:
+    """Legacy single-account poller — kept for reference, not called."""
     if not GMAIL_ADDRESS or not GMAIL_APP_PASSWORD:
         log.debug("Email: GMAIL_ADDRESS or GMAIL_APP_PASSWORD not set — skipping")
         return 0
@@ -379,7 +459,7 @@ def poll_gmail(callback: Callable) -> int:
     return signals_emitted
 
 
-# ─── BACKGROUND THREAD ────────────────────────────────────────────────────────
+# ─── BACKGROUND THREAD ───────────────────────────────────────────────────────
 
 def start_email_poller(callback: Callable) -> threading.Thread:
     """
