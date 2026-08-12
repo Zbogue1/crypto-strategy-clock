@@ -1688,6 +1688,26 @@ def process_social_signal(signal: dict):
     portfolio = load_fomo_portfolio()
     holdings  = portfolio.get("holdings", [])
 
+    # ── Vetting gate ──────────────────────────────────────────────────────────
+    # Wallets added before vetting (vetting=null) are grandfathered — existing
+    # copy_trade flag controls behavior unchanged.
+    wallet_meta   = _get_wallet_meta(alias)
+    vetting       = wallet_meta.get("vetting") or {}
+    vetting_rec   = vetting.get("recommendation")   # None = grandfathered
+    vetting_score = vetting.get("score")
+
+    if vetting_rec == "REJECT":
+        log.info(f"Signal from {alias} suppressed — vetting: REJECT")
+        return
+
+    if vetting_rec == "TWITTER_ONLY":
+        send_telegram(
+            f"🐦 <b>CT signal: {alias} on ${token_data['symbol']}</b>\n"
+            f"<i>Wallet scored {vetting_score}/100 — Twitter-only, no on-chain slot.</i>\n"
+            f"Sentiment context logged. No buy action."
+        )
+        return
+
     if action == "BUY":
         if len(holdings) >= FOMO_MAX_CONCURRENT_POSITIONS:
             send_telegram(
@@ -1777,13 +1797,17 @@ def process_social_signal(signal: dict):
             conv_label = "🔎 SPECULATIVE"
         convergence_line = ("\n" + convergence["label"]) if convergence["is_convergence"] else ""
         regime_line = "\n" + regime["summary"] if regime["regime"] != "BULL" else ""
+        vetting_line = (
+            f"\n🔬 Vetting: {vetting_score}/100 {vetting_rec}"
+            if vetting_rec and vetting_score is not None else ""
+        )
         send_telegram_button(
             source_icon + " <b>FOMO SIGNAL: " + token_data["symbol"] + "</b>  " + conv_label + first_buy_badge + "\n"
             + "Trader: " + alias + " (" + source + ")  |  "
             + "Suggested: <b>" + str(int(pos_pct)) + "% FOMO cash</b>\n"
             + (f"Signal: \"{signal.get('signal_text', '')[:80]}\"\n" if signal.get("signal_text") else "")
             + verdict.to_telegram_summary() + "\n"
-            + convergence_line + regime_line + "\n"
+            + convergence_line + regime_line + vetting_line + "\n"
             + "⏱ Expires in " + str(BUY_ALERT_EXPIRY_MINUTES) + " min",
             "EXECUTE",
             f"buy_show:{alert_id}",

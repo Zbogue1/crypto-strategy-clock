@@ -314,7 +314,8 @@
       },
       "added_at": "2026-07-06T09:23:29.600210+00:00",
       "promoted_at": null,
-      "demoted_at": null
+      "demoted_at": null,
+      "vetting": null
     },
     {
       "wallet": "8xL8S7P4QLdTGRquHas8NP5EVjp2qUGbmSgrkh97mvmq",
@@ -340,7 +341,8 @@
       },
       "added_at": "2026-08-07T00:00:00Z",
       "promoted_at": null,
-      "demoted_at": null
+      "demoted_at": null,
+      "vetting": null
     },
     {
       "wallet": "JDFDma1TMb1tWNFY1pruwCsHBybMdzwxveythZB2dcaG",
@@ -366,7 +368,8 @@
       },
       "added_at": "2026-08-07T00:00:00Z",
       "promoted_at": null,
-      "demoted_at": null
+      "demoted_at": null,
+      "vetting": null
     },
     {
       "wallet": "4fZFcK8ms3bFMpo1ACzEUz8bH741fQW4zhAMGd5yZMHu",
@@ -392,7 +395,8 @@
       },
       "added_at": "2026-08-07T00:00:00Z",
       "promoted_at": null,
-      "demoted_at": null
+      "demoted_at": null,
+      "vetting": null
     },
     {
       "wallet": "HDixbrzwwLXczhDBk1JVrurPQsuLE8FUKnW2pucSXN3o",
@@ -418,7 +422,8 @@
       },
       "added_at": "2026-07-06T09:50:57.914259+00:00",
       "promoted_at": null,
-      "demoted_at": null
+      "demoted_at": null,
+      "vetting": null
     },
     {
       "wallet": "4BdKaxN8G6ka4GYtQQWk4G4dZRUTX2vQH9GcXdBREFUk",
@@ -444,7 +449,8 @@
       },
       "added_at": "2026-08-07T00:00:00Z",
       "promoted_at": null,
-      "demoted_at": null
+      "demoted_at": null,
+      "vetting": null
     },
     {
       "wallet": "hGPG7jEQLKz6muJJV37hhSRMrNLErRu3K1vk4zhDSbB",
@@ -470,7 +476,8 @@
       },
       "added_at": "2026-08-11T00:00:00Z",
       "promoted_at": null,
-      "demoted_at": null
+      "demoted_at": null,
+      "vetting": null
     },
     {
       "wallet": "9yBBP5sekcJ9m68rbB3Ghaivjwpj2K2vmTtMqVg6yqur",
@@ -496,7 +503,8 @@
       },
       "added_at": "2026-08-11T00:00:00Z",
       "promoted_at": null,
-      "demoted_at": null
+      "demoted_at": null,
+      "vetting": null
     },
     {
       "wallet": "6hcX7fVMzeRpW3d7XhFsxYw2CuePfgSMmouZxSiNLj1U",
@@ -522,7 +530,8 @@
       },
       "added_at": "2026-08-11T00:00:00Z",
       "promoted_at": null,
-      "demoted_at": null
+      "demoted_at": null,
+      "vetting": null
     },
     {
       "wallet": "6S8GezkxYUfZy9JPtYnanbcZTMB87Wjt1qx3c6ELajKC",
@@ -548,7 +557,8 @@
       },
       "added_at": "2026-08-11T00:00:00Z",
       "promoted_at": null,
-      "demoted_at": null
+      "demoted_at": null,
+      "vetting": null
     },
     {
       "wallet": "D53C33Zj1m3Lp1T6iiwEbvYdutD2KrpJSdJWLYtzyexz",
@@ -574,7 +584,8 @@
       },
       "added_at": "2026-08-11T00:00:00Z",
       "promoted_at": null,
-      "demoted_at": null
+      "demoted_at": null,
+      "vetting": null
     },
     {
       "wallet": "9N9XJVzCQs2zJg7u3jYuAxMmR2VR9cuqxhGjCZjuGG6c",
@@ -600,7 +611,8 @@
       },
       "added_at": "2026-08-11T00:00:00Z",
       "promoted_at": null,
-      "demoted_at": null
+      "demoted_at": null,
+      "vetting": null
     }
   ],
   "demotion_rules": {

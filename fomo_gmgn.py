@@ -193,19 +193,33 @@ def get_wallet_profile(wallet_address: str) -> Optional[dict]:
     if not data:
         return None
 
+    # avg_hold_time may come back as seconds — normalise to minutes
+    hold_raw = (
+        data.get("avg_holding_time")       # seconds (most common)
+        or data.get("avg_hold_duration")   # alternative field name
+        or data.get("avg_hold_time")
+    )
+    avg_hold_minutes = None
+    if hold_raw is not None:
+        try:
+            avg_hold_minutes = float(hold_raw) / 60   # assume seconds
+        except (TypeError, ValueError):
+            pass
+
     return {
-        "wallet":          wallet_address,
-        "winrate_7d":      data.get("winrate_7d"),
-        "winrate_30d":     data.get("winrate"),
-        "pnl_7d":          data.get("pnl_7d"),
-        "pnl_30d":         data.get("pnl_30d"),
-        "realized_profit": data.get("realized_profit"),
-        "fast_tx_ratio":   data.get("fast_tx_ratio"),
-        "honeypot_ratio":  data.get("honeypot_ratio"),
-        "sol_balance":     data.get("sol_balance"),
-        "twitter":         data.get("twitter_username"),
-        "tags":            data.get("tags") or [],
-        "raw":             data,
+        "wallet":            wallet_address,
+        "winrate_7d":        data.get("winrate_7d"),
+        "winrate_30d":       data.get("winrate"),
+        "pnl_7d":            data.get("pnl_7d"),
+        "pnl_30d":           data.get("pnl_30d"),
+        "realized_profit":   data.get("realized_profit"),
+        "fast_tx_ratio":     data.get("fast_tx_ratio"),
+        "honeypot_ratio":    data.get("honeypot_ratio"),
+        "sol_balance":       data.get("sol_balance"),
+        "twitter":           data.get("twitter_username"),
+        "tags":              data.get("tags") or [],
+        "avg_hold_minutes":  avg_hold_minutes,
+        "raw":               data,
     }
 
 
@@ -279,21 +293,43 @@ def discover_traders(period: str = "7d", limit: int = 100) -> list:
             log.debug(f"GMGN: {wallet[:8]}... filtered — realized profit ${realized:.0f} too low")
             continue
 
-        candidates.append({
-            "wallet":           wallet,
-            "winrate":          winrate,
-            "pnl":              pnl,
-            "realized_profit":  realized,
-            "fast_tx_ratio":    0,
-            "twitter":          twitter,
-            "tags":             list(tags),
-            "buys_7d":          buys_7d,
-        })
+        # Fetch full profile to get hold time and fast_tx_ratio
+        profile = get_wallet_profile(wallet)
+        fast_tx = float((profile or {}).get("fast_tx_ratio") or 0)
+        hold_min = (profile or {}).get("avg_hold_minutes")   # None if unavailable
+        honeypot_ratio = float((profile or {}).get("honeypot_ratio") or 0)
+
+        candidate = {
+            "wallet":             wallet,
+            "winrate":            winrate,
+            "win_rate":           winrate,
+            "pnl":                pnl,
+            "realized_profit":    realized,
+            "realized_pnl_7d":   realized,
+            "fast_tx_ratio":      fast_tx,
+            "honeypot_ratio":     honeypot_ratio,
+            "twitter":            twitter,
+            "has_twitter":        bool(twitter),
+            "tags":               list(tags),
+            "buys_7d":            buys_7d,
+            "trades_7d":          buys_7d,   # best proxy from leaderboard data
+            "avg_trades_per_day": round(buys_7d / 7, 1),
+            "avg_hold_minutes":   hold_min,
+        }
+        candidates.append(candidate)
         log.info(
             f"GMGN candidate: {wallet[:8]}... "
             f"WR={winrate*100:.0f}% realized=${realized:,.0f} "
+            f"hold={f'{hold_min:.0f}min' if hold_min else '?'} "
             f"twitter=@{twitter}"
         )
+
+    # Run every candidate through the vetting engine
+    try:
+        from fomo_vetting import vet_and_annotate
+        candidates = [vet_and_annotate(c) for c in candidates]
+    except Exception as e:
+        log.warning(f"GMGN: vetting failed (non-fatal): {e}")
 
     log.info(f"GMGN discovery: {len(candidates)} candidates from {len(rankings)} checked")
     return candidates
@@ -394,9 +430,18 @@ def format_whale_telegram(whales: list, existing_wallets: set) -> str:
     return "\n".join(lines)
 
 
+RECOMMENDATION_ICONS = {
+    "COPY_TRADE":      "✅",
+    "NARRATIVE_WATCH": "👁️",
+    "TWITTER_ONLY":    "🐦",
+    "REJECT":          "❌",
+}
+
+
 def format_discovery_telegram(candidates: list, existing_wallets: set) -> str:
     """
     Format discovered traders as a Telegram message for user approval.
+    Includes vetting scores and recommendation if available.
     existing_wallets: set of wallet addresses already in trusted_wallets.json
     """
     new = [c for c in candidates if c["wallet"] not in existing_wallets]
@@ -409,11 +454,24 @@ def format_discovery_telegram(candidates: list, existing_wallets: set) -> str:
         realized = c.get("realized_profit") or 0
         pnl_str  = f"+${realized:,.0f}" if realized >= 0 else f"-${abs(realized):,.0f}"
         tw       = f"@{c['twitter']}" if c['twitter'] else "no twitter"
+        hold     = c.get("avg_hold_minutes")
+        hold_str = f"{hold:.0f}min hold" if hold else "hold unknown"
+
+        vetting  = c.get("vetting") or {}
+        rec      = vetting.get("recommendation", "UNVETTED")
+        score    = vetting.get("score", "?")
+        icon     = RECOMMENDATION_ICONS.get(rec, "❓")
+        top_flag = vetting.get("flags", [])
+        flag_str = f"\n  ⚠️ {top_flag[0]}" if top_flag else ""
+        disq     = vetting.get("disqualifiers", [])
+        disq_str = f"\n  ⛔ {disq[0]}" if disq else ""
+
         lines.append(
-            f"• {tw}\n"
-            f"  WR: {wr} | 7D Realized: {pnl_str}\n"
-            f"  Tags: {', '.join(c['tags']) or 'none'}\n"
+            f"{icon} {tw} — <b>{rec}</b> (score {score}/100)\n"
+            f"  WR: {wr} | 7D: {pnl_str} | {hold_str}\n"
+            f"  Tags: {', '.join(c['tags']) or 'none'}"
+            f"{disq_str}{flag_str}\n"
             f"  <code>{c['wallet']}</code>"
         )
-    lines.append("\nCopy any address above and paste it here with the trader name to add to watchlist.")
+    lines.append("\nPaste address + name here to add to watchlist.")
     return "\n".join(lines)
