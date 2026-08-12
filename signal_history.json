@@ -82,5 +82,28 @@
       "MON"
     ],
     "alert": "Upcoming CPI print is a high-impact binary event \u2014 consider waiting for the release before sizing up positions."
+  },
+  {
+    "ts": "2026-08-12T12:04:44.676775+00:00",
+    "coin": "SOL",
+    "price": 76.81,
+    "signal": "HOLD",
+    "confidence": 30,
+    "score": -0.3,
+    "fg": 27,
+    "btc_price": 64190,
+    "btc_dominance": 56.3,
+    "candidates": [
+      "BEAT",
+      "CYS",
+      "FDUSD",
+      "VELVET",
+      "RLUSD",
+      "USDG",
+      "UNI",
+      "SOL",
+      "MON"
+    ],
+    "alert": "CPI data imminent \u2014 expect volatility. Harmony exploit could spread altcoin fear. Wait for post-data clarity before entering."
   }
 ]
