@@ -2,7 +2,7 @@
   "version": "golem-v1",
   "reset_date": "2026-08-08",
   "reset_reason": "FOMO Golem launch \u2014 fresh $1,000 paper portfolio, FOMO-only strategy",
-  "cash": 6842362.628583603,
+  "cash": 7790236.255648905,
   "starting_cash": 1000.0,
   "peak_value": 1000.0,
   "total_trades": 1,
@@ -68,15 +68,15 @@
       "tranche_2_sold": false,
       "trailing_stop_active": false,
       "peak_liquidity": 479388.88,
-      "last_price_check": 0.01181
+      "last_price_check": 0.0113
     },
     {
       "position_id": "4bd541e9",
       "token_ticker": "GTA6",
       "token_name": "GTA VI",
       "entry_price": 0.002542,
-      "units": 11644.374508261215,
-      "spent": 29.629629629629637,
+      "units": 7762.916338840811,
+      "spent": 19.753086419753092,
       "stop_loss": 0.0016523,
       "exit_target": 0.0033046,
       "wallet_alias": "Aurelius0121",
@@ -137,5 +137,5 @@
     }
   ],
   "archived_history_note": "Prior July 2026 paper trades archived before this reset.",
-  "last_updated": "2026-08-12T22:42:00.792948+00:00"
+  "last_updated": "2026-08-12T22:47:12.278513+00:00"
 }
