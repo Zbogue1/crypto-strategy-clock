@@ -1,0 +1,24 @@
+{
+  "Aurelius0121": {
+    "trades_followed": 1,
+    "wins": 0,
+    "losses": 1,
+    "total_pnl_pct": -35.17,
+    "total_pnl_usd": -17.65,
+    "consecutive_losses": 1,
+    "win_rate": 0.0,
+    "last_trade_at": "2026-08-12T07:02:08.020050+00:00",
+    "last_outcome": "LOSS",
+    "last_token": "ALON",
+    "trade_log": [
+      {
+        "token": "ALON",
+        "win": false,
+        "pnl_pct": -35.17,
+        "pnl_usd": -17.65,
+        "reason": "stop_loss",
+        "at": "2026-08-12T07:02:08.020050+00:00"
+      }
+    ]
+  }
+}
