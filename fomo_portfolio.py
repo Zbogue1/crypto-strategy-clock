@@ -497,7 +497,7 @@ def run_fomo_postmortem(trade: dict) -> dict:
         "was_token_mature":     (token_age or 0) >= 7,
         "was_volume_confirmed": (vol_spike or 0) >= 100,
         "was_time_exit":        exit_reason in ("time_exit_24h",),
-        "was_stop_hit":         exit_reason == "hard_stop",
+        "was_stop_hit":         exit_reason in ("hard_stop", "stop_loss"),
         "lag_was_acceptable":   (lag_min or 0) <= 10,  # within 10 min of trader
     }
 
@@ -514,7 +514,7 @@ def run_fomo_postmortem(trade: dict) -> dict:
         if not questions["was_volume_confirmed"]:
             lessons.append(f"NO VOLUME CONFIRMATION: {ticker} lacked volume spike before entry")
         if questions["was_stop_hit"]:
-            lessons.append(f"STOP HIT: {ticker} dropped 15%+ — {alias} may have poor stop discipline")
+            lessons.append(f"STOP LOSS HIT: {ticker} dropped 35%+ from entry — review entry timing and catalyst strength for {alias}")
         if questions["was_time_exit"]:
             lessons.append(f"TIME EXIT: Held {ticker} 24h without {alias} selling — timing mismatch")
     else:
