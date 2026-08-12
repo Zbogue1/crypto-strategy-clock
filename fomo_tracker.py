@@ -1923,14 +1923,14 @@ def run_weekly_discovery():
     )
     log.info("GMGN weekly discovery: starting both scans...")
 
-    # Load existing wallet addresses once
+    # Load existing wallet addresses once (preserve case — Solana addresses are case-sensitive)
     existing = set()
     try:
         with open(TRUSTED_WALLETS_FILE) as f:
             data = json.load(f)
         for tier in ("tier_a", "tier_b"):
             for w in data.get(tier, []):
-                existing.add(w.get("wallet", "").lower())
+                existing.add(w.get("wallet", ""))
     except Exception:
         pass
 

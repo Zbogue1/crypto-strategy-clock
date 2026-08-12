@@ -267,7 +267,7 @@ def discover_traders(period: str = "7d", limit: int = 100) -> list:
 
     rankings = data.get("rank") or []
     candidates = []
-    BAD_TAGS = {"wash_trader", "bot", "sniper"}
+    BAD_TAGS = {"wash_trader", "bot", "sniper", "arbitrager", "top_renamed"}
 
     for entry in rankings:
         wallet = entry.get("wallet_address") or entry.get("address", "")
