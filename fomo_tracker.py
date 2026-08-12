@@ -45,6 +45,8 @@ from fomo_portfolio import (
 from fomo_research import research_token, ResearchVerdict, _ct_sentiment
 from fomo_wallet_stats import get_wallet_leaderboard
 from fomo_first_buy import check_and_record as check_first_buy
+from fomo_convergence import record_signal as record_convergence_signal, check_convergence
+from fomo_regime import get_market_regime
 from fomo_social import start_social_poller, parse_channel_message
 
 # ─── CONFIG ───────────────────────────────────────────────────────────────────
@@ -1701,6 +1703,13 @@ def process_social_signal(signal: dict):
         # First-buy detection — flag if wallet has never bought this contract before
         is_first_buy = check_first_buy(alias, contract)
 
+        # Convergence: record this buy, then check if other wallets bought same token recently
+        record_convergence_signal(alias, contract)
+        convergence = check_convergence(alias, contract)
+
+        # Market regime: scale position size based on BTC/SOL trend
+        regime = get_market_regime()
+
         signal_ctx = {
             "alias":        alias,
             "tier":         signal.get("tier", "B"),
@@ -1739,6 +1748,11 @@ def process_social_signal(signal: dict):
             return
 
         pos_pct = getattr(verdict, "suggested_position_pct", 15.0)
+        # Apply regime modifier (reduce in bear, unchanged in bull)
+        pos_pct = max(5.0, pos_pct + regime["modifier_pct"])
+        # Apply convergence boost (more wallets = bigger position)
+        if convergence["is_convergence"]:
+            pos_pct = min(50.0, pos_pct + convergence["boost_pct"])
         alert_id = create_pending_buy_alert({
             "token_ticker":          token_data["symbol"],
             "token_name":            token_data["name"],
@@ -1761,12 +1775,15 @@ def process_social_signal(signal: dict):
             conv_label = "⚡ SOLID SIGNAL"
         else:
             conv_label = "🔎 SPECULATIVE"
+        convergence_line = ("\n" + convergence["label"]) if convergence["is_convergence"] else ""
+        regime_line = "\n" + regime["summary"] if regime["regime"] != "BULL" else ""
         send_telegram_button(
             source_icon + " <b>FOMO SIGNAL: " + token_data["symbol"] + "</b>  " + conv_label + first_buy_badge + "\n"
             + "Trader: " + alias + " (" + source + ")  |  "
             + "Suggested: <b>" + str(int(pos_pct)) + "% FOMO cash</b>\n"
             + (f"Signal: \"{signal.get('signal_text', '')[:80]}\"\n" if signal.get("signal_text") else "")
             + verdict.to_telegram_summary() + "\n"
+            + convergence_line + regime_line + "\n"
             + "⏱ Expires in " + str(BUY_ALERT_EXPIRY_MINUTES) + " min",
             "EXECUTE",
             f"buy_show:{alert_id}",
