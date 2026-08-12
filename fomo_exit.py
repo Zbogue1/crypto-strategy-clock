@@ -391,6 +391,18 @@ def _check_holding(holding: dict, state: dict):
         if rug_reason:
             log.warning(f"Rug risk detected for {ticker}: {rug_reason}")
             _rug_warned_positions.add(position_id)
+
+            # Log this event into the holding — postmortem reads it later to learn
+            # whether acting on this warning would have saved money
+            holding.setdefault("warning_events", []).append({
+                "type":           "rug_risk_detector",
+                "timestamp":      datetime.now(timezone.utc).isoformat(),
+                "trigger":        rug_reason,
+                "gain_pct":       round(gain_pct, 2),
+                "liquidity_usd":  current_liq,
+                "peak_liquidity": peak_liq,
+            })
+
             _send_telegram_button_local(
                 f"🚩🚩 <b>RUG RISK DETECTED: {ticker}</b> 🚩🚩\n"
                 f"{rug_reason}\n"
@@ -447,6 +459,13 @@ def _check_holding(holding: dict, state: dict):
 
     # ── CHART EXIT SIGNAL on final 33% ───────────────────────────────────
     if holding.get("tranche_2_sold") and _chart_says_exit(contract, chain):
+        # Log chart warning event before executing — captured in postmortem
+        holding.setdefault("warning_events", []).append({
+            "type":      "chart_distribution",
+            "timestamp": datetime.now(timezone.utc).isoformat(),
+            "trigger":   "Distribution/wall pattern detected by chart analysis",
+            "gain_pct":  round(gain_pct, 2),
+        })
         net = _execute_full_sell(holding, current_price, "chart_distribution", state)
         _send_telegram(
             f"📊 <b>CHART EXIT: {ticker}</b>\n"

@@ -525,6 +525,45 @@ def run_fomo_postmortem(trade: dict) -> dict:
         if trader_hours and held_min / 60 < trader_hours * 0.8:
             lessons.append(f"QUICK EXIT WIN: Exited {ticker} before trader — captured most of move")
 
+    # ── Warning sign timeline analysis ────────────────────────────────────────
+    # Examines any mid-trade warning events logged by fomo_exit.py and learns
+    # whether acting on them earlier would have improved the outcome.
+    warning_events = trade.get("warning_events", [])
+    exited_at_str  = trade.get("exited_at")
+
+    for event in warning_events:
+        try:
+            if exited_at_str and event.get("timestamp"):
+                exit_dt  = datetime.fromisoformat(exited_at_str.replace("Z", "+00:00"))
+                warn_dt  = datetime.fromisoformat(event["timestamp"].replace("Z", "+00:00"))
+                event["minutes_before_exit"] = round(
+                    (exit_dt - warn_dt).total_seconds() / 60, 1
+                )
+        except Exception:
+            pass
+
+    if warning_events:
+        earliest         = warning_events[0]
+        mins_before      = earliest.get("minutes_before_exit")
+        gain_at_warn     = earliest.get("gain_pct", 0)
+        warn_type        = earliest.get("type", "warning")
+
+        if outcome == "LOSS" and mins_before is not None and mins_before > 0:
+            lessons.append(
+                f"EARLY WARNING FIRED: {warn_type} triggered {mins_before:.0f} min before "
+                f"exit at {gain_at_warn:+.0f}% P&L — earlier exit would have reduced loss"
+            )
+            if gain_at_warn > 0:
+                lessons.append(
+                    f"MISSED GREEN EXIT: Warning fired while still {gain_at_warn:+.0f}% in "
+                    f"profit — position could have closed green instead of at stop-loss"
+                )
+        elif outcome == "WIN" and mins_before is not None:
+            lessons.append(
+                f"WARNING OVERCAME: {warn_type} fired {mins_before:.0f} min before exit "
+                f"but trade ended profitable ({profit_pct:+.0f}%) — system held correctly"
+            )
+
     # Wallet-specific pattern
     wallet_lesson = {
         "trade":         ticker,
@@ -545,6 +584,7 @@ def run_fomo_postmortem(trade: dict) -> dict:
         "profit_pct":     profit_pct,
         "questions":      questions,
         "lessons":        lessons,
+        "warning_events": warning_events,   # mid-trade warning timeline
         "wallet_lesson":  wallet_lesson,
         "completed_at":   datetime.now(timezone.utc).isoformat(),
     }
