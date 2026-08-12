@@ -26,6 +26,7 @@ from typing import Optional
 
 import requests
 from fomo_wallet_stats import record_trade_outcome
+from fomo_portfolio import run_fomo_postmortem, run_fomo_ai_postmortem
 
 log = logging.getLogger(__name__)
 
@@ -191,6 +192,30 @@ def _execute_full_sell(
         )
     except Exception as e:
         log.warning(f"WalletStats: record_trade_outcome failed: {e}")
+
+    # Run postmortem — rule-based immediately, AI analysis in background thread
+    try:
+        # Build trade record for postmortem
+        trade_record = {
+            **holding,
+            "exit_price":  current_price,
+            "exit_reason": reason,
+            "profit_pct":  round(gain_pct, 2),
+            "pnl_usd":     round(net - holding.get("spent", 0), 2),
+            "exited_at":   datetime.now(timezone.utc).isoformat(),
+        }
+        run_fomo_postmortem(trade_record)
+
+        # AI postmortem runs in background so it never delays the exit
+        def _ai_pm():
+            try:
+                run_fomo_ai_postmortem(trade_record)
+            except Exception as e:
+                log.warning(f"AI postmortem background error: {e}")
+        threading.Thread(target=_ai_pm, daemon=True, name="fomo-ai-postmortem").start()
+
+    except Exception as e:
+        log.warning(f"Postmortem failed (non-fatal): {e}")
 
     return net
 

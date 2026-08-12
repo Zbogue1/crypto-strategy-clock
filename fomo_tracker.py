@@ -1880,6 +1880,24 @@ if __name__ == "__main__":
     start_discovery_poller()
     from fomo_exit import start_exit_monitor
     start_exit_monitor()
+    from fomo_drift import check_all_wallets_for_drift
+
+    # Drift detection: run every 12 hours
+    def _drift_loop():
+        import time as _time
+        _time.sleep(3600)   # 1-hour startup delay
+        while True:
+            try:
+                reports = check_all_wallets_for_drift()
+                if reports:
+                    log.info(f"Drift check: {len(reports)} wallet(s) flagged")
+                else:
+                    log.info("Drift check: no drift detected")
+            except Exception as e:
+                log.error(f"Drift check error: {e}")
+            _time.sleep(12 * 3600)
+    threading.Thread(target=_drift_loop, daemon=True, name="fomo-drift-check").start()
+
     from fomo_scanner import start_scanner
     start_scanner(callback=process_social_signal)
 
