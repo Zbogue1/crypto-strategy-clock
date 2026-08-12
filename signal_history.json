@@ -38,26 +38,26 @@
     "alert": null
   },
   {
-    "ts": "2026-08-12T16:02:20.044377+00:00",
+    "ts": "2026-08-12T20:04:50.462919+00:00",
     "coin": "SOL",
-    "price": 75.68,
-    "signal": "BUY",
-    "confidence": 52,
-    "score": 0.45,
+    "price": 75.75,
+    "signal": "HOLD",
+    "confidence": 32,
+    "score": -0.3,
     "fg": 27,
-    "btc_price": 63398,
-    "btc_dominance": 0.0,
+    "btc_price": 63422,
+    "btc_dominance": 56.2,
     "candidates": [
-      "BEAT",
       "CYS",
-      "FDUSD",
+      "BEAT",
       "BTW",
-      "USDG",
+      "FDUSD",
       "XAUT",
-      "UNI",
+      "USDG",
+      "RLUSD",
       "SOL",
       "MON"
     ],
-    "alert": "Solana network experienced a near-freeze event \u2014 monitor network health before sizing up."
+    "alert": "Solana nearly froze on Wednesday per Marinade Finance \u2014 monitor network health before considering SOL positions."
   }
 ]
