@@ -368,6 +368,17 @@ def _check_holding(holding: dict, state: dict):
     gain_x   = current_price / entry_price
     gain_pct = (gain_x - 1) * 100
 
+    # ── PRICE SANITY CHECK ────────────────────────────────────────────────
+    # If DexScreener returns a price that implies an impossible gain (>50,000x),
+    # the data is corrupt/wrong pair. Skip this cycle entirely rather than
+    # triggering phantom tranche exits with million-percent gains.
+    if gain_x > 500:
+        log.warning(
+            f"Exit monitor {ticker}: suspicious price ${current_price:.8f} "
+            f"implies {gain_x:.0f}x gain — likely bad DexScreener data, skipping cycle"
+        )
+        return
+
     # ── PROACTIVE RUG DETECTION (advisory — fires before stop-loss) ────────
     # Detects rug-pull signatures: liquidity collapse or sudden single-check
     # price crash. Sends a warning with a manual SELL button so the user can
@@ -434,8 +445,11 @@ def _check_holding(holding: dict, state: dict):
 
     # ── TRANCHE 1: 2x → sell 33% ──────────────────────────────────────────
     if gain_x >= TRANCHE_1_MULT and not holding.get("tranche_1_sold"):
-        net = _execute_partial_sell(holding, TRANCHE_SIZE, current_price, "tranche_1_2x", state)
+        # Set flag BEFORE _execute_partial_sell so the save includes it —
+        # otherwise the next 5-min cycle reloads from GitHub without the flag
+        # and fires the tranche again (caused 4 repeat exits for GTA6).
         holding["tranche_1_sold"] = True
+        net = _execute_partial_sell(holding, TRANCHE_SIZE, current_price, "tranche_1_2x", state)
         _send_telegram(
             f"💸 <b>TRANCHE 1 EXIT: {ticker}</b> hit 2x\n"
             f"Sold 33% @ ${current_price:.8f} (+{gain_pct:.0f}%)\n"
@@ -445,10 +459,10 @@ def _check_holding(holding: dict, state: dict):
 
     # ── TRANCHE 2: 3x → sell another 33% ─────────────────────────────────
     if gain_x >= TRANCHE_2_MULT and holding.get("tranche_1_sold") and not holding.get("tranche_2_sold"):
-        net = _execute_partial_sell(holding, 0.5, current_price, "tranche_2_3x", state)
-        # sell half of what remains (which is 33% of original)
+        # Same fix: set flags before save so they persist to GitHub.
         holding["tranche_2_sold"]       = True
         holding["trailing_stop_active"] = True   # arm the trailing stop
+        net = _execute_partial_sell(holding, 0.5, current_price, "tranche_2_3x", state)
         _send_telegram(
             f"💸 <b>TRANCHE 2 EXIT: {ticker}</b> hit 3x\n"
             f"Sold another 33% @ ${current_price:.8f} (+{gain_pct:.0f}%)\n"
