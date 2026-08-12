@@ -2,10 +2,10 @@
   "version": "golem-v1",
   "reset_date": "2026-08-08",
   "reset_reason": "FOMO Golem launch \u2014 fresh $1,000 paper portfolio, FOMO-only strategy",
-  "cash": 800.0,
+  "cash": 832.3504561440678,
   "starting_cash": 1000.0,
   "peak_value": 1000.0,
-  "total_trades": 0,
+  "total_trades": 1,
   "winning_trades": 0,
   "losing_trades": 0,
   "total_realized_pnl": 0.0,
@@ -33,7 +33,7 @@
       "auto_exit_at": "2026-08-10T23:57:15.914260+00:00",
       "source": "fomo_copy",
       "partial_taken": false,
-      "peak_price": 1182.47,
+      "peak_price": 1255.22,
       "tranche_1_sold": false,
       "tranche_2_sold": false,
       "trailing_stop_active": false
@@ -61,11 +61,13 @@
       "auto_exit_at": "2026-08-11T19:53:16.254965+00:00",
       "source": "fomo_copy",
       "partial_taken": false,
-      "peak_price": 0.01024,
+      "peak_price": 0.01099,
       "tranche_1_sold": false,
       "tranche_2_sold": false,
       "trailing_stop_active": false
-    },
+    }
+  ],
+  "trade_history": [
     {
       "position_id": "ed63b29c",
       "token_ticker": "ALON",
@@ -92,10 +94,14 @@
       "peak_price": 0.006608,
       "tranche_1_sold": false,
       "tranche_2_sold": false,
-      "trailing_stop_active": false
+      "trailing_stop_active": false,
+      "exit_price": 0.004284,
+      "exit_reason": "stop_loss",
+      "pnl_usd": -17.65,
+      "pnl_pct": -35.17,
+      "exited_at": "2026-08-12T07:02:06.886442+00:00"
     }
   ],
-  "trade_history": [],
   "archived_history_note": "Prior July 2026 paper trades archived before this reset.",
-  "last_updated": "2026-08-11T18:58:03.562902+00:00"
+  "last_updated": "2026-08-12T07:02:06.886767+00:00"
 }
