@@ -403,11 +403,22 @@ def _check_holding(holding: dict, state: dict):
                 "peak_liquidity": peak_liq,
             })
 
+            # Golem's short recommendation — context-aware based on trigger + P&L
+            is_liq_collapse = "Liquidity" in rug_reason
+            if gain_pct > 5:
+                advice = "You're still in profit. Sell now and keep the gain — this rarely recovers."
+            elif gain_pct > 0:
+                advice = "Barely green. Take it. Waiting for the stop-loss will cost you more."
+            elif is_liq_collapse:
+                advice = "Liquidity is gone. Price will follow. Exit now before it goes to zero."
+            else:
+                advice = "Price is in freefall. Cut the loss here — stop-loss is your floor, not your target."
+
             _send_telegram_button_local(
                 f"🚩🚩 <b>RUG RISK DETECTED: {ticker}</b> 🚩🚩\n"
                 f"{rug_reason}\n"
-                f"Stop-loss auto-fires at −35% — tap to exit NOW if you want out early.\n"
-                f"Current P&amp;L: <b>{gain_pct:+.0f}%</b> from entry",
+                f"📊 P&amp;L: <b>{gain_pct:+.0f}%</b> from entry\n"
+                f"🧠 <i>{advice}</i>",
                 "🚨 SELL NOW",
                 f"rug_sell:{contract}",
             )
