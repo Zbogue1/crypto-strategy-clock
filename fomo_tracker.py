@@ -48,6 +48,7 @@ from fomo_first_buy import check_and_record as check_first_buy
 from fomo_convergence import record_signal as record_convergence_signal, check_convergence
 from fomo_regime import get_market_regime
 from fomo_social import start_social_poller, parse_channel_message
+from fomo_confidence import get_confidence, format_confidence_line, format_suppression_telegram
 
 # ─── CONFIG ───────────────────────────────────────────────────────────────────
 
@@ -1767,12 +1768,34 @@ def process_social_signal(signal: dict):
             )
             return
 
+        # ── Confidence calibration ──────────────────────────────────────────
+        conf = get_confidence({
+            "alias":            alias,
+            "catalyst_score":   verdict.final_score,
+            "market_cap":       token_data.get("market_cap"),
+            "liquidity_usd":    token_data.get("liquidity_usd"),
+            "token_age_days":   token_data.get("age_days"),
+            "volume_spike_pct": token_data.get("volume_spike_pct"),
+            "regime":           regime.get("regime", "UNKNOWN"),
+        })
+        if conf["suppress"]:
+            log.info(f"Signal from {alias} suppressed — confidence {conf['score']}/100")
+            send_telegram(
+                format_suppression_telegram(
+                    alias, token_data["symbol"], conf,
+                    verdict_summary=verdict.to_telegram_summary()
+                )
+            )
+            return
+
         pos_pct = getattr(verdict, "suggested_position_pct", 15.0)
         # Apply regime modifier (reduce in bear, unchanged in bull)
         pos_pct = max(5.0, pos_pct + regime["modifier_pct"])
         # Apply convergence boost (more wallets = bigger position)
         if convergence["is_convergence"]:
             pos_pct = min(50.0, pos_pct + convergence["boost_pct"])
+        # Apply confidence position multiplier (reduces size for lower-confidence setups)
+        pos_pct = max(5.0, pos_pct * conf["position_multiplier"])
         alert_id = create_pending_buy_alert({
             "token_ticker":          token_data["symbol"],
             "token_name":            token_data["name"],
@@ -1801,13 +1824,14 @@ def process_social_signal(signal: dict):
             f"\n🔬 Vetting: {vetting_score}/100 {vetting_rec}"
             if vetting_rec and vetting_score is not None else ""
         )
+        confidence_line = format_confidence_line(conf)
         send_telegram_button(
             source_icon + " <b>FOMO SIGNAL: " + token_data["symbol"] + "</b>  " + conv_label + first_buy_badge + "\n"
             + "Trader: " + alias + " (" + source + ")  |  "
             + "Suggested: <b>" + str(int(pos_pct)) + "% FOMO cash</b>\n"
             + (f"Signal: \"{signal.get('signal_text', '')[:80]}\"\n" if signal.get("signal_text") else "")
             + verdict.to_telegram_summary() + "\n"
-            + convergence_line + regime_line + vetting_line + "\n"
+            + convergence_line + regime_line + vetting_line + confidence_line + "\n"
             + "⏱ Expires in " + str(BUY_ALERT_EXPIRY_MINUTES) + " min",
             "EXECUTE",
             f"buy_show:{alert_id}",
