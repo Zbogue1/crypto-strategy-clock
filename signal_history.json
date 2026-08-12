@@ -38,26 +38,26 @@
     "alert": null
   },
   {
-    "ts": "2026-08-12T00:04:18.487041+00:00",
+    "ts": "2026-08-12T04:00:58.295214+00:00",
     "coin": "SOL",
-    "price": 76.2,
+    "price": 76.35,
     "signal": "BUY",
     "confidence": 52,
     "score": 0.35,
     "fg": 27,
-    "btc_price": 63526,
-    "btc_dominance": 56.2,
+    "btc_price": 63766,
+    "btc_dominance": 56.3,
     "candidates": [
       "BEAT",
       "VELVET",
       "FDUSD",
       "RLUSD",
       "USDG",
+      "USDD",
       "PAXG",
-      "XAUT",
       "SOL",
       "MON"
     ],
-    "alert": "Low-conviction environment \u2014 position size accordingly. Candidate pool is weak this cycle."
+    "alert": "Candidate pool is unusually weak this cycle. This is a low-conviction entry \u2014 size small and respect the stop-loss."
   }
 ]
