@@ -1288,6 +1288,41 @@ def telegram_webhook():
                 f"(This was a test -- no trade occurred.)"
             )
 
+        elif data.startswith("rug_sell:"):
+            # Fired by the proactive rug detector in fomo_exit.py
+            from fomo_exit import handle_tracker_sell
+            contract_addr = data.split(":", 1)[1]
+            portfolio     = load_fomo_portfolio()
+            held          = _find_holding(portfolio.get("holdings", []), contract_addr)
+            if not held:
+                edit("⚠️ Position not found — may already be closed.")
+            else:
+                ticker        = held.get("token_ticker", "?")
+                current_token = validate_token(contract_addr)
+                cur_price     = current_token.get("price") or held["entry_price"]
+                net           = handle_tracker_sell(contract_addr, cur_price, ticker)
+                if net is not None:
+                    entry   = held.get("entry_price", cur_price)
+                    pnl_pct = ((cur_price / entry) - 1) * 100 if entry else 0
+                    edit(
+                        f"✅ <b>Manual exit executed: {ticker}</b>\n"
+                        f"P&amp;L: {pnl_pct:+.0f}% | Recovered: ${net:.2f}"
+                    )
+                else:
+                    edit("⚠️ Position not found or already closed.")
+
+        elif data.startswith("ack_stop:"):
+            from fomo_exit import silence_stop_alarm
+            ack_id   = data.split(":", 1)[1]
+            silenced = silence_stop_alarm(ack_id)
+            if silenced:
+                edit(
+                    "\ud83d\udd15 <b>Stop-loss alarm silenced.</b>\n"
+                    "Trade already auto-executed. Check your portfolio for updated P&amp;L."
+                )
+            else:
+                edit("\u2705 Alarm already silenced (or expired).")
+
         else:
             edit(f"\u2705 Button tap received: {data}")
 
@@ -1760,12 +1795,30 @@ def process_social_signal(signal: dict):
 
         if not verdict.go:
             # Genuine rug guard triggered — do not execute
-            send_telegram(
-                f"🛡️ <b>RUG GUARD: {token_data['symbol']} blocked</b> {source_icon}\n"
-                f"Trader: {alias} | Source: {source}\n"
-                f"Reason: {verdict.skip_reason}\n"
-                + verdict.to_telegram_summary()
-            )
+            # If we're ALREADY HOLDING this token, escalate to an urgent button alert
+            held = _find_holding(holdings, contract)
+            if held:
+                sell_alert_id = create_pending_sell_alert({
+                    "token_ticker":     held["token_ticker"],
+                    "wallet_alias":     "rug_guard",
+                    "contract_address": contract,
+                    "price_at_signal":  token_data.get("price") or held["entry_price"],
+                })
+                send_telegram_button(
+                    f"🚨 <b>RUG GUARD — ACTIVE POSITION AT RISK: {token_data['symbol']}</b>\n"
+                    f"You are currently holding this token and it just flagged as a rug risk.\n"
+                    f"Reason: {verdict.skip_reason}\n"
+                    + verdict.to_telegram_summary(),
+                    "🚨 SELL NOW",
+                    f"sell_exec:{sell_alert_id}",
+                )
+            else:
+                send_telegram(
+                    f"🛡️ <b>RUG GUARD: {token_data['symbol']} blocked</b> {source_icon}\n"
+                    f"Trader: {alias} | Source: {source}\n"
+                    f"Reason: {verdict.skip_reason}\n"
+                    + verdict.to_telegram_summary()
+                )
             return
 
         # ── Confidence calibration ──────────────────────────────────────────

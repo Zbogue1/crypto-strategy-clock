@@ -21,6 +21,7 @@ import logging
 import os
 import threading
 import time
+import uuid
 from datetime import datetime, timezone
 from typing import Optional
 
@@ -43,6 +44,12 @@ TRANCHE_SIZE         = 1 / 3   # each tranche is 33% of original units
 POLL_INTERVAL_SEC    = 300     # check every 5 minutes
 STARTUP_DELAY_SEC    = 120     # wait 2 min after Flask starts
 
+# Proactive rug-pull detection (fires before the -35% stop-loss)
+RUG_LIQUIDITY_DROP_PCT = 0.65   # liquidity fell ≥65% from peak → rug signal
+RUG_PRICE_CRASH_PCT    = 0.50   # price fell ≥50% since last 5-min check → rug signal
+
+_rug_warned_positions: set = set()   # position_ids already warned (memory only, reset on restart)
+
 
 # ─── TELEGRAM ─────────────────────────────────────────────────────────────────
 
@@ -59,25 +66,125 @@ def _send_telegram(text: str):
         log.error(f"Exit monitor Telegram error: {e}")
 
 
+def _send_telegram_button_local(message: str, button_text: str, callback_data: str):
+    """Send a Telegram message with a single inline button (local copy — no circular import)."""
+    if not TELEGRAM_BOT_TOKEN or not TELEGRAM_CHAT_ID:
+        return
+    try:
+        requests.post(
+            f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage",
+            json={
+                "chat_id":    TELEGRAM_CHAT_ID,
+                "text":       message,
+                "parse_mode": "HTML",
+                "reply_markup": {
+                    "inline_keyboard": [[
+                        {"text": button_text, "callback_data": callback_data}
+                    ]]
+                },
+            },
+            timeout=10,
+        )
+    except Exception as e:
+        log.error(f"Exit monitor Telegram button error: {e}")
+
+
+# ─── STOP-LOSS ALARM ──────────────────────────────────────────────────────────
+# Repeats every 90 seconds until the user taps "GOT IT" in Telegram, or 30 min
+# has elapsed. Auto-execution has already happened; this alarm just ensures the
+# user knows ASAP so they can mentally update their P&L.
+
+_stop_alarms: dict = {}   # ack_id → threading.Event (set() to silence)
+
+ALARM_INTERVAL_SEC = 90
+ALARM_MAX_REPEATS  = 20   # 20 × 90s ≈ 30 minutes max
+
+
+def _fire_stop_alarm(ticker: str, net_usd: float, gain_pct: float):
+    """
+    Immediately send an urgent Telegram alarm for a stop-loss and begin repeating
+    it every 90 seconds until the user taps the silence button.
+    The trade has already been auto-executed before this is called.
+    """
+    ack_id     = uuid.uuid4().hex[:8]
+    stop_event = threading.Event()
+    _stop_alarms[ack_id] = stop_event
+
+    net_str  = f"${net_usd:.2f}"
+    pct_str  = f"{gain_pct:.0f}%"
+    msg = (
+        f"🚨🚨🚨 <b>STOP-LOSS FIRED: {ticker}</b> 🚨🚨🚨\n"
+        f"Down <b>{pct_str}</b> from entry — <b>AUTO-EXITED</b>\n"
+        f"Recovered: <b>{net_str}</b>\n"
+        f"⚠️ Tap to silence this alarm"
+    )
+    button = "🔕 GOT IT — SILENCE ALARM"
+
+    def _alarm_loop():
+        repeat = 0
+        while not stop_event.is_set() and repeat < ALARM_MAX_REPEATS:
+            _send_telegram_button_local(msg, button, f"ack_stop:{ack_id}")
+            repeat += 1
+            # Sleep 90 s, checking for stop every second so it cancels quickly
+            for _ in range(ALARM_INTERVAL_SEC):
+                if stop_event.is_set():
+                    break
+                time.sleep(1)
+        if repeat >= ALARM_MAX_REPEATS and not stop_event.is_set():
+            _send_telegram(
+                f"🔕 Stop-loss alarm for {ticker} auto-silenced after "
+                f"{ALARM_MAX_REPEATS * ALARM_INTERVAL_SEC // 60} minutes."
+            )
+        _stop_alarms.pop(ack_id, None)
+        log.info(f"Stop alarm {ack_id} ({ticker}) finished after {repeat} ping(s)")
+
+    threading.Thread(
+        target=_alarm_loop, daemon=True, name=f"stop-alarm-{ack_id}"
+    ).start()
+    log.info(f"Stop-loss alarm started for {ticker} (ack_id={ack_id})")
+
+
+def silence_stop_alarm(ack_id: str) -> bool:
+    """
+    Called by the Telegram webhook when the user taps the silence button.
+    Returns True if the alarm was found and silenced, False if already gone.
+    """
+    event = _stop_alarms.get(ack_id)
+    if event:
+        event.set()
+        log.info(f"Stop alarm {ack_id} silenced by user")
+        return True
+    return False
+
+
 # ─── PRICE FETCHING ───────────────────────────────────────────────────────────
 
-def _get_current_price(contract: str, chain: str = "solana") -> Optional[float]:
-    """Fetch current price from DexScreener for a contract address."""
+def _get_price_and_liquidity(contract: str, chain: str = "solana") -> tuple:
+    """
+    Fetch current price and liquidity (USD) from DexScreener.
+    Returns (price_float, liquidity_usd_float) or (None, None) on failure.
+    """
     try:
         url = f"https://api.dexscreener.com/latest/dex/tokens/{contract}"
         resp = requests.get(url, timeout=10)
         if resp.status_code != 200:
-            return None
+            return None, None
         pairs = resp.json().get("pairs") or []
         if not pairs:
-            return None
-        # Pick the most liquid pair
-        best = max(pairs, key=lambda p: float(p.get("liquidity", {}).get("usd", 0) or 0))
+            return None, None
+        best  = max(pairs, key=lambda p: float(p.get("liquidity", {}).get("usd", 0) or 0))
         price = float(best.get("priceUsd", 0) or 0)
-        return price if price > 0 else None
+        liq   = float(best.get("liquidity", {}).get("usd", 0) or 0)
+        return (price if price > 0 else None), (liq if liq > 0 else None)
     except Exception as e:
         log.debug(f"Exit monitor price fetch error ({contract[:8]}): {e}")
-        return None
+        return None, None
+
+
+def _get_current_price(contract: str, chain: str = "solana") -> Optional[float]:
+    """Compatibility wrapper — returns price only."""
+    price, _ = _get_price_and_liquidity(contract, chain)
+    return price
 
 
 # ─── CHART EXIT CHECK ─────────────────────────────────────────────────────────
@@ -234,7 +341,7 @@ def _check_holding(holding: dict, state: dict):
     if not contract:
         return
 
-    current_price = _get_current_price(contract, chain)
+    current_price, current_liq = _get_price_and_liquidity(contract, chain)
     if not current_price:
         log.debug(f"Exit monitor: couldn't fetch price for {ticker}")
         return
@@ -249,17 +356,57 @@ def _check_holding(holding: dict, state: dict):
         peak = current_price
         holding["peak_price"] = peak
 
+    # Update peak liquidity (for rug detection)
+    if current_liq:
+        peak_liq = holding.get("peak_liquidity", current_liq)
+        if current_liq > peak_liq:
+            peak_liq = current_liq
+        holding["peak_liquidity"] = peak_liq
+    else:
+        peak_liq = None
+
     gain_x   = current_price / entry_price
     gain_pct = (gain_x - 1) * 100
+
+    # ── PROACTIVE RUG DETECTION (advisory — fires before stop-loss) ────────
+    # Detects rug-pull signatures: liquidity collapse or sudden single-check
+    # price crash. Sends a warning with a manual SELL button so the user can
+    # exit before waiting for the -35% stop-loss to trigger automatically.
+    position_id = holding.get("position_id", contract[:12])
+    if position_id not in _rug_warned_positions:
+        rug_reason = None
+        if (peak_liq and current_liq
+                and current_liq < peak_liq * (1 - RUG_LIQUIDITY_DROP_PCT)):
+            rug_reason = (
+                f"Liquidity collapsed: "
+                f"${current_liq:,.0f} (was ${peak_liq:,.0f}, "
+                f"−{(1 - current_liq/peak_liq)*100:.0f}%)"
+            )
+        last_price = holding.get("last_price_check")
+        if (last_price and current_price < last_price * (1 - RUG_PRICE_CRASH_PCT)):
+            rug_reason = rug_reason or (
+                f"Price crashed {(1 - current_price/last_price)*100:.0f}% "
+                f"in one check (${last_price:.8f} → ${current_price:.8f})"
+            )
+        if rug_reason:
+            log.warning(f"Rug risk detected for {ticker}: {rug_reason}")
+            _rug_warned_positions.add(position_id)
+            _send_telegram_button_local(
+                f"🚩🚩 <b>RUG RISK DETECTED: {ticker}</b> 🚩🚩\n"
+                f"{rug_reason}\n"
+                f"Stop-loss auto-fires at −35% — tap to exit NOW if you want out early.\n"
+                f"Current P&amp;L: <b>{gain_pct:+.0f}%</b> from entry",
+                "🚨 SELL NOW",
+                f"rug_sell:{contract}",
+            )
+
+    # Track last seen price (for rug crash detection next cycle)
+    holding["last_price_check"] = current_price
 
     # ── STOP-LOSS: -35% from entry ─────────────────────────────────────────
     if gain_pct <= STOP_LOSS_PCT * 100:
         net = _execute_full_sell(holding, current_price, "stop_loss", state)
-        _send_telegram(
-            f"🛑 <b>STOP-LOSS: {ticker}</b>\n"
-            f"Down {gain_pct:.0f}% from entry — auto-exited full position.\n"
-            f"Recovered: ${net:.2f}"
-        )
+        _fire_stop_alarm(ticker, net, gain_pct)   # repeating alarm until user ACKs
         return   # position closed, done
 
     # ── TRANCHE 1: 2x → sell 33% ──────────────────────────────────────────
