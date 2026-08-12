@@ -1880,6 +1880,7 @@ if __name__ == "__main__":
     start_discovery_poller()
     from fomo_exit import start_exit_monitor
     start_exit_monitor()
+    import threading
     from fomo_drift import check_all_wallets_for_drift
 
     # Drift detection: run every 12 hours
