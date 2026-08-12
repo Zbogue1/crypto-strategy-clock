@@ -1712,12 +1712,18 @@ def process_social_signal(signal: dict):
             return
 
     # Validate token basics
-    token_data = validate_token(contract)
+    token_data   = validate_token(contract)
+    display_name = f"${symbol}" if symbol else f"{contract[:8]}…"
     if not token_data["valid"]:
-        send_telegram(
-            f"⚠️ <b>Social signal filtered</b> ({alias} via {source})\n"
-            f"${symbol}: {token_data.get('reject_reason', 'failed validation')}"
-        )
+        reject = token_data.get("reject_reason", "failed validation")
+        if "No trading pairs" in reject:
+            # Token not on DexScreener yet — too new or wrong chain. Silent skip.
+            log.info(f"Social signal filtered ({alias}): {display_name} — {reject}")
+        else:
+            send_telegram(
+                f"⚠️ <b>Signal filtered</b> ({alias} via {source})\n"
+                f"{display_name}: {reject}"
+            )
         return
 
     sync_fomo_state_from_github()
