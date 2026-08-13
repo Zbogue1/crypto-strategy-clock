@@ -2100,13 +2100,26 @@ def run_weekly_discovery():
         log.info(f"Re-vetting {len(all_wallets)} watchlisted wallets...")
         revett_results = revett_watchlist(all_wallets)   # mutates wallet dicts in-place
 
+        # Safety gate — if >50% of wallets errored (API down/rate-limited),
+        # the data is too unreliable to act on. Skip removal entirely this run.
+        total_wallets  = len([w for w in all_wallets
+                               if w.get("wallet") and not w["wallet"].startswith("fill_in")])
+        total_errors   = len(revett_results.get("errors", []))
+        api_too_flaky  = total_wallets > 0 and (total_errors / total_wallets) > 0.50
+
         # Auto-remove wallets that now score REJECT — but ONLY if the data is
-        # credible (WR > 0 or PnL > $10). Empty-data REJECTs are already filtered
-        # in revett_watchlist() via the sanity check, so this is a backstop.
-        rejected_addrs = {
-            c["wallet"] for c in revett_results.get("rejected", [])
-            if c.get("winrate", 0) > 0 or abs(c.get("realized", 0)) > 10
-        }
+        # credible (WR > 0 or |PnL| > $100) AND the API wasn't mostly down.
+        rejected_addrs = set()
+        if not api_too_flaky:
+            rejected_addrs = {
+                c["wallet"] for c in revett_results.get("rejected", [])
+                if c.get("winrate", 0) > 0 or abs(c.get("realized", 0)) > 100
+            }
+        else:
+            log.warning(
+                f"Re-vetting: {total_errors}/{total_wallets} wallets errored — "
+                f"API too unreliable, skipping auto-removal this run"
+            )
         if rejected_addrs:
             wallet_data["tier_a"] = [w for w in wallet_data.get("tier_a", [])
                                      if w.get("wallet") not in rejected_addrs]

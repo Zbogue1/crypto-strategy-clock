@@ -520,6 +520,7 @@ def revett_watchlist(watchlist: list) -> dict:
         old_score   = old_vetting.get("score") or 0
 
         log.info(f"Re-vetting {alias} ({address[:8]}…)")
+        time.sleep(20)   # extra delay on top of get_wallet_profile's own rate limit
         profile = get_wallet_profile(address)
         if not profile:
             results["errors"].append({
@@ -533,10 +534,11 @@ def revett_watchlist(watchlist: list) -> dict:
         winrate  = profile.get("winrate_7d") or profile.get("winrate_30d") or 0
         realized = float(profile.get("pnl_7d") or profile.get("realized_profit") or 0)
 
-        # Sanity check — if GMGN returns 0% WR AND $0 PnL the API gave us empty
+        # Sanity check — if GMGN returns 0% WR AND low PnL the API gave us empty
         # data (common when rate-limited or profile not indexed). Skip rather than
         # scoring a legitimate wallet as REJECT on bad data.
-        if winrate == 0 and abs(realized) < 10:
+        # Threshold $100: a real active wallet will always show >$100 realized in 7D.
+        if winrate == 0 and abs(realized) < 100:
             log.warning(f"Re-vetting {alias}: skipping — API returned empty data (WR=0%, PnL≈$0)")
             results["errors"].append({
                 "alias":  alias,
