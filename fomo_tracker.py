@@ -792,6 +792,159 @@ def register_telegram_webhook():
         log.warning(f"Telegram webhook registration failed: {e}")
 
 
+# ─── MULTI-WALLET LAUNCH CONSENSUS ───────────────────────────────────────────
+# When a brand-new token (<MIN_TOKEN_AGE days) is normally filtered as rug risk,
+# we watch it in a short-lived cache. If 2+ vetted wallets buy the same contract
+# within CONSENSUS_WINDOW_HOURS, we fire a consensus signal — multi-wallet
+# conviction overrides the age filter.
+
+LAUNCH_CACHE_FILE      = "fomo_launch_cache.json"
+CONSENSUS_WINDOW_HOURS = 4    # window to collect wallet buys
+CONSENSUS_MIN_WALLETS  = 2    # number of qualified wallets to trigger
+CONSENSUS_MIN_SCORE    = 60   # NARRATIVE_WATCH wallets need at least this vetting score
+
+_launch_cache: dict = {}      # in-memory; synced with LAUNCH_CACHE_FILE
+
+
+def _load_launch_cache() -> dict:
+    try:
+        if os.path.exists(LAUNCH_CACHE_FILE):
+            with open(LAUNCH_CACHE_FILE) as f:
+                return json.load(f)
+    except Exception:
+        pass
+    return {}
+
+
+def _save_launch_cache(cache: dict):
+    try:
+        with open(LAUNCH_CACHE_FILE, "w") as f:
+            json.dump(cache, f, indent=2)
+    except Exception as e:
+        log.warning(f"Could not save launch cache: {e}")
+
+
+def _prune_launch_cache(cache: dict) -> dict:
+    """Drop entries older than CONSENSUS_WINDOW_HOURS."""
+    cutoff = datetime.now(timezone.utc) - timedelta(hours=CONSENSUS_WINDOW_HOURS)
+    pruned = {}
+    for contract, entry in cache.items():
+        try:
+            if datetime.fromisoformat(entry["first_seen"]) > cutoff:
+                pruned[contract] = entry
+        except Exception:
+            pass
+    return pruned
+
+
+def _is_qualified_for_consensus(wallet_meta: dict) -> bool:
+    """
+    True if this wallet counts toward the consensus threshold.
+      - COPY_TRADE recommendation, OR
+      - NARRATIVE_WATCH with score >= CONSENSUS_MIN_SCORE, OR
+      - Grandfathered (no vetting) with copy_trade=True
+    """
+    vetting = wallet_meta.get("vetting") or {}
+    rec     = vetting.get("recommendation")
+    score   = vetting.get("score") or 0
+    if rec == "COPY_TRADE":
+        return True
+    if rec == "NARRATIVE_WATCH" and score >= CONSENSUS_MIN_SCORE:
+        return True
+    if rec is None and wallet_meta.get("copy_trade", False):
+        return True   # grandfathered wallet
+    return False
+
+
+def _check_launch_consensus(contract: str, alias: str, wallet_meta: dict, token_data: dict):
+    """
+    Add this wallet's buy to the new-token consensus cache.
+    Fires a Telegram signal with EXECUTE button when CONSENSUS_MIN_WALLETS
+    qualified wallets have bought the same contract within CONSENSUS_WINDOW_HOURS.
+    """
+    global _launch_cache
+
+    _launch_cache = _prune_launch_cache(_load_launch_cache())
+    now_str   = datetime.now(timezone.utc).isoformat()
+    qualified = _is_qualified_for_consensus(wallet_meta)
+
+    if contract not in _launch_cache:
+        _launch_cache[contract] = {
+            "first_seen": now_str,
+            "token_data": token_data,
+            "entries":    [],
+            "notified":   False,
+        }
+
+    entry = _launch_cache[contract]
+
+    # Dedup — never count the same wallet twice
+    if alias in {e["alias"] for e in entry["entries"]}:
+        _save_launch_cache(_launch_cache)
+        return
+
+    entry["entries"].append({
+        "alias":     alias,
+        "timestamp": now_str,
+        "qualified": qualified,
+    })
+
+    qualified_wallets = [e for e in entry["entries"] if e["qualified"]]
+    q_count = len(qualified_wallets)
+
+    symbol = token_data.get("symbol", "???")
+    log.info(
+        f"Launch consensus: {symbol} ({contract[:8]}…) — "
+        f"{q_count}/{CONSENSUS_MIN_WALLETS} qualified wallets | notified={entry['notified']}"
+    )
+
+    if q_count >= CONSENSUS_MIN_WALLETS and not entry["notified"]:
+        entry["notified"] = True
+        _save_launch_cache(_launch_cache)
+
+        mcap     = token_data.get("market_cap", 0) or 0
+        liq      = token_data.get("liquidity_usd", 0) or 0
+        price    = token_data.get("price", 0) or 0
+        age_days = token_data.get("age_days", 0) or 0
+        age_h    = round(age_days * 24, 1)
+        amount   = 50  # default paper position size
+
+        wallet_list = "\n".join(
+            f"  {'✅' if e['qualified'] else '👁️'} {e['alias']}"
+            for e in entry["entries"]
+        )
+
+        alert_id = create_pending_buy_alert({
+            "type":             "BUY",
+            "contract":         contract,
+            "symbol":           symbol,
+            "wallet_alias":     f"CONSENSUS ({q_count} wallets)",
+            "amount_usd":       amount,
+            "price":            price,
+            "catalyst":         f"Consensus launch: {q_count} vetted wallets within {CONSENSUS_WINDOW_HOURS}h",
+            "catalyst_score":   8,
+            "market_cap":       mcap,
+            "liquidity_usd":    liq,
+            "token_age_days":   age_days,
+        })
+
+        send_telegram_button(
+            f"🚀 <b>CONSENSUS LAUNCH: ${symbol}</b>\n"
+            f"⏱️ Age: {age_h}h | 💧 Liq: ${liq:,.0f} | Mcap: ${mcap:,.0f}\n"
+            f"\n<b>{q_count} vetted wallets bought:</b>\n{wallet_list}\n"
+            f"\n<i>Age filter overridden by multi-wallet conviction.</i>",
+            "🚀 EXECUTE",
+            f"buy_exec_{amount}:{alert_id}",
+        )
+    else:
+        _save_launch_cache(_launch_cache)
+        if q_count < CONSENSUS_MIN_WALLETS:
+            log.info(
+                f"Launch consensus: watching ${symbol} — "
+                f"need {CONSENSUS_MIN_WALLETS - q_count} more qualified wallet(s)"
+            )
+
+
 # ─── TOKEN VALIDATION (DexScreener) ──────────────────────────────────────────
 
 def validate_token(contract_address: str) -> dict:
@@ -838,15 +991,20 @@ def validate_token(contract_address: str) -> dict:
             reasons.append(f"Market cap ${market_cap:,.0f} < ${MIN_MARKET_CAP:,.0f} minimum")
         if liquidity < MIN_LIQUIDITY:
             reasons.append(f"Liquidity ${liquidity:,.0f} < ${MIN_LIQUIDITY:,.0f} minimum")
-        if age_days is not None and age_days < MIN_TOKEN_AGE:
+        age_reject = age_days is not None and age_days < MIN_TOKEN_AGE
+        if age_reject:
             reasons.append(f"Token only {age_days:.1f} days old — rug risk")
         if price <= 0:
             reasons.append("Price is zero")
 
         valid = len(reasons) == 0
+        # True when age is the ONLY rejection reason — market cap, liquidity, price all pass.
+        # Callers can route these to the consensus cache instead of dropping them.
+        age_only_reject = age_reject and len(reasons) == 1
 
         return {
             "valid":            valid,
+            "age_only_reject":  age_only_reject,
             "reject_reason":    " | ".join(reasons) if reasons else None,
             "price":            price,
             "market_cap":       market_cap,
@@ -1382,8 +1540,11 @@ def helius_webhook():
             contract   = parsed["contract"]
             token_data = validate_token(contract)
             if not token_data["valid"]:
-                log.info("FOMO Solana: skipping %s buy - %s",
-                         alias, token_data.get("reject_reason"))
+                if token_data.get("age_only_reject"):
+                    _check_launch_consensus(contract, alias, wallet_info, token_data)
+                else:
+                    log.info("FOMO Solana: skipping %s buy - %s",
+                             alias, token_data.get("reject_reason"))
                 continue
             # Deep research engine — replaces basic catalyst scanner
             signal_ctx = {
@@ -1510,13 +1671,16 @@ def alchemy_webhook():
             # Validate the token
             token_data = validate_token(contract)
             if not token_data["valid"]:
-                reason = token_data.get("reject_reason", "failed validation")
-                log.info(f"FOMO: Skipping {alias} buy — {reason}")
-                send_telegram(
-                    f"⚠️ <b>FOMO Signal Filtered</b>\n"
-                    f"{alias} bought {token_data.get('symbol','???')}\n"
-                    f"Skipped: {reason}"
-                )
+                if token_data.get("age_only_reject"):
+                    _check_launch_consensus(contract, alias, wallet_info, token_data)
+                else:
+                    reason = token_data.get("reject_reason", "failed validation")
+                    log.info(f"FOMO: Skipping {alias} buy — {reason}")
+                    send_telegram(
+                        f"⚠️ <b>FOMO Signal Filtered</b>\n"
+                        f"{alias} bought {token_data.get('symbol','???')}\n"
+                        f"Skipped: {reason}"
+                    )
                 continue
 
             # Deep research engine — replaces basic catalyst scanner
@@ -1716,7 +1880,10 @@ def process_social_signal(signal: dict):
     display_name = f"${symbol}" if symbol else f"{contract[:8]}…"
     if not token_data["valid"]:
         reject = token_data.get("reject_reason", "failed validation")
-        if "No trading pairs" in reject:
+        if token_data.get("age_only_reject"):
+            # New token, otherwise healthy — route to consensus tracker instead of dropping
+            _check_launch_consensus(contract, alias, _get_wallet_meta(alias), token_data)
+        elif "No trading pairs" in reject:
             # Token not on DexScreener yet — too new or wrong chain. Silent skip.
             log.info(f"Social signal filtered ({alias}): {display_name} — {reject}")
         else:
