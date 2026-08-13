@@ -532,6 +532,18 @@ def revett_watchlist(watchlist: list) -> dict:
         # Build candidate dict in the same shape score_wallet() expects
         winrate  = profile.get("winrate_7d") or profile.get("winrate_30d") or 0
         realized = float(profile.get("pnl_7d") or profile.get("realized_profit") or 0)
+
+        # Sanity check — if GMGN returns 0% WR AND $0 PnL the API gave us empty
+        # data (common when rate-limited or profile not indexed). Skip rather than
+        # scoring a legitimate wallet as REJECT on bad data.
+        if winrate == 0 and abs(realized) < 10:
+            log.warning(f"Re-vetting {alias}: skipping — API returned empty data (WR=0%, PnL≈$0)")
+            results["errors"].append({
+                "alias":  alias,
+                "wallet": address,
+                "error":  "Empty API data (WR=0%, PnL≈$0) — skipped to avoid false REJECT",
+            })
+            continue
         candidate = {
             "wallet":             address,
             "win_rate":           winrate,

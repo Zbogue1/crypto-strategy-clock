@@ -2100,8 +2100,13 @@ def run_weekly_discovery():
         log.info(f"Re-vetting {len(all_wallets)} watchlisted wallets...")
         revett_results = revett_watchlist(all_wallets)   # mutates wallet dicts in-place
 
-        # Auto-remove wallets that now score REJECT
-        rejected_addrs = {c["wallet"] for c in revett_results.get("rejected", [])}
+        # Auto-remove wallets that now score REJECT — but ONLY if the data is
+        # credible (WR > 0 or PnL > $10). Empty-data REJECTs are already filtered
+        # in revett_watchlist() via the sanity check, so this is a backstop.
+        rejected_addrs = {
+            c["wallet"] for c in revett_results.get("rejected", [])
+            if c.get("winrate", 0) > 0 or abs(c.get("realized", 0)) > 10
+        }
         if rejected_addrs:
             wallet_data["tier_a"] = [w for w in wallet_data.get("tier_a", [])
                                      if w.get("wallet") not in rejected_addrs]
