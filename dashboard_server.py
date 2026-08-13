@@ -17,7 +17,7 @@ except ImportError:
     urlreq = None
 
 PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
-PORT = 8888
+PORT = int(os.environ.get("PORT", 8888))   # Railway sets PORT; local fallback = 8888
 
 GITHUB_REPO   = "Zbogue1/crypto-strategy-clock"
 GITHUB_BRANCH = "data"   # data branch — never wiped by code deploys
@@ -796,7 +796,8 @@ if __name__ == "__main__":
         print(f"[startup] GitHub FAILED: {e}", flush=True)
 
     threading.Thread(target=open_browser, daemon=True).start()
-    server = HTTPServer(("localhost", PORT), Handler)
+    host = "0.0.0.0" if os.environ.get("PORT") else "localhost"
+    server = HTTPServer((host, PORT), Handler)
     try:
         server.serve_forever()
     except KeyboardInterrupt:
