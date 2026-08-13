@@ -1676,11 +1676,12 @@ def alchemy_webhook():
                 else:
                     reason = token_data.get("reject_reason", "failed validation")
                     log.info(f"FOMO: Skipping {alias} buy — {reason}")
-                    send_telegram(
-                        f"⚠️ <b>FOMO Signal Filtered</b>\n"
-                        f"{alias} bought {token_data.get('symbol','???')}\n"
-                        f"Skipped: {reason}"
-                    )
+                    if not any(s in reason for s in ("429", "No trading pairs", "Validation error")):
+                        send_telegram(
+                            f"⚠️ <b>FOMO Signal Filtered</b>\n"
+                            f"{alias} bought {token_data.get('symbol','???')}\n"
+                            f"Skipped: {reason}"
+                        )
                 continue
 
             # Deep research engine — replaces basic catalyst scanner
@@ -1883,8 +1884,8 @@ def process_social_signal(signal: dict):
         if token_data.get("age_only_reject"):
             # New token, otherwise healthy — route to consensus tracker instead of dropping
             _check_launch_consensus(contract, alias, _get_wallet_meta(alias), token_data)
-        elif "No trading pairs" in reject:
-            # Token not on DexScreener yet — too new or wrong chain. Silent skip.
+        elif "No trading pairs" in reject or "429" in reject or "Validation error" in reject:
+            # Transient API errors — DexScreener rate limit or network blip. Silent skip.
             log.info(f"Social signal filtered ({alias}): {display_name} — {reject}")
         else:
             send_telegram(
