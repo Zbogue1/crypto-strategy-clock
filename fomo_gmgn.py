@@ -475,3 +475,159 @@ def format_discovery_telegram(candidates: list, existing_wallets: set) -> str:
         )
     lines.append("\nPaste address + name here to add to watchlist.")
     return "\n".join(lines)
+
+
+# ─── WEEKLY WATCHLIST RE-VETTING ──────────────────────────────────────────────
+
+def revett_watchlist(watchlist: list) -> dict:
+    """
+    Re-fetch and re-score every wallet in the current watchlist using live GMGN data.
+
+    Args:
+        watchlist: list of wallet dicts from trusted_wallets.json (both tiers merged).
+
+    Returns:
+        {
+          "upgraded":  [change_dicts],   ← recommendation improved
+          "degraded":  [change_dicts],   ← recommendation dropped
+          "rejected":  [change_dicts],   ← now REJECT — caller should remove these
+          "unchanged": [change_dicts],   ← score changed but recommendation same
+          "errors":    [error_dicts],    ← GMGN fetch failed
+        }
+
+    change_dict keys: alias, wallet, old_rec, new_rec, old_score, new_score, flags
+    """
+    try:
+        from fomo_vetting import score_wallet
+    except ImportError:
+        log.warning("revett_watchlist: fomo_vetting not available — skipping")
+        return {"upgraded": [], "degraded": [], "rejected": [], "unchanged": [], "errors": []}
+
+    REC_RANK = {"COPY_TRADE": 3, "NARRATIVE_WATCH": 2, "TWITTER_ONLY": 1, "REJECT": 0}
+
+    results = {"upgraded": [], "degraded": [], "rejected": [], "unchanged": [], "errors": []}
+
+    for w in watchlist:
+        address = w.get("wallet", "")
+        alias   = w.get("alias", address[:8] or "unknown")
+
+        # Skip placeholder addresses added before a real address was known
+        if not address or address.startswith("fill_in") or len(address) < 20:
+            continue
+
+        old_vetting = w.get("vetting") or {}
+        old_rec     = old_vetting.get("recommendation") or "UNVETTED"
+        old_score   = old_vetting.get("score") or 0
+
+        log.info(f"Re-vetting {alias} ({address[:8]}…)")
+        profile = get_wallet_profile(address)
+        if not profile:
+            results["errors"].append({
+                "alias":  alias,
+                "wallet": address,
+                "error":  "GMGN profile fetch failed",
+            })
+            continue
+
+        # Build candidate dict in the same shape score_wallet() expects
+        winrate  = profile.get("winrate_7d") or profile.get("winrate_30d") or 0
+        realized = float(profile.get("pnl_7d") or profile.get("realized_profit") or 0)
+        candidate = {
+            "wallet":             address,
+            "win_rate":           winrate,
+            "winrate":            winrate,
+            "realized_pnl_7d":   realized,
+            "realized_profit":   realized,
+            "fast_tx_ratio":     float(profile.get("fast_tx_ratio") or 0),
+            "honeypot_ratio":    float(profile.get("honeypot_ratio") or 0),
+            "twitter":           profile.get("twitter") or "",
+            "has_twitter":       bool(profile.get("twitter")),
+            "tags":              profile.get("tags") or [],
+            "avg_hold_minutes":  profile.get("avg_hold_minutes"),
+            "trades_7d":         0,   # not available from profile endpoint
+            "avg_trades_per_day": 0,
+        }
+
+        verdict = score_wallet(candidate)
+        new_rec   = verdict["recommendation"]
+        new_score = verdict["score"]
+        flags     = verdict.get("flags", [])
+
+        change = {
+            "alias":     alias,
+            "wallet":    address,
+            "old_rec":   old_rec,
+            "new_rec":   new_rec,
+            "old_score": old_score,
+            "new_score": new_score,
+            "flags":     flags[:2],   # top 2 flags for telegram
+            "winrate":   winrate,
+            "realized":  realized,
+        }
+
+        # Update the wallet's vetting in-place so caller can save it
+        w["vetting"] = verdict
+        w["copy_trade"] = verdict["copy_trade"]
+
+        if new_rec == "REJECT":
+            results["rejected"].append(change)
+        elif REC_RANK.get(new_rec, 0) > REC_RANK.get(old_rec, 0):
+            results["upgraded"].append(change)
+        elif REC_RANK.get(new_rec, 0) < REC_RANK.get(old_rec, 0):
+            results["degraded"].append(change)
+        else:
+            results["unchanged"].append(change)
+
+    log.info(
+        f"Re-vetting complete: "
+        f"{len(results['upgraded'])} upgraded, "
+        f"{len(results['degraded'])} degraded, "
+        f"{len(results['rejected'])} rejected, "
+        f"{len(results['unchanged'])} unchanged, "
+        f"{len(results['errors'])} errors"
+    )
+    return results
+
+
+def format_revett_telegram(results: dict) -> str:
+    """Format re-vetting results as a Telegram message."""
+    upgraded  = results.get("upgraded", [])
+    degraded  = results.get("degraded", [])
+    rejected  = results.get("rejected", [])
+    errors    = results.get("errors", [])
+
+    if not any([upgraded, degraded, rejected]):
+        return "🔄 <b>Weekly re-vetting complete</b>\nAll watchlisted wallets holding steady — no changes."
+
+    lines = ["🔄 <b>Weekly Watchlist Re-Vetting</b>\n"]
+
+    if rejected:
+        lines.append(f"🗑️ <b>AUTO-REMOVED ({len(rejected)} wallets scored REJECT):</b>")
+        for c in rejected:
+            lines.append(
+                f"  ❌ {c['alias']} | was {c['old_rec']} {c['old_score']}/100 → REJECT {c['new_score']}/100\n"
+                f"     WR: {c['winrate']*100:.0f}% | 7D: ${c['realized']:,.0f}"
+            )
+
+    if degraded:
+        lines.append(f"\n⚠️ <b>DEGRADED ({len(degraded)} wallets dropped):</b>")
+        for c in degraded:
+            flag_str = f"\n     ⚠️ {c['flags'][0]}" if c['flags'] else ""
+            lines.append(
+                f"  📉 {c['alias']} | {c['old_rec']} {c['old_score']}/100 → {c['new_rec']} {c['new_score']}/100"
+                f"{flag_str}"
+            )
+
+    if upgraded:
+        lines.append(f"\n✅ <b>UPGRADED ({len(upgraded)} wallets improved):</b>")
+        for c in upgraded:
+            lines.append(
+                f"  📈 {c['alias']} | {c['old_rec']} {c['old_score']}/100 → {c['new_rec']} {c['new_score']}/100\n"
+                f"     WR: {c['winrate']*100:.0f}% | 7D: ${c['realized']:,.0f}"
+            )
+
+    if errors:
+        lines.append(f"\n⚙️ {len(errors)} wallet(s) couldn't be fetched (GMGN API unavailable).")
+
+    lines.append("\nWatchlist updated automatically.")
+    return "\n".join(lines)

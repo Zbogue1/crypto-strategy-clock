@@ -2080,15 +2080,40 @@ def process_social_signal(signal: dict):
 def run_weekly_discovery():
     """
     Scan GMGN leaderboard weekly.
+    Run 0: re-vet existing watchlist — auto-remove REJECT wallets, update scores.
     Run 1: copy-trade candidates (65%+ win rate, low bot ratio).
     Run 2: narrative whales (high profit, spray-and-pray, copy_trade: false).
-    Both results sent to Telegram for user review -- nothing is added automatically.
+    Both discovery results sent to Telegram for user review -- nothing added automatically.
     """
     from fomo_gmgn import (
         discover_traders, format_discovery_telegram,
         discover_narrative_whales, format_whale_telegram,
+        revett_watchlist, format_revett_telegram,
     )
-    log.info("GMGN weekly discovery: starting both scans...")
+    log.info("GMGN weekly discovery: starting re-vetting + both scans...")
+
+    # ── Run 0: Re-vet existing watchlist ──────────────────────────────────────
+    try:
+        wallet_data = load_trusted_wallets()
+        all_wallets = wallet_data.get("tier_a", []) + wallet_data.get("tier_b", [])
+        log.info(f"Re-vetting {len(all_wallets)} watchlisted wallets...")
+        revett_results = revett_watchlist(all_wallets)   # mutates wallet dicts in-place
+
+        # Auto-remove wallets that now score REJECT
+        rejected_addrs = {c["wallet"] for c in revett_results.get("rejected", [])}
+        if rejected_addrs:
+            wallet_data["tier_a"] = [w for w in wallet_data.get("tier_a", [])
+                                     if w.get("wallet") not in rejected_addrs]
+            wallet_data["tier_b"] = [w for w in wallet_data.get("tier_b", [])
+                                     if w.get("wallet") not in rejected_addrs]
+            log.info(f"Auto-removed {len(rejected_addrs)} REJECT wallet(s) from watchlist")
+
+        save_trusted_wallets(wallet_data)
+        revett_msg = format_revett_telegram(revett_results)
+        send_telegram(revett_msg)
+    except Exception as e:
+        log.error(f"Watchlist re-vetting error: {e}")
+
 
     # Load existing wallet addresses once (preserve case — Solana addresses are case-sensitive)
     existing = set()
