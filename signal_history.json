@@ -59,5 +59,28 @@
       "MON"
     ],
     "alert": "All swing candidates are either overbought, crashing without support, or stablecoins \u2014 no actionable trade this cycle."
+  },
+  {
+    "ts": "2026-08-13T08:00:37.234864+00:00",
+    "coin": "SOL",
+    "price": 76.36,
+    "signal": "HOLD",
+    "confidence": 30,
+    "score": -0.3,
+    "fg": 29,
+    "btc_price": 63799,
+    "btc_dominance": 56.3,
+    "candidates": [
+      "BEAT",
+      "CYS",
+      "FDUSD",
+      "XAUT",
+      "VELVET",
+      "RLUSD",
+      "USDG",
+      "SOL",
+      "MON"
+    ],
+    "alert": "All swing candidates are either overbought, crashing without support, or stablecoins \u2014 no actionable entry exists right now."
   }
 ]
