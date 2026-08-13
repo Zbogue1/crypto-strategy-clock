@@ -38,26 +38,26 @@
     "alert": null
   },
   {
-    "ts": "2026-08-13T16:01:52.826051+00:00",
+    "ts": "2026-08-13T20:03:56.548070+00:00",
     "coin": "SOL",
-    "price": 75.66,
-    "signal": "BUY",
-    "confidence": 52,
-    "score": 4.2,
+    "price": 76.11,
+    "signal": "HOLD",
+    "confidence": 32,
+    "score": -0.3,
     "fg": 29,
-    "btc_price": 63424,
-    "btc_dominance": 56.3,
+    "btc_price": 63329,
+    "btc_dominance": 56.2,
     "candidates": [
       "BEAT",
       "FDUSD",
-      "RLUSD",
       "XAUT",
-      "USDD",
+      "RLUSD",
+      "ETHFI",
+      "BTW",
       "TRUMP",
-      "USDG",
       "SOL",
       "MON"
     ],
-    "alert": "Weak candidate pool this cycle \u2014 all swing candidates except SOL are stablecoins, collapsed tokens, or lack sufficient data. Proceed with reduced position size."
+    "alert": null
   }
 ]
