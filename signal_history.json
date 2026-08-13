@@ -38,26 +38,26 @@
     "alert": null
   },
   {
-    "ts": "2026-08-13T00:04:19.568726+00:00",
+    "ts": "2026-08-13T04:04:54.997606+00:00",
     "coin": "SOL",
-    "price": 75.54,
+    "price": 76.18,
     "signal": "HOLD",
-    "confidence": 28,
+    "confidence": 30,
     "score": -0.3,
     "fg": 29,
-    "btc_price": 63412,
+    "btc_price": 63583,
     "btc_dominance": 56.3,
     "candidates": [
-      "CYS",
       "BEAT",
+      "CYS",
       "FDUSD",
-      "USDG",
+      "BTW",
       "XAUT",
-      "PAXG",
+      "USDG",
       "RLUSD",
       "SOL",
       "MON"
     ],
-    "alert": "No actionable swing trade setup this cycle \u2014 candidate pool dominated by overbought movers, falling knives, and stablecoins."
+    "alert": "All swing candidates are either overbought, crashing without support, or stablecoins \u2014 no actionable trade this cycle."
   }
 ]
