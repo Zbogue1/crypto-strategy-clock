@@ -38,26 +38,26 @@
     "alert": null
   },
   {
-    "ts": "2026-08-14T04:01:44.378979+00:00",
+    "ts": "2026-08-14T08:02:27.375895+00:00",
     "coin": "SOL",
-    "price": 75.78,
+    "price": 75.54,
     "signal": "HOLD",
     "confidence": 30,
     "score": -0.3,
     "fg": 29,
-    "btc_price": 63311,
-    "btc_dominance": 56.2,
+    "btc_price": 62877,
+    "btc_dominance": 56.1,
     "candidates": [
-      "FDUSD",
       "BEAT",
+      "VELVET",
+      "FDUSD",
       "RLUSD",
-      "XAUT",
       "ETHFI",
+      "XAUT",
       "PAXG",
-      "USDD",
       "SOL",
       "MON"
     ],
-    "alert": "Market in sustained Fear territory with worsening trend \u2014 avoid forcing trades in low-conviction environments."
+    "alert": "Sustained fear environment with worsening trend \u2014 avoid forced entries. Wait for oversold RSI signals or clear volume breakouts before deploying capital."
   }
 ]
