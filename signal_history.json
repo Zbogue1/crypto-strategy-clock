@@ -59,5 +59,28 @@
       "MON"
     ],
     "alert": "Bitcoin testing critical $62K support amid bearish macro headwinds \u2014 watch for potential breakdown."
+  },
+  {
+    "ts": "2026-08-14T16:02:57.190564+00:00",
+    "coin": "SOL",
+    "price": 75.59,
+    "signal": "HOLD",
+    "confidence": 30,
+    "score": -0.3,
+    "fg": 29,
+    "btc_price": 62925,
+    "btc_dominance": 56.1,
+    "candidates": [
+      "AKE",
+      "BEAT",
+      "VELVET",
+      "FDUSD",
+      "RLUSD",
+      "UNI",
+      "XAUT",
+      "SOL",
+      "MON"
+    ],
+    "alert": "Sustained Fear reading (29) with worsening trend \u2014 avoid initiating new positions until reversal signals emerge."
   }
 ]
