@@ -2,7 +2,7 @@
   "version": "golem-v1",
   "reset_date": "2026-08-08",
   "reset_reason": "FOMO Golem launch \u2014 fresh $1,000 paper portfolio, FOMO-only strategy",
-  "cash": 7790201.316156852,
+  "cash": 7790151.316156852,
   "starting_cash": 1000.0,
   "peak_value": 1000.0,
   "total_trades": 2,
@@ -97,6 +97,34 @@
       "tranche_1_sold": false,
       "tranche_2_sold": false,
       "trailing_stop_active": false
+    },
+    {
+      "position_id": "a4b6ce3f",
+      "token_ticker": "ANSEM",
+      "token_name": "The Black Bull",
+      "entry_price": 0.2059,
+      "units": 242.59349198640118,
+      "spent": 50.0,
+      "stop_loss": 0.133835,
+      "exit_target": 0.26767,
+      "wallet_alias": "continuity",
+      "wallet_address": "",
+      "contract_address": "9cRCn9rGT8V2imeM2BaKs13yhMEais3ruM3rPvTGpump",
+      "catalyst": "Score 5/10 \u2014 Established: 59.1d old, Deep liq $2,114,064",
+      "catalyst_score": 5,
+      "market_cap": 205956774,
+      "liquidity_usd": 2114064.29,
+      "token_age_days": 59.081130933725724,
+      "holder_count": null,
+      "volume_spike_pct": 210.55123581291338,
+      "entered_at": "2026-08-14T23:03:42.046469+00:00",
+      "auto_exit_at": "2026-08-15T23:03:42.046481+00:00",
+      "source": "fomo_copy",
+      "partial_taken": false,
+      "peak_price": 0.2059,
+      "tranche_1_sold": false,
+      "tranche_2_sold": false,
+      "trailing_stop_active": false
     }
   ],
   "trade_history": [
@@ -170,5 +198,5 @@
     }
   ],
   "archived_history_note": "Prior July 2026 paper trades archived before this reset.",
-  "last_updated": "2026-08-14T08:15:42.600611+00:00"
+  "last_updated": "2026-08-14T23:03:42.046492+00:00"
 }
