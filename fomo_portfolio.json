@@ -2,7 +2,7 @@
   "version": "golem-v1",
   "reset_date": "2026-08-08",
   "reset_reason": "FOMO Golem launch \u2014 fresh $1,000 paper portfolio, FOMO-only strategy",
-  "cash": 7790251.316156852,
+  "cash": 7790201.316156852,
   "starting_cash": 1000.0,
   "peak_value": 1000.0,
   "total_trades": 2,
@@ -69,6 +69,34 @@
       "trailing_stop_active": false,
       "peak_liquidity": 479388.88,
       "last_price_check": 0.0113
+    },
+    {
+      "position_id": "fa2ea0e3",
+      "token_ticker": "BIO",
+      "token_name": "BIO",
+      "entry_price": 0.02443,
+      "units": 2044.617273843635,
+      "spent": 50.0,
+      "stop_loss": 0.0158795,
+      "exit_target": 0.031759,
+      "wallet_alias": "Golem (narrative: DESCI)",
+      "wallet_address": "",
+      "contract_address": "bioJ9JTqW62MLz7UKHU69gtKhPpGi1BQhccj2kmSvUJ",
+      "catalyst": "Score 5/10 \u2014 Established: 581.8d old, Healthy liq $318,327",
+      "catalyst_score": 5,
+      "market_cap": 54927299,
+      "liquidity_usd": 318327.03,
+      "token_age_days": 581.8311963874819,
+      "holder_count": null,
+      "volume_spike_pct": 102.20434169633052,
+      "entered_at": "2026-08-14T08:15:42.600584+00:00",
+      "auto_exit_at": "2026-08-15T08:15:42.600599+00:00",
+      "source": "fomo_copy",
+      "partial_taken": false,
+      "peak_price": 0.02443,
+      "tranche_1_sold": false,
+      "tranche_2_sold": false,
+      "trailing_stop_active": false
     }
   ],
   "trade_history": [
@@ -142,5 +170,5 @@
     }
   ],
   "archived_history_note": "Prior July 2026 paper trades archived before this reset.",
-  "last_updated": "2026-08-12T22:52:39.256767+00:00"
+  "last_updated": "2026-08-14T08:15:42.600611+00:00"
 }
