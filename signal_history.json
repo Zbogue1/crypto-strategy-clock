@@ -38,26 +38,26 @@
     "alert": null
   },
   {
-    "ts": "2026-08-14T08:02:27.375895+00:00",
+    "ts": "2026-08-14T12:01:52.827929+00:00",
     "coin": "SOL",
-    "price": 75.54,
+    "price": 75.45,
     "signal": "HOLD",
     "confidence": 30,
     "score": -0.3,
     "fg": 29,
-    "btc_price": 62877,
+    "btc_price": 62805,
     "btc_dominance": 56.1,
     "candidates": [
-      "BEAT",
+      "AKE",
       "VELVET",
       "FDUSD",
       "RLUSD",
-      "ETHFI",
+      "UNI",
       "XAUT",
-      "PAXG",
+      "ETHFI",
       "SOL",
       "MON"
     ],
-    "alert": "Sustained fear environment with worsening trend \u2014 avoid forced entries. Wait for oversold RSI signals or clear volume breakouts before deploying capital."
+    "alert": "Bitcoin testing critical $62K support amid bearish macro headwinds \u2014 watch for potential breakdown."
   }
 ]
