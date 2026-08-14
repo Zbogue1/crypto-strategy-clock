@@ -528,15 +528,19 @@ def run_new_launch_scan(callback) -> int:
             if contract in _seen_cache:
                 continue
 
-        # If Birdeye already gave us token data, use it and skip the DexScreener call
+        # Birdeye data (if present) used only to pre-check age — its list endpoint
+        # returns buys_h1=0 / volume_h1=0 so it cannot replace the DexScreener
+        # pair fetch needed for scoring. Use it to avoid fetching clearly-old tokens.
         birdeye_data = item.get("_birdeye")
         if birdeye_data and birdeye_data.get("token_age_days") is not None:
-            token_data = birdeye_data
-        else:
-            time.sleep(0.75)
-            token_data = _fetch_pair_data(contract)
-            if not token_data:
-                continue
+            age_precheck = (birdeye_data["token_age_days"] or 999) * 24
+            if age_precheck > NEW_LAUNCH_MAX_AGE_HOURS:
+                continue   # skip DexScreener call — already too old per Birdeye
+
+        time.sleep(0.75)
+        token_data = _fetch_pair_data(contract)
+        if not token_data:
+            continue
 
         # Age gate — new pairs only
         age_hours = (token_data.get("token_age_days") or 999) * 24

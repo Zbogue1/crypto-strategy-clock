@@ -2095,7 +2095,19 @@ def run_weekly_discovery():
         discover_narrative_whales, format_whale_telegram,
         revett_watchlist, format_revett_telegram,
     )
-    log.info("GMGN weekly discovery: starting re-vetting + both scans...")
+    from fomo_portfolio import load_discovery_seen, save_discovery_seen
+
+    # ── 7-day gate — gate EVERYTHING (re-vetting + all scans) ────────────────
+    # Must come first: the poller calls this every hour, so the gate is what
+    # prevents hourly re-vetting spam and GMGN credit burn.
+    seen_data = load_discovery_seen()
+    last_run  = seen_data.get("last_run")
+    if last_run:
+        days_ago = (datetime.now(timezone.utc) - datetime.fromisoformat(last_run)).days
+        if days_ago < 7:
+            log.info(f"GMGN discovery: skipping — last run was {days_ago}d ago (need 7)")
+            return
+    log.info("GMGN weekly discovery: 7-day gate passed — starting re-vetting + all scans...")
 
     # ── Run 0: Re-vet existing watchlist ──────────────────────────────────────
     try:
@@ -2107,7 +2119,7 @@ def run_weekly_discovery():
         # Safety gate — if >50% of wallets errored (API down/rate-limited),
         # the data is too unreliable to act on. Skip removal entirely this run.
         total_wallets  = len([w for w in all_wallets
-                               if w.get("wallet") and not w["wallet"].startswith("fill_in")])
+                               if w.get("wallet") and not w["wallet"].lower().startswith("fill_in")])
         total_errors   = len(revett_results.get("errors", []))
         api_too_flaky  = total_wallets > 0 and (total_errors / total_wallets) > 0.50
 
@@ -2136,19 +2148,6 @@ def run_weekly_discovery():
         send_telegram(revett_msg)
     except Exception as e:
         log.error(f"Watchlist re-vetting error: {e}")
-
-
-    from fomo_portfolio import load_discovery_seen, save_discovery_seen
-
-    # ── 7-day gate — skip if we already ran this week ─────────────────────────
-    seen_data = load_discovery_seen()
-    last_run  = seen_data.get("last_run")
-    if last_run:
-        days_ago = (datetime.now(timezone.utc) - datetime.fromisoformat(last_run)).days
-        if days_ago < 7:
-            log.info(f"GMGN discovery: skipping — last run was {days_ago}d ago (need 7)")
-            return
-    log.info("GMGN discovery: 7-day gate passed, running full scan...")
 
     # Load existing wallet addresses (case-sensitive — Solana base58)
     existing = set()

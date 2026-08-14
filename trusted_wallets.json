@@ -654,8 +654,8 @@
       "tier": "B",
       "chain": "solana",
       "alchemy_webhook_id": null,
-      "copy_trade": true,
-      "copy_trade_reason": "71% WR — above copy-trade threshold. COPY_TRADE 62/100. launchpad_smart + padre tags suggest early access to quality launches.",
+      "copy_trade": false,
+      "copy_trade_reason": "Downgraded to NARRATIVE_WATCH 2026-08-14: re-vetting returned 0% win rate on GMGN re-check. Original entry was 71% WR — GMGN API may have returned stale/incomplete data at discovery time. Monitor and re-evaluate.",
       "bankroll_usd": null,
       "notes": "From GMGN discovery. 71% WR, +$3,944 7D realized. Tags: launchpad_smart, padre. No Twitter. Fresh entry this week. Added to Solscan watchlist.",
       "stats": {
@@ -673,7 +673,40 @@
       "promoted_at": null,
       "demoted_at": null,
       "vetting": {
-        "score": 62,
+        "score": 30,
+        "recommendation": "NARRATIVE_WATCH",
+        "copy_trade": false,
+        "flags": ["Downgraded by re-vetting 2026-08-14: 0% win rate on GMGN re-check"],
+        "disqualifiers": ["Low win rate 0% — below 55% floor"]
+      }
+    },
+    {
+      "wallet": "CzbN6T1gKkKutvuPXcxNmV8FLqzjsDWebWmg9o8e2ZbU",
+      "alias": "Clowntrenches",
+      "fomo_profile": "@Clowntrenches",
+      "tier": "B",
+      "chain": "solana",
+      "alchemy_webhook_id": null,
+      "copy_trade": true,
+      "copy_trade_reason": "79% WR — well above copy-trade threshold. axiom + launchpad_smart + padre tags suggest early access to quality launches before public awareness.",
+      "bankroll_usd": null,
+      "notes": "From GMGN weekly discovery (2026-08-14). 79% WR, +$6,654 7D realized. Tags: axiom, padre, launchpad_smart, gmgn. Score 55/100 COPY_TRADE. Hold time unknown — verify before copy-trading. Tier B pending observed track record.",
+      "stats": {
+        "trades_followed": 0,
+        "wins": 0,
+        "losses": 0,
+        "win_rate_30d": null,
+        "win_rate_7d": 0.79,
+        "avg_return": null,
+        "consecutive_losses": 0,
+        "last_trade_at": null,
+        "last_outcome": null
+      },
+      "added_at": "2026-08-14T00:00:00Z",
+      "promoted_at": null,
+      "demoted_at": null,
+      "vetting": {
+        "score": 55,
         "recommendation": "COPY_TRADE",
         "copy_trade": true,
         "flags": ["Hold time unknown — verify before copy-trading"],
