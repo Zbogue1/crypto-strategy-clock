@@ -1,32 +1,32 @@
 {
   "open_trade": {
-    "coin": "SOL",
-    "entry_time": "2026-08-14T00:01:19.718556+00:00",
+    "coin": "LINK",
+    "entry_time": "2026-08-14T20:01:49.656260+00:00",
     "key_signals": [
       {
         "source": "Fear_Greed",
         "signal_type": "sentiment",
-        "description": "Fear at 29/100 with worsening trend \u2014 contrarian opportunity but demands tight risk management and smaller sizing."
-      },
-      {
-        "source": "volume_breakout",
-        "signal_type": "technical",
-        "description": "SOL daily volume at $1.16B is strong relative to its market cap, indicating sustained institutional interest during the downturn."
-      },
-      {
-        "source": "CryptoSlate",
-        "signal_type": "news",
-        "description": "Multicoin exiting the Solana treasury company is a risk factor, but may also mean selling pressure is being absorbed given SOL's +4.9% week."
+        "description": "Fear & Greed at 29 with worsening trend suggests caution; contrarian bounce possible but not yet confirmed."
       },
       {
         "source": "RSI",
         "signal_type": "technical",
-        "description": "No RSI data available for SOL, but 7-day +4.9% gain without overextension suggests mid-range RSI \u2014 not overbought, room to run."
+        "description": "AKE's RSI at 78.8 (overbought) warns against chasing the biggest mover \u2014 our most reliable signal historically at 71% win rate."
+      },
+      {
+        "source": "volume_breakout",
+        "signal_type": "technical",
+        "description": "LINK shows $257M daily volume with +9.7% weekly gain, standing out as the strongest large-cap alt with genuine buying interest."
+      },
+      {
+        "source": "CoinDesk",
+        "signal_type": "news",
+        "description": "Israel's largest bank partnering with Galaxy for crypto trading could benefit oracle/infrastructure plays like LINK; meanwhile BTC ETF outflows add near-term pressure."
       },
       {
         "source": "Blockworks",
         "signal_type": "news",
-        "description": "ETH derivatives reset narrative and DePIN/gaming rebound coverage suggests broader alt interest returning, which could benefit SOL ecosystem."
+        "description": "'ETH derivatives reset and the next retail trade' narrative suggests positioning shifts underway that could benefit DeFi-adjacent tokens like LINK."
       }
     ],
     "confidence": 52
@@ -188,5 +188,5 @@
     }
   },
   "trade_count": 11,
-  "last_updated": "2026-08-14T00:01:19.718572+00:00"
+  "last_updated": "2026-08-14T20:01:49.656273+00:00"
 }
