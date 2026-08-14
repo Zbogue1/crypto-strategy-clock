@@ -345,6 +345,205 @@ def _build_signal(token: dict, smart_money: list[dict]) -> dict:
     }
 
 
+# ─── NEW PAIRS RADAR (tokens 0–6 hours old) ──────────────────────────────────
+# Elite traders watch new launches, not things already on the trending list.
+# DexScreener's token-profiles/latest endpoint returns the most recently
+# listed tokens — far newer than the trending/boosted feed.
+
+NEW_LAUNCH_MAX_AGE_HOURS  = 6       # only tokens younger than this
+NEW_LAUNCH_MIN_LIQUIDITY  = 10_000  # lower bar — new tokens start small
+NEW_LAUNCH_MIN_BUYS_H1    = 12      # at least 12 buys in last hour
+NEW_LAUNCH_SCORE_THRESHOLD = 55     # slightly lower than momentum threshold
+
+
+def _fetch_new_pairs_solana() -> list:
+    """
+    Pull newest Solana token listings from DexScreener profiles endpoint.
+    These are tokens that just got DexScreener entries — minutes to hours old.
+    """
+    try:
+        resp = requests.get(
+            "https://api.dexscreener.com/token-profiles/latest/v1",
+            timeout=10,
+            headers={"User-Agent": "Mozilla/5.0"},
+        )
+        if resp.status_code != 200:
+            return []
+        items = resp.json()
+        if not isinstance(items, list):
+            items = []
+        return [
+            {"contract": t.get("tokenAddress", ""), "raw": t}
+            for t in items
+            if (t.get("chainId") or "").lower() in ("solana", "sol")
+            and t.get("tokenAddress")
+        ]
+    except Exception as e:
+        log.debug(f"New pairs fetch error: {e}")
+        return []
+
+
+def _new_launch_score(token: dict) -> tuple[int, list[str]]:
+    """
+    Specialized scoring for brand-new tokens (0–6 hours old).
+    Weights early buy volume and buy ratio higher than the momentum scorer
+    because volume acceleration vs. 6h average is meaningless at this age.
+    """
+    score   = 0
+    factors = []
+
+    # Early buy pressure — most important signal for a new launch
+    buys_h1  = token.get("buys_h1", 0) or 0
+    sells_h1 = token.get("sells_h1", 0) or 0
+    total_h1 = buys_h1 + sells_h1
+    if total_h1 >= 12:
+        buy_ratio = buys_h1 / total_h1
+        if buy_ratio >= 0.75:
+            score += 30
+            factors.append(f"Hot launch: {buy_ratio*100:.0f}% buys ({buys_h1}/{total_h1} txns h1)")
+        elif buy_ratio >= 0.65:
+            score += 20
+            factors.append(f"Strong launch buying: {buy_ratio*100:.0f}% buys h1")
+        elif buy_ratio >= 0.55:
+            score += 10
+    elif total_h1 >= 5:
+        score += 5
+
+    # h1 volume in real dollars — filters out bots with 1000 micro-transactions
+    vol_h1 = token.get("volume_h1", 0) or 0
+    if vol_h1 >= 50_000:
+        score += 25
+        factors.append(f"Strong launch volume: ${vol_h1:,.0f} in h1")
+    elif vol_h1 >= 20_000:
+        score += 18
+        factors.append(f"Good launch volume: ${vol_h1:,.0f} in h1")
+    elif vol_h1 >= 5_000:
+        score += 10
+        factors.append(f"Early volume: ${vol_h1:,.0f} in h1")
+
+    # Price action — should be climbing, not dumping
+    pc_h1 = token.get("price_change_h1", 0) or 0
+    if pc_h1 >= 20:
+        score += 20
+        factors.append(f"Launching hot: +{pc_h1:.0f}% h1")
+    elif pc_h1 >= 5:
+        score += 12
+        factors.append(f"Positive launch: +{pc_h1:.0f}% h1")
+    elif pc_h1 < -10:
+        score -= 15   # early dump — dev selling or botched launch
+
+    # Liquidity — new token specific ranges
+    liq = token.get("liquidity_usd", 0) or 0
+    if liq >= 50_000:
+        score += 15
+        factors.append(f"Good launch liquidity: ${liq:,.0f}")
+    elif liq >= 15_000:
+        score += 8
+    elif liq < 5_000:
+        score -= 10
+
+    # Age bonus — sooner we catch it, the better
+    age_hours = (token.get("token_age_days") or 99) * 24
+    if age_hours <= 1:
+        score += 10
+        factors.append(f"Brand new: {age_hours:.1f}hr old")
+    elif age_hours <= 3:
+        score += 5
+        factors.append(f"Very new: {age_hours:.1f}hr old")
+
+    return max(0, min(score, 100)), factors
+
+
+def _build_launch_signal(token: dict, score: int, factors: list[str]) -> dict:
+    """Build signal dict for a new launch detection."""
+    symbol    = token.get("symbol", "?")
+    age_hours = (token.get("token_age_days") or 0) * 24
+    return {
+        "alias":            f"Golem (new launch, score {score}/100)",
+        "tier":             "A",
+        "chain":            "solana",
+        "bankroll_usd":     None,
+        "copy_trade":       True,
+        "action":           "BUY",
+        "token_symbol":     symbol,
+        "contract_address": token.get("contract"),
+        "confidence":       "high" if score >= 70 else "medium",
+        "signal_text":      (
+            f"🚀 New launch detected: ${symbol} ({age_hours:.1f}hr old) — score {score}/100\n"
+            + "\n".join(f"• {f}" for f in factors)
+        ),
+        "source":           "new_launch",
+        "timestamp":        datetime.now(timezone.utc).isoformat(),
+        "original_text":    f"New launch radar: {score}/100 — {'; '.join(factors[:2])}",
+        "launch_score":     score,
+        "launch_factors":   factors,
+        "token_age_hours":  age_hours,
+    }
+
+
+def run_new_launch_scan(callback) -> int:
+    """
+    Scan for brand-new Solana token launches (0–6 hours old).
+    Runs every 15 min — much faster than the main 30-min trending scan.
+    """
+    log.info("New launch radar: scanning for fresh Solana launches")
+    signals_emitted = 0
+
+    raw = _fetch_new_pairs_solana()
+    log.info(f"New launch radar: {len(raw)} new Solana profiles")
+
+    tried: set = set()
+    for item in raw:
+        contract = item.get("contract", "")
+        if not contract or contract in tried:
+            continue
+        tried.add(contract)
+
+        # Skip if already signalled recently
+        with _cache_lock:
+            if contract in _seen_cache:
+                continue
+
+        time.sleep(0.75)
+        token_data = _fetch_pair_data(contract)
+        if not token_data:
+            continue
+
+        # Age gate — new pairs only
+        age_hours = (token_data.get("token_age_days") or 999) * 24
+        if age_hours > NEW_LAUNCH_MAX_AGE_HOURS:
+            continue
+
+        liq = token_data.get("liquidity_usd", 0) or 0
+        if liq < NEW_LAUNCH_MIN_LIQUIDITY:
+            log.debug(f"New launch filtered {token_data.get('symbol','?')}: liq ${liq:,.0f}")
+            continue
+
+        buys_h1 = token_data.get("buys_h1", 0) or 0
+        if buys_h1 < NEW_LAUNCH_MIN_BUYS_H1:
+            log.debug(f"New launch filtered {token_data.get('symbol','?')}: {buys_h1} buys h1")
+            continue
+
+        score, factors = _new_launch_score(token_data)
+        log.debug(f"New launch {token_data.get('symbol','?')}: score {score}/100")
+
+        if score >= NEW_LAUNCH_SCORE_THRESHOLD:
+            log.info(
+                f"NEW LAUNCH SIGNAL: {token_data.get('symbol','?')} ({contract[:8]}…) "
+                f"— {age_hours:.1f}hr old, score {score}/100"
+            )
+            signal = _build_launch_signal(token_data, score, factors)
+            _mark_seen(contract)
+            try:
+                callback(signal)
+                signals_emitted += 1
+            except Exception as e:
+                log.error(f"New launch callback error: {e}")
+
+    log.info(f"New launch radar: {signals_emitted} signal(s) emitted")
+    return signals_emitted
+
+
 # ─── MAIN SCAN CYCLE ─────────────────────────────────────────────────────────
 
 def run_scan(callback) -> int:
@@ -451,20 +650,46 @@ def run_scan(callback) -> int:
 
 def start_scanner(callback) -> threading.Thread:
     """
-    Start background scanner thread. Polls every 30 minutes.
-    callback(signal_dict) is called for each confirmed smart money signal.
+    Background thread running three scan modes on staggered cadences:
+
+      Every 15 min  — New launch radar (tokens 0-6 hrs old)
+      Every 30 min  — Main scan (momentum scoring + smart money clustering)
+      Every 2 hours — Narrative import (ETH/BASE trends → Solana equivalents)
+
+    The 15-min base cycle means new launches are caught fast; the main scan
+    runs every other cycle; narrative import runs every 8th cycle.
     """
+    CYCLE_SEC       = 15 * 60   # base tick: 15 min
+    MAIN_EVERY_N    = 2         # main scan every 2 ticks = 30 min
+    NARRATIVE_EVERY_N = 8       # narrative scan every 8 ticks = 2 hours
+
     def _loop():
-        log.info(f"Active scanner started (DexScreener + GMGN every {SCAN_INTERVAL_SEC//60} min)")
+        log.info("Active scanner started — 3 modes: new-launch(15m) / main(30m) / narrative(2h)")
         time.sleep(STARTUP_DELAY_SEC)
+        cycle = 0
         while True:
             try:
-                n = run_scan(callback)
-                if n:
-                    log.info(f"Scanner: emitted {n} signal(s) this cycle")
+                # Mode 1: New launch radar — every cycle
+                run_new_launch_scan(callback)
+
+                # Mode 2: Momentum + smart money — every 30 min
+                if cycle % MAIN_EVERY_N == 0:
+                    run_scan(callback)
+
+                # Mode 3: Cross-chain narrative import — every 2 hours
+                if cycle % NARRATIVE_EVERY_N == 0:
+                    try:
+                        from fomo_narrative import run_narrative_scan
+                        with _cache_lock:
+                            already_seen = set(_seen_cache.keys())
+                        run_narrative_scan(callback, already_seen)
+                    except Exception as e:
+                        log.error(f"Narrative scan error: {e}")
+
+                cycle += 1
             except Exception as e:
                 log.error(f"Scanner loop error: {e}")
-            time.sleep(SCAN_INTERVAL_SEC)
+            time.sleep(CYCLE_SEC)
 
     t = threading.Thread(target=_loop, daemon=True, name="fomo-active-scanner")
     t.start()
