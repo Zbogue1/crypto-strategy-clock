@@ -2080,11 +2080,15 @@ def process_social_signal(signal: dict):
 
 def run_weekly_discovery():
     """
-    Scan GMGN leaderboard weekly.
-    Run 0: re-vet existing watchlist — auto-remove REJECT wallets, update scores.
-    Run 1: copy-trade candidates (65%+ win rate, low bot ratio).
-    Run 2: narrative whales (high profit, spray-and-pray, copy_trade: false).
-    Both discovery results sent to Telegram for user review -- nothing added automatically.
+    Full weekly discovery cycle — runs once per week (gated via GitHub-persisted timestamp).
+
+    Run 0: Re-vet existing watchlist — auto-remove REJECT wallets, update scores.
+    Scan 1: GMGN leaderboard — copy-trade candidates by win rate.
+    Scan 2: Narrative whales — high-profit spray-and-pray for theme awareness.
+    Scan 3: Reverse discovery — wallets found inside tokens that actually pumped
+            (portfolio winners + DexScreener trending). Higher signal quality than
+            leaderboard: presence in real winners, not just rankings.
+    All results sent to Telegram for user review — nothing added automatically.
     """
     from fomo_gmgn import (
         discover_traders, format_discovery_telegram,
@@ -2182,6 +2186,19 @@ def run_weekly_discovery():
             log.info("GMGN whale discovery: no new whales this week")
     except Exception as e:
         log.error(f"GMGN whale discovery error: {e}")
+
+    # Scan 3: Reverse discovery — wallets found inside tokens that actually pumped
+    try:
+        from fomo_gmgn import reverse_discover_from_winners, format_reverse_discovery_telegram
+        rev_candidates = reverse_discover_from_winners()
+        rev_msg, rev_shown = format_reverse_discovery_telegram(
+            rev_candidates, existing, seen_wallets
+        )
+        send_telegram(rev_msg)
+        newly_shown.extend(rev_shown)
+        log.info(f"Reverse discovery: {len(rev_shown)} new candidate(s) shown")
+    except Exception as e:
+        log.error(f"Reverse discovery error: {e}")
 
     # Persist last_run + all shown addresses so they're skipped next week
     seen_data["last_run"] = now_str

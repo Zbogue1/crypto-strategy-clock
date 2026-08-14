@@ -663,3 +663,292 @@ def format_revett_telegram(results: dict) -> str:
 
     lines.append("\nWatchlist updated automatically.")
     return "\n".join(lines)
+
+
+# ─── 4. REVERSE DISCOVERY ─────────────────────────────────────────────────────
+
+def _load_portfolio_winners(min_gain_x: float = 2.0, lookback_days: int = 60) -> list:
+    """
+    Load closed winning trades from fomo_portfolio.json on the GitHub data branch.
+    Returns list of {"contract": str, "ticker": str, "gain_x": float}.
+    """
+    try:
+        import json
+        from datetime import datetime, timezone, timedelta
+        from fomo_portfolio import _github_pull_file
+
+        _github_pull_file("fomo_portfolio.json")
+        with open("fomo_portfolio.json") as f:
+            portfolio = json.load(f)
+
+        cutoff = (datetime.now(timezone.utc) - timedelta(days=lookback_days)).isoformat()
+        winners = []
+        for trade in portfolio.get("trades", []):
+            if trade.get("status") != "closed":
+                continue
+            gain_x = float(trade.get("gain_x") or 1.0)
+            if gain_x < min_gain_x:
+                continue
+            # Drop stale trades beyond lookback window
+            ts = trade.get("exit_time") or trade.get("close_time") or ""
+            if ts and ts < cutoff:
+                continue
+            contract = trade.get("contract", "")
+            if contract:
+                winners.append({
+                    "contract": contract,
+                    "ticker":   trade.get("ticker", "UNKNOWN"),
+                    "gain_x":   gain_x,
+                })
+        log.info(
+            f"Reverse discovery: {len(winners)} portfolio winners "
+            f"(≥{min_gain_x}x, last {lookback_days}d)"
+        )
+        return winners
+    except Exception as e:
+        log.warning(f"Reverse discovery: portfolio load failed: {e}")
+        return []
+
+
+def _load_dexscreener_trending_solana() -> list:
+    """
+    Pull currently trending/boosted Solana tokens from DexScreener as
+    additional seed tokens for reverse discovery.
+    Returns list of {"contract": str, "ticker": str, "gain_x": None}.
+    """
+    seeds = []
+    endpoints = [
+        "https://api.dexscreener.com/token-boosts/top/v1",
+        "https://api.dexscreener.com/token-profiles/latest/v1",
+    ]
+    for url in endpoints:
+        try:
+            resp = requests.get(url, timeout=10, headers={"User-Agent": "Mozilla/5.0"})
+            if resp.status_code != 200:
+                continue
+            items = resp.json()
+            if isinstance(items, dict):
+                items = items.get("pairs") or items.get("tokens") or []
+            for t in (items or []):
+                chain = (t.get("chainId") or t.get("chain") or "").lower()
+                if chain not in ("solana", "sol"):
+                    continue
+                contract = t.get("tokenAddress") or t.get("address") or ""
+                if contract:
+                    seeds.append({
+                        "contract": contract,
+                        "ticker":   t.get("symbol") or t.get("name") or "",
+                        "gain_x":   None,
+                    })
+        except Exception as e:
+            log.warning(f"Reverse discovery: DexScreener trending fetch error ({url}): {e}")
+    return seeds
+
+
+def reverse_discover_from_winners(min_gain_x: float = 2.0, lookback_days: int = 60) -> list:
+    """
+    Tier 3 reverse discovery pipeline.
+
+    Instead of asking "who ranks well on a leaderboard?", we ask:
+    "who was already inside tokens that actually pumped?"
+
+    A wallet appearing in smart money holders across 3 of your 5 winning
+    tokens wasn't lucky — they have real alpha. This signal is invisible
+    to leaderboard-based discovery.
+
+    Pipeline:
+    1. Seed pool = portfolio closed trades ≥{min_gain_x}x + DexScreener
+       current trending Solana tokens (broader net for new accounts).
+    2. For each seed token, call get_smart_money_in_token() — GMGN tells
+       us which tagged wallets are holding or have held it.
+    3. Rank wallets by appearance count across the full seed pool.
+    4. Fetch profiles and vet top-ranked wallets.
+    5. Return candidates in the same format as discover_traders() so they
+       slot into the existing weekly Telegram flow.
+    """
+    if not PARSE_API_KEY:
+        log.debug("Reverse discovery: PARSE_API_KEY not set — skipping")
+        return []
+
+    # ── 1. Seed pool ──────────────────────────────────────────────────────────
+    portfolio_seeds = _load_portfolio_winners(min_gain_x, lookback_days)
+    dex_seeds       = _load_dexscreener_trending_solana()
+
+    seen_contracts: set = set()
+    seeds = []
+    for s in portfolio_seeds + dex_seeds:
+        if s["contract"] not in seen_contracts:
+            seen_contracts.add(s["contract"])
+            seeds.append(s)
+
+    log.info(
+        f"Reverse discovery: {len(portfolio_seeds)} portfolio + "
+        f"{len(dex_seeds)} DexScreener = {len(seeds)} unique seed tokens"
+    )
+    if not seeds:
+        log.warning("Reverse discovery: no seed tokens available — skipping")
+        return []
+
+    # ── 2. Probe each seed for smart money holders ────────────────────────────
+    wallet_hits: dict = {}   # wallet_addr -> {count, tokens, tags}
+    BAD_TAGS = {"wash_trader", "bot", "arbitrager"}
+
+    for seed in seeds[:15]:   # cap at 15 tokens to stay within API budget
+        contract = seed["contract"]
+        ticker   = seed.get("ticker") or contract[:8]
+        try:
+            holders = get_smart_money_in_token(contract, max_holders=50)
+        except Exception as e:
+            log.warning(f"Reverse discovery: holder probe failed for {ticker}: {e}")
+            continue
+
+        for h in holders:
+            wallet = h.get("wallet", "")
+            if not wallet:
+                continue
+            tags = set(t.lower() for t in (h.get("tags") or []))
+            if tags & BAD_TAGS:
+                continue
+            if wallet not in wallet_hits:
+                wallet_hits[wallet] = {
+                    "wallet": wallet,
+                    "count":  0,
+                    "tokens": [],
+                    "tags":   set(),
+                }
+            wallet_hits[wallet]["count"]  += 1
+            wallet_hits[wallet]["tokens"].append(ticker)
+            wallet_hits[wallet]["tags"].update(tags)
+
+    if not wallet_hits:
+        log.info("Reverse discovery: no smart money wallets found across seed tokens")
+        return []
+
+    log.info(
+        f"Reverse discovery: {len(wallet_hits)} unique wallets found — "
+        f"ranking by appearances across winning tokens"
+    )
+
+    # ── 3. Rank by appearance count ───────────────────────────────────────────
+    ranked = sorted(wallet_hits.values(), key=lambda x: x["count"], reverse=True)
+
+    # ── 4. Profile + vet top wallets ─────────────────────────────────────────
+    candidates = []
+
+    for entry in ranked[:12]:   # top 12 by token appearances
+        wallet = entry["wallet"]
+
+        profile = get_wallet_profile(wallet)
+        if not profile:
+            continue
+
+        winrate  = profile.get("winrate_7d") or profile.get("winrate_30d") or 0
+        realized = float(profile.get("realized_profit") or profile.get("pnl_7d") or 0)
+        fast_tx  = float(profile.get("fast_tx_ratio") or 0)
+
+        # Lower floor than leaderboard scan — presence in real winners is the
+        # primary signal; winrate here is a sanity floor, not the main gate.
+        if winrate < 0.45:
+            log.debug(
+                f"Reverse discovery: {wallet[:8]}… win rate {winrate*100:.0f}% "
+                f"too low — skip"
+            )
+            continue
+        if fast_tx > MAX_FAST_TX_RATIO:
+            log.debug(
+                f"Reverse discovery: {wallet[:8]}… fast_tx {fast_tx:.2f} — bot risk, skip"
+            )
+            continue
+
+        candidate = {
+            "wallet":             wallet,
+            "winrate":            winrate,
+            "win_rate":           winrate,
+            "pnl":                realized,
+            "realized_profit":    realized,
+            "realized_pnl_7d":   realized,
+            "fast_tx_ratio":      fast_tx,
+            "honeypot_ratio":     float(profile.get("honeypot_ratio") or 0),
+            "twitter":            profile.get("twitter") or "",
+            "has_twitter":        bool(profile.get("twitter")),
+            "tags":               list(entry["tags"]),
+            "buys_7d":            0,
+            "trades_7d":          0,
+            "avg_trades_per_day": 0,
+            "avg_hold_minutes":   profile.get("avg_hold_minutes"),
+            # Reverse discovery metadata — surfaced in the Telegram message
+            "reverse_discovery":  True,
+            "token_appearances":  entry["count"],
+            "found_in_tokens":    entry["tokens"],
+        }
+        candidates.append(candidate)
+        log.info(
+            f"Reverse discovery candidate: {wallet[:8]}… "
+            f"WR={winrate*100:.0f}% appeared_in={entry['count']} tokens: "
+            f"{', '.join(entry['tokens'][:3])}"
+        )
+
+    # ── 5. Vet ───────────────────────────────────────────────────────────────
+    try:
+        from fomo_vetting import vet_and_annotate
+        candidates = [vet_and_annotate(c) for c in candidates]
+    except Exception as e:
+        log.warning(f"Reverse discovery: vetting failed (non-fatal): {e}")
+
+    log.info(f"Reverse discovery: {len(candidates)} vetted candidates ready")
+    return candidates
+
+
+def format_reverse_discovery_telegram(
+    candidates: list,
+    existing_wallets: set,
+    seen_wallets: set = None,
+) -> tuple:
+    """
+    Format reverse-discovery candidates for Telegram.
+    Returns (message: str, shown_addresses: list).
+    """
+    seen_wallets = seen_wallets or set()
+    skip = existing_wallets | seen_wallets
+
+    actionable = [
+        c for c in candidates
+        if c["wallet"] not in skip
+        and (c.get("vetting") or {}).get("recommendation") == "COPY_TRADE"
+    ]
+    shown_addresses = [c["wallet"] for c in actionable[:5]]
+
+    if not actionable:
+        return (
+            "🔁 Reverse discovery scan complete — no new COPY_TRADE candidates "
+            "found in winning tokens this week.",
+            shown_addresses,
+        )
+
+    lines = [
+        f"🔁 <b>Reverse Discovery: {len(actionable)} wallet(s) found in winners</b>\n"
+        f"<i>Found by scanning who was inside tokens that actually pumped — "
+        f"not from a leaderboard</i>\n"
+    ]
+    for c in actionable[:5]:
+        wr          = f"{c['winrate']*100:.0f}%"
+        realized    = c.get("realized_profit") or 0
+        pnl_str     = f"+${realized:,.0f}" if realized >= 0 else f"-${abs(realized):,.0f}"
+        tw          = f"@{c['twitter']}" if c.get("twitter") else "no twitter"
+        appearances = c.get("token_appearances", 1)
+        tokens_str  = ", ".join((c.get("found_in_tokens") or [])[:3])
+
+        vetting  = c.get("vetting") or {}
+        score    = vetting.get("score", "?")
+        flags    = vetting.get("flags") or []
+        flag_str = f"\n  ⚠️ {flags[0]}" if flags else ""
+
+        lines.append(
+            f"✅ {tw} — <b>COPY_TRADE</b> (score {score}/100)\n"
+            f"  WR: {wr} | 7D PnL: {pnl_str}\n"
+            f"  Found in {appearances} winner(s): {tokens_str}"
+            f"{flag_str}\n"
+            f"  <code>{c['wallet']}</code>"
+        )
+    lines.append("\nPaste address + name here to add to watchlist.")
+    return "\n".join(lines), shown_addresses
