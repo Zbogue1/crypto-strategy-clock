@@ -82,5 +82,28 @@
       "MON"
     ],
     "alert": "Sustained Fear reading (29) with worsening trend \u2014 avoid initiating new positions until reversal signals emerge."
+  },
+  {
+    "ts": "2026-08-14T20:01:04.763977+00:00",
+    "coin": "LINK",
+    "price": 12.85,
+    "signal": "BUY",
+    "confidence": 52,
+    "score": 0.35,
+    "fg": 29,
+    "btc_price": 62891,
+    "btc_dominance": 56.1,
+    "candidates": [
+      "AKE",
+      "VELVET",
+      "BEAT",
+      "FDUSD",
+      "RLUSD",
+      "UNI",
+      "XAUT",
+      "SOL",
+      "MON"
+    ],
+    "alert": "Market in Fear zone with worsening trend \u2014 use reduced position sizes and strict stop-losses."
   }
 ]
