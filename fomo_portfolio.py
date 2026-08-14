@@ -193,6 +193,45 @@ def sync_fomo_state_to_github():
     _github_push_file(FOMO_PORTFOLIO_FILE)
 
 
+# ─── DISCOVERY SEEN-WALLET CACHE ──────────────────────────────────────────────
+# Tracks which wallet addresses have already been shown in discovery reports,
+# plus when discovery last ran. Persisted on the GitHub data branch so it
+# survives Railway restarts and redeployments.
+
+DISCOVERY_SEEN_FILE = "fomo_discovery_seen.json"
+DISCOVERY_SEEN_TTL_DAYS = 30   # forget a wallet after 30 days so it can resurface
+
+
+def load_discovery_seen() -> dict:
+    """
+    Pull and return the discovery seen-wallet cache from GitHub.
+    Returns: {last_run: ISO str | None, seen: {address: ISO first_shown_str}}
+    """
+    _github_pull_file(DISCOVERY_SEEN_FILE)
+    try:
+        with open(DISCOVERY_SEEN_FILE) as f:
+            data = json.load(f)
+        # Prune entries older than TTL
+        cutoff = (datetime.now(timezone.utc) - timedelta(days=DISCOVERY_SEEN_TTL_DAYS)).isoformat()
+        data["seen"] = {
+            addr: ts for addr, ts in data.get("seen", {}).items()
+            if ts >= cutoff
+        }
+        return data
+    except (FileNotFoundError, json.JSONDecodeError):
+        return {"last_run": None, "seen": {}}
+
+
+def save_discovery_seen(data: dict):
+    """Save and push the seen-wallet cache to GitHub."""
+    try:
+        with open(DISCOVERY_SEEN_FILE, "w") as f:
+            json.dump(data, f, indent=2)
+        _github_push_file(DISCOVERY_SEEN_FILE)
+    except Exception as e:
+        log.warning(f"Could not save discovery seen cache: {e}")
+
+
 # ─── PORTFOLIO VALUE ──────────────────────────────────────────────────────────
 
 def get_fomo_value(current_price: float = None) -> dict:

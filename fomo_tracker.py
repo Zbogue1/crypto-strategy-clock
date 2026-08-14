@@ -2134,7 +2134,19 @@ def run_weekly_discovery():
         log.error(f"Watchlist re-vetting error: {e}")
 
 
-    # Load existing wallet addresses once (preserve case — Solana addresses are case-sensitive)
+    from fomo_portfolio import load_discovery_seen, save_discovery_seen
+
+    # ── 7-day gate — skip if we already ran this week ─────────────────────────
+    seen_data = load_discovery_seen()
+    last_run  = seen_data.get("last_run")
+    if last_run:
+        days_ago = (datetime.now(timezone.utc) - datetime.fromisoformat(last_run)).days
+        if days_ago < 7:
+            log.info(f"GMGN discovery: skipping — last run was {days_ago}d ago (need 7)")
+            return
+    log.info("GMGN discovery: 7-day gate passed, running full scan...")
+
+    # Load existing wallet addresses (case-sensitive — Solana base58)
     existing = set()
     try:
         with open(TRUSTED_WALLETS_FILE) as f:
@@ -2145,42 +2157,56 @@ def run_weekly_discovery():
     except Exception:
         pass
 
-    # Scan 1: copy-trade candidates (65%+ win rate)
+    seen_wallets = set(seen_data.get("seen", {}).keys())
+    now_str      = datetime.now(timezone.utc).isoformat()
+
+    # Scan 1: COPY_TRADE candidates only — NARRATIVE_WATCH filtered out
+    newly_shown = []
     try:
         candidates = discover_traders(period="7d", limit=50)
-        msg = format_discovery_telegram(candidates, existing)
+        msg, shown = format_discovery_telegram(candidates, existing, seen_wallets)
         send_telegram(msg)
-        log.info(f"GMGN copy-trade discovery: {len(candidates)} candidate(s) sent")
+        newly_shown.extend(shown)
+        log.info(f"GMGN copy-trade discovery: {len(shown)} new candidate(s) shown")
     except Exception as e:
         log.error(f"GMGN copy-trade discovery error: {e}")
 
     # Scan 2: narrative whales (high profit, spray-and-pray style)
     try:
         whales = discover_narrative_whales(period="30d", limit=50)
-        whale_msg = format_whale_telegram(whales, existing)
+        whale_msg = format_whale_telegram(whales, existing | seen_wallets)
         if whale_msg:
             send_telegram(whale_msg)
-            log.info(f"GMGN whale discovery: {len(whales)} whale(s) sent")
+            log.info(f"GMGN whale discovery: new whales found")
         else:
-            log.info("GMGN whale discovery: no new whales found")
+            log.info("GMGN whale discovery: no new whales this week")
     except Exception as e:
         log.error(f"GMGN whale discovery error: {e}")
+
+    # Persist last_run + all shown addresses so they're skipped next week
+    seen_data["last_run"] = now_str
+    for addr in newly_shown:
+        seen_data.setdefault("seen", {})[addr] = now_str
+    save_discovery_seen(seen_data)
+    log.info(f"GMGN discovery: saved seen cache ({len(seen_data['seen'])} total addresses)")
 
 
 def start_discovery_poller():
     """
-    Background thread that runs GMGN trader discovery once per week.
-    First run is delayed 2 hours after startup so the service is stable.
+    Background thread — checks every hour whether 7 days have passed since
+    the last discovery run. The actual weekly gate is enforced inside
+    run_weekly_discovery() via the persistent seen cache, so restarts and
+    redeployments don't trigger extra runs.
     """
     import threading, time as _time
-    WEEK_SECONDS = 7 * 24 * 60 * 60
+    CHECK_INTERVAL = 60 * 60   # check every hour; gate inside run_weekly_discovery
 
     def _loop():
-        log.info("GMGN discovery poller started (weekly)")
-        _time.sleep(2 * 60 * 60)   # 2-hour startup delay
+        log.info("GMGN discovery poller started (checks hourly, runs weekly)")
+        _time.sleep(10 * 60)   # 10-min startup delay
         while True:
             run_weekly_discovery()
-            _time.sleep(WEEK_SECONDS)
+            _time.sleep(CHECK_INTERVAL)
 
     t = threading.Thread(target=_loop, daemon=True, name="fomo-gmgn-discovery")
     t.start()

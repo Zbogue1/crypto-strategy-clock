@@ -438,18 +438,40 @@ RECOMMENDATION_ICONS = {
 }
 
 
-def format_discovery_telegram(candidates: list, existing_wallets: set) -> str:
+def format_discovery_telegram(
+    candidates: list,
+    existing_wallets: set,
+    seen_wallets: set = None,
+) -> tuple:
     """
     Format discovered traders as a Telegram message for user approval.
-    Includes vetting scores and recommendation if available.
-    existing_wallets: set of wallet addresses already in trusted_wallets.json
-    """
-    new = [c for c in candidates if c["wallet"] not in existing_wallets]
-    if not new:
-        return f"🔍 GMGN scan complete — no new traders found above {MIN_WIN_RATE*100:.0f}% win rate."
+    Only surfaces COPY_TRADE recommendations — NARRATIVE_WATCH is filtered out.
+    Skips wallets already in existing_wallets OR seen_wallets (shown in last 30d).
 
-    lines = [f"🔍 <b>GMGN Discovery: {len(new)} new trader(s)</b>\n"]
-    for c in new[:5]:   # cap at 5 per message
+    Returns (message: str, shown_addresses: list) so caller can update seen cache.
+    existing_wallets: addresses already in trusted_wallets.json
+    seen_wallets:     addresses already shown in a previous discovery report
+    """
+    seen_wallets = seen_wallets or set()
+    skip = existing_wallets | seen_wallets
+
+    # COPY_TRADE only — NARRATIVE_WATCH clutters the list with wallets to ignore
+    actionable = [
+        c for c in candidates
+        if c["wallet"] not in skip
+        and (c.get("vetting") or {}).get("recommendation") == "COPY_TRADE"
+    ]
+
+    shown_addresses = [c["wallet"] for c in actionable[:5]]
+
+    if not actionable:
+        return (
+            f"🔍 GMGN weekly scan complete — no new COPY_TRADE candidates this week.",
+            shown_addresses,
+        )
+
+    lines = [f"🔍 <b>GMGN Discovery: {len(actionable)} new COPY_TRADE candidate(s)</b>\n"]
+    for c in actionable[:5]:
         wr       = f"{c['winrate']*100:.0f}%"
         realized = c.get("realized_profit") or 0
         pnl_str  = f"+${realized:,.0f}" if realized >= 0 else f"-${abs(realized):,.0f}"
@@ -458,23 +480,19 @@ def format_discovery_telegram(candidates: list, existing_wallets: set) -> str:
         hold_str = f"{hold:.0f}min hold" if hold else "hold unknown"
 
         vetting  = c.get("vetting") or {}
-        rec      = vetting.get("recommendation", "UNVETTED")
         score    = vetting.get("score", "?")
-        icon     = RECOMMENDATION_ICONS.get(rec, "❓")
         top_flag = vetting.get("flags", [])
         flag_str = f"\n  ⚠️ {top_flag[0]}" if top_flag else ""
-        disq     = vetting.get("disqualifiers", [])
-        disq_str = f"\n  ⛔ {disq[0]}" if disq else ""
 
         lines.append(
-            f"{icon} {tw} — <b>{rec}</b> (score {score}/100)\n"
+            f"✅ {tw} — <b>COPY_TRADE</b> (score {score}/100)\n"
             f"  WR: {wr} | 7D: {pnl_str} | {hold_str}\n"
             f"  Tags: {', '.join(c['tags']) or 'none'}"
-            f"{disq_str}{flag_str}\n"
+            f"{flag_str}\n"
             f"  <code>{c['wallet']}</code>"
         )
     lines.append("\nPaste address + name here to add to watchlist.")
-    return "\n".join(lines)
+    return "\n".join(lines), shown_addresses
 
 
 # ─── WEEKLY WATCHLIST RE-VETTING ──────────────────────────────────────────────
