@@ -76,47 +76,121 @@ MAX_SIGNALS_PER_NARRATIVE = 2
 
 # ─── ETH/BASE TRENDING PULL ──────────────────────────────────────────────────
 
+# Narrative-to-seed-keyword map for targeted DexScreener ETH/BASE queries.
+# We search for these on ETH/BASE rather than filtering from Solana-dominated feeds.
+_NARRATIVE_SEEDS = {
+    "AI_AGENTS":   ["ai agent", "gpt token", "llm crypto"],
+    "GAMING":      ["game token", "gaming crypto", "play earn"],
+    "DEPIN":       ["depin network", "depin node"],
+    "RWA":         ["real world asset", "rwa token"],
+    "YIELD_DEFI":  ["restaking yield", "liquid staking"],
+    "MEME_DOG":    ["dog inu", "shiba doge"],
+    "MEME_FROG":   ["pepe frog"],
+    "MEME_CAT":    ["cat meow", "cat token"],
+    "POLITICAL":   ["trump maga", "freedom token"],
+    "DESCI":       ["desci science", "bio research"],
+    "ANIME":       ["anime waifu"],
+    "SPACE":       ["space moon rocket"],
+}
+
+TARGET_CHAINS = {"ethereum", "base"}
+
+
 def get_eth_base_trending() -> list[dict]:
     """
-    Pull trending/boosted tokens from ETH and BASE via DexScreener.
-    Returns list of {contract, symbol, name, chain, narratives}.
+    Pull trending tokens from ETH and BASE.
+
+    Two-source approach:
+    1. CoinGecko trending (free, no key) — market-wide consensus on hot narratives
+    2. DexScreener search per narrative keyword, filtered to ETH/BASE chains —
+       guarantees we get actual on-chain ETH/BASE pairs (vs Solana-dominated
+       boost/profile endpoints)
     """
     results = []
-    TARGET_CHAINS = {"ethereum", "base", "eth"}
+    seen:    set = set()
 
-    endpoints = [
-        "https://api.dexscreener.com/token-boosts/top/v1",
-        "https://api.dexscreener.com/token-profiles/latest/v1",
-    ]
-    for url in endpoints:
-        try:
-            resp = requests.get(url, timeout=10, headers={"User-Agent": "Mozilla/5.0"})
-            if resp.status_code != 200:
-                continue
-            items = resp.json()
-            if isinstance(items, dict):
-                items = items.get("pairs") or items.get("tokens") or []
-            for t in (items or []):
-                chain = (t.get("chainId") or t.get("chain") or "").lower()
-                if chain not in TARGET_CHAINS:
-                    continue
-                name   = t.get("name") or t.get("description") or ""
-                symbol = t.get("symbol") or ""
-                addr   = t.get("tokenAddress") or t.get("address") or ""
-                if not addr:
-                    continue
+    # ── Source 1: CoinGecko trending ─────────────────────────────────────────
+    try:
+        resp = requests.get(
+            "https://api.coingecko.com/api/v3/search/trending",
+            timeout=12,
+            headers={"User-Agent": "Mozilla/5.0"},
+        )
+        if resp.status_code == 200:
+            coins = resp.json().get("coins") or []
+            cg_count = 0
+            for item in coins:
+                coin       = item.get("item") or {}
+                symbol     = coin.get("symbol", "")
+                name       = coin.get("name", "")
                 narratives = _extract_narratives(name, symbol)
+                if not narratives:
+                    continue
+                cg_id = coin.get("id", "")
+                if cg_id in seen:
+                    continue
+                seen.add(cg_id)
+                # CoinGecko trending skews ETH/multi-chain — treat as "ethereum" signal
                 results.append({
-                    "contract":   addr,
+                    "contract":   cg_id,   # no on-chain addr from trending list
                     "symbol":     symbol,
                     "name":       name,
-                    "chain":      chain,
+                    "chain":      "ethereum",
                     "narratives": narratives,
+                    "source":     "coingecko_trending",
                 })
-        except Exception as e:
-            log.warning(f"Narrative: ETH/BASE fetch error ({url}): {e}")
+                cg_count += 1
+            log.info(f"Narrative: {cg_count} narrative-matched tokens from CoinGecko trending")
+        else:
+            log.debug(f"Narrative: CoinGecko trending HTTP {resp.status_code}")
+    except Exception as e:
+        log.warning(f"Narrative: CoinGecko trending error: {e}")
 
-    log.info(f"Narrative: {len(results)} ETH/BASE tokens pulled")
+    # ── Source 2: DexScreener search, ETH/BASE chain filter ──────────────────
+    dex_count = 0
+    for narrative, seed_queries in _NARRATIVE_SEEDS.items():
+        for keyword in seed_queries[:2]:   # max 2 queries per narrative
+            try:
+                time.sleep(0.4)
+                resp = requests.get(
+                    "https://api.dexscreener.com/latest/dex/search",
+                    params={"q": keyword},
+                    timeout=10,
+                    headers={"User-Agent": "Mozilla/5.0"},
+                )
+                if resp.status_code != 200:
+                    continue
+                pairs = resp.json().get("pairs") or []
+                for pair in pairs[:20]:
+                    chain = (pair.get("chainId") or "").lower()
+                    if chain not in TARGET_CHAINS:
+                        continue
+                    # Skip dead/illiquid pairs
+                    vol_24h = float((pair.get("volume") or {}).get("h24") or 0)
+                    if vol_24h < 5_000:
+                        continue
+                    addr = (pair.get("baseToken") or {}).get("address", "")
+                    if not addr or addr in seen:
+                        continue
+                    seen.add(addr)
+                    name   = (pair.get("baseToken") or {}).get("name", "")
+                    symbol = (pair.get("baseToken") or {}).get("symbol", "")
+                    token_narratives = _extract_narratives(name, symbol)
+                    if not token_narratives:
+                        token_narratives = [narrative]  # fallback to search category
+                    results.append({
+                        "contract":   addr,
+                        "symbol":     symbol,
+                        "name":       name,
+                        "chain":      chain,
+                        "narratives": token_narratives,
+                        "source":     "dexscreener_eth_base",
+                    })
+                    dex_count += 1
+            except Exception as e:
+                log.warning(f"Narrative: ETH/BASE search error (keyword={keyword}): {e}")
+
+    log.info(f"Narrative: {dex_count} ETH/BASE tokens from DexScreener, {len(results)} total")
     return results
 
 

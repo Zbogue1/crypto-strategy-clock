@@ -530,7 +530,7 @@ def revett_watchlist(watchlist: list) -> dict:
         alias   = w.get("alias", address[:8] or "unknown")
 
         # Skip placeholder addresses added before a real address was known
-        if not address or address.startswith("fill_in") or len(address) < 20:
+        if not address or address.lower().startswith("fill_in") or len(address) < 20:
             continue
 
         old_vetting = w.get("vetting") or {}
