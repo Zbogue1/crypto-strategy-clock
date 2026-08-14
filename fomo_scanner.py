@@ -358,29 +358,53 @@ NEW_LAUNCH_SCORE_THRESHOLD = 55     # slightly lower than momentum threshold
 
 def _fetch_new_pairs_solana() -> list:
     """
-    Pull newest Solana token listings from DexScreener profiles endpoint.
-    These are tokens that just got DexScreener entries — minutes to hours old.
+    Pull newest Solana token listings from two sources:
+      1. DexScreener token profiles (tokens with marketing profiles)
+      2. Birdeye new token list (ALL new launches — no profile required)
+
+    Birdeye catches organic launches that DexScreener misses because the
+    dev didn't pay for a DexScreener profile. Merges and deduplicates.
     """
+    results = []
+    seen: set = set()
+
+    # Source 1: DexScreener profiles
     try:
         resp = requests.get(
             "https://api.dexscreener.com/token-profiles/latest/v1",
             timeout=10,
             headers={"User-Agent": "Mozilla/5.0"},
         )
-        if resp.status_code != 200:
-            return []
-        items = resp.json()
-        if not isinstance(items, list):
-            items = []
-        return [
-            {"contract": t.get("tokenAddress", ""), "raw": t}
-            for t in items
-            if (t.get("chainId") or "").lower() in ("solana", "sol")
-            and t.get("tokenAddress")
-        ]
+        if resp.status_code == 200:
+            items = resp.json()
+            if not isinstance(items, list):
+                items = []
+            for t in items:
+                if (t.get("chainId") or "").lower() in ("solana", "sol"):
+                    addr = t.get("tokenAddress", "")
+                    if addr and addr not in seen:
+                        seen.add(addr)
+                        results.append({"contract": addr, "raw": t})
     except Exception as e:
-        log.debug(f"New pairs fetch error: {e}")
-        return []
+        log.debug(f"DexScreener new pairs fetch error: {e}")
+
+    # Source 2: Birdeye new tokens (broader — catches launches without profiles)
+    try:
+        from fomo_birdeye import get_new_tokens, is_available as birdeye_ok
+        if birdeye_ok():
+            birdeye_tokens = get_new_tokens(limit=50, min_liquidity=5_000)
+            for t in birdeye_tokens:
+                addr = t.get("contract", "")
+                if addr and addr not in seen:
+                    seen.add(addr)
+                    # Store Birdeye data so we can skip the DexScreener pair fetch
+                    # for basic fields (age, liquidity) if it's already populated
+                    results.append({"contract": addr, "raw": t, "_birdeye": t})
+            log.debug(f"Birdeye added {len(birdeye_tokens)} new token candidates")
+    except Exception as e:
+        log.debug(f"Birdeye new tokens fetch error: {e}")
+
+    return results
 
 
 def _new_launch_score(token: dict) -> tuple[int, list[str]]:
@@ -504,10 +528,15 @@ def run_new_launch_scan(callback) -> int:
             if contract in _seen_cache:
                 continue
 
-        time.sleep(0.75)
-        token_data = _fetch_pair_data(contract)
-        if not token_data:
-            continue
+        # If Birdeye already gave us token data, use it and skip the DexScreener call
+        birdeye_data = item.get("_birdeye")
+        if birdeye_data and birdeye_data.get("token_age_days") is not None:
+            token_data = birdeye_data
+        else:
+            time.sleep(0.75)
+            token_data = _fetch_pair_data(contract)
+            if not token_data:
+                continue
 
         # Age gate — new pairs only
         age_hours = (token_data.get("token_age_days") or 999) * 24

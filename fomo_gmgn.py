@@ -789,26 +789,56 @@ def reverse_discover_from_winners(min_gain_x: float = 2.0, lookback_days: int = 
         log.warning("Reverse discovery: no seed tokens available — skipping")
         return []
 
-    # ── 2. Probe each seed for smart money holders ────────────────────────────
-    wallet_hits: dict = {}   # wallet_addr -> {count, tokens, tags}
+    # ── 2. Probe each seed for early buyers / smart money holders ────────────
+    # Birdeye early buyers (preferred): wallets that bought in first 2 hours
+    # — these had conviction before the crowd, regardless of GMGN tags.
+    # GMGN smart money holders (fallback): current GMGN-tagged holders.
+    wallet_hits: dict = {}   # wallet_addr -> {count, tokens, tags, source}
     BAD_TAGS = {"wash_trader", "bot", "arbitrager"}
+
+    try:
+        from fomo_birdeye import get_early_buyers, is_available as birdeye_ok
+        _birdeye_enabled = birdeye_ok()
+    except ImportError:
+        _birdeye_enabled = False
 
     for seed in seeds[:15]:   # cap at 15 tokens to stay within API budget
         contract = seed["contract"]
         ticker   = seed.get("ticker") or contract[:8]
-        try:
-            holders = get_smart_money_in_token(contract, max_holders=50)
-        except Exception as e:
-            log.warning(f"Reverse discovery: holder probe failed for {ticker}: {e}")
-            continue
 
-        for h in holders:
-            wallet = h.get("wallet", "")
-            if not wallet:
+        wallets_this_seed = []   # list of (wallet, tags)
+
+        if _birdeye_enabled:
+            # Preferred path: Birdeye early buyers (first 2 hours)
+            try:
+                early = get_early_buyers(contract, max_age_minutes=120, limit=100)
+                for buyer in early:
+                    w = buyer.get("wallet", "")
+                    if w:
+                        wallets_this_seed.append((w, set()))
+                if early:
+                    log.info(
+                        f"Reverse discovery ({ticker}): "
+                        f"{len(early)} early buyers via Birdeye"
+                    )
+            except Exception as e:
+                log.warning(f"Reverse discovery: Birdeye early buyers failed for {ticker}: {e}")
+                _birdeye_enabled = False   # disable for remaining seeds if failing
+
+        if not wallets_this_seed:
+            # Fallback: GMGN smart money current holders
+            try:
+                holders = get_smart_money_in_token(contract, max_holders=50)
+                for h in holders:
+                    w    = h.get("wallet", "")
+                    tags = set(t.lower() for t in (h.get("tags") or []))
+                    if w and not (tags & BAD_TAGS):
+                        wallets_this_seed.append((w, tags))
+            except Exception as e:
+                log.warning(f"Reverse discovery: GMGN probe failed for {ticker}: {e}")
                 continue
-            tags = set(t.lower() for t in (h.get("tags") or []))
-            if tags & BAD_TAGS:
-                continue
+
+        for wallet, tags in wallets_this_seed:
             if wallet not in wallet_hits:
                 wallet_hits[wallet] = {
                     "wallet": wallet,
