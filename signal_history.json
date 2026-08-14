@@ -38,26 +38,26 @@
     "alert": null
   },
   {
-    "ts": "2026-08-13T20:03:56.548070+00:00",
+    "ts": "2026-08-14T00:00:38.661666+00:00",
     "coin": "SOL",
-    "price": 76.11,
-    "signal": "HOLD",
-    "confidence": 32,
-    "score": -0.3,
+    "price": 76.19,
+    "signal": "BUY",
+    "confidence": 52,
+    "score": 0.35,
     "fg": 29,
-    "btc_price": 63329,
+    "btc_price": 63415,
     "btc_dominance": 56.2,
     "candidates": [
       "BEAT",
       "FDUSD",
+      "ETHFI",
       "XAUT",
       "RLUSD",
-      "ETHFI",
-      "BTW",
-      "TRUMP",
+      "ANTFUN",
+      "USDD",
       "SOL",
       "MON"
     ],
-    "alert": null
+    "alert": "Market fear is worsening \u2014 use smaller position sizes and strict stop-losses on any new entries."
   }
 ]
