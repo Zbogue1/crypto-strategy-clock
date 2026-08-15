@@ -105,5 +105,29 @@
       "MON"
     ],
     "alert": "Market in Fear zone with worsening trend \u2014 use reduced position sizes and strict stop-losses."
+  },
+  {
+    "ts": "2026-08-15T00:04:00.358386+00:00",
+    "coin": "SOL",
+    "price": 75.34,
+    "signal": "HOLD",
+    "confidence": 30,
+    "score": -0.3,
+    "fg": 34,
+    "btc_price": 62995,
+    "btc_dominance": 56.1,
+    "candidates": [
+      "AKE",
+      "VELVET",
+      "BEAT",
+      "FDUSD",
+      "RLUSD",
+      "UNI",
+      "INJ",
+      "SOL",
+      "LINK",
+      "MON"
+    ],
+    "alert": "All swing candidates are either extremely overbought, in freefall, or lacking technical data \u2014 no valid entry exists this cycle."
   }
 ]
