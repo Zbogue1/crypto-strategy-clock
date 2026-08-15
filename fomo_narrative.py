@@ -42,7 +42,7 @@ NARRATIVE_KEYWORDS: dict[str, list[str]] = {
                      "bark", "inu", "akita", "husky", "corgi"],
     "MEME_CAT":     ["cat", "kitty", "meow", "nyan", "feline", "kitten"],
     "MEME_FROG":    ["pepe", "frog", "toad", "ribbit", "kek"],
-    "DEPIN":        ["depin", "network", "node", "physical", "infrastructure",
+    "DEPIN":        ["depin", "node", "physical", "infrastructure",
                      "iot", "sensor", "mesh", "wireless", "hotspot"],
     "SOCIAL_FI":    ["social", "friend", "chat", "message", "community",
                      "creator", "influencer", "fan", "token"],
@@ -66,6 +66,10 @@ NARRATIVE_MAX_H24_GAIN  = 400.0
 
 # Minimum liquidity on Solana target
 NARRATIVE_MIN_LIQUIDITY = 15_000
+
+# Hard upper bounds — established blue-chips are not our target
+NARRATIVE_MAX_AGE_DAYS  = 90      # PYTH is 729d — never should have passed
+NARRATIVE_MAX_LIQUIDITY = 8_000_000   # $215M liq = blue-chip, not a new launch
 
 # Minimum score to fire a narrative import signal
 NARRATIVE_SCORE_THRESHOLD = 50
@@ -277,11 +281,15 @@ def search_solana_by_narrative(
                     except Exception:
                         pass
 
-                # Pre-filter: already exploded, or too thin
+                # Pre-filter: already exploded, too thin, or established blue-chip
                 if h24_gain > NARRATIVE_MAX_H24_GAIN:
                     continue
                 if liq < NARRATIVE_MIN_LIQUIDITY:
                     continue
+                if liq > NARRATIVE_MAX_LIQUIDITY:
+                    continue   # $8M+ liq = established token, not a new launch
+                if age_days is not None and age_days > NARRATIVE_MAX_AGE_DAYS:
+                    continue   # 90+ day old tokens are not narrative plays
 
                 candidates.append({
                     "contract":          contract,
