@@ -1,63 +1,63 @@
 {
-  "timestamp": "2026-08-14T20:01:04.763977+00:00",
-  "signal": "BUY",
-  "selected_coin": "LINK",
-  "selected_coin_name": "Chainlink",
-  "selected_coin_price": 12.85,
-  "confidence": 52,
-  "layman_headline": "Chainlink is the strongest large-cap alt in a fearful market \u2014 momentum stands out.",
-  "layman_explanation": "The overall crypto market is in a fearful mood with Bitcoin sliding and most altcoins down. However, Chainlink (LINK) has bucked the trend with a nearly 10% gain over the past week and a positive 24-hour move of 1.9%, making it the clear outperformer among top-20 coins. The swing trade candidates from the screener are mostly micro-caps with extreme moves (overbought or crashing) and no reliable technical data, making them too risky. LINK offers a better risk/reward profile as a well-established project with real volume and relative strength.",
-  "layman_action": "Consider a small position in LINK around $12.60 with a stop-loss at $11.70 (about 7% downside risk) and a target near $14.10 (about 10-12% upside). Keep the position size conservative given the fearful market environment.",
-  "expert_reasoning": "LINK's +9.7% 7-day and +1.9% 24h performance makes it the standout relative strength play in a market where BTC is down ~3% weekly and Fear & Greed sits at 29. Volume at $257M is healthy and confirms institutional/retail interest rather than a low-liquidity pump. The screener's top candidates are problematic: AKE has RSI 78.8 (overbought, our most reliable signal warns against entry), VELVET is below its SMA20 despite a 105% pump (suspicious), BEAT is in freefall (-69% weekly, no RSI data, catching a falling knife), and stablecoins/gold tokens aren't swing trades. BTC dominance at 56.1% is headwind for alts broadly, but LINK's outperformance despite this suggests a coin-specific catalyst or accumulation phase. Entry on a pullback to $12.60 with stop at $11.70 gives ~1.6:1 reward/risk targeting $14.10.",
+  "timestamp": "2026-08-15T00:04:00.358386+00:00",
+  "signal": "HOLD",
+  "selected_coin": "SOL",
+  "selected_coin_name": "Solana",
+  "selected_coin_price": 75.34,
+  "confidence": 30,
+  "layman_headline": "The crypto market is fearful and lacking clear setups \u2014 patience is the best trade right now.",
+  "layman_explanation": "The overall crypto market is in a 'Fear' state with most major coins drifting slightly lower. The swing trade candidates today are either wildly overbought tokens that already surged 100%+ (too risky to chase), coins in freefall with no bottom in sight, or stablecoins that don't move. None of the setups present a compelling risk-reward entry with clear stop-losses. We're better off waiting for a cleaner opportunity.",
+  "layman_action": "Stay in cash and watch. Don't chase pumps or try to catch falling knives. Wait for fear to peak and a quality coin to show a clear reversal signal before entering.",
+  "expert_reasoning": "The candidate pool is extremely poor this cycle. AKE (RSI 87, +163% in 7d) and VELVET (+108% in 7d) are classic chase-the-pump traps with extreme correction risk. BEAT is down 69% in a week and 94% from ATH \u2014 a potential dead cat bounce but with zero technical data to confirm a bottom. UNI is down 19.5% weekly with no RSI data to confirm oversold conditions, and at -92.9% from ATH it may be in secular decline. SOL stands out with relative strength and institutional narrative support, but BTC dominance at 56.1% continues to pressure alts. The improving Fear & Greed trend (29\u219234) is encouraging but hasn't reached a level that historically precedes strong bounces. I'm HOLDING for a better setup.",
   "risk_factors": [
-    "BTC dominance at 56.1% and Fear & Greed at 29 means alts face macro headwinds \u2014 any further BTC weakness could drag LINK down",
-    "LINK is already up ~10% in a week; the easy move may be over and a pullback to consolidate is likely before continuation",
-    "No RSI or MACD data available for LINK in this snapshot, so we're relying on price action and relative strength without full technical confirmation"
+    "BTC dominance at 56.1% continues to siphon capital from altcoins, making alt swing trades riskier",
+    "Fear & Greed at 34 is improving but could reverse if BTC breaks below $62K support",
+    "Most swing candidates lack RSI/MACD data making proper technical analysis impossible"
   ],
   "watch_list": [
-    "BTC price action around $62,000 support \u2014 a breakdown below $61,000 would pressure all alts including LINK",
-    "Fear & Greed index \u2014 if it drops below 25 into 'Extreme Fear', defer entry and wait for stabilization",
-    "LINK volume \u2014 sustained volume above $200M daily would confirm the trend; a volume drop signals fading momentum"
+    "BTC price action around $62K-$63K \u2014 a break below $62K would signal further downside and delay any alt entries",
+    "Fear & Greed index \u2014 watch for continuation above 40 to confirm sentiment recovery before entering",
+    "SOL relative strength \u2014 if SOL holds above $73 while BTC weakens, it confirms leadership and a pullback to $72 becomes a high-conviction entry"
   ],
-  "market_context": "The crypto market is in a 'Fear' regime (29/100) with BTC slipping on inflation data and ETFs seeing outflows. High BTC dominance at 56.1% continues to suppress altcoin performance broadly, though select names like LINK and XMR are bucking the trend.",
-  "context_banner": "In a fearful, BTC-dominant market with poor swing candidates, LINK's relative strength makes it the best risk-adjusted opportunity \u2014 but position sizing should reflect the macro headwinds.",
-  "btc_price": 62891,
+  "market_context": "The crypto market is in a fearful but slowly improving state. BTC at $63K with high dominance (56.1%) means capital is flowing to safety rather than alts, making swing trades on smaller coins particularly risky right now.",
+  "context_banner": "Fear is improving but no actionable swing setups exist \u2014 capital preservation beats forced trades in this environment.",
+  "btc_price": 62995,
   "fear_greed": {
-    "current": 29,
+    "current": 34,
     "label": "Fear",
     "yesterday": 29,
-    "week_avg": 29.3,
-    "trend": "worsening"
+    "week_avg": 29.9,
+    "trend": "improving"
   },
   "btc_dominance": 56.1,
   "key_signals": [
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Fear & Greed at 29 with worsening trend suggests caution; contrarian bounce possible but not yet confirmed."
+      "description": "Fear & Greed at 34 improving from 29 weekly average \u2014 sentiment thawing but not yet at contrarian buy levels (~20 or below)."
     },
     {
       "source": "RSI",
       "signal_type": "technical",
-      "description": "AKE's RSI at 78.8 (overbought) warns against chasing the biggest mover \u2014 our most reliable signal historically at 71% win rate."
-    },
-    {
-      "source": "volume_breakout",
-      "signal_type": "technical",
-      "description": "LINK shows $257M daily volume with +9.7% weekly gain, standing out as the strongest large-cap alt with genuine buying interest."
+      "description": "AKE's RSI at 87.27 is deeply overbought, confirming the 163% 7-day rally is extended and high-risk to chase \u2014 our most reliable indicator says avoid."
     },
     {
       "source": "CoinDesk",
       "signal_type": "news",
-      "description": "Israel's largest bank partnering with Galaxy for crypto trading could benefit oracle/infrastructure plays like LINK; meanwhile BTC ETF outflows add near-term pressure."
+      "description": "Trump White House crypto CEO meeting and Israel's largest bank offering crypto trading are positive macro tailwinds, but haven't yet translated into price action."
     },
     {
       "source": "Blockworks",
       "signal_type": "news",
-      "description": "'ETH derivatives reset and the next retail trade' narrative suggests positioning shifts underway that could benefit DeFi-adjacent tokens like LINK."
+      "description": "'ETH derivatives reset' and 'Finding good news in spite of bad headlines' suggest the market may be near a bottom but confirmation is needed."
+    },
+    {
+      "source": "volume_breakout",
+      "signal_type": "technical",
+      "description": "No meaningful volume breakouts detected among quality candidates \u2014 volume data unavailable for most swing candidates, reducing conviction."
     }
   ],
   "_mode": "HUNTING",
-  "exit_target": 14.1,
-  "stop_loss": 11.7
+  "exit_target": 82.0,
+  "stop_loss": 68.0
 }
