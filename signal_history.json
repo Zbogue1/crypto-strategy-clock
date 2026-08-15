@@ -82,5 +82,28 @@
       "LINK"
     ],
     "alert": null
+  },
+  {
+    "ts": "2026-08-15T12:00:20.502497+00:00",
+    "coin": "LINK",
+    "price": 9.29,
+    "signal": "HOLD",
+    "confidence": 42,
+    "score": -0.3,
+    "fg": 34,
+    "btc_price": 62962,
+    "btc_dominance": 0.0,
+    "candidates": [
+      "CYS",
+      "AKE",
+      "VELVET",
+      "FDUSD",
+      "RLUSD",
+      "UNI",
+      "H",
+      "SOL",
+      "LINK"
+    ],
+    "alert": null
   }
 ]
