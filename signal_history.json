@@ -59,5 +59,28 @@
       "MON"
     ],
     "alert": "MON approaching stop-loss at $0.0195 (currently $0.02095) \u2014 recommend proactive exit to preserve capital."
+  },
+  {
+    "ts": "2026-08-15T08:04:30.538311+00:00",
+    "coin": "LINK",
+    "price": 9.31,
+    "signal": "HOLD",
+    "confidence": 42,
+    "score": -0.3,
+    "fg": 34,
+    "btc_price": 63012,
+    "btc_dominance": 56.1,
+    "candidates": [
+      "CYS",
+      "VELVET",
+      "AKE",
+      "FDUSD",
+      "RLUSD",
+      "UNI",
+      "INJ",
+      "SOL",
+      "LINK"
+    ],
+    "alert": null
   }
 ]
