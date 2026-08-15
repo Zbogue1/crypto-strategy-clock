@@ -1,5 +1,36 @@
 {
-  "open_trade": null,
+  "open_trade": {
+    "coin": "LINK",
+    "entry_time": "2026-08-15T04:02:42.408945+00:00",
+    "key_signals": [
+      {
+        "source": "LINK volume_breakout",
+        "signal_type": "technical",
+        "description": "LINK 24h volume at $411M with +8.5% daily and +17% weekly gain shows strong buying pressure diverging from the broader weak market."
+      },
+      {
+        "source": "Fear_Greed",
+        "signal_type": "sentiment",
+        "description": "Fear & Greed at 34 (Fear) but improving from 29 \u2014 contrarian opportunity window where strong relative performers tend to lead the next leg up."
+      },
+      {
+        "source": "CoinDesk",
+        "signal_type": "news",
+        "description": "Israel's largest bank partnering with Galaxy for crypto trading and Trump's upcoming White House crypto CEO meeting provide institutional adoption catalysts."
+      },
+      {
+        "source": "RSI",
+        "signal_type": "technical",
+        "description": "LINK's move, while strong, hasn't pushed RSI data to extreme overbought levels among swing candidates \u2014 room for continuation remains."
+      },
+      {
+        "source": "CoinTelegraph",
+        "signal_type": "news",
+        "description": "Kraken parent revenue rising 17% despite lower trading volumes suggests improving crypto market infrastructure and institutional participation."
+      }
+    ],
+    "confidence": 62
+  },
   "signal_stats": {
     "Fear_Greed__sentiment": {
       "source": "Fear_Greed",
@@ -157,5 +188,5 @@
     }
   },
   "trade_count": 12,
-  "last_updated": "2026-08-15T00:04:44.201192+00:00"
+  "last_updated": "2026-08-15T04:02:42.408954+00:00"
 }
