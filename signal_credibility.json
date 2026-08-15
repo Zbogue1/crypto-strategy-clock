@@ -1,58 +1,27 @@
 {
-  "open_trade": {
-    "coin": "LINK",
-    "entry_time": "2026-08-14T20:01:49.656260+00:00",
-    "key_signals": [
-      {
-        "source": "Fear_Greed",
-        "signal_type": "sentiment",
-        "description": "Fear & Greed at 29 with worsening trend suggests caution; contrarian bounce possible but not yet confirmed."
-      },
-      {
-        "source": "RSI",
-        "signal_type": "technical",
-        "description": "AKE's RSI at 78.8 (overbought) warns against chasing the biggest mover \u2014 our most reliable signal historically at 71% win rate."
-      },
-      {
-        "source": "volume_breakout",
-        "signal_type": "technical",
-        "description": "LINK shows $257M daily volume with +9.7% weekly gain, standing out as the strongest large-cap alt with genuine buying interest."
-      },
-      {
-        "source": "CoinDesk",
-        "signal_type": "news",
-        "description": "Israel's largest bank partnering with Galaxy for crypto trading could benefit oracle/infrastructure plays like LINK; meanwhile BTC ETF outflows add near-term pressure."
-      },
-      {
-        "source": "Blockworks",
-        "signal_type": "news",
-        "description": "'ETH derivatives reset and the next retail trade' narrative suggests positioning shifts underway that could benefit DeFi-adjacent tokens like LINK."
-      }
-    ],
-    "confidence": 52
-  },
+  "open_trade": null,
   "signal_stats": {
     "Fear_Greed__sentiment": {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
       "wins": 6,
-      "losses": 5,
-      "total": 11,
-      "win_rate": 0.545,
-      "total_pct": -21.81,
-      "avg_return": -1.9827,
-      "last_seen": "2026-08-08T20:01:22.216769+00:00"
+      "losses": 6,
+      "total": 12,
+      "win_rate": 0.5,
+      "total_pct": -52.14,
+      "avg_return": -4.345,
+      "last_seen": "2026-08-15T00:04:44.201138+00:00"
     },
     "CoinDesk__news": {
       "source": "CoinDesk",
       "signal_type": "news",
       "wins": 4,
-      "losses": 5,
-      "total": 9,
-      "win_rate": 0.444,
-      "total_pct": -53.79,
-      "avg_return": -5.9767,
-      "last_seen": "2026-08-08T20:01:22.216784+00:00"
+      "losses": 6,
+      "total": 10,
+      "win_rate": 0.4,
+      "total_pct": -84.12,
+      "avg_return": -8.412,
+      "last_seen": "2026-08-15T00:04:44.201156+00:00"
     },
     "CoinTelegraph__onchain": {
       "source": "CoinTelegraph",
@@ -69,12 +38,12 @@
       "source": "volume_breakout",
       "signal_type": "technical",
       "wins": 3,
-      "losses": 3,
-      "total": 6,
-      "win_rate": 0.5,
-      "total_pct": -28.39,
-      "avg_return": -4.7317,
-      "last_seen": "2026-08-08T20:01:22.216779+00:00"
+      "losses": 4,
+      "total": 7,
+      "win_rate": 0.429,
+      "total_pct": -58.72,
+      "avg_return": -8.3886,
+      "last_seen": "2026-08-15T00:04:44.201153+00:00"
     },
     "Blockworks__macro": {
       "source": "Blockworks",
@@ -91,12 +60,12 @@
       "source": "RSI",
       "signal_type": "technical",
       "wins": 5,
-      "losses": 2,
-      "total": 7,
-      "win_rate": 0.714,
-      "total_pct": 34.94,
-      "avg_return": 4.9914,
-      "last_seen": "2026-08-02T00:10:47.087976+00:00"
+      "losses": 3,
+      "total": 8,
+      "win_rate": 0.625,
+      "total_pct": 4.61,
+      "avg_return": 0.5763,
+      "last_seen": "2026-08-15T00:04:44.201149+00:00"
     },
     "CoinDesk__technical": {
       "source": "CoinDesk",
@@ -168,12 +137,12 @@
       "source": "Blockworks",
       "signal_type": "news",
       "wins": 0,
-      "losses": 2,
-      "total": 2,
+      "losses": 3,
+      "total": 3,
       "win_rate": 0.0,
-      "total_pct": -24.86,
-      "avg_return": -12.43,
-      "last_seen": "2026-07-16T04:10:06.180583+00:00"
+      "total_pct": -55.19,
+      "avg_return": -18.3967,
+      "last_seen": "2026-08-15T00:04:44.201159+00:00"
     },
     "CryptoSlate__news": {
       "source": "CryptoSlate",
@@ -187,6 +156,6 @@
       "last_seen": "2026-08-08T20:01:22.216790+00:00"
     }
   },
-  "trade_count": 11,
-  "last_updated": "2026-08-14T20:01:49.656273+00:00"
+  "trade_count": 12,
+  "last_updated": "2026-08-15T00:04:44.201192+00:00"
 }
