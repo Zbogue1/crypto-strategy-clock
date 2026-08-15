@@ -234,19 +234,37 @@ def execute_sell(coin_ticker: str, price: float,
     return trade
 
 
+DEFAULT_STOP_PCT = 0.15   # 15% fallback stop when no stop_loss was configured
+
 def check_stop_loss(coin_ticker: str, current_price: float) -> dict:
     """
     Check stop-loss for a specific coin.
     Returns completed trade dict if triggered, else None.
+
+    If no stop_loss was saved on the position (e.g. Claude omitted it from JSON),
+    a 15% fallback stop is applied automatically so positions can't run away forever.
     """
     state    = load_portfolio()
     holdings = state.get("holdings", [])
     h        = next((x for x in holdings if x["coin_ticker"] == coin_ticker), None)
-    if not h or not h.get("stop_loss"):
+    if not h:
         return None
-    if current_price <= h["stop_loss"]:
+
+    stop = h.get("stop_loss")
+    if not stop:
+        # Fallback: apply DEFAULT_STOP_PCT below entry price
+        entry = h.get("entry_price", 0)
+        if not entry:
+            return None
+        stop = round(entry * (1 - DEFAULT_STOP_PCT), 6)
+        log.warning(
+            f"PAPER: {coin_ticker} has no stop_loss configured — "
+            f"applying default {DEFAULT_STOP_PCT*100:.0f}% stop at ${stop:.4f}"
+        )
+
+    if current_price <= stop:
         log.warning(f"PAPER: Stop-loss hit! {coin_ticker} "
-                    f"${current_price:.4f} ≤ stop ${h['stop_loss']:.4f}")
+                    f"${current_price:.4f} ≤ stop ${stop:.4f}")
         return execute_sell(coin_ticker, current_price, "STOP_LOSS", reason="stop_loss")
     return None
 

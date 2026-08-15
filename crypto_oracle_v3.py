@@ -723,12 +723,39 @@ def ask_claude(snap: MarketSnapshot) -> dict:
             "signals":       [{"name": s.name, "score": s.value, "text": s.plain_english} for s in c.signals],
         })
 
-    # Top coins quick overview (non-candidates)
+    # Top coins quick overview (non-candidates) — price included so Claude
+    # uses real current prices, not training-data prices for entry targets.
     top_overview = [
-        {"ticker": c.ticker, "change_24h": c.change_24h, "change_7d": c.change_7d,
+        {"ticker": c.ticker, "price_usd": round(c.price, 4),
+         "change_24h": c.change_24h, "change_7d": c.change_7d,
          "volume_m": round(c.volume_24h / 1e6, 1)}
         for c in snap.top_coins if c.ticker not in ("USDT", "USDC", "BUSD", "DAI")
     ][:15]
+
+    # Current paper portfolio holdings — Claude needs to know what's held and at
+    # what price so it doesn't recommend already-held coins or miss stop signals.
+    snap_price_map = {c.ticker: c.price for c in snap.top_coins}
+    if HAS_PAPER:
+        try:
+            _held = load_portfolio().get("holdings", [])
+            paper_holdings_ctx = [
+                {
+                    "coin_ticker":   h["coin_ticker"],
+                    "entry_price":   h["entry_price"],
+                    "current_price": snap_price_map.get(h["coin_ticker"]),
+                    "unrealized_pct": round(
+                        (snap_price_map.get(h["coin_ticker"], h["entry_price"])
+                         - h["entry_price"]) / h["entry_price"] * 100, 1
+                    ) if h.get("entry_price") else None,
+                    "stop_loss":     h.get("stop_loss"),
+                    "exit_target":   h.get("exit_target"),
+                }
+                for h in _held
+            ]
+        except Exception:
+            paper_holdings_ctx = []
+    else:
+        paper_holdings_ctx = []
 
     # News by source
     news_by_source = {}
@@ -756,6 +783,7 @@ def ask_claude(snap: MarketSnapshot) -> dict:
         "reddit_trending":     reddit_titles,
         "defi_chain_tvl":      defi_highlights,
         "investment_position": pos_ctx,
+        "paper_portfolio_holdings": paper_holdings_ctx,
     }
 
     system = f"""You are a professional cryptocurrency swing trader managing a multi-position portfolio.
