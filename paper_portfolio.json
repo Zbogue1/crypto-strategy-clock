@@ -1,5 +1,5 @@
 {
-  "cash": 399.0875,
+  "cash": 448.1532,
   "holdings": [
     {
       "coin_ticker": "SOL",
@@ -30,29 +30,14 @@
       "stop_loss": 0.0195,
       "entry_target": 0.022,
       "expected_days": 7
-    },
-    {
-      "coin_ticker": "LINK",
-      "coin_id": "link",
-      "units": 5.475455252918288,
-      "entry_price": 12.85,
-      "entry_date": "2026-08-14T20:01:49.655248+00:00",
-      "entry_signal": "BUY",
-      "entry_confidence": 52,
-      "allocated_usd": 70.43,
-      "fee_paid": 0.0704,
-      "exit_target": 14.1,
-      "stop_loss": 11.7,
-      "entry_target": 12.6,
-      "expected_days": 7
     }
   ],
-  "realized_pnl": -165.3125,
+  "realized_pnl": -186.6768,
   "peak_value": 1032.0739,
-  "total_trades": 17,
+  "total_trades": 18,
   "winning_trades": 7,
-  "losing_trades": 10,
-  "total_fees": 4.2531,
+  "losing_trades": 11,
+  "total_fees": 4.3022,
   "trade_history": [
     {
       "trade_num": 1,
@@ -477,6 +462,32 @@
       "days_held": 0.16,
       "exit_target": 149.0,
       "stop_loss": 125.5,
+      "hit_target": false,
+      "hit_stop": true,
+      "result": "LOSS"
+    },
+    {
+      "trade_num": 18,
+      "coin_ticker": "LINK",
+      "coin_id": "link",
+      "entry_price": 12.85,
+      "entry_date": "2026-08-14T20:01:49.655248+00:00",
+      "entry_signal": "BUY",
+      "entry_confidence": 52,
+      "allocated_usd": 70.43,
+      "exit_price": 8.97,
+      "exit_date": "2026-08-15T00:04:44.200392+00:00",
+      "exit_signal": "STOP_LOSS",
+      "exit_reason": "stop_loss",
+      "units": 5.475455252918288,
+      "gross_proceeds": 49.1148,
+      "fees_total": 0.1195,
+      "net_proceeds": 49.0657,
+      "profit_usd": -21.3643,
+      "profit_pct": -30.33,
+      "days_held": 0.17,
+      "exit_target": 14.1,
+      "stop_loss": 11.7,
       "hit_target": false,
       "hit_stop": true,
       "result": "LOSS"
