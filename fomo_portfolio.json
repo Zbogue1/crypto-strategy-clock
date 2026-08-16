@@ -2,7 +2,7 @@
   "version": "golem-v1",
   "reset_date": "2026-08-08",
   "reset_reason": "FOMO Golem launch \u2014 fresh $1,000 paper portfolio, FOMO-only strategy",
-  "cash": 7790151.316156852,
+  "cash": 7789951.316156852,
   "starting_cash": 1000.0,
   "peak_value": 1000.0,
   "total_trades": 2,
@@ -125,6 +125,34 @@
       "tranche_1_sold": false,
       "tranche_2_sold": false,
       "trailing_stop_active": false
+    },
+    {
+      "position_id": "475fd27a",
+      "token_ticker": "SILV",
+      "token_name": "Dominion Silver",
+      "entry_price": 64.78,
+      "units": 3.0842852732324793,
+      "spent": 200.0,
+      "stop_loss": 42.107,
+      "exit_target": 84.214,
+      "wallet_alias": "DopamineFeen",
+      "wallet_address": "",
+      "contract_address": "SiLVFMgD3eD2rgK628NbTBq9MnuJF5FW2CRaVyTB35L",
+      "catalyst": "Score 6/10 \u2014 Prime window: 3.3d old, Deep liq $957,958",
+      "catalyst_score": 6,
+      "market_cap": 6017324,
+      "liquidity_usd": 957958.36,
+      "token_age_days": 3.29311199652376,
+      "holder_count": null,
+      "volume_spike_pct": 21.43365818313727,
+      "entered_at": "2026-08-16T21:04:16.155028+00:00",
+      "auto_exit_at": "2026-08-17T21:04:16.155038+00:00",
+      "source": "fomo_copy",
+      "partial_taken": false,
+      "peak_price": 64.78,
+      "tranche_1_sold": false,
+      "tranche_2_sold": false,
+      "trailing_stop_active": false
     }
   ],
   "trade_history": [
@@ -198,5 +226,5 @@
     }
   ],
   "archived_history_note": "Prior July 2026 paper trades archived before this reset.",
-  "last_updated": "2026-08-14T23:03:42.046492+00:00"
+  "last_updated": "2026-08-16T21:04:16.155050+00:00"
 }
