@@ -59,5 +59,28 @@
       "LINK"
     ],
     "alert": null
+  },
+  {
+    "ts": "2026-08-16T16:00:44.894655+00:00",
+    "coin": "FET",
+    "price": 0.123757,
+    "signal": "HOLD",
+    "confidence": 35,
+    "score": -0.3,
+    "fg": 34,
+    "btc_price": 63079,
+    "btc_dominance": 56.1,
+    "candidates": [
+      "AKE",
+      "VELVET",
+      "FET",
+      "H",
+      "INJ",
+      "TRUMP",
+      "FDUSD",
+      "SOL",
+      "LINK"
+    ],
+    "alert": "Monitor BTC $60,000 support level \u2014 a $48B leverage trap could force rapid price movement in either direction."
   }
 ]
