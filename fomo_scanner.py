@@ -41,13 +41,13 @@ log = logging.getLogger(__name__)
 
 SCAN_INTERVAL_SEC   = 1800    # 30 minutes
 STARTUP_DELAY_SEC   = 180     # 3 min after Flask starts
-MIN_SMART_MONEY     = 2       # minimum smart money wallets to fire signal
+MIN_SMART_MONEY     = 1       # calibration phase: 1 smart money wallet is enough
 SEEN_CACHE_HOURS    = 6       # don't re-signal same token within 6 hours
 MAX_GMGN_PER_SCAN   = 5       # max GMGN holder checks per scan cycle (credit guard)
 
-# Pre-filter thresholds (same as our hard vetos in fomo_research.py)
-MIN_LIQUIDITY_USD   = 30_000
-MIN_TOKEN_AGE_DAYS  = 1.0
+# Pre-filter thresholds — loosened for calibration phase (more trades = more data)
+MIN_LIQUIDITY_USD   = 10_000  # was 30_000 — let more tokens through
+MIN_TOKEN_AGE_DAYS  = 0.25    # was 1.0 — allow tokens as young as 6 hours
 MAX_TOP10_HOLDER    = 0.90
 
 # In-memory cache: contract → last_seen datetime
@@ -204,7 +204,7 @@ def _check_smart_money(contract: str) -> list[dict]:
 
 # ─── PATH B: GOLEM MOMENTUM SCORER (FREE — no GMGN credits) ─────────────────
 
-GOLEM_SIGNAL_THRESHOLD = 60   # minimum score to fire an independent signal
+GOLEM_SIGNAL_THRESHOLD = 50   # was 60 — calibration phase: let more signals through
 
 def _golem_momentum_score(token: dict) -> tuple[int, list[str]]:
     """
