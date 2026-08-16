@@ -1,35 +1,35 @@
 {
   "open_trade": {
-    "coin": "LINK",
-    "entry_time": "2026-08-15T04:02:42.408945+00:00",
+    "coin": "FET",
+    "entry_time": "2026-08-16T12:01:19.987160+00:00",
     "key_signals": [
       {
-        "source": "LINK volume_breakout",
+        "source": "RSI",
         "signal_type": "technical",
-        "description": "LINK 24h volume at $411M with +8.5% daily and +17% weekly gain shows strong buying pressure diverging from the broader weak market."
+        "description": "FET RSI at 38.96 approaching oversold territory, signaling potential mean-reversion bounce opportunity after 8.9% weekly decline."
       },
       {
         "source": "Fear_Greed",
         "signal_type": "sentiment",
-        "description": "Fear & Greed at 34 (Fear) but improving from 29 \u2014 contrarian opportunity window where strong relative performers tend to lead the next leg up."
+        "description": "Fear & Greed at 34 (Fear) but improving from weekly average of 30.3, suggesting sentiment stabilization that often precedes bounces in beaten-down assets."
       },
       {
         "source": "CoinDesk",
         "signal_type": "news",
-        "description": "Israel's largest bank partnering with Galaxy for crypto trading and Trump's upcoming White House crypto CEO meeting provide institutional adoption catalysts."
-      },
-      {
-        "source": "RSI",
-        "signal_type": "technical",
-        "description": "LINK's move, while strong, hasn't pushed RSI data to extreme overbought levels among swing candidates \u2014 room for continuation remains."
+        "description": "UBS ramping Bitcoin ETF exposure 24-fold and Paul Tudor Jones increasing IBIT stake signal institutional confidence returning, which could lift broader crypto sentiment."
       },
       {
         "source": "CoinTelegraph",
         "signal_type": "news",
-        "description": "Kraken parent revenue rising 17% despite lower trading volumes suggests improving crypto market infrastructure and institutional participation."
+        "description": "Swan CEO calling altcoins 'basically dead' with potential October BTC bottom represents peak pessimism \u2014 a contrarian signal for alt positioning (noting CoinTelegraph's mixed 50% historical reliability)."
+      },
+      {
+        "source": "on_chain",
+        "signal_type": "onchain",
+        "description": "Ethereum TVL stable at $41.1B and DeFi chain TVLs showing no deterioration, suggesting the underlying DeFi infrastructure remains healthy despite price weakness."
       }
     ],
-    "confidence": 62
+    "confidence": 52
   },
   "signal_stats": {
     "Fear_Greed__sentiment": {
@@ -188,5 +188,5 @@
     }
   },
   "trade_count": 12,
-  "last_updated": "2026-08-15T04:02:42.408954+00:00"
+  "last_updated": "2026-08-16T12:01:19.987173+00:00"
 }
