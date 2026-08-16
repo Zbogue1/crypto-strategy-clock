@@ -2,7 +2,7 @@
   "version": "golem-v1",
   "reset_date": "2026-08-08",
   "reset_reason": "FOMO Golem launch \u2014 fresh $1,000 paper portfolio, FOMO-only strategy",
-  "cash": 7789982.708356276,
+  "cash": 7789882.708356276,
   "starting_cash": 1000.0,
   "peak_value": 1000.0,
   "total_trades": 3,
@@ -123,6 +123,34 @@
       "tranche_1_sold": false,
       "tranche_2_sold": false,
       "trailing_stop_active": false
+    },
+    {
+      "position_id": "54f8b4fb",
+      "token_ticker": "CATE",
+      "token_name": "Catecoin",
+      "entry_price": 0.01513,
+      "units": 6602.77594183741,
+      "spent": 100.0,
+      "stop_loss": 0.0098345,
+      "exit_target": 0.019669,
+      "wallet_alias": "Jack",
+      "wallet_address": "",
+      "contract_address": "Ai66LHZG9MCzg1WKdawwqduVAXpNDUuV8M3uyq5ppump",
+      "catalyst": "Score 5/10 \u2014 Established: 21.3d old, Deep liq $802,771",
+      "catalyst_score": 5,
+      "market_cap": 14592227,
+      "liquidity_usd": 802771.23,
+      "token_age_days": 21.27963921582809,
+      "holder_count": null,
+      "volume_spike_pct": -52.31755874043925,
+      "entered_at": "2026-08-16T23:16:03.308013+00:00",
+      "auto_exit_at": "2026-08-17T23:16:03.308025+00:00",
+      "source": "fomo_copy",
+      "partial_taken": false,
+      "peak_price": 0.01513,
+      "tranche_1_sold": false,
+      "tranche_2_sold": false,
+      "trailing_stop_active": false
     }
   ],
   "trade_history": [
@@ -231,5 +259,5 @@
     }
   ],
   "archived_history_note": "Prior July 2026 paper trades archived before this reset.",
-  "last_updated": "2026-08-16T22:11:23.542094+00:00"
+  "last_updated": "2026-08-16T23:16:03.308036+00:00"
 }
