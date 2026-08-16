@@ -3,12 +3,12 @@
 # desirable-insight  → Flask webhook server (fomo_tracker.py)
 # crypto-strategy-clock → swing trade cron (crypto_oracle_v3.py --once)
 echo "RAILWAY_SERVICE_NAME=$RAILWAY_SERVICE_NAME"
-if [ "$RAILWAY_SERVICE_NAME" = "desirable-insight" ]; then
-    echo "Starting FOMO Golem Flask server..."
-    python fomo_tracker.py
-elif [ "$RAILWAY_SERVICE_NAME" = "crypto-strategy-clock" ]; then
+if [ "$FORCE_KALSHI" = "true" ]; then
     echo "Starting Kalshi Perps Tracker..."
     python kalshi_tracker.py
+elif [ "$RAILWAY_SERVICE_NAME" = "desirable-insight" ]; then
+    echo "Starting FOMO Golem Flask server..."
+    python fomo_tracker.py
 else
     echo "Starting Crypto Strategy Clock cron..."
     python crypto_oracle_v3.py --once
