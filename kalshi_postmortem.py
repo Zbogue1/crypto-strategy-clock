@@ -25,6 +25,8 @@ import os
 from datetime import datetime, timezone
 from typing import Optional
 
+import requests as _requests
+
 log = logging.getLogger(__name__)
 
 _DATA_DIR       = os.getenv("RAILWAY_VOLUME_MOUNT_PATH", os.path.dirname(__file__))
@@ -33,22 +35,73 @@ POSTMORTEM_FILE = os.getenv(
     os.path.join(_DATA_DIR, "kalshi_postmortem.json"),
 )
 
+# ─── REDIS (Upstash) ──────────────────────────────────────────────────────────
+_REDIS_URL    = os.getenv("UPSTASH_REDIS_URL", "")
+_REDIS_TOKEN  = os.getenv("UPSTASH_REDIS_TOKEN", "")
+_POSTMORTEM_KEY = "kalshi_postmortem"
+
+
+def _redis_get(key: str):
+    if not _REDIS_URL or not _REDIS_TOKEN:
+        return None
+    try:
+        r = _requests.post(
+            _REDIS_URL,
+            headers={"Authorization": f"Bearer {_REDIS_TOKEN}"},
+            json=["GET", key],
+            timeout=5,
+        )
+        if r.status_code == 200:
+            val = r.json().get("result")
+            return json.loads(val) if val else None
+    except Exception as e:
+        log.warning(f"Kalshi postmortem: Redis GET error: {e}")
+    return None
+
+
+def _redis_set(key: str, data: dict) -> bool:
+    if not _REDIS_URL or not _REDIS_TOKEN:
+        return False
+    try:
+        r = _requests.post(
+            _REDIS_URL,
+            headers={"Authorization": f"Bearer {_REDIS_TOKEN}"},
+            json=["SET", key, json.dumps(data, default=str)],
+            timeout=5,
+        )
+        return r.status_code == 200
+    except Exception as e:
+        log.warning(f"Kalshi postmortem: Redis SET error: {e}")
+    return False
+
 MIN_SAMPLE = 5   # need at least this many trades before we report a stat
 
 
 # ─── PERSISTENCE ──────────────────────────────────────────────────────────────
 
 def _load() -> dict:
+    # Try Redis first (survives redeploys)
+    data = _redis_get(_POSTMORTEM_KEY)
+    if data:
+        log.debug("Kalshi postmortem: loaded from Redis")
+        return data
+
+    # Fallback: local file (dev / no Redis configured)
     if os.path.exists(POSTMORTEM_FILE):
         try:
             with open(POSTMORTEM_FILE) as f:
                 return json.load(f)
         except Exception as e:
-            log.error(f"Kalshi postmortem: load error: {e}")
+            log.error(f"Kalshi postmortem: file load error: {e}")
     return {"calls": []}
 
 
 def _save(state: dict):
+    # Primary: Redis
+    if _redis_set(_POSTMORTEM_KEY, state):
+        log.debug("Kalshi postmortem: saved to Redis")
+        return
+    # Fallback: local file
     try:
         with open(POSTMORTEM_FILE, "w") as f:
             json.dump(state, f, indent=2, default=str)
