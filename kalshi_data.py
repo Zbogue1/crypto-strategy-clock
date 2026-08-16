@@ -56,6 +56,13 @@ CANDLE_1440M = 1440
 # How many 60-min candles to fetch for signal analysis (≥80 for ADX warmup)
 CANDLE_LOOKBACK_HOURS = 120   # 5 days of hourly candles
 
+# ─── MARKET FILTER ────────────────────────────────────────────────────────────
+# Commodity perps (e.g. KXALUMINUMPERP1) exist in the API but aren't available
+# in the Kalshi app UI — exclude them to avoid signals you can't trade.
+# Crypto perp tickers never start with "KX"; commodity ones always do.
+# Set KALSHI_INCLUDE_COMMODITIES=true in Railway to scan them too.
+_INCLUDE_COMMODITIES = os.getenv("KALSHI_INCLUDE_COMMODITIES", "false").lower() == "true"
+
 
 # ─── HELPERS ──────────────────────────────────────────────────────────────────
 
@@ -120,6 +127,10 @@ def get_all_markets(use_cache: bool = True) -> list[dict]:
             "status":            m.get("status", ""),
             "contract_size":     m.get("contract_size", "1.000000"),
         })
+
+    # Drop commodity perps (KX prefix) unless explicitly enabled
+    if not _INCLUDE_COMMODITIES:
+        markets = [m for m in markets if not m["ticker"].startswith("KX")]
 
     _markets_cache["data"] = markets
     _markets_cache["fetched_at"] = now
