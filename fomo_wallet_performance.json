@@ -1,15 +1,15 @@
 {
   "Aurelius0121": {
-    "trades_followed": 2,
+    "trades_followed": 3,
     "wins": 0,
-    "losses": 2,
-    "total_pnl_pct": -58.77,
-    "total_pnl_usd": -22.34,
-    "consecutive_losses": 2,
+    "losses": 3,
+    "total_pnl_pct": -95.86,
+    "total_pnl_usd": -40.95,
+    "consecutive_losses": 3,
     "win_rate": 0.0,
-    "last_trade_at": "2026-08-12T22:52:40.436636+00:00",
+    "last_trade_at": "2026-08-16T22:11:24.635898+00:00",
     "last_outcome": "LOSS",
-    "last_token": "GTA6",
+    "last_token": "STONK",
     "trade_log": [
       {
         "token": "ALON",
@@ -26,6 +26,14 @@
         "pnl_usd": -4.69,
         "reason": "tracker_sold",
         "at": "2026-08-12T22:52:40.436636+00:00"
+      },
+      {
+        "token": "STONK",
+        "win": false,
+        "pnl_pct": -37.09,
+        "pnl_usd": -18.61,
+        "reason": "stop_loss",
+        "at": "2026-08-16T22:11:24.635898+00:00"
       }
     ]
   }
