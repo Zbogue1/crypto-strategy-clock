@@ -6,7 +6,7 @@ echo "RAILWAY_SERVICE_NAME=$RAILWAY_SERVICE_NAME"
 if [ "$RAILWAY_SERVICE_NAME" = "desirable-insight" ]; then
     echo "Starting FOMO Golem Flask server..."
     python fomo_tracker.py
-elif [ "$RAILWAY_SERVICE_NAME" = "crypto-strategy-clock" ]; then
+elif [ "$RAILWAY_SERVICE_NAME" = "kalshi-strategy-clock" ]; then
     echo "Starting Kalshi Perps Tracker..."
     python kalshi_tracker.py
 else
