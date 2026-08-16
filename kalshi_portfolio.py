@@ -23,9 +23,10 @@ from typing import Optional
 
 log = logging.getLogger(__name__)
 
+_DATA_DIR      = os.getenv("RAILWAY_VOLUME_MOUNT_PATH", os.path.dirname(__file__))
 PORTFOLIO_FILE = os.getenv(
     "KALSHI_PORTFOLIO_FILE",
-    os.path.join(os.path.dirname(__file__), "kalshi_portfolio.json"),
+    os.path.join(_DATA_DIR, "kalshi_portfolio.json"),
 )
 
 STARTING_CASH   = float(os.getenv("KALSHI_STARTING_CASH", "500.0"))   # paper bank

@@ -27,9 +27,10 @@ from typing import Optional
 
 log = logging.getLogger(__name__)
 
+_DATA_DIR       = os.getenv("RAILWAY_VOLUME_MOUNT_PATH", os.path.dirname(__file__))
 POSTMORTEM_FILE = os.getenv(
     "KALSHI_POSTMORTEM_FILE",
-    os.path.join(os.path.dirname(__file__), "kalshi_postmortem.json"),
+    os.path.join(_DATA_DIR, "kalshi_postmortem.json"),
 )
 
 MIN_SAMPLE = 5   # need at least this many trades before we report a stat

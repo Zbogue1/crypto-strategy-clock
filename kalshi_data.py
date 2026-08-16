@@ -279,14 +279,13 @@ def get_historical_funding_rates(ticker: str, limit: int = 10) -> list[dict]:
     Fetch recent historical funding rate payments for a market.
     Returns list of {rate, ts} dicts, newest first.
     """
-    # Date range: last 7 days
-    from datetime import datetime, timezone, timedelta
-    end   = datetime.now(timezone.utc).date().isoformat()
-    start = (datetime.now(timezone.utc) - timedelta(days=7)).date().isoformat()
+    import time as _time
+    end_ts   = int(_time.time())
+    start_ts = end_ts - 7 * 24 * 3600  # last 7 days
 
     data = _get(
         "/margin/funding_rates/historical",
-        params={"ticker": ticker, "start_date": start, "end_date": end},
+        params={"ticker": ticker, "start_ts": start_ts, "end_ts": end_ts},
     )
     if not data:
         return []
