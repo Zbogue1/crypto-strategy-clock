@@ -285,7 +285,7 @@ def get_historical_funding_rates(ticker: str, limit: int = 10) -> list[dict]:
     start = (datetime.now(timezone.utc) - timedelta(days=7)).date().isoformat()
 
     data = _get(
-        "/margin/funding_rates/history",
+        "/margin/funding_rates/historical",
         params={"ticker": ticker, "start_date": start, "end_date": end},
     )
     if not data:
