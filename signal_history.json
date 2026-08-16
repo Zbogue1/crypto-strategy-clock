@@ -197,5 +197,28 @@
       "LINK"
     ],
     "alert": "Swan CEO warns altcoins are 'basically dead' and BTC may not bottom until October \u2014 monitor stop-losses closely on both positions."
+  },
+  {
+    "ts": "2026-08-16T08:03:49.395146+00:00",
+    "coin": "SOL",
+    "price": 75.39,
+    "signal": "HOLD",
+    "confidence": 35,
+    "score": -0.5,
+    "fg": 34,
+    "btc_price": 63008,
+    "btc_dominance": 56.2,
+    "candidates": [
+      "VELVET",
+      "H",
+      "AKE",
+      "FET",
+      "ETHFI",
+      "INJ",
+      "FDUSD",
+      "SOL",
+      "LINK"
+    ],
+    "alert": "Both SOL and LINK positions are slightly negative but within normal range \u2014 monitor BTC support at $62K closely."
   }
 ]
