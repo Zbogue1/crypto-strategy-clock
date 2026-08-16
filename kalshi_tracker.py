@@ -150,15 +150,18 @@ def _run_scan_cycle(force: bool = False):
 
     log.info(f"Kalshi scan: {len(viable)} viable signals — running research agent")
 
-    # 4. Suppress re-alerts for recently alerted tickers
+    # 4. Suppress re-alerts for tickers we already hold or alerted recently
     now = time.time()
+    summary = get_portfolio_summary()
+    open_tickers = {p["ticker"] for p in summary.get("positions", [])}
     if not force:
         viable = [
             v for v in viable
-            if (now - _last_alerted.get(v["ticker"], 0)) > 4 * 3600
+            if v["ticker"] not in open_tickers
+            and (now - _last_alerted.get(v["ticker"], 0)) > 4 * 3600
         ]
         if not viable:
-            log.info("Kalshi scan: all viable signals already alerted recently")
+            log.info("Kalshi scan: all viable signals already held or alerted recently")
             return
 
     # 5. Load postmortem context
