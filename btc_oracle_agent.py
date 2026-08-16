@@ -54,7 +54,7 @@ FRED_API_KEY       = os.environ.get("FRED_API_KEY", "")
 COINGLASS_API_KEY  = os.environ.get("COINGLASS_API_KEY", "")
 GLASSNODE_API_KEY  = os.environ.get("GLASSNODE_API_KEY", "")
 
-MODEL              = "claude-opus-4-6"    # best for synthesis; swap to claude-sonnet-4-6 for speed
+MODEL              = "claude-haiku-4-5-20251001"
 LOG_FILE           = "btc_oracle_log.jsonl"
 
 logging.basicConfig(

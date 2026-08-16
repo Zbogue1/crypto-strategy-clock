@@ -5,6 +5,9 @@
 if [ "$RAILWAY_SERVICE_NAME" = "desirable-insight" ]; then
     echo "Starting FOMO Golem Flask server..."
     python fomo_tracker.py
+elif [ "$RAILWAY_SERVICE_NAME" = "crypto-strategy-clock" ]; then
+    echo "Starting Kalshi Perps Tracker..."
+    python kalshi_tracker.py
 else
     echo "Starting Crypto Strategy Clock cron..."
     python crypto_oracle_v3.py --once

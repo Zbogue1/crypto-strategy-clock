@@ -85,7 +85,7 @@ ALERT_EMAIL_PASS    = os.environ.get("ALERT_EMAIL_PASSWORD", "")  # Gmail app pa
 ALERT_EMAIL_TO      = os.environ.get("ALERT_EMAIL_TO", ALERT_EMAIL)
 DISCORD_WEBHOOK_URL = os.environ.get("DISCORD_WEBHOOK_URL", "")
 
-MODEL               = "claude-opus-4-6"
+MODEL               = "claude-haiku-4-5-20251001"
 LOG_FILE            = "crystal_ball_history.jsonl"
 HTML_REPORT         = "btc_dashboard.html"
 

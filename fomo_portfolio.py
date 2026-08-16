@@ -25,7 +25,7 @@ import requests
 log = logging.getLogger(__name__)
 
 ANTHROPIC_API_KEY  = os.environ.get("ANTHROPIC_API_KEY", "")
-AI_MODEL           = "claude-sonnet-5"
+AI_MODEL           = "claude-haiku-4-5-20251001"
 TELEGRAM_BOT_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN", "")
 TELEGRAM_CHAT_ID   = os.environ.get("TELEGRAM_CHAT_ID", "")
 

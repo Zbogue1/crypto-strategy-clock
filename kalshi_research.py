@@ -30,7 +30,7 @@ import anthropic
 
 log = logging.getLogger(__name__)
 
-AI_MODEL   = "claude-sonnet-5"
+AI_MODEL   = "claude-haiku-4-5-20251001"
 ANTHROPIC_KEY = os.getenv("ANTHROPIC_API_KEY", "")
 
 # Minimum confidence to generate an alert (below this → skip)

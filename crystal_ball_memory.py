@@ -34,7 +34,7 @@ LESSONS_FILE      = "crystal_ball_lessons.json"
 POSTMORTEMS_FILE  = "crystal_ball_postmortems.jsonl"
 
 ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY", "")
-MODEL             = "claude-opus-4-6"
+MODEL             = "claude-haiku-4-5-20251001"
 
 # ─── CORRECTNESS THRESHOLDS ───────────────────────────────────────────────────
 # How we define whether a prediction was right.

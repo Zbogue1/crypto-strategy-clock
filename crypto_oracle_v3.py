@@ -100,7 +100,7 @@ GITHUB_TOKEN        = os.environ.get("GITHUB_TOKEN", "")
 GITHUB_REPO         = "Zbogue1/crypto-strategy-clock"
 GITHUB_DATA_BRANCH  = "data"   # separate branch for persistent data — never touched by code deploys
 
-MODEL      = "claude-opus-4-6"
+MODEL      = "claude-haiku-4-5-20251001"
 LOG_FILE   = "crypto_history.jsonl"
 HTML_FILE  = "crypto_dashboard.html"
 
