@@ -690,6 +690,7 @@ def handle_relayed_text_message(message: dict):
             "liquidity_usd":    token_data.get("liquidity_usd"),
             "token_age_days":   token_data.get("age_days"),
             "volume_spike_pct": token_data.get("volume_spike_pct"),
+            "signal_source":    "relayed_email",
         })
         send_telegram_button(
             "\U0001f4e9 <b>RELAYED BUY SIGNAL: " + token_data["symbol"] + " @ $"
@@ -926,6 +927,7 @@ def _check_launch_consensus(contract: str, alias: str, wallet_meta: dict, token_
             "market_cap":       mcap,
             "liquidity_usd":    liq,
             "token_age_days":   age_days,
+            "signal_source":    "consensus_launch",
         })
 
         send_telegram_button(
@@ -1358,6 +1360,8 @@ def telegram_webhook():
                     token_age_days=alert.get("token_age_days"),
                     volume_spike_pct=alert.get("volume_spike_pct"),
                     amount_usd=float(amount_str),
+                    signal_source=alert.get("signal_source", "fomo_copy"),
+                    regime=alert.get("regime"),
                 )
                 consume_pending_alert(alert_id)
                 if result:
@@ -1591,6 +1595,7 @@ def helius_webhook():
                 "liquidity_usd":    token_data.get("liquidity_usd"),
                 "token_age_days":   token_data.get("age_days"),
                 "volume_spike_pct": token_data.get("volume_spike_pct"),
+                "signal_source":    "onchain_solana",
             })
             send_telegram_button(
                 "\U0001f6a8 <b>ON-CHAIN SIGNAL: " + token_data["symbol"] + " @ $"
@@ -1730,6 +1735,7 @@ def alchemy_webhook():
                 "liquidity_usd":    token_data.get("liquidity_usd"),
                 "token_age_days":   token_data.get("age_days"),
                 "volume_spike_pct": token_data.get("volume_spike_pct"),
+                "signal_source":    "onchain_base",
             })
             send_telegram_button(
                 "🚨 <b>ON-CHAIN SIGNAL: " + token_data["symbol"] + " @ $"
@@ -2037,6 +2043,8 @@ def process_social_signal(signal: dict):
             "token_age_days":        token_data.get("age_days"),
             "volume_spike_pct":      token_data.get("volume_spike_pct"),
             "suggested_position_pct": pos_pct,
+            "signal_source":         source,            # "scanner"=Path A, "golem_momentum"/"new_launch"/"narrative"=Path B
+            "regime":                regime["regime"],  # market regime at signal time
         })
         # Conviction label for the Telegram message
         if pos_pct >= 25:

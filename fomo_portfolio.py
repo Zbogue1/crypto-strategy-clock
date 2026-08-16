@@ -25,7 +25,7 @@ import requests
 log = logging.getLogger(__name__)
 
 ANTHROPIC_API_KEY  = os.environ.get("ANTHROPIC_API_KEY", "")
-AI_MODEL           = "claude-sonnet-4-5"
+AI_MODEL           = "claude-sonnet-5"
 TELEGRAM_BOT_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN", "")
 TELEGRAM_CHAT_ID   = os.environ.get("TELEGRAM_CHAT_ID", "")
 
@@ -281,6 +281,11 @@ def execute_fomo_buy(
     holder_count:     int   = None,
     volume_spike_pct: float = None,  # % volume increase in last 10 min
     amount_usd:       float = None,  # human-selected $ from Telegram button; overrides auto-sizing
+    signal_source:    str   = "fomo_copy",  # which signal path produced this trade:
+                                     #   "golem_momentum" / "new_launch" / "narrative" = Golem autonomous (Path B)
+                                     #   "scanner"                                      = smart money clustering (Path A)
+                                     #   anything else                                  = copy-trade / manual
+    regime:           str   = None,  # market regime at entry ("BULL"/"NEUTRAL"/"BEAR")
 ) -> Optional[dict]:
     """Execute a FOMO copy trade buy. Returns holding dict or None if skipped.
     Multiple positions can be open at once (up to FOMO_MAX_CONCURRENT_POSITIONS),
@@ -335,7 +340,8 @@ def execute_fomo_buy(
         "volume_spike_pct": volume_spike_pct,
         "entered_at":       datetime.now(timezone.utc).isoformat(),
         "auto_exit_at":     (datetime.now(timezone.utc) + timedelta(hours=FOMO_AUTO_EXIT_HOURS)).isoformat(),
-        "source":           "fomo_copy",
+        "source":           signal_source or "fomo_copy",
+        "regime_at_entry":  regime,
         "partial_taken":    False,
         # Tranche exit tracking (managed by fomo_exit.py)
         "peak_price":             entry_price,
@@ -619,6 +625,8 @@ def run_fomo_postmortem(trade: dict) -> dict:
         "trade_id":       trade.get("entered_at", ""),
         "ticker":         ticker,
         "wallet_alias":   alias,
+        "signal_source":  trade.get("source", "fomo_copy"),
+        "signal_path":    classify_signal_path(trade.get("source")),
         "outcome":        outcome,
         "profit_pct":     profit_pct,
         "questions":      questions,
@@ -896,6 +904,103 @@ def get_fomo_graduation_status() -> dict:
         "n_trades":    n,
         "max_drawdown": max_dd,
     }
+
+
+# ─── SIGNAL PATH PERFORMANCE (Path A vs Path B vs copy-trade) ────────────────
+# Answers the question the flat win-rate can't: is the Golem's OWN judgment
+# (momentum/new-launch/narrative signals) better or worse than following
+# smart money clusters or copy-trading humans?
+
+# Sources the Golem generated entirely on its own — no wallet to follow
+AUTONOMOUS_SOURCES  = {"golem_momentum", "new_launch", "narrative"}
+# Sources triggered by observing smart money on-chain (Path A)
+SMART_MONEY_SOURCES = {"scanner"}
+
+
+def classify_signal_path(source: str) -> str:
+    """Map a raw signal source string onto one of three signal paths."""
+    s = (source or "").lower()
+    if s in AUTONOMOUS_SOURCES:
+        return "GOLEM_AUTONOMOUS"
+    if s in SMART_MONEY_SOURCES:
+        return "SMART_MONEY"
+    return "COPY_TRADE"
+
+
+def get_source_performance() -> dict:
+    """
+    Break down completed-trade performance by signal source and by signal path.
+
+    Returns:
+      {
+        "by_source": {source: {trades, wins, win_rate, avg_return_pct, total_profit}},
+        "by_path":   {path:   {trades, wins, win_rate, avg_return_pct, total_profit}},
+        "verdict":   str   one-line comparison, or note that data is insufficient
+      }
+    """
+    state   = load_fomo_portfolio()
+    history = state.get("trade_history", [])
+
+    def _bucket_stats(trades: list) -> dict:
+        n    = len(trades)
+        wins = sum(1 for t in trades if (t.get("profit_pct") or 0) > 0)
+        return {
+            "trades":         n,
+            "wins":           wins,
+            "win_rate":       round(wins / n * 100, 1) if n else 0.0,
+            "avg_return_pct": round(sum(t.get("profit_pct", 0) for t in trades) / n, 2) if n else 0.0,
+            "total_profit":   round(sum(t.get("profit", 0) for t in trades), 2),
+        }
+
+    by_source: dict = {}
+    by_path:   dict = {}
+    for t in history:
+        src  = (t.get("source") or "fomo_copy").lower()
+        path = classify_signal_path(src)
+        by_source.setdefault(src, []).append(t)
+        by_path.setdefault(path, []).append(t)
+
+    by_source = {k: _bucket_stats(v) for k, v in by_source.items()}
+    by_path   = {k: _bucket_stats(v) for k, v in by_path.items()}
+
+    # One-line verdict comparing autonomous vs the rest
+    auto  = by_path.get("GOLEM_AUTONOMOUS")
+    other_trades = sum(v["trades"] for k, v in by_path.items() if k != "GOLEM_AUTONOMOUS")
+    if not auto or auto["trades"] < 5 or other_trades < 5:
+        verdict = (
+            "Insufficient data to compare signal paths — need ≥5 completed "
+            "trades on each side (autonomous vs followed)."
+        )
+    else:
+        rest_wins  = sum(v["wins"] for k, v in by_path.items() if k != "GOLEM_AUTONOMOUS")
+        rest_wr    = rest_wins / other_trades * 100
+        delta      = auto["win_rate"] - rest_wr
+        verdict = (
+            f"Golem autonomous: {auto['win_rate']:.0f}% WR over {auto['trades']} trades vs "
+            f"{rest_wr:.0f}% following others ({other_trades} trades) — "
+            f"{'autonomous edge' if delta > 5 else 'followed-signal edge' if delta < -5 else 'no clear edge either way'} "
+            f"({delta:+.0f} pts)"
+        )
+
+    return {"by_source": by_source, "by_path": by_path, "verdict": verdict}
+
+
+def format_source_performance_telegram() -> str:
+    """Telegram-ready breakdown for a /paths command or the 4-hour agent report."""
+    perf  = get_source_performance()
+    lines = ["🧭 <b>Signal Path Performance</b>"]
+    icons = {"GOLEM_AUTONOMOUS": "🤖", "SMART_MONEY": "🐋", "COPY_TRADE": "👥"}
+    for path in ("GOLEM_AUTONOMOUS", "SMART_MONEY", "COPY_TRADE"):
+        s = perf["by_path"].get(path)
+        if not s:
+            continue
+        lines.append(
+            f"{icons[path]} {path}: {s['win_rate']:.0f}% WR "
+            f"({s['wins']}/{s['trades']}) | avg {s['avg_return_pct']:+.1f}% "
+            f"| P&L ${s['total_profit']:+,.2f}"
+        )
+    lines.append(f"\n<i>{perf['verdict']}</i>")
+    return "\n".join(lines)
 
 
 # ─── PORTFOLIO SUMMARY ────────────────────────────────────────────────────────

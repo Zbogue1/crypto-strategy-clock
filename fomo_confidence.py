@@ -17,10 +17,15 @@ DATA GATES (trades with postmortem_done=True in fomo_portfolio.json)
 ───────────────────────────────────────────────────────────────────────────────
 SCORING (0–100, base 50)
 ───────────────────────────────────────────────────────────────────────────────
-  Pattern win rate on similar historical setups  — up to ±30 pts
-  Our observed win rate with this wallet          — up to ±15 pts
-  Catalyst score from fomo_research               — up to ±10 pts
-  Market regime (BULL / BEAR / SIDEWAYS)          — ±5 pts
+  Pattern win rate on similar historical setups  — up to ±30 pts × weight
+  Our observed win rate with this wallet          — up to ±15 pts × weight
+  Catalyst score from fomo_research               — up to ±10 pts × weight
+  Market regime (BULL / BEAR / SIDEWAYS)          — ±5 pts × weight
+
+  OUTCOME-WEIGHTED (≥20 postmortems): each factor's band is scaled 0.5x–1.5x
+  by its MEASURED predictive power on our own completed trades — a factor
+  that separates winners from losers gains influence; one that doesn't gets
+  cut. See compute_factor_weights(). Below 20 postmortems, all weights = 1.0.
 
 ───────────────────────────────────────────────────────────────────────────────
 POSITION MULTIPLIER (always applied, any mode)
@@ -227,6 +232,128 @@ def _failure_pattern_exists(signal_features: dict, trades: list) -> Optional[int
     return len(matching) if wins == 0 else None
 
 
+# ─── OUTCOME-WEIGHTED FACTOR CALIBRATION ─────────────────────────────────────
+# The four scoring factors started with hand-set weights (±30/±15/±10/±5).
+# Once enough postmortems exist, measure how well each factor has ACTUALLY
+# separated winners from losers in our own trade history, and scale its weight
+# accordingly: a factor with real predictive power keeps (or gains) influence,
+# a factor that hasn't predicted anything gets its influence cut in half.
+#
+# Method per factor: split historical trades into the factor's "favorable" and
+# "unfavorable" buckets, exactly as the factor itself would have judged them at
+# entry time (sequential replay for pattern/wallet — no look-ahead). The weight
+# is a function of the win-rate separation between buckets:
+#
+#   separation ≥ +10 pts WR  → weight 1.0+  (earning its keep, up to 1.5x)
+#   separation ≈ 0           → weight ~0.75 (weak evidence, reduced)
+#   separation ≤ -10 pts WR  → weight 0.5   (factor points the WRONG way, floored)
+#
+# Weights only activate at WEIGHTING_MIN_TRADES postmortems; below that,
+# everything stays at 1.0 (the hand-set defaults).
+
+WEIGHTING_MIN_TRADES = 20    # same bar as CALIBRATED mode
+WEIGHT_MIN           = 0.5
+WEIGHT_MAX           = 1.5
+_WEIGHT_MIN_BUCKET   = 3     # each bucket needs ≥ this many trades to judge
+
+_weights_cache: dict = {}    # {"n": int, "ts": float, "weights": dict}
+
+
+def _wr(trades: list) -> Optional[float]:
+    if not trades:
+        return None
+    return sum(1 for t in trades if (t.get("profit_pct") or 0) > 0) / len(trades)
+
+
+def _separation_to_weight(hi: list, lo: list) -> tuple:
+    """
+    Convert favorable/unfavorable bucket win rates into a weight multiplier.
+    Returns (weight, separation_or_None). Insufficient data → (1.0, None).
+    """
+    if len(hi) < _WEIGHT_MIN_BUCKET or len(lo) < _WEIGHT_MIN_BUCKET:
+        return 1.0, None
+    sep = _wr(hi) - _wr(lo)
+    weight = 1.0 + (sep - 0.10) * 2.5   # sep=0.10 → 1.0, sep=0.30 → 1.5, sep=0 → 0.75
+    return round(max(WEIGHT_MIN, min(WEIGHT_MAX, weight)), 2), round(sep, 3)
+
+
+def compute_factor_weights(trades: list) -> dict:
+    """
+    Measure each factor's historical predictive power and return weight
+    multipliers: {"pattern": w, "wallet": w, "catalyst": w, "regime": w,
+                  "detail": {...}}.
+    Cached for 5 minutes keyed on trade count.
+    """
+    global _weights_cache
+    now = time.time()
+    if (_weights_cache.get("n") == len(trades)
+            and (now - _weights_cache.get("ts", 0)) < 300):
+        return _weights_cache["weights"]
+
+    detail: dict = {}
+
+    # ── Catalyst factor: did catalyst_score ≥ 6 trades win more? ─────────────
+    cat_hi = [t for t in trades if (t.get("catalyst_score") or 0) >= 6]
+    cat_lo = [t for t in trades if (t.get("catalyst_score") or 0) < 6]
+    w_catalyst, sep = _separation_to_weight(cat_hi, cat_lo)
+    detail["catalyst"] = {"sep": sep, "hi_n": len(cat_hi), "lo_n": len(cat_lo)}
+
+    # ── Regime factor: did BULL-regime entries win more than the rest? ───────
+    # Requires regime_at_entry (recorded on trades from Aug 2026 onward).
+    reg_known = [t for t in trades if t.get("regime_at_entry")]
+    reg_hi = [t for t in reg_known if t["regime_at_entry"] == "BULL"]
+    reg_lo = [t for t in reg_known if t["regime_at_entry"] != "BULL"]
+    w_regime, sep = _separation_to_weight(reg_hi, reg_lo)
+    detail["regime"] = {"sep": sep, "hi_n": len(reg_hi), "lo_n": len(reg_lo)}
+
+    # ── Pattern factor: sequential replay, no look-ahead ─────────────────────
+    # For each trade, ask what the pattern factor would have said at entry
+    # using only EARLIER trades. Favorable = prior-match WR ≥ 50%.
+    pat_hi, pat_lo = [], []
+    for i, t in enumerate(trades):
+        prior = trades[:i]
+        if len(prior) < _WEIGHT_MIN_BUCKET:
+            continue
+        res = _pattern_win_rate(_extract_features(t), prior)
+        if res is None or res[1] < _WEIGHT_MIN_BUCKET:
+            continue
+        (pat_hi if res[0] >= 0.5 else pat_lo).append(t)
+    w_pattern, sep = _separation_to_weight(pat_hi, pat_lo)
+    detail["pattern"] = {"sep": sep, "hi_n": len(pat_hi), "lo_n": len(pat_lo)}
+
+    # ── Wallet factor: sequential replay of per-alias running win rate ───────
+    wal_hi, wal_lo = [], []
+    running: dict = {}   # alias → [outcomes]
+    for t in trades:
+        alias = (t.get("wallet_alias") or "unknown")
+        prior = running.get(alias, [])
+        if len(prior) >= _WEIGHT_MIN_BUCKET:
+            prior_wr = sum(prior) / len(prior)
+            (wal_hi if prior_wr >= 0.5 else wal_lo).append(t)
+        running.setdefault(alias, []).append(1 if (t.get("profit_pct") or 0) > 0 else 0)
+    w_wallet, sep = _separation_to_weight(wal_hi, wal_lo)
+    detail["wallet"] = {"sep": sep, "hi_n": len(wal_hi), "lo_n": len(wal_lo)}
+
+    weights = {
+        "pattern":  w_pattern,
+        "wallet":   w_wallet,
+        "catalyst": w_catalyst,
+        "regime":   w_regime,
+        "detail":   detail,
+    }
+    _weights_cache = {"n": len(trades), "ts": now, "weights": weights}
+    log.info(
+        f"Confidence factor weights recalibrated over {len(trades)} trades: "
+        f"pattern {w_pattern}x, wallet {w_wallet}x, "
+        f"catalyst {w_catalyst}x, regime {w_regime}x"
+    )
+    return weights
+
+
+_DEFAULT_WEIGHTS = {"pattern": 1.0, "wallet": 1.0, "catalyst": 1.0,
+                    "regime": 1.0, "detail": {}}
+
+
 # ─── MAIN SCORER ──────────────────────────────────────────────────────────────
 
 def get_confidence(signal: dict) -> dict:
@@ -280,37 +407,47 @@ def get_confidence(signal: dict) -> dict:
         "regime":          regime,
     }
 
+    # ── Outcome-weighted factor calibration ───────────────────────────────────
+    # With enough postmortems, each factor's band is scaled by its measured
+    # predictive power (0.5x–1.5x). Below the threshold, hand-set defaults.
+    if n_pm >= WEIGHTING_MIN_TRADES:
+        weights = compute_factor_weights(trades)
+    else:
+        weights = _DEFAULT_WEIGHTS
+    factors["factor_weights"] = {k: v for k, v in weights.items() if k != "detail"}
+    factors["weight_detail"]  = weights.get("detail", {})
+
     # ── Base score ────────────────────────────────────────────────────────────
     score = 50
 
-    # ── Pattern win rate (±30) ────────────────────────────────────────────────
+    # ── Pattern win rate (±30 × weight) ───────────────────────────────────────
     pattern_result = _pattern_win_rate(signal_features, trades)
     if pattern_result:
         pattern_wr, pattern_n = pattern_result
-        # 0% WR → −30, 50% WR → 0, 100% WR → +30
-        score += round((pattern_wr - 0.5) * 60)
+        # 0% WR → −30, 50% WR → 0, 100% WR → +30 (scaled by measured weight)
+        score += round((pattern_wr - 0.5) * 60 * weights["pattern"])
         factors["pattern_wr"] = round(pattern_wr, 3)
         factors["pattern_n"]  = pattern_n
     else:
         factors["pattern_wr"] = None
         factors["pattern_n"]  = 0
 
-    # ── Wallet observed performance (±15) ─────────────────────────────────────
+    # ── Wallet observed performance (±15 × weight) ────────────────────────────
     # Uses the rolling 10-trade win rate recorded by fomo_wallet_stats.py
     wallet_perf = performance.get(alias, {})
     wallet_wr   = wallet_perf.get("win_rate")      # float 0-1, rolling 10-trade
     wallet_n    = int(wallet_perf.get("trades_followed") or 0)
 
     if wallet_wr is not None and wallet_n >= 3:
-        # 0% → −15, 50% → 0, 100% → +15
-        score += round((wallet_wr - 0.5) * 30)
+        # 0% → −15, 50% → 0, 100% → +15 (scaled by measured weight)
+        score += round((wallet_wr - 0.5) * 30 * weights["wallet"])
         factors["wallet_wr"] = round(wallet_wr, 3)
         factors["wallet_n"]  = wallet_n
     else:
         factors["wallet_wr"] = None
         factors["wallet_n"]  = wallet_n
 
-    # ── Catalyst score (±10) ──────────────────────────────────────────────────
+    # ── Catalyst score (±10 × weight) ─────────────────────────────────────────
     # Research already gates on catalyst quality; this adds a smaller weight to
     # the confidence score so high-quality signals get a full-size position.
     if catalyst_score >= 8:
@@ -321,16 +458,18 @@ def get_confidence(signal: dict) -> dict:
         cat_adj = 0
     else:
         cat_adj = -10
+    cat_adj = round(cat_adj * weights["catalyst"])
     score += cat_adj
     factors["catalyst_adj"] = cat_adj
 
-    # ── Regime (±5) ──────────────────────────────────────────────────────────
+    # ── Regime (±5 × weight) ─────────────────────────────────────────────────
     if regime == "BULL":
         regime_adj = 5
     elif regime == "BEAR":
         regime_adj = -5
     else:
         regime_adj = 0
+    regime_adj = round(regime_adj * weights["regime"])
     score += regime_adj
     factors["regime_adj"] = regime_adj
 
