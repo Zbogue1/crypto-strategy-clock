@@ -151,5 +151,28 @@
       "LINK"
     ],
     "alert": null
+  },
+  {
+    "ts": "2026-08-16T00:00:37.247762+00:00",
+    "coin": "LINK",
+    "price": 9.46,
+    "signal": "HOLD",
+    "confidence": 42,
+    "score": -0.3,
+    "fg": 34,
+    "btc_price": 63030,
+    "btc_dominance": 56.2,
+    "candidates": [
+      "AKE",
+      "H",
+      "VELVET",
+      "FET",
+      "ETHFI",
+      "FDUSD",
+      "INJ",
+      "SOL",
+      "LINK"
+    ],
+    "alert": "Swan CEO declares altcoins 'basically dead' \u2014 monitor BTC dominance for any reversal signal before adding alt exposure."
   }
 ]
