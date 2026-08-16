@@ -24,8 +24,11 @@ import requests
 
 log = logging.getLogger(__name__)
 
-TELEGRAM_TOKEN = os.getenv("KALSHI_TELEGRAM_TOKEN") or os.getenv("TELEGRAM_TOKEN", "")
-CHAT_ID        = os.getenv("KALSHI_CHAT_ID")        or os.getenv("TELEGRAM_CHAT_ID", "")
+TELEGRAM_TOKEN = (os.getenv("KALSHI_TELEGRAM_TOKEN")
+                  or os.getenv("TELEGRAM_TOKEN")
+                  or os.getenv("TELEGRAM_BOT_TOKEN", ""))
+CHAT_ID        = (os.getenv("KALSHI_CHAT_ID")
+                  or os.getenv("TELEGRAM_CHAT_ID", ""))
 TELEGRAM_URL   = f"https://api.telegram.org/bot{TELEGRAM_TOKEN}/sendMessage"
 
 
