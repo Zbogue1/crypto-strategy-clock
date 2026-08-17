@@ -174,5 +174,29 @@
       "LINK"
     ],
     "alert": null
+  },
+  {
+    "ts": "2026-08-17T12:03:37.393061+00:00",
+    "coin": "SOL",
+    "price": 75.61,
+    "signal": "HOLD",
+    "confidence": 35,
+    "score": -0.3,
+    "fg": 31,
+    "btc_price": 63550,
+    "btc_dominance": 56.3,
+    "candidates": [
+      "FDUSD",
+      "H",
+      "MON",
+      "AKE",
+      "VELVET",
+      "USDG",
+      "BTW",
+      "SOL",
+      "LINK",
+      "FET"
+    ],
+    "alert": "BTC lost 200-week trend line \u2014 monitor positions closely for stop-loss triggers if $62K breaks."
   }
 ]
