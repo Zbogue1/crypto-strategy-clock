@@ -40,6 +40,7 @@ import os
 import time
 from datetime import datetime, timezone
 from threading import Thread, Event
+from typing import Optional
 
 import requests
 
@@ -90,8 +91,11 @@ MONITOR_POSITIONS     = os.getenv("KALSHI_MONITOR_POSITIONS", "true").lower() ==
 # Target N new bets per UTC day, every one closed out the same day.
 # This produces a clean, comparable daily sample for the weekly report.
 DAILY_TRADE_TARGET    = int(os.getenv("KALSHI_DAILY_TRADES", "4"))
-# Force-close any position still open this many hours before the UTC day ends.
+# Force-close any position still open at/after this UTC hour.
 DAY_CLOSE_UTC_HOUR    = int(os.getenv("KALSHI_DAY_CLOSE_HOUR", "23"))
+# Stop opening new trades this many hours before the close, so every position
+# gets a fair run instead of being opened at 22:55 and killed at 23:00.
+ENTRY_CUTOFF_BUFFER_H = float(os.getenv("KALSHI_ENTRY_BUFFER_HOURS", "3"))
 # Hard cap on how long a single day trade can run, regardless of clock.
 MAX_HOLD_HOURS        = float(os.getenv("KALSHI_MAX_HOLD_HOURS", "20"))
 
@@ -115,6 +119,7 @@ HELP_TEXT = (
     "Any message with a `?` gets analyzed. Use `/ask <question>` if it "
     "doesn't end in a question mark.\n\n"
     "*Commands:*\n"
+    "`/report` — performance report (add days: `/report 30`)\n"
     "`/kalshi` — portfolio snapshot\n"
     "`/kalshi_stats` — track record & calibration\n"
     "`/kalshi_scan` — scan perps on demand (one-off)\n"
@@ -167,7 +172,16 @@ def _poll_telegram_commands():
             _last_update_id = max(_last_update_id, update["update_id"])
             msg = update.get("message", {})
             text = msg.get("text", "").strip()
-            if text.startswith("/kalshi_stats"):
+            if text.startswith("/report"):
+                parts = text.split()
+                days = REPORT_INTERVAL_DAYS
+                if len(parts) > 1:
+                    try:
+                        days = float(parts[1])
+                    except ValueError:
+                        pass
+                send_telegram(build_weekly_report(days))
+            elif text.startswith("/kalshi_stats"):
                 send_telegram(format_stats_telegram())
             elif text.startswith("/kalshi_scan"):
                 send_telegram("🔍 Manual scan triggered...")
@@ -188,6 +202,63 @@ def _poll_telegram_commands():
         log.warning(f"Telegram poll error: {e}")
 
 
+# ─── DAY-TRADE HELPERS ────────────────────────────────────────────────────────
+
+def _utc_day(ts: str = None) -> str:
+    """YYYY-MM-DD in UTC for a timestamp string, or today if None."""
+    if ts:
+        try:
+            return datetime.fromisoformat(ts.replace("Z", "+00:00")).strftime("%Y-%m-%d")
+        except Exception:
+            return ""
+    return datetime.now(timezone.utc).strftime("%Y-%m-%d")
+
+
+def _trades_opened_today() -> int:
+    """
+    How many positions we've opened during the current UTC day.
+    Counts both still-open holdings and trades already closed today, so the
+    daily cap survives restarts and same-day round trips.
+    """
+    today = _utc_day()
+    count = 0
+    try:
+        from kalshi_portfolio import _load as _load_portfolio
+        state = _load_portfolio()
+        for h in state.get("holdings", []):
+            if _utc_day(h.get("opened_at", "")) == today:
+                count += 1
+        for t in state.get("trade_history", []):
+            if _utc_day(t.get("opened_at", "")) == today:
+                count += 1
+    except Exception as e:
+        log.warning(f"Kalshi: could not count today's trades: {e}")
+    return count
+
+
+def _should_force_close(pos: dict) -> Optional[str]:
+    """Return a close reason if this day trade has run out of time."""
+    opened_at = pos.get("opened_at", "")
+    if not opened_at:
+        return None
+    try:
+        opened = datetime.fromisoformat(opened_at.replace("Z", "+00:00"))
+    except Exception:
+        return None
+
+    now   = datetime.now(timezone.utc)
+    hours = (now - opened).total_seconds() / 3600
+
+    if hours >= MAX_HOLD_HOURS:
+        return "max_hold"
+    # Same-day rule: if we've crossed into the close window, or into a new day
+    if now.strftime("%Y-%m-%d") != opened.strftime("%Y-%m-%d"):
+        return "day_end"
+    if now.hour >= DAY_CLOSE_UTC_HOUR:
+        return "day_end"
+    return None
+
+
 # ─── SCAN CYCLE ───────────────────────────────────────────────────────────────
 
 _last_alerted: dict = {}  # ticker → timestamp, suppress re-alerts within 4H
@@ -196,6 +267,27 @@ def _run_scan_cycle(force: bool = False):
     """Full market scan → signal detection → research → alerts → open positions."""
     log.info("=== KALSHI SCAN CYCLE START ===")
     ts = datetime.now(timezone.utc).strftime("%H:%M UTC")
+
+    # 0. Day-trade budget check — stop once we've hit the daily target
+    opened_today = _trades_opened_today()
+    slots_left   = DAILY_TRADE_TARGET - opened_today
+    if not force and slots_left <= 0:
+        log.info(
+            f"Kalshi scan: daily target reached ({opened_today}/{DAILY_TRADE_TARGET}) "
+            "— no new entries until tomorrow UTC"
+        )
+        return
+    log.info(f"Kalshi scan: {opened_today}/{DAILY_TRADE_TARGET} trades today, {slots_left} slot(s) left")
+
+    # Don't open a day trade so late it can't run before the day-end close
+    now_utc = datetime.now(timezone.utc)
+    entry_cutoff = DAY_CLOSE_UTC_HOUR - ENTRY_CUTOFF_BUFFER_H
+    if not force and now_utc.hour >= entry_cutoff:
+        log.info(
+            f"Kalshi scan: past {entry_cutoff:.0f}:00 UTC entry cutoff "
+            f"(day closes {DAY_CLOSE_UTC_HOUR}:00) — no new entries"
+        )
+        return
 
     # 1. Fetch markets
     markets = get_all_markets(use_cache=False)
@@ -247,7 +339,11 @@ def _run_scan_cycle(force: bool = False):
     # 6. Research agent analysis
     verdicts = scan_all_viable(viable, snapshots_by_ticker, pm_summaries)
 
-    # 7. For each actionable verdict, send alert + open paper position
+    # 7. Take the highest-confidence verdicts, up to the remaining daily slots
+    verdicts.sort(key=lambda v: -v.get("confidence", 0))
+    if not force:
+        verdicts = verdicts[:max(0, slots_left)]
+
     for verdict in verdicts:
         ticker = verdict["ticker"]
         log.info(f"Kalshi: {ticker} → {verdict['verdict']} {verdict['confidence']}/100")
@@ -314,6 +410,30 @@ def _run_monitor_cycle():
     if not prices_by_ticker:
         return
 
+    # Day-trade rule: force-close anything that's run past its same-day window
+    for pos in positions:
+        ticker = pos["ticker"]
+        reason = _should_force_close(pos)
+        if not reason:
+            continue
+        price = prices_by_ticker.get(ticker)
+        if not price:
+            continue
+        trade = close_position(ticker, price, reason=reason)
+        if trade:
+            if not SILENT:
+                send_exit(trade)
+            log_outcome(ticker, trade)
+            log.info(
+                f"Kalshi monitor: day-trade close {ticker} ({reason}) @ {price:.4f} "
+                f"| net ${trade.get('net_pnl', 0):+.2f}"
+            )
+
+    # Re-read after any forced closes so we don't double-process
+    positions = get_portfolio_summary().get("positions", [])
+    if not positions:
+        return
+
     # Check exits
     exits = update_prices(prices_by_ticker)
     for exit_event in exits:
@@ -378,6 +498,130 @@ def run_monitor_loop(stop_event: Event):
             time.sleep(1)
 
 
+def build_weekly_report(days: float = 7.0) -> str:
+    """Performance report over the trailing N days of closed trades."""
+    from kalshi_portfolio import _load as _load_portfolio
+
+    state   = _load_portfolio()
+    history = state.get("trade_history", [])
+    cutoff  = datetime.now(timezone.utc).timestamp() - days * 86400
+
+    recent = []
+    for t in history:
+        try:
+            closed = datetime.fromisoformat(
+                (t.get("closed_at") or "").replace("Z", "+00:00")
+            ).timestamp()
+        except Exception:
+            continue
+        if closed >= cutoff:
+            recent.append(t)
+
+    starting = state.get("starting_cash", 500.0)
+    summary  = get_portfolio_summary()
+    total_val = summary["total_value"]
+    all_time_pct = (total_val / starting - 1) * 100 if starting else 0.0
+
+    if not recent:
+        return (
+            f"📊 *KALSHI — {days:.0f} Day Report*\n\n"
+            "No trades closed in this period.\n\n"
+            f"Account value: *${total_val:.2f}* (started ${starting:.2f})\n"
+            f"All-time: *{all_time_pct:+.2f}%*"
+        )
+
+    wins    = [t for t in recent if t.get("net_pnl", 0) > 0]
+    losses  = [t for t in recent if t.get("net_pnl", 0) <= 0]
+    net     = sum(t.get("net_pnl", 0) for t in recent)
+    staked  = sum(t.get("margin", 0) for t in recent)
+    win_rate = len(wins) / len(recent) * 100
+    roi      = (net / staked * 100) if staked else 0.0
+
+    avg_win  = (sum(t["net_pnl"] for t in wins) / len(wins)) if wins else 0.0
+    avg_loss = (sum(t["net_pnl"] for t in losses) / len(losses)) if losses else 0.0
+    best     = max(recent, key=lambda t: t.get("net_pnl", 0))
+    worst    = min(recent, key=lambda t: t.get("net_pnl", 0))
+    avg_hold = sum(t.get("held_hours", 0) for t in recent) / len(recent)
+
+    # Profit factor — gross wins / gross losses
+    gross_w = sum(t["net_pnl"] for t in wins)
+    gross_l = abs(sum(t["net_pnl"] for t in losses))
+    pf = (gross_w / gross_l) if gross_l > 0 else float("inf")
+    pf_str = "∞" if pf == float("inf") else f"{pf:.2f}"
+
+    # Per-day breakdown
+    by_day: dict = {}
+    for t in recent:
+        d = _utc_day(t.get("closed_at", ""))
+        by_day.setdefault(d, []).append(t)
+
+    emoji = "📈" if net > 0 else "📉"
+    lines = [
+        f"{emoji} *KALSHI — {days:.0f} DAY REPORT*\n",
+        f"*Return on money staked: {roi:+.2f}%*",
+        f"Net P&L: *${net:+.2f}* across {len(recent)} closed trades",
+        "",
+        f"Win rate: *{win_rate:.0f}%* ({len(wins)}W / {len(losses)}L)",
+        f"Profit factor: {pf_str}  _(above 1.0 = profitable)_",
+        f"Avg win: ${avg_win:+.2f}  |  Avg loss: ${avg_loss:+.2f}",
+        f"Avg hold: {avg_hold:.1f}h",
+        "",
+        f"Best:  {best['ticker']} ${best.get('net_pnl',0):+.2f}",
+        f"Worst: {worst['ticker']} ${worst.get('net_pnl',0):+.2f}",
+        "",
+        "*Daily breakdown:*",
+    ]
+    for d in sorted(by_day):
+        day_trades = by_day[d]
+        day_net = sum(t.get("net_pnl", 0) for t in day_trades)
+        day_w   = sum(1 for t in day_trades if t.get("net_pnl", 0) > 0)
+        mark    = "🟢" if day_net > 0 else "🔴"
+        lines.append(f"{mark} {d}: {len(day_trades)} trades, {day_w}W — ${day_net:+.2f}")
+
+    lines += [
+        "",
+        f"*Account: ${total_val:.2f}* (started ${starting:.2f})",
+        f"All-time: *{all_time_pct:+.2f}%*",
+        "",
+        "_Paper trading. Run /kalshi_stats for calibration detail._",
+    ]
+    return "\n".join(lines)
+
+
+def _report_due() -> bool:
+    """True if REPORT_INTERVAL_DAYS have passed since the last report."""
+    try:
+        from kalshi_portfolio import _redis_get, _redis_set
+        state = _redis_get(_REPORT_STATE_KEY) or {}
+        last  = state.get("last_report_ts", 0)
+        now   = time.time()
+        if not last:
+            # First run — anchor now so the first report lands a full period out
+            _redis_set(_REPORT_STATE_KEY, {"last_report_ts": now})
+            return False
+        if (now - last) >= REPORT_INTERVAL_DAYS * 86400:
+            _redis_set(_REPORT_STATE_KEY, {"last_report_ts": now})
+            return True
+    except Exception as e:
+        log.warning(f"Kalshi: report scheduler error: {e}")
+    return False
+
+
+def run_report_loop(stop_event: Event):
+    """Fire the periodic performance report."""
+    while not stop_event.is_set():
+        try:
+            if WEEKLY_REPORT_ENABLED and _report_due():
+                log.info("Kalshi: sending scheduled performance report")
+                send_telegram(build_weekly_report(REPORT_INTERVAL_DAYS))
+        except Exception as e:
+            log.error(f"Kalshi report loop error: {e}", exc_info=True)
+        for _ in range(1800):   # check every 30 min
+            if stop_event.is_set():
+                break
+            time.sleep(1)
+
+
 def _warm_event_market_cache():
     """
     Pre-load the open event market list so the first /ask doesn't wait ~30s
@@ -417,13 +661,15 @@ def main():
     # Send startup message
     if AUTO_SCAN and SILENT:
         send_telegram(
-            "🤖 *KALSHI Golem* ready — _silent mode_\n\n"
-            f"I'm paper trading in the background every {SCAN_INTERVAL_SEC//60} min "
-            f"at ${DEFAULT_MARGIN:.0f}/trade, building a track record. "
-            "You won't hear from me about it.\n\n"
-            "Check on me anytime:\n"
+            "🤖 *KALSHI Golem* — _silent day-trading mode_\n\n"
+            f"Taking up to *{DAILY_TRADE_TARGET} bets per day* at ${DEFAULT_MARGIN:.0f} each, "
+            f"all closed out same day. Running quietly — no trade alerts.\n\n"
+            f"📊 *Your report lands in {REPORT_INTERVAL_DAYS:.0f} days* with the full "
+            "win/loss percentage.\n\n"
+            "Check anytime:\n"
+            "`/report` — performance summary\n"
             "`/kalshi` — open positions & P&L\n"
-            "`/kalshi_stats` — win rate & calibration\n\n"
+            "`/kalshi_stats` — calibration detail\n\n"
             "Or ask me about any bet:\n"
             "`Will Bitcoin be above $120,000 this week?`"
         )
@@ -463,10 +709,15 @@ def main():
     else:
         log.info("Auto-scan DISABLED — on-demand only. Set KALSHI_AUTO_SCAN=true to enable.")
 
+    report_thread = Thread(target=run_report_loop, args=(stop_event,), daemon=True, name="kalshi-report")
+    report_thread.start()
+    if WEEKLY_REPORT_ENABLED:
+        log.info(f"Performance report scheduled every {REPORT_INTERVAL_DAYS} days")
+
     # Warm the event-market cache in the background so /ask is fast immediately
     Thread(target=_warm_event_market_cache, daemon=True, name="kalshi-cache-warm").start()
 
-    log.info("All loops running (scan / monitor / commands). Ctrl+C to stop.")
+    log.info("All loops running (scan / monitor / commands / report). Ctrl+C to stop.")
     try:
         while True:
             time.sleep(60)
