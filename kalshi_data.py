@@ -57,11 +57,38 @@ CANDLE_1440M = 1440
 CANDLE_LOOKBACK_HOURS = 120   # 5 days of hourly candles
 
 # ─── MARKET FILTER ────────────────────────────────────────────────────────────
-# Commodity perps (e.g. KXALUMINUMPERP1) exist in the API but aren't available
-# in the Kalshi app UI — exclude them to avoid signals you can't trade.
-# Crypto perp tickers never start with "KX"; commodity ones always do.
-# Set KALSHI_INCLUDE_COMMODITIES=true in Railway to scan them too.
+# Commodity perps (e.g. KXALUMINUMPERP1) exist in the API but aren't tradeable
+# in the Kalshi app — exclude them so we never signal something you can't act on.
+# NOTE: every Kalshi ticker starts with "KX", so we match the ASSET SYMBOL that
+# follows the prefix (KXBTC..., KXSOL...). Matching on the prefix boundary avoids
+# false positives like KXGASOLINE accidentally matching "SOL".
+CRYPTO_SYMBOLS = [
+    "BTC", "ETH", "HYPE", "SOL", "SUI", "ZEC", "XRP",
+    "DOGE", "LTC", "NEAR", "BCH", "LINK", "KSHIB", "SHIB",
+    "BITCOIN", "ETHEREUM", "SOLANA", "RIPPLE", "DOGECOIN",
+    "LITECOIN", "CHAINLINK",
+]
+# Set KALSHI_INCLUDE_COMMODITIES=true in Railway to scan every perp market
 _INCLUDE_COMMODITIES = os.getenv("KALSHI_INCLUDE_COMMODITIES", "false").lower() == "true"
+
+
+def _is_crypto_market(m: dict) -> bool:
+    """True if this perp is one of the crypto markets tradeable in the Kalshi app."""
+    ticker = (m.get("ticker") or "").upper()
+    title  = (m.get("title")  or "").upper()
+
+    # Strip the universal KX prefix, then check the asset symbol at the start
+    body = ticker[2:] if ticker.startswith("KX") else ticker
+    for sym in CRYPTO_SYMBOLS:
+        if body.startswith(sym):
+            return True
+
+    # Fallback: full asset name in the title (e.g. "Bitcoin Perpetual")
+    for sym in CRYPTO_SYMBOLS:
+        if len(sym) > 3 and sym in title:
+            return True
+
+    return False
 
 
 # ─── HELPERS ──────────────────────────────────────────────────────────────────
@@ -128,9 +155,20 @@ def get_all_markets(use_cache: bool = True) -> list[dict]:
             "contract_size":     m.get("contract_size", "1.000000"),
         })
 
-    # Drop commodity perps (KX prefix) unless explicitly enabled
-    if not _INCLUDE_COMMODITIES:
-        markets = [m for m in markets if not m["ticker"].startswith("KX")]
+    # Keep only crypto perps (tradeable in the app) unless commodities are enabled
+    if not _INCLUDE_COMMODITIES and markets:
+        filtered = [m for m in markets if _is_crypto_market(m)]
+        if filtered:
+            dropped = len(markets) - len(filtered)
+            if dropped:
+                log.info(f"Kalshi: filtered out {dropped} non-crypto perp market(s)")
+            markets = filtered
+        else:
+            # SAFETY NET: never let the filter blind the scanner completely.
+            log.warning(
+                "Kalshi: crypto filter matched 0 markets — falling back to unfiltered list. "
+                f"Tickers seen: {[m['ticker'] for m in markets[:15]]}"
+            )
 
     _markets_cache["data"] = markets
     _markets_cache["fetched_at"] = now
