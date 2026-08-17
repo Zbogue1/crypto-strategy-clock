@@ -105,5 +105,28 @@
       "LINK"
     ],
     "alert": null
+  },
+  {
+    "ts": "2026-08-17T00:03:06.765653+00:00",
+    "coin": "LINK",
+    "price": 9.38,
+    "signal": "HOLD",
+    "confidence": 35,
+    "score": -0.3,
+    "fg": 31,
+    "btc_price": 62859,
+    "btc_dominance": 56.2,
+    "candidates": [
+      "VELVET",
+      "AKE",
+      "FDUSD",
+      "FET",
+      "H",
+      "INJ",
+      "TRUMP",
+      "SOL",
+      "LINK"
+    ],
+    "alert": null
   }
 ]
