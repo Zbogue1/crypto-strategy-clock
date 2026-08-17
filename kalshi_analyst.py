@@ -347,7 +347,29 @@ def analyze_question(question: str, ticker: str = None) -> dict:
     raw = raw.strip()
 
     verdict = _parse_verdict(raw)
+
+    # 4b. Repair pass — the analysis is good, it just wasn't formatted as JSON.
+    #     Don't throw away real research over a formatting slip.
+    if not verdict and raw:
+        log.warning("Kalshi analyst: first parse failed, attempting repair pass")
+        try:
+            repair = client.messages.create(
+                model=AI_MODEL,
+                max_tokens=1200,
+                system=("Convert the analysis below into ONLY the JSON object described. "
+                        "Output nothing but valid JSON — no prose, no markdown fences.\n\n"
+                        + SYSTEM_PROMPT.split("Output MUST be valid JSON")[-1]),
+                messages=[{"role": "user", "content": raw[:12000]}],
+            )
+            repaired = "".join(
+                b.text for b in repair.content if getattr(b, "type", "") == "text"
+            ).strip()
+            verdict = _parse_verdict(repaired)
+        except Exception as e:
+            log.error(f"Kalshi analyst: repair pass failed: {e}")
+
     if not verdict:
+        log.error(f"Kalshi analyst: unparseable output. First 800 chars: {raw[:800]}")
         return {"error": "Could not parse analysis output.", "raw": raw[:500]}
 
     # 5. Enforce our own edge discipline on top of the model's call
@@ -378,29 +400,80 @@ def analyze_question(question: str, ticker: str = None) -> dict:
     return verdict
 
 
-def _parse_verdict(raw: str) -> Optional[dict]:
-    txt = raw
-    if "```" in txt:
-        m = re.search(r"```(?:json)?\s*([\s\S]+?)```", txt)
-        if m:
-            txt = m.group(1).strip()
-    else:
-        # Grab the outermost JSON object if there's prose around it
-        start, end = txt.find("{"), txt.rfind("}")
-        if start != -1 and end > start:
-            txt = txt[start:end + 1]
+_REQUIRED_KEYS = {"probability_yes", "verdict", "reasoning"}
+
+
+def _iter_json_objects(text: str):
+    """
+    Yield every balanced {...} substring in text, longest/last first.
+    Web search adds narration between tool calls, so the verdict JSON is
+    usually the LAST object — and naive find('{')/rfind('}') grabs garbage.
+    """
+    starts = [i for i, ch in enumerate(text) if ch == "{"]
+    found = []
+    for start in starts:
+        depth = 0
+        in_str = False
+        esc = False
+        for i in range(start, len(text)):
+            ch = text[i]
+            if in_str:
+                if esc:
+                    esc = False
+                elif ch == "\\":
+                    esc = True
+                elif ch == '"':
+                    in_str = False
+                continue
+            if ch == '"':
+                in_str = True
+            elif ch == "{":
+                depth += 1
+            elif ch == "}":
+                depth -= 1
+                if depth == 0:
+                    found.append(text[start:i + 1])
+                    break
+    # Prefer later, larger objects (the verdict comes after the narration)
+    for candidate in sorted(found, key=lambda s: (text.find(s), len(s)), reverse=True):
+        yield candidate
+
+
+def _coerce(v: dict) -> Optional[dict]:
+    if not _REQUIRED_KEYS.issubset(v.keys()):
+        return None
     try:
-        v = json.loads(txt)
-    except json.JSONDecodeError:
+        v["probability_yes"] = int(round(float(v.get("probability_yes", 50))))
+        v["confidence"]      = int(round(float(v.get("confidence", 50))))
+    except (TypeError, ValueError):
         return None
-
-    required = {"probability_yes", "verdict", "reasoning"}
-    if not required.issubset(v.keys()):
-        return None
-
-    v["probability_yes"] = int(v.get("probability_yes", 50))
-    v["confidence"]      = int(v.get("confidence", 50))
+    v["probability_yes"] = max(0, min(100, v["probability_yes"]))
+    v["confidence"]      = max(0, min(100, v["confidence"]))
+    if v.get("verdict") not in ("BET_YES", "BET_NO", "PASS"):
+        v["verdict"] = "PASS"
     return v
+
+
+def _parse_verdict(raw: str) -> Optional[dict]:
+    # 1. Fenced code block wins if it parses
+    for m in re.finditer(r"```(?:json)?\s*([\s\S]+?)```", raw):
+        try:
+            got = _coerce(json.loads(m.group(1).strip()))
+            if got:
+                return got
+        except json.JSONDecodeError:
+            pass
+
+    # 2. Any balanced JSON object with the right keys
+    for candidate in _iter_json_objects(raw):
+        try:
+            got = _coerce(json.loads(candidate))
+            if got:
+                return got
+        except json.JSONDecodeError:
+            continue
+
+    return None
 
 
 # ─── TELEGRAM FORMATTING ──────────────────────────────────────────────────────
