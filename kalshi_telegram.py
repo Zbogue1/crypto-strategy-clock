@@ -181,15 +181,28 @@ def format_funding_reminder(charges: list[dict]) -> Optional[str]:
     if abs(total_charge) < 0.10:
         return None  # too small to bother the user
 
-    lines = ["💸 *KALSHI* — Funding payment applied\n"]
+    # Positive charge = we paid out. Negative charge = we were paid.
+    header = (
+        "💸 *KALSHI* — Funding payment"
+        if total_charge > 0
+        else "💰 *KALSHI* — Funding received"
+    )
+    lines = [header + "\n"]
+
     for c in charges:
+        if abs(c["charge"]) < 0.0001:
+            continue   # skip zero-funding markets — nothing happened
         dir_emoji = "🟢" if c["direction"] == "UP" else "🔴"
-        paid_or_received = "paid" if c["charge"] > 0 else "received"
-        lines.append(
-            f"{dir_emoji} {c['ticker']}: {paid_or_received} ${abs(c['charge']):.4f} "
-            f"(total: ${c['cumulative_paid']:.2f})"
-        )
-    lines.append(f"\nTotal this cycle: ${total_charge:+.4f}")
+        if c["charge"] > 0:
+            lines.append(f"{dir_emoji} {c['ticker']}: you paid ${c['charge']:.4f}")
+        else:
+            lines.append(f"{dir_emoji} {c['ticker']}: you earned ${abs(c['charge']):.4f}")
+
+    if total_charge > 0:
+        lines.append(f"\n*Cost this cycle: ${total_charge:.4f}* out of your account")
+    else:
+        lines.append(f"\n*Earned this cycle: ${abs(total_charge):.4f}* into your account")
+
     return "\n".join(lines)
 
 
