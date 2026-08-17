@@ -128,5 +128,28 @@
       "LINK"
     ],
     "alert": null
+  },
+  {
+    "ts": "2026-08-17T04:01:47.135547+00:00",
+    "coin": "LINK",
+    "price": 9.48,
+    "signal": "HOLD",
+    "confidence": 38,
+    "score": -0.3,
+    "fg": 31,
+    "btc_price": 63397,
+    "btc_dominance": 56.2,
+    "candidates": [
+      "VELVET",
+      "FDUSD",
+      "BTW",
+      "AKE",
+      "H",
+      "MON",
+      "FET",
+      "SOL",
+      "LINK"
+    ],
+    "alert": "FET position has only 8.7% buffer to stop-loss \u2014 monitor closely for potential exit."
   }
 ]
