@@ -151,5 +151,28 @@
       "LINK"
     ],
     "alert": "FET position has only 8.7% buffer to stop-loss \u2014 monitor closely for potential exit."
+  },
+  {
+    "ts": "2026-08-17T08:03:10.983600+00:00",
+    "coin": "SOL",
+    "price": 75.7,
+    "signal": "HOLD",
+    "confidence": 35,
+    "score": -0.3,
+    "fg": 31,
+    "btc_price": 63460,
+    "btc_dominance": 56.2,
+    "candidates": [
+      "H",
+      "FDUSD",
+      "BTW",
+      "MON",
+      "VELVET",
+      "AKE",
+      "FET",
+      "SOL",
+      "LINK"
+    ],
+    "alert": null
   }
 ]
