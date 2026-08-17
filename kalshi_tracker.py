@@ -73,6 +73,33 @@ FUNDING_INTERVAL_SEC  = 8 * 3600   # 8 hours
 DEFAULT_MARGIN        = float(os.getenv("KALSHI_DEFAULT_MARGIN", "50.0"))
 NOTIFY_NO_SIGNALS     = os.getenv("KALSHI_NOTIFY_NO_SIGNALS", "false").lower() == "true"
 
+# Autonomous perp scanning — ON. Golem keeps hunting and paper trading so we
+# build a real track record. Set KALSHI_AUTO_SCAN=false to stop trading entirely.
+AUTO_SCAN             = os.getenv("KALSHI_AUTO_SCAN", "true").lower() == "true"
+
+# SILENT MODE — trade autonomously but don't send unsolicited Telegram alerts.
+# Everything is still recorded to the portfolio and postmortem, so /kalshi and
+# /kalshi_stats show you exactly what happened whenever you want to look.
+# Set KALSHI_SILENT=false to get live entry/exit notifications again.
+SILENT                = os.getenv("KALSHI_SILENT", "true").lower() == "true"
+
+# Keep managing positions that are already open.
+MONITOR_POSITIONS     = os.getenv("KALSHI_MONITOR_POSITIONS", "true").lower() == "true"
+
+# ─── DAY-TRADING MODE ─────────────────────────────────────────────────────────
+# Target N new bets per UTC day, every one closed out the same day.
+# This produces a clean, comparable daily sample for the weekly report.
+DAILY_TRADE_TARGET    = int(os.getenv("KALSHI_DAILY_TRADES", "4"))
+# Force-close any position still open this many hours before the UTC day ends.
+DAY_CLOSE_UTC_HOUR    = int(os.getenv("KALSHI_DAY_CLOSE_HOUR", "23"))
+# Hard cap on how long a single day trade can run, regardless of clock.
+MAX_HOLD_HOURS        = float(os.getenv("KALSHI_MAX_HOLD_HOURS", "20"))
+
+# ─── WEEKLY REPORT ────────────────────────────────────────────────────────────
+WEEKLY_REPORT_ENABLED = os.getenv("KALSHI_WEEKLY_REPORT", "true").lower() == "true"
+REPORT_INTERVAL_DAYS  = float(os.getenv("KALSHI_REPORT_DAYS", "7"))
+_REPORT_STATE_KEY     = "kalshi_report_state"
+
 TELEGRAM_TOKEN = os.getenv("KALSHI_TELEGRAM_TOKEN") or os.getenv("TELEGRAM_TOKEN", "")
 CHAT_ID        = os.getenv("KALSHI_CHAT_ID")        or os.getenv("TELEGRAM_CHAT_ID", "")
 
@@ -81,15 +108,16 @@ CHAT_ID        = os.getenv("KALSHI_CHAT_ID")        or os.getenv("TELEGRAM_CHAT_
 
 HELP_TEXT = (
     "🤖 *KALSHI Golem*\n\n"
-    "*Ask about any Kalshi bet:*\n"
-    "`/ask Will Bitcoin be above $120,000 this week?`\n"
-    "`/ask Will the Fed cut rates in December?`\n"
-    "`/ask Will the Chiefs win the Super Bowl?`\n\n"
-    "You can also just type a question with a `?` and I'll analyze it.\n\n"
+    "I stay quiet unless you ask. Just send me any bet question:\n\n"
+    "`Will Bitcoin be above $120,000 this week?`\n"
+    "`Will the Fed cut rates in December?`\n"
+    "`Who wins, Parry or Boisson?`\n\n"
+    "Any message with a `?` gets analyzed. Use `/ask <question>` if it "
+    "doesn't end in a question mark.\n\n"
     "*Commands:*\n"
     "`/kalshi` — portfolio snapshot\n"
     "`/kalshi_stats` — track record & calibration\n"
-    "`/kalshi_scan` — force a perp market scan\n"
+    "`/kalshi_scan` — scan perps on demand (one-off)\n"
     "`/help` — this message"
 )
 
@@ -224,10 +252,11 @@ def _run_scan_cycle(force: bool = False):
         ticker = verdict["ticker"]
         log.info(f"Kalshi: {ticker} → {verdict['verdict']} {verdict['confidence']}/100")
 
-        # Send Telegram signal
-        send_signal(verdict, margin=DEFAULT_MARGIN)
+        # Telegram signal — suppressed in silent mode (trade still happens)
+        if not SILENT:
+            send_signal(verdict, margin=DEFAULT_MARGIN)
 
-        # Log to postmortem
+        # Log to postmortem — ALWAYS, this is how Golem learns
         log_call(verdict)
 
         # Open paper position
@@ -265,6 +294,9 @@ def _run_monitor_cycle():
     """Check open positions for SL/TP/liquidation. Apply funding if due."""
     global _last_funding_check
 
+    if not MONITOR_POSITIONS:
+        return
+
     summary = get_portfolio_summary()
     positions = summary.get("positions", [])
     if not positions:
@@ -291,9 +323,13 @@ def _run_monitor_cycle():
 
         trade = close_position(ticker, exit_price, reason=reason)
         if trade:
-            send_exit(trade)
-            log_outcome(ticker, trade)
-            log.info(f"Kalshi monitor: closed {ticker} via {reason} @ {exit_price:.4f}")
+            if not SILENT:
+                send_exit(trade)
+            log_outcome(ticker, trade)   # always — this is the learning signal
+            log.info(
+                f"Kalshi monitor: closed {ticker} via {reason} @ {exit_price:.4f} "
+                f"| net ${trade.get('net_pnl', 0):+.2f}"
+            )
 
     # Funding check (every 8H)
     now = time.time()
@@ -310,7 +346,8 @@ def _run_monitor_cycle():
 
         if funding_rates:
             charges = apply_funding(funding_rates)
-            send_funding(charges)
+            if not SILENT:
+                send_funding(charges)
             log.info(f"Kalshi monitor: funding applied for {len(charges)} positions")
 
 
@@ -369,30 +406,62 @@ def run_command_loop(stop_event: Event):
 
 def main():
     log.info("=" * 60)
-    log.info("KALSHI PERPS TRACKER — starting up")
+    log.info("KALSHI GOLEM — starting up")
+    mode = ("SILENT AUTO-TRADE" if (AUTO_SCAN and SILENT)
+            else "AUTO-SCAN + ALERTS" if AUTO_SCAN else "ON-DEMAND ONLY")
+    log.info(f"Mode: {mode}")
     log.info(f"Scan interval: {SCAN_INTERVAL_SEC}s | Monitor: {MONITOR_INTERVAL_SEC}s")
     log.info(f"Default margin: ${DEFAULT_MARGIN:.0f} | Max positions: 6")
     log.info("=" * 60)
 
     # Send startup message
-    send_telegram(
-        "🚀 *KALSHI Golem* started\n"
-        f"Watching all crypto perp markets. Scanning every {SCAN_INTERVAL_SEC//60} min.\n"
-        f"Paper trading with ${DEFAULT_MARGIN:.0f}/trade.\n\n"
-        "*New:* ask me about any Kalshi bet —\n"
-        "`/ask Will Bitcoin be above $120,000 this week?`\n\n"
-        "Commands: /ask /kalshi /kalshi_stats /kalshi_scan /help"
-    )
+    if AUTO_SCAN and SILENT:
+        send_telegram(
+            "🤖 *KALSHI Golem* ready — _silent mode_\n\n"
+            f"I'm paper trading in the background every {SCAN_INTERVAL_SEC//60} min "
+            f"at ${DEFAULT_MARGIN:.0f}/trade, building a track record. "
+            "You won't hear from me about it.\n\n"
+            "Check on me anytime:\n"
+            "`/kalshi` — open positions & P&L\n"
+            "`/kalshi_stats` — win rate & calibration\n\n"
+            "Or ask me about any bet:\n"
+            "`Will Bitcoin be above $120,000 this week?`"
+        )
+    elif AUTO_SCAN:
+        send_telegram(
+            "🚀 *KALSHI Golem* started\n"
+            f"Auto-scanning crypto perps every {SCAN_INTERVAL_SEC//60} min.\n"
+            f"Paper trading with ${DEFAULT_MARGIN:.0f}/trade.\n\n"
+            "Ask me about any Kalshi bet —\n"
+            "`Will Bitcoin be above $120,000 this week?`\n\n"
+            "Commands: /ask /kalshi /kalshi_stats /kalshi_scan /help"
+        )
+    else:
+        send_telegram(
+            "🤖 *KALSHI Golem* ready — _on-demand mode_\n\n"
+            "Not trading. I'll stay quiet until you ask me something.\n\n"
+            "Just send me any bet question:\n"
+            "`Will Bitcoin be above $120,000 this week?`"
+        )
 
     stop_event = Event()
 
-    scan_thread    = Thread(target=run_scan_loop,    args=(stop_event,), daemon=True, name="kalshi-scan")
     monitor_thread = Thread(target=run_monitor_loop, args=(stop_event,), daemon=True, name="kalshi-monitor")
     command_thread = Thread(target=run_command_loop, args=(stop_event,), daemon=True, name="kalshi-commands")
 
-    scan_thread.start()
     monitor_thread.start()
     command_thread.start()
+
+    scan_thread = None
+    if AUTO_SCAN:
+        scan_thread = Thread(target=run_scan_loop, args=(stop_event,), daemon=True, name="kalshi-scan")
+        scan_thread.start()
+        if SILENT:
+            log.info("Auto-scan ENABLED, SILENT — trading + learning, no Telegram alerts")
+        else:
+            log.info("Auto-scan ENABLED — will alert on new signals")
+    else:
+        log.info("Auto-scan DISABLED — on-demand only. Set KALSHI_AUTO_SCAN=true to enable.")
 
     # Warm the event-market cache in the background so /ask is fast immediately
     Thread(target=_warm_event_market_cache, daemon=True, name="kalshi-cache-warm").start()
@@ -404,7 +473,8 @@ def main():
     except KeyboardInterrupt:
         log.info("Stopping Kalshi tracker...")
         stop_event.set()
-        scan_thread.join(timeout=10)
+        if scan_thread:
+            scan_thread.join(timeout=10)
         monitor_thread.join(timeout=10)
         command_thread.join(timeout=10)
         log.info("Kalshi tracker stopped.")
