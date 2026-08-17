@@ -1,27 +1,27 @@
 {
-  "timestamp": "2026-08-17T08:03:10.983600+00:00",
+  "timestamp": "2026-08-17T12:03:37.393061+00:00",
   "signal": "HOLD",
   "selected_coin": "SOL",
   "selected_coin_name": "Solana",
-  "selected_coin_price": 75.7,
+  "selected_coin_price": 75.61,
   "confidence": 35,
-  "layman_headline": "Market stuck in fearful sideways churn \u2014 holding positions and waiting for a clearer setup.",
-  "layman_explanation": "The crypto market is in a 'Fear' mood with Bitcoin hovering around $63,500 and most altcoins treading water or slightly down. Our three open positions (SOL, LINK, FET) are all slightly underwater but well within their stop-loss ranges. None of the new swing trade candidates look attractive right now \u2014 the ones that have moved big are overextended, and the rest lack enough data or momentum to justify a new entry.",
-  "layman_action": "No new trades today. Keep holding the current three positions and monitor their stop-losses. Be patient \u2014 fearful markets can produce great entries, but the setup needs to be clearer than what's available now.",
-  "expert_reasoning": "All swing candidates are problematic: BTW (RSI 90, +84% in 7d) and AKE/VELVET (+154%/+103% in 7d) are dangerously extended with extreme correction risk. H just crashed 36% in 24 hours after a 34% weekly gain \u2014 classic pump-and-dump pattern. FET is already held. FDUSD is a stablecoin. MON lacks any technical data and is in a steady downtrend (-6.3% weekly, -59% from ATH) with no visible catalyst. LINK already held. BTC dominance at 56.2% continues to suppress alt performance. The Fear & Greed index at 31 is improving from the weekly average of 30.4 but remains firmly in fear territory \u2014 not yet at the extreme fear levels (sub-20) that historically produce the best contrarian entries. With 3 positions already open and no clear setup, capital preservation is paramount.",
+  "layman_headline": "Portfolio holds three positions in a fearful market \u2014 patience is the play right now.",
+  "layman_explanation": "The crypto market is in a 'Fear' state with Bitcoin struggling below $64K and losing its 200-week trend line. We currently hold SOL, LINK, and FET \u2014 all slightly underwater but well within their stop-loss ranges. The swing candidates on offer are either wildly overbought after massive pumps (AKE up 154%, BTW up 88%, VELVET up 69%) or are stablecoins with no trade potential. There's no compelling new entry that offers a clear risk-reward advantage over our current positions.",
+  "layman_action": "Hold your current positions and wait. All three trades are near entry prices with intact stop-losses. Don't chase coins that have already pumped 50-150% in a week during a fearful market.",
+  "expert_reasoning": "All three current positions (SOL -0.7%, LINK -0.5%, FET -2.8%) are marginally down but well above stop-losses. The swing candidates present a poor setup: AKE has RSI 91.7 (extreme overbought), H and VELVET just dropped 28-29% in 24h after massive weekly pumps (classic blow-off reversals), BTW lacks RSI/MACD data with an 88% weekly gain, and MON's RSI 39 pullback lacks any catalyst. BTC dominance at 56.3% continues to pressure alts. The Fear & Greed index at 31 is improving slightly (from 30.4 weekly avg), which could support a bounce in our existing positions. Adding a fourth position in this environment would increase risk without proportional reward.",
   "risk_factors": [
-    "BTC futures crowding could trigger a liquidation cascade taking all alts lower",
-    "High BTC dominance (56.2%) continues to drain capital from altcoins",
-    "FET is the weakest position at -3.4% and approaching its -10% stop-loss zone if AI narrative fades further"
+    "BTC losing its 200-week trend line (CoinTelegraph headline) could trigger deeper selloff dragging all alts lower",
+    "$390M weekly ETF outflows signal institutional selling pressure that may accelerate",
+    "FET down 96.5% from ATH shows structural weakness \u2014 the -12.2% weekly decline could continue"
   ],
   "watch_list": [
-    "BTC price action around $63,000-$65,000 \u2014 a break below $62,000 could trigger broad alt selloff",
-    "FET approaching stop-loss at $0.112 \u2014 monitor for any AI sector catalyst or continued bleed",
-    "LINK momentum \u2014 up 14.3% on the week, watch if it can hold above $9.00 support for continuation toward $10.90 target"
+    "BTC price action around $63K-$64K \u2014 a breakdown below $62K would likely trigger SOL and FET stop-losses",
+    "LINK momentum \u2014 it's up 15.1% on the week with RSI still neutral at 49, closest to profit target of our three positions",
+    "Fear & Greed index trend \u2014 currently improving from 30.4 to 31, a move above 35 could signal alt relief rally"
   ],
-  "market_context": "Crypto market is in a fear-driven sideways range with BTC at $63.5K and 56.2% dominance squeezing altcoins. Improving fear/greed trend (31 vs 30.4 weekly avg) suggests sentiment may be bottoming but hasn't turned yet.",
-  "context_banner": "Three positions open in a fearful, range-bound market \u2014 patience is the highest-conviction trade right now.",
-  "btc_price": 63460,
+  "market_context": "Bitcoin at $63,550 has lost its 200-week trend line with $390M in weekly ETF outflows, creating a cautious backdrop. BTC dominance at 56.3% and Fear & Greed at 31 ('Fear') suggest this is not the time to add risk \u2014 but improving sentiment trend offers hope for existing positions.",
+  "context_banner": "Market in Fear with BTC losing key long-term support \u2014 hold existing positions with tight stop-losses while waiting for clarity.",
+  "btc_price": 63550,
   "fear_greed": {
     "current": 31,
     "label": "Fear",
@@ -29,32 +29,32 @@
     "week_avg": 30.4,
     "trend": "improving"
   },
-  "btc_dominance": 56.2,
+  "btc_dominance": 56.3,
   "key_signals": [
+    {
+      "source": "CoinTelegraph",
+      "signal_type": "news",
+      "description": "BTC losing its 200-week trend line with 2022 parallels is a significant bearish technical signal that warrants caution on new entries."
+    },
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Fear at 31, slightly improving from weekly avg of 30.4 \u2014 not yet extreme enough for aggressive contrarian entries but trend is constructive."
-    },
-    {
-      "source": "CoinDesk",
-      "signal_type": "news",
-      "description": "BTC futures market described as 'crowded club with a tiny exit' \u2014 warns of potential liquidation cascade that could spike volatility in either direction."
+      "description": "Fear & Greed at 31 (Fear) but slightly improving from 30.4 weekly average \u2014 not yet signaling capitulation or recovery, keeping us in wait mode."
     },
     {
       "source": "RSI",
       "signal_type": "technical",
-      "description": "BTW at RSI 90 is the only candidate with RSI data and it screams overbought \u2014 confirms no safe new entries among candidates."
+      "description": "AKE RSI at 91.7 and MON RSI at 39.1 represent the two extremes among candidates \u2014 neither offers a clean swing setup with defined catalysts."
+    },
+    {
+      "source": "CoinDesk",
+      "signal_type": "news",
+      "description": "Bitcoin ETF outflows of $390M for the week indicate institutional caution and remove a key demand driver for near-term price support."
     },
     {
       "source": "volume_breakout",
       "signal_type": "technical",
-      "description": "No volume breakout signals detected among swing candidates; extended movers (BTW, AKE, VELVET) lack sustainable volume confirmation."
-    },
-    {
-      "source": "on_chain",
-      "signal_type": "onchain",
-      "description": "DeFi TVL on Ethereum ($41.4B), Arbitrum ($1.24B), and Avalanche ($418M) showing 0% weekly change \u2014 stagnant capital flows confirm risk-off posture."
+      "description": "No volume breakout patterns detected among viable candidates \u2014 the pumped coins (AKE, BTW, VELVET) show momentum exhaustion rather than sustainable breakouts."
     }
   ],
   "_mode": "HUNTING",
