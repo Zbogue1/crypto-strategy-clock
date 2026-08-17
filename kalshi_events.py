@@ -33,9 +33,14 @@ EVENTS_BASE = os.getenv("KALSHI_EVENTS_BASE", "https://api.elections.kalshi.com/
 
 _HEADERS = {"Accept": "application/json"}
 
-MAX_SEARCH_PAGES = 8      # up to ~1600 open markets scanned per search
-PAGE_LIMIT       = 200
-MIN_MATCH_SCORE  = 0.15   # F1 threshold — below this the market isn't the one asked about
+PAGE_LIMIT        = 1000   # Kalshi max per page
+MAX_SEARCH_PAGES  = 60     # up to ~60k markets — Kalshi has tens of thousands open
+SEARCH_TIME_BUDGET = 45    # seconds; stop paging past this even if more remain
+MIN_MATCH_SCORE   = 0.12   # F1 threshold — below this the market isn't the one asked about
+
+# Full open-market list is cached so repeated /ask calls don't re-scan Kalshi
+_ALL_CACHE: dict = {"data": None, "fetched_at": 0.0}
+ALL_MARKETS_TTL = 600      # 10 minutes
 
 
 def _get(path: str, params: dict = None, timeout: int = 15) -> Optional[dict]:
@@ -52,26 +57,40 @@ def _get(path: str, params: dict = None, timeout: int = 15) -> Optional[dict]:
 # ─── SEARCH ───────────────────────────────────────────────────────────────────
 
 _STOPWORDS = {
-    "will", "the", "a", "an", "be", "is", "are", "at", "on", "in", "by", "of",
-    "to", "for", "than", "above", "below", "over", "under", "before", "after",
-    "or", "and", "do", "does", "did", "what", "who", "when", "how", "much",
+    "will", "the", "a", "an", "be", "is", "are", "was", "were", "at", "on",
+    "in", "by", "of", "to", "for", "than", "above", "below", "over", "under",
+    "before", "after", "or", "and", "do", "does", "did", "what", "who", "whos",
+    "when", "how", "much", "going", "gonna", "get", "got", "this", "that",
+    "it", "its", "there", "their", "have", "has", "had", "can", "could",
+    "would", "should", "win", "wins", "beat", "beats", "game", "match",
+    "vs", "versus", "against", "next", "yes", "no", "s", "t", "m", "re",
 }
 
 
 def _tokenize(text: str) -> set:
-    words = re.findall(r"[a-z0-9$%.,]+", text.lower())
+    # Strip apostrophes first so "who's" → "whos" instead of {"who","s"}
+    cleaned = re.sub(r"['’]", "", text.lower())
+    words = re.findall(r"[a-z0-9$%.,]+", cleaned)
     toks = set()
     for w in words:
         w = w.strip(".,")
-        if w and w not in _STOPWORDS:
-            toks.add(w)
-            # numeric variants: $66,000 → 66000, 66k
-            digits = re.sub(r"[^0-9]", "", w)
-            if digits:
-                toks.add(digits)
-                if len(digits) > 3 and digits.endswith("000"):
-                    toks.add(digits[:-3] + "k")
+        if not w or w in _STOPWORDS:
+            continue
+        if len(w) < 2:          # single letters are noise
+            continue
+        toks.add(w)
+        # numeric variants: $66,000 → 66000, 66k
+        digits = re.sub(r"[^0-9]", "", w)
+        if digits:
+            toks.add(digits)
+            if len(digits) > 3 and digits.endswith("000"):
+                toks.add(digits[:-3] + "k")
     return toks
+
+
+def _distinctive(tokens: set) -> set:
+    """Tokens long enough to be meaningful identifiers (names, tickers, numbers)."""
+    return {t for t in tokens if len(t) >= 4}
 
 
 # Multi-leg / parlay / combo markets bundle dozens of unrelated events into one
@@ -147,19 +166,19 @@ def _score_match(question_tokens: set, market: dict) -> float:
     return f1
 
 
-def search_markets(question: str, max_results: int = 5) -> list[dict]:
+def fetch_all_open_markets(use_cache: bool = True) -> list[dict]:
     """
-    Fuzzy-search open Kalshi event markets matching a free-text question.
-    Returns up to max_results parsed market dicts, best match first.
+    Page through every open Kalshi market. Kalshi has tens of thousands, so this
+    is slow on a cold call (~20-40s) and cached for ALL_MARKETS_TTL afterwards.
     """
-    q_tokens = _tokenize(question)
-    if not q_tokens:
-        return []
+    now = time.time()
+    if use_cache and _ALL_CACHE["data"] and (now - _ALL_CACHE["fetched_at"]) < ALL_MARKETS_TTL:
+        return _ALL_CACHE["data"]
 
-    scored: list[tuple] = []
-    skipped_parlay = 0
-    skipped_dead   = 0
+    started = time.time()
+    markets: list[dict] = []
     cursor = None
+    pages = 0
 
     for _ in range(MAX_SEARCH_PAGES):
         params = {"status": "open", "limit": PAGE_LIMIT}
@@ -169,26 +188,71 @@ def search_markets(question: str, max_results: int = 5) -> list[dict]:
         if not data:
             break
 
-        for m in data.get("markets", []):
-            if _is_parlay(m):
-                skipped_parlay += 1
-                continue
-            if not _is_tradeable(m):
-                skipped_dead += 1
-                continue
-            s = _score_match(q_tokens, m)
-            if s >= MIN_MATCH_SCORE:
-                scored.append((s, m))
+        batch = data.get("markets", [])
+        markets.extend(batch)
+        pages += 1
 
         cursor = data.get("cursor")
-        if not cursor:
+        if not cursor or not batch:
             break
-        time.sleep(0.15)
+        if (time.time() - started) > SEARCH_TIME_BUDGET:
+            log.warning(f"Kalshi: hit {SEARCH_TIME_BUDGET}s search budget after {len(markets)} markets")
+            break
+
+    if markets:
+        _ALL_CACHE["data"] = markets
+        _ALL_CACHE["fetched_at"] = now
+        log.info(f"Kalshi: cached {len(markets)} open markets from {pages} pages "
+                 f"in {time.time()-started:.1f}s")
+    return markets or (_ALL_CACHE["data"] or [])
+
+
+def search_markets(question: str, max_results: int = 5) -> list[dict]:
+    """
+    Fuzzy-search open Kalshi event markets matching a free-text question.
+    Returns up to max_results parsed market dicts, best match first.
+    """
+    q_tokens = _tokenize(question)
+    if not q_tokens:
+        return []
+    q_distinct = _distinctive(q_tokens)
+
+    all_markets = fetch_all_open_markets()
+    if not all_markets:
+        log.warning("Kalshi search: could not fetch any open markets")
+        return []
+
+    scored: list[tuple] = []
+    skipped_parlay = skipped_dead = 0
+
+    for m in all_markets:
+        if _is_parlay(m):
+            skipped_parlay += 1
+            continue
+        if not _is_tradeable(m):
+            skipped_dead += 1
+            continue
+
+        s = _score_match(q_tokens, m)
+        if s < MIN_MATCH_SCORE:
+            continue
+
+        # Require at least one distinctive token (a name/number) to overlap,
+        # so we don't match on generic filler words alone.
+        if q_distinct:
+            m_tokens = _tokenize(" ".join([
+                m.get("title", ""), m.get("subtitle", ""),
+                m.get("yes_sub_title", ""), m.get("ticker", ""),
+            ]))
+            if not (q_distinct & _distinctive(m_tokens)):
+                continue
+
+        scored.append((s, m))
 
     scored.sort(key=lambda x: -x[0])
     log.info(
-        f"Kalshi search '{question[:40]}': {len(scored)} candidates "
-        f"(skipped {skipped_parlay} parlay, {skipped_dead} dead)"
+        f"Kalshi search '{question[:40]}': {len(scored)} matches from "
+        f"{len(all_markets)} open markets (skipped {skipped_parlay} parlay, {skipped_dead} dead)"
     )
     return [_parse_market(m, score) for score, m in scored[:max_results]]
 

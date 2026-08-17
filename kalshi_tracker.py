@@ -341,6 +341,19 @@ def run_monitor_loop(stop_event: Event):
             time.sleep(1)
 
 
+def _warm_event_market_cache():
+    """
+    Pre-load the open event market list so the first /ask doesn't wait ~30s
+    paging through all of Kalshi. Runs once in the background at startup.
+    """
+    try:
+        from kalshi_events import fetch_all_open_markets
+        markets = fetch_all_open_markets()
+        log.info(f"Kalshi: event market cache warmed — {len(markets)} open markets ready for /ask")
+    except Exception as e:
+        log.warning(f"Kalshi: event cache warm failed (first /ask will be slower): {e}")
+
+
 def run_command_loop(stop_event: Event):
     """Dedicated fast poller so /ask feels responsive."""
     while not stop_event.is_set():
@@ -380,6 +393,9 @@ def main():
     scan_thread.start()
     monitor_thread.start()
     command_thread.start()
+
+    # Warm the event-market cache in the background so /ask is fast immediately
+    Thread(target=_warm_event_market_cache, daemon=True, name="kalshi-cache-warm").start()
 
     log.info("All loops running (scan / monitor / commands). Ctrl+C to stop.")
     try:
