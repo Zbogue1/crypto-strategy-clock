@@ -221,5 +221,29 @@
       "LINK"
     ],
     "alert": "BTC reportedly losing the 200-week trend line \u2014 monitor closely as this historically precedes extended bearish phases."
+  },
+  {
+    "ts": "2026-08-17T20:02:24.119908+00:00",
+    "coin": "LINK",
+    "price": 9.49,
+    "signal": "HOLD",
+    "confidence": 38,
+    "score": -0.3,
+    "fg": 31,
+    "btc_price": 64236,
+    "btc_dominance": 56.5,
+    "candidates": [
+      "VELVET",
+      "MON",
+      "FDUSD",
+      "USDG",
+      "XAUT",
+      "RLUSD",
+      "PAXG",
+      "SOL",
+      "LINK",
+      "FET"
+    ],
+    "alert": null
   }
 ]
