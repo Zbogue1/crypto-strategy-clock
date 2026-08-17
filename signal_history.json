@@ -198,5 +198,28 @@
       "FET"
     ],
     "alert": "BTC lost 200-week trend line \u2014 monitor positions closely for stop-loss triggers if $62K breaks."
+  },
+  {
+    "ts": "2026-08-17T16:01:39.579822+00:00",
+    "coin": "SOL",
+    "price": 76.02,
+    "signal": "HOLD",
+    "confidence": 42,
+    "score": -0.3,
+    "fg": 31,
+    "btc_price": 64123,
+    "btc_dominance": 56.4,
+    "candidates": [
+      "FDUSD",
+      "VELVET",
+      "MON",
+      "USDG",
+      "XAUT",
+      "BTW",
+      "FET",
+      "SOL",
+      "LINK"
+    ],
+    "alert": "BTC reportedly losing the 200-week trend line \u2014 monitor closely as this historically precedes extended bearish phases."
   }
 ]
