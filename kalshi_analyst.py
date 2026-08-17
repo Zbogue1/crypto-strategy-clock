@@ -58,6 +58,7 @@ from kalshi_events import (
     detect_crypto_symbol, extract_threshold,
     get_spot_and_vol, prob_above,
 )
+from kalshi_domains import build_domain_block
 
 log = logging.getLogger(__name__)
 
@@ -192,7 +193,8 @@ def _build_context(question: str,
                    market: Optional[dict],
                    stat: dict,
                    liq: dict,
-                   alternatives: list[dict]) -> str:
+                   alternatives: list[dict],
+                   domain: dict) -> str:
 
     now = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
 
@@ -239,10 +241,18 @@ def _build_context(question: str,
                  for a in alternatives[:4]]
         alt_block = "OTHER MARKETS THAT ALSO MATCHED (check we picked the right one):\n" + "\n".join(lines)
 
+    search_list = "\n".join(f'  {i+1}. "{s}"' for i, s in enumerate(domain["searches"]))
+
     return f"""=== KALSHI BET ANALYSIS REQUEST ===
 Current time: {now}
 
 USER'S QUESTION: "{question}"
+
+DETECTED DOMAIN: {domain['label']}
+
+{'=' * 70}
+{domain['checklist']}
+{'=' * 70}
 
 {market_block}
 
@@ -256,7 +266,17 @@ LIQUIDITY / PRICE QUALITY
 
 === END CONTEXT ===
 
-Search the web for the most recent news, data, or developments relevant to this question before answering. Then produce your JSON verdict."""
+MANDATORY RESEARCH STEP — run these searches before you answer:
+{search_list}
+
+Then work through the domain checklist above IN ORDER. Your "key_evidence" array
+must contain the concrete findings for the top checklist factors — actual injury
+statuses, actual records, actual poll numbers, actual consensus estimates. If you
+searched and could not find a top-priority factor, say so explicitly in your
+reasoning and lower your confidence accordingly. Do not produce generic evidence
+like "the team has been playing well" — cite the specific number or status.
+
+Then produce your JSON verdict."""
 
 
 # ─── MAIN ANALYSIS ────────────────────────────────────────────────────────────
@@ -284,10 +304,12 @@ def analyze_question(question: str, ticker: str = None) -> dict:
         alternatives = matches[1:] if len(matches) > 1 else []
 
     # 2. Run the deterministic layers
-    stat = _statistical_layer(question, market)
-    liq  = _liquidity_layer(market)
+    stat   = _statistical_layer(question, market)
+    liq    = _liquidity_layer(market)
+    domain = build_domain_block(question, (market or {}).get("title", ""))
+    log.info(f"Kalshi analyst: domain={domain['label']} for '{question[:50]}'")
 
-    context = _build_context(question, market, stat, liq, alternatives)
+    context = _build_context(question, market, stat, liq, alternatives, domain)
 
     # 3. Claude synthesis with live web search
     try:
@@ -299,7 +321,7 @@ def analyze_question(question: str, ticker: str = None) -> dict:
             tools=[{
                 "type": "web_search_20250305",
                 "name": "web_search",
-                "max_uses": 4,
+                "max_uses": 6,
             }],
             messages=[{"role": "user", "content": context}],
         )
@@ -349,6 +371,8 @@ def analyze_question(question: str, ticker: str = None) -> dict:
     verdict["market"]      = market
     verdict["statistical"] = stat
     verdict["liquidity"]   = liq
+    verdict["domain"]      = domain["domain"]
+    verdict["domain_label"] = domain["label"]
     verdict["analyzed_at"] = datetime.now(timezone.utc).isoformat()
     verdict["telegram"]    = format_analysis_telegram(verdict)
     return verdict
@@ -393,7 +417,11 @@ def format_analysis_telegram(v: dict) -> str:
     p    = v["probability_yes"]
     bar  = "█" * int(p / 10) + "░" * (10 - int(p / 10))
 
-    lines = [f"🎯 *KALSHI* — Bet Analysis\n", f"_{v.get('question','')}_\n"]
+    dom_label = v.get("domain_label", "")
+    header = f"🎯 *KALSHI* — Bet Analysis"
+    if dom_label and dom_label != "General":
+        header += f"  ·  _{dom_label}_"
+    lines = [header + "\n", f"_{v.get('question','')}_\n"]
 
     if market:
         lines.append(f"*{market['title']}*")
@@ -435,8 +463,17 @@ def format_analysis_telegram(v: dict) -> str:
 
     ev = v.get("key_evidence") or []
     if ev:
-        lines.append("🔍 *What matters:*")
-        for e in ev[:4]:
+        label = {
+            "sports_team":   "🏈 *Injuries, form & matchup:*",
+            "sports_player": "🏈 *Health, usage & matchup:*",
+            "politics_election": "🗳 *Polls & fundamentals:*",
+            "macro_econ":    "🏦 *Market odds & data:*",
+            "equity":        "📊 *Estimates & positioning:*",
+            "weather_climate": "🌪 *Model guidance:*",
+            "awards_culture": "🏆 *Precursors & campaign:*",
+        }.get(v.get("domain", ""), "🔍 *What matters:*")
+        lines.append(label)
+        for e in ev[:5]:
             lines.append(f"• {e}")
         lines.append("")
 
