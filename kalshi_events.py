@@ -35,6 +35,7 @@ _HEADERS = {"Accept": "application/json"}
 
 MAX_SEARCH_PAGES = 8      # up to ~1600 open markets scanned per search
 PAGE_LIMIT       = 200
+MIN_MATCH_SCORE  = 0.15   # F1 threshold — below this the market isn't the one asked about
 
 
 def _get(path: str, params: dict = None, timeout: int = 15) -> Optional[dict]:
@@ -73,8 +74,47 @@ def _tokenize(text: str) -> set:
     return toks
 
 
+# Multi-leg / parlay / combo markets bundle dozens of unrelated events into one
+# ticker. They match almost any question by brute force and are never what the
+# user meant. Reject them outright.
+_PARLAY_TICKER_PATTERNS = (
+    "CROSSCATEGORY", "MVE", "SHARD", "PARLAY", "COMBO", "MULTI",
+)
+_MAX_TITLE_TOKENS = 40      # real market titles are short; parlays are enormous
+
+
+def _is_parlay(market: dict) -> bool:
+    ticker = (market.get("ticker", "") + market.get("event_ticker", "")).upper()
+    if any(p in ticker for p in _PARLAY_TICKER_PATTERNS):
+        return True
+    title = market.get("title", "") or ""
+    # A title listing many comma-separated legs is a parlay
+    if title.count(",") >= 6:
+        return True
+    if len(_tokenize(title)) > _MAX_TITLE_TOKENS:
+        return True
+    return False
+
+
+def _is_tradeable(market: dict) -> bool:
+    """Reject dead markets — no quote and no activity means nothing to bet on."""
+    bid = market.get("yes_bid") or 0
+    ask = market.get("yes_ask") or 0
+    vol = market.get("volume") or 0
+    oi  = market.get("open_interest") or 0
+    if bid == 0 and ask == 0 and vol == 0 and oi == 0:
+        return False
+    return True
+
+
 def _score_match(question_tokens: set, market: dict) -> float:
-    """Overlap score between the question and a market's title/subtitle/ticker."""
+    """
+    F1 overlap between question and market text.
+
+    Recall alone (overlap / question_tokens) lets a giant parlay market that
+    contains every word in the language score 1.0. Precision punishes that:
+    a market with 400 tokens that matches 3 of them scores near zero.
+    """
     text = " ".join([
         market.get("title", ""),
         market.get("subtitle", ""),
@@ -85,8 +125,26 @@ def _score_match(question_tokens: set, market: dict) -> float:
     market_tokens = _tokenize(text)
     if not question_tokens or not market_tokens:
         return 0.0
+
     overlap = question_tokens & market_tokens
-    return len(overlap) / len(question_tokens)
+    if not overlap:
+        return 0.0
+
+    recall    = len(overlap) / len(question_tokens)
+    precision = len(overlap) / len(market_tokens)
+    if recall + precision == 0:
+        return 0.0
+    f1 = 2 * recall * precision / (recall + precision)
+
+    # Small bonus for markets with real activity — a live market matching the
+    # same words is more likely the one the user is looking at.
+    vol = market.get("volume") or 0
+    if vol > 1000:
+        f1 *= 1.15
+    elif vol > 100:
+        f1 *= 1.05
+
+    return f1
 
 
 def search_markets(question: str, max_results: int = 5) -> list[dict]:
@@ -99,7 +157,10 @@ def search_markets(question: str, max_results: int = 5) -> list[dict]:
         return []
 
     scored: list[tuple] = []
+    skipped_parlay = 0
+    skipped_dead   = 0
     cursor = None
+
     for _ in range(MAX_SEARCH_PAGES):
         params = {"status": "open", "limit": PAGE_LIMIT}
         if cursor:
@@ -107,16 +168,28 @@ def search_markets(question: str, max_results: int = 5) -> list[dict]:
         data = _get("/markets", params=params)
         if not data:
             break
+
         for m in data.get("markets", []):
+            if _is_parlay(m):
+                skipped_parlay += 1
+                continue
+            if not _is_tradeable(m):
+                skipped_dead += 1
+                continue
             s = _score_match(q_tokens, m)
-            if s > 0.2:
+            if s >= MIN_MATCH_SCORE:
                 scored.append((s, m))
+
         cursor = data.get("cursor")
         if not cursor:
             break
         time.sleep(0.15)
 
     scored.sort(key=lambda x: -x[0])
+    log.info(
+        f"Kalshi search '{question[:40]}': {len(scored)} candidates "
+        f"(skipped {skipped_parlay} parlay, {skipped_dead} dead)"
+    )
     return [_parse_market(m, score) for score, m in scored[:max_results]]
 
 
