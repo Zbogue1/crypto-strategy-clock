@@ -79,7 +79,47 @@ CHAT_ID        = os.getenv("KALSHI_CHAT_ID")        or os.getenv("TELEGRAM_CHAT_
 
 # ─── TELEGRAM COMMAND HANDLER ─────────────────────────────────────────────────
 
+HELP_TEXT = (
+    "🤖 *KALSHI Golem*\n\n"
+    "*Ask about any Kalshi bet:*\n"
+    "`/ask Will Bitcoin be above $120,000 this week?`\n"
+    "`/ask Will the Fed cut rates in December?`\n"
+    "`/ask Will the Chiefs win the Super Bowl?`\n\n"
+    "You can also just type a question with a `?` and I'll analyze it.\n\n"
+    "*Commands:*\n"
+    "`/kalshi` — portfolio snapshot\n"
+    "`/kalshi_stats` — track record & calibration\n"
+    "`/kalshi_scan` — force a perp market scan\n"
+    "`/help` — this message"
+)
+
 _last_update_id = 0
+
+
+def _handle_ask(question: str):
+    """Run the expert bet analyzer on a free-text question and reply."""
+    if not question:
+        send_telegram(
+            "Ask me about any Kalshi market, like:\n"
+            "`/ask Will Bitcoin be above $120,000 this week?`"
+        )
+        return
+
+    send_telegram(f"🔎 Analyzing: _{question}_\nRunning base rates, market pricing, volatility model, and news search...")
+    try:
+        from kalshi_analyst import analyze_question
+        result = analyze_question(question)
+        if result.get("error"):
+            send_telegram(f"⚠️ Couldn't complete that analysis: {result['error']}")
+            return
+        send_telegram(result["telegram"])
+        log.info(
+            f"Kalshi /ask: '{question[:60]}' → {result.get('verdict')} "
+            f"P(yes)={result.get('probability_yes')}% edge={result.get('edge_points')}"
+        )
+    except Exception as e:
+        log.error(f"Kalshi /ask error: {e}", exc_info=True)
+        send_telegram(f"⚠️ Analysis failed: {e}")
 
 def _poll_telegram_commands():
     """Check for incoming Telegram commands (long-poll)."""
@@ -104,9 +144,18 @@ def _poll_telegram_commands():
             elif text.startswith("/kalshi_scan"):
                 send_telegram("🔍 Manual scan triggered...")
                 _run_scan_cycle(force=True)
+            elif text.startswith("/ask"):
+                question = text[len("/ask"):].strip()
+                _handle_ask(question)
             elif text.startswith("/kalshi"):
                 summary = get_portfolio_summary()
                 send_telegram(format_portfolio_snapshot(summary))
+            elif text.startswith("/help") or text.startswith("/start"):
+                send_telegram(HELP_TEXT)
+            elif text and not text.startswith("/"):
+                # Free text that looks like a bet question → analyze it
+                if "?" in text or text.lower().startswith(("will ", "is ", "does ", "can ", "who ")):
+                    _handle_ask(text)
     except Exception as e:
         log.warning(f"Telegram poll error: {e}")
 
@@ -284,10 +333,22 @@ def run_monitor_loop(stop_event: Event):
     while not stop_event.is_set():
         try:
             _run_monitor_cycle()
-            _poll_telegram_commands()
         except Exception as e:
             log.error(f"Kalshi monitor loop error: {e}", exc_info=True)
         for _ in range(MONITOR_INTERVAL_SEC):
+            if stop_event.is_set():
+                break
+            time.sleep(1)
+
+
+def run_command_loop(stop_event: Event):
+    """Dedicated fast poller so /ask feels responsive."""
+    while not stop_event.is_set():
+        try:
+            _poll_telegram_commands()
+        except Exception as e:
+            log.error(f"Kalshi command loop error: {e}", exc_info=True)
+        for _ in range(5):
             if stop_event.is_set():
                 break
             time.sleep(1)
@@ -302,21 +363,25 @@ def main():
 
     # Send startup message
     send_telegram(
-        "🚀 *KALSHI Tracker* started\n"
-        f"Watching all active perp markets. Scanning every {SCAN_INTERVAL_SEC//60} min.\n"
-        f"Paper trading with ${DEFAULT_MARGIN:.0f}/trade.\n"
-        "Commands: /kalshi /kalshi_stats /kalshi_scan"
+        "🚀 *KALSHI Golem* started\n"
+        f"Watching all crypto perp markets. Scanning every {SCAN_INTERVAL_SEC//60} min.\n"
+        f"Paper trading with ${DEFAULT_MARGIN:.0f}/trade.\n\n"
+        "*New:* ask me about any Kalshi bet —\n"
+        "`/ask Will Bitcoin be above $120,000 this week?`\n\n"
+        "Commands: /ask /kalshi /kalshi_stats /kalshi_scan /help"
     )
 
     stop_event = Event()
 
     scan_thread    = Thread(target=run_scan_loop,    args=(stop_event,), daemon=True, name="kalshi-scan")
     monitor_thread = Thread(target=run_monitor_loop, args=(stop_event,), daemon=True, name="kalshi-monitor")
+    command_thread = Thread(target=run_command_loop, args=(stop_event,), daemon=True, name="kalshi-commands")
 
     scan_thread.start()
     monitor_thread.start()
+    command_thread.start()
 
-    log.info("Both loops running. Ctrl+C to stop.")
+    log.info("All loops running (scan / monitor / commands). Ctrl+C to stop.")
     try:
         while True:
             time.sleep(60)
@@ -325,6 +390,7 @@ def main():
         stop_event.set()
         scan_thread.join(timeout=10)
         monitor_thread.join(timeout=10)
+        command_thread.join(timeout=10)
         log.info("Kalshi tracker stopped.")
 
 
