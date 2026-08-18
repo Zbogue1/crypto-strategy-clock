@@ -1,27 +1,27 @@
 {
-  "timestamp": "2026-08-18T12:03:01.247164+00:00",
+  "timestamp": "2026-08-18T16:04:27.755257+00:00",
   "signal": "HOLD",
   "selected_coin": "SOL",
   "selected_coin_name": "Solana",
-  "selected_coin_price": 76.32,
-  "confidence": 35,
-  "layman_headline": "Market fear is easing but no new opportunities are ripe enough to pull the trigger.",
-  "layman_explanation": "The crypto market is in a 'Fear' state but improving from deeper fear last week. Bitcoin is holding at $64K but faces headwinds from rising Treasury yields and oil prices. Our two current positions \u2014 Solana and Chainlink \u2014 are roughly flat and still within their trade plans. The swing candidates on our watchlist are either already extended after big runs, crashing with no clear floor, or lacking the technical data needed to make a confident call.",
-  "layman_action": "Hold current positions in SOL and LINK. Both are within their stop-loss and target ranges. Wait for a clearer setup before adding a third position \u2014 patience in fearful markets usually pays off.",
-  "expert_reasoning": "Reviewing all swing candidates: VELVET is down 30% weekly but RSI at 60 is contradictory (not oversold despite the crash \u2014 suggests structural breakdown, not a bounce setup). MON has RSI near 39 which is approaching oversold, but it's below SMA20, lacks MACD data, and is a very low-cap asset with no news catalyst. AKE is up 145% in 7 days \u2014 classic pump territory, too risky for entry. VVV is up 24% weekly and 18.7% in 24h \u2014 chasing momentum here violates swing discipline. FIL is down 99.7% from ATH and dropping further \u2014 no floor visible. WLD down 10.7% today with no catalyst or technical support data. The high BTC dominance at 56.6% is unfavorable for alt positions, and our signal credibility data shows CoinDesk and Blockworks news have been historically misleading. Best action is patience.",
+  "selected_coin_price": 77.2,
+  "confidence": 38,
+  "layman_headline": "Market fear is easing but no strong new setups \u2014 holding current positions and staying patient.",
+  "layman_explanation": "The crypto market is still in a fearful mood, though sentiment has improved from 31 to 41 over the past day. Bitcoin is hovering near $65K and our two existing positions \u2014 Solana (+1.4%) and Chainlink (-0.8%) \u2014 are both within normal range of their entries. The swing trade candidates available right now are either stablecoins (which don't move), tokens that already ran up 10-23% this week (risky to chase), or coins with incomplete technical data. None present a clean entry with a good risk-reward setup.",
+  "layman_action": "Hold your current SOL and LINK positions. Both are within their trading ranges and neither has hit a stop-loss or exit target. Wait for a better entry opportunity \u2014 chasing extended moves in a fearful market is how losses happen.",
+  "expert_reasoning": "The swing candidate pool is weak this cycle. VVV (+23.4% 7d), LINK (+10.9% 7d), and PIEVERSE (+18.9% 7d) are already extended \u2014 chasing these violates swing trading discipline. MON has an RSI of 39 (approaching oversold) but is below SMA20, down 57% from ATH, and lacks MACD or volume confirmation. FIL is down 9.4% weekly but has no RSI or MACD data to confirm a bottom. BTC dominance at 56.7% remains headwind for alts. The Fear & Greed improving from 31 to 41 is positive but not enough to warrant aggressive new entries. CoinTelegraph flagged BTC's $64.5K spike as a low-volume liquidity trap, and CoinDesk's bond yield surge story adds macro uncertainty. Both news sources have poor historical reliability in our signal credibility data, but the cautionary direction aligns with the technical picture.",
   "risk_factors": [
-    "Rising Treasury yields (highest since 2007 per CryptoSlate) could trigger broader risk-off selling that drags BTC below $64K support",
-    "BTC dominance at 56.6% continues to squeeze alt performance, putting SOL and LINK positions at risk",
-    "CoinTelegraph analysis flagging BTC's $64.5K spike as a 'low-volume liquidity trap' suggests potential downside"
+    "BTC's move to $65K was characterized as a low-volume liquidity trap \u2014 a rejection here could drag all alts down",
+    "BTC dominance at 56.7% continues to compress altcoin performance, limiting upside for SOL and LINK",
+    "Global bond yield surge could pressure risk assets including crypto if the narrative shifts away from BTC as a hedge"
   ],
   "watch_list": [
-    "BTC price action around $64K \u2014 a break below $62K would signal broader risk-off and threaten both positions",
-    "MON RSI approaching 35 with a volume spike would create a legitimate oversold bounce entry",
-    "Fear & Greed index trajectory \u2014 currently improving from 31 to 41; a move above 50 would support alt positions"
+    "BTC price action around $65K \u2014 a confirmed breakout with volume would be bullish for alts, rejection would be bearish",
+    "LINK approaching $9.6 entry price \u2014 needs to reclaim this level or risk drifting toward $8.6 stop-loss",
+    "MON RSI approaching 35 oversold territory \u2014 could become a valid entry if it dips further with volume pickup"
   ],
-  "market_context": "Bitcoin is consolidating at $64K in a market transitioning from deep fear (31) to moderate fear (41). Rising Treasury yields and elevated oil prices are creating headwinds for risk assets, while BTC dominance at 56.6% continues to suppress altcoin performance.",
-  "context_banner": "Fear is receding but no high-conviction swing setups exist \u2014 discipline demands patience over forced entries.",
-  "btc_price": 64282,
+  "market_context": "The crypto market is in a 'Fear' state at 41/100 but improving from last week's 32 average. BTC is testing $65K resistance on low volume while bond yields surge, creating a mixed macro backdrop that favors patience over aggression.",
+  "context_banner": "Improving fear sentiment meets thin volume and high BTC dominance \u2014 hold existing positions and wait for cleaner setups.",
+  "btc_price": 64842,
   "fear_greed": {
     "current": 41,
     "label": "Fear",
@@ -29,32 +29,32 @@
     "week_avg": 32.1,
     "trend": "improving"
   },
-  "btc_dominance": 56.6,
+  "btc_dominance": 56.7,
   "key_signals": [
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Fear & Greed improved from 31 to 41 (still Fear), suggesting sentiment stabilization but not yet supportive of aggressive new positions."
-    },
-    {
-      "source": "RSI",
-      "signal_type": "technical",
-      "description": "MON RSI at 39 is the closest to oversold among candidates, but lacks supporting MACD/volume data to confirm a bounce setup."
+      "description": "Fear & Greed improved from 31 to 41 (Fear) \u2014 trend improving but not yet at levels that historically signal strong bottoms."
     },
     {
       "source": "CoinTelegraph",
       "signal_type": "news",
-      "description": "BTC's spike to $64.5K characterized as a 'low-volume liquidity trap' \u2014 suggests caution on assuming BTC support holds."
+      "description": "BTC spike to $64.5K was called a 'low-volume liquidity trap,' suggesting the move lacks conviction and may reverse."
     },
     {
-      "source": "CryptoSlate",
-      "signal_type": "macro",
-      "description": "Bitcoin facing highest Treasury yield hurdle since 2007 with $22.5B less crypto credit \u2014 macro headwind for risk assets."
-    },
-    {
-      "source": "volume_breakout",
+      "source": "RSI",
       "signal_type": "technical",
-      "description": "No swing candidate showed meaningful volume breakout patterns; most lack volume comparison data entirely, reducing conviction in any setup."
+      "description": "MON RSI at 39 is the only candidate approaching oversold, but lacks MACD confirmation and volume data to validate an entry."
+    },
+    {
+      "source": "Chart Pattern Analysis",
+      "signal_type": "technical",
+      "description": "VVV, LINK, and PIEVERSE all extended 10-23% in 7 days \u2014 chasing these carries elevated reversal risk in a fearful market."
+    },
+    {
+      "source": "CoinDesk",
+      "signal_type": "news",
+      "description": "Global bond yields surging tests Bitcoin's hedge narrative \u2014 adds macro uncertainty that could weigh on risk assets near-term."
     }
   ],
   "_mode": "HUNTING",
