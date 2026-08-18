@@ -1,27 +1,27 @@
 {
-  "timestamp": "2026-08-18T08:01:03.886363+00:00",
+  "timestamp": "2026-08-18T12:03:01.247164+00:00",
   "signal": "HOLD",
   "selected_coin": "SOL",
   "selected_coin_name": "Solana",
-  "selected_coin_price": 76.02,
+  "selected_coin_price": 76.32,
   "confidence": 35,
-  "layman_headline": "Market is fearful and flat \u2014 patience is the play while existing positions build.",
-  "layman_explanation": "The crypto market is in a state of mild fear but improving from deeper fear last week. Bitcoin is hovering above $64K while most altcoins are trading sideways or slightly down. Our two current positions in Solana and Chainlink are both slightly underwater but well within their stop-loss ranges. None of the new swing candidates present a compelling enough setup to justify adding risk right now.",
-  "layman_action": "Hold your current positions in SOL and LINK. Both are near entry and within plan. Wait for a clearer setup before adding a third position \u2014 the market doesn't reward impatience in sideways conditions.",
-  "expert_reasoning": "The swing candidate pool is weak this cycle. MON has a near-oversold RSI (39) but is below SMA20, down 56% from ATH, and lacks MACD or volume confirmation \u2014 a classic value trap profile in high BTC dominance. AKE is extremely overbought (RSI 92) after a 145% weekly run, making it a short candidate not a long. FIL is down 10.6% on the week but is 99.7% off ATH with no RSI data \u2014 a structural downtrend. WLD dropped 10% in 24h with no clear support level. LINK already ran 11.7% this week and is held. BTC dominance at 56.5% continues to suppress alt performance. The improving Fear & Greed (31\u219241) is a positive sign but not yet sufficient to trigger aggressive alt entries. Best strategy is to hold existing positions and wait for either a broader sentiment shift or a specific catalyst-driven setup.",
+  "layman_headline": "Market fear is easing but no new opportunities are ripe enough to pull the trigger.",
+  "layman_explanation": "The crypto market is in a 'Fear' state but improving from deeper fear last week. Bitcoin is holding at $64K but faces headwinds from rising Treasury yields and oil prices. Our two current positions \u2014 Solana and Chainlink \u2014 are roughly flat and still within their trade plans. The swing candidates on our watchlist are either already extended after big runs, crashing with no clear floor, or lacking the technical data needed to make a confident call.",
+  "layman_action": "Hold current positions in SOL and LINK. Both are within their stop-loss and target ranges. Wait for a clearer setup before adding a third position \u2014 patience in fearful markets usually pays off.",
+  "expert_reasoning": "Reviewing all swing candidates: VELVET is down 30% weekly but RSI at 60 is contradictory (not oversold despite the crash \u2014 suggests structural breakdown, not a bounce setup). MON has RSI near 39 which is approaching oversold, but it's below SMA20, lacks MACD data, and is a very low-cap asset with no news catalyst. AKE is up 145% in 7 days \u2014 classic pump territory, too risky for entry. VVV is up 24% weekly and 18.7% in 24h \u2014 chasing momentum here violates swing discipline. FIL is down 99.7% from ATH and dropping further \u2014 no floor visible. WLD down 10.7% today with no catalyst or technical support data. The high BTC dominance at 56.6% is unfavorable for alt positions, and our signal credibility data shows CoinDesk and Blockworks news have been historically misleading. Best action is patience.",
   "risk_factors": [
-    "BTC dominance at 56.5% continues to drain capital from altcoins, pressuring SOL and LINK",
-    "BTC leveraged long liquidation levels (per CoinDesk headline) could trigger a cascade that drags all positions lower",
-    "Fear & Greed at 41 is improving but still fragile \u2014 could reverse back to deeper fear on any negative catalyst"
+    "Rising Treasury yields (highest since 2007 per CryptoSlate) could trigger broader risk-off selling that drags BTC below $64K support",
+    "BTC dominance at 56.6% continues to squeeze alt performance, putting SOL and LINK positions at risk",
+    "CoinTelegraph analysis flagging BTC's $64.5K spike as a 'low-volume liquidity trap' suggests potential downside"
   ],
   "watch_list": [
-    "BTC price action around $64K \u2014 a break below $62K could trigger leveraged liquidations and alt selloffs",
-    "Fear & Greed index trajectory \u2014 needs to sustain above 40 and push toward 50 for alt confidence",
-    "LINK holding above $9.00 support \u2014 a close below would warrant reassessing the stop-loss at $8.60"
+    "BTC price action around $64K \u2014 a break below $62K would signal broader risk-off and threaten both positions",
+    "MON RSI approaching 35 with a volume spike would create a legitimate oversold bounce entry",
+    "Fear & Greed index trajectory \u2014 currently improving from 31 to 41; a move above 50 would support alt positions"
   ],
-  "market_context": "Bitcoin is consolidating above $64K with 56.5% dominance, keeping altcoins suppressed. Fear & Greed has improved from 31 to 41 over the past week, suggesting sentiment bottoming, but conviction for new alt entries remains low.",
-  "context_banner": "Sideways market with improving sentiment but no clear alt breakout catalyst \u2014 discipline over action.",
-  "btc_price": 64142,
+  "market_context": "Bitcoin is consolidating at $64K in a market transitioning from deep fear (31) to moderate fear (41). Rising Treasury yields and elevated oil prices are creating headwinds for risk assets, while BTC dominance at 56.6% continues to suppress altcoin performance.",
+  "context_banner": "Fear is receding but no high-conviction swing setups exist \u2014 discipline demands patience over forced entries.",
+  "btc_price": 64282,
   "fear_greed": {
     "current": 41,
     "label": "Fear",
@@ -29,32 +29,32 @@
     "week_avg": 32.1,
     "trend": "improving"
   },
-  "btc_dominance": 56.5,
+  "btc_dominance": 56.6,
   "key_signals": [
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Fear & Greed improved from 31 to 41 (weekly avg 32), suggesting sentiment is recovering but still in Fear territory \u2014 not yet bullish enough for aggressive alt positioning."
+      "description": "Fear & Greed improved from 31 to 41 (still Fear), suggesting sentiment stabilization but not yet supportive of aggressive new positions."
     },
     {
       "source": "RSI",
       "signal_type": "technical",
-      "description": "MON RSI at 39 is the only near-oversold reading among candidates, but lacks volume and catalyst confirmation, making it a low-conviction entry."
-    },
-    {
-      "source": "CoinDesk",
-      "signal_type": "news",
-      "description": "Headline warning about BTC leveraged long liquidation levels suggests downside risk if BTC breaks key support \u2014 historically unreliable source but the risk scenario is valid."
+      "description": "MON RSI at 39 is the closest to oversold among candidates, but lacks supporting MACD/volume data to confirm a bounce setup."
     },
     {
       "source": "CoinTelegraph",
       "signal_type": "news",
-      "description": "OCC approving Trump family crypto trust charter and Ripple adoption by Korean bank are moderately positive macro signals but not directly actionable for swing trades."
+      "description": "BTC's spike to $64.5K characterized as a 'low-volume liquidity trap' \u2014 suggests caution on assuming BTC support holds."
     },
     {
-      "source": "on_chain",
-      "signal_type": "onchain",
-      "description": "Ethereum TVL at $41.5B is stable with 0% 7d change, indicating no fresh DeFi momentum to drive alt rallies."
+      "source": "CryptoSlate",
+      "signal_type": "macro",
+      "description": "Bitcoin facing highest Treasury yield hurdle since 2007 with $22.5B less crypto credit \u2014 macro headwind for risk assets."
+    },
+    {
+      "source": "volume_breakout",
+      "signal_type": "technical",
+      "description": "No swing candidate showed meaningful volume breakout patterns; most lack volume comparison data entirely, reducing conviction in any setup."
     }
   ],
   "_mode": "HUNTING",
