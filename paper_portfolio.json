@@ -1,5 +1,5 @@
 {
-  "cash": 378.0743,
+  "cash": 444.376,
   "holdings": [
     {
       "coin_ticker": "SOL",
@@ -30,29 +30,14 @@
       "stop_loss": 8.6,
       "entry_target": 9.4,
       "expected_days": 7
-    },
-    {
-      "coin_ticker": "FET",
-      "coin_id": "fet",
-      "units": 536.1732079508981,
-      "entry_price": 0.124313,
-      "entry_date": "2026-08-16T12:01:19.985808+00:00",
-      "entry_signal": "BUY",
-      "entry_confidence": 52,
-      "allocated_usd": 66.72,
-      "fee_paid": 0.0667,
-      "exit_target": 0.143,
-      "stop_loss": 0.112,
-      "entry_target": 0.122,
-      "expected_days": 10
     }
   ],
-  "realized_pnl": -198.2757,
+  "realized_pnl": -198.694,
   "peak_value": 1032.0739,
-  "total_trades": 19,
+  "total_trades": 20,
   "winning_trades": 7,
-  "losing_trades": 12,
-  "total_fees": 4.6622,
+  "losing_trades": 13,
+  "total_fees": 4.7286,
   "trade_history": [
     {
       "trade_num": 1,
@@ -529,6 +514,32 @@
       "days_held": 4.67,
       "exit_target": 0.0265,
       "stop_loss": 0.0195,
+      "hit_target": false,
+      "hit_stop": false,
+      "result": "LOSS"
+    },
+    {
+      "trade_num": 20,
+      "coin_ticker": "FET",
+      "coin_id": "fet",
+      "entry_price": 0.124313,
+      "entry_date": "2026-08-16T12:01:19.985808+00:00",
+      "entry_signal": "BUY",
+      "entry_confidence": 52,
+      "allocated_usd": 66.72,
+      "exit_price": 0.123781,
+      "exit_date": "2026-08-18T00:02:19.351904+00:00",
+      "exit_signal": "HOLD",
+      "exit_reason": "signal",
+      "units": 536.1732079508981,
+      "gross_proceeds": 66.3681,
+      "fees_total": 0.1331,
+      "net_proceeds": 66.3017,
+      "profit_usd": -0.4183,
+      "profit_pct": -0.63,
+      "days_held": 1.5,
+      "exit_target": 0.143,
+      "stop_loss": 0.112,
       "hit_target": false,
       "hit_stop": false,
       "result": "LOSS"
