@@ -269,5 +269,28 @@
       "FET"
     ],
     "alert": "FET showing persistent weakness with 7.6% weekly decline and no reversal signals \u2014 recommend exit before further deterioration."
+  },
+  {
+    "ts": "2026-08-18T04:03:17.807731+00:00",
+    "coin": "LINK",
+    "price": 9.4,
+    "signal": "HOLD",
+    "confidence": 35,
+    "score": -0.3,
+    "fg": 41,
+    "btc_price": 64074,
+    "btc_dominance": 56.6,
+    "candidates": [
+      "VELVET",
+      "MON",
+      "FDUSD",
+      "USDG",
+      "FIL",
+      "XAUT",
+      "RLUSD",
+      "SOL",
+      "LINK"
+    ],
+    "alert": null
   }
 ]
