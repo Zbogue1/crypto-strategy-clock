@@ -315,5 +315,28 @@
       "LINK"
     ],
     "alert": null
+  },
+  {
+    "ts": "2026-08-18T12:03:01.247164+00:00",
+    "coin": "SOL",
+    "price": 76.32,
+    "signal": "HOLD",
+    "confidence": 35,
+    "score": -0.3,
+    "fg": 41,
+    "btc_price": 64282,
+    "btc_dominance": 56.6,
+    "candidates": [
+      "VELVET",
+      "MON",
+      "FDUSD",
+      "AKE",
+      "VVV",
+      "FIL",
+      "WLD",
+      "SOL",
+      "LINK"
+    ],
+    "alert": null
   }
 ]
