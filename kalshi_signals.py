@@ -22,9 +22,18 @@ Output per asset:
 """
 
 import logging
+import os
 from typing import Optional
 
 log = logging.getLogger(__name__)
+
+# ─── SIGNAL THRESHOLD ─────────────────────────────────────────────────────────
+# |composite_score| must reach this for a market to be considered actionable.
+# Lower = more trades and a wider spread of setup quality, which is what you
+# want during calibration: it lets us test whether Golem's confidence numbers
+# are meaningful across the FULL range, not just on the strongest signals.
+# Raise back toward 45+ once calibration shows which bands actually win.
+MIN_SIGNAL_SCORE  = int(os.getenv("KALSHI_MIN_SCORE", "30"))
 
 # ─── ADX / BBW PARAMETERS ─────────────────────────────────────────────────────
 # Same values as fomo_regime.py v2
@@ -160,7 +169,7 @@ def score_asset(snapshot: dict) -> dict:
 
     snapshot: output of kalshi_data.get_full_market_snapshot()
 
-    Scoring bands (composite -100 to +100, UP threshold ≥ 45, DOWN ≤ -45):
+    Scoring bands (composite -100 to +100; UP ≥ MIN_SIGNAL_SCORE, DOWN ≤ -MIN_SIGNAL_SCORE):
 
       Layer 1 — Trend structure (ADX+BBW):     ±40 pts
         UPTREND / DOWNTREND (ADX≥25):          ±40
@@ -270,9 +279,9 @@ def score_asset(snapshot: dict) -> dict:
     # ── Final signal ──────────────────────────────────────────────────────────
     score = max(-100, min(100, score))
 
-    if score >= 45:
+    if score >= MIN_SIGNAL_SCORE:
         signal = "UP"
-    elif score <= -45:
+    elif score <= -MIN_SIGNAL_SCORE:
         signal = "DOWN"
     else:
         signal = "FLAT"
@@ -311,13 +320,23 @@ def score_all_markets(snapshots: list[dict]) -> list[dict]:
     return scored
 
 
-def get_viable_signals(snapshots: list[dict], min_score: int = 45) -> list[dict]:
+def get_viable_signals(snapshots: list[dict], min_score: int = None) -> list[dict]:
     """
     Return only markets with |composite_score| >= min_score.
     These are the candidates sent to the research agent for deep analysis.
+
+    Defaults to MIN_SIGNAL_SCORE (env: KALSHI_MIN_SCORE) so the threshold can
+    be tuned from Railway without a code change.
     """
-    scored = score_all_markets(snapshots)
-    return [s for s in scored if abs(s["composite_score"]) >= min_score]
+    if min_score is None:
+        min_score = MIN_SIGNAL_SCORE
+    scored  = score_all_markets(snapshots)
+    viable  = [s for s in scored if abs(s["composite_score"]) >= min_score]
+    log.info(
+        f"Kalshi signals: {len(viable)}/{len(scored)} markets viable "
+        f"at threshold ±{min_score}"
+    )
+    return viable
 
 
 if __name__ == "__main__":
