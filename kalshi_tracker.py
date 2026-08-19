@@ -259,6 +259,58 @@ def _should_force_close(pos: dict) -> Optional[str]:
     return None
 
 
+# ─── RESEARCH CACHE ───────────────────────────────────────────────────────────
+# The signal engine surfaces the same borderline setups every cycle (NEAR -43,
+# SUI -40, LINK +40...). Re-running the AI on an unchanged setup costs money and
+# always returns the same "not actionable" answer. Cache those rejections and
+# only re-analyze when the score actually moves or the cache expires.
+RESEARCH_CACHE_HOURS = float(os.getenv("KALSHI_RESEARCH_CACHE_HOURS", "2"))
+RESEARCH_SCORE_DELTA = int(os.getenv("KALSHI_RESEARCH_DELTA", "8"))
+
+# ticker → {"score": int, "ts": float}
+_research_rejects: dict = {}
+
+
+def _filter_cached_rejects(viable: list[dict]) -> tuple[list[dict], int]:
+    """
+    Drop candidates we recently analyzed and rejected, whose score hasn't
+    meaningfully moved. Returns (candidates_to_analyze, n_skipped).
+    """
+    now = time.time()
+    keep, skipped = [], 0
+
+    for v in viable:
+        ticker = v["ticker"]
+        score  = v["composite_score"]
+        cached = _research_rejects.get(ticker)
+
+        if cached:
+            age_h = (now - cached["ts"]) / 3600
+            moved = abs(score - cached["score"])
+            if age_h < RESEARCH_CACHE_HOURS and moved < RESEARCH_SCORE_DELTA:
+                skipped += 1
+                log.debug(
+                    f"Kalshi research cache: skip {ticker} "
+                    f"(score {score:+d}, moved {moved}, age {age_h:.1f}h)"
+                )
+                continue
+        keep.append(v)
+
+    return keep, skipped
+
+
+def _cache_rejects(analyzed: list[dict], actionable_tickers: set):
+    """Remember which analyzed candidates came back with nothing to trade."""
+    now = time.time()
+    for v in analyzed:
+        ticker = v["ticker"]
+        if ticker in actionable_tickers:
+            # Actionable — don't cache, we want it re-evaluated freely later
+            _research_rejects.pop(ticker, None)
+        else:
+            _research_rejects[ticker] = {"score": v["composite_score"], "ts": now}
+
+
 # ─── SCAN CYCLE ───────────────────────────────────────────────────────────────
 
 _last_alerted: dict = {}  # ticker → timestamp, suppress re-alerts within 4H
@@ -333,11 +385,26 @@ def _run_scan_cycle(force: bool = False):
             log.info("Kalshi scan: all viable signals already held or alerted recently")
             return
 
+    # 4b. Skip setups we already analyzed and rejected while unchanged
+    if not force:
+        viable, skipped = _filter_cached_rejects(viable)
+        if skipped:
+            log.info(
+                f"Kalshi scan: skipped {skipped} unchanged setup(s) from research cache "
+                f"— saved {skipped} AI call(s)"
+            )
+        if not viable:
+            log.info("Kalshi scan: all candidates already analyzed and unchanged")
+            return
+
     # 5. Load postmortem context
     pm_summaries = get_all_summaries()
 
     # 6. Research agent analysis
     verdicts = scan_all_viable(viable, snapshots_by_ticker, pm_summaries)
+
+    # 6b. Cache the ones that produced nothing tradeable
+    _cache_rejects(viable, {v["ticker"] for v in verdicts})
 
     # 7. Take the highest-confidence verdicts, up to the remaining daily slots
     verdicts.sort(key=lambda v: -v.get("confidence", 0))
