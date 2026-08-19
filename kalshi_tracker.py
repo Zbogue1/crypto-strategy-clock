@@ -313,7 +313,7 @@ def _run_scan_cycle(force: bool = False):
     viable = get_viable_signals(snapshots)
     if not viable:
         log.info("Kalshi scan: no viable signals this cycle")
-        if NOTIFY_NO_SIGNALS:
+        if force or NOTIFY_NO_SIGNALS:
             send_telegram(format_no_signals_summary(len(markets)))
         return
 
@@ -348,8 +348,9 @@ def _run_scan_cycle(force: bool = False):
         ticker = verdict["ticker"]
         log.info(f"Kalshi: {ticker} → {verdict['verdict']} {verdict['confidence']}/100")
 
-        # Telegram signal — suppressed in silent mode (trade still happens)
-        if not SILENT:
+        # Telegram signal — suppressed in silent mode, but ALWAYS sent when the
+        # user explicitly asked for a scan (force=True via /kalshi_scan).
+        if force or not SILENT:
             send_signal(verdict, margin=DEFAULT_MARGIN)
 
         # Log to postmortem — ALWAYS, this is how Golem learns
