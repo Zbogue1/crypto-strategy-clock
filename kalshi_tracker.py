@@ -655,7 +655,12 @@ def main():
             else "AUTO-SCAN + ALERTS" if AUTO_SCAN else "ON-DEMAND ONLY")
     log.info(f"Mode: {mode}")
     log.info(f"Scan interval: {SCAN_INTERVAL_SEC}s | Monitor: {MONITOR_INTERVAL_SEC}s")
-    log.info(f"Default margin: ${DEFAULT_MARGIN:.0f} | Max positions: 6")
+    from kalshi_portfolio import MAX_OPEN_POSITIONS as _maxpos
+    _maxpos_str = "unlimited" if _maxpos >= 999 else str(_maxpos)
+    log.info(
+        f"Default margin: ${DEFAULT_MARGIN:.0f} | Max positions: {_maxpos_str} | "
+        f"Day-trade target: {DAILY_TRADE_TARGET}/day"
+    )
     log.info("=" * 60)
 
     # Send startup message

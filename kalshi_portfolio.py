@@ -73,7 +73,9 @@ def _redis_set(key: str, data: dict) -> bool:
 STARTING_CASH   = float(os.getenv("KALSHI_STARTING_CASH", "500.0"))   # paper bank
 DEFAULT_MARGIN  = float(os.getenv("KALSHI_DEFAULT_MARGIN", "50.0"))    # $ margin per trade
 FUNDING_PERIOD_HOURS = 8
-MAX_OPEN_POSITIONS  = 6
+# No practical cap while paper trading — we want maximum sample size for
+# calibration. Cash is the real constraint. Set KALSHI_MAX_POSITIONS to limit.
+MAX_OPEN_POSITIONS  = int(os.getenv("KALSHI_MAX_POSITIONS", "999"))
 
 
 # ─── PERSISTENCE ──────────────────────────────────────────────────────────────
