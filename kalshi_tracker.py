@@ -123,10 +123,63 @@ HELP_TEXT = (
     "`/kalshi` — portfolio snapshot\n"
     "`/kalshi_stats` — track record & calibration\n"
     "`/kalshi_scan` — scan perps on demand (one-off)\n"
+    "`/reset` — wipe portfolio & start a fresh bank\n"
     "`/help` — this message"
 )
 
 _last_update_id = 0
+
+
+def _handle_reset(text: str):
+    """
+    Wipe the paper portfolio and postmortem, restarting with a fresh bank.
+    Requires explicit confirmation: `/reset confirm`
+    """
+    from kalshi_portfolio  import reset_portfolio
+    from kalshi_postmortem import reset_postmortem
+
+    parts = text.split()
+    new_cash = float(os.getenv("KALSHI_STARTING_CASH", "500.0"))
+
+    # Optional override: /reset confirm 10000
+    if len(parts) > 2:
+        try:
+            new_cash = float(parts[2])
+        except ValueError:
+            pass
+
+    if len(parts) < 2 or parts[1].lower() != "confirm":
+        summary = get_portfolio_summary()
+        send_telegram(
+            "⚠️ *Reset paper portfolio?*\n\n"
+            f"This permanently deletes:\n"
+            f"• {len(summary.get('positions', []))} open position(s)\n"
+            f"• {summary.get('winning_trades', 0) + summary.get('losing_trades', 0)} closed trade(s)\n"
+            f"• All postmortem/calibration history\n\n"
+            f"New bank would be *${new_cash:,.2f}*\n\n"
+            "To proceed, send:\n"
+            "`/reset confirm`\n\n"
+            "Or set a custom amount:\n"
+            "`/reset confirm 10000`"
+        )
+        return
+
+    try:
+        fresh = reset_portfolio(new_cash)
+        reset_postmortem()
+        _research_rejects.clear()
+        _last_alerted.clear()
+        send_telegram(
+            "♻️ *Portfolio reset complete*\n\n"
+            f"Fresh paper bank: *${fresh['starting_cash']:,.2f}*\n"
+            f"At ${DEFAULT_MARGIN:.0f}/trade that's "
+            f"{int(fresh['starting_cash'] // DEFAULT_MARGIN)} concurrent positions.\n\n"
+            "All positions closed, history cleared. Starting clean."
+        )
+        log.warning(f"Kalshi: portfolio reset via Telegram — new bank ${new_cash:,.2f}")
+    except Exception as e:
+        log.error(f"Kalshi reset failed: {e}", exc_info=True)
+        send_telegram(f"⚠️ Reset failed: {e}")
 
 
 def _handle_ask(question: str):
@@ -172,7 +225,9 @@ def _poll_telegram_commands():
             _last_update_id = max(_last_update_id, update["update_id"])
             msg = update.get("message", {})
             text = msg.get("text", "").strip()
-            if text.startswith("/report"):
+            if text.startswith("/reset"):
+                _handle_reset(text)
+            elif text.startswith("/report"):
                 parts = text.split()
                 days = REPORT_INTERVAL_DAYS
                 if len(parts) > 1:

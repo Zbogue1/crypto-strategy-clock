@@ -111,6 +111,35 @@ def _load() -> dict:
     }
 
 
+def reset_portfolio(starting_cash: float = None) -> dict:
+    """
+    Wipe the paper portfolio and start fresh.
+
+    Reads KALSHI_STARTING_CASH at call time so a Railway variable change takes
+    effect without a code deploy. Destroys all open positions and trade history.
+    """
+    if starting_cash is None:
+        starting_cash = float(os.getenv("KALSHI_STARTING_CASH", "500.0"))
+
+    fresh = {
+        "version":        "kalshi-v1",
+        "created_at":     datetime.now(timezone.utc).isoformat(),
+        "cash":           starting_cash,
+        "starting_cash":  starting_cash,
+        "peak_value":     starting_cash,
+        "total_trades":   0,
+        "winning_trades": 0,
+        "losing_trades":  0,
+        "total_pnl":      0.0,
+        "total_funding_paid": 0.0,
+        "holdings":       [],
+        "trade_history":  [],
+    }
+    _save(fresh)
+    log.warning(f"Kalshi portfolio: RESET — fresh bank ${starting_cash:,.2f}")
+    return fresh
+
+
 def _save(state: dict):
     # Primary: Redis
     if _redis_set(_PORTFOLIO_KEY, state):

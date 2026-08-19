@@ -109,6 +109,14 @@ def _save(state: dict):
         log.error(f"Kalshi postmortem: save error: {e}")
 
 
+def reset_postmortem() -> dict:
+    """Wipe all logged calls and outcomes. Used alongside a portfolio reset."""
+    fresh = {"calls": []}
+    _save(fresh)
+    log.warning("Kalshi postmortem: RESET — all call history cleared")
+    return fresh
+
+
 # ─── LOG CALL ─────────────────────────────────────────────────────────────────
 
 def log_call(verdict: dict):
