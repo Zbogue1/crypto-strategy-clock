@@ -430,5 +430,28 @@
       "LINK"
     ],
     "alert": null
+  },
+  {
+    "ts": "2026-08-19T08:01:00.118879+00:00",
+    "coin": "LINK",
+    "price": 9.69,
+    "signal": "HOLD",
+    "confidence": 38,
+    "score": -0.3,
+    "fg": 46,
+    "btc_price": 64253,
+    "btc_dominance": 56.5,
+    "candidates": [
+      "BTW",
+      "VELVET",
+      "FDUSD",
+      "XAUT",
+      "PAXG",
+      "USDG",
+      "MON",
+      "SOL",
+      "LINK"
+    ],
+    "alert": null
   }
 ]
