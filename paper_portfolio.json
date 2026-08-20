@@ -1,5 +1,5 @@
 {
-  "cash": 669.7536,
+  "cash": 502.3136,
   "holdings": [
     {
       "coin_ticker": "ETH",
@@ -15,6 +15,21 @@
       "stop_loss": 2020.0,
       "entry_target": 2180.0,
       "expected_days": 7
+    },
+    {
+      "coin_ticker": "HYPE",
+      "coin_id": "hype",
+      "units": 2.3254914500208534,
+      "entry_price": 71.93,
+      "entry_date": "2026-08-20T08:05:36.601684+00:00",
+      "entry_signal": "BUY",
+      "entry_confidence": 72,
+      "allocated_usd": 167.44,
+      "fee_paid": 0.1674,
+      "exit_target": 83.0,
+      "stop_loss": 61.0,
+      "entry_target": 68.0,
+      "expected_days": 7
     }
   ],
   "realized_pnl": -160.8064,
@@ -22,7 +37,7 @@
   "total_trades": 22,
   "winning_trades": 9,
   "losing_trades": 13,
-  "total_fees": 5.2932,
+  "total_fees": 5.4606,
   "trade_history": [
     {
       "trade_num": 1,
