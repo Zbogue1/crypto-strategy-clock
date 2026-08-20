@@ -522,5 +522,28 @@
       "LINK"
     ],
     "alert": "SOL is within 3.3% of exit target ($85) \u2014 prepare to take profit."
+  },
+  {
+    "ts": "2026-08-20T00:01:33.770437+00:00",
+    "coin": "ETH",
+    "price": 2252.02,
+    "signal": "BUY",
+    "confidence": 68,
+    "score": 0.55,
+    "fg": 62,
+    "btc_price": 69291,
+    "btc_dominance": 56.6,
+    "candidates": [
+      "ETH",
+      "BTW",
+      "HYPE",
+      "MON",
+      "XAUT",
+      "PAXG",
+      "EURC",
+      "SOL",
+      "LINK"
+    ],
+    "alert": "SOL has exceeded its exit target \u2014 take profits now to lock in the 12.1% gain."
   }
 ]
