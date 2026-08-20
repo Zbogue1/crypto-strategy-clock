@@ -588,5 +588,26 @@
       "EURC"
     ],
     "alert": "Market in explosive rally mode \u2014 BTC touched $70K, shorts liquidated at record levels. High conviction environment but watch for exhaustion."
+  },
+  {
+    "ts": "2026-08-20T12:02:37.710390+00:00",
+    "coin": "SOL",
+    "price": 87.26,
+    "signal": "BUY",
+    "confidence": 62,
+    "score": 0.55,
+    "fg": 62,
+    "btc_price": 71895,
+    "btc_dominance": 58.6,
+    "candidates": [
+      "HYPE",
+      "BTW",
+      "MON",
+      "ETH",
+      "XAUT",
+      "PAXG",
+      "EURC"
+    ],
+    "alert": "BTC breakout with $3B short liquidation \u2014 high-conviction risk-on environment but pullback risk is elevated after 11.6% single-day move"
   }
 ]
