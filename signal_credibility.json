@@ -1,58 +1,27 @@
 {
-  "open_trade": {
-    "coin": "ETH",
-    "entry_time": "2026-08-20T00:02:18.125431+00:00",
-    "key_signals": [
-      {
-        "source": "RSI",
-        "signal_type": "technical",
-        "description": "ETH RSI at 45.84 despite a 20% weekly surge indicates the rally is emerging from deeply oversold conditions and has room to continue."
-      },
-      {
-        "source": "volume_breakout",
-        "signal_type": "technical",
-        "description": "ETH daily volume of $27.7B is exceptionally high, signaling strong conviction and institutional participation in the move."
-      },
-      {
-        "source": "Fear_Greed",
-        "signal_type": "sentiment",
-        "description": "Fear & Greed jumped from 46 to 62 in 24 hours with weekly average at 39.6 \u2014 a sharp improving trend that supports continued momentum."
-      },
-      {
-        "source": "CryptoSlate",
-        "signal_type": "news",
-        "description": "Bitcoin's $69K breakout tied to Treasury buybacks boosting risk appetite provides a macro tailwind for the entire crypto market including ETH."
-      },
-      {
-        "source": "CoinDesk",
-        "signal_type": "news",
-        "description": "HYPE jumping on Trump's CFTC/Hyperliquid news and the CLARITY Act push signal a broadly pro-crypto policy environment \u2014 discount CoinDesk reliability but the legislative facts are verifiable."
-      }
-    ],
-    "confidence": 68
-  },
+  "open_trade": null,
   "signal_stats": {
     "Fear_Greed__sentiment": {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "wins": 6,
+      "wins": 7,
       "losses": 7,
-      "total": 13,
-      "win_rate": 0.462,
-      "total_pct": -52.77,
-      "avg_return": -4.0592,
-      "last_seen": "2026-08-18T00:02:19.353176+00:00"
+      "total": 14,
+      "win_rate": 0.5,
+      "total_pct": -43.89,
+      "avg_return": -3.135,
+      "last_seen": "2026-08-20T04:05:45.933698+00:00"
     },
     "CoinDesk__news": {
       "source": "CoinDesk",
       "signal_type": "news",
-      "wins": 4,
+      "wins": 5,
       "losses": 7,
-      "total": 11,
-      "win_rate": 0.364,
-      "total_pct": -84.75,
-      "avg_return": -7.7045,
-      "last_seen": "2026-08-18T00:02:19.353185+00:00"
+      "total": 12,
+      "win_rate": 0.417,
+      "total_pct": -75.87,
+      "avg_return": -6.3225,
+      "last_seen": "2026-08-20T04:05:45.933709+00:00"
     },
     "CoinTelegraph__onchain": {
       "source": "CoinTelegraph",
@@ -68,13 +37,13 @@
     "volume_breakout__technical": {
       "source": "volume_breakout",
       "signal_type": "technical",
-      "wins": 3,
+      "wins": 4,
       "losses": 4,
-      "total": 7,
-      "win_rate": 0.429,
-      "total_pct": -58.72,
-      "avg_return": -8.3886,
-      "last_seen": "2026-08-15T00:04:44.201153+00:00"
+      "total": 8,
+      "win_rate": 0.5,
+      "total_pct": -49.84,
+      "avg_return": -6.23,
+      "last_seen": "2026-08-20T04:05:45.933690+00:00"
     },
     "Blockworks__macro": {
       "source": "Blockworks",
@@ -90,13 +59,13 @@
     "RSI__technical": {
       "source": "RSI",
       "signal_type": "technical",
-      "wins": 5,
+      "wins": 6,
       "losses": 4,
-      "total": 9,
-      "win_rate": 0.556,
-      "total_pct": 3.98,
-      "avg_return": 0.4422,
-      "last_seen": "2026-08-18T00:02:19.353158+00:00"
+      "total": 10,
+      "win_rate": 0.6,
+      "total_pct": 12.86,
+      "avg_return": 1.286,
+      "last_seen": "2026-08-20T04:05:45.933672+00:00"
     },
     "CoinDesk__technical": {
       "source": "CoinDesk",
@@ -178,13 +147,13 @@
     "CryptoSlate__news": {
       "source": "CryptoSlate",
       "signal_type": "news",
-      "wins": 1,
+      "wins": 2,
       "losses": 1,
-      "total": 2,
-      "win_rate": 0.5,
-      "total_pct": -34.83,
-      "avg_return": -17.415,
-      "last_seen": "2026-08-08T20:01:22.216790+00:00"
+      "total": 3,
+      "win_rate": 0.667,
+      "total_pct": -25.95,
+      "avg_return": -8.65,
+      "last_seen": "2026-08-20T04:05:45.933704+00:00"
     },
     "on_chain__onchain": {
       "source": "on_chain",
@@ -198,6 +167,6 @@
       "last_seen": "2026-08-18T00:02:19.353198+00:00"
     }
   },
-  "trade_count": 13,
-  "last_updated": "2026-08-20T00:02:18.125445+00:00"
+  "trade_count": 14,
+  "last_updated": "2026-08-20T04:05:45.933808+00:00"
 }
