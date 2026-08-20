@@ -1,5 +1,36 @@
 {
-  "open_trade": null,
+  "open_trade": {
+    "coin": "HYPE",
+    "entry_time": "2026-08-20T08:05:36.602863+00:00",
+    "key_signals": [
+      {
+        "source": "CoinDesk",
+        "signal_type": "news",
+        "description": "Bitcoin ETFs drew $517M and Ether ETFs $189M in biggest inflows in months, confirming institutional demand is surging behind this rally."
+      },
+      {
+        "source": "CoinTelegraph",
+        "signal_type": "news",
+        "description": "Trump signaled the CFTC is working to bring Hyperliquid to the US, providing a unique regulatory catalyst that directly benefits HYPE."
+      },
+      {
+        "source": "RSI",
+        "signal_type": "technical",
+        "description": "HYPE RSI at 52.7 despite a 25% weekly gain indicates strong absorption of selling pressure \u2014 room to run before overbought conditions."
+      },
+      {
+        "source": "Fear_Greed",
+        "signal_type": "sentiment",
+        "description": "Fear & Greed surged from 46 to 62 in 24 hours, confirming a rapid sentiment shift but not yet at dangerous euphoria levels."
+      },
+      {
+        "source": "volume_breakout",
+        "signal_type": "technical",
+        "description": "HYPE trading $1.5B in 24h volume alongside ETH at $32.8B \u2014 institutional-grade liquidity confirming the breakout is real, not a thin-market spike."
+      }
+    ],
+    "confidence": 72
+  },
   "signal_stats": {
     "Fear_Greed__sentiment": {
       "source": "Fear_Greed",
@@ -168,5 +199,5 @@
     }
   },
   "trade_count": 14,
-  "last_updated": "2026-08-20T04:05:45.933808+00:00"
+  "last_updated": "2026-08-20T08:05:36.602877+00:00"
 }
