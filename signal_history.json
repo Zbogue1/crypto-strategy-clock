@@ -567,5 +567,26 @@
       "LINK"
     ],
     "alert": "LINK approaching exit target at $10.90 \u2014 recommend taking profits at current $10.43 (+9.1% gain) given extended 7-day move."
+  },
+  {
+    "ts": "2026-08-20T08:04:50.122427+00:00",
+    "coin": "HYPE",
+    "price": 71.93,
+    "signal": "BUY",
+    "confidence": 72,
+    "score": 6.8,
+    "fg": 62,
+    "btc_price": 69782,
+    "btc_dominance": 58.3,
+    "candidates": [
+      "BTW",
+      "HYPE",
+      "ETH",
+      "MON",
+      "XAUT",
+      "PAXG",
+      "EURC"
+    ],
+    "alert": "Market in explosive rally mode \u2014 BTC touched $70K, shorts liquidated at record levels. High conviction environment but watch for exhaustion."
   }
 ]
