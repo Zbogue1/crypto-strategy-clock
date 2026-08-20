@@ -1,27 +1,27 @@
 {
-  "timestamp": "2026-08-20T08:04:50.122427+00:00",
+  "timestamp": "2026-08-20T12:02:37.710390+00:00",
   "signal": "BUY",
-  "selected_coin": "HYPE",
-  "selected_coin_name": "Hyperliquid",
-  "selected_coin_price": 71.93,
-  "confidence": 72,
-  "layman_headline": "Hyperliquid surges on Trump endorsement as crypto market rallies hard \u2014 adding to our ETH position.",
-  "layman_explanation": "The entire crypto market is ripping higher, with Bitcoin briefly touching $70K and Ethereum jumping 18%. Hyperliquid (HYPE) is one of the biggest movers, up 23% in a day after President Trump signaled the CFTC would create a legal path for Hyperliquid to operate in the US. This is a major regulatory catalyst that could drive sustained buying. Despite the big daily move, HYPE's RSI is only 53, meaning it still has room to run technically before becoming overbought.",
-  "layman_action": "Consider adding a position in HYPE on any pullback toward $68. We're already holding ETH which is essentially flat from entry \u2014 keep that position with its existing stop-loss and target. Set a strict stop on HYPE at $61 to limit downside to roughly 15%.",
-  "expert_reasoning": "HYPE presents the best risk/reward among candidates. The Trump/CFTC catalyst is a tier-1 regulatory event that typically drives multi-day momentum in crypto. RSI at 52.7 is remarkably neutral despite the 25.5% weekly move, indicating strong underlying demand absorbing supply. The coin is near ATH (-6.4%) which means minimal resistance overhead. Volume at $1.5B is institutional-grade. The main risk is a broader market reversal, but with BTC ETF inflows at $517M and short liquidations at $2.7B, the macro backdrop is supportive for at least the next several days. I'm targeting a pullback entry near $68 to improve risk/reward, with a stop at $61 (below pre-catalyst levels) and a target of $83 representing a new ATH push.",
+  "selected_coin": "SOL",
+  "selected_coin_name": "Solana",
+  "selected_coin_price": 87.26,
+  "confidence": 62,
+  "layman_headline": "Bitcoin's massive breakout above $71K is lifting the entire crypto market \u2014 time to ride the wave with Solana.",
+  "layman_explanation": "Bitcoin just smashed through a six-week trading range and hit $71,000, wiping out $3 billion in short positions. This kind of explosive move typically pulls up high-quality altcoins with a lag. Our existing ETH and HYPE positions are in good shape, and now Solana looks like the next horse to ride \u2014 it's up 13% today but still 15% behind ETH's weekly gains, suggesting room to catch up. The overall market mood has swung from fear to greed in just days, with massive ETF inflows confirming institutional demand.",
+  "layman_action": "Consider adding a Solana position on any dip toward $85, with a clear stop-loss at $77 to limit downside to about 9%. Current ETH and HYPE holdings should be kept \u2014 both are within their trade plans.",
+  "expert_reasoning": "The macro setup is strong: BTC broke a multi-week range with extreme volume, ETF inflows hit $517M (largest since May), and $3B in shorts were liquidated \u2014 creating a reflexive bid. SOL at $87.26 is participating but lagging ETH and HYPE on a 7-day basis, which often resolves with a catch-up move in bull phases. BTC dominance at 58.6% is high but may start rotating into alts as the rally matures. The Fear & Greed index jumped from 46 to 62 in one day, and the weekly average of 39.6 shows this greed phase is early. Fed liquidity promises and dollar weakness provide a supportive macro backdrop. Entry near $85 on a pullback offers a favorable risk/reward with $77 stop (9% risk) versus $100 target (18% upside).",
   "risk_factors": [
-    "Broad market reversal if BTC fails to hold $68K \u2014 correlated selloff would hit HYPE hard",
-    "Regulatory catalyst could fizzle if CFTC process takes months or faces political opposition",
-    "High BTC dominance at 58.3% means capital is flowing to BTC over alts \u2014 headwind for HYPE"
+    "BTC dominance at 58.6% is high \u2014 capital may continue concentrating in BTC rather than flowing to alts like SOL",
+    "Market has moved very fast (BTC +11.6% in 24h) \u2014 a sharp pullback or consolidation could drag SOL down 10-15%",
+    "Fear & Greed jumped from 46 to 62 rapidly \u2014 historically these quick sentiment swings can reverse just as fast"
   ],
   "watch_list": [
-    "BTC price action around $70K \u2014 a clean break above could fuel alt rotation, rejection would pressure HYPE",
-    "Any follow-up CFTC statements or regulatory filings regarding Hyperliquid's US access",
-    "ETH position \u2014 monitor for continuation toward $2,520 target or breakdown below $2,100"
+    "BTC price action around $72K resistance \u2014 a rejection here could trigger broad alt selloff",
+    "ETH position approaching exit target of $2,520 \u2014 monitor for partial or full exit",
+    "Daily ETF flow data over the next 48 hours to confirm institutional demand is sustained"
   ],
-  "market_context": "Massive broad-market rally with BTC hitting $70K, $2.7B in short liquidations, and $517M in BTC ETF inflows. Fear & Greed jumped from 46 to 62 in one day \u2014 sentiment shifted dramatically bullish but not yet euphoric.",
-  "context_banner": "Crypto market surging on massive short squeeze and ETF inflows, with Hyperliquid receiving a unique regulatory tailwind from the White House.",
-  "btc_price": 69782,
+  "market_context": "Bitcoin has broken out above $71K on massive volume with $3B in short liquidations and $517M in ETF inflows, shifting the market from neutral-fear to greed. This is a powerful risk-on environment, but the speed of the move warrants disciplined entries with tight stops.",
+  "context_banner": "A massive BTC short squeeze and record ETF inflows have ignited a broad crypto rally \u2014 the best swing setups are in high-quality alts that are lagging the move.",
+  "btc_price": 71895,
   "fear_greed": {
     "current": 62,
     "label": "Greed",
@@ -29,35 +29,35 @@
     "week_avg": 39.6,
     "trend": "improving"
   },
-  "btc_dominance": 58.3,
+  "btc_dominance": 58.6,
   "key_signals": [
-    {
-      "source": "CoinDesk",
-      "signal_type": "news",
-      "description": "Bitcoin ETFs drew $517M and Ether ETFs $189M in biggest inflows in months, confirming institutional demand is surging behind this rally."
-    },
     {
       "source": "CoinTelegraph",
       "signal_type": "news",
-      "description": "Trump signaled the CFTC is working to bring Hyperliquid to the US, providing a unique regulatory catalyst that directly benefits HYPE."
+      "description": "Bitcoin ETFs drew $517M in the largest one-day inflow since early May, confirming strong institutional demand behind the breakout."
     },
     {
-      "source": "RSI",
-      "signal_type": "technical",
-      "description": "HYPE RSI at 52.7 despite a 25% weekly gain indicates strong absorption of selling pressure \u2014 room to run before overbought conditions."
+      "source": "CoinDesk",
+      "signal_type": "news",
+      "description": "Bitcoin broke out of a six-week range above $71K with $3B in short liquidations, creating powerful upward momentum across crypto."
     },
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Fear & Greed surged from 46 to 62 in 24 hours, confirming a rapid sentiment shift but not yet at dangerous euphoria levels."
+      "description": "Fear & Greed surged from 46 to 62 in one day with a weekly average of 39.6, indicating early-stage greed \u2014 supportive but not yet euphoric."
     },
     {
       "source": "volume_breakout",
       "signal_type": "technical",
-      "description": "HYPE trading $1.5B in 24h volume alongside ETH at $32.8B \u2014 institutional-grade liquidity confirming the breakout is real, not a thin-market spike."
+      "description": "SOL 24h volume at $5.76B signals massive institutional and retail participation, validating the breakout across the alt space."
+    },
+    {
+      "source": "CoinDesk",
+      "signal_type": "macro",
+      "description": "Fed liquidity promises and dollar weakness are creating a favorable macro tailwind for risk assets including crypto."
     }
   ],
   "_mode": "HUNTING",
-  "exit_target": 83.0,
-  "stop_loss": 61.0
+  "exit_target": 100.0,
+  "stop_loss": 77.0
 }
