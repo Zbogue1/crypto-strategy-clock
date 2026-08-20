@@ -609,5 +609,28 @@
       "EURC"
     ],
     "alert": "BTC breakout with $3B short liquidation \u2014 high-conviction risk-on environment but pullback risk is elevated after 11.6% single-day move"
+  },
+  {
+    "ts": "2026-08-20T16:02:21.580353+00:00",
+    "coin": "ETH",
+    "price": 2321.4,
+    "signal": "HOLD",
+    "confidence": 62,
+    "score": 0.3,
+    "fg": 62,
+    "btc_price": 72363,
+    "btc_dominance": 58.6,
+    "candidates": [
+      "PUMP",
+      "MON",
+      "BTW",
+      "ETH",
+      "XAUT",
+      "PAXG",
+      "EURC",
+      "SOL",
+      "HYPE"
+    ],
+    "alert": "Rapid sentiment shift from 46 to 62 in 24 hours \u2014 monitor for potential short-term exhaustion and tighten stops if positions approach targets."
   }
 ]
