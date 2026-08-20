@@ -632,5 +632,27 @@
       "HYPE"
     ],
     "alert": "Rapid sentiment shift from 46 to 62 in 24 hours \u2014 monitor for potential short-term exhaustion and tighten stops if positions approach targets."
+  },
+  {
+    "ts": "2026-08-20T20:00:07.101362+00:00",
+    "coin": "ETH",
+    "price": 2325.4,
+    "signal": "HOLD",
+    "confidence": 62,
+    "score": 0.3,
+    "fg": 62,
+    "btc_price": 72653,
+    "btc_dominance": 58.7,
+    "candidates": [
+      "PUMP",
+      "MON",
+      "HYPE",
+      "ETH",
+      "XAUT",
+      "PAXG",
+      "FDUSD",
+      "SOL"
+    ],
+    "alert": null
   }
 ]
