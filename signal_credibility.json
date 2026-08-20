@@ -1,5 +1,36 @@
 {
-  "open_trade": null,
+  "open_trade": {
+    "coin": "ETH",
+    "entry_time": "2026-08-20T00:02:18.125431+00:00",
+    "key_signals": [
+      {
+        "source": "RSI",
+        "signal_type": "technical",
+        "description": "ETH RSI at 45.84 despite a 20% weekly surge indicates the rally is emerging from deeply oversold conditions and has room to continue."
+      },
+      {
+        "source": "volume_breakout",
+        "signal_type": "technical",
+        "description": "ETH daily volume of $27.7B is exceptionally high, signaling strong conviction and institutional participation in the move."
+      },
+      {
+        "source": "Fear_Greed",
+        "signal_type": "sentiment",
+        "description": "Fear & Greed jumped from 46 to 62 in 24 hours with weekly average at 39.6 \u2014 a sharp improving trend that supports continued momentum."
+      },
+      {
+        "source": "CryptoSlate",
+        "signal_type": "news",
+        "description": "Bitcoin's $69K breakout tied to Treasury buybacks boosting risk appetite provides a macro tailwind for the entire crypto market including ETH."
+      },
+      {
+        "source": "CoinDesk",
+        "signal_type": "news",
+        "description": "HYPE jumping on Trump's CFTC/Hyperliquid news and the CLARITY Act push signal a broadly pro-crypto policy environment \u2014 discount CoinDesk reliability but the legislative facts are verifiable."
+      }
+    ],
+    "confidence": 68
+  },
   "signal_stats": {
     "Fear_Greed__sentiment": {
       "source": "Fear_Greed",
@@ -168,5 +199,5 @@
     }
   },
   "trade_count": 13,
-  "last_updated": "2026-08-18T00:02:19.353324+00:00"
+  "last_updated": "2026-08-20T00:02:18.125445+00:00"
 }
