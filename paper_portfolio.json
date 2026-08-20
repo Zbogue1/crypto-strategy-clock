@@ -1,21 +1,6 @@
 {
-  "cash": 508.3247,
+  "cash": 669.7536,
   "holdings": [
-    {
-      "coin_ticker": "LINK",
-      "coin_id": "link",
-      "units": 15.492855648535562,
-      "entry_price": 9.56,
-      "entry_date": "2026-08-15T04:02:42.407593+00:00",
-      "entry_signal": "BUY",
-      "entry_confidence": 62,
-      "allocated_usd": 148.26,
-      "fee_paid": 0.1483,
-      "exit_target": 10.9,
-      "stop_loss": 8.6,
-      "entry_target": 9.4,
-      "expected_days": 7
-    },
     {
       "coin_ticker": "ETH",
       "coin_id": "eth",
@@ -32,12 +17,12 @@
       "expected_days": 7
     }
   ],
-  "realized_pnl": -173.9753,
+  "realized_pnl": -160.8064,
   "peak_value": 1032.0739,
-  "total_trades": 21,
-  "winning_trades": 8,
+  "total_trades": 22,
+  "winning_trades": 9,
   "losing_trades": 13,
-  "total_fees": 5.1316,
+  "total_fees": 5.2932,
   "trade_history": [
     {
       "trade_num": 1,
@@ -567,6 +552,32 @@
       "exit_target": 85.0,
       "stop_loss": 69.5,
       "hit_target": true,
+      "hit_stop": false,
+      "result": "WIN"
+    },
+    {
+      "trade_num": 22,
+      "coin_ticker": "LINK",
+      "coin_id": "link",
+      "entry_price": 9.56,
+      "entry_date": "2026-08-15T04:02:42.407593+00:00",
+      "entry_signal": "BUY",
+      "entry_confidence": 62,
+      "allocated_usd": 148.26,
+      "exit_price": 10.43,
+      "exit_date": "2026-08-20T04:05:45.932426+00:00",
+      "exit_signal": "HOLD",
+      "exit_reason": "signal",
+      "units": 15.492855648535562,
+      "gross_proceeds": 161.5905,
+      "fees_total": 0.3099,
+      "net_proceeds": 161.4289,
+      "profit_usd": 13.1689,
+      "profit_pct": 8.88,
+      "days_held": 5.0,
+      "exit_target": 10.9,
+      "stop_loss": 8.6,
+      "hit_target": false,
       "hit_stop": false,
       "result": "WIN"
     }
