@@ -1,21 +1,6 @@
 {
-  "cash": 444.376,
+  "cash": 508.3247,
   "holdings": [
-    {
-      "coin_ticker": "SOL",
-      "coin_id": "sol",
-      "units": 2.7378684003152087,
-      "entry_price": 76.14,
-      "entry_date": "2026-08-08T20:01:22.217157+00:00",
-      "entry_signal": "BUY",
-      "entry_confidence": 62,
-      "allocated_usd": 208.67,
-      "fee_paid": 0.2087,
-      "exit_target": 85.0,
-      "stop_loss": 69.5,
-      "entry_target": 74.5,
-      "expected_days": 10
-    },
     {
       "coin_ticker": "LINK",
       "coin_id": "link",
@@ -30,14 +15,29 @@
       "stop_loss": 8.6,
       "entry_target": 9.4,
       "expected_days": 7
+    },
+    {
+      "coin_ticker": "ETH",
+      "coin_id": "eth",
+      "units": 0.07516389730108969,
+      "entry_price": 2252.02,
+      "entry_date": "2026-08-20T00:02:18.124095+00:00",
+      "entry_signal": "BUY",
+      "entry_confidence": 68,
+      "allocated_usd": 169.44,
+      "fee_paid": 0.1694,
+      "exit_target": 2520.0,
+      "stop_loss": 2020.0,
+      "entry_target": 2180.0,
+      "expected_days": 7
     }
   ],
-  "realized_pnl": -198.694,
+  "realized_pnl": -173.9753,
   "peak_value": 1032.0739,
-  "total_trades": 20,
-  "winning_trades": 7,
+  "total_trades": 21,
+  "winning_trades": 8,
   "losing_trades": 13,
-  "total_fees": 4.7286,
+  "total_fees": 5.1316,
   "trade_history": [
     {
       "trade_num": 1,
@@ -543,6 +543,32 @@
       "hit_target": false,
       "hit_stop": false,
       "result": "LOSS"
+    },
+    {
+      "trade_num": 21,
+      "coin_ticker": "SOL",
+      "coin_id": "sol",
+      "entry_price": 76.14,
+      "entry_date": "2026-08-08T20:01:22.217157+00:00",
+      "entry_signal": "BUY",
+      "entry_confidence": 62,
+      "allocated_usd": 208.67,
+      "exit_price": 85.33,
+      "exit_date": "2026-08-20T00:02:18.121301+00:00",
+      "exit_signal": "TAKE_PROFIT",
+      "exit_reason": "take_profit",
+      "units": 2.7378684003152087,
+      "gross_proceeds": 233.6223,
+      "fees_total": 0.4423,
+      "net_proceeds": 233.3887,
+      "profit_usd": 24.7187,
+      "profit_pct": 11.85,
+      "days_held": 11.17,
+      "exit_target": 85.0,
+      "stop_loss": 69.5,
+      "hit_target": true,
+      "hit_stop": false,
+      "result": "WIN"
     }
   ],
   "started_at": "2026-06-27T00:00:00+00:00",
