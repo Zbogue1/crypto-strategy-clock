@@ -1,5 +1,5 @@
 {
-  "cash": 502.3136,
+  "cash": 376.7336,
   "holdings": [
     {
       "coin_ticker": "ETH",
@@ -30,6 +30,21 @@
       "stop_loss": 61.0,
       "entry_target": 68.0,
       "expected_days": 7
+    },
+    {
+      "coin_ticker": "SOL",
+      "coin_id": "sol",
+      "units": 1.4377079990831996,
+      "entry_price": 87.26,
+      "entry_date": "2026-08-20T12:03:22.998154+00:00",
+      "entry_signal": "BUY",
+      "entry_confidence": 62,
+      "allocated_usd": 125.58,
+      "fee_paid": 0.1256,
+      "exit_target": 100.0,
+      "stop_loss": 77.0,
+      "entry_target": 85.0,
+      "expected_days": 10
     }
   ],
   "realized_pnl": -160.8064,
@@ -37,7 +52,7 @@
   "total_trades": 22,
   "winning_trades": 9,
   "losing_trades": 13,
-  "total_fees": 5.4606,
+  "total_fees": 5.5862,
   "trade_history": [
     {
       "trade_num": 1,
