@@ -545,5 +545,27 @@
       "LINK"
     ],
     "alert": "SOL has exceeded its exit target \u2014 take profits now to lock in the 12.1% gain."
+  },
+  {
+    "ts": "2026-08-20T04:04:59.993501+00:00",
+    "coin": "LINK",
+    "price": 10.43,
+    "signal": "HOLD",
+    "confidence": 62,
+    "score": 0.4,
+    "fg": 62,
+    "btc_price": 69148,
+    "btc_dominance": 58.2,
+    "candidates": [
+      "BTW",
+      "ETH",
+      "HYPE",
+      "MON",
+      "XAUT",
+      "PAXG",
+      "EURC",
+      "LINK"
+    ],
+    "alert": "LINK approaching exit target at $10.90 \u2014 recommend taking profits at current $10.43 (+9.1% gain) given extended 7-day move."
   }
 ]
