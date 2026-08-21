@@ -50,9 +50,67 @@ def _redis_get(key: str):
         if r.status_code == 200:
             val = r.json().get("result")
             return json.loads(val) if val else None
+        log.error(f"Kalshi portfolio: Redis GET HTTP {r.status_code} — "
+                  f"falling back to local file, history may appear empty")
     except Exception as e:
-        log.warning(f"Kalshi portfolio: Redis GET error: {e}")
+        log.error(f"Kalshi portfolio: Redis GET error: {e} — "
+                  f"falling back to local file, history may appear empty")
     return None
+
+
+def redis_health() -> dict:
+    """
+    Diagnose whether Redis is reachable and what's actually stored.
+    Used by /health so an apparent 'reset' can be distinguished from a
+    connection failure before anyone panics or overwrites good data.
+    """
+    out = {
+        "configured": bool(_REDIS_URL and _REDIS_TOKEN),
+        "reachable":  False,
+        "keys":       {},
+        "error":      None,
+    }
+    if not out["configured"]:
+        out["error"] = "UPSTASH_REDIS_URL / UPSTASH_REDIS_TOKEN not set"
+        return out
+
+    for key in (_PORTFOLIO_KEY, "kalshi_postmortem"):
+        try:
+            r = _requests.post(
+                _REDIS_URL,
+                headers={"Authorization": f"Bearer {_REDIS_TOKEN}"},
+                json=["GET", key],
+                timeout=5,
+            )
+            if r.status_code != 200:
+                out["error"] = f"HTTP {r.status_code}"
+                continue
+            out["reachable"] = True
+            raw = r.json().get("result")
+            if not raw:
+                out["keys"][key] = {"exists": False}
+                continue
+            data = json.loads(raw)
+            if key == _PORTFOLIO_KEY:
+                out["keys"][key] = {
+                    "exists":        True,
+                    "bytes":         len(raw),
+                    "holdings":      len(data.get("holdings", [])),
+                    "trade_history": len(data.get("trade_history", [])),
+                    "total_trades":  data.get("total_trades", 0),
+                    "winning":       data.get("winning_trades", 0),
+                    "losing":        data.get("losing_trades", 0),
+                    "created_at":    data.get("created_at", "?"),
+                }
+            else:
+                out["keys"][key] = {
+                    "exists": True,
+                    "bytes":  len(raw),
+                    "calls":  len(data.get("calls", [])),
+                }
+        except Exception as e:
+            out["error"] = str(e)
+    return out
 
 
 def _redis_set(key: str, data: dict) -> bool:
@@ -121,6 +179,32 @@ def reset_portfolio(starting_cash: float = None) -> dict:
     if starting_cash is None:
         starting_cash = float(os.getenv("KALSHI_STARTING_CASH", "500.0"))
 
+    # ARCHIVE FIRST — never destroy trade history. A reset that deletes the
+    # record makes it impossible to audit past bets or recover from a mistaken
+    # wipe. The archive is keyed by timestamp and kept indefinitely.
+    try:
+        old = _load()
+        if old.get("trade_history") or old.get("holdings"):
+            stamp = datetime.now(timezone.utc).strftime("%Y%m%d_%H%M%S")
+            _redis_set(f"kalshi_portfolio_archive_{stamp}", old)
+            # Track archive keys so they can be listed/restored later
+            index = _redis_get("kalshi_archive_index") or {"archives": []}
+            index["archives"].append({
+                "key":           f"kalshi_portfolio_archive_{stamp}",
+                "archived_at":   datetime.now(timezone.utc).isoformat(),
+                "trades":        len(old.get("trade_history", [])),
+                "holdings":      len(old.get("holdings", [])),
+                "winning":       old.get("winning_trades", 0),
+                "losing":        old.get("losing_trades", 0),
+            })
+            _redis_set("kalshi_archive_index", index)
+            log.warning(
+                f"Kalshi portfolio: ARCHIVED {len(old.get('trade_history', []))} trades "
+                f"to kalshi_portfolio_archive_{stamp} before reset"
+            )
+    except Exception as e:
+        log.error(f"Kalshi portfolio: archive before reset FAILED: {e}")
+
     fresh = {
         "version":        "kalshi-v1",
         "created_at":     datetime.now(timezone.utc).isoformat(),
@@ -138,6 +222,51 @@ def reset_portfolio(starting_cash: float = None) -> dict:
     _save(fresh)
     log.warning(f"Kalshi portfolio: RESET — fresh bank ${starting_cash:,.2f}")
     return fresh
+
+
+def list_archives() -> list:
+    """Every archived portfolio snapshot, newest first."""
+    index = _redis_get("kalshi_archive_index") or {"archives": []}
+    return list(reversed(index.get("archives", [])))
+
+
+def restore_archive(archive_key: str) -> Optional[dict]:
+    """
+    Restore a previously archived portfolio. The CURRENT state is archived
+    first, so a restore is itself reversible.
+    """
+    data = _redis_get(archive_key)
+    if not data:
+        log.error(f"Kalshi portfolio: archive {archive_key} not found")
+        return None
+
+    # Archive what we're about to replace
+    try:
+        current = _load()
+        if current.get("trade_history") or current.get("holdings"):
+            stamp = datetime.now(timezone.utc).strftime("%Y%m%d_%H%M%S")
+            _redis_set(f"kalshi_portfolio_archive_{stamp}", current)
+            index = _redis_get("kalshi_archive_index") or {"archives": []}
+            index["archives"].append({
+                "key":         f"kalshi_portfolio_archive_{stamp}",
+                "archived_at": datetime.now(timezone.utc).isoformat(),
+                "trades":      len(current.get("trade_history", [])),
+                "holdings":    len(current.get("holdings", [])),
+                "winning":     current.get("winning_trades", 0),
+                "losing":      current.get("losing_trades", 0),
+                "note":        "auto-archived before restore",
+            })
+            _redis_set("kalshi_archive_index", index)
+    except Exception as e:
+        log.warning(f"Kalshi portfolio: pre-restore archive failed: {e}")
+
+    _save(data)
+    log.warning(
+        f"Kalshi portfolio: RESTORED from {archive_key} — "
+        f"{len(data.get('trade_history', []))} trades, "
+        f"{data.get('winning_trades',0)}W/{data.get('losing_trades',0)}L"
+    )
+    return data
 
 
 def _save(state: dict):

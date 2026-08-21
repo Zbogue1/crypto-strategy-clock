@@ -119,15 +119,63 @@ HELP_TEXT = (
     "Any message with a `?` gets analyzed. Use `/ask <question>` if it "
     "doesn't end in a question mark.\n\n"
     "*Commands:*\n"
+    "`/trades` — full bet-by-bet audit ledger\n"
     "`/report` — performance report (add days: `/report 30`)\n"
     "`/kalshi` — portfolio snapshot\n"
     "`/kalshi_stats` — track record & calibration\n"
     "`/kalshi_scan` — scan perps on demand (one-off)\n"
-    "`/reset` — wipe portfolio & start a fresh bank\n"
+    "`/health` — storage diagnostics (Redis + record counts)\n"
+    "`/archives` — list/restore archived portfolios\n"
+    "`/reset` — start a fresh bank (archives first)\n"
     "`/help` — this message"
 )
 
 _last_update_id = 0
+
+
+def _handle_archives(text: str):
+    """List archived portfolios, or restore one: /archives restore <key>"""
+    from kalshi_portfolio import list_archives, restore_archive
+
+    parts = text.split()
+
+    if len(parts) >= 3 and parts[1].lower() == "restore":
+        key = parts[2]
+        data = restore_archive(key)
+        if not data:
+            send_telegram(f"⚠️ Archive `{key}` not found. Send `/archives` to list them.")
+            return
+        send_telegram(
+            "♻️ *Portfolio restored*\n\n"
+            f"From: `{key}`\n"
+            f"Trades: {len(data.get('trade_history', []))}\n"
+            f"Record: {data.get('winning_trades',0)}W / {data.get('losing_trades',0)}L\n"
+            f"Open positions: {len(data.get('holdings', []))}\n\n"
+            "_Your previous state was archived first — this is reversible._"
+        )
+        return
+
+    archives = list_archives()
+    if not archives:
+        send_telegram(
+            "📦 *No archives*\n\nNothing has been archived yet. "
+            "Archives are created automatically before any reset or restore."
+        )
+        return
+
+    lines = [f"📦 *PORTFOLIO ARCHIVES ({len(archives)})*\n"]
+    for a in archives[:10]:
+        when = (a.get("archived_at", "") or "")[:16].replace("T", " ")
+        note = f" — _{a['note']}_" if a.get("note") else ""
+        lines.append(
+            f"\n`{a['key']}`\n"
+            f"  {when} UTC{note}\n"
+            f"  {a.get('trades',0)} trades | "
+            f"{a.get('winning',0)}W / {a.get('losing',0)}L | "
+            f"{a.get('holdings',0)} open"
+        )
+    lines.append("\n\n_Restore with:_\n`/archives restore <key>`")
+    send_telegram("\n".join(lines))
 
 
 def _handle_reset(text: str):
@@ -152,11 +200,13 @@ def _handle_reset(text: str):
         summary = get_portfolio_summary()
         send_telegram(
             "⚠️ *Reset paper portfolio?*\n\n"
-            f"This permanently deletes:\n"
+            f"This clears:\n"
             f"• {len(summary.get('positions', []))} open position(s)\n"
             f"• {summary.get('winning_trades', 0) + summary.get('losing_trades', 0)} closed trade(s)\n"
-            f"• All postmortem/calibration history\n\n"
+            f"• Postmortem/calibration history\n\n"
             f"New bank would be *${new_cash:,.2f}*\n\n"
+            "✅ Your current data is *archived first* and can be brought back "
+            "with `/archives restore <key>`.\n\n"
             "To proceed, send:\n"
             "`/reset confirm`\n\n"
             "Or set a custom amount:\n"
@@ -225,7 +275,16 @@ def _poll_telegram_commands():
             _last_update_id = max(_last_update_id, update["update_id"])
             msg = update.get("message", {})
             text = msg.get("text", "").strip()
-            if text.startswith("/reset"):
+            if text.startswith("/trades") or text.startswith("/ledger"):
+                parts = text.split()
+                lim = int(parts[1]) if len(parts) > 1 and parts[1].isdigit() else 20
+                off = int(parts[2]) if len(parts) > 2 and parts[2].isdigit() else 0
+                send_telegram(build_trade_ledger(limit=lim, offset=off))
+            elif text.startswith("/health"):
+                send_telegram(build_health_report())
+            elif text.startswith("/archives"):
+                _handle_archives(text)
+            elif text.startswith("/reset"):
                 _handle_reset(text)
             elif text.startswith("/report"):
                 parts = text.split()
@@ -619,6 +678,138 @@ def run_monitor_loop(stop_event: Event):
             if stop_event.is_set():
                 break
             time.sleep(1)
+
+
+def build_trade_ledger(limit: int = 20, offset: int = 0) -> str:
+    """
+    Full audit trail — every individual bet with the details needed to verify
+    it was a real market position, not a hallucinated one.
+
+    Shows: ticker, direction, leverage, exact entry/exit prices, timestamps,
+    exit reason, P&L, and the confidence the AI assigned at entry.
+    """
+    from kalshi_portfolio import _load as _load_portfolio
+
+    state   = _load_portfolio()
+    history = list(state.get("trade_history", []))
+    open_   = state.get("holdings", [])
+
+    if not history and not open_:
+        return (
+            "📒 *KALSHI TRADE LEDGER*\n\n"
+            "No trades recorded.\n\n"
+            "If you expected history here, run `/health` — an unreachable "
+            "Redis will show as an empty ledger while the data is still intact."
+        )
+
+    lines = [f"📒 *KALSHI TRADE LEDGER*\n"]
+
+    # ── Open positions ────────────────────────────────────────────────────
+    if open_:
+        lines.append(f"*OPEN ({len(open_)})*")
+        for h in open_:
+            opened = (h.get("opened_at", "") or "")[:16].replace("T", " ")
+            lines.append(
+                f"\n🔵 `{h.get('ticker','?')}` {h.get('direction','?')} "
+                f"{h.get('leverage',1)}x\n"
+                f"   Entry `{h.get('entry_price',0):.4f}` @ {opened} UTC\n"
+                f"   Margin ${h.get('margin',0):.0f} | notional ${h.get('notional',0):.0f}\n"
+                f"   Stop `{h.get('stop_price',0):.4f}` | TP `{h.get('take_profit_price',0):.4f}`\n"
+                f"   Conf {h.get('confidence','?')}/100"
+            )
+        lines.append("")
+
+    # ── Closed trades, newest first ───────────────────────────────────────
+    history.reverse()
+    page = history[offset:offset + limit]
+
+    if page:
+        shown_to = offset + len(page)
+        lines.append(f"*CLOSED ({offset+1}-{shown_to} of {len(history)})*")
+        for i, t in enumerate(page, start=offset + 1):
+            pnl    = t.get("net_pnl", 0)
+            mark   = "✅" if pnl > 0 else "❌"
+            opened = (t.get("opened_at", "") or "")[:16].replace("T", " ")
+            closed = (t.get("closed_at", "") or "")[:16].replace("T", " ")
+            reason = t.get("reason", "?")
+            lines.append(
+                f"\n{mark} *#{i}* `{t.get('ticker','?')}` {t.get('direction','?')} "
+                f"{t.get('leverage',1)}x\n"
+                f"   `{t.get('entry_price',0):.4f}` → `{t.get('exit_price',0):.4f}`  "
+                f"(*${pnl:+.2f}*, {t.get('pnl_pct',0):+.1f}%)\n"
+                f"   In  {opened} UTC\n"
+                f"   Out {closed} UTC  ({t.get('held_hours',0):.1f}h, {reason})\n"
+                f"   Margin ${t.get('margin',0):.0f} | conf {t.get('confidence','?')}/100"
+            )
+
+        if shown_to < len(history):
+            lines.append(f"\n_Next page: `/trades {limit} {shown_to}`_")
+
+    # ── Reconciliation — do the parts add up? ─────────────────────────────
+    sum_pnl = sum(t.get("net_pnl", 0) for t in history)
+    wins    = sum(1 for t in history if t.get("net_pnl", 0) > 0)
+    losses  = len(history) - wins
+    lines += [
+        "",
+        "*RECONCILIATION*",
+        f"Ledger entries: {len(history)} closed, {len(open_)} open",
+        f"Sum of ledger P&L: ${sum_pnl:+.2f}",
+        f"Portfolio counter: {state.get('total_trades',0)} trades, "
+        f"{state.get('winning_trades',0)}W / {state.get('losing_trades',0)}L",
+        f"Ledger recount:    {len(history)} trades, {wins}W / {losses}L",
+    ]
+    if state.get("total_trades", 0) != len(history):
+        lines.append("⚠️ Counter and ledger disagree — counter may be stale.")
+    else:
+        lines.append("✓ Counter matches ledger.")
+
+    return "\n".join(lines)
+
+
+def build_health_report() -> str:
+    """Storage diagnostics — distinguishes a real reset from a Redis outage."""
+    from kalshi_portfolio import redis_health
+
+    h = redis_health()
+    lines = ["🩺 *KALSHI STORAGE HEALTH*\n"]
+
+    if not h["configured"]:
+        lines.append("❌ *Redis not configured*")
+        lines.append(f"   {h['error']}")
+        lines.append("\n⚠️ Data lives only in the container and is LOST on every redeploy.")
+        return "\n".join(lines)
+
+    if not h["reachable"]:
+        lines.append("❌ *Redis unreachable*")
+        lines.append(f"   Error: {h.get('error')}")
+        lines.append(
+            "\n⚠️ The bot is falling back to local files, so history will look "
+            "empty even though your data is probably still safe in Redis. "
+            "Do NOT reset — fix the connection first."
+        )
+        return "\n".join(lines)
+
+    lines.append("✅ *Redis reachable*\n")
+    for key, info in h["keys"].items():
+        name = "Portfolio" if "portfolio" in key else "Postmortem"
+        if not info.get("exists"):
+            lines.append(f"*{name}* (`{key}`)\n   ⚠️ Key does not exist — never written, or deleted.")
+            continue
+        lines.append(f"*{name}* (`{key}`)")
+        lines.append(f"   Size: {info['bytes']:,} bytes")
+        if "trade_history" in info:
+            lines.append(
+                f"   Closed trades: {info['trade_history']} | Open: {info['holdings']}\n"
+                f"   Counters: {info['total_trades']} total, "
+                f"{info['winning']}W / {info['losing']}L\n"
+                f"   Created: {info['created_at'][:16].replace('T',' ')} UTC"
+            )
+        else:
+            lines.append(f"   Logged calls: {info['calls']}")
+        lines.append("")
+
+    lines.append("_Use `/trades` to inspect individual bets._")
+    return "\n".join(lines)
 
 
 def build_weekly_report(days: float = 7.0) -> str:
