@@ -2173,16 +2173,36 @@ def run_weekly_discovery():
     seen_wallets = set(seen_data.get("seen", {}).keys())
     now_str      = datetime.now(timezone.utc).isoformat()
 
-    # Scan 1: COPY_TRADE candidates only — NARRATIVE_WATCH filtered out
+    # Scan 1: COPY_TRADE candidates — analyzed and admitted automatically
     newly_shown = []
     try:
+        from fomo_autoadd import (process_candidates, format_autoadd_telegram,
+                                  AUTO_ADD_ENABLED)
         candidates = discover_traders(period="7d", limit=50)
-        msg, shown = format_discovery_telegram(candidates, existing, seen_wallets)
-        send_telegram(msg)
-        newly_shown.extend(shown)
-        log.info(f"GMGN copy-trade discovery: {len(shown)} new candidate(s) shown")
+
+        if AUTO_ADD_ENABLED:
+            # Deep-analyze BEFORE notifying, so the message is a decision record
+            log.info(f"Auto-analyzing {len(candidates)} copy-trade candidate(s)...")
+            results = process_candidates(candidates, existing, wallet_data)
+
+            if results["added"]:
+                save_trusted_wallets(wallet_data)
+                log.warning(f"Auto-add: {len(results['added'])} wallet(s) added to watchlist")
+
+            send_telegram(format_autoadd_telegram(results))
+            for group in ("added", "review", "rejected"):
+                newly_shown.extend(c["wallet"] for c in results[group] if c.get("wallet"))
+            log.info(
+                f"GMGN discovery: {len(results['added'])} added, "
+                f"{len(results['review'])} for review, {len(results['rejected'])} rejected"
+            )
+        else:
+            msg, shown = format_discovery_telegram(candidates, existing, seen_wallets)
+            send_telegram(msg)
+            newly_shown.extend(shown)
+            log.info(f"GMGN copy-trade discovery: {len(shown)} new candidate(s) shown")
     except Exception as e:
-        log.error(f"GMGN copy-trade discovery error: {e}")
+        log.error(f"GMGN copy-trade discovery error: {e}", exc_info=True)
 
     # Scan 2: narrative whales (high profit, spray-and-pray style)
     try:
@@ -2199,13 +2219,28 @@ def run_weekly_discovery():
     # Scan 3: Reverse discovery — wallets found inside tokens that actually pumped
     try:
         from fomo_gmgn import reverse_discover_from_winners, format_reverse_discovery_telegram
+        from fomo_autoadd import (process_candidates, format_autoadd_telegram,
+                                  AUTO_ADD_ENABLED)
         rev_candidates = reverse_discover_from_winners()
-        rev_msg, rev_shown = format_reverse_discovery_telegram(
-            rev_candidates, existing, seen_wallets
-        )
-        send_telegram(rev_msg)
-        newly_shown.extend(rev_shown)
-        log.info(f"Reverse discovery: {len(rev_shown)} new candidate(s) shown")
+
+        if AUTO_ADD_ENABLED:
+            log.info(f"Auto-analyzing {len(rev_candidates)} reverse-discovery candidate(s)...")
+            rev_results = process_candidates(rev_candidates, existing, wallet_data)
+            if rev_results["added"]:
+                save_trusted_wallets(wallet_data)
+                log.warning(f"Auto-add (reverse): {len(rev_results['added'])} wallet(s) added")
+            msg = format_autoadd_telegram(rev_results)
+            send_telegram("🔄 <b>From tokens that actually pumped:</b>\n\n" + msg)
+            for group in ("added", "review", "rejected"):
+                newly_shown.extend(c["wallet"] for c in rev_results[group] if c.get("wallet"))
+            log.info(f"Reverse discovery: {len(rev_results['added'])} added")
+        else:
+            rev_msg, rev_shown = format_reverse_discovery_telegram(
+                rev_candidates, existing, seen_wallets
+            )
+            send_telegram(rev_msg)
+            newly_shown.extend(rev_shown)
+            log.info(f"Reverse discovery: {len(rev_shown)} new candidate(s) shown")
     except Exception as e:
         log.error(f"Reverse discovery error: {e}")
 
