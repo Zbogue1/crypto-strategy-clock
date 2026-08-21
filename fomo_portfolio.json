@@ -2,7 +2,7 @@
   "version": "golem-v1",
   "reset_date": "2026-08-08",
   "reset_reason": "FOMO Golem launch \u2014 fresh $1,000 paper portfolio, FOMO-only strategy",
-  "cash": 9593.961066754791,
+  "cash": 9525.72,
   "starting_cash": 10000.0,
   "peak_value": 10000.0,
   "total_trades": 3,
@@ -267,7 +267,7 @@
     }
   ],
   "archived_history_note": "Prior July 2026 paper trades archived before this reset.",
-  "last_updated": "2026-08-21T16:49:49.521616+00:00",
+  "last_updated": "2026-08-21T16:58:17.817419+00:00",
   "deposits": [
     {
       "target": 10000.0,
