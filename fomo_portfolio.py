@@ -381,6 +381,13 @@ def execute_fomo_sell(
     holding  = next((h for h in holdings if (h.get("contract_address") or "") == contract_address), None)
     if not holding:
         return None
+
+    # Reject impossible prices BEFORE mutating state — a bad price here would
+    # book phantom cash permanently.
+    if not is_price_sane(holding.get("entry_price"), current_price,
+                         holding.get("token_ticker", "?")):
+        return None
+
     holdings.remove(holding)
 
     proceeds   = holding["units"] * current_price
@@ -1072,6 +1079,36 @@ def reset_fomo_portfolio():
 FOMO_DEPOSIT_TO = float(os.getenv("FOMO_DEPOSIT_TO", "0"))
 
 
+# ─── PRICE SANITY GUARD ───────────────────────────────────────────────────────
+# DexScreener sometimes returns a price from the wrong pair, or a token's
+# decimals get misread. Booking those as real exits corrupts the portfolio
+# permanently (we once ended up with $7.8M of phantom paper cash).
+# Any exit implying a larger multiple than this is treated as bad data.
+MAX_REALISTIC_GAIN_X = float(os.getenv("FOMO_MAX_GAIN_X", "100"))
+
+
+def is_price_sane(entry_price: float, exit_price: float, ticker: str = "?") -> bool:
+    """
+    False if this exit price implies an impossible move. Callers must skip
+    the sell rather than booking fantasy P&L.
+    """
+    if entry_price is None or exit_price is None:
+        return False
+    if entry_price <= 0 or exit_price <= 0:
+        log.warning(f"FOMO sanity: {ticker} non-positive price "
+                    f"(entry={entry_price}, exit={exit_price}) — rejecting exit")
+        return False
+
+    gain_x = exit_price / entry_price
+    if gain_x > MAX_REALISTIC_GAIN_X:
+        log.error(
+            f"FOMO SANITY REJECT: {ticker} exit ${exit_price:.10f} vs entry "
+            f"${entry_price:.10f} implies {gain_x:,.0f}x — bad price data, exit skipped"
+        )
+        return False
+    return True
+
+
 def deposit_fomo_cash(target_bank: float) -> Optional[dict]:
     """
     Add cash to the FOMO bank WITHOUT destroying holdings or trade history.
@@ -1104,3 +1141,68 @@ def ensure_fomo_bank():
     """Apply FOMO_DEPOSIT_TO at startup if configured. Safe to call every boot."""
     if FOMO_DEPOSIT_TO > 0:
         deposit_fomo_cash(FOMO_DEPOSIT_TO)
+
+
+# Set FOMO_REPAIR_CASH=true in Railway to recompute cash once on next boot.
+FOMO_REPAIR_CASH = os.getenv("FOMO_REPAIR_CASH", "false").lower() == "true"
+
+
+def repair_fomo_cash() -> dict:
+    """
+    Recompute cash from first principles, preserving holdings and history.
+
+    Phantom tranche exits (bad DexScreener prices) credited cash via
+    `state["cash"] += net` without writing a trade_history record, so realized
+    P&L stayed correct while cash inflated. Rebuild it as:
+
+        cash = starting_cash + realized P&L - cost basis of open positions
+
+    Idempotent: on a healthy portfolio the recomputed value matches and
+    nothing changes.
+    """
+    state    = load_fomo_portfolio()
+    holdings = state.get("holdings", [])
+    history  = state.get("trade_history", [])
+
+    basis = float(state.get("starting_cash", FOMO_STARTING_CASH))
+
+    realized = 0.0
+    for t in history:
+        # full sells use "profit"; fomo_exit records use "pnl_usd"
+        val = t.get("profit", t.get("pnl_usd", 0)) or 0
+        try:
+            realized += float(val)
+        except (TypeError, ValueError):
+            continue
+
+    deployed = 0.0
+    for h in holdings:
+        try:
+            deployed += float(h.get("spent", 0) or 0)
+        except (TypeError, ValueError):
+            continue
+
+    correct_cash = basis + realized - deployed
+    old_cash     = float(state.get("cash", 0) or 0)
+
+    if abs(correct_cash - old_cash) < 0.01:
+        log.info(f"FOMO cash repair: already correct (${old_cash:,.2f})")
+        return state
+
+    state["cash"] = round(correct_cash, 2)
+    # Peak value can't exceed a sane total either — rebuild it
+    state["peak_value"] = max(basis, round(correct_cash + deployed, 2))
+    state["last_updated"] = datetime.now(timezone.utc).isoformat()
+    save_fomo_portfolio(state)
+
+    log.warning(
+        f"FOMO CASH REPAIRED: ${old_cash:,.2f} -> ${correct_cash:,.2f}  "
+        f"(basis ${basis:,.2f} + realized ${realized:,.2f} - deployed ${deployed:,.2f}). "
+        f"{len(holdings)} position(s) and {len(history)} trade(s) preserved."
+    )
+    return state
+
+
+def maybe_repair_fomo_cash():
+    if FOMO_REPAIR_CASH:
+        repair_fomo_cash()

@@ -41,6 +41,7 @@ from fomo_portfolio import (
     get_fomo_stats,
     sync_fomo_state_from_github,
     ensure_fomo_bank,
+    maybe_repair_fomo_cash,
     FOMO_MAX_CONCURRENT_POSITIONS,
 )
 from fomo_research import research_token, ResearchVerdict, _ct_sentiment
@@ -2245,9 +2246,10 @@ if __name__ == "__main__":
     # Top up the paper bank if FOMO_DEPOSIT_TO is set (idempotent — no-op once funded)
     try:
         sync_fomo_state_from_github()
+        maybe_repair_fomo_cash()   # fix phantom cash before any top-up
         ensure_fomo_bank()
     except Exception as e:
-        log.warning(f"FOMO: bank top-up check failed: {e}")
+        log.warning(f"FOMO: bank maintenance failed: {e}")
 
     register_telegram_webhook()
     # Start background social poller (Twitter every 15 min)

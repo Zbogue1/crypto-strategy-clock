@@ -219,6 +219,12 @@ def _execute_partial_sell(
     if units_to_sell <= 0:
         return 0.0
 
+    # Reject impossible prices before they corrupt the portfolio
+    from fomo_portfolio import is_price_sane
+    if not is_price_sane(holding.get("entry_price"), current_price,
+                         holding.get("token_ticker", "?")):
+        return 0.0
+
     proceeds = units_to_sell * current_price
     fee      = proceeds * FOMO_TAKER_FEE
     net      = proceeds - fee
@@ -252,7 +258,13 @@ def _execute_full_sell(
     state: dict,
 ) -> float:
     """Full exit — removes holding from portfolio entirely."""
-    from fomo_portfolio import FOMO_TAKER_FEE, save_fomo_portfolio, sync_fomo_state_to_github
+    from fomo_portfolio import (FOMO_TAKER_FEE, save_fomo_portfolio,
+                                sync_fomo_state_to_github, is_price_sane)
+
+    # Reject impossible prices before they corrupt the portfolio
+    if not is_price_sane(holding.get("entry_price"), current_price,
+                         holding.get("token_ticker", "?")):
+        return 0.0
 
     proceeds = holding["units"] * current_price
     fee      = proceeds * FOMO_TAKER_FEE
@@ -369,10 +381,11 @@ def _check_holding(holding: dict, state: dict):
     gain_pct = (gain_x - 1) * 100
 
     # ── PRICE SANITY CHECK ────────────────────────────────────────────────
-    # If DexScreener returns a price that implies an impossible gain (>50,000x),
-    # the data is corrupt/wrong pair. Skip this cycle entirely rather than
+    # If DexScreener returns a price implying an impossible gain, the data is
+    # corrupt or from the wrong pair. Skip this cycle entirely rather than
     # triggering phantom tranche exits with million-percent gains.
-    if gain_x > 500:
+    from fomo_portfolio import MAX_REALISTIC_GAIN_X
+    if gain_x > MAX_REALISTIC_GAIN_X:
         log.warning(
             f"Exit monitor {ticker}: suspicious price ${current_price:.8f} "
             f"implies {gain_x:.0f}x gain — likely bad DexScreener data, skipping cycle"
