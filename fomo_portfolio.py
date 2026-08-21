@@ -42,12 +42,18 @@ GITHUB_DATA_BRANCH = "data"
 
 FOMO_PORTFOLIO_FILE  = "fomo_portfolio.json"
 FOMO_LESSONS_FILE    = "fomo_lessons.json"
-FOMO_STARTING_CASH   = 1000.0
-FOMO_MAX_POSITION_PCT = 0.30   # max 30% of FOMO cash per trade
+FOMO_STARTING_CASH   = float(os.getenv("FOMO_STARTING_CASH", "1000.0"))
 FOMO_TAKER_FEE       = 0.001   # 0.1% per side
 FOMO_AUTO_EXIT_HOURS = 24      # auto-exit if original trader hasn't sold
 FOMO_HARD_STOP_PCT   = -0.35   # -35% hard stop
-FOMO_MAX_CONCURRENT_POSITIONS = 5   # cap on simultaneously open positions
+
+# Max % of cash per trade. With many concurrent positions this must be small
+# or the first few trades eat the whole bank.
+FOMO_MAX_POSITION_PCT = float(os.getenv("FOMO_MAX_POSITION_PCT", "0.05"))
+
+# No practical cap while paper trading — we want maximum sample size.
+# Cash and FOMO_MAX_POSITION_PCT are the real constraints.
+FOMO_MAX_CONCURRENT_POSITIONS = int(os.getenv("FOMO_MAX_POSITIONS", "999"))
 
 # Graduation thresholds
 GRAD_MIN_TRADES      = 20
