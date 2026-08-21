@@ -2155,7 +2155,11 @@ def run_weekly_discovery(ignore_gate: bool = False):
         total_wallets  = len([w for w in all_wallets
                                if w.get("wallet") and not w["wallet"].lower().startswith("fill_in")])
         total_errors   = len(revett_results.get("errors", []))
-        api_too_flaky  = total_wallets > 0 and (total_errors / total_wallets) > 0.50
+        # If a meaningful share of wallets errored, the whole run is suspect —
+        # removing wallets based on a partially-down API loses good traders
+        # permanently. 30% is deliberately conservative.
+        _flaky_limit   = float(os.getenv("FOMO_REVETT_ERROR_LIMIT", "0.30"))
+        api_too_flaky  = total_wallets > 0 and (total_errors / total_wallets) > _flaky_limit
 
         # Auto-remove wallets that now score REJECT — but ONLY if the data is
         # credible (WR > 0 or |PnL| > $100) AND the API wasn't mostly down.
@@ -2167,8 +2171,15 @@ def run_weekly_discovery(ignore_gate: bool = False):
             }
         else:
             log.warning(
-                f"Re-vetting: {total_errors}/{total_wallets} wallets errored — "
+                f"Re-vetting: {total_errors}/{total_wallets} wallets errored "
+                f"({total_errors/max(total_wallets,1)*100:.0f}% > {_flaky_limit*100:.0f}% limit) — "
                 f"API too unreliable, skipping auto-removal this run"
+            )
+            send_telegram(
+                f"⚠️ <b>Re-vetting skipped removals</b>\n"
+                f"{total_errors} of {total_wallets} wallets couldn't be fetched — "
+                f"GMGN API is degraded. No wallets were removed, since acting on "
+                f"missing data would drop good traders permanently."
             )
         if rejected_addrs:
             wallet_data["tier_a"] = [w for w in wallet_data.get("tier_a", [])

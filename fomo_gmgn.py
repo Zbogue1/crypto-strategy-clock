@@ -593,16 +593,23 @@ def revett_watchlist(watchlist: list) -> dict:
         winrate  = profile.get("winrate_30d") or profile.get("winrate_7d") or 0
         realized = float(profile.get("pnl_7d") or profile.get("realized_profit") or 0)
 
-        # Sanity check — if GMGN returns 0% WR AND low PnL the API gave us empty
-        # data (common when rate-limited or profile not indexed). Skip rather than
-        # scoring a legitimate wallet as REJECT on bad data.
-        # Threshold $100: a real active wallet will always show >$100 realized in 7D.
-        if winrate == 0 and abs(realized) < 100:
-            log.warning(f"Re-vetting {alias}: skipping — API returned empty data (WR=0%, PnL≈$0)")
+        # ── DATA INTEGRITY CHECK ──────────────────────────────────────────
+        # A 0% win rate is only believable alongside ~zero P&L. If GMGN reports
+        # 0% WR while ALSO reporting real profit or loss, the response is
+        # partial — win rate simply wasn't populated — and scoring on it
+        # produces nonsense (e.g. "WR 0% | 7D +$275,681" upgrading a wallet).
+        # Skip in BOTH directions rather than acting on a number that can't exist.
+        if winrate == 0:
+            if abs(realized) < 100:
+                why = "Empty API data (WR=0%, PnL≈$0)"
+            else:
+                why = (f"Contradictory data (WR=0% but P&L ${realized:,.0f}) — "
+                       f"win rate missing from response")
+            log.warning(f"Re-vetting {alias}: skipping — {why}")
             results["errors"].append({
                 "alias":  alias,
                 "wallet": address,
-                "error":  "Empty API data (WR=0%, PnL≈$0) — skipped to avoid false REJECT",
+                "error":  f"{why} — skipped to avoid scoring on bad data",
             })
             continue
         candidate = {
