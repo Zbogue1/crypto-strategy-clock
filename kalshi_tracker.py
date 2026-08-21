@@ -105,7 +105,7 @@ MAX_HOLD_HOURS        = float(os.getenv("KALSHI_MAX_HOLD_HOURS", "20"))
 # bets — and a single market-wide drop closes every stop at once. It also
 # inflates the apparent sample size in calibration: 20 correlated "trades" is
 # really about 5 independent observations.
-MAX_SAME_DIRECTION = int(os.getenv("KALSHI_MAX_SAME_DIRECTION", "2"))
+MAX_SAME_DIRECTION = int(os.getenv("KALSHI_MAX_SAME_DIRECTION", "4"))
 # Each position beyond the cap must clear a higher confidence bar to be worth
 # adding to an existing bet. Set 0 to make the cap absolute.
 CONCENTRATION_CONF_STEP = int(os.getenv("KALSHI_CONCENTRATION_CONF_STEP", "10"))
@@ -603,8 +603,19 @@ def _run_scan_cycle(force: bool = False):
     if not force:
         verdicts = verdicts[:max(0, slots_left)]
 
+    # Assign conviction groups: positions opened by THIS scan in the SAME
+    # direction are one logical bet. They stay separate trades for P&L, but
+    # calibration counts the group once — four correlated longs is one
+    # directional call, not four independent observations.
+    _scan_stamp = datetime.now(timezone.utc).strftime("%Y%m%d_%H%M%S")
+    _dir_counts: dict = {}
+    for v in verdicts:
+        _dir_counts[v["verdict"]] = _dir_counts.get(v["verdict"], 0) + 1
+
     for verdict in verdicts:
         ticker = verdict["ticker"]
+        _grp_id   = f"{_scan_stamp}_{verdict['verdict']}"
+        _grp_size = _dir_counts.get(verdict["verdict"], 1)
         log.info(f"Kalshi: {ticker} → {verdict['verdict']} {verdict['confidence']}/100")
 
         # Telegram signal — suppressed in silent mode, but ALWAYS sent when the
@@ -634,6 +645,8 @@ def _run_scan_cycle(force: bool = False):
             confidence=  verdict["confidence"],
             reasoning=   verdict.get("reasoning", ""),
             signal_source= "kalshi_research",
+            group_id=    _grp_id,
+            group_size=  _grp_size,
         )
 
         _last_alerted[ticker] = now
@@ -918,6 +931,48 @@ def build_health_report() -> str:
     return "\n".join(lines)
 
 
+def _group_trades(trades: list) -> list:
+    """
+    Collapse trades into conviction groups.
+
+    A group is one researched directional call. Its sub-positions are separate
+    trades for P&L, but the GROUP is the unit of calibration: if Golem said
+    "crypto up" and backed it with four tickers, that's one call that was right
+    or wrong — counting it four times would inflate the sample.
+
+    Group wins if its NET P&L is positive, regardless of the sub-position split.
+    Trades with no group_id (legacy or manual) are groups of one.
+    """
+    groups: dict = {}
+    for t in trades:
+        gid = t.get("group_id") or f"solo_{t.get('ticker','?')}_{t.get('closed_at','')}"
+        g = groups.setdefault(gid, {
+            "group_id":   gid,
+            "direction":  t.get("direction", "?"),
+            "subs":       [],
+            "net_pnl":    0.0,
+            "margin":     0.0,
+            "confidence": t.get("confidence", 0),
+            "opened_at":  t.get("opened_at", ""),
+            "closed_at":  t.get("closed_at", ""),
+        })
+        g["subs"].append(t)
+        g["net_pnl"] += t.get("net_pnl", 0) or 0
+        g["margin"]  += t.get("margin", 0) or 0
+        # group closes when its last sub closes
+        if (t.get("closed_at") or "") > (g["closed_at"] or ""):
+            g["closed_at"] = t.get("closed_at", "")
+
+    out = []
+    for g in groups.values():
+        g["sub_wins"]   = sum(1 for s in g["subs"] if (s.get("net_pnl", 0) or 0) > 0)
+        g["sub_losses"] = len(g["subs"]) - g["sub_wins"]
+        g["won"]        = g["net_pnl"] > 0
+        g["size"]       = len(g["subs"])
+        out.append(g)
+    return sorted(out, key=lambda x: x.get("closed_at", ""))
+
+
 def build_weekly_report(days: float = 7.0) -> str:
     """Performance report over the trailing N days of closed trades."""
     from kalshi_portfolio import _load as _load_portfolio
@@ -975,19 +1030,63 @@ def build_weekly_report(days: float = 7.0) -> str:
         d = _utc_day(t.get("closed_at", ""))
         by_day.setdefault(d, []).append(t)
 
+    # ── Conviction groups — the real calibration unit ────────────────────
+    groups     = _group_trades(recent)
+    g_wins     = [g for g in groups if g["won"]]
+    g_losses   = [g for g in groups if not g["won"]]
+    g_win_rate = len(g_wins) / len(groups) * 100 if groups else 0.0
+    multi      = [g for g in groups if g["size"] > 1]
+
     emoji = "📈" if net > 0 else "📉"
     lines = [
         f"{emoji} *KALSHI — {days:.0f} DAY REPORT*\n",
         f"*Return on money staked: {roi:+.2f}%*",
-        f"Net P&L: *${net:+.2f}* across {len(recent)} closed trades",
+        f"Net P&L: *${net:+.2f}*",
         "",
-        f"Win rate: *{win_rate:.0f}%* ({len(wins)}W / {len(losses)}L)",
+        "*━━ CALL ACCURACY ━━*",
+        f"_One researched call = one observation, even when backed by several tickers._",
+        f"Record: *{len(g_wins)}W / {len(g_losses)}L*  ({g_win_rate:.0f}%)",
+        f"Researched calls: {len(groups)}",
+    ]
+    if multi:
+        avg_sz = sum(g["size"] for g in multi) / len(multi)
+        lines.append(
+            f"Multi-position calls: {len(multi)} (avg {avg_sz:.1f} tickers each)"
+        )
+    lines += [
+        "",
+        "*━━ SUB-POSITIONS ━━*",
+        f"_Every individual ticker traded._",
+        f"Record: *{len(wins)}W / {len(losses)}L*  ({win_rate:.0f}%)",
+        f"Positions: {len(recent)}",
         f"Profit factor: {pf_str}  _(above 1.0 = profitable)_",
         f"Avg win: ${avg_win:+.2f}  |  Avg loss: ${avg_loss:+.2f}",
         f"Avg hold: {avg_hold:.1f}h",
         "",
         f"Best:  {best['ticker']} ${best.get('net_pnl',0):+.2f}",
         f"Worst: {worst['ticker']} ${worst.get('net_pnl',0):+.2f}",
+        "",
+        "*Calls placed:*",
+    ]
+    for g in reversed(groups[-10:]):
+        mark  = "✅" if g["won"] else "❌"
+        when  = (g.get("closed_at", "") or "")[:10]
+        if g["size"] > 1:
+            lines.append(
+                f"{mark} {when} {g['direction']} ×{g['size']} tickers "
+                f"→ *${g['net_pnl']:+.2f}*  "
+                f"_(subs: {g['sub_wins']}W/{g['sub_losses']}L)_"
+            )
+        else:
+            s = g["subs"][0]
+            lines.append(
+                f"{mark} {when} {g['direction']} {s.get('ticker','?')} "
+                f"→ *${g['net_pnl']:+.2f}*"
+            )
+    if len(groups) > 10:
+        lines.append(f"_…and {len(groups)-10} earlier calls_")
+
+    lines += [
         "",
         "*Daily breakdown:*",
     ]

@@ -396,6 +396,8 @@ def open_position(
     confidence: int = 0,
     reasoning:  str = "",
     signal_source: str = "kalshi_research",
+    group_id:   str = "",   # conviction group — see below
+    group_size: int = 1,
 ) -> Optional[dict]:
     """
     Paper-open a new perp position.
@@ -445,6 +447,12 @@ def open_position(
         "confidence":       confidence,
         "reasoning":        reasoning,
         "signal_source":    signal_source,
+        # Conviction group: correlated positions opened by the same scan in the
+        # same direction share an ID. They're separate trades for P&L, but ONE
+        # observation for calibration — four correlated longs is one directional
+        # call, and counting it as four inflates the apparent sample size.
+        "group_id":         group_id,
+        "group_size":       group_size,
     }
 
     state["cash"]    -= margin
@@ -522,6 +530,8 @@ def close_position(
         "confidence":    pos.get("confidence", 0),
         "reasoning":     pos.get("reasoning", ""),
         "signal_source": pos.get("signal_source", ""),
+        "group_id":      pos.get("group_id", ""),
+        "group_size":    pos.get("group_size", 1),
         "trend_label":   pos.get("trend_label", ""),
         "funding_sentiment": pos.get("funding_sentiment", ""),
     }
