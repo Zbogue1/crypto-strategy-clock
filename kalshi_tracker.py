@@ -99,6 +99,72 @@ ENTRY_CUTOFF_BUFFER_H = float(os.getenv("KALSHI_ENTRY_BUFFER_HOURS", "3"))
 # Hard cap on how long a single day trade can run, regardless of clock.
 MAX_HOLD_HOURS        = float(os.getenv("KALSHI_MAX_HOLD_HOURS", "20"))
 
+# ─── CONCENTRATION GUARD ──────────────────────────────────────────────────────
+# Every Kalshi perp is a crypto asset, so they all move with Bitcoin. Holding
+# four longs is one leveraged bet on crypto direction, not four independent
+# bets — and a single market-wide drop closes every stop at once. It also
+# inflates the apparent sample size in calibration: 20 correlated "trades" is
+# really about 5 independent observations.
+MAX_SAME_DIRECTION = int(os.getenv("KALSHI_MAX_SAME_DIRECTION", "2"))
+# Each position beyond the cap must clear a higher confidence bar to be worth
+# adding to an existing bet. Set 0 to make the cap absolute.
+CONCENTRATION_CONF_STEP = int(os.getenv("KALSHI_CONCENTRATION_CONF_STEP", "10"))
+CONCENTRATION_CONF_MAX  = int(os.getenv("KALSHI_CONCENTRATION_CONF_MAX", "90"))
+
+
+def _filter_by_concentration(verdicts: list, positions: list) -> tuple[list, list]:
+    """
+    Cap same-direction exposure. Verdicts are taken highest-confidence first;
+    each one past the cap needs progressively more confidence to justify
+    stacking onto a bet we already hold.
+
+    Returns (approved, blocked_with_reasons).
+    """
+    longs  = sum(1 for p in positions if p.get("direction") == "UP")
+    shorts = sum(1 for p in positions if p.get("direction") == "DOWN")
+
+    approved, blocked = [], []
+
+    for v in sorted(verdicts, key=lambda x: -x.get("confidence", 0)):
+        direction = v["verdict"]
+        held = longs if direction == "UP" else shorts
+
+        if held < MAX_SAME_DIRECTION:
+            approved.append(v)
+            if direction == "UP":
+                longs += 1
+            else:
+                shorts += 1
+            continue
+
+        # Past the cap — require escalating conviction
+        if CONCENTRATION_CONF_STEP <= 0:
+            blocked.append((v, f"already hold {held} {direction} (cap {MAX_SAME_DIRECTION})"))
+            continue
+
+        over    = held - MAX_SAME_DIRECTION + 1
+        needed  = min(CONCENTRATION_CONF_MAX,
+                      MIN_STACK_CONFIDENCE + (over - 1) * CONCENTRATION_CONF_STEP)
+        if v.get("confidence", 0) >= needed:
+            approved.append(v)
+            if direction == "UP":
+                longs += 1
+            else:
+                shorts += 1
+        else:
+            blocked.append((
+                v,
+                f"already hold {held} {direction}; needs {needed}+ confidence "
+                f"to stack, has {v.get('confidence', 0)}"
+            ))
+
+    return approved, blocked
+
+
+# Base bar for the first position past the cap
+MIN_STACK_CONFIDENCE = int(os.getenv("KALSHI_STACK_MIN_CONF", "75"))
+
+
 # ─── WEEKLY REPORT ────────────────────────────────────────────────────────────
 WEEKLY_REPORT_ENABLED = os.getenv("KALSHI_WEEKLY_REPORT", "true").lower() == "true"
 REPORT_INTERVAL_DAYS  = float(os.getenv("KALSHI_REPORT_DAYS", "7"))
@@ -514,11 +580,23 @@ def _run_scan_cycle(force: bool = False):
     # 5. Load postmortem context
     pm_summaries = get_all_summaries()
 
-    # 6. Research agent analysis
-    verdicts = scan_all_viable(viable, snapshots_by_ticker, pm_summaries)
+    # 6. Research agent analysis — now portfolio-aware, so each call knows what
+    #    we already hold AND what was approved earlier in this same cycle.
+    verdicts = scan_all_viable(viable, snapshots_by_ticker, pm_summaries,
+                               portfolio=summary)
 
     # 6b. Cache the ones that produced nothing tradeable
     _cache_rejects(viable, {v["ticker"] for v in verdicts})
+
+    # 6c. Hard concentration guard — the AI can be persuaded, this cannot.
+    verdicts, blocked = _filter_by_concentration(
+        verdicts, summary.get("positions", [])
+    )
+    for v, why in blocked:
+        log.info(
+            f"Kalshi scan: BLOCKED {v['ticker']} {v['verdict']} "
+            f"({v.get('confidence')}/100) — {why}"
+        )
 
     # 7. Take the highest-confidence verdicts, up to the remaining daily slots
     verdicts.sort(key=lambda v: -v.get("confidence", 0))
@@ -771,7 +849,22 @@ def build_health_report() -> str:
     from kalshi_portfolio import redis_health
 
     h = redis_health()
-    lines = ["🩺 *KALSHI STORAGE HEALTH*\n"]
+
+    # Identify exactly which Railway project/service this bot is running in.
+    # With similarly-named projects AND services, this removes the guesswork
+    # about where to add variables.
+    proj    = os.getenv("RAILWAY_PROJECT_NAME", "?")
+    svc     = os.getenv("RAILWAY_SERVICE_NAME", "?")
+    env_nm  = os.getenv("RAILWAY_ENVIRONMENT_NAME", "?")
+
+    lines = [
+        "🩺 *KALSHI STORAGE HEALTH*\n",
+        "📍 *This bot is running in:*",
+        f"   Project: `{proj}`",
+        f"   Service: `{svc}`",
+        f"   Env: `{env_nm}`",
+        "   _Add variables to THIS project + service._\n",
+    ]
 
     if not h["configured"]:
         lines.append("❌ *Redis not configured*")
@@ -978,6 +1071,11 @@ def run_command_loop(stop_event: Event):
 def main():
     log.info("=" * 60)
     log.info("KALSHI GOLEM — starting up")
+    log.info(
+        f"Running in: project='{os.getenv('RAILWAY_PROJECT_NAME','?')}' "
+        f"service='{os.getenv('RAILWAY_SERVICE_NAME','?')}' "
+        f"env='{os.getenv('RAILWAY_ENVIRONMENT_NAME','?')}'"
+    )
     mode = ("SILENT AUTO-TRADE" if (AUTO_SCAN and SILENT)
             else "AUTO-SCAN + ALERTS" if AUTO_SCAN else "ON-DEMAND ONLY")
     log.info(f"Mode: {mode}")

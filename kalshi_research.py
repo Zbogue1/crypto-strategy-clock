@@ -39,7 +39,8 @@ MIN_ALERT_CONFIDENCE = 55
 
 # ─── CONTEXT BUILDER ──────────────────────────────────────────────────────────
 
-def _build_context(scored: dict, snapshot: dict, postmortem_summary: str = "") -> str:
+def _build_context(scored: dict, snapshot: dict, postmortem_summary: str = "",
+                   portfolio_block: str = "") -> str:
     """
     Assemble the full context string passed to Claude.
     """
@@ -111,6 +112,8 @@ OI Trend: {scored['oi_trend']}
 --- CALIBRATION HISTORY ---
 {postmortem_summary if postmortem_summary else "No prior calls on this asset yet — first analysis."}
 
+{portfolio_block}
+
 === END CONTEXT ===
 """
     return context.strip()
@@ -127,6 +130,15 @@ Your job is to synthesize 5 layers of evidence:
 
 CRITICAL RULES:
 - FLAT is a valid and often correct call. Do not force UP/DOWN.
+- PORTFOLIO CONCENTRATION IS PART OF YOUR JOB. Every market here is a crypto
+  perp, and they all move with Bitcoin. Adding a 4th long when we already hold
+  3 is not diversification — it quadruples a single directional bet, and one
+  market-wide move closes every stop at once. If we already hold 2+ positions
+  in the direction you're considering, the setup must be MEANINGFULLY STRONGER
+  than the ones we already own to justify adding, and you should lower your
+  confidence and suggested leverage to reflect the stacked exposure. A
+  counter-directional or genuinely uncorrelated setup deserves more credit than
+  another copy of the bet we already have.
 - Funding rate is a contrarian indicator: high positive rate means longs are crowded → lean short (DOWN). High negative means shorts are crowded → lean long (UP).
 - Rising OI with a directional move = healthy trend to ride. Falling OI = caution.
 - ADX < 20 = ranging market. In ranging markets, prefer FLAT unless funding is extreme.
@@ -147,7 +159,57 @@ Output MUST be valid JSON in exactly this format (no markdown, no commentary out
 
 # ─── CLAUDE CALL ──────────────────────────────────────────────────────────────
 
-def analyze_market(scored: dict, snapshot: dict, postmortem_summary: str = "") -> Optional[dict]:
+def _format_portfolio_context(portfolio: dict, pending: list) -> str:
+    """
+    Describe what we ALREADY hold, plus what we've already decided to open in
+    this same scan cycle. Without this the agent scores every market in
+    isolation and happily stacks four correlated longs, which is one leveraged
+    bet on crypto beta wearing four different tickers.
+    """
+    if not portfolio and not pending:
+        return "PORTFOLIO: no open positions. This would be our first."
+
+    positions = (portfolio or {}).get("positions", [])
+    longs  = [p for p in positions if p.get("direction") == "UP"]
+    shorts = [p for p in positions if p.get("direction") == "DOWN"]
+
+    lines = ["--- CURRENT PORTFOLIO EXPOSURE ---"]
+    if positions:
+        lines.append(f"Open positions: {len(positions)}  ({len(longs)} LONG / {len(shorts)} SHORT)")
+        for p in positions:
+            lines.append(
+                f"  • {p['ticker']} {p['direction']} {p.get('leverage',1)}x "
+                f"| entry {p.get('entry',0):.4f} now {p.get('current',0):.4f} "
+                f"| unrealized ${p.get('unrealized_pnl',0):+.2f}"
+            )
+    else:
+        lines.append("Open positions: none")
+
+    if pending:
+        lines.append(f"\nAlready approved earlier in THIS scan cycle ({len(pending)}):")
+        for v in pending:
+            lines.append(f"  • {v['ticker']} {v['verdict']} (confidence {v['confidence']})")
+
+    total_long  = len(longs)  + sum(1 for v in pending if v["verdict"] == "UP")
+    total_short = len(shorts) + sum(1 for v in pending if v["verdict"] == "DOWN")
+
+    lines.append(
+        f"\nIf you approve this trade, exposure becomes: "
+        f"{total_long + (1 if True else 0)} LONG / {total_short} SHORT "
+        f"(assuming you say UP) — or {total_long} LONG / {total_short + 1} SHORT if DOWN."
+    )
+    lines.append(
+        "\nCORRELATION WARNING: every Kalshi perp here is a crypto asset. They "
+        "move together with Bitcoin. Four separate long tickers is NOT four "
+        "independent bets — it is one leveraged bet on crypto direction, and a "
+        "single market-wide drop takes out all of them at once. Treat additional "
+        "same-direction positions as ADDING TO AN EXISTING BET, not diversifying."
+    )
+    return "\n".join(lines)
+
+
+def analyze_market(scored: dict, snapshot: dict, postmortem_summary: str = "",
+                   portfolio: dict = None, pending: list = None) -> Optional[dict]:
     """
     Run Claude Sonnet 5 analysis on a single pre-scored market.
 
@@ -157,7 +219,8 @@ def analyze_market(scored: dict, snapshot: dict, postmortem_summary: str = "") -
         log.error("Kalshi research: no ANTHROPIC_API_KEY — cannot run analysis")
         return None
 
-    context = _build_context(scored, snapshot, postmortem_summary)
+    portfolio_block = _format_portfolio_context(portfolio, pending or [])
+    context = _build_context(scored, snapshot, postmortem_summary, portfolio_block)
 
     try:
         client   = anthropic.Anthropic(api_key=ANTHROPIC_KEY)
@@ -226,7 +289,8 @@ def analyze_market(scored: dict, snapshot: dict, postmortem_summary: str = "") -
 
 def scan_all_viable(viable_scored: list[dict],
                     snapshots_by_ticker: dict,
-                    postmortems_by_ticker: dict = None) -> list[dict]:
+                    postmortems_by_ticker: dict = None,
+                    portfolio: dict = None) -> list[dict]:
     """
     Run the research agent on every viable market candidate.
 
@@ -250,7 +314,11 @@ def scan_all_viable(viable_scored: list[dict],
 
         pm_summary = postmortems_by_ticker.get(ticker, "")
         log.info(f"Kalshi research: analyzing {ticker} (score={scored['composite_score']:+d}) ...")
-        verdict = analyze_market(scored, snapshot, pm_summary)
+        # `results` is passed as `pending` so each successive analysis knows what
+        # we've already committed to in this same cycle — otherwise the agent
+        # approves four correlated longs without ever seeing the other three.
+        verdict = analyze_market(scored, snapshot, pm_summary,
+                                 portfolio=portfolio, pending=results)
 
         if verdict and verdict["verdict"] in ("UP", "DOWN"):
             results.append(verdict)
