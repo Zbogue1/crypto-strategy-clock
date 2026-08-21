@@ -2,7 +2,7 @@
   "version": "golem-v1",
   "reset_date": "2026-08-08",
   "reset_reason": "FOMO Golem launch \u2014 fresh $1,000 paper portfolio, FOMO-only strategy",
-  "cash": 9492.38,
+  "cash": 9593.961066754791,
   "starting_cash": 10000.0,
   "peak_value": 10000.0,
   "total_trades": 3,
@@ -38,7 +38,7 @@
       "tranche_2_sold": false,
       "trailing_stop_active": false,
       "peak_liquidity": 208760.18,
-      "last_price_check": 1255.22
+      "last_price_check": 1280.44
     },
     {
       "position_id": "fa2ea0e3",
@@ -63,12 +63,12 @@
       "auto_exit_at": "2026-08-15T08:15:42.600599+00:00",
       "source": "fomo_copy",
       "partial_taken": false,
-      "peak_price": 0.03083,
+      "peak_price": 0.03246,
       "tranche_1_sold": false,
       "tranche_2_sold": false,
       "trailing_stop_active": false,
-      "peak_liquidity": 394035.92,
-      "last_price_check": 0.03083
+      "peak_liquidity": 411834.4,
+      "last_price_check": 0.03246
     },
     {
       "position_id": "a4b6ce3f",
@@ -93,12 +93,12 @@
       "auto_exit_at": "2026-08-15T23:03:42.046481+00:00",
       "source": "fomo_copy",
       "partial_taken": false,
-      "peak_price": 0.2736,
+      "peak_price": 0.2816,
       "tranche_1_sold": false,
       "tranche_2_sold": false,
       "trailing_stop_active": false,
-      "peak_liquidity": 2703080.95,
-      "last_price_check": 0.2736
+      "peak_liquidity": 2788511.98,
+      "last_price_check": 0.2816
     },
     {
       "position_id": "475fd27a",
@@ -123,20 +123,20 @@
       "auto_exit_at": "2026-08-17T21:04:16.155038+00:00",
       "source": "fomo_copy",
       "partial_taken": false,
-      "peak_price": 66.39,
+      "peak_price": 67.6,
       "tranche_1_sold": false,
       "tranche_2_sold": false,
       "trailing_stop_active": false,
       "peak_liquidity": 951261.63,
-      "last_price_check": 66.39
+      "last_price_check": 67.6
     },
     {
       "position_id": "54f8b4fb",
       "token_ticker": "CATE",
       "token_name": "Catecoin",
       "entry_price": 0.01513,
-      "units": 4401.850627891607,
-      "spent": 66.66666666666667,
+      "units": 2200.9253139458033,
+      "spent": 33.333333333333336,
       "stop_loss": 0.0098345,
       "exit_target": 0.019669,
       "wallet_alias": "Jack",
@@ -153,12 +153,12 @@
       "auto_exit_at": "2026-08-17T23:16:03.308025+00:00",
       "source": "fomo_copy",
       "partial_taken": false,
-      "peak_price": 0.03039,
+      "peak_price": 0.0462,
       "tranche_1_sold": true,
-      "tranche_2_sold": false,
-      "trailing_stop_active": false,
-      "peak_liquidity": 1284539.19,
-      "last_price_check": 0.03039
+      "tranche_2_sold": true,
+      "trailing_stop_active": true,
+      "peak_liquidity": 1632411.62,
+      "last_price_check": 0.0462
     }
   ],
   "trade_history": [
@@ -267,7 +267,7 @@
     }
   ],
   "archived_history_note": "Prior July 2026 paper trades archived before this reset.",
-  "last_updated": "2026-08-21T04:51:43.410485+00:00",
+  "last_updated": "2026-08-21T16:49:49.521616+00:00",
   "deposits": [
     {
       "target": 10000.0,
