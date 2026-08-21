@@ -654,5 +654,29 @@
       "SOL"
     ],
     "alert": null
+  },
+  {
+    "ts": "2026-08-21T00:02:39.295942+00:00",
+    "coin": "XRP",
+    "price": 1.27,
+    "signal": "BUY",
+    "confidence": 68,
+    "score": 6.2,
+    "fg": 72,
+    "btc_price": 73057,
+    "btc_dominance": 58.7,
+    "candidates": [
+      "PUMP",
+      "MON",
+      "XAUT",
+      "PAXG",
+      "EURC",
+      "FDUSD",
+      "USDG",
+      "ETH",
+      "SOL",
+      "HYPE"
+    ],
+    "alert": null
   }
 ]
