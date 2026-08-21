@@ -53,6 +53,18 @@ MIN_TRADES_30D      = 20     # actually active
 MAX_TRADES_30D      = 200    # not machine-speed
 MIN_AVG_HOLD_HOURS  = 4.0    # enough time to follow entry
 
+# ─── TRACK RECORD REQUIREMENTS ────────────────────────────────────────────────
+# A 7-day leaderboard is a luck filter, not a skill filter. Anyone can win a
+# volatile week, and GMGN's leaderboard is survivorship-selected by design —
+# it shows who won recently, never who blew up. We require a sustained 30-day
+# record and penalise wallets whose good week isn't backed by a good month.
+REQUIRE_30D_HISTORY  = os.getenv("GMGN_REQUIRE_30D", "true").lower() == "true"
+MIN_WIN_RATE_30D     = float(os.getenv("GMGN_MIN_WR_30D", "0.55"))
+# If 7d WR wildly exceeds 30d WR, the recent run is an outlier, not the norm.
+MAX_WR_DIVERGENCE    = float(os.getenv("GMGN_MAX_WR_DIVERGENCE", "0.25"))
+# Minimum realized profit over 30d — one lucky moonshot shouldn't qualify
+MIN_REALIZED_30D     = float(os.getenv("GMGN_MIN_REALIZED_30D", "2000"))
+
 # Rate limiting — stay inside free tier (5 req/min) by default
 _RATE_LIMIT_DELAY   = 13     # seconds between calls (≈4.6/min)
 
@@ -228,7 +240,10 @@ def _passes_copy_trade_filter(profile: dict) -> tuple[bool, str]:
     Returns (passes, reason_if_failed).
     All criteria must pass for a wallet to be worth copy-trading at $1K scale.
     """
+    # 30d first — a 7d number alone is a luck reading, not a skill reading
     wr = profile.get("winrate_30d") or profile.get("winrate_7d") or 0
+    if REQUIRE_30D_HISTORY and not profile.get("winrate_30d"):
+        return False, "no 30d track record — unproven, cannot separate skill from luck"
     if wr < MIN_WIN_RATE:
         return False, f"win rate {wr*100:.0f}% < {MIN_WIN_RATE*100:.0f}%"
 
@@ -274,12 +289,37 @@ def discover_traders(period: str = "7d", limit: int = 100) -> list:
         if not wallet:
             continue
 
-        winrate  = entry.get("winrate_7d") or entry.get("winrate_30d") or 0
+        wr_7d    = entry.get("winrate_7d") or 0
+        wr_30d   = entry.get("winrate_30d") or entry.get("winrate") or 0
+        # Judge on the 30-day record; the 7-day number is only a tiebreaker.
+        winrate  = wr_30d or wr_7d
         buys_7d  = entry.get("buy_7d") or 0
         tags     = set(t.lower() for t in (entry.get("tags") or []))
         realized = float(entry.get("realized_profit_7d") or 0)
+        realized_30d = float(
+            entry.get("realized_profit_30d") or entry.get("pnl_30d") or 0
+        )
         pnl      = float(entry.get("pnl_7d") or 0)
         twitter  = entry.get("twitter_username") or entry.get("name") or ""
+
+        # ── TRACK RECORD GATE — reject one-good-week wallets ──────────────
+        if REQUIRE_30D_HISTORY:
+            if not wr_30d:
+                log.debug(f"GMGN: {wallet[:8]}... filtered — no 30d history (unproven)")
+                continue
+            if wr_30d < MIN_WIN_RATE_30D:
+                log.debug(f"GMGN: {wallet[:8]}... filtered — 30d WR "
+                          f"{wr_30d*100:.0f}% < {MIN_WIN_RATE_30D*100:.0f}%")
+                continue
+            if wr_7d and (wr_7d - wr_30d) > MAX_WR_DIVERGENCE:
+                log.info(f"GMGN: {wallet[:8]}... filtered — hot streak "
+                         f"(7d {wr_7d*100:.0f}% vs 30d {wr_30d*100:.0f}%), "
+                         f"recent run is an outlier not a baseline")
+                continue
+            if realized_30d and realized_30d < MIN_REALIZED_30D:
+                log.debug(f"GMGN: {wallet[:8]}... filtered — 30d realized "
+                          f"${realized_30d:,.0f} < ${MIN_REALIZED_30D:,.0f}")
+                continue
 
         if winrate < MIN_WIN_RATE:
             continue
@@ -549,7 +589,8 @@ def revett_watchlist(watchlist: list) -> dict:
             continue
 
         # Build candidate dict in the same shape score_wallet() expects
-        winrate  = profile.get("winrate_7d") or profile.get("winrate_30d") or 0
+        # 30d first — re-vetting on a 7d number lets a hot streak mask decay
+        winrate  = profile.get("winrate_30d") or profile.get("winrate_7d") or 0
         realized = float(profile.get("pnl_7d") or profile.get("realized_profit") or 0)
 
         # Sanity check — if GMGN returns 0% WR AND low PnL the API gave us empty
