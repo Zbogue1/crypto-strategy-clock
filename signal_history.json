@@ -725,5 +725,28 @@
       "HYPE"
     ],
     "alert": null
+  },
+  {
+    "ts": "2026-08-21T12:00:48.223906+00:00",
+    "coin": "ETH",
+    "price": 2372.0,
+    "signal": "HOLD",
+    "confidence": 62,
+    "score": 0.3,
+    "fg": 72,
+    "btc_price": 76776,
+    "btc_dominance": 59.9,
+    "candidates": [
+      "PUMP",
+      "ENA",
+      "MON",
+      "PAXG",
+      "XAUT",
+      "ETH",
+      "CRVUSD",
+      "SOL",
+      "HYPE"
+    ],
+    "alert": "ETH approaching exit target at $2,520 \u2014 consider tightening stop-loss to lock in gains"
   }
 ]
