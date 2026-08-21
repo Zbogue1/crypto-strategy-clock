@@ -748,5 +748,28 @@
       "HYPE"
     ],
     "alert": "ETH approaching exit target at $2,520 \u2014 consider tightening stop-loss to lock in gains"
+  },
+  {
+    "ts": "2026-08-21T16:02:01.704301+00:00",
+    "coin": "ETH",
+    "price": 2392.82,
+    "signal": "HOLD",
+    "confidence": 62,
+    "score": -0.8,
+    "fg": 72,
+    "btc_price": 77179,
+    "btc_dominance": 59.3,
+    "candidates": [
+      "ENA",
+      "PIEVERSE",
+      "PUMP",
+      "MON",
+      "XAUT",
+      "PAXG",
+      "ETH",
+      "SOL",
+      "HYPE"
+    ],
+    "alert": "Weekend liquidity risk: BTC faces $80K test with thin order books. Tighten mental stops on all positions."
   }
 ]
