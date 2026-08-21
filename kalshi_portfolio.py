@@ -32,9 +32,40 @@ PORTFOLIO_FILE = os.getenv(
 )
 
 # ─── REDIS (Upstash) ──────────────────────────────────────────────────────────
-_REDIS_URL   = os.getenv("UPSTASH_REDIS_URL", "")
-_REDIS_TOKEN = os.getenv("UPSTASH_REDIS_TOKEN", "")
+# Upstash's own dashboard exports these as UPSTASH_REDIS_REST_URL /
+# UPSTASH_REDIS_REST_TOKEN, Vercel uses KV_REST_API_*, and people commonly
+# shorten to REDIS_*. Accept every variant — a name mismatch here silently
+# disables persistence and loses all trade history on the next redeploy.
+_URL_VARS = (
+    "UPSTASH_REDIS_URL", "UPSTASH_REDIS_REST_URL",
+    "KV_REST_API_URL", "REDIS_URL", "REDIS_REST_URL",
+)
+_TOKEN_VARS = (
+    "UPSTASH_REDIS_TOKEN", "UPSTASH_REDIS_REST_TOKEN",
+    "KV_REST_API_TOKEN", "REDIS_TOKEN", "REDIS_REST_TOKEN",
+)
+
+
+def _first_env(names: tuple) -> tuple:
+    """Return (value, var_name_that_matched) for the first populated var."""
+    for n in names:
+        v = os.getenv(n, "").strip()
+        if v:
+            return v, n
+    return "", ""
+
+
+_REDIS_URL,   _REDIS_URL_VAR   = _first_env(_URL_VARS)
+_REDIS_TOKEN, _REDIS_TOKEN_VAR = _first_env(_TOKEN_VARS)
 _PORTFOLIO_KEY = "kalshi_portfolio"
+
+if _REDIS_URL and _REDIS_TOKEN:
+    log.info(f"Kalshi portfolio: Redis configured via {_REDIS_URL_VAR} / {_REDIS_TOKEN_VAR}")
+else:
+    log.error(
+        "Kalshi portfolio: NO REDIS CONFIGURED — trade history will be LOST on "
+        f"every redeploy. Set one of {_URL_VARS[0]} or {_URL_VARS[1]} (+ token)."
+    )
 
 
 def _redis_get(key: str):
@@ -69,9 +100,20 @@ def redis_health() -> dict:
         "reachable":  False,
         "keys":       {},
         "error":      None,
+        "url_var":    _REDIS_URL_VAR,
+        "token_var":  _REDIS_TOKEN_VAR,
+        "searched":   {"url": list(_URL_VARS), "token": list(_TOKEN_VARS)},
+        "found_any":  sorted(
+            n for n in (_URL_VARS + _TOKEN_VARS) if os.getenv(n, "").strip()
+        ),
     }
     if not out["configured"]:
-        out["error"] = "UPSTASH_REDIS_URL / UPSTASH_REDIS_TOKEN not set"
+        missing = []
+        if not _REDIS_URL:
+            missing.append("URL")
+        if not _REDIS_TOKEN:
+            missing.append("TOKEN")
+        out["error"] = f"Redis {' and '.join(missing)} not found in any known env var name"
         return out
 
     for key in (_PORTFOLIO_KEY, "kalshi_postmortem"):

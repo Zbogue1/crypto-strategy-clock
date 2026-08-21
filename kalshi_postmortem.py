@@ -36,8 +36,23 @@ POSTMORTEM_FILE = os.getenv(
 )
 
 # ─── REDIS (Upstash) ──────────────────────────────────────────────────────────
-_REDIS_URL    = os.getenv("UPSTASH_REDIS_URL", "")
-_REDIS_TOKEN  = os.getenv("UPSTASH_REDIS_TOKEN", "")
+# Accept every common naming variant — see kalshi_portfolio for rationale.
+def _first_env(names: tuple) -> str:
+    for n in names:
+        v = os.getenv(n, "").strip()
+        if v:
+            return v
+    return ""
+
+
+_REDIS_URL = _first_env((
+    "UPSTASH_REDIS_URL", "UPSTASH_REDIS_REST_URL",
+    "KV_REST_API_URL", "REDIS_URL", "REDIS_REST_URL",
+))
+_REDIS_TOKEN = _first_env((
+    "UPSTASH_REDIS_TOKEN", "UPSTASH_REDIS_REST_TOKEN",
+    "KV_REST_API_TOKEN", "REDIS_TOKEN", "REDIS_REST_TOKEN",
+))
 _POSTMORTEM_KEY = "kalshi_postmortem"
 
 

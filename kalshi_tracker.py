@@ -775,8 +775,21 @@ def build_health_report() -> str:
 
     if not h["configured"]:
         lines.append("❌ *Redis not configured*")
-        lines.append(f"   {h['error']}")
-        lines.append("\n⚠️ Data lives only in the container and is LOST on every redeploy.")
+        lines.append(f"   {h['error']}\n")
+        lines.append("*Variable names I check:*")
+        lines.append("  URL: " + ", ".join(f"`{n}`" for n in h["searched"]["url"][:3]))
+        lines.append("  Token: " + ", ".join(f"`{n}`" for n in h["searched"]["token"][:3]))
+        if h["found_any"]:
+            lines.append("\n*Found in Railway:* " + ", ".join(f"`{n}`" for n in h["found_any"]))
+            lines.append("_Partial config — one half is missing._")
+        else:
+            lines.append("\n*Found in Railway:* none of them")
+            lines.append(
+                "\nCheck the exact variable names on crypto-strategy-clock. "
+                "Upstash labels them `UPSTASH_REDIS_REST_URL` and "
+                "`UPSTASH_REDIS_REST_TOKEN` — both now accepted."
+            )
+        lines.append("\n⚠️ Until fixed, data lives only in the container and is LOST on every redeploy.")
         return "\n".join(lines)
 
     if not h["reachable"]:
@@ -789,7 +802,7 @@ def build_health_report() -> str:
         )
         return "\n".join(lines)
 
-    lines.append("✅ *Redis reachable*\n")
+    lines.append(f"✅ *Redis reachable* via `{h.get('url_var','?')}`\n")
     for key, info in h["keys"].items():
         name = "Portfolio" if "portfolio" in key else "Postmortem"
         if not info.get("exists"):
