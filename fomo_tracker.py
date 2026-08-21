@@ -582,6 +582,25 @@ def handle_relayed_text_message(message: dict):
         send_telegram(get_wallet_leaderboard())
         return
 
+    # -- /discover command — force a wallet discovery run now --
+    if text.lower().startswith(("/discover", "/discovery")):
+        import threading
+        send_telegram(
+            "🔍 <b>Running wallet discovery...</b>\n"
+            "Scanning leaderboards, deep-analyzing each candidate, and "
+            "auto-adding those that qualify. This takes a few minutes."
+        )
+
+        def _run():
+            try:
+                run_weekly_discovery(ignore_gate=True)
+            except Exception as e:
+                log.error(f"Manual discovery failed: {e}", exc_info=True)
+                send_telegram(f"⚠️ Discovery failed: {e}")
+
+        threading.Thread(target=_run, daemon=True, name="fomo-manual-discovery").start()
+        return
+
     log.info(f"FOMO: relayed text message received ({len(text)} chars)")
     parsed     = parse_relayed_signal(text)
     alias      = parsed.get("wallet_alias")
@@ -2088,9 +2107,11 @@ def process_social_signal(signal: dict):
         handle_tracker_sell(contract, current_price, ticker=token_data["symbol"])
 
 
-def run_weekly_discovery():
+def run_weekly_discovery(ignore_gate: bool = False):
     """
     Full weekly discovery cycle — runs once per week (gated via GitHub-persisted timestamp).
+
+    ignore_gate=True bypasses the 7-day lock (used by the /discover command).
 
     Run 0: Re-vet existing watchlist — auto-remove REJECT wallets, update scores.
     Scan 1: GMGN leaderboard — copy-trade candidates by win rate.
@@ -2112,12 +2133,15 @@ def run_weekly_discovery():
     # prevents hourly re-vetting spam and GMGN credit burn.
     seen_data = load_discovery_seen()
     last_run  = seen_data.get("last_run")
-    if last_run:
+    if last_run and not ignore_gate:
         days_ago = (datetime.now(timezone.utc) - datetime.fromisoformat(last_run)).days
         if days_ago < 7:
             log.info(f"GMGN discovery: skipping — last run was {days_ago}d ago (need 7)")
             return
-    log.info("GMGN weekly discovery: 7-day gate passed — starting re-vetting + all scans...")
+    if ignore_gate:
+        log.warning("GMGN discovery: MANUAL RUN — 7-day gate bypassed")
+    else:
+        log.info("GMGN weekly discovery: 7-day gate passed — starting re-vetting + all scans...")
 
     # ── Run 0: Re-vet existing watchlist ──────────────────────────────────────
     try:
@@ -2343,7 +2367,9 @@ if __name__ == "__main__":
         import json as _json
         def _run():
             try:
-                run_weekly_discovery()
+                # ignore_gate: a manual trigger should always run, otherwise it
+                # silently no-ops inside the 7-day window.
+                run_weekly_discovery(ignore_gate=True)
             except Exception as e:
                 log.error(f"Manual discovery error: {e}")
         _threading.Thread(target=_run, daemon=True, name="manual-discovery").start()
