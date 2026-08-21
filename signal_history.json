@@ -702,5 +702,28 @@
       "HYPE"
     ],
     "alert": null
+  },
+  {
+    "ts": "2026-08-21T08:03:21.424906+00:00",
+    "coin": "ETH",
+    "price": 2373.35,
+    "signal": "HOLD",
+    "confidence": 62,
+    "score": 0.3,
+    "fg": 72,
+    "btc_price": 76336,
+    "btc_dominance": 59.3,
+    "candidates": [
+      "PUMP",
+      "MON",
+      "ENA",
+      "PAXG",
+      "XAUT",
+      "ETH",
+      "FDUSD",
+      "SOL",
+      "HYPE"
+    ],
+    "alert": null
   }
 ]
