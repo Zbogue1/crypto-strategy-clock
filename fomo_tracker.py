@@ -40,6 +40,7 @@ from fomo_portfolio import (
     get_wallet_lessons,
     get_fomo_stats,
     sync_fomo_state_from_github,
+    ensure_fomo_bank,
     FOMO_MAX_CONCURRENT_POSITIONS,
 )
 from fomo_research import research_token, ResearchVerdict, _ct_sentiment
@@ -2240,6 +2241,14 @@ def start_discovery_poller():
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     log.info(f"FOMO Tracker starting on port {port}")
+
+    # Top up the paper bank if FOMO_DEPOSIT_TO is set (idempotent — no-op once funded)
+    try:
+        sync_fomo_state_from_github()
+        ensure_fomo_bank()
+    except Exception as e:
+        log.warning(f"FOMO: bank top-up check failed: {e}")
+
     register_telegram_webhook()
     # Start background social poller (Twitter every 15 min)
     start_social_poller(callback=process_social_signal)

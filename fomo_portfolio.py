@@ -1062,7 +1062,45 @@ def get_fomo_stats() -> dict:
 
 
 def reset_fomo_portfolio():
-    """Hard reset — wipe state back to $500."""
+    """Hard reset — wipe state back to the configured starting cash."""
     state = _default_state()
     save_fomo_portfolio(state)
-    log.info("FOMO portfolio reset to $500")
+    log.info(f"FOMO portfolio reset to ${FOMO_STARTING_CASH:,.2f}")
+
+
+# Top the bank up to this level on startup. Set FOMO_DEPOSIT_TO in Railway.
+FOMO_DEPOSIT_TO = float(os.getenv("FOMO_DEPOSIT_TO", "0"))
+
+
+def deposit_fomo_cash(target_bank: float) -> Optional[dict]:
+    """
+    Add cash to the FOMO bank WITHOUT destroying holdings or trade history.
+
+    Treated as a real deposit: both cash and starting_cash rise by the same
+    amount, so percentage returns stay honest (a deposit isn't a profit).
+    Idempotent — once starting_cash reaches the target, further calls no-op.
+    """
+    state = load_fomo_portfolio()
+    current_basis = state.get("starting_cash", FOMO_STARTING_CASH)
+
+    if current_basis >= target_bank:
+        return None   # already funded
+
+    delta = target_bank - current_basis
+    state["cash"]          = state.get("cash", 0.0) + delta
+    state["starting_cash"] = current_basis + delta
+    state["peak_value"]    = state.get("peak_value", 0.0) + delta
+    state["last_updated"]  = datetime.now(timezone.utc).isoformat()
+
+    save_fomo_portfolio(state)
+    log.warning(
+        f"FOMO: DEPOSITED ${delta:,.2f} — bank now ${state['cash']:,.2f} cash, "
+        f"basis ${state['starting_cash']:,.2f}. Holdings and history preserved."
+    )
+    return state
+
+
+def ensure_fomo_bank():
+    """Apply FOMO_DEPOSIT_TO at startup if configured. Safe to call every boot."""
+    if FOMO_DEPOSIT_TO > 0:
+        deposit_fomo_cash(FOMO_DEPOSIT_TO)
