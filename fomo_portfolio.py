@@ -1120,16 +1120,35 @@ def deposit_fomo_cash(target_bank: float) -> Optional[dict]:
     state = load_fomo_portfolio()
     current_basis = state.get("starting_cash", FOMO_STARTING_CASH)
 
+    # Guard 1: basis already at/above target
     if current_basis >= target_bank:
         return None   # already funded
+
+    # Guard 2: deposit ledger — survives even if starting_cash gets clobbered
+    # by a stale sync. Without this, a persistence failure re-deposits forever.
+    ledger = state.setdefault("deposits", [])
+    if any(abs(float(d.get("target", 0)) - target_bank) < 0.01 for d in ledger):
+        log.warning(
+            f"FOMO: deposit to ${target_bank:,.2f} already in ledger but basis is "
+            f"${current_basis:,.2f} — state did not persist. Skipping to avoid "
+            f"double-funding. Check GitHub sync."
+        )
+        return None
 
     delta = target_bank - current_basis
     state["cash"]          = state.get("cash", 0.0) + delta
     state["starting_cash"] = current_basis + delta
     state["peak_value"]    = state.get("peak_value", 0.0) + delta
     state["last_updated"]  = datetime.now(timezone.utc).isoformat()
+    ledger.append({
+        "target":  target_bank,
+        "amount":  round(delta, 2),
+        "at":      datetime.now(timezone.utc).isoformat(),
+    })
 
     save_fomo_portfolio(state)
+    sync_fomo_state_to_github()   # CRITICAL: local save alone is lost on restart
+
     log.warning(
         f"FOMO: DEPOSITED ${delta:,.2f} — bank now ${state['cash']:,.2f} cash, "
         f"basis ${state['starting_cash']:,.2f}. Holdings and history preserved."
@@ -1194,6 +1213,7 @@ def repair_fomo_cash() -> dict:
     state["peak_value"] = max(basis, round(correct_cash + deployed, 2))
     state["last_updated"] = datetime.now(timezone.utc).isoformat()
     save_fomo_portfolio(state)
+    sync_fomo_state_to_github()   # CRITICAL: local save alone is lost on restart
 
     log.warning(
         f"FOMO CASH REPAIRED: ${old_cash:,.2f} -> ${correct_cash:,.2f}  "
