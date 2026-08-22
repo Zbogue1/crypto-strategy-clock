@@ -71,6 +71,25 @@ TWITTER_BEARER      = os.environ.get("TWITTER_BEARER_TOKEN", "")
 MIN_MARKET_CAP  = float(os.environ.get("MIN_MARKET_CAP", "500000"))
 MIN_LIQUIDITY   = 50_000    # $50K minimum liquidity
 MIN_TOKEN_AGE   = 3         # days — filter brand-new rugs
+
+# ─── GOLEM INDEPENDENT TRADING ────────────────────────────────────────────────
+# Golem's own scanners (new-launch radar, momentum scorer, narrative scan) hunt
+# tokens 0.5-6 HOURS old. The 3-DAY execution gate above made every one of those
+# signals impossible to act on — Golem generated calls for months and never once
+# opened a position from its own analysis, because the token was always "too new".
+#
+# We now let Golem-originated signals through on a separate, tighter risk
+# profile: younger tokens allowed, but smaller size, because the rug risk that
+# motivated the 3-day rule is real and hasn't gone away.
+GOLEM_SOURCES = {"new_launch", "scanner", "narrative", "golem"}
+# Minimum age for a Golem-originated trade (hours, not days)
+GOLEM_MIN_AGE_HOURS   = float(os.getenv("FOMO_GOLEM_MIN_AGE_HOURS", "0.5"))
+# Liquidity floor for young tokens — lower than the $50k mainline, but not zero
+GOLEM_MIN_LIQUIDITY   = float(os.getenv("FOMO_GOLEM_MIN_LIQUIDITY", "15000"))
+# Fraction of normal position size for these higher-risk entries
+GOLEM_SIZE_MULTIPLIER = float(os.getenv("FOMO_GOLEM_SIZE_MULT", "0.5"))
+# Master switch
+GOLEM_INDEPENDENT_TRADING = os.getenv("FOMO_GOLEM_TRADING", "true").lower() == "true"
 MAX_LAG_MINUTES = 15        # don't enter if we're >15 min behind the trader
 
 HEADERS = {"User-Agent": "CryptoOracle/3.0 (fomo-tracker; non-commercial)"}
@@ -1927,6 +1946,31 @@ def process_social_signal(signal: dict):
     # Validate token basics
     token_data   = validate_token(contract)
     display_name = f"${symbol}" if symbol else f"{contract[:8]}…"
+    # ── Golem independent path ────────────────────────────────────────────────
+    # A young token that fails ONLY on age is exactly what Golem's radar is built
+    # to find. If the signal came from Golem's own analysis, judge it on the
+    # young-token risk profile rather than the copy-trade one.
+    golem_trade = False
+    if (GOLEM_INDEPENDENT_TRADING
+            and token_data.get("age_only_reject")
+            and source in GOLEM_SOURCES):
+        age_h = (token_data.get("age_days") or 0) * 24
+        liq   = token_data.get("liquidity") or 0
+        if age_h >= GOLEM_MIN_AGE_HOURS and liq >= GOLEM_MIN_LIQUIDITY:
+            token_data["valid"] = True
+            golem_trade = True
+            log.info(
+                f"Golem independent trade allowed: {display_name} "
+                f"({age_h:.1f}h old, ${liq:,.0f} liq) — young-token profile, "
+                f"{GOLEM_SIZE_MULTIPLIER:.0%} size"
+            )
+        else:
+            log.info(
+                f"Golem signal {display_name} rejected: {age_h:.1f}h old "
+                f"(need {GOLEM_MIN_AGE_HOURS}h), ${liq:,.0f} liq "
+                f"(need ${GOLEM_MIN_LIQUIDITY:,.0f})"
+            )
+
     if not token_data["valid"]:
         reject = token_data.get("reject_reason", "failed validation")
         if token_data.get("age_only_reject"):
@@ -2071,6 +2115,11 @@ def process_social_signal(signal: dict):
             pos_pct = min(50.0, pos_pct + convergence["boost_pct"])
         # Apply confidence position multiplier (reduces size for lower-confidence setups)
         pos_pct = max(5.0, pos_pct * conf["position_multiplier"])
+        # Golem independent trades on very young tokens carry real rug risk —
+        # take the setup, but at reduced size.
+        if golem_trade:
+            pos_pct = max(2.0, pos_pct * GOLEM_SIZE_MULTIPLIER)
+            log.info(f"Golem young-token sizing: {pos_pct:.1f}% of bankroll")
         alert_id = create_pending_buy_alert({
             "token_ticker":          token_data["symbol"],
             "token_name":            token_data["name"],
