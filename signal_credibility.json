@@ -1,58 +1,27 @@
 {
-  "open_trade": {
-    "coin": "SOL",
-    "entry_time": "2026-08-20T12:03:22.999372+00:00",
-    "key_signals": [
-      {
-        "source": "CoinTelegraph",
-        "signal_type": "news",
-        "description": "Bitcoin ETFs drew $517M in the largest one-day inflow since early May, confirming strong institutional demand behind the breakout."
-      },
-      {
-        "source": "CoinDesk",
-        "signal_type": "news",
-        "description": "Bitcoin broke out of a six-week range above $71K with $3B in short liquidations, creating powerful upward momentum across crypto."
-      },
-      {
-        "source": "Fear_Greed",
-        "signal_type": "sentiment",
-        "description": "Fear & Greed surged from 46 to 62 in one day with a weekly average of 39.6, indicating early-stage greed \u2014 supportive but not yet euphoric."
-      },
-      {
-        "source": "volume_breakout",
-        "signal_type": "technical",
-        "description": "SOL 24h volume at $5.76B signals massive institutional and retail participation, validating the breakout across the alt space."
-      },
-      {
-        "source": "CoinDesk",
-        "signal_type": "macro",
-        "description": "Fed liquidity promises and dollar weakness are creating a favorable macro tailwind for risk assets including crypto."
-      }
-    ],
-    "confidence": 62
-  },
+  "open_trade": null,
   "signal_stats": {
     "Fear_Greed__sentiment": {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "wins": 7,
+      "wins": 8,
       "losses": 7,
-      "total": 14,
-      "win_rate": 0.5,
-      "total_pct": -43.89,
-      "avg_return": -3.135,
-      "last_seen": "2026-08-20T04:05:45.933698+00:00"
+      "total": 15,
+      "win_rate": 0.533,
+      "total_pct": -32.44,
+      "avg_return": -2.1627,
+      "last_seen": "2026-08-22T00:02:06.396862+00:00"
     },
     "CoinDesk__news": {
       "source": "CoinDesk",
       "signal_type": "news",
-      "wins": 5,
+      "wins": 6,
       "losses": 7,
-      "total": 12,
-      "win_rate": 0.417,
-      "total_pct": -75.87,
-      "avg_return": -6.3225,
-      "last_seen": "2026-08-20T04:05:45.933709+00:00"
+      "total": 13,
+      "win_rate": 0.462,
+      "total_pct": -64.42,
+      "avg_return": -4.9554,
+      "last_seen": "2026-08-22T00:02:06.396857+00:00"
     },
     "CoinTelegraph__onchain": {
       "source": "CoinTelegraph",
@@ -68,13 +37,13 @@
     "volume_breakout__technical": {
       "source": "volume_breakout",
       "signal_type": "technical",
-      "wins": 4,
+      "wins": 5,
       "losses": 4,
-      "total": 8,
-      "win_rate": 0.5,
-      "total_pct": -49.84,
-      "avg_return": -6.23,
-      "last_seen": "2026-08-20T04:05:45.933690+00:00"
+      "total": 9,
+      "win_rate": 0.556,
+      "total_pct": -38.39,
+      "avg_return": -4.2656,
+      "last_seen": "2026-08-22T00:02:06.396864+00:00"
     },
     "Blockworks__macro": {
       "source": "Blockworks",
@@ -123,13 +92,13 @@
     "CoinTelegraph__news": {
       "source": "CoinTelegraph",
       "signal_type": "news",
-      "wins": 4,
+      "wins": 5,
       "losses": 5,
-      "total": 9,
-      "win_rate": 0.444,
-      "total_pct": -22.82,
-      "avg_return": -2.5356,
-      "last_seen": "2026-08-18T00:02:19.353191+00:00"
+      "total": 10,
+      "win_rate": 0.5,
+      "total_pct": -11.37,
+      "avg_return": -1.137,
+      "last_seen": "2026-08-22T00:02:06.396842+00:00"
     },
     "Chart Pattern Analysis__technical": {
       "source": "Chart Pattern Analysis",
@@ -196,8 +165,19 @@
       "total_pct": -0.63,
       "avg_return": -0.63,
       "last_seen": "2026-08-18T00:02:19.353198+00:00"
+    },
+    "CoinDesk__macro": {
+      "source": "CoinDesk",
+      "signal_type": "macro",
+      "wins": 1,
+      "losses": 0,
+      "total": 1,
+      "win_rate": 1.0,
+      "total_pct": 11.45,
+      "avg_return": 11.45,
+      "last_seen": "2026-08-22T00:02:06.396868+00:00"
     }
   },
-  "trade_count": 14,
-  "last_updated": "2026-08-20T12:03:22.999386+00:00"
+  "trade_count": 15,
+  "last_updated": "2026-08-22T00:02:06.396930+00:00"
 }
