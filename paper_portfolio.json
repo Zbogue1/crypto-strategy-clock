@@ -1,21 +1,6 @@
 {
-  "cash": 376.7336,
+  "cash": 565.578,
   "holdings": [
-    {
-      "coin_ticker": "ETH",
-      "coin_id": "eth",
-      "units": 0.07516389730108969,
-      "entry_price": 2252.02,
-      "entry_date": "2026-08-20T00:02:18.124095+00:00",
-      "entry_signal": "BUY",
-      "entry_confidence": 68,
-      "allocated_usd": 169.44,
-      "fee_paid": 0.1694,
-      "exit_target": 2520.0,
-      "stop_loss": 2020.0,
-      "entry_target": 2180.0,
-      "expected_days": 7
-    },
     {
       "coin_ticker": "HYPE",
       "coin_id": "hype",
@@ -47,12 +32,12 @@
       "expected_days": 10
     }
   ],
-  "realized_pnl": -160.8064,
+  "realized_pnl": -141.402,
   "peak_value": 1032.0739,
-  "total_trades": 22,
-  "winning_trades": 9,
+  "total_trades": 23,
+  "winning_trades": 10,
   "losing_trades": 13,
-  "total_fees": 5.5862,
+  "total_fees": 5.7752,
   "trade_history": [
     {
       "trade_num": 1,
@@ -607,6 +592,32 @@
       "days_held": 5.0,
       "exit_target": 10.9,
       "stop_loss": 8.6,
+      "hit_target": false,
+      "hit_stop": false,
+      "result": "WIN"
+    },
+    {
+      "trade_num": 23,
+      "coin_ticker": "ETH",
+      "coin_id": "eth",
+      "entry_price": 2252.02,
+      "entry_date": "2026-08-20T00:02:18.124095+00:00",
+      "entry_signal": "BUY",
+      "entry_confidence": 68,
+      "allocated_usd": 169.44,
+      "exit_price": 2514.95,
+      "exit_date": "2026-08-22T00:02:06.395855+00:00",
+      "exit_signal": "HOLD",
+      "exit_reason": "signal",
+      "units": 0.07516389730108969,
+      "gross_proceeds": 189.0334,
+      "fees_total": 0.3584,
+      "net_proceeds": 188.8444,
+      "profit_usd": 19.4044,
+      "profit_pct": 11.45,
+      "days_held": 2.0,
+      "exit_target": 2520.0,
+      "stop_loss": 2020.0,
       "hit_target": false,
       "hit_stop": false,
       "result": "WIN"
