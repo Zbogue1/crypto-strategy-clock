@@ -582,9 +582,30 @@ def handle_relayed_text_message(message: dict):
         send_telegram(get_wallet_leaderboard())
         return
 
+    # -- /addwallet command — manually add a wallet to the watchlist --
+    if text.lower().startswith(("/addwallet", "/add_wallet", "/add ")):
+        _handle_add_wallet(text)
+        return
+
     # -- /discover command — force a wallet discovery run now --
     if text.lower().startswith(("/discover", "/discovery")):
-        import threading
+        import threading, time as _t
+        # parse.bot is rate/credit limited. Two runs in an hour exhausted it and
+        # produced a full page of "couldn't evaluate". Guard manual triggers.
+        global _last_manual_discovery
+        _min_gap = float(os.getenv("FOMO_DISCOVER_MIN_GAP_MIN", "60")) * 60
+        _since   = _t.time() - _last_manual_discovery
+        if _last_manual_discovery and _since < _min_gap and "force" not in text.lower():
+            mins = (_min_gap - _since) / 60
+            send_telegram(
+                f"⏳ <b>Discovery ran {_since/60:.0f} min ago</b>\n\n"
+                f"parse.bot has tight rate/credit limits — running again too soon "
+                f"returns empty data and wastes the quota.\n\n"
+                f"Try again in {mins:.0f} min, or send <code>/discover force</code> "
+                f"to override."
+            )
+            return
+        _last_manual_discovery = _t.time()
         send_telegram(
             "🔍 <b>Running wallet discovery...</b>\n"
             "Scanning leaderboards, deep-analyzing each candidate, and "
@@ -2107,6 +2128,9 @@ def process_social_signal(signal: dict):
         handle_tracker_sell(contract, current_price, ticker=token_data["symbol"])
 
 
+_last_manual_discovery: float = 0.0
+
+
 def run_weekly_discovery(ignore_gate: bool = False):
     """
     Full weekly discovery cycle — runs once per week (gated via GitHub-persisted timestamp).
@@ -2225,6 +2249,9 @@ def run_weekly_discovery(ignore_gate: bool = False):
                 log.warning(f"Auto-add: {len(results['added'])} wallet(s) added to watchlist")
 
             send_telegram(format_autoadd_telegram(results))
+            # NOTE: "unavailable" is deliberately excluded — those wallets were
+            # never actually evaluated (API outage). Adding them to the seen
+            # cache would shelve them for 30 days over a transient failure.
             for group in ("added", "review", "rejected"):
                 newly_shown.extend(c["wallet"] for c in results[group] if c.get("wallet"))
             log.info(
@@ -2266,6 +2293,7 @@ def run_weekly_discovery(ignore_gate: bool = False):
                 log.warning(f"Auto-add (reverse): {len(rev_results['added'])} wallet(s) added")
             msg = format_autoadd_telegram(rev_results)
             send_telegram("🔄 <b>From tokens that actually pumped:</b>\n\n" + msg)
+            # "unavailable" excluded — see note above.
             for group in ("added", "review", "rejected"):
                 newly_shown.extend(c["wallet"] for c in rev_results[group] if c.get("wallet"))
             log.info(f"Reverse discovery: {len(rev_results['added'])} added")

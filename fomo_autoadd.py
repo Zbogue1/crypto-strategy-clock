@@ -206,6 +206,29 @@ def _admission_check(c: dict, analysis: dict) -> tuple[bool, str]:
     return True, ""
 
 
+def _data_is_missing(c: dict) -> bool:
+    """
+    True when the API returned nothing usable for this wallet.
+
+    Critical distinction: "we evaluated this and it's bad" vs "we couldn't
+    evaluate it". Treating an outage as a rejection permanently shelves good
+    wallets, because rejected candidates go into the 30-day seen-cache and
+    never resurface.
+    """
+    wr30 = c.get("winrate_30d") or 0
+    wr7  = c.get("win_rate") or c.get("winrate_7d") or 0
+    pnl  = abs(float(c.get("realized_pnl_7d") or 0)) + abs(float(c.get("pnl_7d") or 0))
+    hold = c.get("avg_hold_minutes")
+
+    # No win rate at all, from either window, and no hold time = empty response
+    if not wr30 and not wr7 and hold is None:
+        return True
+    # Win rates zero but real money moved — partial response, win rate missing
+    if not wr30 and not wr7 and pnl > 100:
+        return True
+    return False
+
+
 def process_candidates(candidates: list, existing_wallets: set,
                        wallet_data: dict) -> dict:
     """
@@ -214,7 +237,7 @@ def process_candidates(candidates: list, existing_wallets: set,
     wallet_data: the trusted_wallets dict ({"tier_a": [...], "tier_b": [...]})
     Returns {"added": [...], "review": [...], "rejected": [...]}
     """
-    results = {"added": [], "review": [], "rejected": []}
+    results = {"added": [], "review": [], "rejected": [], "unavailable": []}
 
     for c in candidates:
         wallet = c.get("wallet", "")
@@ -223,6 +246,16 @@ def process_candidates(candidates: list, existing_wallets: set,
 
         vet   = c.get("vetting") or {}
         score = vet.get("score") or 0
+
+        # Couldn't evaluate ≠ evaluated and rejected. Don't spend an AI call,
+        # and don't let the caller shelve it in the 30-day seen-cache.
+        if _data_is_missing(c):
+            log.warning(
+                f"Auto-add: {wallet[:8]}... data unavailable "
+                f"(API degraded) — deferring, not rejecting"
+            )
+            results["unavailable"].append(c)
+            continue
 
         # Skip the clearly-bad without spending an AI call
         if score < REVIEW_MIN_SCORE:
@@ -268,11 +301,12 @@ def process_candidates(candidates: list, existing_wallets: set,
 
 def format_autoadd_telegram(results: dict) -> str:
     """A decision record, not a to-do list."""
-    added    = results.get("added", [])
-    review   = results.get("review", [])
-    rejected = results.get("rejected", [])
+    added       = results.get("added", [])
+    review      = results.get("review", [])
+    rejected    = results.get("rejected", [])
+    unavailable = results.get("unavailable", [])
 
-    if not (added or review or rejected):
+    if not (added or review or rejected or unavailable):
         return "🔍 <b>Wallet discovery</b>\nNo new candidates this week."
 
     lines = ["🤖 <b>WALLET DISCOVERY — auto-analyzed</b>\n"]
@@ -306,6 +340,17 @@ def format_autoadd_telegram(results: dict) -> str:
                 f"  <code>{c['wallet']}</code>"
             )
         lines.append("\n<i>Reply with an address to add manually.</i>\n")
+
+    if unavailable:
+        lines.append(f"\n⚠️ <b>COULDN'T EVALUATE ({len(unavailable)})</b>")
+        lines.append("<i>GMGN/parse.bot returned no data — these were NOT rejected "
+                     "and will resurface next run.</i>")
+        for c in unavailable[:8]:
+            alias = c.get("twitter") or c.get("alias") or c["wallet"][:8]
+            lines.append(f"  • {alias}")
+        if len(unavailable) > 8:
+            lines.append(f"  • …and {len(unavailable)-8} more")
+        lines.append("")
 
     if rejected:
         lines.append(f"\n❌ <b>Rejected ({len(rejected)})</b>")
