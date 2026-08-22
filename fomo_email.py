@@ -213,8 +213,20 @@ def _parse_solscan_email(subject: str, body: str, name_map: dict) -> Optional[di
     changes = []
 
     # Try HTML format first: extract contract from solscan.io/token/ href
+    #
+    # NOTE: the sign is OPTIONAL. Solscan renders outgoing amounts with the red
+    # emoji and NO minus sign:
+    #     🔴  24533153.6309 <a href="https://solscan.io/token/HLv8...">
+    # The previous pattern required [+\-], so it matched zero real token
+    # transfers — every wallet looked inactive and the logs filled with
+    # "no balance changes found". The emoji already encodes direction, so we
+    # take the sign only when present and fall back to the emoji.
+    #
+    # Also: don't require a closing quote after the address (href formats vary)
+    # and cap the address at 44 chars — Solana base58 addresses are 32-44, and
+    # {30,50} could swallow trailing markup.
     html_pattern = re.compile(
-        r'(🟢|🔴)[^+\-]*([+\-])\s*([\d,]+\.?\d*)\s*<a[^>]+solscan\.io/token/([A-Za-z0-9]{30,50})"',
+        r'(🟢|🔴)\s*([+\-]?)\s*([\d,]+\.?\d*)\s*<a[^>]*?solscan\.io/token/([A-Za-z0-9]{30,44})',
         re.MULTILINE
     )
     for emoji, sign, amount, contract in html_pattern.findall(body):
@@ -231,7 +243,21 @@ def _parse_solscan_email(subject: str, body: str, name_map: dict) -> Optional[di
         changes = plain_pattern.findall(body)
 
     if not changes:
-        log.warning(f"Email: no balance changes found for {wallet_info['alias']} — raw body snippet: {repr(body[:300])}")
+        # Distinguish "nothing to parse" from "parser couldn't read it" — the
+        # difference between a wallet being quiet and the pipeline being broken.
+        has_token_link = "solscan.io/token/" in body
+        has_emoji      = ("🟢" in body) or ("🔴" in body)
+        if has_token_link and has_emoji:
+            log.error(
+                f"Email PARSER FAILURE for {wallet_info['alias']}: body contains a "
+                f"token link and balance emoji but nothing matched. Regex needs "
+                f"updating. Snippet: {repr(body[:400])}"
+            )
+        else:
+            log.info(
+                f"Email: no token balance changes for {wallet_info['alias']} "
+                f"(SOL/stablecoin transfer or non-swap tx)"
+            )
         return None
 
     # ── Extract timestamp ─────────────────────────────────────────────────────
