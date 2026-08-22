@@ -2128,6 +2128,88 @@ def process_social_signal(signal: dict):
         handle_tracker_sell(contract, current_price, ticker=token_data["symbol"])
 
 
+_SOLANA_ADDR_RE = re.compile(r"\b([1-9A-HJ-NP-Za-km-z]{32,44})\b")
+
+
+def _handle_add_wallet(text: str):
+    """
+    Manually add a wallet to the watchlist.
+
+        /addwallet <address> <alias> [A|B]
+
+    Goes to Tier B by default — unproven wallets get observed before being
+    trusted with webhooks. Promotion to Tier A happens automatically once the
+    wallet meets the promotion rules.
+    """
+    parts = text.split()
+    if len(parts) < 2:
+        send_telegram(
+            "➕ <b>Add a wallet</b>\n\n"
+            "<code>/addwallet &lt;address&gt; &lt;name&gt;</code>\n\n"
+            "Example:\n"
+            "<code>/addwallet FVZRwUp6E4m9jV4VumF8q7m8q3mF9fpikRrJSCCfFAdP 000xy_0</code>\n\n"
+            "Adds to Tier B (observation). Auto-promotes to Tier A once it "
+            "proves out."
+        )
+        return
+
+    m = _SOLANA_ADDR_RE.search(text)
+    if not m:
+        send_telegram(
+            "⚠️ No valid Solana address found.\n"
+            "Addresses are 32-44 base58 characters."
+        )
+        return
+    address = m.group(1)
+
+    # Alias = first token that isn't the command or the address
+    alias = ""
+    for p in parts[1:]:
+        if p != address and not p.startswith("/"):
+            alias = p.lstrip("@")
+            break
+    alias = alias or address[:8]
+
+    tier = "tier_b"
+    if parts[-1].upper() == "A":
+        tier = "tier_a"
+
+    try:
+        data = load_trusted_wallets()
+        for t in ("tier_a", "tier_b"):
+            for w in data.get(t, []):
+                if w.get("wallet") == address:
+                    send_telegram(
+                        f"ℹ️ Already watching <b>{w.get('alias', alias)}</b> "
+                        f"in {t.replace('tier_', 'Tier ').upper()}."
+                    )
+                    return
+
+        data.setdefault(tier, []).append({
+            "wallet":     address,
+            "alias":      alias,
+            "tier":       "A" if tier == "tier_a" else "B",
+            "added_at":   datetime.now(timezone.utc).isoformat(),
+            "added_by":   "manual_telegram",
+            "notes":      "Added manually — no automated vetting was possible.",
+        })
+        save_trusted_wallets(data)
+
+        total = len(data.get("tier_a", [])) + len(data.get("tier_b", []))
+        send_telegram(
+            f"✅ <b>Added {alias}</b>\n\n"
+            f"Tier: {'A (trusted)' if tier == 'tier_a' else 'B (observation)'}\n"
+            f"<code>{address}</code>\n\n"
+            f"Watchlist now has {total} wallet(s).\n\n"
+            "<i>⚠️ Added without vetting — its hold time and 30d record are "
+            "unverified. It'll be scored on the next re-vetting run.</i>"
+        )
+        log.warning(f"Manually added wallet {alias} ({address[:8]}...) to {tier}")
+    except Exception as e:
+        log.error(f"Manual wallet add failed: {e}", exc_info=True)
+        send_telegram(f"⚠️ Couldn't add wallet: {e}")
+
+
 _last_manual_discovery: float = 0.0
 
 
