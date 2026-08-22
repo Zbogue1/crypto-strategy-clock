@@ -565,7 +565,23 @@ def revett_watchlist(watchlist: list) -> dict:
 
     results = {"upgraded": [], "degraded": [], "rejected": [], "unchanged": [], "errors": []}
 
+    # ── CREDIT PROTECTION ─────────────────────────────────────────────────
+    # Re-vetting is ~57% of a discovery run's API cost (one call per wallet).
+    # When the API is down, every one of those calls still consumes a credit
+    # and returns nothing — that's how 800 credits vanished in a day. Abort
+    # early if the first few calls all fail rather than burning the rest.
+    _consecutive_failures = 0
+    _ABORT_AFTER_FAILURES = int(os.getenv("GMGN_ABORT_AFTER_FAILURES", "3"))
+    _aborted = False
+
     for w in watchlist:
+        if _aborted:
+            results["errors"].append({
+                "alias":  w.get("alias", "?"),
+                "wallet": w.get("wallet", ""),
+                "error":  "Skipped — re-vetting aborted, API unavailable (credits preserved)",
+            })
+            continue
         address = w.get("wallet", "")
         alias   = w.get("alias", address[:8] or "unknown")
 
@@ -581,12 +597,22 @@ def revett_watchlist(watchlist: list) -> dict:
         time.sleep(20)   # extra delay on top of get_wallet_profile's own rate limit
         profile = get_wallet_profile(address)
         if not profile:
+            _consecutive_failures += 1
             results["errors"].append({
                 "alias":  alias,
                 "wallet": address,
                 "error":  "GMGN profile fetch failed",
             })
+            if _consecutive_failures >= _ABORT_AFTER_FAILURES:
+                _aborted = True
+                log.error(
+                    f"Re-vetting ABORTED after {_consecutive_failures} consecutive "
+                    f"failures — API is down. Skipping remaining "
+                    f"{len(watchlist) - len(results['errors'])} wallet(s) to preserve credits."
+                )
             continue
+
+        _consecutive_failures = 0   # a success resets the abort counter
 
         # Build candidate dict in the same shape score_wallet() expects
         # 30d first — re-vetting on a 7d number lets a hot streak mask decay
