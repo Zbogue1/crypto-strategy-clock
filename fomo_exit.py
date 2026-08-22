@@ -201,6 +201,89 @@ def _chart_says_exit(contract: str, chain: str = "solana") -> bool:
 
 # ─── PARTIAL SELL ─────────────────────────────────────────────────────────────
 
+# ─── MONITOR LOAD HEALTH ──────────────────────────────────────────────────────
+# Every open position costs one DexScreener price fetch per 5-minute cycle. At
+# 20+ positions that's 240+ calls/hour from the exit monitor alone, on top of
+# the scanners. DexScreener rate-limits (we already see 429s elsewhere), and a
+# throttled price fetch means a stop-loss silently doesn't fire — the position
+# just isn't checked that cycle. This warns before that becomes invisible.
+import time as _time
+
+MONITOR_WARN_THRESHOLD = int(os.getenv("FOMO_MONITOR_WARN_AT", "20"))
+MONITOR_FAIL_PCT_WARN  = float(os.getenv("FOMO_MONITOR_FAIL_PCT", "0.20"))
+MONITOR_SLOW_CYCLE_SEC = float(os.getenv("FOMO_MONITOR_SLOW_SEC", "240"))
+
+_load_stats = {"checked": 0, "price_fail": 0}
+_load_warned_at = 0          # highest position count already warned about
+_last_load_warning = 0.0     # timestamp, for cooldown
+LOAD_WARN_COOLDOWN = 6 * 3600
+
+
+def _check_monitor_load(n_positions: int):
+    """Warn once per 10-position tier when the monitoring workload grows."""
+    global _load_warned_at, _last_load_warning
+    if n_positions < MONITOR_WARN_THRESHOLD:
+        return
+
+    tier = (n_positions // 10) * 10
+    now  = _time.time()
+    if tier <= _load_warned_at and (now - _last_load_warning) < LOAD_WARN_COOLDOWN:
+        return
+
+    _load_warned_at    = tier
+    _last_load_warning = now
+
+    calls_hr = n_positions * 12   # one fetch per position per 5-min cycle
+    _send_telegram(
+        f"📊 <b>Monitoring load check — {n_positions} open positions</b>\n\n"
+        f"The exit monitor now makes ~<b>{calls_hr:,} DexScreener calls/hour</b> "
+        f"just to price your positions, plus scanner traffic.\n\n"
+        f"<b>What to watch for:</b>\n"
+        f"• 429 rate-limit warnings in the logs\n"
+        f"• Cycles taking longer than the 5-minute interval\n"
+        f"• Positions whose price hasn't updated in several cycles\n\n"
+        f"<i>A throttled price fetch means that position isn't checked that "
+        f"cycle — a stop-loss can be late. I'll alert if failures climb.</i>"
+    )
+    log.warning(f"Monitor load: {n_positions} positions, ~{calls_hr}/hr price calls")
+
+
+def _report_cycle_health(elapsed: float):
+    """After a cycle, warn if price fetches are failing or the cycle is slow."""
+    global _last_load_warning
+    checked = _load_stats.get("checked", 0)
+    failed  = _load_stats.get("price_fail", 0)
+    if checked < 5:
+        return
+
+    fail_pct = failed / checked
+    now = _time.time()
+    if (now - _last_load_warning) < LOAD_WARN_COOLDOWN:
+        return
+
+    problems = []
+    if fail_pct >= MONITOR_FAIL_PCT_WARN:
+        problems.append(
+            f"• <b>{failed}/{checked} price fetches failed</b> ({fail_pct:.0%}) — "
+            f"those positions were NOT checked for stops this cycle"
+        )
+    if elapsed > MONITOR_SLOW_CYCLE_SEC:
+        problems.append(
+            f"• <b>Cycle took {elapsed/60:.1f} min</b> — approaching or exceeding "
+            f"the 5-minute interval, so cycles may be overlapping"
+        )
+    if not problems:
+        return
+
+    _last_load_warning = now
+    _send_telegram(
+        f"⚠️ <b>Exit monitor degraded</b>\n\n" + "\n".join(problems) +
+        f"\n\n<i>Stop-losses and tranche exits may be delayed. Consider reducing "
+        f"position count or raising the monitor interval.</i>"
+    )
+    log.error(f"Monitor health: {failed}/{checked} failed, cycle {elapsed:.0f}s")
+
+
 def _execute_partial_sell(
     holding: dict,
     fraction: float,
@@ -353,8 +436,11 @@ def _check_holding(holding: dict, state: dict):
     if not contract:
         return
 
+    _load_stats["checked"] = _load_stats.get("checked", 0) + 1
     current_price, current_liq = _get_price_and_liquidity(contract, chain)
     if not current_price:
+        # Not a harmless skip: this position went unchecked for stops this cycle
+        _load_stats["price_fail"] = _load_stats.get("price_fail", 0) + 1
         log.debug(f"Exit monitor: couldn't fetch price for {ticker}")
         return
 
@@ -536,6 +622,12 @@ def run_exit_checks():
 
     log.info(f"Exit monitor: checking {len(holdings)} position(s)")
 
+    # Load-health check — see _check_monitor_load() for why this matters
+    _check_monitor_load(len(holdings))
+    _load_stats["checked"] = 0
+    _load_stats["price_fail"] = 0
+    _cycle_start = _time.time()
+
     # Iterate over a copy — holdings may be removed during iteration
     for holding in list(holdings):
         # Re-check that position still exists in state (may have been closed)
@@ -546,6 +638,9 @@ def run_exit_checks():
             time.sleep(3)   # small gap between price fetches
         except Exception as e:
             log.error(f"Exit monitor error on {holding.get('token_ticker','?')}: {e}")
+
+    # Cycle finished — check whether the workload is degrading monitoring
+    _report_cycle_health(_time.time() - _cycle_start)
 
 
 def start_exit_monitor() -> threading.Thread:
