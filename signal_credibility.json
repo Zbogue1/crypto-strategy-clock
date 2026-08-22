@@ -1,5 +1,36 @@
 {
-  "open_trade": null,
+  "open_trade": {
+    "coin": "XRP",
+    "entry_time": "2026-08-22T08:04:53.618582+00:00",
+    "key_signals": [
+      {
+        "source": "RSI",
+        "signal_type": "technical",
+        "description": "XRP RSI at 31.58 despite a 55.7% weekly rally is highly unusual \u2014 suggests the move started from deeply oversold levels and has technical room to continue."
+      },
+      {
+        "source": "volume_breakout",
+        "signal_type": "technical",
+        "description": "XRP daily volume at $14.2B is massive relative to its market cap, indicating strong institutional/whale participation in this move."
+      },
+      {
+        "source": "CoinDesk",
+        "signal_type": "news",
+        "description": "Treasury buyback tweak catalyzed BTC's 25% surge to $80K, creating the macro tailwind lifting the entire market including alts."
+      },
+      {
+        "source": "Fear_Greed",
+        "signal_type": "sentiment",
+        "description": "Fear & Greed at 71 with weekly average of 51 shows rapid sentiment improvement \u2014 bullish trend but approaching caution zone."
+      },
+      {
+        "source": "CoinTelegraph",
+        "signal_type": "news",
+        "description": "Ray Dalio recommending Bitcoin allocation and BTC seeking support near $77K confirms the macro narrative supporting risk-on crypto positioning."
+      }
+    ],
+    "confidence": 62
+  },
   "signal_stats": {
     "Fear_Greed__sentiment": {
       "source": "Fear_Greed",
@@ -179,5 +210,5 @@
     }
   },
   "trade_count": 15,
-  "last_updated": "2026-08-22T00:02:06.396930+00:00"
+  "last_updated": "2026-08-22T08:04:53.618591+00:00"
 }
