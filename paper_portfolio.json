@@ -1,5 +1,5 @@
 {
-  "cash": 756.1705,
+  "cash": 567.1305,
   "holdings": [
     {
       "coin_ticker": "SOL",
@@ -15,6 +15,21 @@
       "stop_loss": 77.0,
       "entry_target": 85.0,
       "expected_days": 10
+    },
+    {
+      "coin_ticker": "XRP",
+      "coin_id": "xrp",
+      "units": 121.05833333333332,
+      "entry_price": 1.56,
+      "entry_date": "2026-08-22T08:04:53.617744+00:00",
+      "entry_signal": "BUY",
+      "entry_confidence": 62,
+      "allocated_usd": 189.04,
+      "fee_paid": 0.189,
+      "exit_target": 1.85,
+      "stop_loss": 1.3,
+      "entry_target": 1.48,
+      "expected_days": 7
     }
   ],
   "realized_pnl": -118.2495,
@@ -22,7 +37,7 @@
   "total_trades": 24,
   "winning_trades": 11,
   "losing_trades": 13,
-  "total_fees": 5.966,
+  "total_fees": 6.155,
   "trade_history": [
     {
       "trade_num": 1,
