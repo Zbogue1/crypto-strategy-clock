@@ -173,5 +173,27 @@
       "SOL"
     ],
     "alert": "XRP position at -7.1% \u2014 monitor $1.40 support closely, stop-loss at $1.30"
+  },
+  {
+    "ts": "2026-08-22T20:01:10.304484+00:00",
+    "coin": "SOL",
+    "price": 94.55,
+    "signal": "HOLD",
+    "confidence": 62,
+    "score": 0.3,
+    "fg": 71,
+    "btc_price": 77420,
+    "btc_dominance": 58.7,
+    "candidates": [
+      "PUMP",
+      "XRP",
+      "TRUMP",
+      "MON",
+      "LIT",
+      "USDG",
+      "RLUSD",
+      "SOL"
+    ],
+    "alert": "SOL approaching $100 exit target \u2014 prepare to take profits within 1-3 days"
   }
 ]
