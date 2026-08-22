@@ -60,5 +60,28 @@
       "HYPE"
     ],
     "alert": "ETH is within 4% of exit target at $2,520 \u2014 prepare to take profits on further strength."
+  },
+  {
+    "ts": "2026-08-22T00:01:20.369960+00:00",
+    "coin": "ETH",
+    "price": 2514.95,
+    "signal": "HOLD",
+    "confidence": 72,
+    "score": 6.5,
+    "fg": 71,
+    "btc_price": 78320,
+    "btc_dominance": 59.0,
+    "candidates": [
+      "MON",
+      "ETH",
+      "PUMP",
+      "STX",
+      "PAXG",
+      "XAUT",
+      "EURC",
+      "SOL",
+      "HYPE"
+    ],
+    "alert": "ETH has reached exit target ($2514.95 vs $2520 target). Recommend taking the 11.7% gain."
   }
 ]
