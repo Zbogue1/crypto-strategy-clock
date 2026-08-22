@@ -1187,8 +1187,32 @@ def main():
     )
     log.info("=" * 60)
 
+    # ── Startup message rate limit ────────────────────────────────────────
+    # Both services deploy from the same repo, so every push restarts this bot
+    # and fires a startup message. During active development that's a message
+    # every few minutes — which directly contradicts "silent mode". Only
+    # announce if we haven't in the last STARTUP_MSG_COOLDOWN_H hours.
+    # Also catches crash-loops, where the same message would repeat endlessly.
+    _startup_cooldown_h = float(os.getenv("KALSHI_STARTUP_MSG_COOLDOWN_H", "12"))
+    _announce = True
+    try:
+        from kalshi_portfolio import _redis_get, _redis_set
+        _last = (_redis_get("kalshi_last_startup_msg") or {}).get("ts", 0)
+        if _last and (time.time() - _last) < _startup_cooldown_h * 3600:
+            _announce = False
+            log.info(
+                f"Startup message suppressed — last sent "
+                f"{(time.time()-_last)/60:.0f} min ago (cooldown {_startup_cooldown_h}h)"
+            )
+        else:
+            _redis_set("kalshi_last_startup_msg", {"ts": time.time()})
+    except Exception as e:
+        log.warning(f"Startup message cooldown check failed: {e}")
+
     # Send startup message
-    if AUTO_SCAN and SILENT:
+    if not _announce:
+        pass
+    elif AUTO_SCAN and SILENT:
         send_telegram(
             "🤖 *KALSHI Golem* — _silent day-trading mode_\n\n"
             f"Taking up to *{DAILY_TRADE_TARGET} bets per day* at ${DEFAULT_MARGIN:.0f} each, "
