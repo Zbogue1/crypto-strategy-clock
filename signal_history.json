@@ -106,5 +106,27 @@
       "HYPE"
     ],
     "alert": "HYPE is within 1.2% of exit target at $83 \u2014 sell now to secure +14% profit before a likely pullback."
+  },
+  {
+    "ts": "2026-08-22T08:04:08.488228+00:00",
+    "coin": "XRP",
+    "price": 1.56,
+    "signal": "BUY",
+    "confidence": 62,
+    "score": 0.45,
+    "fg": 71,
+    "btc_price": 77355,
+    "btc_dominance": 58.6,
+    "candidates": [
+      "TRUMP",
+      "XRP",
+      "PUMP",
+      "ZEC",
+      "MON",
+      "ETH",
+      "PIEVERSE",
+      "SOL"
+    ],
+    "alert": "SOL position at +8.3% is approaching the $100 exit target \u2014 prepare to take profits."
   }
 ]
