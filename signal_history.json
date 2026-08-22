@@ -83,5 +83,28 @@
       "HYPE"
     ],
     "alert": "ETH has reached exit target ($2514.95 vs $2520 target). Recommend taking the 11.7% gain."
+  },
+  {
+    "ts": "2026-08-22T04:04:01.202814+00:00",
+    "coin": "HYPE",
+    "price": 82.04,
+    "signal": "HOLD",
+    "confidence": 72,
+    "score": 6.5,
+    "fg": 71,
+    "btc_price": 78332,
+    "btc_dominance": 58.5,
+    "candidates": [
+      "TRUMP",
+      "XRP",
+      "LIT",
+      "ZEC",
+      "MON",
+      "PIEVERSE",
+      "PUMP",
+      "SOL",
+      "HYPE"
+    ],
+    "alert": "HYPE is within 1.2% of exit target at $83 \u2014 sell now to secure +14% profit before a likely pullback."
   }
 ]
