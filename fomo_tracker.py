@@ -90,6 +90,19 @@ GOLEM_MIN_LIQUIDITY   = float(os.getenv("FOMO_GOLEM_MIN_LIQUIDITY", "15000"))
 GOLEM_SIZE_MULTIPLIER = float(os.getenv("FOMO_GOLEM_SIZE_MULT", "0.5"))
 # Master switch
 GOLEM_INDEPENDENT_TRADING = os.getenv("FOMO_GOLEM_TRADING", "true").lower() == "true"
+
+# ─── POSITION SIZING ──────────────────────────────────────────────────────────
+# Sizing is a % of REMAINING cash, so it tapers rather than hitting a wall.
+# This percentage — not the position count cap — is what actually determines
+# how many concurrent positions the bankroll supports:
+#   15% -> ~35 positions | 8% -> ~60 | 5% -> ~89
+# Lower = more concurrent positions = larger calibration sample.
+DEFAULT_POSITION_PCT   = float(os.getenv("FOMO_POSITION_PCT", "8.0"))
+# Ceiling when multiple wallets converge on the same token. 50% meant one
+# memecoin could take half the bank — too concentrated for an asset class
+# where total loss is routine.
+MAX_POSITION_PCT       = float(os.getenv("FOMO_MAX_POSITION_PCT_CAP", "25.0"))
+MIN_POSITION_PCT       = float(os.getenv("FOMO_MIN_POSITION_PCT", "3.0"))
 MAX_LAG_MINUTES = 15        # don't enter if we're >15 min behind the trader
 
 HEADERS = {"User-Agent": "CryptoOracle/3.0 (fomo-tracker; non-commercial)"}
@@ -2107,14 +2120,14 @@ def process_social_signal(signal: dict):
             )
             return
 
-        pos_pct = getattr(verdict, "suggested_position_pct", 15.0)
+        pos_pct = getattr(verdict, "suggested_position_pct", None) or DEFAULT_POSITION_PCT
         # Apply regime modifier (reduce in bear, unchanged in bull)
-        pos_pct = max(5.0, pos_pct + regime["modifier_pct"])
+        pos_pct = max(MIN_POSITION_PCT, pos_pct + regime["modifier_pct"])
         # Apply convergence boost (more wallets = bigger position)
         if convergence["is_convergence"]:
-            pos_pct = min(50.0, pos_pct + convergence["boost_pct"])
+            pos_pct = min(MAX_POSITION_PCT, pos_pct + convergence["boost_pct"])
         # Apply confidence position multiplier (reduces size for lower-confidence setups)
-        pos_pct = max(5.0, pos_pct * conf["position_multiplier"])
+        pos_pct = max(MIN_POSITION_PCT, pos_pct * conf["position_multiplier"])
         # Golem independent trades on very young tokens carry real rug risk —
         # take the setup, but at reduced size.
         if golem_trade:
