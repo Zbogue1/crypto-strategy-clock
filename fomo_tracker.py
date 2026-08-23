@@ -553,14 +553,32 @@ def send_positions_update():
         ct      = _ct_sentiment(ticker)
         ct_line = ct.get("summary", "N/A")
 
-        if "tranche_1_2x" in tranches and "tranche_2_3x" in tranches:
+        # Read the ACTUAL flags fomo_exit sets. The old code read a
+        # "tranches_taken" list that nothing ever writes, so every position
+        # reported "None yet" even after both tranches had sold — which made
+        # a 5x winner look like it had harvested nothing.
+        t1 = bool(h.get("tranche_1_sold")) or "tranche_1_2x" in tranches
+        t2 = bool(h.get("tranche_2_sold")) or "tranche_2_3x" in tranches
+
+        if t1 and t2:
             tranche_str = "✅ 2x + 3x taken — trailing stop active"
-        elif "tranche_1_2x" in tranches:
+        elif t1:
             tranche_str = "✅ 2x taken — riding to 3x"
         elif tranches:
             tranche_str = "✅ " + ", ".join(tranches)
         else:
             tranche_str = "None yet"
+
+        # Surface the trailing stop once it's armed — otherwise "Stop: -87%
+        # away" is misleading, since the real exit is now peak-based.
+        if h.get("trailing_stop_active"):
+            peak = h.get("peak_price") or 0
+            if peak > 0 and current_price:
+                drop = (current_price - peak) / peak * 100
+                tranche_str += (
+                    f"\nTrailing: peak ${peak:.8f}, now {drop:+.1f}% "
+                    f"(exits at -30%)"
+                )
 
         lines.append(
             f"<b>${ticker}</b> | Following {wallet}\n"
