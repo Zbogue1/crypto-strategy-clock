@@ -2,10 +2,10 @@
   "version": "golem-v1",
   "reset_date": "2026-08-08",
   "reset_reason": "FOMO Golem launch \u2014 fresh $1,000 paper portfolio, FOMO-only strategy",
-  "cash": 9325.72,
+  "cash": 9454.479541322313,
   "starting_cash": 10000.0,
   "peak_value": 10000.0,
-  "total_trades": 3,
+  "total_trades": 4,
   "winning_trades": 0,
   "losing_trades": 0,
   "total_realized_pnl": 0.0,
@@ -38,7 +38,7 @@
       "tranche_2_sold": false,
       "trailing_stop_active": false,
       "peak_liquidity": 208760.18,
-      "last_price_check": 1280.44
+      "last_price_check": 1267.77
     },
     {
       "position_id": "fa2ea0e3",
@@ -68,7 +68,7 @@
       "tranche_2_sold": false,
       "trailing_stop_active": false,
       "peak_liquidity": 411834.4,
-      "last_price_check": 0.03246
+      "last_price_check": 0.02891
     },
     {
       "position_id": "a4b6ce3f",
@@ -98,7 +98,7 @@
       "tranche_2_sold": false,
       "trailing_stop_active": false,
       "peak_liquidity": 2788511.98,
-      "last_price_check": 0.2816
+      "last_price_check": 0.2639
     },
     {
       "position_id": "475fd27a",
@@ -123,12 +123,12 @@
       "auto_exit_at": "2026-08-17T21:04:16.155038+00:00",
       "source": "fomo_copy",
       "partial_taken": false,
-      "peak_price": 67.6,
+      "peak_price": 67.82,
       "tranche_1_sold": false,
       "tranche_2_sold": false,
       "trailing_stop_active": false,
       "peak_liquidity": 951261.63,
-      "last_price_check": 67.6
+      "last_price_check": 67.82
     },
     {
       "position_id": "54f8b4fb",
@@ -153,41 +153,12 @@
       "auto_exit_at": "2026-08-17T23:16:03.308025+00:00",
       "source": "fomo_copy",
       "partial_taken": false,
-      "peak_price": 0.0462,
+      "peak_price": 0.04754,
       "tranche_1_sold": true,
       "tranche_2_sold": true,
       "trailing_stop_active": true,
-      "peak_liquidity": 1632411.62,
-      "last_price_check": 0.0462
-    },
-    {
-      "position_id": "7067f700",
-      "token_ticker": "PANTS",
-      "token_name": "dogwifpants",
-      "entry_price": 0.002178,
-      "units": 91735.53719008266,
-      "spent": 200.0,
-      "stop_loss": 0.0014157,
-      "exit_target": 0.0028314,
-      "wallet_alias": "Golem (narrative: DEPIN)",
-      "wallet_address": "",
-      "contract_address": "FtateF34Xzawa91bpbVNdX72hZYo9cymRDYqBreHHbJi",
-      "catalyst": "Score 6/10 \u2014 Prime window: 3.1d old, Healthy liq $209,484",
-      "catalyst_score": 6,
-      "market_cap": 2137159,
-      "liquidity_usd": 209483.65,
-      "token_age_days": 3.0523476567616066,
-      "holder_count": null,
-      "volume_spike_pct": -81.18578136865433,
-      "entered_at": "2026-08-22T15:27:47.050640+00:00",
-      "auto_exit_at": "2026-08-23T15:27:47.050652+00:00",
-      "source": "narrative_import",
-      "regime_at_entry": "BULL",
-      "partial_taken": false,
-      "peak_price": 0.002178,
-      "tranche_1_sold": false,
-      "tranche_2_sold": false,
-      "trailing_stop_active": false
+      "peak_liquidity": 1790826.55,
+      "last_price_check": 0.04754
     }
   ],
   "trade_history": [
@@ -293,10 +264,46 @@
       "pnl_usd": -18.61,
       "pnl_pct": -37.09,
       "exited_at": "2026-08-16T22:11:23.541787+00:00"
+    },
+    {
+      "position_id": "7067f700",
+      "token_ticker": "PANTS",
+      "token_name": "dogwifpants",
+      "entry_price": 0.002178,
+      "units": 91735.53719008266,
+      "spent": 200.0,
+      "stop_loss": 0.0014157,
+      "exit_target": 0.0028314,
+      "wallet_alias": "Golem (narrative: DEPIN)",
+      "wallet_address": "",
+      "contract_address": "FtateF34Xzawa91bpbVNdX72hZYo9cymRDYqBreHHbJi",
+      "catalyst": "Score 6/10 \u2014 Prime window: 3.1d old, Healthy liq $209,484",
+      "catalyst_score": 6,
+      "market_cap": 2137159,
+      "liquidity_usd": 209483.65,
+      "token_age_days": 3.0523476567616066,
+      "holder_count": null,
+      "volume_spike_pct": -81.18578136865433,
+      "entered_at": "2026-08-22T15:27:47.050640+00:00",
+      "auto_exit_at": "2026-08-23T15:27:47.050652+00:00",
+      "source": "narrative_import",
+      "regime_at_entry": "BULL",
+      "partial_taken": false,
+      "peak_price": 0.002178,
+      "tranche_1_sold": false,
+      "tranche_2_sold": false,
+      "trailing_stop_active": false,
+      "peak_liquidity": 145465.76,
+      "last_price_check": 0.001405,
+      "exit_price": 0.001405,
+      "exit_reason": "stop_loss",
+      "pnl_usd": -71.24,
+      "pnl_pct": -35.49,
+      "exited_at": "2026-08-23T05:32:52.999365+00:00"
     }
   ],
   "archived_history_note": "Prior July 2026 paper trades archived before this reset.",
-  "last_updated": "2026-08-22T15:27:47.050664+00:00",
+  "last_updated": "2026-08-23T05:32:52.999634+00:00",
   "deposits": [
     {
       "target": 10000.0,
