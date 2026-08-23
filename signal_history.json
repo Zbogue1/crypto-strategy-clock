@@ -285,5 +285,28 @@
       "SOL"
     ],
     "alert": "SOL within 6% of $100 exit target \u2014 prepare to take profits. XRP underwater despite massive market rally \u2014 monitor closely."
+  },
+  {
+    "ts": "2026-08-23T16:00:47.713479+00:00",
+    "coin": "SOL",
+    "price": 95.33,
+    "signal": "HOLD",
+    "confidence": 62,
+    "score": -1.2,
+    "fg": 66,
+    "btc_price": 77139,
+    "btc_dominance": 59.1,
+    "candidates": [
+      "PUMP",
+      "MON",
+      "LIT",
+      "FDUSD",
+      "RLUSD",
+      "ZRO",
+      "STX",
+      "XRP",
+      "SOL"
+    ],
+    "alert": "SOL approaching $100 exit target \u2014 prepare to take profits within 1-3 days"
   }
 ]
