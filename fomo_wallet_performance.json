@@ -58,5 +58,27 @@
         "at": "2026-08-23T05:32:54.509047+00:00"
       }
     ]
+  },
+  "Jack": {
+    "trades_followed": 1,
+    "wins": 1,
+    "losses": 0,
+    "total_pnl_pct": 116.99,
+    "total_pnl_usd": 38.85,
+    "consecutive_losses": 0,
+    "win_rate": 1.0,
+    "last_trade_at": "2026-08-23T20:59:02.479416+00:00",
+    "last_outcome": "WIN",
+    "last_token": "CATE",
+    "trade_log": [
+      {
+        "token": "CATE",
+        "win": true,
+        "pnl_pct": 116.99,
+        "pnl_usd": 38.85,
+        "reason": "trailing_stop",
+        "at": "2026-08-23T20:59:02.479416+00:00"
+      }
+    ]
   }
 }
