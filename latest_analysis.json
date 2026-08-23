@@ -1,60 +1,60 @@
 {
-  "timestamp": "2026-08-22T20:01:10.304484+00:00",
+  "timestamp": "2026-08-23T00:01:06.916717+00:00",
   "signal": "HOLD",
   "selected_coin": "SOL",
   "selected_coin_name": "Solana",
-  "selected_coin_price": 94.55,
-  "confidence": 62,
-  "layman_headline": "SOL is closing in on its profit target while XRP needs more time \u2014 no new trades yet.",
-  "layman_explanation": "The crypto market just had a massive rally week \u2014 Bitcoin is up 23%, and most altcoins surged even harder. Our Solana position is up 8.4% and approaching our $100 exit target. XRP is slightly underwater at -3.8% but well above its stop-loss. Everything on the watchlist has already run 25-78% in a week, making new entries risky right now. We're better off managing what we have than chasing pumps.",
-  "layman_action": "Hold current positions. Let SOL ride toward $100 and monitor XRP for continued recovery. Avoid opening new positions into this extended rally \u2014 wait for a pullback to get better entries.",
-  "expert_reasoning": "All swing candidates have already moved 25-78% in the past 7 days, making fresh entries extremely risky from a mean-reversion standpoint. TRUMP and XRP show low RSIs (29-31) despite huge weekly gains, suggesting a violent bounce from deeply oversold levels that may now pause. PUMP is overbought at RSI 75. The Fear & Greed index at 71 (Greed) with improving trend suggests momentum could continue short-term, but high BTC dominance at 58.7% warns that alt rallies may be borrowed time. SOL at $94.55 is within striking distance of our $100 target \u2014 the prudent move is to let winners run and wait for post-rally consolidation before deploying new capital.",
+  "selected_coin_price": 93.82,
+  "confidence": 52,
+  "layman_headline": "The market just rallied hard \u2014 now it's time to manage what we have, not chase more.",
+  "layman_explanation": "Bitcoin surged 22% this week and most altcoins followed with even bigger moves. Our Solana position is up 7.5% and approaching our $100 profit target. Our XRP position is underwater at -6.4% but still well above its stop-loss. Every swing candidate on the board has already made a massive move this week (35-81% gains), making new entries extremely risky right now \u2014 we'd be buying at the top of a squeeze rally.",
+  "layman_action": "Hold current positions. Let SOL ride toward the $100 target. Watch XRP closely \u2014 if it drops below $1.30, exit. Do not chase any of the overextended coins right now.",
+  "expert_reasoning": "Every swing candidate shows deeply negative composite scores driven by overextension: PUMP at RSI 82 with +81% in 7 days, TRUMP +70%, XRP +45.8%, ZEC +64.7%. The market-wide squeeze has left no clean entry points. BTC dominance at 59.3% remains unfavorable for alt entries. Fear & Greed dropped from 71 to 66 in 24 hours while the weekly average is only 55.6 \u2014 this suggests the greed impulse may be peaking. The prudent play is to manage existing positions: SOL is 6.6% from its $100 target, and XRP needs monitoring as it's pulled back from its entry. No new capital should be deployed into assets that have already moved 25-80% in a single week.",
   "risk_factors": [
-    "Market is in Greed territory after a massive weekly rally \u2014 sharp correction risk is elevated for all positions",
-    "BTC dominance at 58.7% means capital could rotate back to BTC, dragging alts down disproportionately",
-    "XRP position is underwater and could deteriorate if the rally stalls, though stop-loss at $1.30 provides protection"
+    "XRP is down 6.4% from entry and could deteriorate further if the rally fades \u2014 $1.30 stop-loss is the line in the sand",
+    "SOL could reverse sharply from the $93-95 zone if profit-taking accelerates after the massive weekly rally",
+    "BTC dominance at 59.3% means capital is flowing to Bitcoin, not alts \u2014 prolonged BTC strength could drag alt positions lower"
   ],
   "watch_list": [
-    "SOL price action near $95-100 resistance zone \u2014 be ready to take profit at target",
-    "XRP momentum \u2014 needs to reclaim $1.56 entry price; watch for weakness below $1.40",
-    "BTC holding $77K support \u2014 a breakdown here would drag all alts significantly lower"
+    "SOL price action near $95-100 resistance \u2014 take profits if it touches $100",
+    "XRP behavior around $1.40 support \u2014 if it breaks below $1.35, consider early exit before stop-loss",
+    "ZEC momentum and Grayscale ETF filing developments \u2014 could become a pullback entry if it corrects 15-20% from $800"
   ],
-  "market_context": "The crypto market is experiencing a powerful squeeze-led rally with BTC up 23% weekly and alts surging 25-78%. Fear & Greed has shifted from neutral (51 weekly avg) to Greed (71), but the speed of the move increases short-term correction risk.",
-  "context_banner": "Massive squeeze rally has extended most assets \u2014 manage existing winners and wait for pullbacks before new entries.",
-  "btc_price": 77420,
+  "market_context": "A massive short-squeeze rally lifted BTC 22% and alts 25-65% this week, but 24-hour reversals of 2-4% suggest the initial thrust is exhausting. High BTC dominance at 59.3% warns that alt outperformance may be short-lived.",
+  "context_banner": "Post-squeeze consolidation phase \u2014 protect gains and wait for pullback entries rather than chasing overextended moves.",
+  "btc_price": 77063,
   "fear_greed": {
-    "current": 71,
+    "current": 66,
     "label": "Greed",
-    "yesterday": 72,
-    "week_avg": 51.0,
+    "yesterday": 71,
+    "week_avg": 55.6,
     "trend": "improving"
   },
-  "btc_dominance": 58.7,
+  "btc_dominance": 59.3,
   "key_signals": [
     {
       "source": "RSI",
       "signal_type": "technical",
-      "description": "XRP RSI at 31.6 suggests oversold bounce potential, but the 50% weekly move means the easy gains are likely already captured."
+      "description": "PUMP's RSI at 82 confirms broad overbought conditions across swing candidates \u2014 no safe entries available right now."
     },
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Fear & Greed at 71 (Greed) after jumping from 51 weekly average \u2014 improving trend supports momentum but warns against chasing."
+      "description": "Fear & Greed at 66 (down from 71 yesterday) with weekly avg at 55.6 suggests the greed spike may be peaking and a cooldown is likely."
     },
     {
       "source": "volume_breakout",
       "signal_type": "technical",
-      "description": "ZEC volume at $2.6B with 73.7% weekly gain and Grayscale ETF news confirms explosive breakout, but too extended for fresh entry."
+      "description": "ZEC at $2.2B daily volume and XRP at $11.3B confirm the squeeze was volume-driven, but 24h reversals suggest exhaustion."
+    },
+    {
+      "source": "CryptoSlate",
+      "signal_type": "news",
+      "description": "Grayscale's Zcash spot ETF filing with 2.5% fee and potential 34% DCG stake is a legitimate catalyst \u2014 ZEC could be worth entering on a pullback."
     },
     {
       "source": "CoinDesk",
       "signal_type": "news",
-      "description": "Reports of 'squeeze-led rally' and Zcash Grayscale ETF push explain the broad market surge \u2014 catalysts are now priced in near-term."
-    },
-    {
-      "source": "CoinTelegraph",
-      "signal_type": "news",
-      "description": "Ray Dalio recommending Bitcoin amid debt crisis concerns and BTC seeking $77K support provide macro bullish backdrop for holding positions."
+      "description": "Bitcoin and Ether bears 'decimated' in squeeze-led rally confirms this was a positioning-driven move rather than fundamental \u2014 heightens reversal risk."
     }
   ],
   "_mode": "HUNTING",
