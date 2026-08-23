@@ -632,6 +632,22 @@ def handle_relayed_text_message(message: dict):
         send_telegram(get_wallet_leaderboard())
         return
 
+    # -- /alpaca command — probe Alpaca free-tier data quality --
+    if text.lower().startswith("/alpaca"):
+        import threading
+        send_telegram("🔬 Probing Alpaca data quality... (~20s)")
+
+        def _probe():
+            try:
+                from alpaca_probe import run_probe
+                send_telegram(run_probe())
+            except Exception as e:
+                log.error(f"Alpaca probe failed: {e}", exc_info=True)
+                send_telegram(f"⚠️ Probe failed: {e}")
+
+        threading.Thread(target=_probe, daemon=True, name="alpaca-probe").start()
+        return
+
     # -- /addwallet command — manually add a wallet to the watchlist --
     if text.lower().startswith(("/addwallet", "/add_wallet", "/add ")):
         _handle_add_wallet(text)
