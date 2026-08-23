@@ -239,5 +239,28 @@
       "SOL"
     ],
     "alert": "XRP position is -5.8% underwater; monitor $1.40 support closely as stop-loss at $1.30 provides only 8.8% remaining buffer."
+  },
+  {
+    "ts": "2026-08-23T08:00:16.966667+00:00",
+    "coin": "SOL",
+    "price": 92.36,
+    "signal": "HOLD",
+    "confidence": 52,
+    "score": -1.2,
+    "fg": 66,
+    "btc_price": 75923,
+    "btc_dominance": 59.2,
+    "candidates": [
+      "PUMP",
+      "LIT",
+      "MON",
+      "FDUSD",
+      "RLUSD",
+      "ZRO",
+      "TRUMP",
+      "XRP",
+      "SOL"
+    ],
+    "alert": "XRP down 7.8% today \u2014 monitor closely for potential stop-loss trigger at $1.30"
   }
 ]
