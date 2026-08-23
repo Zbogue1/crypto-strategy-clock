@@ -262,5 +262,28 @@
       "SOL"
     ],
     "alert": "XRP down 7.8% today \u2014 monitor closely for potential stop-loss trigger at $1.30"
+  },
+  {
+    "ts": "2026-08-23T12:02:53.643762+00:00",
+    "coin": "SOL",
+    "price": 94.57,
+    "signal": "HOLD",
+    "confidence": 62,
+    "score": -1.2,
+    "fg": 66,
+    "btc_price": 77290,
+    "btc_dominance": 59.3,
+    "candidates": [
+      "PUMP",
+      "MON",
+      "LIT",
+      "RLUSD",
+      "FDUSD",
+      "ZRO",
+      "STX",
+      "XRP",
+      "SOL"
+    ],
+    "alert": "SOL within 6% of $100 exit target \u2014 prepare to take profits. XRP underwater despite massive market rally \u2014 monitor closely."
   }
 ]
