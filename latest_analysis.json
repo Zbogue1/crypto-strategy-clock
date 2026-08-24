@@ -1,19 +1,27 @@
 {
-  "timestamp": "2026-08-24T16:01:23.774577+00:00",
+  "timestamp": "2026-08-24T20:04:44.772806+00:00",
   "signal": "HOLD",
-  "selected_coin": "BTC",
-  "selected_coin_name": "Bitcoin",
-  "selected_coin_price": 78978,
-  "confidence": 0,
-  "layman_headline": "Service temporarily unavailable",
-  "layman_explanation": "Could not reach the analysis service.",
-  "layman_action": "Wait for the next update.",
-  "expert_reasoning": "503 Server Error: Service Unavailable for url: https://api.anthropic.com/v1/messages",
-  "risk_factors": [],
-  "watch_list": [],
-  "market_context": null,
-  "context_banner": null,
-  "btc_price": 78978,
+  "selected_coin": "SOL",
+  "selected_coin_name": "Solana",
+  "selected_coin_price": 96.29,
+  "confidence": 52,
+  "layman_headline": "Time to cash in on Solana's rally before the market gets too greedy.",
+  "layman_explanation": "The entire crypto market just had an explosive week \u2014 Bitcoin surged 22% to near $80K, and most altcoins rallied even harder. Our Solana position is up 10.3% and very close to our profit target of $100. Meanwhile, market sentiment has jumped to 'Greed' at 73, which historically is when rallies start losing steam. All the swing trade candidates have already run 25-65% in a week, making new entries very risky right now.",
+  "layman_action": "Take profits on the Solana position now at ~$96. Keep the XRP position open as it still has room to its target but watch the $1.30 stop-loss closely. Wait for a market pullback before entering any new trades.",
+  "expert_reasoning": "The market has experienced a sharp broad-based rally with BTC +22%, ETH +30%, XRP +47%, SOL +27% in just one week. Fear & Greed at 73 and rising fast (from 61.6 weekly average) signals potential short-term exhaustion. SOL at $96.29 is within striking distance of the $100 exit target set at entry, and the risk/reward of holding for another 4% upside versus a potential 10-15% correction is unfavorable. All swing candidates show negative composite scores due to overextension. XRP remains underwater at -5.1% but is well above its $1.30 stop-loss and still has 25% upside to its $1.85 target \u2014 the 47.5% weekly move suggests strong momentum that could carry further despite the near-term pullback risk. No new entries are justified when every candidate has already run 25%+ in a week.",
+  "risk_factors": [
+    "Market-wide exhaustion after 20-50% weekly moves could trigger sharp pullback, dragging XRP below stop-loss",
+    "BTC dominance at 59.1% is high \u2014 if BTC corrects, alts will likely fall harder",
+    "Fear & Greed jumping from 62 to 73 in one week often precedes short-term reversals"
+  ],
+  "watch_list": [
+    "BTC price action around $80K \u2014 a rejection here could trigger a broad market pullback",
+    "XRP holding above $1.40 support \u2014 if it breaks, consider tightening stop-loss from $1.30",
+    "Fear & Greed index \u2014 if it crosses 80, expect increased volatility and correction risk"
+  ],
+  "market_context": "The crypto market is in a powerful but potentially overextended rally, with BTC near $80K and most alts up 20-50% in a single week. Sentiment has shifted rapidly to Greed, and while momentum is strong, the risk of a sharp pullback is elevated.",
+  "context_banner": "Market-wide rally approaching exhaustion \u2014 lock in gains on winners and wait for pullback before new entries.",
+  "btc_price": 78625,
   "fear_greed": {
     "current": 73,
     "label": "Greed",
@@ -22,8 +30,34 @@
     "trend": "improving"
   },
   "btc_dominance": 59.1,
-  "key_signals": [],
+  "key_signals": [
+    {
+      "source": "Fear_Greed",
+      "signal_type": "sentiment",
+      "description": "Fear & Greed jumped to 73 (Greed) from a weekly average of 61.6, signaling rapidly heating sentiment that often precedes corrections."
+    },
+    {
+      "source": "volume_breakout",
+      "signal_type": "technical",
+      "description": "BTC volume at $52B and broad market participation confirm a genuine breakout, but the magnitude (22% BTC weekly move) suggests the easy gains are done."
+    },
+    {
+      "source": "CoinDesk",
+      "signal_type": "news",
+      "description": "Bitcoin nearing $80K with analysts warning the next pullback will be key \u2014 supports profit-taking thesis on extended positions."
+    },
+    {
+      "source": "CoinTelegraph",
+      "signal_type": "news",
+      "description": "Over $220M in short liquidations in 24 hours indicates most bears have been squeezed out, reducing fuel for further upside."
+    },
+    {
+      "source": "RSI",
+      "signal_type": "technical",
+      "description": "All swing candidates flagged as overextended with negative 7-day price action scores \u2014 no favorable entry setups available this cycle."
+    }
+  ],
   "_mode": "HUNTING",
-  "exit_target": null,
+  "exit_target": 100.0,
   "stop_loss": null
 }
