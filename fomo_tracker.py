@@ -520,6 +520,19 @@ def send_positions_update():
     send_telegram(f"🔄 Fetching live data on {len(holdings)} position(s)...")
     lines = ["📊 <b>LIVE POSITION UPDATE</b>\n"]
 
+    # ONE batched request for every position instead of validate_token() per
+    # holding (and again in the totals). Seven positions meant ~14 rapid
+    # DexScreener calls, which got rate-limited into "price unavailable" on
+    # every row — making the whole report useless exactly when you need it.
+    try:
+        from fomo_exit import get_prices_batch
+        _batch = get_prices_batch(
+            [h.get("contract_address") for h in holdings if h.get("contract_address")]
+        )
+    except Exception as e:
+        log.warning(f"Positions: batch price fetch failed: {e}")
+        _batch = {}
+
     for h in holdings:
         contract = h.get("contract_address", "")
         ticker   = h.get("token_ticker", "???")
@@ -531,8 +544,11 @@ def send_positions_update():
         wallet   = h.get("wallet_alias", "unknown")
         tranches = h.get("tranches_taken", [])
 
-        live_data     = validate_token(contract) if contract else {}
-        current_price = live_data.get("price", 0)
+        # Batched price first; only fall back to a single lookup if this
+        # token wasn't in the batch response.
+        current_price = (_batch.get(contract) or (None, None))[0] or 0
+        if not current_price and contract:
+            current_price = (validate_token(contract) or {}).get("price", 0)
 
         if current_price and entry:
             pnl_pct     = (current_price - entry) / entry * 100
@@ -591,8 +607,13 @@ def send_positions_update():
         time.sleep(0.5)
 
     total_spent = sum(h.get("spent", 0) for h in holdings)
+    # Reuse the batched prices — re-fetching here was the second half of the
+    # rate-limit problem.
     total_val   = sum(
-        h.get("units", 0) * (validate_token(h.get("contract_address", "")).get("price") or h.get("entry_price", 0))
+        h.get("units", 0) * (
+            (_batch.get(h.get("contract_address")) or (None, None))[0]
+            or h.get("entry_price", 0)
+        )
         for h in holdings
     )
     unrealized  = total_val - total_spent
