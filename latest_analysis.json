@@ -1,27 +1,19 @@
 {
-  "timestamp": "2026-08-24T12:00:44.455484+00:00",
+  "timestamp": "2026-08-24T16:01:23.774577+00:00",
   "signal": "HOLD",
-  "selected_coin": "SOL",
-  "selected_coin_name": "Solana",
-  "selected_coin_price": 95.7,
-  "confidence": 62,
-  "layman_headline": "SOL is knocking on its profit target \u2014 stay patient and let the trade play out.",
-  "layman_explanation": "The crypto market just had its best week in three years, with Bitcoin up 22% and altcoins surging even more. Our Solana position is up nearly 10% and closing in on the $100 exit target. XRP is slightly underwater after a massive 49% weekly rally \u2014 it entered at an aggressive price but still has room to recover. The whole market is in 'Greed' territory, which means opportunities are harder to find without chasing overextended moves.",
-  "layman_action": "Hold both current positions. SOL is close to its $100 target \u2014 consider taking profits if it gets there in the next few days. Watch XRP carefully; the stop-loss at $1.30 protects downside. Don't chase new entries right now \u2014 everything has already rallied hard.",
-  "expert_reasoning": "Every swing candidate in this cycle is problematic for a new entry. PUMP has an RSI of 86 \u2014 deeply overbought with a -6% daily pullback already underway. LIT, MON, and XRP have all run 44-49% in 7 days with no RSI or MACD data to confirm a pullback entry. The remaining candidates are stablecoins with no trade potential. BTC dominance at 59.3% signals capital is still concentrated in Bitcoin rather than flowing freely into alts, making alt entries riskier. Fear & Greed at 73 and rising suggests we're entering the phase where chasing becomes dangerous. The best play is to manage existing positions: SOL at $95.70 is 4.5% from the $100 target, and XRP needs consolidation after its massive weekly move. Patience here is the highest-EV strategy.",
-  "risk_factors": [
-    "Market is in Greed territory (73) and rising \u2014 a sharp correction could hit all alts simultaneously",
-    "BTC dominance at 59.3% means alts could underperform if Bitcoin stalls or reverses",
-    "XRP's 49% weekly rally may trigger profit-taking that pushes it toward the $1.30 stop-loss"
-  ],
-  "watch_list": [
-    "SOL price action near $100 \u2014 be ready to take profits at exit target",
-    "XRP consolidation pattern \u2014 watch for a bounce off $1.45 support or breakdown below $1.40",
-    "Bitcoin ETF flow data this week \u2014 sustained inflows support the broader rally, outflows signal reversal risk"
-  ],
-  "market_context": "The crypto market is in a strong rally with BTC up 22.6% on the week and Bitcoin ETF inflows at $1.9B \u2014 the best since October 2025. However, Fear & Greed at 73 and high BTC dominance at 59.3% suggest caution for new alt entries as the easy money in this leg may already be made.",
-  "context_banner": "Broad market rally is maturing \u2014 manage winners, protect capital, and wait for pullback entries rather than chasing extended moves.",
-  "btc_price": 78252,
+  "selected_coin": "BTC",
+  "selected_coin_name": "Bitcoin",
+  "selected_coin_price": 78978,
+  "confidence": 0,
+  "layman_headline": "Service temporarily unavailable",
+  "layman_explanation": "Could not reach the analysis service.",
+  "layman_action": "Wait for the next update.",
+  "expert_reasoning": "503 Server Error: Service Unavailable for url: https://api.anthropic.com/v1/messages",
+  "risk_factors": [],
+  "watch_list": [],
+  "market_context": null,
+  "context_banner": null,
+  "btc_price": 78978,
   "fear_greed": {
     "current": 73,
     "label": "Greed",
@@ -29,35 +21,9 @@
     "week_avg": 61.6,
     "trend": "improving"
   },
-  "btc_dominance": 59.3,
-  "key_signals": [
-    {
-      "source": "Fear_Greed",
-      "signal_type": "sentiment",
-      "description": "Fear & Greed index at 73 (Greed) and rising from 61.6 weekly avg \u2014 market euphoria is building, making new entries riskier."
-    },
-    {
-      "source": "CoinTelegraph",
-      "signal_type": "news",
-      "description": "Bitcoin ETF inflows hit $1.9B in the strongest week since Oct 2025, confirming institutional demand is driving this rally."
-    },
-    {
-      "source": "RSI",
-      "signal_type": "technical",
-      "description": "PUMP's RSI at 86 is the only readable technical signal among candidates \u2014 deeply overbought, confirming no clean entries available."
-    },
-    {
-      "source": "CoinDesk",
-      "signal_type": "news",
-      "description": "Bitcoin steadying near $78K as altcoins consolidate after best week in 3 years \u2014 suggests the initial surge phase may be cooling."
-    },
-    {
-      "source": "volume_breakout",
-      "signal_type": "technical",
-      "description": "No volume-vs-average data available for any swing candidate this cycle, reducing conviction in any potential breakout setup."
-    }
-  ],
+  "btc_dominance": 59.1,
+  "key_signals": [],
   "_mode": "HUNTING",
-  "exit_target": 100.0,
-  "stop_loss": 77.0
+  "exit_target": null,
+  "stop_loss": null
 }
