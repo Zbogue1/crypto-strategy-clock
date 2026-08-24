@@ -80,5 +80,27 @@
         "at": "2026-08-23T20:59:02.479416+00:00"
       }
     ]
+  },
+  "Golem (narrative: AI_AGENTS)": {
+    "trades_followed": 1,
+    "wins": 0,
+    "losses": 1,
+    "total_pnl_pct": -99.89,
+    "total_pnl_usd": -199.78,
+    "consecutive_losses": 1,
+    "win_rate": 0.0,
+    "last_trade_at": "2026-08-24T05:46:02.364491+00:00",
+    "last_outcome": "LOSS",
+    "last_token": "UOTF",
+    "trade_log": [
+      {
+        "token": "UOTF",
+        "win": false,
+        "pnl_pct": -99.89,
+        "pnl_usd": -199.78,
+        "reason": "stop_loss",
+        "at": "2026-08-24T05:46:02.364491+00:00"
+      }
+    ]
   }
 }
