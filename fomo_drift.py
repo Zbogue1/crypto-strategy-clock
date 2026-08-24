@@ -39,16 +39,13 @@ MIN_TRADES_HISTORY = 5      # need at least 5 historical trades to have a baseli
 
 
 def _send_telegram(text: str):
-    if not TELEGRAM_BOT_TOKEN or not TELEGRAM_CHAT_ID:
-        return
-    try:
-        requests.post(
-            f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage",
-            json={"chat_id": TELEGRAM_CHAT_ID, "text": text, "parse_mode": "HTML"},
-            timeout=10,
-        )
-    except Exception as e:
-        log.warning(f"Drift: Telegram notify failed: {e}")
+    """Delegates to the shared sender — see fomo_telegram.py.
+
+    The previous inline version discarded the HTTP response, so any message
+    Telegram rejected (commonly an HTML parse error from `<`, `>` or `&` in a
+    token name) vanished with no log and no retry."""
+    from fomo_telegram import send
+    return send(text)
 
 
 def _load_lessons() -> dict:

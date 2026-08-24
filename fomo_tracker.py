@@ -838,15 +838,47 @@ def handle_relayed_text_message(message: dict):
 # ─── TELEGRAM ─────────────────────────────────────────────────────────────────
 
 def send_telegram(message: str):
+    """
+    Send a message, with a plain-text fallback if HTML parsing is rejected.
+
+    The previous version discarded the response entirely — no status check, no
+    logging. A message rejected by Telegram (400) simply vanished and looked
+    identical to a successful send. Memecoin names routinely contain `<`, `>`
+    and `&`, all of which break HTML parse mode, so this was silently dropping
+    alerts about real positions.
+    """
     if not TELEGRAM_BOT_TOKEN or not TELEGRAM_CHAT_ID:
         log.info(f"[TELEGRAM] {message}")
         return
+    url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage"
     try:
-        requests.post(
-            f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage",
+        r = requests.post(
+            url,
             json={"chat_id": TELEGRAM_CHAT_ID, "text": message, "parse_mode": "HTML"},
             timeout=10,
         )
+        if r.status_code == 200:
+            return
+
+        body = (r.text or "").lower()
+        if r.status_code == 400 and ("can't parse entities" in body
+                                     or "unsupported start tag" in body
+                                     or "unmatched end tag" in body):
+            log.warning(f"FOMO Telegram: HTML rejected, resending plain "
+                        f"({r.text[:120]})")
+            try:
+                plain = re.sub(r"<[^>]+>", "", message)
+                r2 = requests.post(url,
+                                   json={"chat_id": TELEGRAM_CHAT_ID, "text": plain},
+                                   timeout=10)
+                if r2.status_code != 200:
+                    log.error(f"FOMO Telegram: plain retry failed "
+                              f"HTTP {r2.status_code}: {r2.text[:160]}")
+            except Exception as e:
+                log.error(f"FOMO Telegram: plain retry error: {e}")
+            return
+
+        log.warning(f"FOMO Telegram HTTP {r.status_code}: {r.text[:200]}")
     except Exception as e:
         log.warning(f"Telegram send failed: {e}")
 
