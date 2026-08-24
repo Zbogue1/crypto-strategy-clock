@@ -68,15 +68,18 @@ nothing and looks like the code is broken.
 
 ---
 
-### 🔴 DUPLICATE KALSHI — should be removed
+### ⚫ LEGACY ORACLE — retired 2026-08-24
 - **Project:** `Crypto Strategy Clock`
 - **Service:** `crypto-strategy-clock`
-- **Status:** Cron, runs every ~2 hours
-- **Problem:** has `FORCE_KALSHI=true`, so it launches a **second Kalshi bot**
-  that scans and opens paper positions alongside the real one
-- **Also:** this is where `UPSTASH_REDIS_URL` / `UPSTASH_REDIS_TOKEN` were
-  mistakenly added — they belong on the precious-reprieve service
-- **Action:** delete the service, or clear `FORCE_KALSHI` and its cron schedule
+- **Status:** Repo **disconnected**, deployment removed. Not running.
+- **What it was:** ran `crypto_oracle_v3.py` on a ~2-4 hour cron. Paper
+  portfolio finished around −19.7%.
+- **Why it kept coming back:** disconnecting is necessary because *every*
+  `git push` auto-deploys *every* service connected to the repo. Removing a
+  deployment alone doesn't unsubscribe it — the next push recreates one.
+  This resurrected itself twice before the repo was disconnected.
+- **Note:** `BIRDEYE_API_KEY` lived only here and has been copied to
+  `desirable-insight`. Nothing else on it was unique.
 
 ---
 
