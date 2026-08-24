@@ -102,5 +102,27 @@
         "at": "2026-08-24T05:46:02.364491+00:00"
       }
     ]
+  },
+  "nyhrox": {
+    "trades_followed": 1,
+    "wins": 1,
+    "losses": 0,
+    "total_pnl_pct": 45.42,
+    "total_pnl_usd": 45.13,
+    "consecutive_losses": 0,
+    "win_rate": 1.0,
+    "last_trade_at": "2026-08-24T07:22:30.163873+00:00",
+    "last_outcome": "WIN",
+    "last_token": "LOOKSMAX",
+    "trade_log": [
+      {
+        "token": "LOOKSMAX",
+        "win": true,
+        "pnl_pct": 45.42,
+        "pnl_usd": 45.13,
+        "reason": "tracker_sold",
+        "at": "2026-08-24T07:22:30.163873+00:00"
+      }
+    ]
   }
 }
