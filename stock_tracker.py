@@ -383,7 +383,10 @@ def _handle_command(text: str):
         tg.send(_format_report())
 
     elif low.startswith("/health"):
-        tg.send(_format_health())
+        # Plain text: this report is full of env var names like
+        # UPSTASH_REDIS_URL, and underscores are Markdown italic markers.
+        # An odd number of them makes Telegram reject the entire message.
+        tg.send(_format_health(), parse_mode=None)
 
     elif low.startswith(("/help", "/start")):
         tg.send(tg.HELP)

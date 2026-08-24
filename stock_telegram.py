@@ -9,6 +9,7 @@ not percentages, because that's how you'd actually think about a $2k account.
 
 import logging
 import os
+import re
 from datetime import datetime, timezone
 from typing import Optional
 
@@ -73,24 +74,58 @@ def whoami() -> dict:
         return {"ok": False, "error": str(e)}
 
 
-def send(text: str, parse_mode: str = "Markdown") -> bool:
+def send(text: str, parse_mode: Optional[str] = "Markdown") -> bool:
     chat = _target_chat()
     if not TELEGRAM_TOKEN or not chat:
         log.warning("Stock Telegram not configured — printing instead")
         print(f"\n{'='*60}\n{text}\n{'='*60}\n")
         return False
     try:
-        r = requests.post(URL, json={"chat_id": chat, "text": text,
-                                     "parse_mode": parse_mode}, timeout=10)
+        payload = {"chat_id": chat, "text": text}
+        if parse_mode:
+            payload["parse_mode"] = parse_mode
+        else:
+            # Caller asked for plain text — strip stray markers so the output
+            # doesn't show raw asterisks and backticks.
+            payload["text"] = re.sub(r"[*`]", "", text)
+        r = requests.post(URL, json=payload, timeout=10)
         if r.status_code == 200:
             return True
-        if r.status_code == 400 and "chat not found" in r.text.lower():
+
+        body = (r.text or "").lower()
+
+        if r.status_code == 400 and "chat not found" in body:
             log.error(
                 f"Stock Telegram: chat_id {chat} not reachable. Send this bot "
                 f"any message so it can learn the right one."
             )
-        else:
-            log.warning(f"Stock Telegram HTTP {r.status_code}: {r.text[:200]}")
+            return False
+
+        # Markdown parse failure — a stray underscore or asterisk in dynamic
+        # content (env var names, tickers, reasoning text) makes Telegram reject
+        # the whole message. Losing a diagnostic report to a formatting quirk is
+        # worse than losing the formatting, so resend as plain text.
+        if r.status_code == 400 and ("can't parse entities" in body
+                                     or "can't find end of the entity" in body):
+            log.warning(
+                "Stock Telegram: markdown rejected — resending as plain text. "
+                f"({r.text[:120]})"
+            )
+            try:
+                # Keep underscores — they're part of env var names and tickers.
+                # Only * and ` are noise once formatting is off.
+                plain = re.sub(r"[*`]", "", text)
+                r2 = requests.post(URL, json={"chat_id": chat, "text": plain},
+                                   timeout=10)
+                if r2.status_code == 200:
+                    return True
+                log.error(f"Stock Telegram plain-text retry also failed: "
+                          f"HTTP {r2.status_code}: {r2.text[:160]}")
+            except Exception as e:
+                log.error(f"Stock Telegram plain-text retry error: {e}")
+            return False
+
+        log.warning(f"Stock Telegram HTTP {r.status_code}: {r.text[:200]}")
     except Exception as e:
         log.error(f"Stock Telegram send failed: {e}")
     return False
