@@ -2,7 +2,7 @@
   "version": "golem-v1",
   "reset_date": "2026-08-08",
   "reset_reason": "FOMO Golem launch \u2014 fresh $1,000 paper portfolio, FOMO-only strategy",
-  "cash": 9126.663663001096,
+  "cash": 9026.663663001096,
   "starting_cash": 10000.0,
   "peak_value": 10000.0,
   "total_trades": 5,
@@ -187,6 +187,35 @@
       "tranche_1_sold": false,
       "tranche_2_sold": false,
       "trailing_stop_active": false
+    },
+    {
+      "position_id": "9283b3e2",
+      "token_ticker": "LOOKSMAX",
+      "token_name": "looksmax.org",
+      "entry_price": 0.001953,
+      "units": 51152.0737327189,
+      "spent": 100.0,
+      "stop_loss": 0.00126945,
+      "exit_target": 0.0025389,
+      "wallet_alias": "nyhrox",
+      "wallet_address": "",
+      "contract_address": "GPzpoXpD74E2C4CJNayuoyBqPQJEsPtdse3nhntrpump",
+      "catalyst": "Score 5/10 \u2014 Prime window: 10.8d old, Vol 5.4x spike",
+      "catalyst_score": 5,
+      "market_cap": 1866046,
+      "liquidity_usd": 157683.42,
+      "token_age_days": 10.831261484374602,
+      "holder_count": null,
+      "volume_spike_pct": 444.417432261316,
+      "entered_at": "2026-08-24T05:18:21.997425+00:00",
+      "auto_exit_at": "2026-08-25T05:18:21.997434+00:00",
+      "source": "email",
+      "regime_at_entry": "BULL",
+      "partial_taken": false,
+      "peak_price": 0.001953,
+      "tranche_1_sold": false,
+      "tranche_2_sold": false,
+      "trailing_stop_active": false
     }
   ],
   "trade_history": [
@@ -366,7 +395,7 @@
     }
   ],
   "archived_history_note": "Prior July 2026 paper trades archived before this reset.",
-  "last_updated": "2026-08-24T02:35:21.951481+00:00",
+  "last_updated": "2026-08-24T05:18:21.997445+00:00",
   "deposits": [
     {
       "target": 10000.0,
