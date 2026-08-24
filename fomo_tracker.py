@@ -839,7 +839,12 @@ def handle_relayed_text_message(message: dict):
             "symbol":       token_data["symbol"],
             "source":       "email",
             "timestamp":    datetime.now(timezone.utc).isoformat(),
-            "original_text": raw_text if "raw_text" in dir() else "",
+            # The relayed message body. This used to read
+            #   raw_text if "raw_text" in dir() else ""
+            # — but dir() inside a function lists LOCALS only, raw_text was
+            # never one, so the guard was always False and research received an
+            # empty string on every relayed signal. The variable is `text`.
+            "original_text": text,
         }
         verdict = research_token(contract, "solana", signal_ctx)
         lessons     = get_wallet_lessons(matched_alias)
@@ -879,8 +884,12 @@ def handle_relayed_text_message(message: dict):
             "\U0001f4e9 <b>RELAYED BUY SIGNAL: " + token_data["symbol"] + " @ $"
             + "{:.8f}".format(token_data["price"]) + "</b>\n"
             + "From: " + matched_alias + f" (confidence: {confidence})\n"
-            + "Catalyst (" + str(catalyst_data["score"]) + "/10): "
-            + catalyst_data["catalyst"] + "\n"
+            # catalyst_data never existed in this scope — this line raised
+            # NameError on EVERY relayed buy signal, after the pending alert had
+            # already been created. The alert sat there unexecutable and no
+            # button ever reached Telegram. The research result is `verdict`.
+            + "Catalyst (" + str(verdict.final_score) + "/10): "
+            + str(verdict.go_reason or "n/a") + "\n"
             + "Mcap: $" + "{:,.0f}".format(token_data.get("market_cap") or 0)
             + " | Liq: $" + "{:,.0f}".format(token_data.get("liquidity_usd") or 0) + "\n"
             + "\u23f1 Expires in " + str(BUY_ALERT_EXPIRY_MINUTES) + " min",
@@ -2636,6 +2645,35 @@ def start_discovery_poller():
     return t
 
 
+def start_reconcile_loop():
+    """
+    Periodic books check for FOMO's own portfolio.
+
+    FOMO is the bot where the silent-money bugs actually happened — tranche
+    harvests crediting cash with no trade record, a bad price inventing $7.8M.
+    Both were found by eye, weeks late. This makes the next one self-announcing.
+
+    Only checks FOMO: this service has no credentials for the other two stores,
+    and a blank read from them is indistinguishable from an empty one.
+    """
+    import threading, time as _time
+
+    def _loop():
+        _time.sleep(5 * 60)   # let startup settle before the first check
+        while True:
+            try:
+                from reconcile import check_self
+                check_self("fomo", send_telegram, html=True)
+            except Exception as e:
+                log.error(f"FOMO reconcile self-check error: {e}")
+            _time.sleep(30 * 60)   # check_self rate-limits itself internally
+
+    t = threading.Thread(target=_loop, daemon=True, name="fomo-reconcile")
+    t.start()
+    log.info("FOMO reconcile self-check loop started (silent unless books disagree)")
+    return t
+
+
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     log.info(f"FOMO Tracker starting on port {port}")
@@ -2654,6 +2692,7 @@ if __name__ == "__main__":
     from fomo_email import start_email_poller
     start_email_poller(callback=process_social_signal)
     start_discovery_poller()
+    start_reconcile_loop()
     from fomo_exit import start_exit_monitor
     start_exit_monitor()
     import threading

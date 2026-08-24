@@ -405,7 +405,8 @@ def _poll_telegram_commands():
                 send_telegram(build_health_report(), parse_mode=None)
             elif text.startswith("/reconcile"):
                 from reconcile import reconcile_all, format_report
-                send_telegram(format_report(reconcile_all()), parse_mode=None)
+                send_telegram(format_report(reconcile_all(), html=False),
+                              parse_mode=None)
             elif text.startswith("/archives"):
                 _handle_archives(text)
             elif text.startswith("/deposit"):
@@ -1332,8 +1333,23 @@ def main():
 
     log.info("All loops running (scan / monitor / commands / report). Ctrl+C to stop.")
     try:
+        from reconcile import check_self
+    except Exception as e:
+        log.warning(f"reconcile self-check unavailable: {e}")
+        check_self = None
+
+    try:
         while True:
             time.sleep(60)
+            # Books check on a timer. Silent unless the account moved by an
+            # amount the trade records can't explain — only then does it
+            # message, and only once per distinct gap.
+            if check_self:
+                try:
+                    check_self("kalshi", lambda m: send_telegram(m, parse_mode=None),
+                               html=False)
+                except Exception as e:
+                    log.error(f"reconcile self-check error: {e}")
     except KeyboardInterrupt:
         log.info("Stopping Kalshi tracker...")
         stop_event.set()

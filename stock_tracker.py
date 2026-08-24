@@ -375,7 +375,7 @@ def _handle_command(text: str):
 
     elif low.startswith("/reconcile"):
         from reconcile import reconcile_all, format_report
-        tg.send(format_report(reconcile_all()), parse_mode=None)
+        tg.send(format_report(reconcile_all(), html=False), parse_mode=None)
 
     elif low.startswith("/deposit"):
         _handle_deposit(text)
@@ -643,8 +643,22 @@ def main():
 
     log.info("All loops running.")
     try:
+        from reconcile import check_self
+    except Exception as e:
+        log.warning(f"reconcile self-check unavailable: {e}")
+        check_self = None
+
+    try:
         while True:
             time.sleep(60)
+            # Silent books check — messages only when account movement and the
+            # trade records disagree.
+            if check_self:
+                try:
+                    check_self("stock", lambda m: tg.send(m, parse_mode=None),
+                               html=False)
+                except Exception as e:
+                    log.error(f"reconcile self-check error: {e}")
     except KeyboardInterrupt:
         log.info("Stopping...")
         stop.set()

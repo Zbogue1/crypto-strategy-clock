@@ -19,9 +19,12 @@ THE INVARIANT:
     account_value − starting_basis  ==  sum(every recorded event)
 
 If the two disagree, something moved money without leaving a record. The size
-of the gap is the size of the blind spot. This runs on a schedule and alerts
-when it breaks — so the next instance of this bug announces itself in hours
-rather than being discovered by accident weeks later.
+of the gap is the size of the blind spot.
+
+check_self() runs inside every tracker's main loop (default every 6h) against
+the ONE bot that service has credentials for, and stays silent unless the books
+disagree — so the next instance of this bug announces itself in hours rather
+than being discovered by accident weeks later. /reconcile runs it on demand.
 
 Deliberately generic: it does not care WHAT the untracked movement was, only
 that the books don't balance. That's what makes it catch bugs we haven't
@@ -39,6 +42,30 @@ log = logging.getLogger(__name__)
 TOLERANCE = float(os.getenv("RECONCILE_TOLERANCE", "0.05"))
 
 
+def _has_visible_data(state: dict, summary_positions: int = 0) -> bool:
+    """
+    Can this process actually SEE the bot's state?
+
+    Each bot stores to its own backend, and each Railway service only has the
+    credentials it was given. When FOMO's service runs a Kalshi reconciliation
+    without the Upstash variables, kalshi_portfolio._load() falls back to a
+    blank default — zero trades, zero movement — and a naive check happily
+    reports "balanced", because 0 == 0.
+
+    That's worse than no answer: it's a green tick over data we never loaded.
+    A bot with no trades, no positions and no deposits is almost certainly
+    invisible rather than genuinely empty.
+    """
+    return bool(
+        state.get("trade_history")
+        or state.get("holdings")
+        or state.get("positions")
+        or state.get("tranche_sales")
+        or state.get("deposits")
+        or summary_positions
+    )
+
+
 # ─── KALSHI ───────────────────────────────────────────────────────────────────
 
 def reconcile_kalshi() -> dict:
@@ -50,6 +77,10 @@ def reconcile_kalshi() -> dict:
     try:
         state = _load()
         s     = get_portfolio_summary()
+        if not _has_visible_data(state, len(s.get('positions', []))):
+            return {"bot": "Kalshi", "ok": None,
+                    "error": "no data visible from this service "
+                             "(missing UPSTASH_REDIS_* credentials?)"}
 
         basis   = float(state.get("starting_cash", 0) or 0)
         actual  = float(s.get("total_value", 0) or 0) - basis
@@ -88,6 +119,9 @@ def reconcile_fomo(prices: dict = None) -> dict:
 
     try:
         state    = load_fomo_portfolio()
+        if not _has_visible_data(state):
+            return {"bot": "FOMO", "ok": None,
+                    "error": "no data visible from this service"}
         basis    = float(state.get("starting_cash", 0) or 0)
         cash     = float(state.get("cash", 0) or 0)
         holdings = state.get("holdings", [])
@@ -137,6 +171,10 @@ def reconcile_stock() -> dict:
     try:
         state = _load()
         s     = get_summary()
+        if not _has_visible_data(state, len(s.get('positions', []))):
+            return {"bot": "Stock", "ok": None,
+                    "error": "no data visible from this service "
+                             "(missing UPSTASH_REDIS_* credentials?)"}
 
         basis  = float(state.get("starting_cash", 0) or 0)
         actual = float(s.get("total_value", 0) or 0) - basis
@@ -172,15 +210,43 @@ def reconcile_all(which: str = None) -> list:
     return [f() for f in fns.values()]
 
 
-def format_report(results: list) -> str:
+def strip_html(text: str) -> str:
+    """
+    Plain-text version of a report.
+
+    Kalshi and Stock both send with parse_mode=None, and their senders only
+    strip Markdown markers (* and `) — an HTML tag sails straight through and
+    the user sees a literal "<b>Kalshi</b>". Callers that aren't sending HTML
+    must strip it rather than hope the transport does.
+    """
+    import re as _re
+    text = _re.sub(r"</?(b|i|u|s|code|pre)>", "", text)
+    return (text.replace("&lt;", "<").replace("&gt;", ">")
+                .replace("&amp;", "&"))
+
+
+def format_report(results: list, html: bool = True) -> str:
     lines = ["🧾 <b>RECONCILIATION</b>",
              "<i>Does account movement match the recorded events?</i>\n"]
     any_gap = False
+    any_blind = False
 
     for r in results:
         bot = r["bot"]
-        if r.get("error"):
-            lines.append(f"⚠️ <b>{bot}</b> — check failed: {r['error'][:90]}\n")
+        err = r.get("error") or ""
+        if "no data visible" in err:
+            # NOT the same as "balanced". This service can't read that bot's
+            # store, so there is nothing to check. Saying "✅ balanced" here
+            # would be a green tick over data we never loaded.
+            any_blind = True
+            lines.append(
+                f"🚫 <b>{bot}</b> — <b>not visible from this service</b>\n"
+                f"   {err}\n"
+                f"   <i>Run /reconcile from {bot}'s own bot for a real answer.</i>\n"
+            )
+            continue
+        if err:
+            lines.append(f"⚠️ <b>{bot}</b> — check failed: {err[:90]}\n")
             continue
         if r["ok"] is None:
             lines.append(f"⚠️ <b>{bot}</b> — inconclusive\n")
@@ -210,13 +276,85 @@ def format_report(results: list) -> str:
         lines.append("<b>A gap means a reporting blind spot, not necessarily "
                      "lost money.</b> The total is still correct; what's wrong "
                      "is that some category isn't being written down.")
+    elif any_blind:
+        n_ok = sum(1 for r in results if r.get("ok") is True)
+        lines.append(
+            (f"<i>{n_ok} bot(s) balance. " if n_ok else "<i>")
+            + "The ones marked not visible were not checked at all — this "
+              "service has no credentials for their store, so a blank read "
+              "is indistinguishable from an empty one.</i>"
+        )
     else:
         lines.append("<i>All books balance. Every dollar of movement is "
                      "explained by a recorded event.</i>")
-    return "\n".join(lines)
+
+    out = "\n".join(lines)
+    return out if html else strip_html(out)
+
+
+# ─── SCHEDULED SELF-CHECK ─────────────────────────────────────────────────────
+#
+# The whole point of this module is that the NEXT accounting bug announces
+# itself instead of waiting to be noticed. A /reconcile command the user has to
+# remember to type does not do that — it's the same "someone spots a wrong
+# number" workflow, just with better output.
+#
+# So each tracker calls check_self() on every loop pass. It rate-limits itself,
+# only checks the ONE bot that service can actually see, and stays silent unless
+# the books disagree. Silence is the normal state; a message means real news.
+
+CHECK_INTERVAL_H = float(os.getenv("RECONCILE_INTERVAL_H", "6"))
+
+_last_check: dict = {}
+_last_alert: dict = {}
+
+
+def check_self(bot: str, send_fn, html: bool = True) -> Optional[dict]:
+    """
+    Run this service's own reconciliation on a timer; alert only on a gap.
+
+    `bot` is one of kalshi/fomo/stock — the one THIS service has credentials
+    for. Checking the other two from here is what produced the false "balanced"
+    report in the first place.
+
+    Returns the result dict when a check ran, else None.
+    """
+    key = bot.lower()
+    now = datetime.now(timezone.utc)
+
+    last = _last_check.get(key)
+    if last and (now - last).total_seconds() < CHECK_INTERVAL_H * 3600:
+        return None
+    _last_check[key] = now
+
+    try:
+        result = reconcile_all(key)[0]
+    except Exception as e:
+        log.error(f"reconcile: self-check for {bot} crashed: {e}")
+        return None
+
+    if result.get("ok") is not False:
+        # Balanced, or not visible. Neither is worth a notification.
+        log.info(f"reconcile: {bot} self-check — ok={result.get('ok')} "
+                 f"{result.get('error', '')}")
+        return result
+
+    # Don't re-send the same unchanged gap every interval — one alert, then
+    # quiet until the number actually moves.
+    gap = round(float(result.get("gap", 0) or 0), 2)
+    if _last_alert.get(key) == gap:
+        log.info(f"reconcile: {bot} gap unchanged at ${gap:+.2f}, not re-alerting")
+        return result
+    _last_alert[key] = gap
+
+    try:
+        send_fn(format_report([result], html=html))
+    except Exception as e:
+        log.error(f"reconcile: could not send {bot} gap alert: {e}")
+    return result
 
 
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO)
     import re
-    print(re.sub(r"<[^>]+>", "", format_report(reconcile_all())))
+    print(format_report(reconcile_all(), html=False))
