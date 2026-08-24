@@ -128,5 +128,28 @@
       "SOL"
     ],
     "alert": null
+  },
+  {
+    "ts": "2026-08-24T20:04:44.772806+00:00",
+    "coin": "SOL",
+    "price": 96.29,
+    "signal": "HOLD",
+    "confidence": 52,
+    "score": -1.2,
+    "fg": 73,
+    "btc_price": 78625,
+    "btc_dominance": 59.1,
+    "candidates": [
+      "PUMP",
+      "MON",
+      "LIT",
+      "PAXG",
+      "XAUT",
+      "FDUSD",
+      "RLUSD",
+      "XRP",
+      "SOL"
+    ],
+    "alert": "SOL approaching exit target at $100 \u2014 recommend taking profits at current $96.29 level."
   }
 ]
