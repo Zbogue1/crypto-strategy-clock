@@ -108,14 +108,28 @@ def score_pillars(snap: dict, market_hot: bool = True) -> dict:
                  if pct is not None else "no change data",
     }
 
-    # 3 — News catalyst
-    n_news = snap.get("news_count", 0) or 0
-    pillars["catalyst"] = {
-        "pass":  n_news > 0,
-        "value": n_news,
-        "note":  f"{n_news} headline(s) in 48h" if n_news
-                 else "no catalyst found — higher risk of sudden drop",
-    }
+    # 3 — News catalyst.
+    # Not merely "is there news" — a dilutive offering IS news and moves the
+    # stock, but it's the reason to FADE the move, not join it. If catalyst
+    # analysis ran, use its verdict; otherwise fall back to headline presence.
+    cat = snap.get("catalyst")
+    if cat:
+        harmful = cat.get("quality") == "harmful"
+        pillars["catalyst"] = {
+            "pass":  bool(cat.get("passes")) and not harmful,
+            "value": cat.get("score"),
+            "note":  f"{cat.get('catalyst_type','?')} — {cat.get('reasoning','')[:90]}",
+            "harmful": harmful,
+        }
+    else:
+        n_news = snap.get("news_count", 0) or 0
+        pillars["catalyst"] = {
+            "pass":  n_news > 0,
+            "value": n_news,
+            "note":  f"{n_news} headline(s) in 48h (unanalyzed)" if n_news
+                     else "no catalyst found — higher risk of sudden drop",
+            "harmful": False,
+        }
 
     # 4 — Price range
     price = snap.get("price") or 0
@@ -143,14 +157,22 @@ def score_pillars(snap: dict, market_hot: bool = True) -> dict:
     failed  = sum(1 for p in pillars.values() if p["pass"] is False)
     unknown = sum(1 for p in pillars.values() if p["pass"] is None)
 
+    # A dilution or distress catalyst is DISQUALIFYING, not merely a failed
+    # pillar. A stock can pass 4 of 5 while the reason it moved is an offering
+    # that's about to be sold into — that's a fade setup wearing a breakout's
+    # clothes. Hard veto regardless of how strong the other pillars look.
+    harmful_catalyst = bool(pillars.get("catalyst", {}).get("harmful"))
+
     return {
         "symbol":     snap.get("symbol", "?"),
         "pillars":    pillars,
         "passed":     passed,
         "failed":     failed,
         "unknown":    unknown,
-        "qualifies":  passed >= MIN_PILLARS,
-        "grade":      "A" if passed == 5 else ("B" if passed == 4 else "C"),
+        "qualifies":  passed >= MIN_PILLARS and not harmful_catalyst,
+        "disqualified_by": "harmful catalyst (dilution/distress)" if harmful_catalyst else "",
+        "grade":      "F" if harmful_catalyst else
+                      ("A" if passed == 5 else ("B" if passed == 4 else "C")),
     }
 
 

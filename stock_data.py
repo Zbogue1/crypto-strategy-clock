@@ -331,12 +331,26 @@ def get_full_snapshot(symbol: str) -> Optional[dict]:
     news   = get_news(symbol)
     flt    = get_float(symbol)
 
+    # Catalyst QUALITY, not just presence — a dilutive offering is news that
+    # moves the stock for the wrong reason. See stock_catalyst.py.
+    catalyst = None
+    try:
+        from stock_catalyst import analyze_catalyst
+        catalyst = analyze_catalyst(
+            symbol,
+            [n["headline"] for n in news],
+            snap.get("pct_change", 0.0),
+        )
+    except Exception as e:
+        log.warning(f"Catalyst analysis failed for {symbol}: {e}")
+
     return {
         **snap,
         "rvol":        rvol["rvol"] if rvol else None,
         "avg_vol":     rvol["avg_vol"] if rvol else None,
         "news_count":  len(news),
-        "headlines":   [n["headline"] for n in news[:3]],
+        "headlines":   [n["headline"] for n in news[:4]],
+        "catalyst":    catalyst,
         "float_m":     flt["float_m"] if flt else None,
         "fetched_at":  datetime.now(timezone.utc).isoformat(),
     }
