@@ -105,5 +105,28 @@
       "SOL"
     ],
     "alert": "SOL approaching $100 exit target \u2014 prepare to take profits within 1-3 days."
+  },
+  {
+    "ts": "2026-08-24T16:01:23.774577+00:00",
+    "coin": "BTC",
+    "price": 78978,
+    "signal": "HOLD",
+    "confidence": 0,
+    "score": null,
+    "fg": 73,
+    "btc_price": 78978,
+    "btc_dominance": 59.1,
+    "candidates": [
+      "PUMP",
+      "LIT",
+      "MON",
+      "FDUSD",
+      "CRVUSD",
+      "RLUSD",
+      "USDG",
+      "XRP",
+      "SOL"
+    ],
+    "alert": null
   }
 ]
