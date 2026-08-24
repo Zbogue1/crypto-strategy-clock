@@ -242,12 +242,23 @@ def format_portfolio_snapshot(summary: dict) -> str:
     Full portfolio summary for /kalshi command.
     summary: output of kalshi_portfolio.get_portfolio_summary()
     """
-    pnl_emoji = "📈" if summary["total_pnl"] >= 0 else "📉"
+    # Prefer the account-derived figure; the accumulated counter misses
+    # funding payments entirely.
+    true_pnl = summary.get("true_pnl", summary["total_pnl"])
+    counter  = summary.get("counter_pnl", summary["total_pnl"])
+    pnl_emoji = "📈" if true_pnl >= 0 else "📉"
     lines = [
         f"📊 *KALSHI PAPER PORTFOLIO*\n",
         f"Bank: ${summary['cash']:.2f} cash + ${summary['total_value'] - summary['cash']:.2f} in positions",
         f"Total value: *${summary['total_value']:.2f}* (started ${summary['starting_cash']:.2f})",
-        f"{pnl_emoji} All-time P&L: *${summary['total_pnl']:+.2f}*",
+        f"{pnl_emoji} All-time P&L: *${true_pnl:+.2f}* "
+        f"({summary.get('true_pnl_pct', 0):+.2f}%)",]
+    if abs(counter - true_pnl) > 0.01:
+        lines.append(
+            f"   _trade counter says ${counter:+.2f} — the ${abs(counter-true_pnl):.2f} "
+            f"gap is funding paid_"
+        )
+    lines += [
         f"Win rate: {summary['win_rate']:.0f}% ({summary['winning_trades']}W / {summary['losing_trades']}L)",
         f"Funding paid total: ${summary['total_funding_paid']:.2f}",
         "",

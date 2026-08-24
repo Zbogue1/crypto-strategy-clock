@@ -723,6 +723,18 @@ def get_portfolio_summary() -> dict:
     return {
         "cash":              round(state["cash"], 2),
         "total_value":       round(total_value, 2),
+        # Authoritative P&L — derived from the account, not accumulated.
+        # state["total_pnl"] is a running counter incremented only in
+        # close_position(), so funding payments (which move cash directly)
+        # never reach it and the figure drifts further from truth over time.
+        # Same class of bug as FOMO's tranche harvests: money moved, nothing
+        # recorded it. account − basis cannot omit a category.
+        "true_pnl":          round(total_value - state["starting_cash"], 2),
+        "true_pnl_pct":      round(
+            (total_value / state["starting_cash"] - 1) * 100, 2
+        ) if state.get("starting_cash") else 0.0,
+        "counter_pnl":       round(state["total_pnl"], 2),
+        "funding_paid":      round(state.get("total_funding_paid", 0), 2),
         "starting_cash":     state["starting_cash"],
         "peak_value":        round(state["peak_value"], 2),
         "total_pnl":         round(state["total_pnl"], 2),

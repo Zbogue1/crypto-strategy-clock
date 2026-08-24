@@ -742,6 +742,38 @@ def research_token(
     if bankroll > 500_000:
         base_conviction = min(10, base_conviction + 1)
 
+    # ── LEARN FROM THIS WALLET'S ACTUAL RECORD ────────────────────────────
+    # These lessons were being computed and then discarded — fetched only
+    # after the decision was made, and used purely to decorate the alert.
+    # A wallet we've followed into six losses should not get the same
+    # conviction as one we've followed into six wins.
+    lessons = signal_context.get("wallet_lessons") or {}
+    n_trades = int(lessons.get("total_trades") or 0)
+    win_rate = float(lessons.get("win_rate") or 0)
+    avg_ret  = float(lessons.get("avg_return_pct") or 0)
+
+    if n_trades >= 5:
+        if win_rate >= 60 and avg_ret > 0:
+            base_conviction = min(10, base_conviction + 2)
+            v.evidence.append(
+                f"📈 {alias} track record: {win_rate:.0f}% win rate over "
+                f"{n_trades} trades, avg {avg_ret:+.1f}%"
+            )
+        elif win_rate <= 30 or avg_ret < -15:
+            base_conviction = max(1, base_conviction - 3)
+            v.evidence.append(
+                f"📉 {alias} has been poor: {win_rate:.0f}% win rate over "
+                f"{n_trades} trades, avg {avg_ret:+.1f}% — conviction reduced"
+            )
+        else:
+            v.evidence.append(
+                f"{alias} record: {win_rate:.0f}% over {n_trades} trades (neutral)"
+            )
+    elif n_trades:
+        v.evidence.append(
+            f"{alias}: only {n_trades} closed trade(s) — too few to weight"
+        )
+
     v.conviction_score = base_conviction
 
     # ── 5. FOMO culture assessment ────────────────────────────────────────────

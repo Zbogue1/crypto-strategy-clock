@@ -1890,6 +1890,15 @@ def alchemy_webhook():
                 continue
 
             # Deep research engine — replaces basic catalyst scanner
+            # Fetch lessons BEFORE the decision, not after.
+            # Previously get_wallet_lessons() ran on the line *after*
+            # research_token(), so the past performance of this wallet was
+            # only ever used to decorate the Telegram message — the agent
+            # deciding whether to buy never saw it. The system recorded
+            # lessons diligently and then ignored them.
+            lessons = get_wallet_lessons(alias)
+            best    = lessons.get("best_conditions", {})
+
             signal_ctx = {
                 "alias":        alias,
                 "tier":         wallet_info.get("tier", "A"),
@@ -1898,11 +1907,9 @@ def alchemy_webhook():
                 "symbol":       token_data["symbol"],
                 "source":       "on-chain",
                 "timestamp":    datetime.now(timezone.utc).isoformat(),
+                "wallet_lessons": lessons,
             }
             verdict = research_token(contract, "base", signal_ctx)
-
-            lessons     = get_wallet_lessons(alias)
-            best        = lessons.get("best_conditions", {})
             skip_reason = None
             if not verdict.go:
                 skip_reason = verdict.skip_reason
