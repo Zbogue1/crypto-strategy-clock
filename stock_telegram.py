@@ -256,6 +256,7 @@ HELP = (
     "`/scan` — scan for setups now\n"
     "`/trades` — trade-by-trade ledger\n"
     "`/report` — performance report\n"
+    "`/postmortem` — what's actually working (by catalyst, hour, grade)\n"
     "`/rules` — the strategy rules in force\n"
     "`/health` — data & storage diagnostics\n"
     "`/help` — this message"

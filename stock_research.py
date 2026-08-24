@@ -95,7 +95,8 @@ Output MUST be valid JSON, no markdown fences, exactly this shape:
 
 
 def _build_context(snap: dict, pillars: dict, pullback: dict,
-                   sizing: dict, clock_note: str = "") -> str:
+                   sizing: dict, clock_note: str = "",
+                   track_record: str = "") -> str:
     p = pillars["pillars"]
 
     def line(key, label):
@@ -150,6 +151,9 @@ Headlines (48h):
   Shares: {sizing.get('shares', 0)} → total risk ${sizing.get('total_risk', 0):.2f}, cost ${sizing.get('cost', 0):.2f}
   Sizing limited by: {sizing.get('limited_by', '-')}
 
+--- OUR OWN TRACK RECORD ---
+{track_record or "No closed trades yet — no calibration data."}
+
 === END ===
 
 Approve or reject. Remember: rejecting is cheap, forcing a trade is not."""
@@ -184,7 +188,8 @@ def _parse(raw: str) -> Optional[dict]:
 
 
 def review_setup(snap: dict, pillars: dict, pullback: dict,
-                 sizing: dict, clock_note: str = "") -> dict:
+                 sizing: dict, clock_note: str = "",
+                 track_record: str = "") -> dict:
     """
     Returns {approve, confidence, reasoning, ...}.
 
@@ -205,7 +210,8 @@ def review_setup(snap: dict, pillars: dict, pullback: dict,
             max_tokens=700,
             system=SYSTEM_PROMPT,
             messages=[{"role": "user",
-                       "content": _build_context(snap, pillars, pullback, sizing, clock_note)}],
+                       "content": _build_context(snap, pillars, pullback, sizing,
+                                                 clock_note, track_record)}],
         )
         raw = "".join(b.text for b in resp.content if getattr(b, "type", "") == "text")
         v = _parse(raw)

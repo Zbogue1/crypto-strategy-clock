@@ -30,10 +30,11 @@ from typing import Optional
 
 import requests
 
-import stock_data      as sd
-import stock_signals   as sig
-import stock_portfolio as pf
-import stock_telegram  as tg
+import stock_data       as sd
+import stock_signals    as sig
+import stock_portfolio  as pf
+import stock_telegram   as tg
+import stock_postmortem as pm
 from stock_research import review_setup
 
 logging.basicConfig(
@@ -182,10 +183,16 @@ def _try_enter(c: dict, clock_note: str = ""):
         log.info(f"{sym}: sizing failed — {sizing.get('reason')}")
         return
 
-    review = review_setup(snap, pillars, pb, sizing, clock_note)
+    # Feed the AI its own track record on similar setups
+    track_record = pm.get_context_summary()
+    review = review_setup(snap, pillars, pb, sizing,
+                          clock_note, track_record=track_record)
     if not review["approve"]:
         log.info(f"{sym}: AI veto — {review.get('veto_reason')} | "
                  f"{review.get('reasoning','')[:90]}")
+        # Record the rejection — without this we can't tell whether the veto
+        # is protecting us or costing us winners.
+        pm.log_veto(sym, snap, pillars, pb, review)
         return
 
     pos = pf.open_position(
@@ -199,6 +206,7 @@ def _try_enter(c: dict, clock_note: str = ""):
     )
     if pos:
         _last_entry[sym] = time.time()
+        pm.log_entry(pos, snap, pillars, pb, review)
         if not SILENT:
             tg.send(tg.format_entry(pos, snap, pillars, review, pb))
 
@@ -243,8 +251,10 @@ def run_monitor():
 
         if reason:
             trade = pf.close_position(sym, px, reason=reason)
-            if trade and not SILENT:
-                tg.send(tg.format_exit(trade))
+            if trade:
+                pm.log_outcome(sym, trade)      # always — this is the learning
+                if not SILENT:
+                    tg.send(tg.format_exit(trade))
             after = pf.get_summary()
             if after["halted_reason"] and not SILENT:
                 tg.send(tg.format_halt(after["halted_reason"], after))
@@ -310,6 +320,9 @@ def _handle_command(text: str):
 
     elif low.startswith("/trades"):
         tg.send(_format_ledger())
+
+    elif low.startswith(("/postmortem", "/calibration", "/stats")):
+        tg.send(pm.format_telegram())
 
     elif low.startswith("/report"):
         tg.send(_format_report())
