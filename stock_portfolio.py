@@ -99,6 +99,77 @@ def _redis_set(key: str, data: dict) -> bool:
     return False
 
 
+def redis_health() -> dict:
+    """
+    Prove whether persistence actually works — a write that silently falls back
+    to the container filesystem looks fine until the next redeploy erases it.
+    Tests a real round-trip, not just reachability.
+    """
+    out = {
+        "configured": bool(_REDIS_URL and _REDIS_TOKEN),
+        "url_var":    next((n for n in ("UPSTASH_REDIS_URL", "UPSTASH_REDIS_REST_URL",
+                                        "KV_REST_API_URL", "REDIS_URL")
+                            if os.getenv(n, "").strip()), ""),
+        "readable":   False,
+        "writable":   False,
+        "key_exists": False,
+        "bytes":      0,
+        "error":      None,
+    }
+    if not out["configured"]:
+        out["error"] = "no Redis URL/token in env"
+        return out
+
+    # Read
+    try:
+        r = _requests.post(_REDIS_URL,
+                           headers={"Authorization": f"Bearer {_REDIS_TOKEN}"},
+                           json=["GET", _KEY], timeout=5)
+        if r.status_code == 200:
+            out["readable"] = True
+            raw = r.json().get("result")
+            if raw:
+                out["key_exists"] = True
+                out["bytes"] = len(raw)
+                try:
+                    d = json.loads(raw)
+                    out["stored_cash"]     = d.get("cash")
+                    out["stored_basis"]    = d.get("starting_cash")
+                    out["stored_trades"]   = len(d.get("trade_history", []))
+                    out["stored_deposits"] = len(d.get("deposits", []))
+                except Exception:
+                    pass
+        else:
+            out["error"] = f"read HTTP {r.status_code}: {r.text[:120]}"
+            return out
+    except Exception as e:
+        out["error"] = f"read failed: {e}"
+        return out
+
+    # Write round-trip on a throwaway key
+    try:
+        probe_key = "stock_write_probe"
+        stamp = datetime.now(timezone.utc).isoformat()
+        w = _requests.post(_REDIS_URL,
+                           headers={"Authorization": f"Bearer {_REDIS_TOKEN}"},
+                           json=["SET", probe_key, json.dumps({"ts": stamp})],
+                           timeout=5)
+        if w.status_code != 200:
+            out["error"] = f"write HTTP {w.status_code}: {w.text[:120]}"
+            return out
+        v = _requests.post(_REDIS_URL,
+                           headers={"Authorization": f"Bearer {_REDIS_TOKEN}"},
+                           json=["GET", probe_key], timeout=5)
+        if v.status_code == 200 and stamp in (v.text or ""):
+            out["writable"] = True
+        else:
+            out["error"] = "write succeeded but read-back didn't match"
+    except Exception as e:
+        out["error"] = f"write failed: {e}"
+
+    return out
+
+
 def _default_state() -> dict:
     return {
         "version":         "stock-v1",

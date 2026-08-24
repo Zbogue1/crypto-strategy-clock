@@ -461,6 +461,32 @@ def _format_health() -> str:
     )
     if s["halted_reason"]:
         lines.append(f"🛑 {s['halted_reason']}")
+
+    # Storage diagnostics — a write that silently falls back to the container
+    # filesystem looks fine until the next redeploy erases it.
+    rh = pf.redis_health()
+    lines.append("")
+    if not rh["configured"]:
+        lines.append("❌ *Redis not configured* — data LOST on every redeploy")
+        lines.append(f"   {rh.get('error','')}")
+    elif not rh["readable"]:
+        lines.append(f"❌ *Redis unreadable* — {rh.get('error','')}")
+    elif not rh["writable"]:
+        lines.append(f"⚠️ *Redis reads but does NOT write*")
+        lines.append(f"   {rh.get('error','')}")
+        lines.append("   _Deposits and trades won't survive a restart._")
+    else:
+        lines.append(f"✅ Redis OK via `{rh['url_var']}`")
+        if rh["key_exists"]:
+            lines.append(
+                f"   stored: ${rh.get('stored_cash',0):,.2f} cash / "
+                f"${rh.get('stored_basis',0):,.2f} basis · "
+                f"{rh.get('stored_trades',0)} trades · "
+                f"{rh.get('stored_deposits',0)} deposit(s) · {rh['bytes']:,}B"
+            )
+        else:
+            lines.append("   ⚠️ portfolio key does not exist yet — nothing saved")
+
     return "\n".join(lines)
 
 
