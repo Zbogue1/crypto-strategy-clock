@@ -595,13 +595,41 @@ def send_positions_update():
         h.get("units", 0) * (validate_token(h.get("contract_address", "")).get("price") or h.get("entry_price", 0))
         for h in holdings
     )
-    total_pnl   = total_val - total_spent
-    tot_emoji   = "🟢" if total_pnl >= 0 else "🔴"
+    unrealized  = total_val - total_spent
+
+    # ── TRUE TOTAL ────────────────────────────────────────────────────────
+    # The old "Total P&L" was `total_val - total_spent`, i.e. unrealized gains
+    # on OPEN positions only. Every closed trade was excluded, and so was every
+    # tranche harvest — and tranche sells never write a trade_history entry,
+    # they only add cash. So profits from 2x/3x exits were invisible everywhere.
+    #
+    # Measuring against the account instead captures everything: realized,
+    # unrealized, tranche harvests, and fees. cash + positions - basis is the
+    # only figure that cannot silently omit a category of profit.
+    state    = load_fomo_portfolio()
+    basis    = float(state.get("starting_cash", 0) or 0)
+    hist     = state.get("trade_history", [])
+    realized_logged = sum(
+        float(t.get("profit", t.get("pnl_usd", 0)) or 0) for t in hist
+    )
+    account_value = cash + total_val
+    true_pnl      = account_value - basis if basis else 0.0
+
+    # Anything the trade log can't account for is tranche harvests
+    tranche_profit = true_pnl - realized_logged - unrealized
+
+    tot_emoji = "🟢" if true_pnl >= 0 else "🔴"
+    pct = (true_pnl / basis * 100) if basis else 0.0
 
     lines.append(
         f"───────────────\n"
         f"Cash: ${cash:.2f} | Positions: ${total_val:.2f}\n"
-        f"Total P&L: {tot_emoji} ${total_pnl:+.2f}"
+        f"<b>Account: ${account_value:.2f}</b> (started ${basis:,.0f})\n"
+        f"{tot_emoji} <b>TOTAL P&amp;L: ${true_pnl:+.2f}</b> ({pct:+.2f}%)\n"
+        f"\n"
+        f"  ├ Unrealized (open): ${unrealized:+.2f}\n"
+        f"  ├ Closed trades ({len(hist)}): ${realized_logged:+.2f}\n"
+        f"  └ Tranche harvests: ${tranche_profit:+.2f}"
     )
 
     send_telegram("\n".join(lines))
