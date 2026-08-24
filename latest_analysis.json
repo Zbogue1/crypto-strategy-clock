@@ -1,27 +1,19 @@
 {
-  "timestamp": "2026-08-24T04:04:30.971044+00:00",
+  "timestamp": "2026-08-24T08:02:13.689565+00:00",
   "signal": "HOLD",
-  "selected_coin": "SOL",
-  "selected_coin_name": "Solana",
-  "selected_coin_price": 93.85,
-  "confidence": 52,
-  "layman_headline": "Market is running hot after a massive rally \u2014 patience is the best trade right now.",
-  "layman_explanation": "Bitcoin just surged 21% in a week and the entire market followed. Our Solana position is up 7.6% and approaching its profit target of $100. XRP is down 5.8% after we entered near the top of its 46% weekly spike, but it's still well above our stop-loss. Every swing candidate on the watchlist has already moved 30-78% in a week, making new entries very risky at these levels.",
-  "layman_action": "Hold both current positions. SOL is close to its $100 target \u2014 consider taking profits if it gets there. Watch XRP closely since it's underwater; if it drops toward $1.30, cut losses. Don't chase any of the coins that have already pumped this week.",
-  "expert_reasoning": "All swing candidates show negative composite scores (-3.0 or worse) due to extreme 7-day moves (33-78%), elevated Fear & Greed at 73 trending toward greed, and high BTC dominance at 59.2% suppressing alt-season dynamics. Without RSI/MACD data on candidates, entering after such parabolic moves violates core swing trading discipline. SOL at $93.85 is 6.5% from its $100 exit target and benefits from institutional inflows. XRP at $1.47 is -5.8% from entry but has a defined stop at $1.30 (11.6% below current), and the Treasury buyback narrative could provide further legs. No new position offers a favorable risk/reward when everything has already moved 20-78% in a week.",
-  "risk_factors": [
-    "Fear & Greed at 73 and rising \u2014 historically a mixed signal (53% win rate) that often precedes sharp corrections",
-    "BTC dominance at 59.2% means capital is concentrating in Bitcoin, limiting alt upside potential",
-    "XRP entered near a local top after a 46% weekly surge \u2014 could retrace significantly if momentum fades"
-  ],
-  "watch_list": [
-    "SOL price action near $95-100 resistance zone \u2014 take profits if exit target is hit",
-    "XRP holding above $1.35-1.40 support \u2014 prepare to cut if it breaks below $1.30 stop",
-    "Fear & Greed index \u2014 if it pushes above 80, risk of a broad market pullback increases significantly"
-  ],
-  "market_context": "Bitcoin rallied 21% in a week to $77K on Treasury buyback and curve control speculation, dragging the entire market higher. The Fear & Greed index is at 73 (Greed) and climbing, suggesting the easy gains may be behind us and caution is warranted.",
-  "context_banner": "Broad market euphoria after a historic weekly rally \u2014 managing existing positions takes priority over chasing extended moves.",
-  "btc_price": 77017,
+  "selected_coin": "BTC",
+  "selected_coin_name": "Bitcoin",
+  "selected_coin_price": 77310,
+  "confidence": 0,
+  "layman_headline": "Service temporarily unavailable",
+  "layman_explanation": "Could not reach the analysis service.",
+  "layman_action": "Wait for the next update.",
+  "expert_reasoning": "529 Server Error: <none> for url: https://api.anthropic.com/v1/messages",
+  "risk_factors": [],
+  "watch_list": [],
+  "market_context": null,
+  "context_banner": null,
+  "btc_price": 77310,
   "fear_greed": {
     "current": 73,
     "label": "Greed",
@@ -30,34 +22,8 @@
     "trend": "improving"
   },
   "btc_dominance": 59.2,
-  "key_signals": [
-    {
-      "source": "Fear_Greed",
-      "signal_type": "sentiment",
-      "description": "Fear & Greed at 73 (Greed) and trending up from 61.6 weekly avg \u2014 historically a 53% win rate signal, suggesting caution rather than aggressive new entries."
-    },
-    {
-      "source": "CryptoSlate",
-      "signal_type": "news",
-      "description": "Wall Street poured ~$90M into altcoins including SOL, XRP, and HYPE \u2014 the most reliable news source in our credibility data (67% win rate) supporting current holdings."
-    },
-    {
-      "source": "CoinDesk",
-      "signal_type": "news",
-      "description": "XRP's biggest weekly gain in 21 months driven by Treasury buyback and curve control hopes \u2014 provides fundamental backing for holding the XRP position despite being underwater."
-    },
-    {
-      "source": "volume_breakout",
-      "signal_type": "technical",
-      "description": "All swing candidates already moved 30-78% in 7 days with no RSI/MACD data available \u2014 chasing these moves historically has only a 56% success rate."
-    },
-    {
-      "source": "CoinTelegraph",
-      "signal_type": "news",
-      "description": "Bitcoin's 23% rally attributed to US debt policy shifts and Ray Dalio recommending Bitcoin \u2014 macro tailwind supports holding but not adding at extended levels."
-    }
-  ],
+  "key_signals": [],
   "_mode": "HUNTING",
-  "exit_target": 100.0,
-  "stop_loss": 77.0
+  "exit_target": null,
+  "stop_loss": null
 }
