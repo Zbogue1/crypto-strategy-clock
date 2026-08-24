@@ -636,22 +636,33 @@ def send_positions_update():
     account_value = cash + total_val
     true_pnl      = account_value - basis if basis else 0.0
 
-    # Anything the trade log can't account for is tranche harvests
-    tranche_profit = true_pnl - realized_logged - unrealized
+    # Tranche harvests are now recorded explicitly rather than derived as a
+    # residual — a residual can't distinguish "no harvests" from "harvests
+    # that cancelled out", which is why this line always read $0.00.
+    tranches   = state.get("tranche_sales", [])
+    tranche_pl = sum(float(t.get("profit", 0) or 0) for t in tranches)
+    tranche_wins = sum(1 for t in tranches if (t.get("profit") or 0) > 0)
 
     tot_emoji = "🟢" if true_pnl >= 0 else "🔴"
     pct = (true_pnl / basis * 100) if basis else 0.0
 
-    lines.append(
+    block = (
         f"───────────────\n"
         f"Cash: ${cash:.2f} | Positions: ${total_val:.2f}\n"
         f"<b>Account: ${account_value:.2f}</b> (started ${basis:,.0f})\n"
         f"{tot_emoji} <b>TOTAL P&amp;L: ${true_pnl:+.2f}</b> ({pct:+.2f}%)\n"
         f"\n"
         f"  ├ Unrealized (open): ${unrealized:+.2f}\n"
-        f"  ├ Closed trades ({len(hist)}): ${realized_logged:+.2f}\n"
-        f"  └ Tranche harvests: ${tranche_profit:+.2f}"
+        f"  ├ Full exits ({len(hist)}): ${realized_logged:+.2f}\n"
     )
+    if tranches:
+        block += (f"  └ Tranche harvests ({len(tranches)}, {tranche_wins} green): "
+                  f"${tranche_pl:+.2f}")
+    else:
+        block += ("  └ Tranche harvests: none logged yet\n"
+                  "     <i>(harvests before this build weren't recorded — "
+                  "the money is in cash and counted in the total)</i>")
+    lines.append(block)
 
     send_telegram("\n".join(lines))
 

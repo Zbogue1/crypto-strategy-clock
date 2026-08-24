@@ -376,6 +376,33 @@ def _execute_partial_sell(
 
     state["cash"] += net
 
+    # ── LOG THE HARVEST ───────────────────────────────────────────────────
+    # Tranche sells previously wrote no record anywhere. The money reached
+    # cash, so totals stayed correct — but the trade log showed "7 closed,
+    # all losses" while a winner was being banked in the background, and
+    # there was no way to measure whether the tranche system works at all.
+    #
+    # Kept in a separate list rather than trade_history so win/loss counts
+    # for FULL exits stay comparable, while the harvests remain visible.
+    cost_of_slice = holding.get("spent", 0) * fraction / max(1 - fraction, 1e-9) \
+        if fraction < 1 else holding.get("spent", 0)
+    state.setdefault("tranche_sales", []).append({
+        "token_ticker":  holding.get("token_ticker", "?"),
+        "contract":      holding.get("contract_address", ""),
+        "reason":        reason,
+        "fraction":      round(fraction, 4),
+        "units_sold":    units_to_sell,
+        "price":         current_price,
+        "entry_price":   holding.get("entry_price", 0),
+        "proceeds":      round(net, 2),
+        "cost_basis":    round(cost_of_slice, 2),
+        "profit":        round(net - cost_of_slice, 2),
+        "gain_x":        round(current_price / holding["entry_price"], 2)
+                         if holding.get("entry_price") else 0,
+        "wallet_alias":  holding.get("wallet_alias", ""),
+        "sold_at":       datetime.now(timezone.utc).isoformat(),
+    })
+
     entry   = holding["entry_price"]
     gain_x  = current_price / entry if entry > 0 else 1
     gain_pct = (gain_x - 1) * 100
