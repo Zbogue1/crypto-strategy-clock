@@ -85,7 +85,10 @@ _DOMAIN_PATTERNS = [
     ("weather_climate", [
         (10, r"\b(hurricane|tornado|blizzard|snowfall|rainfall|el ni[nñ]o|la ni[nñ]a|"
              r"drought|wildfire|tropical storm|category [1-5])\b"),
-        (4,  r"\b(temperature|snow|storm|weather|climate|degrees|forecast)\b"),
+        # Kalshi weather markets phrase it as "high temp"/"low temp" as often
+        # as "temperature", and always name a city or degrees threshold.
+        (4,  r"\b(temperature|temp|snow|storm|weather|climate|degrees|forecast)\b"),
+        (4,  r"\b(high|low)\s+temp\b|\b\d{2,3}\s*°?\s*f\b|\bfahrenheit\b"),
     ]),
 ]
 
