@@ -274,8 +274,42 @@ def _held_minutes(opened_at: str) -> float:
 _last_update_id = 0
 
 
+_poll_fail_logged = False
+
+
+def clear_webhook() -> None:
+    """
+    Delete any registered webhook before polling.
+
+    Telegram allows EITHER a webhook OR getUpdates, never both. If a webhook is
+    set — even one registered by accident, or left over from another service
+    sharing a token — getUpdates returns 409 Conflict and polling receives
+    nothing, forever, with no visible error. Sending still works, so the bot
+    looks alive while ignoring every command.
+    """
+    if not TELEGRAM_TOKEN:
+        return
+    try:
+        info = requests.get(
+            f"https://api.telegram.org/bot{TELEGRAM_TOKEN}/getWebhookInfo",
+            timeout=10)
+        url = ""
+        if info.status_code == 200:
+            url = (info.json().get("result") or {}).get("url", "")
+        if url:
+            log.warning(f"Telegram: webhook registered ({url}) — deleting so "
+                        f"getUpdates polling can work")
+            requests.post(
+                f"https://api.telegram.org/bot{TELEGRAM_TOKEN}/deleteWebhook",
+                json={"drop_pending_updates": False}, timeout=10)
+        else:
+            log.info("Telegram: no webhook set — polling is clear")
+    except Exception as e:
+        log.warning(f"Telegram webhook check failed: {e}")
+
+
 def poll_commands():
-    global _last_update_id
+    global _last_update_id, _poll_fail_logged
     if not TELEGRAM_TOKEN:
         return
     try:
@@ -283,7 +317,17 @@ def poll_commands():
             f"https://api.telegram.org/bot{TELEGRAM_TOKEN}/getUpdates",
             params={"offset": _last_update_id + 1, "timeout": 5}, timeout=10)
         if r.status_code != 200:
+            # Log ONCE rather than every 5s, but never silently. A 409 here is
+            # a webhook conflict and means no command will ever be received.
+            if not _poll_fail_logged:
+                _poll_fail_logged = True
+                log.error(f"Telegram getUpdates HTTP {r.status_code}: "
+                          f"{r.text[:200]}")
+                if r.status_code == 409:
+                    log.error("409 = webhook conflict. Calling deleteWebhook.")
+                    clear_webhook()
             return
+        _poll_fail_logged = False
         for upd in r.json().get("result", []):
             _last_update_id = max(_last_update_id, upd["update_id"])
             msg  = upd.get("message", {}) or {}
@@ -563,6 +607,10 @@ def main():
                  f"message @{me['username']} directly if replies don't arrive")
     else:
         log.error(f"Telegram getMe failed: {me.get('error')}")
+
+    # Must run before polling starts — a stale webhook silently blocks every
+    # command while outbound messages continue to work normally.
+    clear_webhook()
 
     if not SILENT:
         s = pf.get_summary()
