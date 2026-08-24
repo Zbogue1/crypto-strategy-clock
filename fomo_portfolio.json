@@ -2,10 +2,10 @@
   "version": "golem-v1",
   "reset_date": "2026-08-08",
   "reset_reason": "FOMO Golem launch \u2014 fresh $1,000 paper portfolio, FOMO-only strategy",
-  "cash": 9026.663663001096,
+  "cash": 9026.879757834758,
   "starting_cash": 10000.0,
   "peak_value": 10000.0,
-  "total_trades": 5,
+  "total_trades": 6,
   "winning_trades": 1,
   "losing_trades": 0,
   "total_realized_pnl": 0.0,
@@ -33,12 +33,12 @@
       "auto_exit_at": "2026-08-10T23:57:15.914260+00:00",
       "source": "fomo_copy",
       "partial_taken": false,
-      "peak_price": 1293.24,
+      "peak_price": 1306.16,
       "tranche_1_sold": false,
       "tranche_2_sold": false,
       "trailing_stop_active": false,
       "peak_liquidity": 208760.18,
-      "last_price_check": 1267.77
+      "last_price_check": 1306.16
     },
     {
       "position_id": "fa2ea0e3",
@@ -68,7 +68,7 @@
       "tranche_2_sold": false,
       "trailing_stop_active": false,
       "peak_liquidity": 411834.4,
-      "last_price_check": 0.0305
+      "last_price_check": 0.02943
     },
     {
       "position_id": "a4b6ce3f",
@@ -98,7 +98,7 @@
       "tranche_2_sold": false,
       "trailing_stop_active": false,
       "peak_liquidity": 2788511.98,
-      "last_price_check": 0.2607
+      "last_price_check": 0.2506
     },
     {
       "position_id": "475fd27a",
@@ -128,36 +128,7 @@
       "tranche_2_sold": false,
       "trailing_stop_active": false,
       "peak_liquidity": 951261.63,
-      "last_price_check": 68.14
-    },
-    {
-      "position_id": "626253ea",
-      "token_ticker": "UOTF",
-      "token_name": "United Oil Trust Fund",
-      "entry_price": 0.02638,
-      "units": 7573.919636087946,
-      "spent": 200.0,
-      "stop_loss": 0.017147,
-      "exit_target": 0.034294,
-      "wallet_alias": "Golem (narrative: AI_AGENTS)",
-      "wallet_address": "",
-      "contract_address": "HXRgj1EdGa2Y31RGAmnSXS5VMob5iqz5NA9q3pUhpump",
-      "catalyst": "Score 6/10 \u2014 Prime window: 3.1d old, Healthy liq $413,299",
-      "catalyst_score": 6,
-      "market_cap": 26377908,
-      "liquidity_usd": 413299.23,
-      "token_age_days": 3.0729989378375038,
-      "holder_count": null,
-      "volume_spike_pct": -42.92818298050353,
-      "entered_at": "2026-08-23T06:00:09.956714+00:00",
-      "auto_exit_at": "2026-08-24T06:00:09.956725+00:00",
-      "source": "narrative_import",
-      "regime_at_entry": "BULL",
-      "partial_taken": false,
-      "peak_price": 0.02638,
-      "tranche_1_sold": false,
-      "tranche_2_sold": false,
-      "trailing_stop_active": false
+      "last_price_check": 67.95
     },
     {
       "position_id": "7b0b76ea",
@@ -392,10 +363,46 @@
       "pnl_usd": 38.85,
       "pnl_pct": 116.99,
       "exited_at": "2026-08-23T20:59:01.224419+00:00"
+    },
+    {
+      "position_id": "626253ea",
+      "token_ticker": "UOTF",
+      "token_name": "United Oil Trust Fund",
+      "entry_price": 0.02638,
+      "units": 7573.919636087946,
+      "spent": 200.0,
+      "stop_loss": 0.017147,
+      "exit_target": 0.034294,
+      "wallet_alias": "Golem (narrative: AI_AGENTS)",
+      "wallet_address": "",
+      "contract_address": "HXRgj1EdGa2Y31RGAmnSXS5VMob5iqz5NA9q3pUhpump",
+      "catalyst": "Score 6/10 \u2014 Prime window: 3.1d old, Healthy liq $413,299",
+      "catalyst_score": 6,
+      "market_cap": 26377908,
+      "liquidity_usd": 413299.23,
+      "token_age_days": 3.0729989378375038,
+      "holder_count": null,
+      "volume_spike_pct": -42.92818298050353,
+      "entered_at": "2026-08-23T06:00:09.956714+00:00",
+      "auto_exit_at": "2026-08-24T06:00:09.956725+00:00",
+      "source": "narrative_import",
+      "regime_at_entry": "BULL",
+      "partial_taken": false,
+      "peak_price": 0.02638,
+      "tranche_1_sold": false,
+      "tranche_2_sold": false,
+      "trailing_stop_active": false,
+      "peak_liquidity": 12174.78,
+      "last_price_check": 2.856e-05,
+      "exit_price": 2.856e-05,
+      "exit_reason": "stop_loss",
+      "pnl_usd": -199.78,
+      "pnl_pct": -99.89,
+      "exited_at": "2026-08-24T05:46:01.034642+00:00"
     }
   ],
   "archived_history_note": "Prior July 2026 paper trades archived before this reset.",
-  "last_updated": "2026-08-24T05:18:21.997445+00:00",
+  "last_updated": "2026-08-24T05:46:01.035705+00:00",
   "deposits": [
     {
       "target": 10000.0,
