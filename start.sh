@@ -10,6 +10,7 @@
 # Set exactly ONE of these on each Railway service:
 #   FORCE_KALSHI=true  → Kalshi Golem   (kalshi_tracker.py)
 #   FORCE_FOMO=true    → FOMO Golem     (fomo_tracker.py)
+#   FORCE_STOCK=true   → Stock Golem    (stock_tracker.py)
 #   FORCE_ORACLE=true  → legacy oracle  (crypto_oracle_v3.py --once)
 #
 # Legacy name matching is kept as a fallback so nothing breaks mid-migration,
@@ -18,7 +19,7 @@
 echo "=================================================="
 echo "Railway project: ${RAILWAY_PROJECT_NAME:-unknown}"
 echo "Railway service: ${RAILWAY_SERVICE_NAME:-unknown}"
-echo "Flags: FORCE_KALSHI=${FORCE_KALSHI:-unset} FORCE_FOMO=${FORCE_FOMO:-unset} FORCE_ORACLE=${FORCE_ORACLE:-unset}"
+echo "Flags: FORCE_KALSHI=${FORCE_KALSHI:-unset} FORCE_FOMO=${FORCE_FOMO:-unset} FORCE_STOCK=${FORCE_STOCK:-unset} FORCE_ORACLE=${FORCE_ORACLE:-unset}"
 echo "=================================================="
 
 if [ "$FORCE_KALSHI" = "true" ]; then
@@ -28,6 +29,10 @@ if [ "$FORCE_KALSHI" = "true" ]; then
 elif [ "$FORCE_FOMO" = "true" ]; then
     echo "→ Starting FOMO GOLEM (explicit flag)"
     python fomo_tracker.py
+
+elif [ "$FORCE_STOCK" = "true" ]; then
+    echo "→ Starting STOCK GOLEM (explicit flag)"
+    python stock_tracker.py
 
 elif [ "$FORCE_ORACLE" = "true" ]; then
     echo "→ Starting LEGACY ORACLE (explicit flag)"

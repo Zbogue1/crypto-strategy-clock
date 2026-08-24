@@ -14,8 +14,8 @@ nothing and looks like the code is broken.
 
 | | Project `precious-reprieve` | Project `Crypto Strategy Clock` |
 |---|---|---|
-| Contains | `crypto-strategy-clock`, `btc-scalper` | `desirable-insight`, `crypto-strategy-clock` |
-| Which is live | `crypto-strategy-clock` (Online) | `desirable-insight` (Online) |
+| Contains | `crypto-strategy-clock`, `btc-scalper` | `desirable-insight`, `Stock Golem`, `crypto-strategy-clock` |
+| Which is live | `crypto-strategy-clock` (Online) | `desirable-insight`, `Stock Golem` |
 
 ---
 
@@ -51,6 +51,23 @@ nothing and looks like the code is broken.
 
 ---
 
+### 🟢 STOCK GOLEM
+- **Project:** `Crypto Strategy Clock`
+- **Service:** `Stock Golem`
+- **Runs:** `stock_tracker.py` (routed by `FORCE_STOCK=true` — name-independent)
+- **Strategy:** Ross Cameron 5-pillar momentum day trading — see `STOCK_GOLEM_STRATEGY.md`
+- **Market data:** Alpaca free tier (IEX). Paper account, $2,000 bank.
+- **Persistence:** Upstash Redis, key `stock_portfolio`
+- **Trading window:** 07:00–10:30 ET entry, force close 15:50 ET, weekdays only
+- **Key variables:** `FORCE_STOCK`, `STOCK_TELEGRAM_TOKEN`, `TELEGRAM_CHAT_ID`,
+  `ALPACA_API_KEY`, `ALPACA_SECRET_KEY`, `ANTHROPIC_API_KEY`,
+  `UPSTASH_REDIS_URL`, `UPSTASH_REDIS_TOKEN`
+- **Own Telegram bot:** Stock Golem Bot (separate token from FOMO/Kalshi)
+
+**→ Add stock variables HERE.**
+
+---
+
 ### 🔴 DUPLICATE KALSHI — should be removed
 - **Project:** `Crypto Strategy Clock`
 - **Service:** `crypto-strategy-clock`
@@ -76,7 +93,12 @@ nothing and looks like the code is broken.
 | Variable prefix | Project | Service |
 |---|---|---|
 | `KALSHI_*`, `UPSTASH_REDIS_*` | `precious-reprieve` | `crypto-strategy-clock` |
-| `FOMO_*`, `GMAIL_*`, `HELIUS_*`, `ALCHEMY_*` | `Crypto Strategy Clock` | `desirable-insight` |
+| `FOMO_*`, `GMAIL_*`, `HELIUS_*`, `ALCHEMY_*`, `BIRDEYE_*` | `Crypto Strategy Clock` | `desirable-insight` |
+| `STOCK_*`, `ALPACA_*` | `Crypto Strategy Clock` | `Stock Golem` |
+
+**Routing is by flag, not by name.** Each service sets exactly one of
+`FORCE_KALSHI` / `FORCE_FOMO` / `FORCE_STOCK` / `FORCE_ORACLE`. Services can be
+renamed freely; a service with no flag refuses to start rather than guessing.
 
 ---
 
