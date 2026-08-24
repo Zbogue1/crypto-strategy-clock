@@ -59,5 +59,28 @@
       "SOL"
     ],
     "alert": "XRP position is -5.8% from entry \u2014 monitor $1.35 support closely; stop-loss at $1.30 remains active."
+  },
+  {
+    "ts": "2026-08-24T08:02:13.689565+00:00",
+    "coin": "BTC",
+    "price": 77310,
+    "signal": "HOLD",
+    "confidence": 0,
+    "score": null,
+    "fg": 73,
+    "btc_price": 77310,
+    "btc_dominance": 59.2,
+    "candidates": [
+      "LIT",
+      "MON",
+      "PUMP",
+      "FDUSD",
+      "RLUSD",
+      "USDG",
+      "PAXG",
+      "XRP",
+      "SOL"
+    ],
+    "alert": null
   }
 ]
