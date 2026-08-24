@@ -276,7 +276,13 @@ def poll_commands():
             return
         for upd in r.json().get("result", []):
             _last_update_id = max(_last_update_id, upd["update_id"])
-            text = (upd.get("message", {}).get("text") or "").strip()
+            msg  = upd.get("message", {}) or {}
+            chat = (msg.get("chat") or {}).get("id")
+            if chat:
+                # Whoever messages the bot is the chat it should reply to —
+                # this self-corrects a wrong or stale TELEGRAM_CHAT_ID.
+                tg.remember_chat(chat)
+            text = (msg.get("text") or "").strip()
             if not text:
                 continue
             _handle_command(text)
@@ -370,8 +376,12 @@ def _format_health() -> str:
     lines = ["🩺 *STOCK GOLEM HEALTH*\n"]
     lines.append(
         f"📍 project `{os.getenv('RAILWAY_PROJECT_NAME','?')}` / "
-        f"service `{os.getenv('RAILWAY_SERVICE_NAME','?')}`\n"
+        f"service `{os.getenv('RAILWAY_SERVICE_NAME','?')}`"
     )
+    me = tg.whoami()
+    if me.get("ok"):
+        lines.append(f"🤖 bot: @{me['username']} ({me['name']})")
+    lines.append("")
 
     if not sd.is_configured():
         lines.append("❌ Alpaca keys not set")
@@ -449,6 +459,17 @@ def main():
 
     if not sd.is_configured():
         log.error("ALPACA_API_KEY / ALPACA_SECRET_KEY not set — data layer dead")
+
+    # Identify which bot this token belongs to — with several bots configured
+    # it's easy to set one token while messaging a different bot, and the only
+    # symptom is a confusing "chat not found".
+    me = tg.whoami()
+    if me.get("ok"):
+        log.info(f"Telegram bot identity: @{me['username']} ({me['name']})")
+        log.info(f"Configured chat_id: {tg.CHAT_ID or 'unset'} — "
+                 f"message @{me['username']} directly if replies don't arrive")
+    else:
+        log.error(f"Telegram getMe failed: {me.get('error')}")
 
     if not SILENT:
         s = pf.get_summary()

@@ -19,21 +19,78 @@ log = logging.getLogger(__name__)
 TELEGRAM_TOKEN = (os.getenv("STOCK_TELEGRAM_TOKEN")
                   or os.getenv("TELEGRAM_BOT_TOKEN", ""))
 CHAT_ID        = (os.getenv("STOCK_CHAT_ID")
-                  or os.getenv("TELEGRAM_CHAT_ID", ""))
+                  or os.getenv("TELEGRAM_CHAT_ID", "")).strip()
 URL = f"https://api.telegram.org/bot{TELEGRAM_TOKEN}/sendMessage"
+
+# Learned at runtime from any incoming message. A configured CHAT_ID that
+# belongs to a different bot's chat produces "chat not found", which is
+# indistinguishable from a typo and wastes time. Whoever messages the bot IS
+# the chat it should reply to, so we capture that and prefer it.
+_learned_chat_id: str = ""
+
+
+def remember_chat(chat_id) -> None:
+    """Called by the command poller for every incoming message."""
+    global _learned_chat_id
+    cid = str(chat_id).strip()
+    if cid and cid != _learned_chat_id:
+        _learned_chat_id = cid
+        if cid != CHAT_ID:
+            log.warning(
+                f"Stock Telegram: learned chat_id {cid} from an incoming "
+                f"message (configured value was {CHAT_ID or 'unset'}). "
+                f"Using the learned one."
+            )
+
+
+def _target_chat() -> str:
+    return _learned_chat_id or CHAT_ID
+
+
+def whoami() -> dict:
+    """
+    Which bot does this token actually belong to?
+
+    With several bots in play it's easy to configure one token while messaging
+    a different bot — the symptom is 'chat not found', which looks like a bad
+    chat ID rather than a bot mix-up. This removes the ambiguity.
+    """
+    if not TELEGRAM_TOKEN:
+        return {"ok": False, "error": "no token set"}
+    try:
+        r = requests.get(
+            f"https://api.telegram.org/bot{TELEGRAM_TOKEN}/getMe", timeout=10)
+        if r.status_code != 200:
+            return {"ok": False, "error": f"HTTP {r.status_code}"}
+        d = r.json().get("result", {}) or {}
+        return {
+            "ok":        True,
+            "username":  d.get("username", "?"),
+            "name":      d.get("first_name", "?"),
+            "id":        d.get("id"),
+        }
+    except Exception as e:
+        return {"ok": False, "error": str(e)}
 
 
 def send(text: str, parse_mode: str = "Markdown") -> bool:
-    if not TELEGRAM_TOKEN or not CHAT_ID:
+    chat = _target_chat()
+    if not TELEGRAM_TOKEN or not chat:
         log.warning("Stock Telegram not configured — printing instead")
         print(f"\n{'='*60}\n{text}\n{'='*60}\n")
         return False
     try:
-        r = requests.post(URL, json={"chat_id": CHAT_ID, "text": text,
+        r = requests.post(URL, json={"chat_id": chat, "text": text,
                                      "parse_mode": parse_mode}, timeout=10)
         if r.status_code == 200:
             return True
-        log.warning(f"Stock Telegram HTTP {r.status_code}: {r.text[:200]}")
+        if r.status_code == 400 and "chat not found" in r.text.lower():
+            log.error(
+                f"Stock Telegram: chat_id {chat} not reachable. Send this bot "
+                f"any message so it can learn the right one."
+            )
+        else:
+            log.warning(f"Stock Telegram HTTP {r.status_code}: {r.text[:200]}")
     except Exception as e:
         log.error(f"Stock Telegram send failed: {e}")
     return False
