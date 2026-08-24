@@ -295,9 +295,17 @@ def poll_commands():
             text = (msg.get("text") or "").strip()
             if not text:
                 continue
-            _handle_command(text)
+            # Each command gets its own guard. Previously one exception killed
+            # the whole poll iteration and was logged at DEBUG — invisible at
+            # normal log level, so a single broken command silently disabled
+            # ALL command handling with no trace.
+            try:
+                _handle_command(text)
+            except Exception as e:
+                log.error(f"Command '{text[:30]}' failed: {e}", exc_info=True)
+                tg.send(f"⚠️ `{text.split()[0]}` failed: {type(e).__name__}: {e}")
     except Exception as e:
-        log.debug(f"Command poll error: {e}")
+        log.warning(f"Command poll error: {e}")
 
 
 def _handle_command(text: str):
@@ -478,11 +486,15 @@ def _format_health() -> str:
     else:
         lines.append(f"✅ Redis OK via `{rh['url_var']}`")
         if rh["key_exists"]:
+            # Coerce explicitly — a stored null would make an f-string numeric
+            # format raise TypeError, which is what silently broke /health.
+            cash  = rh.get("stored_cash")  or 0
+            basis = rh.get("stored_basis") or 0
             lines.append(
-                f"   stored: ${rh.get('stored_cash',0):,.2f} cash / "
-                f"${rh.get('stored_basis',0):,.2f} basis · "
-                f"{rh.get('stored_trades',0)} trades · "
-                f"{rh.get('stored_deposits',0)} deposit(s) · {rh['bytes']:,}B"
+                f"   stored: ${float(cash):,.2f} cash / "
+                f"${float(basis):,.2f} basis · "
+                f"{rh.get('stored_trades') or 0} trades · "
+                f"{rh.get('stored_deposits') or 0} deposit(s) · {rh['bytes']:,}B"
             )
         else:
             lines.append("   ⚠️ portfolio key does not exist yet — nothing saved")
