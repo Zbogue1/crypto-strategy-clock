@@ -104,15 +104,15 @@
     ]
   },
   "nyhrox": {
-    "trades_followed": 1,
+    "trades_followed": 2,
     "wins": 1,
-    "losses": 0,
-    "total_pnl_pct": 45.42,
-    "total_pnl_usd": 45.13,
-    "consecutive_losses": 0,
-    "win_rate": 1.0,
-    "last_trade_at": "2026-08-24T07:22:30.163873+00:00",
-    "last_outcome": "WIN",
+    "losses": 1,
+    "total_pnl_pct": 10.38,
+    "total_pnl_usd": 9.96,
+    "consecutive_losses": 1,
+    "win_rate": 0.5,
+    "last_trade_at": "2026-08-24T15:13:10.245779+00:00",
+    "last_outcome": "LOSS",
     "last_token": "LOOKSMAX",
     "trade_log": [
       {
@@ -122,6 +122,14 @@
         "pnl_usd": 45.13,
         "reason": "tracker_sold",
         "at": "2026-08-24T07:22:30.163873+00:00"
+      },
+      {
+        "token": "LOOKSMAX",
+        "win": false,
+        "pnl_pct": -35.04,
+        "pnl_usd": -35.17,
+        "reason": "stop_loss",
+        "at": "2026-08-24T15:13:10.245779+00:00"
       }
     ]
   }
