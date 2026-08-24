@@ -91,6 +91,11 @@ GOLEM_SIZE_MULTIPLIER = float(os.getenv("FOMO_GOLEM_SIZE_MULT", "0.5"))
 # Master switch
 GOLEM_INDEPENDENT_TRADING = os.getenv("FOMO_GOLEM_TRADING", "true").lower() == "true"
 
+# Notify on filtered/rejected signals. Off by default — rejections are the
+# normal outcome and alerting on each one drowns the actionable messages.
+# Set FOMO_NOTIFY_FILTERED=true to see them again while debugging.
+NOTIFY_FILTERED = os.getenv("FOMO_NOTIFY_FILTERED", "false").lower() == "true"
+
 # ─── POSITION SIZING ──────────────────────────────────────────────────────────
 # Sizing is a % of REMAINING cash, so it tapers rather than hitting a wall.
 # This percentage — not the position count cap — is what actually determines
@@ -690,6 +695,16 @@ def handle_relayed_text_message(message: dict):
     # -- /leaderboard command --
     if any(kw in text.lower() for kw in ("/leaderboard", "leaderboard", "/stats")):
         send_telegram(get_wallet_leaderboard())
+        return
+
+    # -- /reconcile — do the books balance across all three bots? --
+    if text.lower().startswith("/reconcile"):
+        try:
+            from reconcile import reconcile_all, format_report
+            send_telegram(format_report(reconcile_all()))
+        except Exception as e:
+            log.error(f"Reconcile failed: {e}", exc_info=True)
+            send_telegram(f"⚠️ Reconcile failed: {e}")
         return
 
     # -- /alpaca command — probe Alpaca free-tier data quality --
@@ -2126,10 +2141,17 @@ def process_social_signal(signal: dict):
             # Transient API errors — DexScreener rate limit or network blip. Silent skip.
             log.info(f"Social signal filtered ({alias}): {display_name} — {reject}")
         else:
-            send_telegram(
-                f"⚠️ <b>Signal filtered</b> ({alias} via {source})\n"
-                f"{display_name}: {reject}"
-            )
+            # Rejections are the normal case — most signals should be filtered.
+            # Alerting on every one buries the alerts that actually matter
+            # (entries, exits, stop-losses) under routine noise. Logged always,
+            # notified only if you opt in.
+            log.info(f"Signal filtered ({alias} via {source}): "
+                     f"{display_name} — {reject}")
+            if NOTIFY_FILTERED:
+                send_telegram(
+                    f"⚠️ <b>Signal filtered</b> ({alias} via {source})\n"
+                    f"{display_name}: {reject}"
+                )
         return
 
     sync_fomo_state_from_github()

@@ -373,6 +373,10 @@ def _handle_command(text: str):
     elif low.startswith("/trades"):
         tg.send(_format_ledger())
 
+    elif low.startswith("/reconcile"):
+        from reconcile import reconcile_all, format_report
+        tg.send(format_report(reconcile_all()), parse_mode=None)
+
     elif low.startswith("/deposit"):
         _handle_deposit(text)
 

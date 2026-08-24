@@ -403,6 +403,9 @@ def _poll_telegram_commands():
                               parse_mode=None)
             elif text.startswith("/health"):
                 send_telegram(build_health_report(), parse_mode=None)
+            elif text.startswith("/reconcile"):
+                from reconcile import reconcile_all, format_report
+                send_telegram(format_report(reconcile_all()), parse_mode=None)
             elif text.startswith("/archives"):
                 _handle_archives(text)
             elif text.startswith("/deposit"):
