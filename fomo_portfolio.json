@@ -2,10 +2,10 @@
   "version": "golem-v1",
   "reset_date": "2026-08-08",
   "reset_reason": "FOMO Golem launch \u2014 fresh $1,000 paper portfolio, FOMO-only strategy",
-  "cash": 9003.508272663317,
+  "cash": 9129.425086949032,
   "starting_cash": 10000.0,
   "peak_value": 10000.0,
-  "total_trades": 8,
+  "total_trades": 9,
   "winning_trades": 2,
   "losing_trades": 0,
   "total_realized_pnl": 0.0,
@@ -38,7 +38,7 @@
       "tranche_2_sold": false,
       "trailing_stop_active": false,
       "peak_liquidity": 208760.18,
-      "last_price_check": 1293.26
+      "last_price_check": 1293.24
     },
     {
       "position_id": "fa2ea0e3",
@@ -68,7 +68,7 @@
       "tranche_2_sold": false,
       "trailing_stop_active": false,
       "peak_liquidity": 411834.4,
-      "last_price_check": 0.0297
+      "last_price_check": 0.02896
     },
     {
       "position_id": "a4b6ce3f",
@@ -98,7 +98,7 @@
       "tranche_2_sold": false,
       "trailing_stop_active": false,
       "peak_liquidity": 2788511.98,
-      "last_price_check": 0.2554
+      "last_price_check": 0.25
     },
     {
       "position_id": "475fd27a",
@@ -128,7 +128,7 @@
       "tranche_2_sold": false,
       "trailing_stop_active": false,
       "peak_liquidity": 951261.63,
-      "last_price_check": 67.89
+      "last_price_check": 67.47
     },
     {
       "position_id": "7b0b76ea",
@@ -159,36 +159,7 @@
       "tranche_2_sold": false,
       "trailing_stop_active": false,
       "peak_liquidity": 123990.57,
-      "last_price_check": 0.0009618
-    },
-    {
-      "position_id": "de80def3",
-      "token_ticker": "PANTS",
-      "token_name": "dogwifpants",
-      "entry_price": 0.0009324,
-      "units": 214285.7142857143,
-      "spent": 200.0,
-      "stop_loss": 0.00060606,
-      "exit_target": 0.00121212,
-      "wallet_alias": "Golem (narrative: DEPIN)",
-      "wallet_address": "",
-      "contract_address": "FtateF34Xzawa91bpbVNdX72hZYo9cymRDYqBreHHbJi",
-      "catalyst": "Score 6/10 \u2014 Prime window: 4.9d old, Distribution OK (30% top-10)",
-      "catalyst_score": 6,
-      "market_cap": 914671,
-      "liquidity_usd": 98481.44,
-      "token_age_days": 4.933148513990972,
-      "holder_count": null,
-      "volume_spike_pct": -27.279424447622176,
-      "entered_at": "2026-08-24T07:53:09.991547+00:00",
-      "auto_exit_at": "2026-08-25T07:53:09.991560+00:00",
-      "source": "narrative_import",
-      "regime_at_entry": "BULL",
-      "partial_taken": false,
-      "peak_price": 0.0009324,
-      "tranche_1_sold": false,
-      "tranche_2_sold": false,
-      "trailing_stop_active": false
+      "last_price_check": 0.0007917
     }
   ],
   "trade_history": [
@@ -471,10 +442,46 @@
       "pnl_usd": -35.17,
       "pnl_pct": -35.04,
       "exited_at": "2026-08-24T15:13:08.372205+00:00"
+    },
+    {
+      "position_id": "de80def3",
+      "token_ticker": "PANTS",
+      "token_name": "dogwifpants",
+      "entry_price": 0.0009324,
+      "units": 214285.7142857143,
+      "spent": 200.0,
+      "stop_loss": 0.00060606,
+      "exit_target": 0.00121212,
+      "wallet_alias": "Golem (narrative: DEPIN)",
+      "wallet_address": "",
+      "contract_address": "FtateF34Xzawa91bpbVNdX72hZYo9cymRDYqBreHHbJi",
+      "catalyst": "Score 6/10 \u2014 Prime window: 4.9d old, Distribution OK (30% top-10)",
+      "catalyst_score": 6,
+      "market_cap": 914671,
+      "liquidity_usd": 98481.44,
+      "token_age_days": 4.933148513990972,
+      "holder_count": null,
+      "volume_spike_pct": -27.279424447622176,
+      "entered_at": "2026-08-24T07:53:09.991547+00:00",
+      "auto_exit_at": "2026-08-25T07:53:09.991560+00:00",
+      "source": "narrative_import",
+      "regime_at_entry": "BULL",
+      "partial_taken": false,
+      "peak_price": 0.0009324,
+      "tranche_1_sold": false,
+      "tranche_2_sold": false,
+      "trailing_stop_active": false,
+      "peak_liquidity": 78662.89,
+      "last_price_check": 0.0005882,
+      "exit_price": 0.0005882,
+      "exit_reason": "stop_loss",
+      "pnl_usd": -74.08,
+      "pnl_pct": -36.92,
+      "exited_at": "2026-08-24T17:45:20.844030+00:00"
     }
   ],
   "archived_history_note": "Prior July 2026 paper trades archived before this reset.",
-  "last_updated": "2026-08-24T15:13:08.373268+00:00",
+  "last_updated": "2026-08-24T17:45:20.845036+00:00",
   "deposits": [
     {
       "target": 10000.0,
