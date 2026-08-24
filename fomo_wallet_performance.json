@@ -38,14 +38,14 @@
     ]
   },
   "Golem (narrative: DEPIN)": {
-    "trades_followed": 1,
+    "trades_followed": 2,
     "wins": 0,
-    "losses": 1,
-    "total_pnl_pct": -35.49,
-    "total_pnl_usd": -71.24,
-    "consecutive_losses": 1,
+    "losses": 2,
+    "total_pnl_pct": -72.41,
+    "total_pnl_usd": -145.32,
+    "consecutive_losses": 2,
     "win_rate": 0.0,
-    "last_trade_at": "2026-08-23T05:32:54.509047+00:00",
+    "last_trade_at": "2026-08-24T17:45:22.593387+00:00",
     "last_outcome": "LOSS",
     "last_token": "PANTS",
     "trade_log": [
@@ -56,6 +56,14 @@
         "pnl_usd": -71.24,
         "reason": "stop_loss",
         "at": "2026-08-23T05:32:54.509047+00:00"
+      },
+      {
+        "token": "PANTS",
+        "win": false,
+        "pnl_pct": -36.92,
+        "pnl_usd": -74.08,
+        "reason": "stop_loss",
+        "at": "2026-08-24T17:45:22.593387+00:00"
       }
     ]
   },
