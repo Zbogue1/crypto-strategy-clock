@@ -395,9 +395,14 @@ def _poll_telegram_commands():
                 parts = text.split()
                 lim = int(parts[1]) if len(parts) > 1 and parts[1].isdigit() else 20
                 off = int(parts[2]) if len(parts) > 2 and parts[2].isdigit() else 0
-                send_telegram(build_trade_ledger(limit=lim, offset=off))
+                # Plain text: exit reasons like "take_profit"/"stop_loss" and
+                # ticker names contain underscores, which Markdown treats as
+                # italic markers. An odd count makes Telegram reject the whole
+                # message — which is why the ledger silently never arrived.
+                send_telegram(build_trade_ledger(limit=lim, offset=off),
+                              parse_mode=None)
             elif text.startswith("/health"):
-                send_telegram(build_health_report())
+                send_telegram(build_health_report(), parse_mode=None)
             elif text.startswith("/archives"):
                 _handle_archives(text)
             elif text.startswith("/deposit"):

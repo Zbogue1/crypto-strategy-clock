@@ -17,6 +17,7 @@ by the FOMO system, or you can set separate ones.
 
 import logging
 import os
+import re
 from datetime import datetime, timezone
 from typing import Optional
 
@@ -34,19 +35,47 @@ TELEGRAM_URL   = f"https://api.telegram.org/bot{TELEGRAM_TOKEN}/sendMessage"
 
 # ─── SEND ─────────────────────────────────────────────────────────────────────
 
-def send_telegram(text: str, parse_mode: str = "Markdown") -> bool:
+def send_telegram(text: str, parse_mode: Optional[str] = "Markdown") -> bool:
     if not TELEGRAM_TOKEN or not CHAT_ID:
         log.warning("Kalshi Telegram: no token/chat_id configured — printing instead")
         print(f"\n{'='*60}\n{text}\n{'='*60}\n")
         return False
     try:
-        r = requests.post(
-            TELEGRAM_URL,
-            json={"chat_id": CHAT_ID, "text": text, "parse_mode": parse_mode},
-            timeout=10,
-        )
+        payload = {"chat_id": CHAT_ID, "text": text}
+        if parse_mode:
+            payload["parse_mode"] = parse_mode
+        else:
+            payload["text"] = re.sub(r"[*`]", "", text)
+
+        r = requests.post(TELEGRAM_URL, json=payload, timeout=10)
         if r.status_code == 200:
             return True
+
+        body = (r.text or "").lower()
+
+        # Markdown rejection — exit reasons like "take_profit" and "stop_loss"
+        # contain underscores, which Markdown reads as italic markers. An odd
+        # number leaves an unclosed entity and Telegram drops the WHOLE message.
+        # The ledger silently failed to send for exactly this reason.
+        # Losing formatting beats losing the report.
+        if r.status_code == 400 and ("can't parse entities" in body
+                                     or "can't find end of the entity" in body):
+            log.warning(f"Kalshi Telegram: markdown rejected, resending plain "
+                        f"({r.text[:120]})")
+            try:
+                # Keep underscores — they're part of tickers and exit reasons
+                plain = re.sub(r"[*`]", "", text)
+                r2 = requests.post(TELEGRAM_URL,
+                                   json={"chat_id": CHAT_ID, "text": plain},
+                                   timeout=10)
+                if r2.status_code == 200:
+                    return True
+                log.error(f"Kalshi Telegram: plain retry failed "
+                          f"HTTP {r2.status_code}: {r2.text[:160]}")
+            except Exception as e:
+                log.error(f"Kalshi Telegram: plain retry error: {e}")
+            return False
+
         log.warning(f"Kalshi Telegram: HTTP {r.status_code}: {r.text[:200]}")
         return False
     except Exception as e:
