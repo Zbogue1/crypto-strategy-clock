@@ -2,7 +2,7 @@
   "version": "golem-v1",
   "reset_date": "2026-08-08",
   "reset_reason": "FOMO Golem launch \u2014 fresh $1,000 paper portfolio, FOMO-only strategy",
-  "cash": 9072.00637534628,
+  "cash": 9237.340541901687,
   "starting_cash": 10000.0,
   "peak_value": 10000.0,
   "total_trades": 7,
@@ -38,7 +38,7 @@
       "tranche_2_sold": false,
       "trailing_stop_active": false,
       "peak_liquidity": 208760.18,
-      "last_price_check": 1306.16
+      "last_price_check": 1293.26
     },
     {
       "position_id": "fa2ea0e3",
@@ -68,7 +68,7 @@
       "tranche_2_sold": false,
       "trailing_stop_active": false,
       "peak_liquidity": 411834.4,
-      "last_price_check": 0.02943
+      "last_price_check": 0.02922
     },
     {
       "position_id": "a4b6ce3f",
@@ -98,7 +98,7 @@
       "tranche_2_sold": false,
       "trailing_stop_active": false,
       "peak_liquidity": 2788511.98,
-      "last_price_check": 0.2506
+      "last_price_check": 0.2561
     },
     {
       "position_id": "475fd27a",
@@ -128,15 +128,15 @@
       "tranche_2_sold": false,
       "trailing_stop_active": false,
       "peak_liquidity": 951261.63,
-      "last_price_check": 67.95
+      "last_price_check": 67.89
     },
     {
       "position_id": "7b0b76ea",
       "token_ticker": "MADE",
       "token_name": "SelfMade by SP3ND",
       "entry_price": 0.0005992,
-      "units": 333444.59279038716,
-      "spent": 200.0,
+      "units": 222296.39519359145,
+      "spent": 133.33333333333334,
       "stop_loss": 0.00038948,
       "exit_target": 0.00077896,
       "wallet_alias": "Golem (narrative: AI_AGENTS)",
@@ -154,10 +154,12 @@
       "source": "narrative_import",
       "regime_at_entry": "BULL",
       "partial_taken": false,
-      "peak_price": 0.0005992,
-      "tranche_1_sold": false,
+      "peak_price": 0.001489,
+      "tranche_1_sold": true,
       "tranche_2_sold": false,
-      "trailing_stop_active": false
+      "trailing_stop_active": false,
+      "peak_liquidity": 123990.57,
+      "last_price_check": 0.001489
     },
     {
       "position_id": "57ee719d",
@@ -436,7 +438,7 @@
     }
   ],
   "archived_history_note": "Prior July 2026 paper trades archived before this reset.",
-  "last_updated": "2026-08-24T07:44:02.264080+00:00",
+  "last_updated": "2026-08-24T07:49:10.745844+00:00",
   "deposits": [
     {
       "target": 10000.0,
