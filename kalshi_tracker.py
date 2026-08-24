@@ -199,6 +199,56 @@ HELP_TEXT = (
 _last_update_id = 0
 
 
+def _handle_deposit(text: str):
+    """
+    Add buying power without touching the track record.
+
+        /deposit 10000
+    """
+    from kalshi_portfolio import deposit
+
+    parts = text.split()
+    if len(parts) < 2:
+        s = get_portfolio_summary()
+        send_telegram(
+            "💵 *Add buying power*\n\n"
+            "`/deposit 10000`\n\n"
+            f"Current bank: ${s['starting_cash']:.2f} basis, "
+            f"${s['cash']:.2f} cash\n"
+            f"At ${DEFAULT_MARGIN:.0f}/trade that's "
+            f"{int(s['cash'] // DEFAULT_MARGIN)} more position(s).\n\n"
+            "_Unlike `/reset`, this keeps every trade and your W/L record. "
+            "Percentage returns stay honest because the basis rises too._"
+        )
+        return
+
+    try:
+        target = float(parts[1])
+    except ValueError:
+        send_telegram("⚠️ Give a number, e.g. `/deposit 10000`")
+        return
+
+    before = get_portfolio_summary()
+    result = deposit(target)
+    if not result:
+        send_telegram(
+            f"ℹ️ Basis is already ${before['starting_cash']:.2f} — "
+            f"nothing to add. Use a larger figure to top up further."
+        )
+        return
+
+    after = get_portfolio_summary()
+    send_telegram(
+        "💵 *Deposit complete*\n\n"
+        f"Bank: ${before['starting_cash']:.2f} → *${after['starting_cash']:.2f}*\n"
+        f"Cash: ${before['cash']:.2f} → *${after['cash']:.2f}*\n"
+        f"Capacity: {int(after['cash'] // DEFAULT_MARGIN)} concurrent positions "
+        f"at ${DEFAULT_MARGIN:.0f}/trade\n\n"
+        f"✅ Record preserved: *{after['winning_trades']}W / "
+        f"{after['losing_trades']}L* across {after['total_trades']} trades"
+    )
+
+
 def _handle_archives(text: str):
     """List archived portfolios, or restore one: /archives restore <key>"""
     from kalshi_portfolio import list_archives, restore_archive
@@ -350,6 +400,8 @@ def _poll_telegram_commands():
                 send_telegram(build_health_report())
             elif text.startswith("/archives"):
                 _handle_archives(text)
+            elif text.startswith("/deposit"):
+                _handle_deposit(text)
             elif text.startswith("/reset"):
                 _handle_reset(text)
             elif text.startswith("/report"):

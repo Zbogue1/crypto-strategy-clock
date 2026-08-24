@@ -266,6 +266,56 @@ def reset_portfolio(starting_cash: float = None) -> dict:
     return fresh
 
 
+def deposit(target_bank: float) -> Optional[dict]:
+    """
+    Add cash WITHOUT touching trade history, positions, or the W/L record.
+
+    Use this instead of reset_portfolio() when the goal is simply more buying
+    power. A reset destroys the calibration data that took weeks to accumulate;
+    a deposit just raises the bank.
+
+    Treated as a real deposit: cash AND starting_cash both rise by the same
+    amount, so percentage returns stay honest — depositing money is not a gain.
+    Idempotent: once the basis reaches the target, further calls no-op.
+    """
+    state = _load()
+    basis = float(state.get("starting_cash", STARTING_CASH))
+
+    if basis >= target_bank:
+        log.info(f"Kalshi deposit: basis already ${basis:,.2f} — no-op")
+        return None
+
+    # Ledger guard — protects against repeated deposits if a save fails to
+    # persist and the basis appears to revert on the next boot.
+    ledger = state.setdefault("deposits", [])
+    if any(abs(float(d.get("target", 0)) - target_bank) < 0.01 for d in ledger):
+        log.warning(
+            f"Kalshi deposit: target ${target_bank:,.2f} already in ledger but "
+            f"basis is ${basis:,.2f} — state didn't persist. Skipping to avoid "
+            f"double-funding."
+        )
+        return None
+
+    delta = target_bank - basis
+    state["cash"]          = state.get("cash", 0.0) + delta
+    state["starting_cash"] = basis + delta
+    state["peak_value"]    = state.get("peak_value", 0.0) + delta
+    ledger.append({
+        "target": target_bank,
+        "amount": round(delta, 2),
+        "at":     datetime.now(timezone.utc).isoformat(),
+    })
+    _save(state)
+
+    log.warning(
+        f"Kalshi: DEPOSITED ${delta:,.2f} — cash now ${state['cash']:,.2f}, "
+        f"basis ${state['starting_cash']:,.2f}. "
+        f"{len(state.get('trade_history', []))} trades and "
+        f"{state.get('winning_trades',0)}W/{state.get('losing_trades',0)}L preserved."
+    )
+    return state
+
+
 def list_archives() -> list:
     """Every archived portfolio snapshot, newest first."""
     index = _redis_get("kalshi_archive_index") or {"archives": []}
