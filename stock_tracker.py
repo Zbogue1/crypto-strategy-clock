@@ -321,6 +321,9 @@ def _handle_command(text: str):
     elif low.startswith("/trades"):
         tg.send(_format_ledger())
 
+    elif low.startswith("/deposit"):
+        _handle_deposit(text)
+
     elif low.startswith(("/postmortem", "/calibration", "/stats")):
         tg.send(pm.format_telegram())
 
@@ -332,6 +335,45 @@ def _handle_command(text: str):
 
     elif low.startswith(("/help", "/start")):
         tg.send(tg.HELP)
+
+
+def _handle_deposit(text: str):
+    """Add buying power without touching the track record: /deposit 10000"""
+    parts = text.split()
+    before = pf.get_summary()
+
+    if len(parts) < 2:
+        tg.send(
+            "💵 *Add buying power*\n\n"
+            "`/deposit 10000`\n\n"
+            f"Current: ${before['starting_cash']:.2f} basis, "
+            f"${before['cash']:.2f} cash\n\n"
+            "_Keeps every trade and your W/L record. Percentage returns stay "
+            "honest because the basis rises too._\n\n"
+            "⚠️ A bigger bank also means risk-based sizing can finally reach the "
+            f"full ${pf.RISK_PER_TRADE:.0f}/trade — on $2k, tight stops were "
+            "capital-capped well below that."
+        )
+        return
+
+    try:
+        target = float(parts[1])
+    except ValueError:
+        tg.send("⚠️ Give a number, e.g. `/deposit 10000`")
+        return
+
+    if not pf.deposit(target):
+        tg.send(f"ℹ️ Basis is already ${before['starting_cash']:.2f} — nothing added.")
+        return
+
+    after = pf.get_summary()
+    tg.send(
+        "💵 *Deposit complete*\n\n"
+        f"Bank: ${before['starting_cash']:.2f} → *${after['starting_cash']:.2f}*\n"
+        f"Cash: ${before['cash']:.2f} → *${after['cash']:.2f}*\n\n"
+        f"✅ Record preserved: *{after['winning_trades']}W / "
+        f"{after['losing_trades']}L* across {after['total_trades']} trades"
+    )
 
 
 def _format_ledger(limit: int = 15) -> str:

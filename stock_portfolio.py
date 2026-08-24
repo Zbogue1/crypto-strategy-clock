@@ -424,6 +424,57 @@ def get_summary(prices: dict = None) -> dict:
     }
 
 
+def deposit(target_bank: float) -> Optional[dict]:
+    """
+    Add buying power WITHOUT touching trade history or the W/L record.
+
+    Use this rather than reset_portfolio() when the goal is simply more capital.
+    A reset destroys the calibration data; a deposit just raises the bank.
+
+    Both cash and starting_cash rise by the same amount, so percentage returns
+    stay honest — a deposit is not a gain. Idempotent, with a ledger guard
+    against double-funding if a save fails to persist.
+
+    NOTE ON SIZING: raising the bank also raises how many shares risk-based
+    sizing can buy, because MAX_POSITION_PCT is a share of starting_cash. On a
+    $2k account a 15¢ stop was capital-constrained to ~$20 of real risk; at
+    $10k the full $50 risk becomes reachable, which is closer to the strategy
+    as written.
+    """
+    state = _load()
+    basis = float(state.get("starting_cash", STARTING_CASH))
+
+    if basis >= target_bank:
+        log.info(f"Stock deposit: basis already ${basis:,.2f} — no-op")
+        return None
+
+    ledger = state.setdefault("deposits", [])
+    if any(abs(float(d.get("target", 0)) - target_bank) < 0.01 for d in ledger):
+        log.warning(
+            f"Stock deposit: target ${target_bank:,.2f} already in ledger but "
+            f"basis is ${basis:,.2f} — state didn't persist. Skipping."
+        )
+        return None
+
+    delta = target_bank - basis
+    state["cash"]          = state.get("cash", 0.0) + delta
+    state["starting_cash"] = basis + delta
+    ledger.append({
+        "target": target_bank,
+        "amount": round(delta, 2),
+        "at":     datetime.now(timezone.utc).isoformat(),
+    })
+    _save(state)
+
+    log.warning(
+        f"Stock: DEPOSITED ${delta:,.2f} — cash now ${state['cash']:,.2f}, "
+        f"basis ${state['starting_cash']:,.2f}. "
+        f"{len(state.get('trade_history', []))} trades and "
+        f"{state.get('winning_trades',0)}W/{state.get('losing_trades',0)}L preserved."
+    )
+    return state
+
+
 def reset_portfolio(cash: float = None) -> dict:
     """Archive then reset — never destroy history outright."""
     old = _load()
