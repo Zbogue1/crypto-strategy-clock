@@ -159,26 +159,86 @@ def silence_stop_alarm(ack_id: str) -> bool:
 
 # ─── PRICE FETCHING ───────────────────────────────────────────────────────────
 
+def _pairs_to_price_liq(pairs: list) -> tuple:
+    """Pick the deepest pair and return (price, liquidity)."""
+    if not pairs:
+        return None, None
+    best  = max(pairs, key=lambda p: float((p.get("liquidity") or {}).get("usd", 0) or 0))
+    price = float(best.get("priceUsd", 0) or 0)
+    liq   = float((best.get("liquidity") or {}).get("usd", 0) or 0)
+    return (price if price > 0 else None), (liq if liq > 0 else None)
+
+
+def get_prices_batch(contracts: list) -> dict:
+    """
+    Fetch prices for MANY tokens in one request.
+
+    DexScreener's token endpoint accepts comma-separated addresses (30 max per
+    call). Fetching one position at a time meant N requests per monitoring
+    cycle, against an API this codebase already hits from the scanner, the
+    narrative scan, token validation and discovery. At 6 positions we saw an
+    83% failure rate — not load from position count, but cumulative pressure on
+    a shared free endpoint.
+
+    One request for all positions removes the exit monitor as a contributor.
+
+    Returns {contract: (price, liquidity)} — missing keys mean no data.
+    """
+    out: dict = {}
+    if not contracts:
+        return out
+
+    for i in range(0, len(contracts), 30):
+        chunk = [c for c in contracts[i:i + 30] if c]
+        if not chunk:
+            continue
+        url = "https://api.dexscreener.com/latest/dex/tokens/" + ",".join(chunk)
+        for attempt in range(3):
+            try:
+                resp = requests.get(url, timeout=15)
+                if resp.status_code == 200:
+                    pairs = resp.json().get("pairs") or []
+                    # Group returned pairs back to their token
+                    by_token: dict = {}
+                    for p in pairs:
+                        for side in ("baseToken", "quoteToken"):
+                            addr = (p.get(side) or {}).get("address")
+                            if addr in chunk:
+                                by_token.setdefault(addr, []).append(p)
+                    for c in chunk:
+                        out[c] = _pairs_to_price_liq(by_token.get(c, []))
+                    break
+
+                if resp.status_code == 429:
+                    wait = 2 ** attempt
+                    log.warning(
+                        f"DexScreener rate limited (429) — backing off {wait}s "
+                        f"[attempt {attempt+1}/3]"
+                    )
+                    time.sleep(wait)
+                    continue
+
+                # Log the actual status. Silently returning None on any non-200
+                # made rate limiting indistinguishable from a dead token.
+                log.warning(
+                    f"DexScreener batch HTTP {resp.status_code} for "
+                    f"{len(chunk)} token(s): {resp.text[:120]}"
+                )
+                break
+            except Exception as e:
+                log.warning(f"DexScreener batch attempt {attempt+1} failed: {e}")
+                time.sleep(1)
+
+    return out
+
+
 def _get_price_and_liquidity(contract: str, chain: str = "solana") -> tuple:
     """
-    Fetch current price and liquidity (USD) from DexScreener.
-    Returns (price_float, liquidity_usd_float) or (None, None) on failure.
+    Single-token fetch. Prefer get_prices_batch() when checking several.
+    Kept for callers that genuinely need one token.
     """
-    try:
-        url = f"https://api.dexscreener.com/latest/dex/tokens/{contract}"
-        resp = requests.get(url, timeout=10)
-        if resp.status_code != 200:
-            return None, None
-        pairs = resp.json().get("pairs") or []
-        if not pairs:
-            return None, None
-        best  = max(pairs, key=lambda p: float(p.get("liquidity", {}).get("usd", 0) or 0))
-        price = float(best.get("priceUsd", 0) or 0)
-        liq   = float(best.get("liquidity", {}).get("usd", 0) or 0)
-        return (price if price > 0 else None), (liq if liq > 0 else None)
-    except Exception as e:
-        log.debug(f"Exit monitor price fetch error ({contract[:8]}): {e}")
-        return None, None
+    got = get_prices_batch([contract])
+    return got.get(contract, (None, None))
 
 
 def _get_current_price(contract: str, chain: str = "solana") -> Optional[float]:
@@ -424,7 +484,7 @@ def _execute_full_sell(
 
 # ─── CONDITION CHECKS ─────────────────────────────────────────────────────────
 
-def _check_holding(holding: dict, state: dict):
+def _check_holding(holding: dict, state: dict, prefetched: tuple = None):
     """
     Evaluate all exit conditions for one holding.
     Mutates holding and state in-place when action taken.
@@ -437,7 +497,11 @@ def _check_holding(holding: dict, state: dict):
         return
 
     _load_stats["checked"] = _load_stats.get("checked", 0) + 1
-    current_price, current_liq = _get_price_and_liquidity(contract, chain)
+    # Use the batched price when available — avoids a second request per position
+    if prefetched and prefetched[0]:
+        current_price, current_liq = prefetched
+    else:
+        current_price, current_liq = _get_price_and_liquidity(contract, chain)
     if not current_price:
         # Not a harmless skip: this position went unchecked for stops this cycle
         _load_stats["price_fail"] = _load_stats.get("price_fail", 0) + 1
@@ -628,14 +692,23 @@ def run_exit_checks():
     _load_stats["price_fail"] = 0
     _cycle_start = _time.time()
 
+    # ONE request for every position's price instead of one per position.
+    contracts = [h.get("contract_address") for h in holdings if h.get("contract_address")]
+    price_map = get_prices_batch(contracts)
+    got = sum(1 for v in price_map.values() if v[0])
+    log.info(f"Exit monitor: batch price fetch — {got}/{len(contracts)} resolved")
+
     # Iterate over a copy — holdings may be removed during iteration
     for holding in list(holdings):
         # Re-check that position still exists in state (may have been closed)
         if not any(h.get("position_id") == holding.get("position_id") for h in state["holdings"]):
             continue
         try:
-            _check_holding(holding, state)
-            time.sleep(3)   # small gap between price fetches
+            _check_holding(holding, state,
+                           prefetched=price_map.get(holding.get("contract_address")))
+            # Prices came from one batched call, so no per-token pacing needed.
+            # A short pause still keeps chart/rug lookups from bunching up.
+            time.sleep(0.5)
         except Exception as e:
             log.error(f"Exit monitor error on {holding.get('token_ticker','?')}: {e}")
 
