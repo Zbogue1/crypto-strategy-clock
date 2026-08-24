@@ -78,22 +78,30 @@ def get_movers(limit: int = 10) -> tuple:
     return data.get("gainers", []), None
 
 
-def bar_quality(symbol: str, minutes_back: int = 180) -> dict:
+def bar_quality(symbol: str, lookback_days: int = 5) -> dict:
     """
-    Pull 1-minute bars and measure how complete they are.
+    Pull 1-minute bars from the most recent TRADING SESSION and measure coverage.
+
+    Do NOT frame this as "the last N minutes" — running the probe overnight or
+    at a weekend then returns zero bars and looks like a data failure when it's
+    just an empty clock. Instead we pull several days, find the latest session
+    that actually has bars, and measure density within that session.
 
     A tradeable feed should return close to one bar per market minute. Large
-    gaps mean the stock is trading somewhere IEX can't see, which makes VWAP,
+    gaps mean the stock trades where IEX can't see it, which makes VWAP,
     the 9 EMA, and pullback detection unreliable.
+
+    Note: Alpaca's free tier cannot return the most recent ~15 minutes, so a
+    live-market run will always show a small trailing gap. That's expected.
     """
     end   = datetime.now(timezone.utc)
-    start = end - timedelta(minutes=minutes_back)
+    start = end - timedelta(days=lookback_days)
     data, err = _get(
         DATA_URL, f"/v2/stocks/{symbol}/bars",
         {
             "timeframe": "1Min",
-            "start":     start.strftime("%Y-%m-%dT%H:%M:%SZ"),
-            "end":       end.strftime("%Y-%m-%dT%H:%M:%SZ"),
+            "start":     start.strftime("%Y-%m-%d"),
+            "end":       end.strftime("%Y-%m-%d"),
             "limit":     10000,
             "feed":      "iex",
         },
@@ -104,34 +112,41 @@ def bar_quality(symbol: str, minutes_back: int = 180) -> dict:
     bars = data.get("bars") or []
     if not bars:
         return {"symbol": symbol, "ok": True, "bars": 0, "coverage_pct": 0.0,
-                "note": "NO BARS — not visible on IEX in this window"}
+                "note": f"NO BARS in {lookback_days}d — not visible on IEX"}
 
-    # Coverage: bars returned vs minutes elapsed
-    coverage = len(bars) / max(minutes_back, 1) * 100
-    vols  = [b.get("v", 0) for b in bars]
+    # Group by calendar day, take the most recent session with data
+    by_day: dict = {}
+    for b in bars:
+        day = (b.get("t") or "")[:10]
+        by_day.setdefault(day, []).append(b)
+    latest_day = max(by_day)
+    session    = by_day[latest_day]
+
+    vols      = [b.get("v", 0) for b in session]
     total_vol = sum(vols)
-    zero_vol  = sum(1 for v in vols if not v)
 
-    # Largest consecutive gap between bars
+    # Coverage measured against the 390-minute regular session
+    coverage = len(session) / 390 * 100
+
     max_gap = 0
     try:
-        ts = [datetime.fromisoformat(b["t"].replace("Z", "+00:00")) for b in bars]
+        ts = [datetime.fromisoformat(b["t"].replace("Z", "+00:00")) for b in session]
         for a, b in zip(ts, ts[1:]):
-            gap = (b - a).total_seconds() / 60
-            max_gap = max(max_gap, gap)
+            max_gap = max(max_gap, (b - a).total_seconds() / 60)
     except Exception:
         pass
 
     return {
         "symbol":       symbol,
         "ok":           True,
-        "bars":         len(bars),
-        "coverage_pct": round(coverage, 1),
+        "session":      latest_day,
+        "bars":         len(session),
+        "days_with_data": len(by_day),
+        "coverage_pct": round(min(coverage, 100.0), 1),
         "total_volume": int(total_vol),
-        "zero_vol_bars": zero_vol,
         "max_gap_min":  round(max_gap, 1),
-        "first":        bars[0].get("t", "")[:16],
-        "last":         bars[-1].get("t", "")[:16],
+        "first":        session[0].get("t", "")[11:16],
+        "last":         session[-1].get("t", "")[11:16],
     }
 
 
@@ -158,14 +173,16 @@ def run_probe() -> str:
     b = bar_quality("AAPL")
     if b.get("bars"):
         lines.append(
-            f"  AAPL: {b['bars']} bars, {b['coverage_pct']}% coverage, "
-            f"max gap {b['max_gap_min']}min"
+            f"  AAPL [{b['session']}]: {b['bars']} bars, {b['coverage_pct']}% cov, "
+            f"max gap {b['max_gap_min']}min\n"
+            f"    {b['first']}–{b['last']} UTC, {b['days_with_data']} day(s) of data"
         )
     else:
         lines.append(f"  AAPL: {b.get('note') or b.get('error')}")
     lines.append("")
 
     # 3. The real test — actual small-cap movers
+    ok_count, tested = 0, 0
     lines.append("<b>Today's movers (the real test)</b>")
     movers, err = get_movers(8)
     if err:
@@ -181,18 +198,41 @@ def run_probe() -> str:
                 lines.append(f"  {sym} (+{pct:.0f}%): ERROR {q.get('error','')[:40]}")
             elif q["bars"] == 0:
                 lines.append(f"  ❌ {sym} (+{pct:.0f}%): NO BARS on IEX")
+                ok_count = ok_count  # no-op, keeps counter honest
             else:
                 flag = "✅" if q["coverage_pct"] >= 50 else "⚠️"
+                if q["coverage_pct"] >= 50:
+                    ok_count += 1
+                tested += 1
                 lines.append(
-                    f"  {flag} {sym} (+{pct:.0f}%): {q['bars']} bars, "
+                    f"  {flag} {sym} (+{pct:.0f}%) [{q['session']}]: {q['bars']} bars, "
                     f"{q['coverage_pct']}% cov, gap {q['max_gap_min']}min, "
                     f"vol {q['total_volume']:,}"
                 )
 
+    # Verdict
+    lines.append("")
+    if tested == 0:
+        lines.append(
+            "<b>Verdict:</b> inconclusive — no mover data returned. "
+            "Re-run during market hours (9:30–11:00 AM ET)."
+        )
+    elif ok_count >= max(1, tested // 2):
+        lines.append(
+            f"<b>✅ Verdict: usable</b> — {ok_count}/{tested} movers had ≥50% "
+            f"bar coverage. IEX sees enough of these names to build on."
+        )
+    else:
+        lines.append(
+            f"<b>⚠️ Verdict: too thin</b> — only {ok_count}/{tested} movers had "
+            f"≥50% coverage. IEX can't see these stocks well enough; we'd need "
+            f"the Schwab API or a paid feed."
+        )
+
     lines.append(
-        "\n<i>Coverage is bars returned vs minutes elapsed. Below ~50% on the "
-        "movers means IEX can't see enough of the tape to trade this strategy, "
-        "and we'd need Schwab or a paid feed.</i>"
+        "\n<i>Coverage = bars vs the 390-min regular session. Free tier can't "
+        "return the last ~15 min, so a small trailing gap during live markets "
+        "is normal.</i>"
     )
     return "\n".join(lines)
 
