@@ -202,7 +202,96 @@ def _load() -> dict:
     return _default_state()
 
 
+# Tests that override STOCK_PORTFOLIO_FILE still wrote to Redis, because the
+# Redis key is fixed and _save tries Redis FIRST. So a test with an isolated
+# temp file silently mutated the live book — two TEST trades and five fake
+# restart records ended up in production, leaving consecutive_losses at 2 of
+# the 3-strike halt threshold on entirely fabricated data.
+#
+# Any harness touching these modules must set PAPER_TEST_MODE=1.
+TEST_MODE = os.getenv("PAPER_TEST_MODE", "").strip() not in ("", "0", "false")
+if TEST_MODE:
+    log.warning("Stock portfolio: PAPER_TEST_MODE — Redis writes DISABLED, "
+                "local file only. Live state is protected.")
+
+
+def purge_test_data() -> dict:
+    """
+    Surgically remove test artifacts from the live book.
+
+    Removes only entries that could not have come from real trading:
+      - trade_history rows whose symbol is TEST or reason is test_flat
+      - restart records whose deploy id isn't a real Railway UUID
+
+    Everything else is left untouched, and consecutive_losses is recomputed
+    from what remains rather than guessed at. Deliberately not a reset: real
+    history is the asset here, and wiping the file to fix a bad number is the
+    mistake this codebase has already made once.
+    """
+    state = _load()
+
+    hist = state.get("trade_history", [])
+    keep_hist, dropped_trades = [], []
+    for t in hist:
+        sym = str(t.get("symbol", "")).upper()
+        rsn = str(t.get("reason", "")).lower()
+        if sym in ("TEST", "TESTING") or rsn in ("test_flat", "test"):
+            dropped_trades.append(t)
+        else:
+            keep_hist.append(t)
+
+    restarts = state.get("restarts", [])
+    keep_restarts, dropped_restarts = [], []
+    for r in restarts:
+        dep = r.get("deploy", "") if isinstance(r, dict) else "legacy"
+        # Real Railway deployment ids are 36-char UUIDs; anything short and
+        # hand-written ("dep-bad", "dep-1") came from a harness.
+        if isinstance(dep, str) and dep.startswith("dep-") and len(dep) < 20:
+            dropped_restarts.append(r)
+        else:
+            keep_restarts.append(r)
+
+    # Recompute the halt counter from surviving trades, newest backwards.
+    streak = 0
+    for t in reversed(keep_hist):
+        if float(t.get("pnl", 0) or 0) < 0:
+            streak += 1
+        else:
+            break
+
+    before_streak = state.get("consecutive_losses", 0)
+    state["trade_history"]      = keep_hist
+    state["restarts"]           = keep_restarts
+    state["consecutive_losses"] = streak
+
+    # Trade counters were incremented by the fake closes too.
+    state["total_trades"] = max(0, int(state.get("total_trades", 0))
+                                - len(dropped_trades))
+
+    _save(state)
+    log.warning(f"Stock portfolio: purged {len(dropped_trades)} test trade(s), "
+                f"{len(dropped_restarts)} test restart(s); "
+                f"consecutive_losses {before_streak} -> {streak}")
+
+    return {
+        "trades_removed":   len(dropped_trades),
+        "restarts_removed": len(dropped_restarts),
+        "trades_kept":      len(keep_hist),
+        "streak_before":    before_streak,
+        "streak_after":     streak,
+        "removed_symbols":  [t.get("symbol") for t in dropped_trades],
+    }
+
+
 def _save(state: dict):
+    if TEST_MODE:
+        # Never let a test reach the live store.
+        try:
+            with open(_LOCAL_FILE, "w") as f:
+                json.dump(state, f, indent=2, default=str)
+        except Exception as e:
+            log.error(f"Stock portfolio: test save failed: {e}")
+        return
     if _redis_set(_KEY, state):
         return
     try:

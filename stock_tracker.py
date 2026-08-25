@@ -564,6 +564,17 @@ def _handle_command(text: str):
         tg.send("🔍 Scanning...")
         Thread(target=lambda: run_scan(force=True, announce=True), daemon=True).start()
 
+    elif low.startswith("/purge_test"):
+        r = pf.purge_test_data()
+        tg.send(
+            "PURGE TEST DATA\n\n"
+            f"Removed {r['trades_removed']} test trade(s) "
+            f"{r['removed_symbols']}\n"
+            f"Removed {r['restarts_removed']} fake restart record(s)\n\n"
+            f"consecutive_losses: {r['streak_before']} -> {r['streak_after']}\n"
+            f"real trades kept: {r['trades_kept']}\n\n"
+            "Real history untouched.",
+            parse_mode=None)
     elif low.startswith("/inbox"):
         from fomo_inbox import build_report
         tg.send(build_report(), parse_mode=None)

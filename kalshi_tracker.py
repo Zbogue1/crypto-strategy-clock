@@ -917,9 +917,16 @@ def _save_funnel(f: dict):
     _event_funnel = f
     try:
         from kalshi_portfolio import _redis_set
-        _redis_set(_EVENT_FUNNEL_KEY, f)
+        # _redis_set returns False on a non-200 WITHOUT logging, so an
+        # ignored return value means a rejected write vanishes and the
+        # funnel only "disappears" at the next redeploy — the exact
+        # failure this persistence was written to prevent.
+        if not _redis_set(_EVENT_FUNNEL_KEY, f):
+            log.error("Kalshi events: funnel Redis write FAILED — "
+                      "/event_diag will lose this scan on the next "
+                      "redeploy.")
     except Exception as e:
-        log.debug(f"Kalshi events: funnel persist skipped: {e}")
+        log.error(f"Kalshi events: funnel persist error: {e}")
 
 
 def _load_funnel() -> dict:
