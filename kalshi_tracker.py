@@ -77,6 +77,8 @@ NOTIFY_NO_SIGNALS     = os.getenv("KALSHI_NOTIFY_NO_SIGNALS", "false").lower() =
 # Autonomous perp scanning — ON. Golem keeps hunting and paper trading so we
 # build a real track record. Set KALSHI_AUTO_SCAN=false to stop trading entirely.
 AUTO_SCAN             = os.getenv("KALSHI_AUTO_SCAN", "true").lower() == "true"
+# Startup banners are noise — Railway restarts constantly.
+ANNOUNCE_START        = os.getenv("KALSHI_ANNOUNCE_START", "false").lower() == "true"
 
 # SILENT MODE — trade autonomously but don't send unsolicited Telegram alerts.
 # Everything is still recorded to the portfolio and postmortem, so /kalshi and
@@ -1569,6 +1571,12 @@ def main():
     # Send startup message
     if not _announce:
         pass
+    # Same reasoning as Stock Golem: Railway restarts on every redeploy,
+    # crash and failed health check, so a startup banner is noise that
+    # teaches you to ignore the bot. Off unless explicitly enabled.
+    elif not ANNOUNCE_START:
+        log.info("Startup announcement suppressed "
+                 "(set KALSHI_ANNOUNCE_START=true to enable)")
     elif AUTO_SCAN and SILENT:
         send_telegram(
             "🤖 *KALSHI Golem* — _silent day-trading mode_\n\n"

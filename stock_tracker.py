@@ -61,6 +61,11 @@ FORCE_CLOSE_ET   = os.getenv("STOCK_FORCE_CLOSE", "15:50")
 
 MAX_HOLD_MINUTES = float(os.getenv("STOCK_MAX_HOLD_MIN", "120"))
 SILENT           = os.getenv("STOCK_SILENT", "false").lower() == "true"
+# "I'm online" on every Railway restart is noise. Off unless asked for.
+ANNOUNCE_START   = os.getenv("STOCK_ANNOUNCE_START", "false").lower() == "true"
+# More restarts than this within an hour means a crash loop, which IS worth
+# interrupting for.
+RESTART_ALARM    = int(os.getenv("STOCK_RESTART_ALARM", "3"))
 AUTO_TRADE       = os.getenv("STOCK_AUTO_TRADE", "true").lower() == "true"
 
 TELEGRAM_TOKEN = tg.TELEGRAM_TOKEN
@@ -104,6 +109,39 @@ REENTRY_COOLDOWN = 900
 
 
 _last_funnel: dict = {}
+
+
+def _record_restart() -> int:
+    """
+    Log this start and return how many happened in the last hour.
+
+    Kept in the same Redis the portfolio uses, so the count survives the
+    restart it is trying to measure — an in-memory counter would reset every
+    time and always report 1, which is precisely the blind spot.
+    """
+    from datetime import datetime, timezone, timedelta
+    try:
+        state = pf._load()
+        now   = datetime.now(timezone.utc)
+        stamps = state.get("restarts", [])
+        stamps.append(now.isoformat())
+
+        cutoff = now - timedelta(hours=1)
+        recent = []
+        for s in stamps[-50:]:
+            try:
+                if datetime.fromisoformat(str(s).replace("Z", "+00:00")) >= cutoff:
+                    recent.append(s)
+            except Exception:
+                pass
+
+        state["restarts"] = recent
+        pf._save(state)
+        log.info(f"Startup recorded — {len(recent)} restart(s) in the last hour")
+        return len(recent)
+    except Exception as e:
+        log.warning(f"Could not record restart: {e}")
+        return 1
 
 
 def build_diagnostic() -> str:
@@ -738,7 +776,24 @@ def main():
     # command while outbound messages continue to work normally.
     clear_webhook()
 
-    if not SILENT:
+    # Startup announcements are off by default. Railway restarts a service on
+    # every redeploy, every crash and every health-check failure, so "I'm
+    # online" is one of the least informative things the bot can say — and
+    # repeated often enough, it trains you to ignore ALL its messages.
+    #
+    # But the frequency of restarts IS informative, so instead of discarding
+    # it, count it: a normal restart stays silent, a crash loop speaks up.
+    restarts = _record_restart()
+    if restarts > RESTART_ALARM:
+        tg.send(
+            f"Stock Golem has restarted {restarts} times in the last hour.\n\n"
+            f"That is a crash loop, not normal deploys. Something is failing "
+            f"at startup and Railway keeps retrying it.\n\n"
+            f"Check the Railway deploy logs — the traceback will be at the "
+            f"end of each attempt.",
+            parse_mode=None,
+        )
+    elif ANNOUNCE_START and not SILENT:
         s = pf.get_summary()
         open_now, note = in_entry_window()
         tg.send(
