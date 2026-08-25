@@ -17,6 +17,24 @@
         "caution": "Poster appears to have significant invested position ($96k invested shown in UI), which may influence their bullish messaging",
         "user_note": ""
       }
+    ],
+    "\u725b\u6765": [
+      {
+        "at": "2026-08-25T10:08:38.203575+00:00",
+        "source": "screenshot",
+        "poster": "ether_monk",
+        "platform": "unknown",
+        "posted_when": "9h",
+        "stance": "BULLISH",
+        "conviction": "high",
+        "quote": "i know binance will list this because cz will want \u725b\u6765 in his exchange",
+        "is_new_call": false,
+        "identifier": null,
+        "identifier_unverified": null,
+        "commentary": "Predicts Binance listing based on CZ's interest in the token name itself",
+        "caution": "Token symbol is in Chinese characters (\u725b\u6765); contract address not visible in screenshot; conviction based on speculation about exchange listing rather than fundamentals",
+        "user_note": "He just bought $24k of this"
+      }
     ]
   }
 }
