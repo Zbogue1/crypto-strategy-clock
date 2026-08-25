@@ -701,14 +701,54 @@ def _check_holding(holding: dict, state: dict, prefetched: tuple = None):
         return
 
     # ── TRAILING STOP on final 33% ────────────────────────────────────────
+    # The final third is the piece meant to catch a real run, and a flat 30%
+    # stop shakes it out on ordinary mid-run noise — that is what closed CATE.
+    # Before firing, ask whether the evidence says this is still running:
+    # on-chain momentum plus any screenshot the user forwarded. Strictly
+    # guarded — see fomo_runner for why each guard exists.
     if holding.get("trailing_stop_active") and peak > 0:
         drop_from_peak = (current_price - peak) / peak
-        if drop_from_peak <= -TRAILING_STOP_PCT:
+        trailing = TRAILING_STOP_PCT
+        decision = None
+
+        try:
+            from fomo_runner import (evaluate_runner, apply_extension,
+                                     format_extension)
+            decision = evaluate_runner(holding, current_price, peak,
+                                       TRAILING_STOP_PCT, current_liq or 0)
+            if decision.get("hard_exit"):
+                net = _execute_full_sell(holding, current_price,
+                                         "runner_hard_floor", state)
+                _send_telegram(
+                    f"🛑 <b>{ticker} — hard exit</b>\n"
+                    f"{decision['reason']}\n"
+                    f"Recovered: ${net:.2f}"
+                )
+                return
+            trailing = decision["trailing_pct"]
+            if decision.get("extended") and not holding.get("runner_extension_until"):
+                apply_extension(holding, decision)
+                _send_telegram(format_extension(ticker, decision, gain_x))
+            elif decision.get("extended"):
+                apply_extension(holding, decision)
+        except Exception as e:
+            # Any failure here falls back to the standard stop. A broken
+            # momentum check must never leave a position unprotected.
+            log.error(f"Runner evaluation failed for {ticker}: {e} — "
+                      f"using standard {TRAILING_STOP_PCT*100:.0f}% stop")
+            trailing = TRAILING_STOP_PCT
+
+        if drop_from_peak <= -trailing:
             net = _execute_full_sell(holding, current_price, "trailing_stop", state)
+            extra = ""
+            if decision and decision.get("extended"):
+                extra = (f"\n<i>Stop had been widened to {trailing*100:.0f}% "
+                         f"on momentum — it still broke.</i>")
             _send_telegram(
                 f"📉 <b>TRAILING STOP: {ticker}</b>\n"
-                f"Dropped {drop_from_peak*100:.0f}% from peak — final 33% auto-exited.\n"
-                f"Recovered: ${net:.2f}"
+                f"Dropped {drop_from_peak*100:.0f}% from peak "
+                f"(stop {trailing*100:.0f}%) — final 33% auto-exited.\n"
+                f"Recovered: ${net:.2f}{extra}"
             )
             return
 
