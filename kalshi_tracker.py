@@ -431,6 +431,8 @@ def _poll_telegram_commands():
                 send_telegram(build_report(), parse_mode=None)
             elif text.startswith("/events"):
                 send_telegram(build_event_book(), parse_mode=None)
+            elif text.startswith("/event_diag"):
+                send_telegram(build_event_diagnostic(), parse_mode=None)
             elif text.startswith("/event_scan"):
                 send_telegram("🔍 Scanning event markets — this takes a minute...")
                 Thread(target=lambda: _run_event_scan_cycle(force=True),
@@ -847,6 +849,82 @@ EVENT_SCAN_INTERVAL = int(os.getenv("KALSHI_EVENT_SCAN_SEC", "3600"))
 EVENT_SETTLE_INTERVAL = int(os.getenv("KALSHI_EVENT_SETTLE_SEC", "900"))
 
 
+_event_funnel: dict = {}
+
+
+def build_event_diagnostic() -> str:
+    """
+    Why hasn't it placed an event bet?
+
+    Zero bets has two very different causes — the pipeline is broken, or the
+    edge gate is doing its job — and they look identical from outside. This
+    separates them.
+    """
+    L = ["KALSHI EVENT DIAGNOSTIC", ""]
+    L.append(f"Event trading: {'ENABLED' if EVENT_TRADING else 'DISABLED'}")
+    L.append(f"Scan every {EVENT_SCAN_INTERVAL//60} min · "
+             f"budget {EVENT_DAILY_TARGET}/day")
+
+    try:
+        from kalshi_event_portfolio import get_summary, bets_opened_today
+        s = get_summary()
+        L.append(f"Book: ${s['total_value']:.2f} · {s['n_positions']} open · "
+                 f"{bets_opened_today()}/{EVENT_DAILY_TARGET} used today")
+        L.append(f"Record: {s['wins']}W/{s['losses']}L over {s['total_trades']}")
+    except Exception as e:
+        L.append(f"Book: ERROR {str(e)[:60]}")
+
+    from kalshi_event_trader import (MIN_EDGE_POINTS, MIN_CONFIDENCE,
+                                     MAX_PER_DOMAIN)
+    from kalshi_event_scanner import (MIN_VOLUME, MIN_OPEN_INTEREST,
+                                      MAX_SPREAD_CENTS, MIN_HOURS_LEFT,
+                                      MAX_HOURS_LEFT)
+
+    f = _event_funnel
+    L += ["", "LAST SCAN"]
+    if not f:
+        L += ["  no scan has completed yet this session.",
+              f"  scans run every {EVENT_SCAN_INTERVAL//60} min — if this stays "
+              f"empty, the thread isn't running."]
+    else:
+        st = f.get("screen_stats", {})
+        L += [f"  at {str(f.get('at'))[:16]} UTC",
+              f"  {f.get('screened',0):>6,} markets screened",
+              f"  {st.get('parlay',0):>6,} multi-leg parlays dropped",
+              f"  {st.get('wrong_window',0):>6,} outside "
+              f"{MIN_HOURS_LEFT:.0f}-{MAX_HOURS_LEFT:.0f}h window",
+              f"  {st.get('illiquid',0):>6,} too illiquid / spread too wide",
+              f"  {st.get('price_band',0):>6,} outside price band",
+              f"  {st.get('domain',0):>6,} untradeable category",
+              f"  {f.get('candidates',0):>6} CANDIDATES analyzed",
+              "",
+              f"  {f.get('already_held',0):>6} already held",
+              f"  {f.get('domain_capped',0):>6} domain cap (max {MAX_PER_DOMAIN})",
+              f"  {f.get('no_analysis',0):>6} analysis failed",
+              f"  {f.get('analyst_pass',0):>6} analyst said PASS",
+              f"  {f.get('low_confidence',0):>6} confidence < {MIN_CONFIDENCE}",
+              f"  {f.get('insufficient_edge',0):>6} edge < {MIN_EDGE_POINTS:.0f}pts",
+              f"  {f.get('bets',0):>6} BETS PLACED"]
+
+        edges = [e for e in (f.get("edges") or []) if e is not None]
+        if edges:
+            L += ["", f"  best edge seen: {max(edges):.1f}pts "
+                      f"(need {MIN_EDGE_POINTS:.0f})"]
+        if f.get("reasons"):
+            L += ["", "  why each was passed on:"]
+            for r in f["reasons"][:6]:
+                L.append(f"    {r}")
+
+    L += ["", "READ THIS AS:",
+          "  candidates 0    -> the screen is too tight, or the API is failing",
+          "  candidates > 0, bets 0, edge always low",
+          "                  -> working as designed. Real edge is rare and the",
+          "                     gate exists to refuse marginal bets.",
+          "  analysis failed -> ANTHROPIC_API_KEY or the analyst is erroring",
+          "  no scan at all  -> the event thread died; check deploy logs"]
+    return "\n".join(L)
+
+
 def _run_event_scan_cycle(force: bool = False):
     """Screen event markets → analyst → edge gate → paper bet."""
     if not EVENT_TRADING and not force:
@@ -885,33 +963,56 @@ def _run_event_scan_cycle(force: bool = False):
     stamp     = datetime.now(timezone.utc).strftime("%Y%m%d_%H%M%S")
     taken     = 0
 
+    # Where candidates die. Without this, "0 bets placed" is indistinguishable
+    # from "the scan never ran" — which is exactly the ambiguity that made
+    # Stock Golem's silence impossible to diagnose. /event_diag reads this.
+    global _event_funnel
+    funnel = {"screened": stats.get("total", 0),
+              "candidates": len(candidates), "already_held": 0,
+              "domain_capped": 0, "no_analysis": 0, "analyst_pass": 0,
+              "low_confidence": 0, "insufficient_edge": 0, "sizing_failed": 0,
+              "bets": 0, "edges": [], "reasons": [],
+              "at": datetime.now(timezone.utc).isoformat(),
+              "screen_stats": stats}
+
     for m in candidates:
         if taken >= slots and not force:
             break
         ticker = m["ticker"]
         if ticker in held:
+            funnel["already_held"] += 1
             continue
 
         # Correlation cap BEFORE spending an AI call — six same-evening games
         # are one bet on "favourites hold up tonight".
         ok, why = check_domain_limit(m.get("domain", ""), open_pos)
         if not ok:
+            funnel["domain_capped"] += 1
             log.info(f"Kalshi events: skip {ticker} — {why}")
             continue
 
         try:
             analysis = analyze_question(m.get("title", ""), ticker=ticker)
         except Exception as e:
+            funnel["no_analysis"] += 1
             log.error(f"Kalshi events: analysis failed for {ticker}: {e}")
             continue
         if not analysis or analysis.get("error"):
+            funnel["no_analysis"] += 1
             log.warning(f"Kalshi events: no analysis for {ticker} — "
                         f"{(analysis or {}).get('error', 'empty result')}")
             continue
 
         decision = evaluate(m, analysis)
         if not decision.get("trade"):
-            log.info(f"Kalshi events: pass {ticker} — {decision.get('reason')}")
+            r = decision.get("reason", "")
+            funnel["edges"].append(decision.get("edge"))
+            funnel["reasons"].append(f"{ticker}: {r[:70]}")
+            if "analyst says PASS" in r:      funnel["analyst_pass"] += 1
+            elif "confidence" in r:            funnel["low_confidence"] += 1
+            elif "edge" in r:                  funnel["insufficient_edge"] += 1
+            else:                              funnel["sizing_failed"] += 1
+            log.info(f"Kalshi events: pass {ticker} — {r}")
             continue
 
         sizing = decision["sizing"]
@@ -935,12 +1036,14 @@ def _run_event_scan_cycle(force: bool = False):
             continue
 
         taken += 1
+        funnel["bets"] += 1
         open_pos.append(pos)
         if force or not SILENT:
             send_telegram(format_bet_alert(m, decision, analysis))
         time.sleep(1.5)
 
-    log.info(f"=== KALSHI EVENT SCAN END — {taken} bet(s) placed ===")
+    _event_funnel = funnel
+    log.info(f"=== KALSHI EVENT SCAN END — {taken} bet(s) placed | {funnel} ===")
 
 
 _stale_alerted: set = set()

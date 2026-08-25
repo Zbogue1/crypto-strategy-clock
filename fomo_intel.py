@@ -85,6 +85,20 @@ def _save(state: dict):
     except Exception as e:
         log.error(f"Intel: save error: {e}")
 
+    # ALSO push to the GitHub data branch.
+    #
+    # Redis and the local file both keep this on Railway, where the desktop
+    # cannot reach it — so trading intel from a screenshot was invisible to
+    # the daily report while non-trading relays (which go through
+    # fomo_inbox) showed up fine. The more useful category was the hidden one.
+    #
+    # The data branch is the only storage both Railway and the desktop touch.
+    try:
+        from fomo_inbox import _push_named
+        _push_named("fomo_intel.json", state)
+    except Exception as e:
+        log.debug(f"Intel: data-branch sync skipped: {e}")
+
 
 # ─── WRITE ────────────────────────────────────────────────────────────────────
 

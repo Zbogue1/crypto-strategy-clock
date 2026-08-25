@@ -78,6 +78,39 @@ def _pull() -> dict:
     return {"entries": []}
 
 
+def _push_named(filename: str, state: dict) -> bool:
+    """
+    Write any JSON blob to the data branch.
+
+    Exposed so other modules (fomo_intel) can reach the desktop through the
+    same route rather than each reinventing the GitHub contents API.
+    """
+    if not GITHUB_TOKEN:
+        return False
+    url = f"https://api.github.com/repos/{GITHUB_REPO}/contents/{filename}"
+    try:
+        sha = None
+        r = requests.get(url, params={"ref": DATA_BRANCH},
+                         headers=_headers(), timeout=15)
+        if r.status_code == 200:
+            sha = r.json().get("sha")
+        body = {
+            "message": f"{filename}: {datetime.now(timezone.utc).isoformat()[:16]}",
+            "content": base64.b64encode(
+                json.dumps(state, indent=2, default=str).encode()).decode(),
+            "branch": DATA_BRANCH,
+        }
+        if sha:
+            body["sha"] = sha
+        p = requests.put(url, json=body, headers=_headers(), timeout=20)
+        if p.status_code in (200, 201):
+            return True
+        log.error(f"Inbox: push {filename} HTTP {p.status_code}: {p.text[:160]}")
+    except Exception as e:
+        log.error(f"Inbox: push {filename} failed: {e}")
+    return False
+
+
 def _push(state: dict) -> bool:
     """
     Write the inbox back to the data branch.
