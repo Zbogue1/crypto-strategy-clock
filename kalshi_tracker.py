@@ -434,10 +434,21 @@ def _poll_telegram_commands():
             elif text.startswith("/event_deposit"):
                 parts = text.split()
                 if len(parts) < 2:
-                    send_telegram("Usage: /event_deposit 1000\n\n"
-                                  "Tops the event book UP TO that total. "
-                                  "Trade history is preserved.",
-                                  parse_mode=None)
+                    try:
+                        from kalshi_event_portfolio import get_summary as _es
+                        _cur = _es()["total_value"]
+                    except Exception:
+                        _cur = 0.0
+                    send_telegram(
+                        f"Event book is currently ${_cur:,.2f}\n\n"
+                        f"/event_deposit <TARGET TOTAL>\n\n"
+                        f"This sets the book TO that number - it does NOT\n"
+                        f"add that amount on top.\n\n"
+                        f"  /event_deposit {_cur + 500:,.0f}  ->  adds "
+                        f"${500:,.0f}\n"
+                        f"  /event_deposit {_cur:,.0f}  ->  adds nothing\n\n"
+                        f"Trade history is always preserved.",
+                        parse_mode=None)
                 else:
                     try:
                         from kalshi_event_portfolio import deposit
@@ -448,8 +459,9 @@ def _poll_telegram_commands():
                         else:
                             send_telegram(
                                 f"EVENT BOOK DEPOSIT\n\n"
-                                f"Added ${r['added']:,.2f}\n"
-                                f"Book value: ${r['value']:,.2f}\n"
+                                f"Topped up TO ${r['value']:,.2f}\n"
+                                f"(added ${r['added']:,.2f})\n"
+
                                 f"Cash: ${r['cash']:,.2f}\n"
                                 f"Basis: ${r['basis']:,.2f}\n"
                                 f"Trades preserved: {r['trades_preserved']}\n"
