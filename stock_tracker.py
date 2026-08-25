@@ -127,7 +127,27 @@ def _record_restart() -> int:
     # the process dying and being revived — an actual crash. Restarts with
     # different IDs are just deploys and are none of our business.
     deploy_id = (os.getenv("RAILWAY_DEPLOYMENT_ID")
-                 or os.getenv("RAILWAY_GIT_COMMIT_SHA") or "unknown")
+                 or os.getenv("RAILWAY_GIT_COMMIT_SHA") or "")
+
+    # If Railway doesn't expose a deployment identifier, every restart looks
+    # like the same deploy and the crash-loop test becomes a redeploy counter
+    # again — the exact false alarm this is meant to remove. Better to stay
+    # silent and say why than to cry wolf: an alert that fires on normal
+    # pushes gets ignored, and then a real crash loop goes unnoticed too.
+    if not deploy_id:
+        log.warning("No RAILWAY_DEPLOYMENT_ID or RAILWAY_GIT_COMMIT_SHA — "
+                    "cannot tell redeploys from crashes, so the crash-loop "
+                    "alarm is disabled. Check the deploy logs manually if the "
+                    "bot seems to be restarting.")
+        try:
+            state = pf._load()
+            state.setdefault("restarts", []).append(
+                {"at": datetime.now(timezone.utc).isoformat(), "deploy": "unknown"})
+            state["restarts"] = state["restarts"][-50:]
+            pf._save(state)
+        except Exception:
+            pass
+        return 0
 
     try:
         state = pf._load()
