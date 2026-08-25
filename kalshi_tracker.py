@@ -92,7 +92,15 @@ MONITOR_POSITIONS     = os.getenv("KALSHI_MONITOR_POSITIONS", "true").lower() ==
 # ─── DAY-TRADING MODE ─────────────────────────────────────────────────────────
 # Target N new bets per UTC day, every one closed out the same day.
 # This produces a clean, comparable daily sample for the weekly report.
-DAILY_TRADE_TARGET    = int(os.getenv("KALSHI_DAILY_TRADES", "4"))
+# Perp positions all close same-day (see _should_force_close), so nothing
+# carries over and this daily count IS the concurrent position limit. At 4
+# trades x $50 margin only $200 of a $500 bank was ever working; $300 sat idle
+# for no reason other than that 4 was the number picked when the strategy was
+# new. Cash is the constraint that should bind, not an arbitrary count.
+#
+# The real correlation guard is MAX_SAME_DIRECTION below — six crypto longs are
+# one bet wearing six tickers, and that limit is what stops it, not this one.
+DAILY_TRADE_TARGET    = int(os.getenv("KALSHI_DAILY_TRADES", "10"))
 # Force-close any position still open at/after this UTC hour.
 DAY_CLOSE_UTC_HOUR    = int(os.getenv("KALSHI_DAY_CLOSE_HOUR", "23"))
 # Stop opening new trades this many hours before the close, so every position
