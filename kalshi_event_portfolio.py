@@ -51,8 +51,10 @@ STATE_FILE  = os.getenv(
 )
 STATE_KEY   = "kalshi_event_portfolio"
 
-STARTING_CASH = float(os.getenv("KALSHI_EVENT_STARTING_CASH", "500.0"))
-MAX_POSITIONS = int(os.getenv("KALSHI_EVENT_MAX_POSITIONS", "8"))
+STARTING_CASH = float(os.getenv("KALSHI_EVENT_STARTING_CASH", "1000.0"))
+# Cash is the real constraint, not a position count. At $100/bet a $1,000 book
+# supports ten concurrent bets; this cap only stops a runaway loop.
+MAX_POSITIONS = int(os.getenv("KALSHI_EVENT_MAX_POSITIONS", "10"))
 
 
 def _default_state() -> dict:
@@ -237,6 +239,49 @@ def get_summary() -> dict:
         "losses":        state.get("losing_trades", 0),
         "win_rate":      round(wins / settled * 100, 1) if settled else 0.0,
     }
+
+
+def deposit(target_bank: float) -> dict:
+    """
+    Top the book up to `target_bank` without touching trade history.
+
+    NOT a reset. Changing KALSHI_EVENT_STARTING_CASH only affects a book that
+    doesn't exist yet — an existing book keeps its old figure forever, which is
+    how Stock Golem sat at $2,000 after the variable was raised to $10,000.
+
+    Both cash and starting_cash rise by the same amount, so the reconciliation
+    invariant (account movement == recorded events) still holds: adding money
+    is not profit, and must not read as profit.
+    """
+    state = _load()
+    current_basis = float(state.get("starting_cash", STARTING_CASH))
+    cash          = float(state.get("cash", 0))
+    at_cost       = sum(float(h.get("cost_basis", 0) or 0)
+                        for h in state.get("holdings", []))
+    current_value = cash + at_cost
+
+    delta = round(float(target_bank) - current_value, 2)
+    if delta <= 0:
+        return {"ok": False,
+                "reason": f"book is already ${current_value:,.2f} — "
+                          f"nothing to add to reach ${target_bank:,.2f}"}
+
+    state["cash"]          = round(cash + delta, 2)
+    state["starting_cash"] = round(current_basis + delta, 2)
+    state.setdefault("deposits", []).append({
+        "at":     datetime.now(timezone.utc).isoformat(),
+        "amount": delta,
+        "from_value": current_value,
+        "to_value":   round(target_bank, 2),
+    })
+    saved = _save(state)
+
+    log.warning(f"Kalshi events: DEPOSIT ${delta:,.2f} — book now "
+                f"${target_bank:,.2f}, basis ${state['starting_cash']:,.2f}")
+    return {"ok": True, "added": delta,
+            "cash": state["cash"], "basis": state["starting_cash"],
+            "value": round(target_bank, 2), "persisted": saved,
+            "trades_preserved": len(state.get("trade_history", []))}
 
 
 def stale_positions(grace_hours: float = None) -> list:

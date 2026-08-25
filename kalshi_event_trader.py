@@ -37,8 +37,8 @@ log = logging.getLogger(__name__)
 MIN_EDGE_POINTS   = float(os.getenv("KALSHI_EVENT_MIN_EDGE", "8"))
 MIN_CONFIDENCE    = int(os.getenv("KALSHI_EVENT_MIN_CONF", "60"))
 # Stake per event bet, in dollars.
-STAKE_PER_BET     = float(os.getenv("KALSHI_EVENT_STAKE", "50"))
-MAX_EVENT_POSITIONS = int(os.getenv("KALSHI_EVENT_MAX_POSITIONS", "8"))
+STAKE_PER_BET     = float(os.getenv("KALSHI_EVENT_STAKE", "100"))
+MAX_EVENT_POSITIONS = int(os.getenv("KALSHI_EVENT_MAX_POSITIONS", "10"))
 # Cap exposure to any single domain — six baseball games in one evening is one
 # bet on "favourites hold up tonight", not six independent positions.
 MAX_PER_DOMAIN    = int(os.getenv("KALSHI_EVENT_MAX_PER_DOMAIN", "3"))

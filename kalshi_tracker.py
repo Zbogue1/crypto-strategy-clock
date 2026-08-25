@@ -431,6 +431,34 @@ def _poll_telegram_commands():
                 send_telegram(build_report(), parse_mode=None)
             elif text.startswith("/events"):
                 send_telegram(build_event_book(), parse_mode=None)
+            elif text.startswith("/event_deposit"):
+                parts = text.split()
+                if len(parts) < 2:
+                    send_telegram("Usage: /event_deposit 1000\n\n"
+                                  "Tops the event book UP TO that total. "
+                                  "Trade history is preserved.",
+                                  parse_mode=None)
+                else:
+                    try:
+                        from kalshi_event_portfolio import deposit
+                        r = deposit(float(parts[1]))
+                        if not r.get("ok"):
+                            send_telegram(f"No change: {r.get('reason')}",
+                                          parse_mode=None)
+                        else:
+                            send_telegram(
+                                f"EVENT BOOK DEPOSIT\n\n"
+                                f"Added ${r['added']:,.2f}\n"
+                                f"Book value: ${r['value']:,.2f}\n"
+                                f"Cash: ${r['cash']:,.2f}\n"
+                                f"Basis: ${r['basis']:,.2f}\n"
+                                f"Trades preserved: {r['trades_preserved']}\n"
+                                + ("" if r.get("persisted") else
+                                   "\nWARNING: Redis write failed - "
+                                   "this will be lost on redeploy."),
+                                parse_mode=None)
+                    except Exception as e:
+                        send_telegram(f"Deposit failed: {e}", parse_mode=None)
             elif text.startswith("/event_diag"):
                 send_telegram(build_event_diagnostic(), parse_mode=None)
             elif text.startswith("/event_scan"):
@@ -844,7 +872,10 @@ def _run_monitor_cycle():
 # reduce the number of crypto perp trades, which was the explicit requirement.
 
 EVENT_TRADING       = os.getenv("KALSHI_EVENT_TRADING", "true").lower() == "true"
-EVENT_DAILY_TARGET  = int(os.getenv("KALSHI_EVENT_DAILY_TRADES", "4"))
+# Cash is the constraint, not a daily count. The edge gate already refuses
+# marginal bets, so a low daily cap just leaves capital idle when several
+# genuinely good setups land on the same day.
+EVENT_DAILY_TARGET  = int(os.getenv("KALSHI_EVENT_DAILY_TRADES", "10"))
 EVENT_SCAN_INTERVAL = int(os.getenv("KALSHI_EVENT_SCAN_SEC", "3600"))
 EVENT_SETTLE_INTERVAL = int(os.getenv("KALSHI_EVENT_SETTLE_SEC", "900"))
 
