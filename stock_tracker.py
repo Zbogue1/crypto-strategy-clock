@@ -522,6 +522,9 @@ def _handle_command(text: str):
         tg.send("🔍 Scanning...")
         Thread(target=lambda: run_scan(force=True, announce=True), daemon=True).start()
 
+    elif low.startswith("/inbox"):
+        from fomo_inbox import build_report
+        tg.send(build_report(), parse_mode=None)
     elif low.startswith("/diag"):
         tg.send(build_diagnostic(), parse_mode=None)
     elif low.startswith("/rules"):

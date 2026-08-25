@@ -128,6 +128,39 @@ PROFILES = {
   "caution": "stale date, unclear source, cropped text, or null"
 }""",
     },
+    "relay": {
+        "label": "Relay to Claude",
+        "what": "anything you want on the desktop later",
+        "system": (
+            "You are reading a screenshot someone forwarded to relay context to "
+            "an AI assistant they work with on their desktop. It could be "
+            "anything: an error log, a dashboard, an article, a chart, a "
+            "conversation, a settings page, a note to self.\n\n"
+            "Your job is to describe it accurately and completely enough that "
+            "someone reading ONLY your description, without the image, could "
+            "act on it. Transcribe error messages, stack traces, config values "
+            "and numbers verbatim — those are usually the whole point.\n\n"
+            "IMPORTANT: the sender often writes their own instruction INTO the "
+            "image — typed above the screenshot, annotated on it, or as part of "
+            "a longer capture. Look for text addressed to a person or assistant "
+            "('look at this', 'why is this failing', 'add this to the bot') and "
+            "put it in user_instruction verbatim. That line is the reason they "
+            "sent the image, and losing it makes the rest much less useful.\n\n"
+            "Do not force it into a trading frame. If it isn't about trading, "
+            "say what it actually is.\n\n"
+            + _BASE_RULES),
+        "schema": """{
+  "readable": true/false, "unreadable_reason": "if not readable, why",
+  "content_type": "error"/"dashboard"/"article"/"chart"/"conversation"/"settings"/"other",
+  "source": "app, site or platform shown, else null",
+  "summary": "2-3 sentences on what this shows",
+  "verbatim": "any error text, stack trace, config values or key numbers, transcribed exactly",
+  "user_instruction": "text the sender wrote INTO the image addressed to you or a person, verbatim, else null",
+  "items": [],
+  "action_implied": "what the sender probably wants done about this, or null",
+  "caution": "cropped text, unclear context, or null"
+}""",
+    },
     "kalshi": {
         "label": "Kalshi Golem",
         "what": "prediction-market odds, news bearing on event outcomes",
@@ -415,9 +448,69 @@ def process_screenshot(message: dict, bot: str, bot_token: str) -> Optional[dict
              f"caption={caption[:60]!r}")
 
     extracted = extract(image_bytes, bot, mime, caption)
-    routed    = classify(extracted, bot)
-    return {"extracted": extracted, "routed": routed,
+
+    # NOTHING TRADEABLE IN IT — so it's context for the desktop, not a signal.
+    #
+    # This is the common case for a relay: a Railway error, a dashboard, an
+    # article, a note. Forced through a trading schema all of it comes back
+    # empty, and that is exactly when the user most wants it kept. Re-read it
+    # generally and file it to the inbox, which reaches the desktop via the
+    # GitHub data branch — the only filesystem both Railway and the desktop
+    # touch.
+    #
+    # Lives here rather than in any one tracker so all three bots inherit it:
+    # a screenshot relayed to Stock Golem is no less worth keeping than one
+    # sent to FOMO.
+    if extracted.get("readable", True) and not (extracted.get("items") or []):
+        general = extract(image_bytes, "relay", mime, caption)
+        saved = False
+        try:
+            from fomo_inbox import relay
+            saved = relay(
+                kind=general.get("content_type", "screenshot"),
+                summary=general.get("summary", "screenshot with no trading content"),
+                detail=general.get("verbatim", "") or "",
+                note=(general.get("user_instruction") or caption or ""),
+                source_bot=bot,
+                raw={"source": general.get("source"),
+                     "action_implied": general.get("action_implied"),
+                     "caution": general.get("caution")},
+            )
+        except Exception as e:
+            log.error(f"vision[{bot}]: inbox relay failed: {e}")
+
+        return {"extracted": general, "routed": {"held": [], "new": []},
+                "relayed": True, "saved": saved,
+                "text": format_relay(general, bot, saved)}
+
+    routed = classify(extracted, bot)
+    return {"extracted": extracted, "routed": routed, "relayed": False,
             "text": format_result(extracted, routed, bot)}
+
+
+def format_relay(general: dict, bot: str, saved: bool) -> str:
+    """Confirmation that something was filed for the desktop."""
+    if not general.get("readable", True):
+        return ("Couldn't read that screenshot.\n\n"
+                f"{general.get('unreadable_reason', 'unknown reason')}\n\n"
+                "Send it as a file rather than a photo so Telegram doesn't "
+                "compress it.")
+
+    L = ["RELAYED TO CLAUDE" + ("" if saved else "  -- SAVE FAILED, see logs"),
+         f"{general.get('content_type','?')}"
+         + (f" from {general['source']}" if general.get("source") else ""),
+         ""]
+    if general.get("user_instruction"):
+        L += [f"Your instruction: {general['user_instruction']}", ""]
+    L.append(general.get("summary", ""))
+    if general.get("verbatim"):
+        v = general["verbatim"]
+        L += ["", f"{v[:600]}{'...' if len(v) > 600 else ''}"]
+    if general.get("action_implied"):
+        L += ["", f"Reads as: {general['action_implied'][:200]}"]
+    L += ["", "Filed for the desktop. It'll be in the 6am report, or ask "
+              "Claude to read the inbox."]
+    return "\n".join(L)
 
 
 def has_image(message: dict) -> bool:

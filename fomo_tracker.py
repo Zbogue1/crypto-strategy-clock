@@ -697,6 +697,12 @@ def _handle_screenshot(message: dict):
             return
 
         send_telegram(res["text"], parse_mode=None)
+
+        # Nothing tradeable in it — vision already filed it to the inbox for
+        # the desktop, so there's no signal to route.
+        if res.get("relayed"):
+            return
+
         routed = res["routed"]
 
         # ── HELD: re-decide the position with this new information ──────────
@@ -850,6 +856,14 @@ def handle_relayed_text_message(message: dict):
         return
 
     # -- /reconcile — do the books balance across all three bots? --
+    if text.lower().startswith("/inbox"):
+        try:
+            from fomo_inbox import build_report
+            send_telegram(build_report(), parse_mode=None)
+        except Exception as e:
+            send_telegram(f"Inbox failed: {e}", parse_mode=None)
+        return
+
     if text.lower().startswith("/intel"):
         try:
             from fomo_intel import build_report

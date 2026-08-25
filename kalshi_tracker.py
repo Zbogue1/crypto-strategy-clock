@@ -426,6 +426,9 @@ def _poll_telegram_commands():
                 from reconcile import reconcile_all, format_report
                 send_telegram(format_report(reconcile_all(), html=False),
                               parse_mode=None)
+            elif text.startswith("/inbox"):
+                from fomo_inbox import build_report
+                send_telegram(build_report(), parse_mode=None)
             elif text.startswith("/events"):
                 send_telegram(build_event_book(), parse_mode=None)
             elif text.startswith("/event_scan"):
