@@ -2,38 +2,20 @@
   "tokens": {
     "CATE": [
       {
-        "at": "2026-08-25T10:06:56.616878+00:00",
+        "at": "2026-08-25T22:18:38.741658+00:00",
         "source": "screenshot",
         "poster": "PoorGoat_",
-        "platform": "twitter",
-        "posted_when": "40s",
-        "stance": "BULLISH",
-        "conviction": "high",
-        "quote": "THE SELLERS HAVE OFFICIALLY RUN OF COINS. GAS IT CATE ARMY\ud83e\udd73",
-        "is_new_call": false,
-        "identifier": null,
-        "identifier_unverified": null,
-        "commentary": "Seller exhaustion signal - claiming selling pressure has depleted",
-        "caution": "Poster appears to have significant invested position ($96k invested shown in UI), which may influence their bullish messaging",
-        "user_note": ""
-      }
-    ],
-    "\u725b\u6765": [
-      {
-        "at": "2026-08-25T10:08:38.203575+00:00",
-        "source": "screenshot",
-        "poster": "ether_monk",
         "platform": "unknown",
-        "posted_when": "9h",
+        "posted_when": "1d 18h avg. hold",
         "stance": "BULLISH",
         "conviction": "high",
-        "quote": "i know binance will list this because cz will want \u725b\u6765 in his exchange",
+        "quote": "man next going to be fun. shake out final non believers and GO",
         "is_new_call": false,
         "identifier": null,
         "identifier_unverified": null,
-        "commentary": "Predicts Binance listing based on CZ's interest in the token name itself",
-        "caution": "Token symbol is in Chinese characters (\u725b\u6765); contract address not visible in screenshot; conviction based on speculation about exchange listing rather than fundamentals",
-        "user_note": "He just bought $24k of this"
+        "commentary": "Expecting a final shakeout of weak hands before upward move",
+        "caution": "The platform appears to be a custom trading app with holder tracking; 'avg. hold' metric suggests this is position duration, not post timestamp",
+        "user_note": ""
       }
     ]
   }
