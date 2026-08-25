@@ -83,7 +83,23 @@ def _load() -> dict:
                 return json.load(f)
         except Exception as e:
             log.error(f"Kalshi events: file load error: {e}")
-    return _default_state()
+
+    # First ever load — persist the opening state immediately.
+    #
+    # Without this the book has no stored size: every read rebuilds it from
+    # STARTING_CASH, so the bank silently changes whenever that env var or its
+    # default changes. Raising the default from 500 to 1000 "moved" $500 into
+    # the book with no deposit and no record of it — the exact class of
+    # untracked movement the reconciliation check exists to catch, except here
+    # it would balance, because the basis moved too.
+    #
+    # Writing it once anchors the book to a real number that only deposit()
+    # can change.
+    state = _default_state()
+    log.warning(f"Kalshi events: no stored book — creating one at "
+                f"${STARTING_CASH:,.2f} and persisting it")
+    _save(state)
+    return state
 
 
 def _save(state: dict) -> bool:
