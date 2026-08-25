@@ -120,25 +120,43 @@ def _record_restart() -> int:
     time and always report 1, which is precisely the blind spot.
     """
     from datetime import datetime, timezone, timedelta
+
+    # A redeploy and a crash both restart the process, and counting them
+    # together made four `git push`es look like a crash loop. Railway issues a
+    # new RAILWAY_DEPLOYMENT_ID per deploy, so restarts that share an ID are
+    # the process dying and being revived — an actual crash. Restarts with
+    # different IDs are just deploys and are none of our business.
+    deploy_id = (os.getenv("RAILWAY_DEPLOYMENT_ID")
+                 or os.getenv("RAILWAY_GIT_COMMIT_SHA") or "unknown")
+
     try:
         state = pf._load()
         now   = datetime.now(timezone.utc)
         stamps = state.get("restarts", [])
-        stamps.append(now.isoformat())
+        stamps.append({"at": now.isoformat(), "deploy": deploy_id})
 
         cutoff = now - timedelta(hours=1)
         recent = []
         for s in stamps[-50:]:
+            # Tolerate the old bare-string format from before this change.
+            if isinstance(s, str):
+                s = {"at": s, "deploy": "legacy"}
             try:
-                if datetime.fromisoformat(str(s).replace("Z", "+00:00")) >= cutoff:
+                if datetime.fromisoformat(str(s.get("at", "")).replace("Z", "+00:00")) >= cutoff:
                     recent.append(s)
             except Exception:
                 pass
 
         state["restarts"] = recent
         pf._save(state)
-        log.info(f"Startup recorded — {len(recent)} restart(s) in the last hour")
-        return len(recent)
+
+        same_deploy = [s for s in recent if s.get("deploy") == deploy_id]
+        deploys     = len({s.get("deploy") for s in recent})
+        log.info(f"Startup recorded — {len(recent)} restart(s) in the last hour "
+                 f"across {deploys} deploy(s); {len(same_deploy)} on THIS deploy "
+                 f"({deploy_id[:12]})")
+        # Only same-deploy restarts indicate a crash loop.
+        return len(same_deploy)
     except Exception as e:
         log.warning(f"Could not record restart: {e}")
         return 1
@@ -789,11 +807,12 @@ def main():
     restarts = _record_restart()
     if restarts > RESTART_ALARM:
         tg.send(
-            f"Stock Golem has restarted {restarts} times in the last hour.\n\n"
-            f"That is a crash loop, not normal deploys. Something is failing "
-            f"at startup and Railway keeps retrying it.\n\n"
-            f"Check the Railway deploy logs — the traceback will be at the "
-            f"end of each attempt.",
+            f"Stock Golem has restarted {restarts} times WITHIN THE SAME "
+            f"deployment in the last hour.\n\n"
+            f"Redeploys are excluded from this count, so this is the process "
+            f"dying and being revived — something is failing after startup.\n\n"
+            f"Check the Railway deploy logs; the traceback will be at the end "
+            f"of each attempt.",
             parse_mode=None,
         )
     elif ANNOUNCE_START and not SILENT:
