@@ -900,6 +900,38 @@ EVENT_SCAN_INTERVAL = int(os.getenv("KALSHI_EVENT_SCAN_SEC", "3600"))
 EVENT_SETTLE_INTERVAL = int(os.getenv("KALSHI_EVENT_SETTLE_SEC", "900"))
 
 
+_EVENT_FUNNEL_KEY = "kalshi_event_funnel"
+
+
+def _save_funnel(f: dict):
+    """
+    Persist the scan funnel.
+
+    It was a module global, so every redeploy wiped it — and a scan takes
+    minutes while a push redeploys in seconds. During active development the
+    funnel was destroyed before it could ever be written, which is why
+    /event_diag kept reporting "IN PROGRESS" with a newer timestamp each time:
+    each deploy killed the running scan and started another.
+    """
+    global _event_funnel
+    _event_funnel = f
+    try:
+        from kalshi_portfolio import _redis_set
+        _redis_set(_EVENT_FUNNEL_KEY, f)
+    except Exception as e:
+        log.debug(f"Kalshi events: funnel persist skipped: {e}")
+
+
+def _load_funnel() -> dict:
+    if _event_funnel:
+        return _event_funnel
+    try:
+        from kalshi_portfolio import _redis_get
+        return _redis_get(_EVENT_FUNNEL_KEY) or {}
+    except Exception:
+        return {}
+
+
 _event_funnel: dict = {}
 
 
@@ -931,7 +963,7 @@ def build_event_diagnostic() -> str:
                                       MAX_SPREAD_CENTS, MIN_HOURS_LEFT,
                                       MAX_HOURS_LEFT)
 
-    f = _event_funnel
+    f = _load_funnel()
     L += ["", "LAST SCAN"]
     if f.get("status") == "CRASHED":
         L += [f"  CRASHED at {str(f.get('at'))[:16]} UTC",
@@ -1108,7 +1140,7 @@ def _run_event_scan_cycle(force: bool = False):
         time.sleep(1.5)
 
     funnel["status"] = "completed"
-    _event_funnel = funnel
+    _save_funnel(funnel)
     log.info(f"=== KALSHI EVENT SCAN END — {taken} bet(s) placed | {funnel} ===")
 
 
@@ -1196,23 +1228,22 @@ def _run_event_settle_cycle():
 
 
 def run_event_scan_loop(stop_event: Event):
-    global _event_funnel
     while not stop_event.is_set():
         # Mark the attempt BEFORE running it. The funnel was only assigned on
         # a clean finish, so a scan that crashed left it empty — identical to
         # a scan that never started. That is the exact ambiguity this
         # diagnostic exists to remove, and I reintroduced it here.
-        _event_funnel = {**(_event_funnel or {}),
-                         "status": "running",
-                         "started_at": datetime.now(timezone.utc).isoformat()}
+        _save_funnel({**(_load_funnel() or {}),
+                      "status": "running",
+                      "started_at": datetime.now(timezone.utc).isoformat()})
         try:
             _run_event_scan_cycle()
         except Exception as e:
             log.error(f"Kalshi event scan loop error: {e}", exc_info=True)
-            _event_funnel = {**(_event_funnel or {}),
-                             "status": "CRASHED",
-                             "error": f"{type(e).__name__}: {e}",
-                             "at": datetime.now(timezone.utc).isoformat()}
+            _save_funnel({**(_load_funnel() or {}),
+                          "status": "CRASHED",
+                          "error": f"{type(e).__name__}: {e}",
+                          "at": datetime.now(timezone.utc).isoformat()})
         for _ in range(EVENT_SCAN_INTERVAL):
             if stop_event.is_set():
                 break

@@ -93,11 +93,31 @@ def _save(state: dict):
     # fomo_inbox) showed up fine. The more useful category was the hidden one.
     #
     # The data branch is the only storage both Railway and the desktop touch.
+    # Record whether the desktop can actually see this. Logging a failure at
+    # DEBUG made it invisible at normal log level — so "is my intel reaching
+    # Claude?" had no answer anywhere, which is the same silent-failure shape
+    # this whole system keeps producing. /intel now reports the result.
     try:
-        from fomo_inbox import _push_named
-        _push_named("fomo_intel.json", state)
+        from fomo_inbox import _push_named, GITHUB_TOKEN
+        if not GITHUB_TOKEN:
+            state["_sync"] = {"ok": False, "reason": "no GITHUB_TOKEN on this service",
+                              "at": datetime.now(timezone.utc).isoformat()}
+            log.error("Intel: no GITHUB_TOKEN — intel is NOT reaching the "
+                      "desktop. Set GITHUB_TOKEN on this Railway service.")
+        else:
+            ok = _push_named("fomo_intel.json", state)
+            state["_sync"] = {"ok": ok,
+                              "reason": "" if ok else "GitHub push failed, see logs",
+                              "at": datetime.now(timezone.utc).isoformat()}
+            if not ok:
+                log.error("Intel: data-branch push FAILED — intel is not "
+                          "reaching the desktop.")
+            else:
+                log.info("Intel: synced to data branch")
     except Exception as e:
-        log.debug(f"Intel: data-branch sync skipped: {e}")
+        state["_sync"] = {"ok": False, "reason": str(e)[:120],
+                          "at": datetime.now(timezone.utc).isoformat()}
+        log.error(f"Intel: data-branch sync failed: {e}")
 
 
 # ─── WRITE ────────────────────────────────────────────────────────────────────
@@ -250,6 +270,18 @@ def build_report(limit: int = 10) -> str:
     scored.sort(reverse=True)
 
     L = ["INTEL — forwarded screenshots", ""]
+
+    # Say plainly whether this reaches the desktop. Storage that silently
+    # isn't reaching anyone looks identical to storage that is.
+    sync = state.get("_sync") or {}
+    if sync.get("ok"):
+        L += [f"Desktop sync: OK (last {str(sync.get('at'))[:16]})", ""]
+    elif sync:
+        L += [f"Desktop sync: FAILING — {sync.get('reason','unknown')}",
+              "  This intel is stored on Railway only and will NOT appear in",
+              "  the daily report. Fix before relying on it.", ""]
+    else:
+        L += ["Desktop sync: not yet attempted", ""]
     for _, sym, entries in scored[:limit]:
         latest = entries[-1]
         fresh  = len(get_intel(sym))

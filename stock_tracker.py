@@ -215,8 +215,12 @@ def build_diagnostic() -> str:
         movers = sd.get_movers(top=50, min_pct=sig.MIN_PCT_CHANGE)
         L.append(f"Screener:    {len(movers)} gainer(s) at >= {sig.MIN_PCT_CHANGE:.0f}%")
         if movers[:5]:
+            # get_movers() returns "pct", not "percent_change" — that's the raw
+            # Alpaca field name, which it renames. Reading the wrong key made
+            # every gainer print +0% while the filter that produced the list
+            # was working correctly off the real number.
             L.append("             " + ", ".join(
-                f"{m['symbol']} {m.get('percent_change', 0):+.0f}%"
+                f"{m['symbol']} {m.get('pct', 0):+.0f}%"
                 for m in movers[:5]))
     except Exception as e:
         L.append(f"Screener:    ERROR {str(e)[:60]}")
