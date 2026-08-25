@@ -239,5 +239,27 @@
       "XRP"
     ],
     "alert": "XRP position down 5.1% \u2014 holding above stop-loss at $1.30, monitor $1.40 support closely"
+  },
+  {
+    "ts": "2026-08-25T16:02:33.214198+00:00",
+    "coin": "SOL",
+    "price": 98.35,
+    "signal": "HOLD",
+    "confidence": 38,
+    "score": -1.2,
+    "fg": 74,
+    "btc_price": 79480,
+    "btc_dominance": 59.2,
+    "candidates": [
+      "LIT",
+      "PUMP",
+      "MON",
+      "RLUSD",
+      "USDG",
+      "FDUSD",
+      "CRVUSD",
+      "XRP"
+    ],
+    "alert": "All swing candidates are overbought or extended \u2014 no high-conviction entries available this cycle."
   }
 ]
