@@ -1,0 +1,18 @@
+{
+  "entries": [
+    {
+      "at": "2026-08-25T07:42:27.617921+00:00",
+      "kind": "other",
+      "bot": "fomo",
+      "summary": "This is a screenshot of a note typed on an iPhone Notes app with a black background. The note contains a single sentence instructing that someone named Vee should be followed, and that his X (Twitter) account should be followed for analysis as well. The word 'Vee' has red dots underneath it, suggesting an autocorrect/spelling indicator.",
+      "detail": "We should be following Vee, here's his X account for analysis as well.",
+      "note": "We should be following Vee, here's his X account for analysis as well.",
+      "raw": {
+        "source": "Notes app (iOS)",
+        "action_implied": "The sender wants the assistant to follow or track someone named Vee's X (Twitter) account for trading or market analysis purposes.",
+        "caution": "No specific X account handle, URL, or identifier is visible in the image - only the instruction to follow 'Vee' is shown. The actual account information would need to be provided separately."
+      },
+      "read": false
+    }
+  ]
+}
