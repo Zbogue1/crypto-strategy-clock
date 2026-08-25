@@ -1,0 +1,22 @@
+{
+  "tokens": {
+    "CATE": [
+      {
+        "at": "2026-08-25T10:06:56.616878+00:00",
+        "source": "screenshot",
+        "poster": "PoorGoat_",
+        "platform": "twitter",
+        "posted_when": "40s",
+        "stance": "BULLISH",
+        "conviction": "high",
+        "quote": "THE SELLERS HAVE OFFICIALLY RUN OF COINS. GAS IT CATE ARMY\ud83e\udd73",
+        "is_new_call": false,
+        "identifier": null,
+        "identifier_unverified": null,
+        "commentary": "Seller exhaustion signal - claiming selling pressure has depleted",
+        "caution": "Poster appears to have significant invested position ($96k invested shown in UI), which may influence their bullish messaging",
+        "user_note": ""
+      }
+    ]
+  }
+}
