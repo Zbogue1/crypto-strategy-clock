@@ -217,5 +217,27 @@
       "XRP"
     ],
     "alert": "All swing candidates are severely extended after 40-70% weekly rallies. No new entries warranted until consolidation occurs."
+  },
+  {
+    "ts": "2026-08-25T12:04:11.499009+00:00",
+    "coin": "SOL",
+    "price": 98.75,
+    "signal": "HOLD",
+    "confidence": 42,
+    "score": -0.8,
+    "fg": 74,
+    "btc_price": 79142,
+    "btc_dominance": 59.7,
+    "candidates": [
+      "PUMP",
+      "MON",
+      "LIT",
+      "FDUSD",
+      "USDG",
+      "RLUSD",
+      "CRVUSD",
+      "XRP"
+    ],
+    "alert": "XRP position down 5.1% \u2014 holding above stop-loss at $1.30, monitor $1.40 support closely"
   }
 ]
