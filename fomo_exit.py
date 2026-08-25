@@ -277,6 +277,12 @@ _load_stats = {"checked": 0, "price_fail": 0}
 # every single time looks the same as five different tokens failing once each.
 _consec_price_fail: dict = {}
 PRICE_FAIL_ALARM = int(os.getenv("FOMO_PRICE_FAIL_ALARM", "3"))
+
+# Stale-position reviews that come back HOLD are recorded but not pushed by
+# default. A notification every 48h per quiet position is how alerts get
+# ignored — and an ignored alert is worse than none, because it looks like
+# coverage. Set FOMO_NOTIFY_HOLD_REVIEWS=true to see every review.
+NOTIFY_HOLD_REVIEWS = os.getenv("FOMO_NOTIFY_HOLD_REVIEWS", "false").lower() == "true"
 _load_warned_at = 0          # highest position count already warned about
 _last_load_warning = 0.0     # timestamp, for cooldown
 LOAD_WARN_COOLDOWN = 6 * 3600
@@ -712,6 +718,42 @@ def _check_holding(holding: dict, state: dict, prefetched: tuple = None):
             f"Proceeds: ${net:.2f} | Gain: {gain_pct:+.0f}%"
         )
         return
+
+    # ── STALE POSITION REVIEW ─────────────────────────────────────────────
+    # Nothing above fired, which means this position is neither winning enough
+    # to tranche nor losing fast enough to stop out. That is exactly the state
+    # a position can sit in indefinitely, quietly holding capital.
+    #
+    # A timer would sell it on the calendar. Instead re-decide it: is the
+    # reason we bought still true? Ends in a recommendation, never a sale.
+    try:
+        from fomo_review import needs_review, review_position, format_review
+        due, why = needs_review(holding, current_price)
+        if due:
+            log.info(f"Exit monitor: {ticker} due for review — {why}")
+            r = review_position(holding, current_price, current_liq)
+            holding["last_reviewed_at"] = datetime.now(timezone.utc).isoformat()
+            holding.setdefault("reviews", []).append({
+                "at":       holding["last_reviewed_at"],
+                "verdict":  r.get("verdict"),
+                "thesis":   r.get("thesis_status"),
+                "pct":      r.get("pct"),
+                "reason":   (r.get("reasoning") or "")[:300],
+            })
+            # Only interrupt for an actionable call. A HOLD verdict is logged
+            # for the record but not pushed — otherwise every quiet position
+            # generates a notification every two days and he stops reading them.
+            if r.get("verdict") in ("EXIT", "TRIM"):
+                _send_telegram_button_local(
+                    format_review(r), "SELL NOW", f"rug_sell:{contract}")
+            elif NOTIFY_HOLD_REVIEWS:
+                _send_telegram(format_review(r))
+            else:
+                log.info(f"Exit monitor: {ticker} review -> "
+                         f"{r.get('verdict')} ({r.get('thesis_status')}), "
+                         f"logged not sent")
+    except Exception as e:
+        log.error(f"Exit monitor: review failed for {ticker}: {e}")
 
     log.debug(
         f"Exit monitor {ticker}: {gain_pct:+.1f}% | "

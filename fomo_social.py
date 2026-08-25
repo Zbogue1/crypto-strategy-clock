@@ -92,6 +92,150 @@ def _parse_post(text: str, alias: str, handle: str) -> Optional[dict]:
         return None
 
 
+# ─── ON-DEMAND CONTEXT LOOKUP ─────────────────────────────────────────────────
+#
+# poll_twitter() is a PUSH firehose: it watches for new BUY/SELL signals and
+# discards everything else as NOISE. That throws away exactly the material that
+# matters when a position has gone quiet and underwater — "still holding",
+# "hold out boys", "this one's dead, I'm out". Conviction and capitulation are
+# not trade signals, so the parser drops them.
+#
+# This is the PULL side: at decision time, ask what a specific trader has said
+# about a specific token recently.
+
+CONTEXT_LOOKBACK_DAYS = int(os.getenv("FOMO_SOCIAL_LOOKBACK_DAYS", "7"))
+
+
+def fetch_trader_context(handle: str, token_symbol: str,
+                         days: int = None) -> dict:
+    """
+    What has this trader said about this token lately?
+
+    Returns:
+      {"available": bool, "posts": [...], "reason": str}
+
+    `available` False means we could not look — no API token, rate limited, or
+    the handle is unknown. That is NOT the same as "the trader said nothing",
+    and the caller must not read silence as a bearish signal. Conflating
+    "no data" with "no confidence" is how a missing integration turns into a
+    fabricated reason to sell.
+    """
+    days = days or CONTEXT_LOOKBACK_DAYS
+
+    if not TWITTER_BEARER:
+        return {"available": False, "posts": [],
+                "reason": "TWITTER_BEARER_TOKEN not configured"}
+    if not handle:
+        return {"available": False, "posts": [],
+                "reason": "no Twitter handle known for this trader"}
+
+    start = (datetime.now(timezone.utc) - timedelta(days=days)).strftime(
+        "%Y-%m-%dT%H:%M:%SZ")
+    # Free-tier search only reaches back 7 days; asking for more returns an error
+    # rather than a truncated result, so clamp instead of failing.
+    query = f"from:{handle.lstrip('@')} -is:retweet"
+
+    try:
+        r = requests.get(
+            "https://api.twitter.com/2/tweets/search/recent",
+            params={"query": query, "max_results": 50,
+                    "tweet.fields": "created_at,public_metrics,text",
+                    "start_time": start},
+            headers={"Authorization": f"Bearer {TWITTER_BEARER}"},
+            timeout=15,
+        )
+    except Exception as e:
+        return {"available": False, "posts": [],
+                "reason": f"Twitter request failed: {e}"}
+
+    if r.status_code == 429:
+        return {"available": False, "posts": [],
+                "reason": "Twitter rate limit (free tier: 15 req/15min)"}
+    if r.status_code != 200:
+        return {"available": False, "posts": [],
+                "reason": f"Twitter HTTP {r.status_code}: {r.text[:100]}"}
+
+    tweets = (r.json() or {}).get("data") or []
+    if not tweets:
+        return {"available": True, "posts": [],
+                "reason": f"no posts from @{handle} in {days}d"}
+
+    # Keep posts that plausibly reference this token. Deliberately loose —
+    # traders write "$WIF", "wif", "the dog one". Precision matters less than
+    # not silently dropping the one post that says "still holding".
+    sym  = (token_symbol or "").lstrip("$").lower()
+    hits = []
+    for t in tweets:
+        txt = t.get("text", "")
+        if sym and sym in txt.lower():
+            hits.append({"text": txt[:400],
+                         "created_at": t.get("created_at", ""),
+                         "metrics": t.get("public_metrics", {})})
+
+    return {
+        "available": True,
+        "posts": hits,
+        "reason": (f"{len(hits)} post(s) mentioning {token_symbol} "
+                   f"out of {len(tweets)} in {days}d"),
+    }
+
+
+def summarize_trader_sentiment(posts: list, token_symbol: str) -> dict:
+    """
+    Turn raw posts into a stance: HOLDING / EXITING / UNCLEAR.
+
+    Separate from _parse_post() on purpose. That one answers "is this a trade
+    signal?" and returns NOISE for "hold out boys" — which is precisely the
+    sentiment we need here.
+    """
+    if not posts:
+        return {"stance": "NO_DATA", "confidence": "none",
+                "summary": "no posts found mentioning this token"}
+    if not ANTHROPIC_KEY:
+        return {"stance": "UNCLEAR", "confidence": "none",
+                "summary": "no ANTHROPIC_API_KEY to interpret posts"}
+
+    joined = "\n---\n".join(
+        f"[{p.get('created_at','')[:10]}] {p['text']}" for p in posts[:12])
+    prompt = (
+        f"These are recent posts from a crypto trader we copy-trade. We hold a "
+        f"position in {token_symbol} that is currently underwater, and we are "
+        f"deciding whether to keep holding or cut it.\n\n"
+        f"POSTS:\n{joined}\n\n"
+        "What is this trader's current stance on this token? Respond JSON only:\n"
+        '{"stance": "HOLDING" or "EXITING" or "UNCLEAR", '
+        '"confidence": "high" or "medium" or "low", '
+        '"summary": "one sentence on what they are signalling", '
+        '"key_quote": "the most telling phrase, verbatim, or null"}\n\n'
+        "Be conservative. Hype about a DIFFERENT token is not a stance on this "
+        "one. If the posts do not clearly address this position, say UNCLEAR."
+    )
+    try:
+        client = anthropic.Anthropic(api_key=ANTHROPIC_KEY)
+        resp = client.messages.create(
+            model=AI_MODEL, max_tokens=300,
+            messages=[{"role": "user", "content": prompt}],
+        )
+        raw = resp.content[0].text.strip()
+        if raw.startswith("```"):
+            raw = raw.split("```")[1]
+            if raw.startswith("json"):
+                raw = raw[4:]
+        return json.loads(raw.strip())
+    except Exception as e:
+        log.warning(f"Social: sentiment summary failed: {e}")
+        return {"stance": "UNCLEAR", "confidence": "none",
+                "summary": f"could not interpret posts: {e}"}
+
+
+def get_trader_handle(alias: str) -> str:
+    """Twitter handle for a wallet alias, from trusted_wallets.json."""
+    for t in _load_traders():
+        if (t.get("alias") or "").lower() == (alias or "").lower():
+            return t.get("handle", "")
+    return ""
+
+
 # ─── WALLET REGISTRY HELPERS ──────────────────────────────────────────────────
 
 def _load_traders() -> list[dict]:
