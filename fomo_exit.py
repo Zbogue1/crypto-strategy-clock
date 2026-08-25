@@ -478,6 +478,16 @@ def _execute_full_sell(
     save_fomo_portfolio(state)
     sync_fomo_state_to_github()
 
+    # Start watching what this token does AFTER we sold. Without this, an exit
+    # at 3x scores identically whether the token then died or ran to 20x — so
+    # the tranche levels can never be shown to be too tight or too loose.
+    try:
+        from fomo_aftermath import record_exit
+        record_exit(holding, current_price, reason, entry)
+    except Exception as e:
+        log.warning(f"Aftermath: could not record exit for "
+                    f"{holding.get('token_ticker')}: {e}")
+
     # Record outcome against the wallet that triggered this trade
     try:
         record_trade_outcome(

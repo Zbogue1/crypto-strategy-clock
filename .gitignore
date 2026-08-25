@@ -14,3 +14,4 @@ crystal_ball_postmortems.jsonl
 crypto_dashboard.html
 __pycache__/
 *.pyc
+stock_portfolio.json

@@ -807,6 +807,14 @@ def handle_relayed_text_message(message: dict):
         return
 
     # -- /reconcile — do the books balance across all three bots? --
+    if text.lower().startswith("/aftermath"):
+        try:
+            from fomo_aftermath import build_report
+            send_telegram(build_report(), parse_mode=None)
+        except Exception as e:
+            send_telegram(f"Aftermath report failed: {e}", parse_mode=None)
+        return
+
     if text.lower().startswith("/reconcile"):
         try:
             from reconcile import reconcile_all, format_report
@@ -2819,6 +2827,11 @@ if __name__ == "__main__":
     start_email_poller(callback=process_social_signal)
     start_discovery_poller()
     start_reconcile_loop()
+    try:
+        from fomo_aftermath import start_watcher
+        start_watcher(notify=send_telegram)
+    except Exception as e:
+        log.error(f"Could not start aftermath watcher: {e}")
     from fomo_exit import start_exit_monitor
     start_exit_monitor()
     import threading
