@@ -261,5 +261,27 @@
       "XRP"
     ],
     "alert": "All swing candidates are overbought or extended \u2014 no high-conviction entries available this cycle."
+  },
+  {
+    "ts": "2026-08-25T20:03:35.363756+00:00",
+    "coin": "SOL",
+    "price": 97.84,
+    "signal": "HOLD",
+    "confidence": 38,
+    "score": -1.2,
+    "fg": 74,
+    "btc_price": 78900,
+    "btc_dominance": 59.1,
+    "candidates": [
+      "MON",
+      "PUMP",
+      "LIT",
+      "FDUSD",
+      "USDG",
+      "RLUSD",
+      "CRVUSD",
+      "XRP"
+    ],
+    "alert": "XRP position down 5.8% \u2014 monitor $1.40 support closely; broad market overextension increases correction risk."
   }
 ]
