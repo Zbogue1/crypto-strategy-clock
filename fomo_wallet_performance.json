@@ -140,5 +140,27 @@
         "at": "2026-08-24T15:13:10.245779+00:00"
       }
     ]
+  },
+  "continuity": {
+    "trades_followed": 1,
+    "wins": 1,
+    "losses": 0,
+    "total_pnl_pct": 23.51,
+    "total_pnl_usd": 11.63,
+    "consecutive_losses": 0,
+    "win_rate": 1.0,
+    "last_trade_at": "2026-08-25T07:45:49.438751+00:00",
+    "last_outcome": "WIN",
+    "last_token": "ANSEM",
+    "trade_log": [
+      {
+        "token": "ANSEM",
+        "win": true,
+        "pnl_pct": 23.51,
+        "pnl_usd": 11.63,
+        "reason": "tracker_sold",
+        "at": "2026-08-25T07:45:49.438751+00:00"
+      }
+    ]
   }
 }
