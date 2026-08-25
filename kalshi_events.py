@@ -265,6 +265,35 @@ def get_market(ticker: str) -> Optional[dict]:
     return _parse_market(m)
 
 
+def get_market_settlement(ticker: str) -> Optional[dict]:
+    """
+    Raw settlement state for one market.
+
+    _parse_market() deliberately normalizes into what the ANALYST needs and
+    drops `status` and `result` — but those two fields are the only way to know
+    a binary position actually resolved and which way. Reading them through the
+    parsed view would return None forever and the position would never close.
+
+    Returns {"status", "result", "settled"} or None if the fetch failed.
+    Distinguishing "not settled yet" from "we couldn't ask" matters: the caller
+    must not treat a network error as an unresolved market indefinitely.
+    """
+    data = _get(f"/markets/{ticker}")
+    if not data:
+        return None
+    m = data.get("market") or data
+    status = (m.get("status") or "").strip().lower()
+    result = (m.get("result") or "").strip().lower()
+    return {
+        "status":  status,
+        "result":  result,
+        # Kalshi reports "settled" (and historically "finalized"). Require a
+        # real yes/no result too — a settled market with a blank result is
+        # something we should not guess at.
+        "settled": status in ("settled", "finalized") and result in ("yes", "no"),
+    }
+
+
 # ─── PARSING ──────────────────────────────────────────────────────────────────
 
 def _parse_market(m: dict, match_score: float = 1.0) -> dict:

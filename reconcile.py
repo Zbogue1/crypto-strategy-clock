@@ -109,6 +109,51 @@ def reconcile_kalshi() -> dict:
         return {"bot": "Kalshi", "ok": None, "error": str(e)}
 
 
+# ─── KALSHI EVENT BOOK ────────────────────────────────────────────────────────
+
+def reconcile_kalshi_events() -> dict:
+    """
+    The event book keeps its own cash, so it needs its own invariant.
+
+    Simpler than the others: binary contracts are carried at cost until they
+    settle, so movement is exactly realized P&L. Any gap means cash changed
+    without a settlement record — the same bug class as FOMO's tranche
+    harvests, which credited cash and wrote nothing down.
+    """
+    try:
+        from kalshi_event_portfolio import _load, get_summary
+    except Exception as e:
+        return {"bot": "Kalshi-Events", "ok": None, "error": f"import failed: {e}"}
+
+    try:
+        state = _load()
+        s     = get_summary()
+        if not _has_visible_data(state, len(s.get("positions", []))):
+            return {"bot": "Kalshi-Events", "ok": None,
+                    "error": "no data visible from this service "
+                             "(missing UPSTASH_REDIS_* credentials?)"}
+
+        basis  = float(state.get("starting_cash", 0) or 0)
+        actual = float(s.get("total_value", 0) or 0) - basis
+
+        settled = sum(float(t.get("net_pnl", 0) or 0)
+                      for t in state.get("trade_history", []))
+
+        gap = actual - settled
+        return {
+            "bot": "Kalshi-Events", "ok": abs(gap) <= TOLERANCE,
+            "basis": basis, "actual": round(actual, 2),
+            "recorded": round(settled, 2), "gap": round(gap, 2),
+            "components": {
+                "settled bets": round(settled, 2),
+                "open at cost": round(float(s.get("at_risk", 0) or 0), 2),
+            },
+            "n_trades": len(state.get("trade_history", [])),
+        }
+    except Exception as e:
+        return {"bot": "Kalshi-Events", "ok": None, "error": str(e)}
+
+
 # ─── FOMO ─────────────────────────────────────────────────────────────────────
 
 def reconcile_fomo(prices: dict = None) -> dict:
@@ -203,8 +248,8 @@ def reconcile_stock() -> dict:
 # ─── REPORT ───────────────────────────────────────────────────────────────────
 
 def reconcile_all(which: str = None) -> list:
-    fns = {"kalshi": reconcile_kalshi, "fomo": reconcile_fomo,
-           "stock": reconcile_stock}
+    fns = {"kalshi": reconcile_kalshi, "events": reconcile_kalshi_events,
+           "fomo": reconcile_fomo, "stock": reconcile_stock}
     if which and which.lower() in fns:
         return [fns[which.lower()]()]
     return [f() for f in fns.values()]

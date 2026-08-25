@@ -407,6 +407,12 @@ def _poll_telegram_commands():
                 from reconcile import reconcile_all, format_report
                 send_telegram(format_report(reconcile_all(), html=False),
                               parse_mode=None)
+            elif text.startswith("/events"):
+                send_telegram(build_event_book(), parse_mode=None)
+            elif text.startswith("/event_scan"):
+                send_telegram("🔍 Scanning event markets — this takes a minute...")
+                Thread(target=lambda: _run_event_scan_cycle(force=True),
+                       daemon=True, name="kalshi-event-scan-manual").start()
             elif text.startswith("/archives"):
                 _handle_archives(text)
             elif text.startswith("/deposit"):
@@ -807,6 +813,185 @@ def _run_monitor_cycle():
 
 # ─── MAIN ─────────────────────────────────────────────────────────────────────
 
+# ─── EVENT MARKET CYCLE ───────────────────────────────────────────────────────
+#
+# Runs alongside the perp scan, NOT instead of it. Separate daily budget,
+# separate book, separate monitor — so adding sports and weather bets does not
+# reduce the number of crypto perp trades, which was the explicit requirement.
+
+EVENT_TRADING       = os.getenv("KALSHI_EVENT_TRADING", "true").lower() == "true"
+EVENT_DAILY_TARGET  = int(os.getenv("KALSHI_EVENT_DAILY_TRADES", "4"))
+EVENT_SCAN_INTERVAL = int(os.getenv("KALSHI_EVENT_SCAN_SEC", "3600"))
+EVENT_SETTLE_INTERVAL = int(os.getenv("KALSHI_EVENT_SETTLE_SEC", "900"))
+
+
+def _run_event_scan_cycle(force: bool = False):
+    """Screen event markets → analyst → edge gate → paper bet."""
+    if not EVENT_TRADING and not force:
+        return
+
+    from kalshi_event_scanner import screen_markets
+    from kalshi_event_trader import evaluate, check_domain_limit, format_bet_alert
+    from kalshi_event_portfolio import (
+        open_bet, get_summary as event_summary, bets_opened_today,
+    )
+    from kalshi_analyst import analyze_question
+
+    log.info("=== KALSHI EVENT SCAN START ===")
+
+    opened = bets_opened_today()
+    slots  = EVENT_DAILY_TARGET - opened
+    if not force and slots <= 0:
+        log.info(f"Kalshi events: daily target reached ({opened}/{EVENT_DAILY_TARGET})")
+        return
+
+    res        = screen_markets()
+    candidates = res.get("candidates", [])
+    stats      = res.get("stats", {})
+    log.info(f"Kalshi events: screened {stats.get('total', 0)} markets → "
+             f"{len(candidates)} candidate(s), {slots} slot(s) left")
+
+    if not candidates:
+        if force:
+            from kalshi_event_scanner import format_scan_summary
+            send_telegram(format_scan_summary(res))
+        return
+
+    summary   = event_summary()
+    held      = {p["ticker"] for p in summary["positions"]}
+    open_pos  = summary["positions"]
+    stamp     = datetime.now(timezone.utc).strftime("%Y%m%d_%H%M%S")
+    taken     = 0
+
+    for m in candidates:
+        if taken >= slots and not force:
+            break
+        ticker = m["ticker"]
+        if ticker in held:
+            continue
+
+        # Correlation cap BEFORE spending an AI call — six same-evening games
+        # are one bet on "favourites hold up tonight".
+        ok, why = check_domain_limit(m.get("domain", ""), open_pos)
+        if not ok:
+            log.info(f"Kalshi events: skip {ticker} — {why}")
+            continue
+
+        try:
+            analysis = analyze_question(m.get("title", ""), ticker=ticker)
+        except Exception as e:
+            log.error(f"Kalshi events: analysis failed for {ticker}: {e}")
+            continue
+        if not analysis or analysis.get("error"):
+            log.warning(f"Kalshi events: no analysis for {ticker} — "
+                        f"{(analysis or {}).get('error', 'empty result')}")
+            continue
+
+        decision = evaluate(m, analysis)
+        if not decision.get("trade"):
+            log.info(f"Kalshi events: pass {ticker} — {decision.get('reason')}")
+            continue
+
+        sizing = decision["sizing"]
+        pos = open_bet(
+            ticker=      ticker,
+            title=       m.get("title", ticker),
+            side=        decision["side"],
+            price_cents= decision["implied"],
+            contracts=   sizing["contracts"],
+            cost_per=    sizing["cost_per"],
+            domain=      m.get("domain", ""),
+            close_time=  m.get("close_time", ""),
+            confidence=  decision["confidence"],
+            edge=        decision["edge"],
+            our_prob=    decision["our_prob"],
+            reasoning=   analysis.get("reasoning", ""),
+            group_id=    f"{stamp}_event",
+            group_size=  1,
+        )
+        if not pos:
+            continue
+
+        taken += 1
+        open_pos.append(pos)
+        if force or not SILENT:
+            send_telegram(format_bet_alert(m, decision, analysis))
+        time.sleep(1.5)
+
+    log.info(f"=== KALSHI EVENT SCAN END — {taken} bet(s) placed ===")
+
+
+def _run_event_settle_cycle():
+    """
+    Close event positions whose markets have actually resolved.
+
+    Deliberately does nothing else. There is no mark-to-market and no stop
+    loss: the reason for moving to event markets was that they end with a real
+    answer instead of a timer, so the only exit is settlement.
+    """
+    if not EVENT_TRADING:
+        return
+
+    from kalshi_events import get_market_settlement
+    from kalshi_event_portfolio import get_summary as event_summary, settle_bet
+
+    positions = event_summary()["positions"]
+    if not positions:
+        return
+
+    for pos in positions:
+        ticker = pos["ticker"]
+        try:
+            s = get_market_settlement(ticker)
+        except Exception as e:
+            log.error(f"Kalshi events: settlement check failed for {ticker}: {e}")
+            continue
+        if s is None:
+            # Couldn't ask. NOT the same as "not resolved" — say so, so a
+            # persistently unreachable ticker shows up in the logs instead of
+            # looking like a market that never settles.
+            log.warning(f"Kalshi events: no settlement data for {ticker} "
+                        f"(API unreachable?) — will retry")
+            continue
+        if not s["settled"]:
+            continue
+
+        trade = settle_bet(ticker, s["result"])
+        if trade and not SILENT:
+            icon = "✅" if trade["won"] else "❌"
+            send_telegram(
+                f"{icon} *EVENT SETTLED* — {'WON' if trade['won'] else 'LOST'}\n\n"
+                f"{trade['title'][:90]}\n`{ticker}`\n\n"
+                f"Bet {trade['side']} at {trade['entry_cents']:.0f}c · "
+                f"resolved {s['result'].upper()}\n"
+                f"P&L: *${trade['net_pnl']:+.2f}* ({trade['return_pct']:+.0f}%)"
+            )
+
+
+def run_event_scan_loop(stop_event: Event):
+    while not stop_event.is_set():
+        try:
+            _run_event_scan_cycle()
+        except Exception as e:
+            log.error(f"Kalshi event scan loop error: {e}", exc_info=True)
+        for _ in range(EVENT_SCAN_INTERVAL):
+            if stop_event.is_set():
+                break
+            time.sleep(1)
+
+
+def run_event_settle_loop(stop_event: Event):
+    while not stop_event.is_set():
+        try:
+            _run_event_settle_cycle()
+        except Exception as e:
+            log.error(f"Kalshi event settle loop error: {e}", exc_info=True)
+        for _ in range(EVENT_SETTLE_INTERVAL):
+            if stop_event.is_set():
+                break
+            time.sleep(1)
+
+
 def run_scan_loop(stop_event: Event):
     while not stop_event.is_set():
         try:
@@ -830,6 +1015,64 @@ def run_monitor_loop(stop_event: Event):
             if stop_event.is_set():
                 break
             time.sleep(1)
+
+
+def build_event_book(limit: int = 15) -> str:
+    """
+    The event book — open bets and settled results.
+
+    Plain text on purpose: Kalshi tickers are full of underscores and dashes
+    (KXNBAGAME-25AUG24-LAL), which Markdown reads as formatting and Telegram
+    then rejects outright. That is how the perp ledger silently failed to send.
+    """
+    try:
+        from kalshi_event_portfolio import get_summary
+    except Exception as e:
+        return f"Event book unavailable: {e}"
+
+    s = get_summary()
+    L = [
+        "KALSHI EVENT BOOK",
+        "",
+        f"Cash:        ${s['cash']:,.2f}",
+        f"At risk:     ${s['at_risk']:,.2f}  ({s['n_positions']} open)",
+        f"Book value:  ${s['total_value']:,.2f}   (basis ${s['starting_cash']:,.2f})",
+        f"Realized:    ${s['realized_pnl']:+,.2f}",
+    ]
+    if s["total_trades"]:
+        L.append(f"Record:      {s['wins']}W / {s['losses']}L "
+                 f"({s['win_rate']:.0f}%) over {s['total_trades']} settled")
+    else:
+        L.append("Record:      no bets settled yet")
+
+    if s["positions"]:
+        L += ["", "OPEN BETS"]
+        for p in s["positions"]:
+            L.append(
+                f"\n  {p['side']} {p['ticker']}\n"
+                f"    {p['title'][:64]}\n"
+                f"    {p['contracts']} contracts @ {p['entry_cents']:.0f}c  "
+                f"= ${p['cost_basis']:.2f} risked to win ${p['max_gain']:.2f}\n"
+                f"    our estimate {p['our_prob']:.0f}% vs market "
+                f"{p['entry_cents']:.0f}% | edge {p['edge']:.1f}pts | "
+                f"conf {p['confidence']}\n"
+                f"    resolves {str(p.get('close_time',''))[:16].replace('T',' ')} UTC"
+            )
+
+    from kalshi_event_portfolio import _load
+    hist = _load().get("trade_history", [])
+    if hist:
+        L += ["", f"SETTLED (last {min(limit, len(hist))})"]
+        for t in reversed(hist[-limit:]):
+            mark = "WON " if t.get("won") else "LOST"
+            L.append(
+                f"\n  {mark} {t['side']} {t['ticker']}  "
+                f"-> resolved {str(t.get('result','?')).upper()}\n"
+                f"    {t['title'][:64]}\n"
+                f"    {t['contracts']} @ {t['entry_cents']:.0f}c  "
+                f"P&L ${t['net_pnl']:+.2f} ({t['return_pct']:+.0f}%)"
+            )
+    return "\n".join(L)
 
 
 def build_trade_ledger(limit: int = 20, offset: int = 0) -> str:
@@ -1323,6 +1566,25 @@ def main():
     else:
         log.info("Auto-scan DISABLED — on-demand only. Set KALSHI_AUTO_SCAN=true to enable.")
 
+    # Event markets run on their own threads with their own daily budget, so
+    # sports/weather bets are ADDITIONAL to the perp trades rather than
+    # competing for the same slots.
+    event_threads = []
+    if EVENT_TRADING:
+        event_threads = [
+            Thread(target=run_event_scan_loop, args=(stop_event,),
+                   daemon=True, name="kalshi-event-scan"),
+            Thread(target=run_event_settle_loop, args=(stop_event,),
+                   daemon=True, name="kalshi-event-settle"),
+        ]
+        for t in event_threads:
+            t.start()
+        log.info(f"Event trading ENABLED — up to {EVENT_DAILY_TARGET} bet(s)/day, "
+                 f"scan every {EVENT_SCAN_INTERVAL//60} min, "
+                 f"settlement check every {EVENT_SETTLE_INTERVAL//60} min")
+    else:
+        log.info("Event trading DISABLED — set KALSHI_EVENT_TRADING=true to enable.")
+
     report_thread = Thread(target=run_report_loop, args=(stop_event,), daemon=True, name="kalshi-report")
     report_thread.start()
     if WEEKLY_REPORT_ENABLED:
@@ -1345,11 +1607,16 @@ def main():
             # amount the trade records can't explain — only then does it
             # message, and only once per distinct gap.
             if check_self:
-                try:
-                    check_self("kalshi", lambda m: send_telegram(m, parse_mode=None),
-                               html=False)
-                except Exception as e:
-                    log.error(f"reconcile self-check error: {e}")
+                # Both books this service owns: the perp portfolio and the
+                # event book. They have separate cash, so a gap in one would
+                # not show up in the other.
+                for _book in ("kalshi", "events"):
+                    try:
+                        check_self(_book,
+                                   lambda m: send_telegram(m, parse_mode=None),
+                                   html=False)
+                    except Exception as e:
+                        log.error(f"reconcile self-check ({_book}) error: {e}")
     except KeyboardInterrupt:
         log.info("Stopping Kalshi tracker...")
         stop_event.set()
