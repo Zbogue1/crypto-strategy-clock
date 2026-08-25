@@ -742,6 +742,46 @@ def research_token(
     if bankroll > 500_000:
         base_conviction = min(10, base_conviction + 1)
 
+    # ── FORWARDED INTEL ───────────────────────────────────────────────────
+    # Screenshots the user sent about this token. Worth something, but bounded:
+    # a screenshot cannot be verified, and someone posting a +1,834% position
+    # has every reason to talk their book — the extraction flags that itself,
+    # and the caution travels with the intel rather than being dropped.
+    try:
+        from fomo_intel import get_intel, check_reentry
+        intel = get_intel(symbol)
+        if intel:
+            bulls = [i for i in intel if i.get("stance") in ("BULLISH", "HOLDING")]
+            bears = [i for i in intel if i.get("stance") in ("BEARISH", "EXITING")]
+            cautioned = any(i.get("caution") for i in intel)
+
+            if bears:
+                base_conviction = max(1, base_conviction - 2)
+                v.evidence.append(
+                    f"📷 Forwarded intel: {len(bears)} bearish/exiting signal(s) "
+                    f"— reducing conviction")
+            elif bulls and not cautioned:
+                base_conviction = min(10, base_conviction + 1)
+                v.evidence.append(
+                    f"📷 Forwarded intel: {len(bulls)} bullish signal(s) from "
+                    f"{bulls[-1].get('poster') or 'unknown'}")
+            elif bulls and cautioned:
+                # Bullish but flagged as biased. Note it, change nothing —
+                # hype from someone deep in profit is the least reliable
+                # signal there is, and the most persuasive.
+                v.evidence.append(
+                    f"📷 Forwarded intel is bullish but flagged for bias: "
+                    f"{(intel[-1].get('caution') or '')[:120]} — not counted")
+
+            re_entry = check_reentry(symbol)
+            if re_entry.get("previously_held"):
+                v.evidence.append(
+                    f"♻️ We held this before — exited "
+                    f"({re_entry.get('exit_reason')}), peak since "
+                    f"{re_entry.get('peak_multiple')}x that exit")
+    except Exception as e:
+        log.debug(f"Research: intel lookup failed for {symbol}: {e}")
+
     # ── LEARN FROM THIS WALLET'S ACTUAL RECORD ────────────────────────────
     # These lessons were being computed and then discarded — fetched only
     # after the decision was made, and used purely to decorate the alert.

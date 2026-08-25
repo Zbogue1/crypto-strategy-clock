@@ -717,6 +717,13 @@ def _handle_screenshot(message: dict):
                 "conviction": item.get("conviction"),
                 "quote":      (item.get("key_quote") or "")[:300],
             })
+            # Also to the durable intel store, so it survives the position and
+            # informs any future decision about this token.
+            try:
+                from fomo_intel import record
+                record(item, res["extracted"], message.get("caption") or "")
+            except Exception as e:
+                log.error(f"FOMO: could not record intel for {ticker}: {e}")
 
             try:
                 from fomo_exit import get_prices_batch
@@ -749,17 +756,53 @@ def _handle_screenshot(message: dict):
             except Exception as e:
                 log.error(f"FOMO: could not persist social note: {e}")
 
-        # ── NEW: research candidates, never auto-buy ────────────────────────
+        # ── NEW: store, check for re-entry, then research ───────────────────
+        note = (message.get("caption") or "")
         for item in routed.get("new", []):
-            if not item.get("is_new_call"):
-                continue          # commentary, not a call — intel only
+            symbol = item.get("symbol", "?")
+
+            # STORE FIRST, always. Previously the extraction was formatted,
+            # sent and discarded — a bullish thesis on a token we'd just sold
+            # left no trace and changed nothing. Reading is not learning.
+            try:
+                from fomo_intel import record, check_reentry
+                record(item, res["extracted"], note)
+                re_entry = check_reentry(symbol)
+            except Exception as e:
+                log.error(f"FOMO: could not record intel for {symbol}: {e}")
+                re_entry = {}
+
+            # RE-ENTRY: intel on something we recently exited is its own case.
+            # We know the exit price and what it has done since, so this can
+            # be answered with numbers rather than treated as a cold call.
+            if re_entry.get("previously_held"):
+                px_mult  = re_entry.get("now_multiple")
+                pk_mult  = re_entry.get("peak_multiple")
+                send_telegram(
+                    f"♻️ <b>{symbol} — we used to hold this</b>\n\n"
+                    f"Exited at ${re_entry['exit_price']:.8f} "
+                    f"({re_entry['exit_reason']})\n"
+                    f"Peak since: <b>{pk_mult}x</b> our exit · "
+                    f"now <b>{px_mult}x</b>\n\n"
+                    f"Trader is <b>{item.get('stance')}</b> "
+                    f"({item.get('conviction')} conviction).\n\n"
+                    f"<i>Re-entry is a fresh decision, not a correction of the "
+                    f"old one. Send the contract address if you want it "
+                    f"researched — buying back higher because it ran is the "
+                    f"most expensive reflex in this game.</i>"
+                )
+
+            if not item.get("is_new_call") and not re_entry.get("previously_held"):
+                continue          # commentary on a name we have no stake in
+
             ca = item.get("identifier")
             if not ca:
-                send_telegram(
-                    f"🔍 <b>{item.get('symbol','?')}</b> looks like a new call, "
-                    f"but no contract address was readable in the image.\n\n"
-                    f"Send the address and I'll research it."
-                )
+                if not re_entry.get("previously_held"):
+                    send_telegram(
+                        f"🔍 <b>{symbol}</b> looks like a new call, but no "
+                        f"contract address was readable in the image.\n\n"
+                        f"Send the address and I'll research it."
+                    )
                 continue
             send_telegram(f"🔬 Researching {item.get('symbol','?')} from screenshot...")
             try:
@@ -807,6 +850,14 @@ def handle_relayed_text_message(message: dict):
         return
 
     # -- /reconcile — do the books balance across all three bots? --
+    if text.lower().startswith("/intel"):
+        try:
+            from fomo_intel import build_report
+            send_telegram(build_report(), parse_mode=None)
+        except Exception as e:
+            send_telegram(f"Intel report failed: {e}", parse_mode=None)
+        return
+
     if text.lower().startswith("/aftermath"):
         try:
             from fomo_aftermath import build_report
