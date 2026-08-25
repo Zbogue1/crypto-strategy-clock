@@ -1030,7 +1030,7 @@ def handle_relayed_text_message(message: dict):
 
 # ─── TELEGRAM ─────────────────────────────────────────────────────────────────
 
-def send_telegram(message: str):
+def send_telegram(message: str, parse_mode: Optional[str] = "HTML"):
     """
     Send a message, with a plain-text fallback if HTML parsing is rejected.
 
@@ -1039,17 +1039,20 @@ def send_telegram(message: str):
     identical to a successful send. Memecoin names routinely contain `<`, `>`
     and `&`, all of which break HTML parse mode, so this was silently dropping
     alerts about real positions.
+
+    parse_mode=None sends verbatim. Needed for content that is already plain —
+    screenshot extractions quote traders directly, and a quote containing an
+    unescaped `&` or `<` would otherwise be rejected as malformed HTML.
     """
     if not TELEGRAM_BOT_TOKEN or not TELEGRAM_CHAT_ID:
         log.info(f"[TELEGRAM] {message}")
         return
     url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage"
+    payload = {"chat_id": TELEGRAM_CHAT_ID, "text": message}
+    if parse_mode:
+        payload["parse_mode"] = parse_mode
     try:
-        r = requests.post(
-            url,
-            json={"chat_id": TELEGRAM_CHAT_ID, "text": message, "parse_mode": "HTML"},
-            timeout=10,
-        )
+        r = requests.post(url, json=payload, timeout=10)
         if r.status_code == 200:
             return
 
