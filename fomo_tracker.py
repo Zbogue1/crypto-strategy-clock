@@ -672,6 +672,115 @@ def send_positions_update():
     send_telegram("\n".join(lines))
 
 
+def _handle_screenshot(message: dict):
+    """
+    Read a forwarded screenshot and act on what's in it.
+
+    Runs on its own thread: vision extraction takes several seconds and the
+    Telegram webhook must return promptly or Telegram retries the update,
+    which would process the same screenshot twice.
+
+    Two routes, in priority order:
+      HELD  — a trader's stance on something we own changes whether we keep
+              sitting on a drawdown. Feeds straight into a position review.
+      NEW   — secondary intel. Goes through the SAME research pipeline as any
+              other signal and ends in a button. A screenshot is unverifiable,
+              so it can raise a candidate but never authorise a buy.
+    """
+    token = os.getenv("FOMO_BOT_TOKEN") or os.getenv("TELEGRAM_BOT_TOKEN", "")
+    try:
+        import vision
+        send_telegram("📷 Reading screenshot...")
+        res = vision.process_screenshot(message, "fomo", token)
+        if not res:
+            send_telegram("⚠️ Couldn't download that image.")
+            return
+
+        send_telegram(res["text"], parse_mode=None)
+        routed = res["routed"]
+
+        # ── HELD: re-decide the position with this new information ──────────
+        for item in routed.get("held", []):
+            holding = item.get("position") or {}
+            ticker  = item.get("symbol", "?")
+            if not holding:
+                continue
+
+            # Record what the trader said ON the position, so it survives into
+            # the postmortem and the next review rather than living only in a
+            # Telegram message you'd have to scroll back to find.
+            holding.setdefault("social_notes", []).append({
+                "at":         datetime.now(timezone.utc).isoformat(),
+                "source":     "screenshot",
+                "poster":     res["extracted"].get("poster_handle"),
+                "stance":     item.get("stance"),
+                "conviction": item.get("conviction"),
+                "quote":      (item.get("key_quote") or "")[:300],
+            })
+
+            try:
+                from fomo_exit import get_prices_batch
+                from fomo_review import review_position, format_review
+                prices = get_prices_batch([holding.get("contract_address")])
+                px, liq = prices.get(holding.get("contract_address"), (0, 0))
+                if not px:
+                    send_telegram(
+                        f"⚠️ Noted the {ticker} intel, but can't price it right "
+                        f"now — review skipped rather than run on a stale price."
+                    )
+                    continue
+                r = review_position(holding, px, liq)
+                if r.get("verdict") in ("EXIT", "TRIM"):
+                    send_telegram_button(
+                        format_review(r), "SELL NOW",
+                        f"rug_sell:{holding.get('contract_address')}")
+                else:
+                    send_telegram(format_review(r))
+            except Exception as e:
+                log.error(f"FOMO: review after screenshot failed for {ticker}: {e}")
+
+            try:
+                from fomo_portfolio import load_fomo_portfolio, save_fomo_portfolio
+                st = load_fomo_portfolio()
+                for h in st.get("holdings", []):
+                    if h.get("contract_address") == holding.get("contract_address"):
+                        h["social_notes"] = holding["social_notes"]
+                save_fomo_portfolio(st)
+            except Exception as e:
+                log.error(f"FOMO: could not persist social note: {e}")
+
+        # ── NEW: research candidates, never auto-buy ────────────────────────
+        for item in routed.get("new", []):
+            if not item.get("is_new_call"):
+                continue          # commentary, not a call — intel only
+            ca = item.get("identifier")
+            if not ca:
+                send_telegram(
+                    f"🔍 <b>{item.get('symbol','?')}</b> looks like a new call, "
+                    f"but no contract address was readable in the image.\n\n"
+                    f"Send the address and I'll research it."
+                )
+                continue
+            send_telegram(f"🔬 Researching {item.get('symbol','?')} from screenshot...")
+            try:
+                process_social_signal({
+                    "alias":        res["extracted"].get("poster_handle") or "screenshot",
+                    "action":       "BUY",
+                    "token_symbol": item.get("symbol"),
+                    "contract_address": ca,
+                    "confidence":   item.get("conviction", "low"),
+                    "signal_text":  item.get("key_quote", ""),
+                    "source":       "screenshot",
+                })
+            except Exception as e:
+                log.error(f"FOMO: screenshot research failed: {e}")
+                send_telegram(f"⚠️ Research failed: {type(e).__name__}: {e}")
+
+    except Exception as e:
+        log.error(f"FOMO: screenshot handling failed: {e}", exc_info=True)
+        send_telegram(f"⚠️ Screenshot read failed: {type(e).__name__}: {e}")
+
+
 def handle_relayed_text_message(message: dict):
     """A plain text message (not a button tap) arrived on the Telegram webhook --
     treat it as a manually relayed signal (forwarded email or a quick note) and
@@ -1509,8 +1618,22 @@ def telegram_webhook():
                 else:
                     log.debug(f"Telegram channel message from {chan_title}: no signal detected")
             else:
-                # Direct message from user — existing relay handling
-                handle_relayed_text_message(message)
+                # Screenshot from the phone — a trader's post about a coin.
+                # Checked before the text relay because an image message has
+                # no "text" field and would otherwise be dropped in silence.
+                handled = False
+                try:
+                    import vision
+                    if vision.has_image(message):
+                        handled = True
+                        import threading as _th
+                        _th.Thread(target=_handle_screenshot, args=(message,),
+                                   daemon=True, name="fomo-vision").start()
+                except Exception as e:
+                    log.error(f"FOMO: screenshot dispatch failed: {e}")
+                if not handled:
+                    # Direct message from user — existing relay handling
+                    handle_relayed_text_message(message)
         return jsonify({"ok": True})
 
     callback_id = callback["id"]

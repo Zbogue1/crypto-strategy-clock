@@ -435,6 +435,24 @@ def poll_commands():
                 # Whoever messages the bot is the chat it should reply to —
                 # this self-corrects a wrong or stale TELEGRAM_CHAT_ID.
                 tg.remember_chat(chat)
+            # Screenshot from the phone — news, a halt notice, a chart, a
+            # filing. Read it through the stock lens before the text check,
+            # since an image message has no text and would otherwise be
+            # dropped here silently.
+            try:
+                import vision
+                if vision.has_image(msg):
+                    tg.send("Reading screenshot...", parse_mode=None)
+                    res = vision.process_screenshot(msg, "stock", TELEGRAM_TOKEN)
+                    tg.send(res["text"] if res else "Couldn't download that image.",
+                            parse_mode=None)
+                    continue
+            except Exception as e:
+                log.error(f"Screenshot handling failed: {e}", exc_info=True)
+                tg.send(f"Screenshot read failed: {type(e).__name__}: {e}",
+                        parse_mode=None)
+                continue
+
             text = (msg.get("text") or "").strip()
             if not text:
                 continue

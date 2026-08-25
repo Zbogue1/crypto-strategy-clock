@@ -391,6 +391,23 @@ def _poll_telegram_commands():
             _last_update_id = max(_last_update_id, update["update_id"])
             msg = update.get("message", {})
             text = msg.get("text", "").strip()
+
+            # Screenshot sent from the phone. The bot it was sent TO is the
+            # routing decision — Kalshi reads images as event/odds context,
+            # not as memecoin chatter.
+            try:
+                import vision
+                if vision.has_image(msg):
+                    send_telegram("Reading screenshot...", parse_mode=None)
+                    res = vision.process_screenshot(msg, "kalshi", TELEGRAM_TOKEN)
+                    if res:
+                        send_telegram(res["text"], parse_mode=None)
+                    else:
+                        send_telegram("Couldn't download that image.",
+                                      parse_mode=None)
+                    continue
+            except Exception as e:
+                log.error(f"Kalshi: screenshot handling failed: {e}")
             if text.startswith("/trades") or text.startswith("/ledger"):
                 parts = text.split()
                 lim = int(parts[1]) if len(parts) > 1 and parts[1].isdigit() else 20
