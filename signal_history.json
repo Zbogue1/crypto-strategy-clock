@@ -173,5 +173,27 @@
       "XRP"
     ],
     "alert": "Market is overheated after massive weekly gains \u2014 high risk of near-term pullback. Do not chase."
+  },
+  {
+    "ts": "2026-08-25T04:02:12.867023+00:00",
+    "coin": "XRP",
+    "price": 1.51,
+    "signal": "HOLD",
+    "confidence": 45,
+    "score": -1.2,
+    "fg": 74,
+    "btc_price": 80483,
+    "btc_dominance": 59.3,
+    "candidates": [
+      "MON",
+      "LIT",
+      "PUMP",
+      "FDUSD",
+      "CRVUSD",
+      "USDG",
+      "RLUSD",
+      "XRP"
+    ],
+    "alert": "All swing candidates are overextended after 30-75% weekly rallies. No safe new entries available this cycle."
   }
 ]
