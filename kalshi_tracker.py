@@ -882,10 +882,24 @@ def build_event_diagnostic() -> str:
 
     f = _event_funnel
     L += ["", "LAST SCAN"]
-    if not f:
-        L += ["  no scan has completed yet this session.",
-              f"  scans run every {EVENT_SCAN_INTERVAL//60} min — if this stays "
-              f"empty, the thread isn't running."]
+    if f.get("status") == "CRASHED":
+        L += [f"  CRASHED at {str(f.get('at'))[:16]} UTC",
+              f"  {f.get('error','unknown')}",
+              "",
+              "  The scan thread is alive but the cycle threw. It will retry "
+              f"in up to {EVENT_SCAN_INTERVAL//60} min.",
+              "  Full traceback is in the Railway deploy logs."]
+    elif f.get("status") == "running" and "screened" not in f:
+        L += [f"  IN PROGRESS since {str(f.get('started_at'))[:16]} UTC",
+              "",
+              "  A full scan paginates ~60k open markets and then runs the",
+              "  analyst on each candidate, so the first one takes minutes.",
+              "  Run this again shortly."]
+    elif not f:
+        L += ["  no scan has started yet this session.",
+              "  The thread starts a scan immediately on boot, so an empty",
+              "  status here means the thread never came up — check the",
+              "  deploy log for 'Event trading ENABLED'."]
     else:
         st = f.get("screen_stats", {})
         L += [f"  at {str(f.get('at'))[:16]} UTC",
@@ -1042,6 +1056,7 @@ def _run_event_scan_cycle(force: bool = False):
             send_telegram(format_bet_alert(m, decision, analysis))
         time.sleep(1.5)
 
+    funnel["status"] = "completed"
     _event_funnel = funnel
     log.info(f"=== KALSHI EVENT SCAN END — {taken} bet(s) placed | {funnel} ===")
 
@@ -1130,11 +1145,23 @@ def _run_event_settle_cycle():
 
 
 def run_event_scan_loop(stop_event: Event):
+    global _event_funnel
     while not stop_event.is_set():
+        # Mark the attempt BEFORE running it. The funnel was only assigned on
+        # a clean finish, so a scan that crashed left it empty — identical to
+        # a scan that never started. That is the exact ambiguity this
+        # diagnostic exists to remove, and I reintroduced it here.
+        _event_funnel = {**(_event_funnel or {}),
+                         "status": "running",
+                         "started_at": datetime.now(timezone.utc).isoformat()}
         try:
             _run_event_scan_cycle()
         except Exception as e:
             log.error(f"Kalshi event scan loop error: {e}", exc_info=True)
+            _event_funnel = {**(_event_funnel or {}),
+                             "status": "CRASHED",
+                             "error": f"{type(e).__name__}: {e}",
+                             "at": datetime.now(timezone.utc).isoformat()}
         for _ in range(EVENT_SCAN_INTERVAL):
             if stop_event.is_set():
                 break
