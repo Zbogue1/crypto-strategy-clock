@@ -1,27 +1,27 @@
 {
-  "timestamp": "2026-08-25T12:04:11.499009+00:00",
+  "timestamp": "2026-08-25T16:02:33.214198+00:00",
   "signal": "HOLD",
   "selected_coin": "SOL",
   "selected_coin_name": "Solana",
-  "selected_coin_price": 98.75,
-  "confidence": 42,
-  "layman_headline": "Market is ripping higher but everything looks overextended \u2014 patience is the play right now.",
-  "layman_explanation": "Bitcoin just surged 23% in a week and dragged most altcoins up 30-70%. Our XRP position entered at $1.56 and is currently down 5.1% but still well above our $1.30 stop-loss. The entire market is in 'Greed' mode with most coins overbought after massive rallies. Chasing these moves now carries high risk of buying near a short-term top.",
-  "layman_action": "Hold your current XRP position and let it play out \u2014 it's within normal volatility and above stop-loss. Don't chase the rally. Wait for a pullback before adding new positions.",
-  "expert_reasoning": "The entire crypto market just experienced a massive short squeeze with BTC futures OI collapsing, driving a broad 20-50%+ rally across the board. While the trend is clearly bullish and the CryptoSlate headline about a $215B altcoin rally resting on BTC holding structure is constructive, every swing candidate is severely extended. PUMP has RSI 86 (dangerously overbought), XRP/ZEC/MON/LIT all gained 40-70% in 7 days. BTC dominance at 59.7% is still high, meaning alt outperformance may be fragile. Our existing XRP position at -5.1% is within normal range after a 48.7% weekly surge \u2014 the pullback from $1.56 to $1.48 is healthy consolidation. SOL is the best watchlist candidate given ETF inflows, but entering any position at these levels violates swing trading discipline.",
+  "selected_coin_price": 98.35,
+  "confidence": 38,
+  "layman_headline": "Market is running hot after a massive rally \u2014 patience is the smart play right now.",
+  "layman_explanation": "Bitcoin just surged nearly 23% in a week and most altcoins are up 20-60%. The market mood is 'Greed' at 74, meaning most people are already bought in and feeling confident. Our existing XRP position is down about 5% after a huge 47% weekly run \u2014 it's pulling back which is normal. The swing trade candidates are either overbought (RSI above 74-86) or stablecoins with no trade opportunity. Chasing into extended moves is how swing traders get burned.",
+  "layman_action": "Hold the current XRP position and let it work toward its target. Don't chase anything new right now \u2014 wait for a pullback or a fresh setup with better risk/reward.",
+  "expert_reasoning": "All actionable swing candidates (LIT RSI 74.6, PUMP RSI 86.1, MON +38.5% 7d, XRP +47.6% 7d) are deeply overbought or massively extended. The composite signal scores are unanimously negative across the board. Bitcoin dominance at 59.2% signals capital is concentrated in BTC rather than flowing freely into alts, making altcoin entries riskier. The Fear & Greed index at 74 with an improving trend suggests we haven't peaked yet, but entering after 20-50% weekly moves violates core swing trading discipline. Our XRP position at -5.1% is still well above its $1.30 stop-loss and the thesis remains intact \u2014 the pullback from $1.56 after a 47.6% weekly surge is healthy consolidation.",
   "risk_factors": [
-    "Market-wide retracement after 20-50% weekly rallies could hit all positions simultaneously",
-    "BTC dominance at 59.7% remains elevated \u2014 altcoin rallies may stall or reverse quickly",
-    "Greed sentiment (74) trending higher increases probability of a sharp correction"
+    "XRP could continue pulling back if BTC loses $79K support after its parabolic weekly move",
+    "High BTC dominance (59.2%) may suppress altcoin recovery, keeping XRP range-bound",
+    "Greed sentiment at 74 suggests a broader market correction could materialize quickly"
   ],
   "watch_list": [
-    "SOL price action \u2014 watch for pullback to $90-93 zone as potential clean entry",
-    "XRP holding above $1.40 support \u2014 critical for maintaining our current position thesis",
-    "BTC reaction at $80K psychological resistance \u2014 rejection could trigger broad altcoin selloff"
+    "BTC price action around $79K-80K \u2014 a break below $77K would signal broader risk-off",
+    "XRP holding above $1.40 support level \u2014 if it breaks, reassess stop-loss positioning",
+    "SOL pullback to $90-93 range which would create a favorable swing entry with defined risk"
   ],
-  "market_context": "Bitcoin just completed a historic 25% weekly advance driven by a massive short squeeze, pushing the market into Greed territory. The rally is powerful but nearly every asset is extended, making new entries high-risk until consolidation occurs.",
-  "context_banner": "Post-squeeze euphoria has markets overextended \u2014 discipline demands waiting for consolidation before deploying new capital.",
-  "btc_price": 79142,
+  "market_context": "The market is in a strong greed-driven rally with BTC up 23% weekly and massive ETF inflows of $2.2B in 6 days. However, most assets are now extended and overbought, making new entries high-risk with poor reward-to-risk ratios.",
+  "context_banner": "Post-rally consolidation phase \u2014 discipline means waiting for pullbacks rather than chasing green candles.",
+  "btc_price": 79480,
   "fear_greed": {
     "current": 74,
     "label": "Greed",
@@ -29,35 +29,35 @@
     "week_avg": 66.3,
     "trend": "improving"
   },
-  "btc_dominance": 59.7,
+  "btc_dominance": 59.2,
   "key_signals": [
     {
-      "source": "CoinDesk",
-      "signal_type": "news",
-      "description": "Bitcoin short squeeze with collapsing futures OI explains the violent 25% weekly rally \u2014 this is a positioning-driven move, not organic, increasing retracement risk."
+      "source": "RSI",
+      "signal_type": "technical",
+      "description": "LIT at 74.6 and PUMP at 86.1 RSI \u2014 both deep in overbought territory, signaling elevated correction risk and poor entry timing."
     },
     {
       "source": "CryptoSlate",
       "signal_type": "news",
-      "description": "CryptoSlate reports $215B altcoin rally depends on BTC holding reclaimed structure \u2014 constructive but conditional, suggesting caution on alt entries."
+      "description": "Bitcoin ETF inflow streak of $2.2B in 6 days confirms strong institutional demand driving the rally, but this is already priced into the 23% weekly BTC move."
     },
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Fear & Greed at 74 (Greed) and trending up from weekly avg of 66 \u2014 historically a mixed signal (56% win rate), suggesting elevated correction probability."
+      "description": "Greed at 74 and improving \u2014 market hasn't peaked but entering extended positions at this sentiment level historically yields mixed results (56% win rate in our data)."
     },
     {
-      "source": "RSI",
+      "source": "volume_breakout",
       "signal_type": "technical",
-      "description": "PUMP RSI at 86 is deeply overbought; while no RSI data available for other candidates, 40-70% weekly gains across the board suggest similar overbought conditions market-wide."
+      "description": "XRP volume at $5B and ZEC at $1.17B show the rally has been volume-confirmed, but these massive volumes after 47-60% weekly moves suggest climactic buying rather than early accumulation."
     },
     {
-      "source": "CoinDesk",
+      "source": "CoinTelegraph",
       "signal_type": "news",
-      "description": "Solana ETFs extending growth streak to 5 days with year's biggest inflows provides a strong fundamental catalyst for SOL, making it the top watchlist candidate on a pullback."
+      "description": "Bitcoin slipping from $80K as gold cools suggests the initial momentum burst may be fading, supporting a wait-for-pullback approach."
     }
   ],
   "_mode": "HUNTING",
   "exit_target": 112.0,
-  "stop_loss": 85.0
+  "stop_loss": 86.0
 }
