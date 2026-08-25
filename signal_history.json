@@ -195,5 +195,27 @@
       "XRP"
     ],
     "alert": "All swing candidates are overextended after 30-75% weekly rallies. No safe new entries available this cycle."
+  },
+  {
+    "ts": "2026-08-25T08:00:52.666529+00:00",
+    "coin": "XRP",
+    "price": 1.49,
+    "signal": "HOLD",
+    "confidence": 45,
+    "score": -1.2,
+    "fg": 74,
+    "btc_price": 79722,
+    "btc_dominance": 59.2,
+    "candidates": [
+      "LIT",
+      "MON",
+      "PUMP",
+      "FDUSD",
+      "USDG",
+      "CRVUSD",
+      "RLUSD",
+      "XRP"
+    ],
+    "alert": "All swing candidates are severely extended after 40-70% weekly rallies. No new entries warranted until consolidation occurs."
   }
 ]
