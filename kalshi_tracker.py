@@ -921,6 +921,35 @@ def _run_event_scan_cycle(force: bool = False):
     log.info(f"=== KALSHI EVENT SCAN END — {taken} bet(s) placed ===")
 
 
+_stale_alerted: set = set()
+
+
+def _alert_stale_events(stale: list):
+    """
+    Tell the user once per stuck position, not every cycle.
+
+    Alerting every 15 minutes would train him to ignore it, which defeats the
+    purpose — the whole failure mode here is a problem nobody notices.
+    """
+    for p in stale:
+        t = p["ticker"]
+        if t in _stale_alerted:
+            continue
+        _stale_alerted.add(t)
+        log.warning(f"Kalshi events: {t} is {p['overdue_hours']:.0f}h past its "
+                    f"close time and still unsettled — ${p['cost_basis']:.2f} tied up")
+        send_telegram(
+            "STUCK EVENT BET\n\n"
+            f"{p['title'][:80]}\n{t}\n\n"
+            f"Closed {p['overdue_hours']:.0f}h ago but Kalshi has not reported a "
+            f"result, so it cannot be settled.\n"
+            f"${p['cost_basis']:.2f} is tied up in it.\n\n"
+            "Nothing was auto-closed — the outcome is unknown and guessing it "
+            "would invent P&L. Check the market on Kalshi.",
+            parse_mode=None,
+        )
+
+
 def _run_event_settle_cycle():
     """
     Close event positions whose markets have actually resolved.
@@ -933,11 +962,18 @@ def _run_event_settle_cycle():
         return
 
     from kalshi_events import get_market_settlement
-    from kalshi_event_portfolio import get_summary as event_summary, settle_bet
+    from kalshi_event_portfolio import (
+        get_summary as event_summary, settle_bet, stale_positions,
+    )
 
     positions = event_summary()["positions"]
     if not positions:
         return
+
+    # Capital that should have been freed and wasn't. Settlement is the only
+    # exit in this book, so a market that never reports a result would hold
+    # money indefinitely with nothing saying so.
+    _alert_stale_events(stale_positions())
 
     for pos in positions:
         ticker = pos["ticker"]

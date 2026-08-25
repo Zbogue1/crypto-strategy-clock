@@ -271,6 +271,12 @@ MONITOR_FAIL_PCT_WARN  = float(os.getenv("FOMO_MONITOR_FAIL_PCT", "0.20"))
 MONITOR_SLOW_CYCLE_SEC = float(os.getenv("FOMO_MONITOR_SLOW_SEC", "240"))
 
 _load_stats = {"checked": 0, "price_fail": 0}
+
+# contract -> consecutive cycles with no price. Survives across cycles on
+# purpose: the aggregate counter is reset every cycle, so a token failing
+# every single time looks the same as five different tokens failing once each.
+_consec_price_fail: dict = {}
+PRICE_FAIL_ALARM = int(os.getenv("FOMO_PRICE_FAIL_ALARM", "3"))
 _load_warned_at = 0          # highest position count already warned about
 _last_load_warning = 0.0     # timestamp, for cooldown
 LOAD_WARN_COOLDOWN = 6 * 3600
@@ -530,7 +536,28 @@ def _check_holding(holding: dict, state: dict, prefetched: tuple = None):
         # Not a harmless skip: this position went unchecked for stops this cycle
         _load_stats["price_fail"] = _load_stats.get("price_fail", 0) + 1
         log.debug(f"Exit monitor: couldn't fetch price for {ticker}")
+
+        # One miss is API noise. Repeated misses on the SAME token are not —
+        # DexScreener stops returning pairs when liquidity is pulled, so the
+        # position most likely to be going to zero is exactly the one we can
+        # no longer price. The aggregate "1/5 failed" warning cannot see this
+        # because it forgets which token failed the moment the cycle ends.
+        n = _consec_price_fail.get(contract, 0) + 1
+        _consec_price_fail[contract] = n
+        if n == PRICE_FAIL_ALARM:
+            _send_telegram(
+                f"🚨 <b>{ticker}: no price data for {n} straight cycles</b>\n\n"
+                f"Its stop-loss has not been evaluated in ~{n * 5} minutes.\n\n"
+                f"<i>DexScreener usually stops returning pairs when liquidity is "
+                f"pulled. Check this one manually — a token that can't be priced "
+                f"is the one most likely to be going to zero.</i>"
+            )
+            log.error(f"Exit monitor: {ticker} unpriceable for {n} cycles — "
+                      f"stop-loss not enforced")
         return
+
+    # Priced successfully — clear any failure streak.
+    _consec_price_fail.pop(contract, None)
 
     entry_price = holding.get("entry_price", 0)
     if not entry_price:

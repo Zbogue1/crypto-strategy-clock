@@ -545,8 +545,15 @@ def close_position(
     # Return margin + net profit to cash
     state["cash"]         += margin + net_pnl
     state["total_pnl"]    += net_pnl
-    state["total_funding_paid"] += funding_paid
     state["total_trades"] += 1
+
+    # NOTE: total_funding_paid is deliberately NOT incremented here.
+    # apply_funding() already added every charge to the running total at the
+    # moment it was levied. Adding the position's accumulated funding_paid
+    # again on close counted the whole thing twice, roughly doubling the
+    # reported funding figure. The cash math was always right — net_pnl above
+    # carries the real deduction — but the /health and report funding lines
+    # were inflated.
 
     won = net_pnl > 0
     if won:

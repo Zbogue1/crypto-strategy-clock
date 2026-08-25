@@ -239,6 +239,38 @@ def get_summary() -> dict:
     }
 
 
+def stale_positions(grace_hours: float = None) -> list:
+    """
+    Bets whose market should have resolved by now but hasn't reported one.
+
+    settle_bet() is the ONLY exit in this book — deliberately, since resolving
+    on an answer instead of a timer is the point. But that means a market that
+    never reports a result holds capital forever, silently. A delisted ticker,
+    a renamed market, a changed API path, or a Kalshi settlement delay would
+    all look identical to "not resolved yet".
+
+    This does not auto-close anything: we don't know the outcome, and guessing
+    would invent P&L. It surfaces the position so a human can look.
+    """
+    if grace_hours is None:
+        grace_hours = float(os.getenv("KALSHI_EVENT_STALE_HOURS", "24"))
+
+    now  = datetime.now(timezone.utc)
+    out  = []
+    for h in _load()["holdings"]:
+        ct = h.get("close_time") or ""
+        if not ct:
+            continue
+        try:
+            closes = datetime.fromisoformat(ct.replace("Z", "+00:00"))
+        except Exception:
+            continue
+        overdue = (now - closes).total_seconds() / 3600
+        if overdue >= grace_hours:
+            out.append({**h, "overdue_hours": round(overdue, 1)})
+    return out
+
+
 def open_domains() -> list:
     """Domains we currently hold, for the correlation cap."""
     return [h.get("domain", "") for h in _load()["holdings"]]

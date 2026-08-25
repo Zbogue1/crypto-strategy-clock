@@ -103,6 +103,79 @@ _last_entry: dict = {}      # symbol → epoch, avoid re-entering same name
 REENTRY_COOLDOWN = 900
 
 
+_last_funnel: dict = {}
+
+
+def build_diagnostic() -> str:
+    """
+    Answer the question "is it broken, or is it just being selective?"
+
+    A silent bot is ambiguous and that ambiguity is dangerous: a dead data feed
+    and a disciplined screen produce the identical output of zero trades. This
+    walks the whole chain — credentials, feed, screen, budget — and reports the
+    first thing that would stop a trade.
+    """
+    L = ["STOCK GOLEM DIAGNOSTIC", ""]
+
+    # 1. Can it reach the broker at all?
+    try:
+        acct = sd.get_account()
+        if acct:
+            L.append(f"Alpaca:      connected ({acct.get('status','?')})")
+            L.append(f"             buying power ${float(acct.get('buying_power',0)):,.0f}")
+        else:
+            L.append("Alpaca:      NO RESPONSE — check API key/secret")
+    except Exception as e:
+        L.append(f"Alpaca:      ERROR {str(e)[:60]}")
+
+    # 2. Is it allowed to trade right now?
+    open_now, note = in_entry_window()
+    L.append(f"Window:      {'OPEN' if open_now else 'closed'} ({note})")
+    allowed, why = pf.can_trade()
+    L.append(f"Risk gate:   {'clear' if allowed else 'BLOCKED — ' + why}")
+
+    # 3. Does the screener return anything?
+    try:
+        movers = sd.get_movers(top=50, min_pct=sig.MIN_PCT_CHANGE)
+        L.append(f"Screener:    {len(movers)} gainer(s) at >= {sig.MIN_PCT_CHANGE:.0f}%")
+        if movers[:5]:
+            L.append("             " + ", ".join(
+                f"{m['symbol']} {m.get('percent_change', 0):+.0f}%"
+                for m in movers[:5]))
+    except Exception as e:
+        L.append(f"Screener:    ERROR {str(e)[:60]}")
+
+    # 4. Where did candidates die last scan?
+    L += ["", "LAST SCAN FUNNEL"]
+    f = _last_funnel
+    if not f:
+        L.append("  no scan has run yet this session")
+    else:
+        L += [
+            f"  {f.get('gainers',0):>4} gainers found",
+            f"  {f.get('cooldown',0):>4} skipped (re-entry cooldown)",
+            f"  {f.get('no_snapshot',0):>4} no snapshot returned",
+            f"  {f.get('failed_pillars',0):>4} failed the 5 Pillars",
+            f"  {f.get('thin_bars',0):>4} too few 1-min bars",
+            f"  {f.get('no_pullback',0):>4} no valid pullback",
+            f"  {f.get('candidates',0):>4} CANDIDATES",
+        ]
+        if f.get("pillar_detail"):
+            L.append("")
+            L.append("  which pillar rejected them:")
+            for k, v in sorted(f["pillar_detail"].items(), key=lambda x: -x[1]):
+                L.append(f"    {v:>3}x  {k}")
+
+    L += ["", "THRESHOLDS",
+          f"  RVOL >= {sig.MIN_RVOL}   move >= {sig.MIN_PCT_CHANGE}%   "
+          f"pillars >= {sig.MIN_PILLARS}/5",
+          "",
+          "Note: the free Alpaca feed is IEX-only (~2-3% of real volume), so",
+          "RVOL reads far lower than reality. If 'rvol' dominates the rejection",
+          "list, the screen is being starved by the data feed, not by the market."]
+    return "\n".join(L)
+
+
 def run_scan(force: bool = False, announce: bool = False) -> list:
     open_now, note = in_entry_window()
     if not force and not open_now:
@@ -124,39 +197,65 @@ def run_scan(force: bool = False, announce: bool = False) -> list:
     log.info(f"Scan: {len(movers)} gainer(s) to screen")
     candidates, rejected = [], 0
 
+    # A single "rejected" count cannot distinguish "the screen is working and
+    # nothing qualified today" from "the data feed is broken and everything
+    # dies at step one". Zero trades is only reassuring if you can see WHERE
+    # candidates died. This funnel is what /diag reports.
+    global _last_funnel
+    funnel = {"gainers": len(movers), "cooldown": 0, "no_snapshot": 0,
+              "failed_pillars": 0, "thin_bars": 0, "no_pullback": 0,
+              "candidates": 0, "pillar_detail": {}}
+
     for m in movers[:20]:
         sym = m["symbol"]
         if time.time() - _last_entry.get(sym, 0) < REENTRY_COOLDOWN:
+            funnel["cooldown"] += 1
             continue
 
         snap = sd.get_full_snapshot(sym)
         if not snap:
             rejected += 1
+            funnel["no_snapshot"] += 1
             continue
 
         pillars = sig.score_pillars(snap, market_hot=True)
         if not pillars["qualifies"]:
             rejected += 1
+            funnel["failed_pillars"] += 1
+            # Which pillar is doing the rejecting? On Alpaca's free IEX feed
+            # RVOL is computed from ~2-3% of real volume, so it reads low and
+            # can silently veto everything. That would look identical to a
+            # quiet market without this breakdown.
+            for name, p in (pillars.get("pillars") or {}).items():
+                if isinstance(p, dict) and not p.get("pass"):
+                    funnel["pillar_detail"][name] = \
+                        funnel["pillar_detail"].get(name, 0) + 1
             log.debug(f"{sym}: {pillars['passed']}/5 pillars — skip")
             continue
 
         bars = sd.get_bars(sym, "1Min", lookback_days=1)
         if len(bars) < 20:
             rejected += 1
+            funnel["thin_bars"] += 1
             continue
 
         pb = sig.detect_pullback(bars)
         if not pb or not pb["valid"]:
             rejected += 1
+            funnel["no_pullback"] += 1
             continue
 
         candidates.append({"snap": snap, "pillars": pillars,
                            "pullback": pb, "bars": bars})
+        funnel["candidates"] += 1
         log.info(f"CANDIDATE {sym}: grade {pillars['grade']}, "
                  f"pullback valid, ready={pb['ready']}")
         time.sleep(0.3)
 
-    log.info(f"Scan complete: {len(candidates)} candidate(s), {rejected} rejected")
+    funnel["at"] = datetime.now(timezone.utc).isoformat()
+    _last_funnel = funnel
+    log.info(f"Scan complete: {len(candidates)} candidate(s), {rejected} rejected "
+             f"| funnel={funnel}")
 
     if announce:
         tg.send(tg.format_scan(candidates, rejected, note))
@@ -367,6 +466,8 @@ def _handle_command(text: str):
         tg.send("🔍 Scanning...")
         Thread(target=lambda: run_scan(force=True, announce=True), daemon=True).start()
 
+    elif low.startswith("/diag"):
+        tg.send(build_diagnostic(), parse_mode=None)
     elif low.startswith("/rules"):
         tg.send(tg.format_rules())
 

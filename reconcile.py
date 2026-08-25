@@ -85,13 +85,21 @@ def reconcile_kalshi() -> dict:
         basis   = float(state.get("starting_cash", 0) or 0)
         actual  = float(s.get("total_value", 0) or 0) - basis
 
-        # Every recorded event
+        # Every recorded event.
+        #
+        # Funding is deliberately NOT a separate term. It is already inside
+        # both of the numbers below:
+        #   close_position:  net_pnl       = realized_pnl - funding_paid
+        #   apply_funding:   unrealized_pnl = calc_pnl(...) - funding_paid
+        # Adding total_funding_paid on top subtracted it a second time and
+        # produced a phantom gap exactly equal to the funding total — which is
+        # what "Kalshi — $6.52 UNACCOUNTED" was, with funding at $6.52. The
+        # books were correct; this formula was not.
         trades  = sum(float(t.get("net_pnl", 0) or 0)
                       for t in state.get("trade_history", []))
-        funding = -float(state.get("total_funding_paid", 0) or 0)
         unreal  = sum(float(p.get("unrealized_pnl", 0) or 0)
                       for p in s.get("positions", []))
-        recorded = trades + funding + unreal
+        recorded = trades + unreal
 
         gap = actual - recorded
         return {
@@ -100,8 +108,10 @@ def reconcile_kalshi() -> dict:
             "recorded": round(recorded, 2), "gap": round(gap, 2),
             "components": {
                 "closed trades": round(trades, 2),
-                "funding paid":  round(funding, 2),
                 "unrealized":    round(unreal, 2),
+                # Shown for context only — already inside the two above.
+                "(funding, already included)":
+                    round(-float(state.get("total_funding_paid", 0) or 0), 2),
             },
             "n_trades": len(state.get("trade_history", [])),
         }
