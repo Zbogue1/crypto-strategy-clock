@@ -43,6 +43,14 @@ MAX_EVENT_POSITIONS = int(os.getenv("KALSHI_EVENT_MAX_POSITIONS", "10"))
 # bet on "favourites hold up tonight", not six independent positions.
 MAX_PER_DOMAIN    = int(os.getenv("KALSHI_EVENT_MAX_PER_DOMAIN", "3"))
 
+# A market this liquid has been priced by many people with real money.
+DEEP_MARKET_THRESHOLD   = float(os.getenv("KALSHI_DEEP_THRESHOLD", "50000"))
+# Demand proportionally more edge before betting against them.
+DEEP_MARKET_EDGE_MULT   = float(os.getenv("KALSHI_DEEP_EDGE_MULT", "2.0"))
+# Beyond this, a claimed edge on a deep market is a modelling error, not an
+# opportunity. Refuse rather than size up on our own overconfidence.
+IMPLAUSIBLE_EDGE_POINTS = float(os.getenv("KALSHI_IMPLAUSIBLE_EDGE", "18"))
+
 
 def calc_position(price_cents: float, side: str,
                   stake: float = STAKE_PER_BET) -> dict:
@@ -105,6 +113,36 @@ def evaluate(market: dict, analysis: dict) -> dict:
                 "reason": (f"edge {net_edge:.1f}pts after {spread:.0f}c spread "
                            f"< {MIN_EDGE_POINTS:.0f} required")}
 
+    # ── EFFICIENCY CHECK ──────────────────────────────────────────────────
+    # A large edge against a DEEP market is evidence our estimate is wrong,
+    # not that we found free money.
+    #
+    # The first live bet was YES on "S&P 500 above 7674.99" at 49c, claiming
+    # 72% against a market at 49% — a 23-point disagreement with one of the
+    # most heavily traded indices in the world, on a threshold sitting 0.03%
+    # below the prior close. That threshold is at-the-money by construction,
+    # so ~50/50 is the correct price and the analyst's reasoning (the index
+    # "stays within ±0.5% ~85% of the time") confused staying in a RANGE with
+    # staying ABOVE a specific level.
+    #
+    # Thin markets can genuinely be mispriced. Deep ones usually aren't, and
+    # the bigger our claimed edge there, the more likely we're the mistake.
+    vol = float(market.get("volume") or 0)
+    oi  = float(market.get("open_interest") or 0)
+    depth = vol + oi
+
+    if depth >= DEEP_MARKET_THRESHOLD:
+        required = MIN_EDGE_POINTS * DEEP_MARKET_EDGE_MULT
+        if net_edge < required:
+            return {"trade": False, "side": side, "edge": round(net_edge, 1),
+                    "reason": (f"deep market (vol+OI {depth:,.0f}) needs "
+                               f"{required:.0f}pt edge, have {net_edge:.1f}")}
+        if net_edge > IMPLAUSIBLE_EDGE_POINTS:
+            return {"trade": False, "side": side, "edge": round(net_edge, 1),
+                    "reason": (f"{net_edge:.1f}pt edge against a market with "
+                               f"{depth:,.0f} vol+OI is implausible — more "
+                               f"likely our estimate is wrong. Refusing.")}
+
     sizing = calc_position(implied, side)
     if sizing["contracts"] < 1:
         return {"trade": False, "side": side, "edge": round(net_edge, 1),
@@ -157,6 +195,8 @@ def format_bet_alert(market: dict, decision: dict, analysis: dict) -> str:
         f"{decision['implied']:.0f}c\n"
         f"Stake: *${s['total_cost']:.2f}*  ·  Win: *+${s['max_gain']:.2f}*  ·  "
         f"Lose: *-${s['max_loss']:.2f}*\n"
+        f"If YES: {s['contracts']} x $1.00 = ${s['contracts']:.2f} back "
+        f"(${s['max_gain']:.2f} profit on ${s['total_cost']:.2f})\n"
         f"Payout {s['payout_ratio']:.2f}:1 · break-even {s['breakeven_pct']:.0f}%\n\n"
         f"*Our estimate: {decision['our_prob']:.0f}%*  vs market "
         f"{decision['implied']:.0f}%\n"

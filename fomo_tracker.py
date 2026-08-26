@@ -648,6 +648,30 @@ def send_positions_update():
     tranche_pl = sum(float(t.get("profit", 0) or 0) for t in tranches)
     tranche_wins = sum(1 for t in tranches if (t.get("profit") or 0) > 0)
 
+    # ORPHAN CHECK — a position flagged tranche_1_sold / tranche_2_sold with no
+    # matching tranche_sales row means a harvest fired but left no record.
+    #
+    # Two possible causes, and they need opposite responses:
+    #   · it fired BEFORE this logging existed — historical, nothing to fix
+    #   · it fired AFTER and the write is failing — a live bug
+    # Counting them is the only way to tell, and "0 orphans" after a fresh
+    # harvest is the proof that recording actually works.
+    recorded_by_token = {}
+    for t in tranches:
+        k = (t.get("contract") or t.get("token_ticker") or "").lower()
+        recorded_by_token[k] = recorded_by_token.get(k, 0) + 1
+
+    orphans = []
+    for h in state.get("holdings", []):
+        expected = int(bool(h.get("tranche_1_sold"))) + int(bool(h.get("tranche_2_sold")))
+        if not expected:
+            continue
+        key = (h.get("contract_address") or h.get("token_ticker") or "").lower()
+        have = recorded_by_token.get(key, 0)
+        if have < expected:
+            orphans.append(f"{h.get('token_ticker','?')} "
+                           f"({expected} taken, {have} recorded)")
+
     tot_emoji = "🟢" if true_pnl >= 0 else "🔴"
     pct = (true_pnl / basis * 100) if basis else 0.0
 
@@ -667,6 +691,11 @@ def send_positions_update():
         block += ("  └ Tranche harvests: none logged yet\n"
                   "     <i>(harvests before this build weren't recorded — "
                   "the money is in cash and counted in the total)</i>")
+    if orphans:
+        block += (f"  ⚠️ {len(orphans)} harvest(s) with NO record: "
+                  f"{', '.join(orphans[:3])}\n"
+                  f"     If this persists after a NEW tranche fires, the\n"
+                  f"     write is broken. The cash is still counted above.\n")
     lines.append(block)
 
     send_telegram("\n".join(lines))
