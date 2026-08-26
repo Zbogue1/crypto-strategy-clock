@@ -371,5 +371,27 @@
       "XRP"
     ],
     "alert": "XRP position down 9.6% \u2014 approaching stop-loss at $1.30. Monitor closely."
+  },
+  {
+    "ts": "2026-08-26T16:04:44.548697+00:00",
+    "coin": "XRP",
+    "price": 1.37,
+    "signal": "HOLD",
+    "confidence": 35,
+    "score": -1.8,
+    "fg": 65,
+    "btc_price": 77987,
+    "btc_dominance": 59.2,
+    "candidates": [
+      "MON",
+      "PUMP",
+      "FDUSD",
+      "USDG",
+      "LIT",
+      "XAUT",
+      "ZRO",
+      "XRP"
+    ],
+    "alert": "XRP position at -12.2% and approaching stop-loss. Recommend immediate exit to preserve capital."
   }
 ]
