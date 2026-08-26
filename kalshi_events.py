@@ -57,6 +57,78 @@ LAST_FETCH: dict = {}
 ALL_MARKETS_TTL = 600      # 10 minutes
 
 
+def _dollars_to_cents(v) -> int:
+    """
+    Kalshi now returns prices as fixed-point DOLLAR STRINGS ("0.5600"), where
+    this code has always worked in integer cents. 0.5600 -> 56.
+    """
+    if v is None or v == "":
+        return 0
+    try:
+        return int(round(float(v) * 100))
+    except (TypeError, ValueError):
+        return 0
+
+
+def _fp_to_int(v) -> int:
+    """Fixed-point contract counts arrive as strings ("10.00") -> 10."""
+    if v is None or v == "":
+        return 0
+    try:
+        return int(float(v))
+    except (TypeError, ValueError):
+        return 0
+
+
+def _normalize_market(m: dict) -> dict:
+    """
+    Translate Kalshi's current field names into the shape this codebase expects.
+
+    THIS IS WHY EVERY MARKET LOOKED DEAD. The API was returning 43 populated
+    fields while `yes_bid`, `yes_ask`, `last_price`, `volume` and
+    `open_interest` all read None — because Kalshi renamed them:
+
+        yes_bid      -> yes_bid_dollars      ("0.5600" dollars, not 56 cents)
+        yes_ask      -> yes_ask_dollars
+        last_price   -> last_price_dollars
+        volume       -> volume_fp            ("10.00" fixed-point string)
+        open_interest-> open_interest_fp
+        title        -> deprecated; use yes_sub_title
+        liquidity    -> liquidity_dollars    (deprecated, always "0.0000")
+
+    _is_tradeable then saw four zeros and correctly concluded "no quote, no
+    activity" for all 1,831 markets. The filter was right; it was reading
+    fields that no longer exist.
+
+    Old names are still checked first so this keeps working if Kalshi serves
+    the legacy shape anywhere.
+    """
+    out = dict(m)
+
+    if m.get("yes_bid") is None:
+        out["yes_bid"] = _dollars_to_cents(m.get("yes_bid_dollars"))
+    if m.get("yes_ask") is None:
+        out["yes_ask"] = _dollars_to_cents(m.get("yes_ask_dollars"))
+    if m.get("last_price") is None:
+        out["last_price"] = _dollars_to_cents(m.get("last_price_dollars"))
+    if m.get("volume") is None:
+        out["volume"] = _fp_to_int(m.get("volume_fp"))
+    if m.get("volume_24h") is None:
+        out["volume_24h"] = _fp_to_int(m.get("volume_24h_fp"))
+    if m.get("open_interest") is None:
+        out["open_interest"] = _fp_to_int(m.get("open_interest_fp"))
+
+    # `title` is deprecated and may be absent; the yes-side subtitle is the
+    # human-readable description now.
+    if not m.get("title"):
+        out["title"] = m.get("yes_sub_title") or m.get("subtitle") or ""
+
+    if not m.get("expiration_time"):
+        out["expiration_time"] = (m.get("expected_expiration_time")
+                                  or m.get("latest_expiration_time") or "")
+    return out
+
+
 def _get(path: str, params: dict = None, timeout: int = 15) -> Optional[dict]:
     try:
         r = requests.get(f"{EVENTS_BASE}{path}", params=params, headers=_HEADERS, timeout=timeout)
@@ -218,7 +290,11 @@ def fetch_all_open_markets(use_cache: bool = True) -> list[dict]:
     # So page until enough USABLE markets are found, not until N pages are
     # fetched. Parlays are dropped inline and don't count toward the target.
     for _ in range(MAX_SEARCH_PAGES):
-        params = {"status": "open", "limit": PAGE_LIMIT}
+        # mve_filter=exclude drops multivariate events (combos/parlays)
+        # SERVER-SIDE. We were paging through 198,169 of them client-side to
+        # reach a handful of real markets; Kalshi can simply not send them.
+        params = {"status": "open", "limit": PAGE_LIMIT,
+                  "mve_filter": "exclude"}
         if cursor:
             params["cursor"] = cursor
         data = _get("/markets", params=params)
@@ -231,7 +307,7 @@ def fetch_all_open_markets(use_cache: bool = True) -> list[dict]:
             if _is_parlay(m):
                 parlays_seen += 1
             else:
-                markets.append(m)
+                markets.append(_normalize_market(m))
 
         cursor = data.get("cursor")
         if not cursor or not batch:
@@ -314,7 +390,7 @@ def get_market(ticker: str) -> Optional[dict]:
     data = _get(f"/markets/{ticker}")
     if not data:
         return None
-    m = data.get("market") or data
+    m = _normalize_market(data.get("market") or data)
     return _parse_market(m)
 
 
