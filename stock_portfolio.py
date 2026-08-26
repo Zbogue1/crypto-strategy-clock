@@ -344,17 +344,24 @@ def can_trade() -> tuple:
         _save(s)
         return False, reason
 
-    if s["consecutive_losses"] >= MAX_CONSECUTIVE_LOSS:
-        reason = f"{s['consecutive_losses']} consecutive losers — done for the day"
+    # Bracket access on every field meant a partially-written or migrated state
+    # raised KeyError here — and can_trade() gates EVERY entry, so that
+    # exception would take down the whole scan rather than blocking one trade.
+    # A risk gate should fail closed and say why, never explode.
+    if s.get("consecutive_losses", 0) >= MAX_CONSECUTIVE_LOSS:
+        reason = f"{s.get('consecutive_losses', 0)} consecutive losers — done for the day"
         s["halted_reason"] = reason
         _save(s)
         return False, reason
 
-    if len(s["positions"]) >= MAX_OPEN_POSITIONS:
+    if len(s.get("positions", [])) >= MAX_OPEN_POSITIONS:
         return False, f"max {MAX_OPEN_POSITIONS} concurrent positions"
 
-    if s["cash"] < 50:
-        return False, f"insufficient cash (${s['cash']:.2f})"
+    cash = s.get("cash")
+    if cash is None:
+        return False, "portfolio state has no cash field — refusing to trade"
+    if cash < 50:
+        return False, f"insufficient cash (${cash:.2f})"
 
     return True, ""
 

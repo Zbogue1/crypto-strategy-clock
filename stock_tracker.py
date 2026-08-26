@@ -108,6 +108,40 @@ _last_entry: dict = {}      # symbol → epoch, avoid re-entering same name
 REENTRY_COOLDOWN = 900
 
 
+_FUNNEL_KEY = "stock_scan_funnel"
+
+
+def _save_funnel(f: dict):
+    """
+    Persist the scan funnel so it survives a redeploy.
+
+    It was in-memory only, and the scan runs solely between 07:00 and 10:30 ET.
+    So any deploy during the day wiped the morning's result and /diag reported
+    "no scan has run yet this session" until the next trading day — precisely
+    when you most want to know why nothing traded. Kalshi's funnel already got
+    this fix; this is the same one carried over.
+    """
+    global _last_funnel
+    _last_funnel = f
+    try:
+        from stock_portfolio import _redis_set
+        if not _redis_set(_FUNNEL_KEY, f):
+            log.error("Scan funnel Redis write FAILED — /diag will lose this "
+                      "scan on the next redeploy.")
+    except Exception as e:
+        log.error(f"Scan funnel persist error: {e}")
+
+
+def _load_funnel() -> dict:
+    if _last_funnel:
+        return _last_funnel
+    try:
+        from stock_portfolio import _redis_get
+        return _redis_get(_FUNNEL_KEY) or {}
+    except Exception:
+        return {}
+
+
 _last_funnel: dict = {}
 
 
@@ -227,7 +261,7 @@ def build_diagnostic() -> str:
 
     # 4. Where did candidates die last scan?
     L += ["", "LAST SCAN FUNNEL"]
-    f = _last_funnel
+    f = _load_funnel()
     if not f:
         L.append("  no scan has run yet this session")
     else:
@@ -361,7 +395,7 @@ def run_scan(force: bool = False, announce: bool = False) -> list:
         time.sleep(0.3)
 
     funnel["at"] = datetime.now(timezone.utc).isoformat()
-    _last_funnel = funnel
+    _save_funnel(funnel)
     log.info(f"Scan complete: {len(candidates)} candidate(s), {rejected} rejected "
              f"| funnel={funnel}")
 
