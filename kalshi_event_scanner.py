@@ -41,6 +41,7 @@ from typing import Optional
 
 from kalshi_events import (
     fetch_all_open_markets, _parse_market, _is_parlay, _is_tradeable,
+    parlay_reason,
 )
 from kalshi_domains import detect_domain, DOMAIN_LABELS
 
@@ -109,8 +110,16 @@ def screen_markets(limit: int = MAX_CANDIDATES) -> dict:
     out = []
 
     for m in raw:
-        if _is_parlay(m):
+        pr = parlay_reason(m)
+        if pr:
             stats["parlay"] += 1
+            # Sample WHY, so a filter that eats 98% of the universe can be
+            # audited instead of trusted.
+            stats.setdefault("parlay_reasons", {})
+            stats["parlay_reasons"][pr] = stats["parlay_reasons"].get(pr, 0) + 1
+            if len(stats.setdefault("parlay_samples", [])) < 5:
+                stats["parlay_samples"].append(
+                    f"{m.get('ticker','?')} :: {(m.get('title') or '')[:60]}")
             continue
         if not _is_tradeable(m):
             stats["dead"] += 1
@@ -167,6 +176,9 @@ def format_scan_summary(res: dict) -> str:
         "",
         "*Filtered out:*",
         f"  {s.get('parlay',0):,} multi-leg parlays",
+    ] + ([f"     -> {k}: {v:,}" for k, v in
+          sorted((s.get("parlay_reasons") or {}).items(), key=lambda x: -x[1])[:4]]
+         ) + ([f"     eg {x}" for x in (s.get("parlay_samples") or [])[:3]]) + [
         f"  {s.get('dead',0):,} no quote / no activity",
         f"  {s.get('wrong_window',0):,} outside {MIN_HOURS_LEFT:.0f}-{MAX_HOURS_LEFT:.0f}h window",
         f"  {s.get('illiquid',0):,} too illiquid or wide spread",

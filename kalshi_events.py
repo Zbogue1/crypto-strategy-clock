@@ -102,17 +102,30 @@ _PARLAY_TICKER_PATTERNS = (
 _MAX_TITLE_TOKENS = 40      # real market titles are short; parlays are enormous
 
 
-def _is_parlay(market: dict) -> bool:
+def parlay_reason(market: dict) -> Optional[str]:
+    """
+    Why this market was judged a parlay — or None.
+
+    Split out from _is_parlay so a screen can report WHICH rule fired. The
+    filter rejected 58,751 of 60,000 markets (98%) and there was no way to see
+    which of four conditions was responsible. A filter that discards almost
+    everything must be able to explain itself.
+    """
     ticker = (market.get("ticker", "") + market.get("event_ticker", "")).upper()
-    if any(p in ticker for p in _PARLAY_TICKER_PATTERNS):
-        return True
+    for p in _PARLAY_TICKER_PATTERNS:
+        if p in ticker:
+            return f"ticker contains {p}"
     title = market.get("title", "") or ""
-    # A title listing many comma-separated legs is a parlay
     if title.count(",") >= 6:
-        return True
-    if len(_tokenize(title)) > _MAX_TITLE_TOKENS:
-        return True
-    return False
+        return f"title has {title.count(',')} commas"
+    n = len(_tokenize(title))
+    if n > _MAX_TITLE_TOKENS:
+        return f"title has {n} tokens (max {_MAX_TITLE_TOKENS})"
+    return None
+
+
+def _is_parlay(market: dict) -> bool:
+    return parlay_reason(market) is not None
 
 
 def _is_tradeable(market: dict) -> bool:
