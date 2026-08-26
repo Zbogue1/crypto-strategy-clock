@@ -393,5 +393,26 @@
       "XRP"
     ],
     "alert": "XRP position at -12.2% and approaching stop-loss. Recommend immediate exit to preserve capital."
+  },
+  {
+    "ts": "2026-08-26T20:04:14.181457+00:00",
+    "coin": "ETH",
+    "price": 2469.56,
+    "signal": "HOLD",
+    "confidence": 32,
+    "score": -1.2,
+    "fg": 65,
+    "btc_price": 78419,
+    "btc_dominance": 59.3,
+    "candidates": [
+      "PUMP",
+      "MON",
+      "KAG",
+      "USDG",
+      "FDUSD",
+      "XAUT",
+      "LIT"
+    ],
+    "alert": "All swing candidates are either overextended (+25-54% in 7 days) or stablecoins \u2014 no clean setups available this cycle."
   }
 ]
