@@ -35,7 +35,13 @@ _HEADERS = {"Accept": "application/json"}
 
 PAGE_LIMIT        = 1000   # Kalshi max per page
 MAX_SEARCH_PAGES  = int(os.getenv("KALSHI_MAX_PAGES", "200"))
-SEARCH_TIME_BUDGET = 45    # seconds; stop paging past this even if more remain
+# 45s was set when we assumed a page of markets was mostly usable. In
+# reality ~59,000 of 60,000 open markets are CROSSCATEGORY parlays and they
+# come back CONTIGUOUSLY — so roughly 60 pages must be skipped before the
+# first real market appears. A 45s budget expired around page 3, which is
+# why a scan reported "Screened 1 open markets". The scan runs hourly and
+# caches for 10 minutes, so a slower cold fetch is fine.
+SEARCH_TIME_BUDGET = float(os.getenv("KALSHI_SEARCH_BUDGET", "180"))
 # Page until this many NON-parlay markets are collected. Raw page counts
 # are meaningless when 98% of the universe is auto-generated parlays.
 TARGET_USABLE_MARKETS = int(os.getenv("KALSHI_TARGET_MARKETS", "4000"))
@@ -45,6 +51,9 @@ MIN_MATCH_SCORE   = 0.12   # F1 threshold — below this the market isn't the on
 
 # Full open-market list is cached so repeated /ask calls don't re-scan Kalshi
 _ALL_CACHE: dict = {"data": None, "fetched_at": 0.0}
+# Last pagination result — surfaced by /event_scan so a short fetch is
+# visible instead of looking like an empty market universe.
+LAST_FETCH: dict = {}
 ALL_MARKETS_TTL = 600      # 10 minutes
 
 
@@ -237,6 +246,12 @@ def fetch_all_open_markets(use_cache: bool = True) -> list[dict]:
                         f"({parlays_seen:,} parlays skipped)")
             break
 
+    LAST_FETCH.update({
+        "pages": pages, "parlays_skipped": parlays_seen,
+        "usable": len(markets), "elapsed": round(time.time() - started, 1),
+        "hit_budget": (time.time() - started) > SEARCH_TIME_BUDGET,
+        "hit_page_cap": pages >= MAX_SEARCH_PAGES,
+    })
     if markets:
         _ALL_CACHE["data"] = markets
         _ALL_CACHE["fetched_at"] = now

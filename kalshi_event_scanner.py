@@ -100,6 +100,7 @@ def screen_markets(limit: int = MAX_CANDIDATES) -> dict:
     bit, not just report zero.
     """
     raw = fetch_all_open_markets()
+    from kalshi_events import LAST_FETCH
     if not raw:
         return {"candidates": [], "stats": {"error": "no markets returned"}}
 
@@ -160,7 +161,8 @@ def screen_markets(limit: int = MAX_CANDIDATES) -> dict:
     # capital recycling is the point, and tight spreads mean the quoted
     # probability is real.
     out.sort(key=lambda x: (x["hours_left"], x["spread"], -(x.get("volume") or 0)))
-    return {"candidates": out[:limit], "stats": stats}
+    return {"candidates": out[:limit], "stats": stats,
+            "fetch": dict(LAST_FETCH)}
 
 
 def format_scan_summary(res: dict) -> str:
@@ -170,9 +172,21 @@ def format_scan_summary(res: dict) -> str:
     if s.get("error"):
         return f"⚠️ Event scan failed: {s['error']}"
 
+    fetch = res.get("fetch") or {}
     lines = [
         f"🔍 *KALSHI EVENT SCAN*\n",
         f"Screened {s.get('total',0):,} open markets → *{len(c)} candidate(s)*",
+    ]
+    if fetch:
+        lines.append(
+            f"_fetch: {fetch.get('pages',0)} pages, "
+            f"{fetch.get('parlays_skipped',0):,} parlays skipped, "
+            f"{fetch.get('usable',0):,} usable in {fetch.get('elapsed',0):.0f}s_")
+        if fetch.get("hit_budget"):
+            lines.append("_⚠️ hit the time budget — raise KALSHI_SEARCH_BUDGET_")
+        if fetch.get("hit_page_cap"):
+            lines.append("_⚠️ hit the page cap — raise KALSHI_MAX_PAGES_")
+    lines += [
         "",
         "*Filtered out:*",
         f"  {s.get('parlay',0):,} multi-leg parlays",
