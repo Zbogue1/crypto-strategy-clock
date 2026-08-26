@@ -898,6 +898,12 @@ EVENT_TRADING       = os.getenv("KALSHI_EVENT_TRADING", "true").lower() == "true
 EVENT_DAILY_TARGET  = int(os.getenv("KALSHI_EVENT_DAILY_TRADES", "10"))
 EVENT_SCAN_INTERVAL = int(os.getenv("KALSHI_EVENT_SCAN_SEC", "3600"))
 EVENT_SETTLE_INTERVAL = int(os.getenv("KALSHI_EVENT_SETTLE_SEC", "900"))
+# Hard ceiling on one scan. Must stay well under EVENT_SCAN_INTERVAL or
+# cycles overlap and stack up.
+EVENT_CYCLE_BUDGET  = float(os.getenv("KALSHI_EVENT_CYCLE_BUDGET", "1500"))
+# Analysing 12 candidates with web research is slow and expensive. Take
+# the best few per cycle; the scan runs hourly anyway.
+EVENT_MAX_ANALYZE   = int(os.getenv("KALSHI_EVENT_MAX_ANALYZE", "6"))
 
 
 _EVENT_FUNNEL_KEY = "kalshi_event_funnel"
@@ -979,12 +985,25 @@ def build_event_diagnostic() -> str:
               "  The scan thread is alive but the cycle threw. It will retry "
               f"in up to {EVENT_SCAN_INTERVAL//60} min.",
               "  Full traceback is in the Railway deploy logs."]
-    elif f.get("status") == "running" and "screened" not in f:
-        L += [f"  IN PROGRESS since {str(f.get('started_at'))[:16]} UTC",
-              "",
-              "  A full scan paginates ~60k open markets and then runs the",
-              "  analyst on each candidate, so the first one takes minutes.",
-              "  Run this again shortly."]
+    elif f.get("status") == "running":
+        L += [f"  IN PROGRESS since {str(f.get('started_at'))[:16]} UTC"]
+        if f.get("analyzing"):
+            L += [f"  currently analysing: {f['analyzing']}",
+                  f"  completed {f.get('analyzed',0)}/"
+                  f"{min(f.get('candidates',0), EVENT_MAX_ANALYZE)} candidates"]
+            if f.get("timings"):
+                t = f["timings"]
+                L.append(f"  analyst calls so far: {len(t)}, "
+                         f"slowest {max(t):.0f}s (timeout is "
+                         f"{os.getenv('KALSHI_ANALYST_TIMEOUT','120')}s)")
+        elif "screened" not in f:
+            L += ["",
+                  "  Still fetching markets — pagination has a 45s budget.",
+                  "  If it sits here across several checks, the Kalshi API",
+                  "  is not responding."]
+        L += ["",
+              f"  Cycle budget {EVENT_CYCLE_BUDGET/60:.0f} min; it will abort",
+              f"  and report rather than run past it."]
     elif not f:
         L += ["  no scan has started yet this session.",
               "  The thread starts a scan immediately on boot, so an empty",
@@ -1009,6 +1028,11 @@ def build_event_diagnostic() -> str:
               f"  {f.get('low_confidence',0):>6} confidence < {MIN_CONFIDENCE}",
               f"  {f.get('insufficient_edge',0):>6} edge < {MIN_EDGE_POINTS:.0f}pts",
               f"  {f.get('bets',0):>6} BETS PLACED"]
+        if f.get("aborted"):
+            L += ["", f"  ABORTED: {f['aborted']}",
+                  "  Remaining candidates roll into the next hourly scan."]
+        if f.get("took_sec"):
+            L.append(f"  scan took {f['took_sec']:.0f}s")
 
         edges = [e for e in (f.get("edges") or []) if e is not None]
         if edges:
@@ -1049,6 +1073,7 @@ def _run_event_scan_cycle(force: bool = False):
         log.info(f"Kalshi events: daily target reached ({opened}/{EVENT_DAILY_TARGET})")
         return
 
+    cycle_started = time.time()
     res        = screen_markets()
     candidates = res.get("candidates", [])
     stats      = res.get("stats", {})
@@ -1079,7 +1104,7 @@ def _run_event_scan_cycle(force: bool = False):
               "at": datetime.now(timezone.utc).isoformat(),
               "screen_stats": stats}
 
-    for m in candidates:
+    for m in candidates[:EVENT_MAX_ANALYZE]:
         if taken >= slots and not force:
             break
         ticker = m["ticker"]
@@ -1095,10 +1120,31 @@ def _run_event_scan_cycle(force: bool = False):
             log.info(f"Kalshi events: skip {ticker} — {why}")
             continue
 
+        # Publish progress BEFORE the slow call. "IN PROGRESS" with no detail
+        # couldn't distinguish a scan that was working from one wedged on a
+        # single analyst call — and with no client timeout, wedged was the
+        # normal outcome.
+        funnel["analyzing"] = ticker
+        funnel["analyzed"]  = funnel.get("analyzed", 0)
+        funnel["status"]    = "running"
+        _save_funnel(funnel)
+
+        # A whole-cycle deadline as well as a per-call timeout. Overrunning the
+        # scan interval means cycles overlap and pile up.
+        if (time.time() - cycle_started) > EVENT_CYCLE_BUDGET:
+            funnel["aborted"] = (f"cycle budget {EVENT_CYCLE_BUDGET:.0f}s exceeded "
+                                 f"after {funnel.get('analyzed', 0)} analysed")
+            log.warning(f"Kalshi events: {funnel['aborted']} — stopping early")
+            break
+
         try:
+            t0 = time.time()
             analysis = analyze_question(m.get("title", ""), ticker=ticker)
+            funnel["analyzed"] = funnel.get("analyzed", 0) + 1
+            funnel.setdefault("timings", []).append(round(time.time() - t0, 1))
         except Exception as e:
             funnel["no_analysis"] += 1
+            funnel["analyzed"] = funnel.get("analyzed", 0) + 1
             log.error(f"Kalshi events: analysis failed for {ticker}: {e}")
             continue
         if not analysis or analysis.get("error"):
@@ -1147,6 +1193,8 @@ def _run_event_scan_cycle(force: bool = False):
         time.sleep(1.5)
 
     funnel["status"] = "completed"
+    funnel.pop("analyzing", None)
+    funnel["took_sec"] = round(time.time() - cycle_started, 1)
     _save_funnel(funnel)
     log.info(f"=== KALSHI EVENT SCAN END — {taken} bet(s) placed | {funnel} ===")
 

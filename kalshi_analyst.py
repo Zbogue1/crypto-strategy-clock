@@ -62,6 +62,12 @@ from kalshi_domains import build_domain_block
 
 log = logging.getLogger(__name__)
 
+# The SDK default is 600s per request. With a mandatory web-research step
+# and a dozen candidates, one scan could outlive its own 60-minute
+# interval — which is exactly why /event_diag never once reported a
+# completed scan. A stuck analyst must fail fast, not hold the loop.
+ANALYST_TIMEOUT = float(os.getenv("KALSHI_ANALYST_TIMEOUT", "120"))
+
 AI_MODEL      = "claude-haiku-4-5-20251001"
 ANTHROPIC_KEY = os.getenv("ANTHROPIC_API_KEY", "")
 
@@ -313,7 +319,7 @@ def analyze_question(question: str, ticker: str = None) -> dict:
 
     # 3. Claude synthesis with live web search
     try:
-        client = anthropic.Anthropic(api_key=ANTHROPIC_KEY)
+        client = anthropic.Anthropic(api_key=ANTHROPIC_KEY, timeout=ANALYST_TIMEOUT)
         response = client.messages.create(
             model=AI_MODEL,
             max_tokens=2000,
@@ -329,7 +335,7 @@ def analyze_question(question: str, ticker: str = None) -> dict:
         log.error(f"Kalshi analyst: API error: {e}")
         # Retry once without web search in case the tool isn't enabled on the key
         try:
-            client = anthropic.Anthropic(api_key=ANTHROPIC_KEY)
+            client = anthropic.Anthropic(api_key=ANTHROPIC_KEY, timeout=ANALYST_TIMEOUT)
             response = client.messages.create(
                 model=AI_MODEL,
                 max_tokens=2000,

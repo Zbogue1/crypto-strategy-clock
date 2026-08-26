@@ -64,7 +64,11 @@ _REDIS_TOKEN = _first_env((
 ))
 _KEY = "stock_portfolio"
 
-_LOCAL_FILE = os.path.join(
+# Honour an explicit override. This previously ignored STOCK_PORTFOLIO_FILE
+# entirely, so test harnesses that "isolated" state by setting it were in fact
+# writing to the repo's own stock_portfolio.json — which is how TEST trades and
+# fake restart records ended up in the file the daily audit reads.
+_LOCAL_FILE = os.getenv("STOCK_PORTFOLIO_FILE") or os.path.join(
     os.getenv("RAILWAY_VOLUME_MOUNT_PATH", os.path.dirname(__file__)),
     "stock_portfolio.json",
 )
@@ -211,8 +215,13 @@ def _load() -> dict:
 # Any harness touching these modules must set PAPER_TEST_MODE=1.
 TEST_MODE = os.getenv("PAPER_TEST_MODE", "").strip() not in ("", "0", "false")
 if TEST_MODE:
-    log.warning("Stock portfolio: PAPER_TEST_MODE — Redis writes DISABLED, "
-                "local file only. Live state is protected.")
+    # Blocking Redis alone wasn't enough — the fallback still wrote to the
+    # repo's stock_portfolio.json, which the daily audit reads. Redirect the
+    # file too, so a test cannot touch anything real by any path.
+    import tempfile
+    _LOCAL_FILE = os.path.join(tempfile.gettempdir(), "stock_portfolio_TEST.json")
+    log.warning(f"Stock portfolio: PAPER_TEST_MODE — Redis DISABLED and file "
+                f"redirected to {_LOCAL_FILE}. Live state is protected.")
 
 
 def purge_test_data() -> dict:
