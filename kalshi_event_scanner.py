@@ -124,6 +124,17 @@ def screen_markets(limit: int = MAX_CANDIDATES) -> dict:
             continue
         if not _is_tradeable(m):
             stats["dead"] += 1
+            # Sample the RAW fields. All 81 surviving markets were rejected as
+            # dead, which is implausible for a live exchange — far more likely
+            # the list endpoint omits quote fields that only appear on the
+            # single-market endpoint. Show what actually came back rather than
+            # inferring it.
+            if len(stats.setdefault("dead_samples", [])) < 4:
+                stats["dead_samples"].append(
+                    f"{m.get('ticker','?')} bid={m.get('yes_bid')} "
+                    f"ask={m.get('yes_ask')} last={m.get('last_price')} "
+                    f"vol={m.get('volume')} oi={m.get('open_interest')} "
+                    f"status={m.get('status')} keys={len(m)}")
             continue
 
         p = _parse_market(m)
@@ -194,6 +205,7 @@ def format_scan_summary(res: dict) -> str:
           sorted((s.get("parlay_reasons") or {}).items(), key=lambda x: -x[1])[:4]]
          ) + ([f"     eg {x}" for x in (s.get("parlay_samples") or [])[:3]]) + [
         f"  {s.get('dead',0):,} no quote / no activity",
+    ] + ([f"     {x}" for x in (s.get("dead_samples") or [])[:4]]) + [
         f"  {s.get('wrong_window',0):,} outside {MIN_HOURS_LEFT:.0f}-{MAX_HOURS_LEFT:.0f}h window",
         f"  {s.get('illiquid',0):,} too illiquid or wide spread",
         f"  {s.get('price_band',0):,} outside {MIN_PRICE_CENTS}-{MAX_PRICE_CENTS}c band",
