@@ -149,6 +149,22 @@ def screen_markets(limit: int = MAX_CANDIDATES) -> dict:
         sp  = _spread(p)
         if vol < MIN_VOLUME or oi < MIN_OPEN_INTEREST or sp is None or sp > MAX_SPREAD_CENTS:
             stats["illiquid"] += 1
+            # 683 of the 704 markets that survived the time window died here.
+            # Three different thresholds can cause that and they need different
+            # fixes, so count them separately instead of tuning blind.
+            if vol < MIN_VOLUME:
+                stats["liq_volume"] = stats.get("liq_volume", 0) + 1
+            if oi < MIN_OPEN_INTEREST:
+                stats["liq_oi"] = stats.get("liq_oi", 0) + 1
+            if sp is None:
+                stats["liq_no_quote"] = stats.get("liq_no_quote", 0) + 1
+            elif sp > MAX_SPREAD_CENTS:
+                stats["liq_spread"] = stats.get("liq_spread", 0) + 1
+            # Track the best near-misses so the thresholds can be set from
+            # the actual distribution rather than from a guess.
+            if vol >= MIN_VOLUME * 0.5 and len(stats.setdefault("liq_near", [])) < 4:
+                stats["liq_near"].append(
+                    f"{p.get('ticker','?')[:34]} vol={vol} oi={oi} spread={sp}")
             continue
 
         price = p.get("implied_prob") or 0
@@ -208,6 +224,12 @@ def format_scan_summary(res: dict) -> str:
     ] + ([f"     {x}" for x in (s.get("dead_samples") or [])[:4]]) + [
         f"  {s.get('wrong_window',0):,} outside {MIN_HOURS_LEFT:.0f}-{MAX_HOURS_LEFT:.0f}h window",
         f"  {s.get('illiquid',0):,} too illiquid or wide spread",
+    ] + ([f"     -> volume < {MIN_VOLUME}: {s.get('liq_volume',0):,}",
+          f"     -> open interest < {MIN_OPEN_INTEREST}: {s.get('liq_oi',0):,}",
+          f"     -> spread > {MAX_SPREAD_CENTS}c: {s.get('liq_spread',0):,}",
+          f"     -> no two-sided quote: {s.get('liq_no_quote',0):,}"]
+         if s.get("illiquid") else []
+        ) + ([f"     near miss {x}" for x in (s.get("liq_near") or [])[:3]]) + [
         f"  {s.get('price_band',0):,} outside {MIN_PRICE_CENTS}-{MAX_PRICE_CENTS}c band",
         f"  {s.get('domain',0):,} slow/untradeable category",
         "",

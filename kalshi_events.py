@@ -44,7 +44,10 @@ MAX_SEARCH_PAGES  = int(os.getenv("KALSHI_MAX_PAGES", "200"))
 SEARCH_TIME_BUDGET = float(os.getenv("KALSHI_SEARCH_BUDGET", "180"))
 # Page until this many NON-parlay markets are collected. Raw page counts
 # are meaningless when 98% of the universe is auto-generated parlays.
-TARGET_USABLE_MARKETS = int(os.getenv("KALSHI_TARGET_MARKETS", "4000"))
+# With mve_filter=exclude the fetch is ~1s per 4,000 markets, so the old
+# 4,000 cap was truncating the universe for no reason — and the cap was
+# being hit, meaning we were screening an arbitrary slice.
+TARGET_USABLE_MARKETS = int(os.getenv("KALSHI_TARGET_MARKETS", "25000"))
 # Parlay pages are cheap to skip, so allow many more of them.
 
 MIN_MATCH_SCORE   = 0.12   # F1 threshold — below this the market isn't the one asked about
