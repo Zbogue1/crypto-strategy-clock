@@ -245,10 +245,22 @@ def build_diagnostic() -> str:
             L.append("  which pillar rejected them:")
             for k, v in sorted(f["pillar_detail"].items(), key=lambda x: -x[1]):
                 L.append(f"    {v:>3}x  {k}")
+            if f.get("catalyst_no_news") or f.get("catalyst_weak"):
+                L.append("")
+                L.append("  catalyst breakdown:")
+                L.append(f"    {f.get('catalyst_no_news',0):>3}x  "
+                         f"NO news returned  <- broken input if high")
+                L.append(f"    {f.get('catalyst_weak',0):>3}x  "
+                         f"news found but judged insufficient")
+                L.append(f"    {f.get('catalyst_harmful',0):>3}x  "
+                         f"harmful (dilution/offering) - correctly refused")
 
     L += ["", "THRESHOLDS",
           f"  RVOL >= {sig.MIN_RVOL}   move >= {sig.MIN_PCT_CHANGE}%   "
           f"pillars >= {sig.MIN_PILLARS}/5",
+          f"  price band ${sig.SMALL_ACCT_MIN:.0f}-${sig.SMALL_ACCT_MAX:.0f} "
+          f"(small acct)" if sig.USE_SMALL_ACCT else
+          f"  price band ${sig.PRICE_MIN:.0f}-${sig.PRICE_MAX:.0f}",
           "",
           "Note: the free Alpaca feed is IEX-only (~2-3% of real volume), so",
           "RVOL reads far lower than reality. If 'rvol' dominates the rejection",
@@ -310,6 +322,22 @@ def run_scan(force: bool = False, announce: bool = False) -> list:
                 if isinstance(p, dict) and not p.get("pass"):
                     funnel["pillar_detail"][name] = \
                         funnel["pillar_detail"].get(name, 0) + 1
+                    # "catalyst rejected 18" has two very different meanings:
+                    # the news feed returned nothing (a broken input), or it
+                    # returned headlines that were judged not to justify the
+                    # move (the screen working). Counting them together makes
+                    # the biggest rejector the least diagnosable.
+                    if name == "catalyst":
+                        n_news = snap.get("news_count")
+                        if n_news in (None, 0):
+                            funnel["catalyst_no_news"] = \
+                                funnel.get("catalyst_no_news", 0) + 1
+                        else:
+                            funnel["catalyst_weak"] = \
+                                funnel.get("catalyst_weak", 0) + 1
+                        if (snap.get("catalyst") or {}).get("quality") == "harmful":
+                            funnel["catalyst_harmful"] = \
+                                funnel.get("catalyst_harmful", 0) + 1
             log.debug(f"{sym}: {pillars['passed']}/5 pillars — skip")
             continue
 

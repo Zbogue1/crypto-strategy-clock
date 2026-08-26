@@ -33,7 +33,14 @@ PRICE_MAX         = float(os.getenv("STOCK_PRICE_MAX", "20.0"))
 # Small-account variant narrows to $5-10 (no leverage under $5)
 SMALL_ACCT_MIN    = float(os.getenv("STOCK_SMALL_PRICE_MIN", "5.0"))
 SMALL_ACCT_MAX    = float(os.getenv("STOCK_SMALL_PRICE_MAX", "10.0"))
-USE_SMALL_ACCT    = os.getenv("STOCK_SMALL_ACCOUNT", "true").lower() == "true"
+# Ross's $5-10 band is a SMALL-ACCOUNT constraint: on $2,000 you need a price
+# low enough to buy a meaningful share count and high enough to have real
+# spreads. Stock Golem now runs $10,000, so that band just discards most of the
+# day's movers — it was the second-biggest rejector (15 of 30) with names like
+# AIXI +186% and BTA +154% screened out on price alone.
+#
+# Set STOCK_SMALL_ACCOUNT=true to restore the tighter band.
+USE_SMALL_ACCT    = os.getenv("STOCK_SMALL_ACCOUNT", "false").lower() == "true"
 FLOAT_MAX_HOT_M   = float(os.getenv("STOCK_FLOAT_MAX_HOT", "20.0"))
 FLOAT_MAX_COLD_M  = float(os.getenv("STOCK_FLOAT_MAX_COLD", "10.0"))
 MIN_PILLARS       = int(os.getenv("STOCK_MIN_PILLARS", "4"))
