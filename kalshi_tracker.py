@@ -1028,6 +1028,8 @@ def build_event_diagnostic() -> str:
               f"  {f.get('low_confidence',0):>6} confidence < {MIN_CONFIDENCE}",
               f"  {f.get('insufficient_edge',0):>6} edge < {MIN_EDGE_POINTS:.0f}pts",
               f"  {f.get('bets',0):>6} BETS PLACED"]
+        if f.get("note"):
+            L += ["", f"  {f['note']}"]
         if f.get("aborted"):
             L += ["", f"  ABORTED: {f['aborted']}",
                   "  Remaining candidates roll into the next hourly scan."]
@@ -1056,6 +1058,9 @@ def build_event_diagnostic() -> str:
 def _run_event_scan_cycle(force: bool = False):
     """Screen event markets → analyst → edge gate → paper bet."""
     if not EVENT_TRADING and not force:
+        _save_funnel({"status": "completed", "candidates": 0, "bets": 0,
+                      "at": datetime.now(timezone.utc).isoformat(),
+                      "note": "event trading DISABLED (KALSHI_EVENT_TRADING)"})
         return
 
     from kalshi_event_scanner import screen_markets
@@ -1071,6 +1076,10 @@ def _run_event_scan_cycle(force: bool = False):
     slots  = EVENT_DAILY_TARGET - opened
     if not force and slots <= 0:
         log.info(f"Kalshi events: daily target reached ({opened}/{EVENT_DAILY_TARGET})")
+        _save_funnel({"status": "completed", "candidates": 0, "bets": 0,
+                      "at": datetime.now(timezone.utc).isoformat(),
+                      "note": f"daily budget used ({opened}/{EVENT_DAILY_TARGET}) "
+                              f"- no scan run"})
         return
 
     cycle_started = time.time()
@@ -1081,6 +1090,19 @@ def _run_event_scan_cycle(force: bool = False):
              f"{len(candidates)} candidate(s), {slots} slot(s) left")
 
     if not candidates:
+        # Record WHY nothing qualified before returning.
+        #
+        # This early return ran without ever writing a funnel, so the status
+        # stayed "running" from the top of the loop — and /event_diag reported
+        # "IN PROGRESS, still fetching markets" indefinitely for a scan that
+        # had actually finished in about two seconds. Every check showed a
+        # newer timestamp because the next hourly scan had started, which read
+        # exactly like a hang. The scan was never slow; it was silent.
+        _save_funnel({"status": "completed", "screened": stats.get("total", 0),
+                      "candidates": 0, "bets": 0, "screen_stats": stats,
+                      "took_sec": round(time.time() - cycle_started, 1),
+                      "at": datetime.now(timezone.utc).isoformat(),
+                      "note": "no market passed the screen"})
         if force:
             from kalshi_event_scanner import format_scan_summary
             send_telegram(format_scan_summary(res))
