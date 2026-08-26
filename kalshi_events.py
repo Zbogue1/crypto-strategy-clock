@@ -34,8 +34,13 @@ EVENTS_BASE = os.getenv("KALSHI_EVENTS_BASE", "https://api.elections.kalshi.com/
 _HEADERS = {"Accept": "application/json"}
 
 PAGE_LIMIT        = 1000   # Kalshi max per page
-MAX_SEARCH_PAGES  = 60     # up to ~60k markets — Kalshi has tens of thousands open
+MAX_SEARCH_PAGES  = int(os.getenv("KALSHI_MAX_PAGES", "200"))
 SEARCH_TIME_BUDGET = 45    # seconds; stop paging past this even if more remain
+# Page until this many NON-parlay markets are collected. Raw page counts
+# are meaningless when 98% of the universe is auto-generated parlays.
+TARGET_USABLE_MARKETS = int(os.getenv("KALSHI_TARGET_MARKETS", "4000"))
+# Parlay pages are cheap to skip, so allow many more of them.
+
 MIN_MATCH_SCORE   = 0.12   # F1 threshold — below this the market isn't the one asked about
 
 # Full open-market list is cached so repeated /ask calls don't re-scan Kalshi
@@ -192,7 +197,17 @@ def fetch_all_open_markets(use_cache: bool = True) -> list[dict]:
     markets: list[dict] = []
     cursor = None
     pages = 0
+    parlays_seen = 0
 
+    # Kalshi's open universe is dominated by auto-generated CROSSCATEGORY
+    # parlay combinations — a live scan found 18,995 of 19,000 markets were
+    # multi-leg parlays like "no Minnesota -1.5 first 5 innings, no Seattle
+    # -2.5 ...". Paging by RAW count meant the budget was exhausted on parlays
+    # and real markets were never reached: every downstream filter reported
+    # zero because nothing survived to be tested.
+    #
+    # So page until enough USABLE markets are found, not until N pages are
+    # fetched. Parlays are dropped inline and don't count toward the target.
     for _ in range(MAX_SEARCH_PAGES):
         params = {"status": "open", "limit": PAGE_LIMIT}
         if cursor:
@@ -202,14 +217,24 @@ def fetch_all_open_markets(use_cache: bool = True) -> list[dict]:
             break
 
         batch = data.get("markets", [])
-        markets.extend(batch)
         pages += 1
+        for m in batch:
+            if _is_parlay(m):
+                parlays_seen += 1
+            else:
+                markets.append(m)
 
         cursor = data.get("cursor")
         if not cursor or not batch:
             break
+        if len(markets) >= TARGET_USABLE_MARKETS:
+            log.info(f"Kalshi: reached {len(markets)} usable markets "
+                     f"({parlays_seen:,} parlays skipped) after {pages} pages")
+            break
         if (time.time() - started) > SEARCH_TIME_BUDGET:
-            log.warning(f"Kalshi: hit {SEARCH_TIME_BUDGET}s search budget after {len(markets)} markets")
+            log.warning(f"Kalshi: hit {SEARCH_TIME_BUDGET}s budget with only "
+                        f"{len(markets)} usable markets after {pages} pages "
+                        f"({parlays_seen:,} parlays skipped)")
             break
 
     if markets:
