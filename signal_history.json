@@ -283,5 +283,27 @@
       "XRP"
     ],
     "alert": "XRP position down 5.8% \u2014 monitor $1.40 support closely; broad market overextension increases correction risk."
+  },
+  {
+    "ts": "2026-08-26T00:01:53.189743+00:00",
+    "coin": "XRP",
+    "price": 1.43,
+    "signal": "HOLD",
+    "confidence": 35,
+    "score": -2.5,
+    "fg": 65,
+    "btc_price": 78503,
+    "btc_dominance": 59.3,
+    "candidates": [
+      "MON",
+      "PUMP",
+      "LIT",
+      "FDUSD",
+      "RLUSD",
+      "CRVUSD",
+      "USDG",
+      "XRP"
+    ],
+    "alert": "XRP position down 8.3% \u2014 monitoring $1.30 stop-loss closely. No new entries until market stabilizes."
   }
 ]
