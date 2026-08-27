@@ -1,12 +1,28 @@
 {
-  "cash": 871.1131,
-  "holdings": [],
+  "cash": 653.3331,
+  "holdings": [
+    {
+      "coin_ticker": "SOL",
+      "coin_id": "sol",
+      "units": 2.153441552014253,
+      "entry_price": 101.03,
+      "entry_date": "2026-08-27T04:01:59.872028+00:00",
+      "entry_signal": "BUY",
+      "entry_confidence": 62,
+      "allocated_usd": 217.78,
+      "fee_paid": 0.2178,
+      "exit_target": 115.0,
+      "stop_loss": 92.0,
+      "entry_target": 99.5,
+      "expected_days": 8
+    }
+  ],
   "realized_pnl": -128.8869,
   "peak_value": 1032.0739,
   "total_trades": 26,
   "winning_trades": 12,
   "losing_trades": 14,
-  "total_fees": 6.4592,
+  "total_fees": 6.677,
   "trade_history": [
     {
       "trade_num": 1,
