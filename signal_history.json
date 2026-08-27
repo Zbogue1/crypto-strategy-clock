@@ -478,5 +478,27 @@
       "SOL"
     ],
     "alert": "Fed hike speculation emerging \u2014 monitor closely as this could reverse the current rally"
+  },
+  {
+    "ts": "2026-08-27T12:01:14.701699+00:00",
+    "coin": "SOL",
+    "price": 103.94,
+    "signal": "HOLD",
+    "confidence": 62,
+    "score": 0.4,
+    "fg": 71,
+    "btc_price": 79472,
+    "btc_dominance": 59.2,
+    "candidates": [
+      "XAUT",
+      "MON",
+      "PUMP",
+      "FDUSD",
+      "USDG",
+      "RLUSD",
+      "KITE",
+      "SOL"
+    ],
+    "alert": null
   }
 ]
