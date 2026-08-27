@@ -1,27 +1,27 @@
 {
-  "timestamp": "2026-08-27T08:01:21.974677+00:00",
+  "timestamp": "2026-08-27T12:01:14.701699+00:00",
   "signal": "HOLD",
   "selected_coin": "SOL",
   "selected_coin_name": "Solana",
-  "selected_coin_price": 101.8,
-  "confidence": 52,
-  "layman_headline": "Market is hot after a big rally \u2014 no great new entries, so we're sitting tight on Solana.",
-  "layman_explanation": "Bitcoin just surged 13% in a week to nearly $80K and dragged everything up with it. The market mood has shifted to 'Greed,' meaning most coins have already moved a lot. Our Solana position is slightly in profit but still well below its target. The swing trade candidates right now are either wildly overbought (like PUMP with an RSI of 84) or lack solid technical data to justify entry. Chasing rallied coins in a greedy market is how you get caught holding the bag.",
-  "layman_action": "Keep holding the existing Solana position. The stop-loss at $92 protects downside. Wait for a pullback or clearer setup before adding any new trades.",
-  "expert_reasoning": "The entire market just ripped higher \u2014 BTC +13.2%, SOL +18.6%, XRP +27.2%, ZEC +41.2% in 7 days. Fear & Greed at 71 and trending worse (rising greed) signals elevated correction risk. PUMP has an RSI of 84, making it a clear avoid. POL dropped 12.7% in 24h after a 31% weekly run \u2014 classic blow-off. KITE is up 35.7% weekly with zero technical data. MON lacks RSI/MACD data. The stablecoins (USDG, FDUSD, XAUT) aren't swing trade candidates. BTC dominance at 59.1% is unfavorable for alt entries. The prudent move is to hold SOL (0.8% unrealized gain, still early in the trade) and wait for either a market pullback creating better entries or SOL to approach its $115 target. News about potential Fed hike and BTC struggling below $80K add caution.",
+  "selected_coin_price": 103.94,
+  "confidence": 62,
+  "layman_headline": "Solana position is up nearly 3% \u2014 riding momentum but the market is getting greedy, so no new bets yet.",
+  "layman_explanation": "Bitcoin just broke above $79,000 with strong ETF inflows, lifting the entire market. Our Solana position entered at $101 and is now at $104, heading toward our $115 target. However, the market mood is shifting into 'Greed' territory and most altcoins have already surged 10-40% in a week, making new entries risky right now. The swing candidates on the watchlist are either overbought (PUMP at RSI 84), already extended (KITE +33%, ZEC +39%), or stablecoins with no trade potential.",
+  "layman_action": "Hold the current Solana position and let it work toward the $115 target. Don't chase coins that have already pumped. Wait for a pullback or a fresh setup before adding a new position.",
+  "expert_reasoning": "The current swing candidate pool is exceptionally weak for new entries. PUMP has RSI of 84 and is up 42.7% in 7 days \u2014 textbook overbought. KITE is up 33% with no RSI or MACD data and 60% off ATH, making it a falling knife that bounced. MON and SOL have already moved significantly. XAUT is a gold-backed token with limited swing upside. The remaining candidates are stablecoins. Meanwhile, our SOL position is performing well at +2.9% unrealized, BTC dominance at 59.2% is high but the broader market rally is supporting quality alts. The CryptoSlate report about $2B cash surge wiping out leverage is constructive \u2014 it suggests the current rally has cleaner positioning. Best action is patience: hold SOL, let it run, and wait for a pullback to create new entry opportunities.",
   "risk_factors": [
-    "CoinDesk reports traders betting on a Fed rate hike \u2014 if this gains traction, risk assets including crypto could sell off sharply",
-    "BTC dominance at 59.1% is squeezing alts; if BTC corrects, SOL could drop faster given its higher beta",
-    "Fear & Greed trending toward higher greed levels often precedes short-term market corrections"
+    "BTC faces major supply wall at $80K-$83K near ETF holders' average cost basis \u2014 rejection here could drag SOL down",
+    "Fear & Greed at 71 trending toward 'worsening' suggests the market could be near a local top",
+    "High BTC dominance at 59.2% means capital is concentrating in BTC, limiting altcoin upside potential"
   ],
   "watch_list": [
-    "BTC price action around $80K \u2014 a decisive break above could extend the rally, rejection could trigger a pullback to $74-75K",
-    "SOL approaching $105-110 resistance zone \u2014 watch for volume confirmation or rejection",
-    "Fed rate expectations \u2014 any hawkish surprise would be bearish for all risk assets"
+    "BTC price action around $80K-$83K supply wall \u2014 breakout vs rejection will determine SOL trajectory",
+    "ETF inflow continuation \u2014 the longest streak since April needs to hold to sustain bullish momentum",
+    "SOL approaching $110 resistance level \u2014 watch for volume confirmation or exhaustion signals"
   ],
-  "market_context": "The crypto market is in a strong rally phase with BTC up 13% weekly, but Fear & Greed at 71 (trending higher) and talk of Fed hikes suggest the easy gains may be behind us. High BTC dominance at 59.1% means altcoins are underperforming relative to Bitcoin.",
-  "context_banner": "Post-rally consolidation phase \u2014 protect gains and wait for pullbacks rather than chase extended moves.",
-  "btc_price": 79034,
+  "market_context": "Bitcoin is testing $80K with sustained ETF inflows, creating a broadly bullish environment, but Fear & Greed at 71 and 7-day gains of 10-40% across majors suggest caution on new entries. The market is in a momentum-driven rally phase where chasing is dangerous.",
+  "context_banner": "Market rallying on ETF inflows and leverage flush \u2014 hold existing winners and wait for pullbacks before adding exposure.",
+  "btc_price": 79472,
   "fear_greed": {
     "current": 71,
     "label": "Greed",
@@ -29,32 +29,32 @@
     "week_avg": 70.3,
     "trend": "worsening"
   },
-  "btc_dominance": 59.1,
+  "btc_dominance": 59.2,
   "key_signals": [
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Fear & Greed at 71 and worsening (rising greed) \u2014 historically a mixed signal (56% win rate) that suggests caution on new entries."
+      "description": "Fear & Greed at 71 (Greed) and worsening trend suggests elevated risk for new entries; favors holding existing positions over opening new ones."
+    },
+    {
+      "source": "CryptoSlate",
+      "signal_type": "news",
+      "description": "$2B cash surge wiped out speculative leverage \u2014 suggests cleaner market positioning supporting the current rally, constructive for existing SOL long."
     },
     {
       "source": "RSI",
       "signal_type": "technical",
-      "description": "PUMP RSI at 84 confirms the strongest swing candidate is dangerously overbought, eliminating it from consideration."
+      "description": "PUMP RSI at 84 is deeply overbought, eliminating the strongest mover from consideration. No candidate has a favorable RSI setup for new entry."
     },
     {
       "source": "CoinDesk",
       "signal_type": "news",
-      "description": "Traders starting to bet on a Fed rate hike \u2014 a macro headwind that could cap the current crypto rally."
+      "description": "Bitcoin ETF inflows hit longest streak since April and BTC testing $80K supply wall \u2014 key level that will determine near-term direction for all crypto."
     },
     {
       "source": "volume_breakout",
       "signal_type": "technical",
-      "description": "SOL volume at $4.2B is robust and supports the current uptrend, but the 18.6% weekly move may need consolidation."
-    },
-    {
-      "source": "CoinTelegraph",
-      "signal_type": "news",
-      "description": "BTC ETF inflows slowing to $232M as BTC stalls under $80K \u2014 potential loss of institutional momentum."
+      "description": "SOL 24h volume at $5.27B with +7.13% daily gain shows strong momentum continuation supporting the current position toward the $115 target."
     }
   ],
   "_mode": "HUNTING",
