@@ -1,63 +1,63 @@
 {
-  "timestamp": "2026-08-26T20:04:14.181457+00:00",
+  "timestamp": "2026-08-27T00:04:15.744839+00:00",
   "signal": "HOLD",
   "selected_coin": "ETH",
   "selected_coin_name": "Ethereum",
-  "selected_coin_price": 2469.56,
-  "confidence": 32,
-  "layman_headline": "Market rallied hard this week \u2014 waiting for a pullback before jumping in.",
-  "layman_explanation": "Almost every major cryptocurrency surged 15-30% in the past week. That's exciting, but buying after a big run-up is risky \u2014 prices often pull back before continuing higher. The swing trade candidates are either already extended (PUMP up 54%, ZEC up 42%, HYPE up 30%) or are stablecoins that don't move. Bitcoin dominance at 59.3% also signals that altcoins face headwinds. The smartest move right now is patience.",
-  "layman_action": "Stay in cash and wait. Set alerts for ETH around $2,350 and SOL around $88 \u2014 if prices pull back 5-8%, those would be much better entry points with defined risk.",
-  "expert_reasoning": "The entire market just moved 15-30% in one week. Every swing candidate has negative composite scores driven by extended 7-day price action. BTC dominance at 59.3% is hostile for altcoin entries. Fear & Greed at 65 (down from 74 yesterday) suggests momentum is already cooling \u2014 a healthy pullback is likely before the next leg. Without RSI, MACD, or volume data on the candidates, and with all signals showing 'may be extended,' chasing here violates core swing trading discipline. ETH is the strongest large-cap setup on a pullback given its DeFi dominance and news catalysts.",
+  "selected_coin_price": 2505.29,
+  "confidence": 35,
+  "layman_headline": "Market is hot \u2014 too hot to chase, waiting for a dip to buy.",
+  "layman_explanation": "Bitcoin just surged 14% in a week and most altcoins are up 10-30%. The market mood is 'Greed' and rising, which historically means we're closer to a short-term top than a bottom. Every swing candidate on the watchlist is either massively overbought (like PUMP with an RSI of 84), a stablecoin, or has already run 25-60% in a week with no clear pullback entry. Chasing these moves now would mean buying near short-term highs with poor risk/reward.",
+  "layman_action": "Wait. Do not chase this rally. Set alerts for ETH around $2,380 or SOL around $93 \u2014 if we get a healthy 5-7% pullback in the next few days, that's the time to strike.",
+  "expert_reasoning": "All swing candidates present poor risk/reward at current levels. PUMP has an RSI of 84 with a 63% weekly gain \u2014 textbook overbought. MON and LIT have rallied 27-33% with no RSI or MACD data to confirm continuation. The broader market (Fear & Greed at 71, trending toward 'worsening' greed) and high BTC dominance at 59.1% signal that altcoin risk is elevated. Bitcoin dipping below $78K on higher PCE inflation data is a warning sign that this rally may face macro headwinds. The disciplined play is to wait for a retracement \u2014 ETH toward the $2,350-2,400 zone would offer a proper swing setup with defined downside risk.",
   "risk_factors": [
-    "Higher US PCE inflation data already pushing BTC below $78K \u2014 macro headwinds could trigger a deeper correction than expected",
-    "BTC dominance at 59.3% may continue rising, further pressuring altcoin performance",
-    "No RSI/MACD data available on candidates makes it impossible to properly time entries"
+    "Higher US PCE inflation data could trigger broader risk-off selling, pushing crypto lower than expected pullback levels",
+    "BTC dominance at 59.1% means capital is flowing to Bitcoin, not alts \u2014 alt positions face additional headwind",
+    "Greed sentiment trending higher ('worsening') increases probability of a sharp correction within days"
   ],
   "watch_list": [
-    "BTC price action around $76K-$78K support \u2014 a break below could cascade into altcoins",
-    "ETH price behavior near $2,350-$2,400 for a potential pullback entry zone",
-    "Fear & Greed index trend \u2014 if it drops from 65 toward 50, that creates better buying conditions"
+    "ETH price action \u2014 watch for pullback to $2,350-2,400 zone as potential swing entry",
+    "BTC reaction to $78K support \u2014 if it breaks, alts will sell off harder and create better entries",
+    "Fear & Greed Index \u2014 if it pushes above 75, correction risk increases significantly"
   ],
-  "market_context": "The crypto market just experienced a massive weekly rally (BTC +14.7%, ETH +18.2%, XRP +29.2%) but is now cooling off with BTC dipping below $78K on hot inflation data. High BTC dominance at 59.3% and a declining Fear & Greed index suggest caution on new altcoin entries.",
-  "context_banner": "Post-rally consolidation phase \u2014 discipline demands waiting for a pullback rather than chasing extended moves.",
-  "btc_price": 78419,
+  "market_context": "Crypto is in a strong short-term rally with BTC up 14% in a week, but macro headwinds from rising PCE inflation and a Fear & Greed index at 71 trending greedier suggest this move is getting extended. High BTC dominance at 59.1% means altcoin upside is capped relative to Bitcoin.",
+  "context_banner": "Strong rally across the board but all setups are extended \u2014 discipline says wait for a pullback rather than chase parabolic moves.",
+  "btc_price": 78988,
   "fear_greed": {
-    "current": 65,
+    "current": 71,
     "label": "Greed",
-    "yesterday": 74,
-    "week_avg": 69.0,
-    "trend": "improving"
+    "yesterday": 65,
+    "week_avg": 70.3,
+    "trend": "worsening"
   },
-  "btc_dominance": 59.3,
+  "btc_dominance": 59.1,
   "key_signals": [
+    {
+      "source": "RSI",
+      "signal_type": "technical",
+      "description": "PUMP's RSI at 84 is deeply overbought \u2014 the only candidate with RSI data confirms the broader theme that this rally is extended."
+    },
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Fear & Greed dropped from 74 to 65 in one day, signaling momentum exhaustion after the weekly rally \u2014 wait for further cooling."
+      "description": "Fear & Greed at 71 and trending higher ('worsening') indicates the market is approaching euphoria levels where corrections become likely."
     },
     {
       "source": "CoinTelegraph",
       "signal_type": "news",
-      "description": "Bitcoin dipped below $78K on higher US PCE inflation data, introducing macro headwinds that could trigger broader pullbacks."
-    },
-    {
-      "source": "volume_breakout",
-      "signal_type": "technical",
-      "description": "No volume data available on swing candidates and all show 7-day moves of +25-54%, suggesting they are chasing rather than setting up fresh breakouts."
+      "description": "Bitcoin dipping below $78K on higher US PCE inflation data signals macro headwinds that could trigger a broader pullback \u2014 creating the entry opportunity we're waiting for."
     },
     {
       "source": "CoinDesk",
       "signal_type": "news",
-      "description": "Dallas Fed warning on tokenized deposits stripping $700B from banks and Ethereum quantum-resistance proposals provide longer-term fundamental context for ETH."
+      "description": "Ethereum quantum-resistant staking proposal and SEC crypto custody rule activity provide fundamental catalysts that make ETH attractive on a pullback."
     },
     {
       "source": "DeFiLlama",
       "signal_type": "onchain",
-      "description": "Ethereum DeFi TVL remains dominant at $49B, confirming its fundamental strength \u2014 but best entered on a pullback, not after an 18% weekly run."
+      "description": "Ethereum's $49.3B TVL dominance confirms strong fundamental support and makes it the highest-conviction pullback buy candidate."
     }
   ],
   "_mode": "HUNTING",
   "exit_target": 2750.0,
-  "stop_loss": 2200.0
+  "stop_loss": 2280.0
 }
