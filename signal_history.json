@@ -435,5 +435,26 @@
       "LIT"
     ],
     "alert": "Market is in Greed territory with most assets up 10-30% in a week \u2014 elevated correction risk. Do not chase."
+  },
+  {
+    "ts": "2026-08-27T04:01:17.099698+00:00",
+    "coin": "SOL",
+    "price": 101.03,
+    "signal": "BUY",
+    "confidence": 62,
+    "score": 0.55,
+    "fg": 71,
+    "btc_price": 78809,
+    "btc_dominance": 59.1,
+    "candidates": [
+      "MON",
+      "PUMP",
+      "USDG",
+      "FDUSD",
+      "XAUT",
+      "KAG",
+      "RLUSD"
+    ],
+    "alert": null
   }
 ]
