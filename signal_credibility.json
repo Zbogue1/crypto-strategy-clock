@@ -1,5 +1,36 @@
 {
-  "open_trade": null,
+  "open_trade": {
+    "coin": "SOL",
+    "entry_time": "2026-08-27T04:01:59.873626+00:00",
+    "key_signals": [
+      {
+        "source": "CryptoSlate",
+        "signal_type": "news",
+        "description": "Solana cutting block confirmation times across the network \u2014 a tangible technical upgrade that supports the current price momentum with fundamental backing."
+      },
+      {
+        "source": "volume_breakout",
+        "signal_type": "technical",
+        "description": "SOL trading $3.8B in 24h volume with +4.12% daily gain, indicating strong buying pressure and institutional-level participation."
+      },
+      {
+        "source": "Fear_Greed",
+        "signal_type": "sentiment",
+        "description": "Market Fear & Greed at 71 (Greed) with worsening trend \u2014 supportive of momentum trades but requires tight stop-losses as euphoria builds."
+      },
+      {
+        "source": "RSI",
+        "signal_type": "technical",
+        "description": "PUMP's RSI at 84 eliminated it as a candidate due to extreme overbought conditions, making SOL the superior risk-adjusted choice."
+      },
+      {
+        "source": "CoinTelegraph",
+        "signal_type": "news",
+        "description": "SEC sending crypto custody rule overhaul to White House signals continued regulatory clarity progress, supporting the broader market rally."
+      }
+    ],
+    "confidence": 62
+  },
   "signal_stats": {
     "Fear_Greed__sentiment": {
       "source": "Fear_Greed",
@@ -179,5 +210,5 @@
     }
   },
   "trade_count": 16,
-  "last_updated": "2026-08-24T20:05:25.745332+00:00"
+  "last_updated": "2026-08-27T04:01:59.873637+00:00"
 }
