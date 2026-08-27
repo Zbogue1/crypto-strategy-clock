@@ -1,27 +1,27 @@
 {
-  "timestamp": "2026-08-27T12:01:14.701699+00:00",
+  "timestamp": "2026-08-27T16:02:52.462967+00:00",
   "signal": "HOLD",
   "selected_coin": "SOL",
   "selected_coin_name": "Solana",
-  "selected_coin_price": 103.94,
-  "confidence": 62,
-  "layman_headline": "Solana position is up nearly 3% \u2014 riding momentum but the market is getting greedy, so no new bets yet.",
-  "layman_explanation": "Bitcoin just broke above $79,000 with strong ETF inflows, lifting the entire market. Our Solana position entered at $101 and is now at $104, heading toward our $115 target. However, the market mood is shifting into 'Greed' territory and most altcoins have already surged 10-40% in a week, making new entries risky right now. The swing candidates on the watchlist are either overbought (PUMP at RSI 84), already extended (KITE +33%, ZEC +39%), or stablecoins with no trade potential.",
-  "layman_action": "Hold the current Solana position and let it work toward the $115 target. Don't chase coins that have already pumped. Wait for a pullback or a fresh setup before adding a new position.",
-  "expert_reasoning": "The current swing candidate pool is exceptionally weak for new entries. PUMP has RSI of 84 and is up 42.7% in 7 days \u2014 textbook overbought. KITE is up 33% with no RSI or MACD data and 60% off ATH, making it a falling knife that bounced. MON and SOL have already moved significantly. XAUT is a gold-backed token with limited swing upside. The remaining candidates are stablecoins. Meanwhile, our SOL position is performing well at +2.9% unrealized, BTC dominance at 59.2% is high but the broader market rally is supporting quality alts. The CryptoSlate report about $2B cash surge wiping out leverage is constructive \u2014 it suggests the current rally has cleaner positioning. Best action is patience: hold SOL, let it run, and wait for a pullback to create new entry opportunities.",
+  "selected_coin_price": 107.25,
+  "confidence": 68,
+  "layman_headline": "Solana is up 6% and approaching our profit target \u2014 hold tight, but tighten the safety net.",
+  "layman_explanation": "We bought Solana at about $101 and it's now at $107, putting us up around 6%. The broader crypto market is rallying strongly with Bitcoin up 12% in a week, and Solana has been one of the best performers with a 24% weekly gain. Our profit target of $115 is within reach, but the market mood is getting greedy and many coins have already run hard. Rather than chase new positions into an extended rally, we're holding what we have and raising our stop-loss to lock in some gains.",
+  "layman_action": "If you hold Solana, keep it but raise your mental stop-loss to around $98 to protect most of your gains. Don't open new positions right now \u2014 the market has moved too fast and a pullback is likely before the next good entry.",
+  "expert_reasoning": "The entire market has moved aggressively \u2014 BTC +12% in 7 days, SOL +24%, ZEC +43%, VET +43%. Fear & Greed at 71 and trending toward 'worsening' greed suggests overextension risk. All swing candidates show negative composite signal scores due to extended price action and high BTC dominance at 59.2%. SOL's position is performing well at +6.2% unrealized, and with the exit target at $115 only ~7% away, the prudent move is to hold and trail the stop-loss up from $92 to $98 to lock in breakeven-plus. Opening a new position into candidates that have already rallied 30-40% in a week with no RSI/MACD data and in a high-greed environment would be chasing. Fed Chair Warsh's Jackson Hole speech adds event risk that could trigger a reversal.",
   "risk_factors": [
-    "BTC faces major supply wall at $80K-$83K near ETF holders' average cost basis \u2014 rejection here could drag SOL down",
-    "Fear & Greed at 71 trending toward 'worsening' suggests the market could be near a local top",
-    "High BTC dominance at 59.2% means capital is concentrating in BTC, limiting altcoin upside potential"
+    "Fed Chair Warsh's Jackson Hole speech could trigger hawkish sentiment and a sharp market pullback",
+    "Fear & Greed at 71 and worsening \u2014 historically a mixed signal with only 56% win rate in our data",
+    "BTC dominance at 59.2% means capital is concentrating in Bitcoin, putting alt positions like SOL at rotation risk"
   ],
   "watch_list": [
-    "BTC price action around $80K-$83K supply wall \u2014 breakout vs rejection will determine SOL trajectory",
-    "ETF inflow continuation \u2014 the longest streak since April needs to hold to sustain bullish momentum",
-    "SOL approaching $110 resistance level \u2014 watch for volume confirmation or exhaustion signals"
+    "Fed Chair Warsh's Jackson Hole speech \u2014 could be the catalyst for the next major move",
+    "SOL price action near $110-115 resistance zone \u2014 if it stalls, take profit",
+    "BTC behavior at $83K \u2014 Glassnode flagging a 'true demand test' at that level; failure there drags alts down hard"
   ],
-  "market_context": "Bitcoin is testing $80K with sustained ETF inflows, creating a broadly bullish environment, but Fear & Greed at 71 and 7-day gains of 10-40% across majors suggest caution on new entries. The market is in a momentum-driven rally phase where chasing is dangerous.",
-  "context_banner": "Market rallying on ETF inflows and leverage flush \u2014 hold existing winners and wait for pullbacks before adding exposure.",
-  "btc_price": 79472,
+  "market_context": "The crypto market is in a strong rally week with BTC up 12% and major alts surging 10-25%+. Fear & Greed at 71 (Greed) suggests the move may be getting extended, and the upcoming Jackson Hole speech adds meaningful event risk.",
+  "context_banner": "Market is running hot after a powerful weekly rally \u2014 protect gains on SOL and wait for a pullback before adding new positions.",
+  "btc_price": 80337,
   "fear_greed": {
     "current": 71,
     "label": "Greed",
@@ -34,30 +34,30 @@
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Fear & Greed at 71 (Greed) and worsening trend suggests elevated risk for new entries; favors holding existing positions over opening new ones."
-    },
-    {
-      "source": "CryptoSlate",
-      "signal_type": "news",
-      "description": "$2B cash surge wiped out speculative leverage \u2014 suggests cleaner market positioning supporting the current rally, constructive for existing SOL long."
-    },
-    {
-      "source": "RSI",
-      "signal_type": "technical",
-      "description": "PUMP RSI at 84 is deeply overbought, eliminating the strongest mover from consideration. No candidate has a favorable RSI setup for new entry."
-    },
-    {
-      "source": "CoinDesk",
-      "signal_type": "news",
-      "description": "Bitcoin ETF inflows hit longest streak since April and BTC testing $80K supply wall \u2014 key level that will determine near-term direction for all crypto."
+      "description": "Fear & Greed at 71 (Greed) and worsening trend suggests the rally may be overextended \u2014 historically a 56% win-rate signal, urging caution on new entries."
     },
     {
       "source": "volume_breakout",
       "signal_type": "technical",
-      "description": "SOL 24h volume at $5.27B with +7.13% daily gain shows strong momentum continuation supporting the current position toward the $115 target."
+      "description": "SOL's 24h volume at $6.36B with an 11.67% daily gain confirms strong momentum but also signals potential exhaustion after a 24% weekly run."
+    },
+    {
+      "source": "CoinTelegraph",
+      "signal_type": "news",
+      "description": "Glassnode analysis flags Bitcoin's 'true demand test above $83K as liquidity thickens' \u2014 a BTC failure there would drag SOL and all alts."
+    },
+    {
+      "source": "CryptoSlate",
+      "signal_type": "news",
+      "description": "Jackson Hole coverage highlights central bank crypto attention \u2014 Warsh's speech is a binary event risk that could reverse or accelerate the rally."
+    },
+    {
+      "source": "RSI",
+      "signal_type": "technical",
+      "description": "No RSI data available for swing candidates, but 24-43% weekly moves across VET, ZEC, PUMP, and KITE strongly suggest overbought conditions, reducing new entry appeal."
     }
   ],
   "_mode": "HUNTING",
   "exit_target": 115.0,
-  "stop_loss": 92.0
+  "stop_loss": 98.0
 }
