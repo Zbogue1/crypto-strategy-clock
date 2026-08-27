@@ -456,5 +456,27 @@
       "RLUSD"
     ],
     "alert": null
+  },
+  {
+    "ts": "2026-08-27T08:01:21.974677+00:00",
+    "coin": "SOL",
+    "price": 101.8,
+    "signal": "HOLD",
+    "confidence": 52,
+    "score": -1.2,
+    "fg": 71,
+    "btc_price": 79034,
+    "btc_dominance": 59.1,
+    "candidates": [
+      "PUMP",
+      "MON",
+      "USDG",
+      "FDUSD",
+      "XAUT",
+      "KITE",
+      "POL",
+      "SOL"
+    ],
+    "alert": "Fed hike speculation emerging \u2014 monitor closely as this could reverse the current rally"
   }
 ]
