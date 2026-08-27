@@ -522,5 +522,27 @@
       "SOL"
     ],
     "alert": "Raise SOL stop-loss from $92 to $98 to protect gains ahead of Jackson Hole speech event risk."
+  },
+  {
+    "ts": "2026-08-27T20:01:44.072597+00:00",
+    "coin": "SOL",
+    "price": 109.26,
+    "signal": "HOLD",
+    "confidence": 72,
+    "score": 6.8,
+    "fg": 71,
+    "btc_price": 79946,
+    "btc_dominance": 59.2,
+    "candidates": [
+      "PUMP",
+      "MON",
+      "FDUSD",
+      "USDG",
+      "RLUSD",
+      "LIT",
+      "VET",
+      "SOL"
+    ],
+    "alert": "Raise SOL stop-loss from $92 to $100 to protect gains as price approaches $115 target."
   }
 ]
