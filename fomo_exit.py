@@ -688,7 +688,7 @@ def _check_holding(holding: dict, state: dict, prefetched: tuple = None):
             rug_reason = (
                 f"Liquidity collapsed: "
                 f"${current_liq:,.0f} (was ${peak_liq:,.0f}, "
-                f"−{(1 - current_liq/peak_liq)*100:.0f}%)"
+                f"-{(1 - current_liq/peak_liq)*100:.0f}%)"
             )
         last_price = holding.get("last_price_check")
         if (last_price and current_price < last_price * (1 - RUG_PRICE_CRASH_PCT)):

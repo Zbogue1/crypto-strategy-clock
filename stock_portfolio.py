@@ -7,7 +7,7 @@ than guidance. The rules ARE the strategy — a system that takes his entries bu
 ignores his risk limits is a different (and much worse) system.
 
   Rule 1: Risk $50 to make $100        → 2:1 minimum, enforced at entry
-  Rule 2: Daily max loss −$100         → hard stop for the day
+  Rule 2: Daily max loss -$100         → hard stop for the day
   Rule 3: 3 consecutive losers → done  → circuit breaker
 
 POSITION SIZING — this is the important bit:
@@ -349,7 +349,7 @@ def can_trade() -> tuple:
 
     if float(s.get("day_pnl", 0) or 0) <= -abs(DAILY_MAX_LOSS):
         reason = (f"daily max loss hit (${s['day_pnl']:+.2f} vs "
-                  f"−${DAILY_MAX_LOSS:.0f} limit)")
+                  f"-${DAILY_MAX_LOSS:.0f} limit)")
         s["halted_reason"] = reason
         _save(s)
         return False, reason
