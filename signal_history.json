@@ -654,5 +654,27 @@
       "SOL"
     ],
     "alert": "Fed hawkish tone at Jackson Hole \u2014 monitor for further risk-off moves that could threaten the SOL stop-loss."
+  },
+  {
+    "ts": "2026-08-28T20:00:46.784641+00:00",
+    "coin": "SOL",
+    "price": 103.5,
+    "signal": "HOLD",
+    "confidence": 52,
+    "score": -0.3,
+    "fg": 73,
+    "btc_price": 77548,
+    "btc_dominance": 59.0,
+    "candidates": [
+      "MON",
+      "PAXG",
+      "PUMP",
+      "XAUT",
+      "LIT",
+      "EURC",
+      "USDG",
+      "SOL"
+    ],
+    "alert": "Fed Chair Warsh's hawkish stance triggered $488M in crypto liquidations \u2014 elevated risk of further downside in next 48-72 hours."
   }
 ]
