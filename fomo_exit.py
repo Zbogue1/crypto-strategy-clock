@@ -367,15 +367,43 @@ def _execute_partial_sell(
     """
     from fomo_portfolio import FOMO_TAKER_FEE, save_fomo_portfolio, sync_fomo_state_to_github
 
+    # THE CALLER HAS ALREADY SET tranche_1_sold / tranche_2_sold BEFORE calling
+    # this — deliberately, so a save between the flag and the sale can't fire
+    # the same tranche twice (GTA6 repeated four times before that fix).
+    #
+    # But that makes every early return here silently destructive: the position
+    # is marked as having taken profit, no units are sold, no record is written,
+    # and the tranche can never fire again because the flag blocks it. $MADE ran
+    # to 2x, was flagged, sold nothing, and gave the whole move back.
+    #
+    # So an aborted sale must UNSET the flag and say so.
+    def _abort(why: str) -> float:
+        for flag in ("tranche_1_sold", "tranche_2_sold"):
+            if holding.get(flag) and reason.startswith(flag[:9]):
+                holding[flag] = False
+        log.error(f"Tranche sale ABORTED for {holding.get('token_ticker','?')} "
+                  f"({reason}): {why} — flag cleared so it can retry")
+        try:
+            _send_telegram(
+                f"⚠️ <b>{holding.get('token_ticker','?')}: tranche sale failed</b>\n\n"
+                f"{why}\n\n"
+                f"<i>Nothing was sold and the tranche flag was cleared, so it "
+                f"will retry next cycle. Previously this left the position "
+                f"marked as harvested while holding 100% of the units.</i>")
+        except Exception:
+            pass
+        return 0.0
+
     units_to_sell = holding["units"] * fraction
     if units_to_sell <= 0:
-        return 0.0
+        return _abort(f"nothing to sell (units={holding.get('units')})")
 
     # Reject impossible prices before they corrupt the portfolio
     from fomo_portfolio import is_price_sane
     if not is_price_sane(holding.get("entry_price"), current_price,
                          holding.get("token_ticker", "?")):
-        return 0.0
+        return _abort(f"price ${current_price:.8f} failed the sanity check "
+                      f"against entry ${holding.get('entry_price', 0):.8f}")
 
     proceeds = units_to_sell * current_price
     fee      = proceeds * FOMO_TAKER_FEE
