@@ -48,7 +48,11 @@ STARTUP_DELAY_SEC    = 120     # wait 2 min after Flask starts
 RUG_LIQUIDITY_DROP_PCT = 0.65   # liquidity fell ≥65% from peak → rug signal
 RUG_PRICE_CRASH_PCT    = 0.50   # price fell ≥50% since last 5-min check → rug signal
 
-_rug_warned_positions: set = set()   # position_ids already warned (memory only, reset on restart)
+_rug_warned_positions: set = set()
+# contract -> consecutive failed exit attempts. A stop-loss that cannot
+# execute leaves the position unprotected, which must not be forgotten
+# between cycles.
+_unprotected: dict = {}
 
 
 # ─── TELEGRAM ─────────────────────────────────────────────────────────────────
@@ -476,10 +480,37 @@ def _execute_full_sell(
     from fomo_portfolio import (FOMO_TAKER_FEE, save_fomo_portfolio,
                                 sync_fomo_state_to_github, is_price_sane)
 
-    # Reject impossible prices before they corrupt the portfolio
-    if not is_price_sane(holding.get("entry_price"), current_price,
-                         holding.get("token_ticker", "?")):
+    # THIS IS THE STOP-LOSS PATH. A silent abort here is the worst failure in
+    # the system: the position is NOT sold, keeps falling, and the caller
+    # previously fired the "AUTO-EXITED" alarm anyway with net=$0.00 — telling
+    # you a losing position had been closed when it was still open and bleeding.
+    #
+    # Refusing to sell on a bad price is correct: selling at a garbage price
+    # realises a fictional loss. But it must SCREAM, and it must keep screaming
+    # while the position sits unprotected.
+    ticker = holding.get("token_ticker", "?")
+    if not is_price_sane(holding.get("entry_price"), current_price, ticker):
+        n = _unprotected.get(holding.get("contract_address"), 0) + 1
+        _unprotected[holding.get("contract_address")] = n
+        log.error(f"{reason.upper()} COULD NOT EXECUTE for {ticker}: price "
+                  f"${current_price:.8f} vs entry "
+                  f"${holding.get('entry_price', 0):.8f} failed sanity check. "
+                  f"POSITION REMAINS OPEN AND UNPROTECTED (attempt {n}).")
+        try:
+            _send_telegram(
+                f"🚨 <b>{ticker}: {reason.upper()} DID NOT EXECUTE</b>\n\n"
+                f"Price ${current_price:.8f} failed the sanity check against "
+                f"entry ${holding.get('entry_price', 0):.8f}.\n\n"
+                f"<b>The position is still open and unprotected.</b> "
+                f"Failed attempts: {n}\n\n"
+                f"<i>Selling at a bad price would realise a fictional loss, so "
+                f"nothing was sold. If this repeats, check the token on "
+                f"DexScreener and consider exiting manually.</i>")
+        except Exception:
+            pass
         return 0.0
+
+    _unprotected.pop(holding.get("contract_address"), None)
 
     proceeds = holding["units"] * current_price
     fee      = proceeds * FOMO_TAKER_FEE
@@ -706,8 +737,12 @@ def _check_holding(holding: dict, state: dict, prefetched: tuple = None):
     # ── STOP-LOSS: -35% from entry ─────────────────────────────────────────
     if gain_pct <= STOP_LOSS_PCT * 100:
         net = _execute_full_sell(holding, current_price, "stop_loss", state)
-        _fire_stop_alarm(ticker, net, gain_pct)   # repeating alarm until user ACKs
-        return   # position closed, done
+        if net > 0:
+            _fire_stop_alarm(ticker, net, gain_pct)   # repeats until user ACKs
+        # If net == 0 the sale was refused and _execute_full_sell has already
+        # alarmed. Firing the "AUTO-EXITED / Recovered $0.00" alarm here would
+        # tell the user a still-open position had been closed.
+        return
 
     # ── TRANCHE 1: 2x → sell 33% ──────────────────────────────────────────
     if gain_x >= TRANCHE_1_MULT and not holding.get("tranche_1_sold"):
