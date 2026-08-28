@@ -2,7 +2,7 @@
   "version": "golem-v1",
   "reset_date": "2026-08-08",
   "reset_reason": "FOMO Golem launch \u2014 fresh $1,000 paper portfolio, FOMO-only strategy",
-  "cash": 9119.19798809129,
+  "cash": 8919.19798809129,
   "starting_cash": 10000.0,
   "peak_value": 10000.0,
   "total_trades": 11,
@@ -130,6 +130,35 @@
       "trailing_stop_active": false,
       "peak_liquidity": 123990.57,
       "last_price_check": 0.0006478
+    },
+    {
+      "position_id": "2a789d81",
+      "token_ticker": "GASSPAS",
+      "token_name": "GASSPAS",
+      "entry_price": 0.001797,
+      "units": 111185.30884808014,
+      "spent": 200.0,
+      "stop_loss": 0.00116805,
+      "exit_target": 0.0023361,
+      "wallet_alias": "Golem (momentum score 68/100)",
+      "wallet_address": "",
+      "contract_address": "GCr352ouzNZkNQd3KZqs6jFuQb8LiYnWsEJSUpSfpump",
+      "catalyst": "Score 6/10 \u2014 Prime window: 3.3d old, Distribution OK (14% top-10)",
+      "catalyst_score": 6,
+      "market_cap": 1792088,
+      "liquidity_usd": 130890.72,
+      "token_age_days": 3.3448855384549607,
+      "holder_count": null,
+      "volume_spike_pct": -16.734386817704547,
+      "entered_at": "2026-08-28T19:07:52.900170+00:00",
+      "auto_exit_at": "2026-08-29T19:07:52.900183+00:00",
+      "source": "golem_momentum",
+      "regime_at_entry": "NEUTRAL",
+      "partial_taken": false,
+      "peak_price": 0.001797,
+      "tranche_1_sold": false,
+      "tranche_2_sold": false,
+      "trailing_stop_active": false
     }
   ],
   "trade_history": [
@@ -522,7 +551,7 @@
     }
   ],
   "archived_history_note": "Prior July 2026 paper trades archived before this reset.",
-  "last_updated": "2026-08-28T16:32:12.509456+00:00",
+  "last_updated": "2026-08-28T19:07:52.900195+00:00",
   "deposits": [
     {
       "target": 10000.0,
