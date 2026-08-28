@@ -228,7 +228,9 @@ def reset_portfolio(starting_cash: float = None) -> dict:
         old = _load()
         if old.get("trade_history") or old.get("holdings"):
             stamp = datetime.now(timezone.utc).strftime("%Y%m%d_%H%M%S")
-            _redis_set(f"kalshi_portfolio_archive_{stamp}", old)
+            if not _redis_set(f"kalshi_portfolio_archive_{stamp}", old):
+                log.error("ARCHIVE WRITE FAILED — refusing to reset without a backup.")
+                return {"ok": False, "error": "archive write failed; nothing was reset"}
             # Track archive keys so they can be listed/restored later
             index = _redis_get("kalshi_archive_index") or {"archives": []}
             index["archives"].append({
@@ -239,7 +241,9 @@ def reset_portfolio(starting_cash: float = None) -> dict:
                 "winning":       old.get("winning_trades", 0),
                 "losing":        old.get("losing_trades", 0),
             })
-            _redis_set("kalshi_archive_index", index)
+            if not _redis_set("kalshi_archive_index", index):
+                log.error("Archive index write failed — the archive exists "
+                          "but /archives will not list it.")
             log.warning(
                 f"Kalshi portfolio: ARCHIVED {len(old.get('trade_history', []))} trades "
                 f"to kalshi_portfolio_archive_{stamp} before reset"
@@ -337,7 +341,9 @@ def restore_archive(archive_key: str) -> Optional[dict]:
         current = _load()
         if current.get("trade_history") or current.get("holdings"):
             stamp = datetime.now(timezone.utc).strftime("%Y%m%d_%H%M%S")
-            _redis_set(f"kalshi_portfolio_archive_{stamp}", current)
+            if not _redis_set(f"kalshi_portfolio_archive_{stamp}", current):
+                log.error("ARCHIVE WRITE FAILED — refusing to reset without a backup.")
+                return {"ok": False, "error": "archive write failed; nothing was reset"}
             index = _redis_get("kalshi_archive_index") or {"archives": []}
             index["archives"].append({
                 "key":         f"kalshi_portfolio_archive_{stamp}",
@@ -348,7 +354,9 @@ def restore_archive(archive_key: str) -> Optional[dict]:
                 "losing":      current.get("losing_trades", 0),
                 "note":        "auto-archived before restore",
             })
-            _redis_set("kalshi_archive_index", index)
+            if not _redis_set("kalshi_archive_index", index):
+                log.error("Archive index write failed — the archive exists "
+                          "but /archives will not list it.")
     except Exception as e:
         log.warning(f"Kalshi portfolio: pre-restore archive failed: {e}")
 

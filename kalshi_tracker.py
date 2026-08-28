@@ -1769,10 +1769,14 @@ def _report_due() -> bool:
         now   = time.time()
         if not last:
             # First run — anchor now so the first report lands a full period out
-            _redis_set(_REPORT_STATE_KEY, {"last_report_ts": now})
+            if not _redis_set(_REPORT_STATE_KEY, {"last_report_ts": now}):
+                log.warning("Report anchor write failed — the weekly report "
+                            "may fire early or late.")
             return False
         if (now - last) >= REPORT_INTERVAL_DAYS * 86400:
-            _redis_set(_REPORT_STATE_KEY, {"last_report_ts": now})
+            if not _redis_set(_REPORT_STATE_KEY, {"last_report_ts": now}):
+                log.warning("Report anchor write failed — the weekly report "
+                            "may fire early or late.")
             return True
     except Exception as e:
         log.warning(f"Kalshi: report scheduler error: {e}")
@@ -1858,7 +1862,9 @@ def main():
                 f"{(time.time()-_last)/60:.0f} min ago (cooldown {_startup_cooldown_h}h)"
             )
         else:
-            _redis_set("kalshi_last_startup_msg", {"ts": time.time()})
+            if not _redis_set("kalshi_last_startup_msg", {"ts": time.time()}):
+                log.warning("Startup cooldown write failed — the banner may "
+                            "repeat on the next deploy.")
     except Exception as e:
         log.warning(f"Startup message cooldown check failed: {e}")
 

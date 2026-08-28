@@ -45,6 +45,13 @@ ACTIVE_PREFIXES = ("kalshi_", "fomo_", "stock_", "vision", "reconcile")
 # The signal we want is a FUNCTION that was imported to be called and isn't:
 # check_fomo_auto_exits sat imported-and-uncalled for days, which is why the
 # FOMO time-exit never ran.
+# Reviewed and accepted — kept so the scan can exit 0 and gate a push.
+# Anything NOT listed here is a genuine finding.
+ACCEPTED_DEAD = {
+    ("kalshi_tracker.py", "format_portfolio_telegram"),
+    ("kalshi_tracker.py", "score_all_markets"),
+}
+
 IGNORE_UNUSED = {
     "datetime", "timezone", "timedelta", "date", "time",
     "Optional", "Any", "Callable", "Union", "Dict", "List", "Tuple",
@@ -217,6 +224,8 @@ def scan(root: Path) -> list:
         for name in sorted(imported_names):
             if (name[0].isupper() or name.startswith("_")
                     or name in IGNORE_UNUSED):
+                continue
+            if (f.name, name) in ACCEPTED_DEAD:
                 continue
             if name not in called and name not in referenced:
                 findings.append(("DEAD-IMPORT", f.name, 0,

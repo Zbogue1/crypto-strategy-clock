@@ -380,7 +380,9 @@ def reset() -> dict:
     old = _load()
     if old.get("calls"):
         stamp = datetime.now(timezone.utc).strftime("%Y%m%d_%H%M%S")
-        _redis_set(f"stock_postmortem_archive_{stamp}", old)
+        if not _redis_set(f"stock_postmortem_archive_{stamp}", old):
+            log.error("ARCHIVE WRITE FAILED — refusing to reset without a backup.")
+            return {"ok": False, "error": "archive write failed; nothing was reset"}
         log.warning(f"Postmortem: archived {len(old['calls'])} calls")
     fresh = {"calls": [], "vetoes": []}
     _save(fresh)

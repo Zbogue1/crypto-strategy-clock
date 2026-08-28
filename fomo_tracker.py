@@ -36,7 +36,6 @@ from fomo_portfolio import (
     execute_fomo_buy,
     execute_fomo_sell,
     load_fomo_portfolio,
-    check_fomo_auto_exits,
     get_wallet_lessons,
     get_fomo_stats,
     sync_fomo_state_from_github,
@@ -1883,12 +1882,22 @@ def telegram_webhook():
                         # $30 at risk on a $200 position instead of the real
                         # $70. A number a human uses to size risk must come
                         # from the same source as the number the bot enforces.
+                        # State the plan the bot will ACTUALLY follow.
+                        #
+                        # exit_target (+30%) is written at entry and displayed,
+                        # but nothing acts on it — the only code that read it
+                        # lived in check_fomo_auto_exits, which was never
+                        # called. The real exits are the -35% stop and the
+                        # 2x/3x tranches. Showing a target the bot will never
+                        # take is worse than showing none: it invites sizing
+                        # decisions against a number that does not exist.
                         f"Stop: ${result['stop_loss']:.8f} "
-                        f"({(result['stop_loss'] / result['entry_price'] - 1) * 100:+.0f}%) | "
-                        f"Target: ${result['exit_target']:.8f} "
-                        f"({(result['exit_target'] / result['entry_price'] - 1) * 100:+.0f}%)\n"
-                        f"Risking ${result['spent'] * abs(result['stop_loss'] / result['entry_price'] - 1):.2f} "
-                        f"to make ${result['spent'] * abs(result['exit_target'] / result['entry_price'] - 1):.2f}\n"
+                        f"({(result['stop_loss'] / result['entry_price'] - 1) * 100:+.0f}%) "
+                        f"— risking ${result['spent'] * abs(result['stop_loss'] / result['entry_price'] - 1):.2f}\n"
+                        f"Take profit: 33% at 2x "
+                        f"(${result['entry_price'] * 2:.8f}), "
+                        f"33% at 3x (${result['entry_price'] * 3:.8f}),\n"
+                        f"final third trails -30% from peak\n"
                         f"Following {alert['wallet_alias']}"
                     )
                 else:
@@ -2420,7 +2429,11 @@ def process_social_signal(signal: dict):
             and token_data.get("age_only_reject")
             and source in GOLEM_SOURCES):
         age_h = (token_data.get("age_days") or 0) * 24
-        liq   = token_data.get("liquidity") or 0
+        # validate_token() returns "liquidity_usd", not "liquidity". Reading
+        # the wrong key made liq default to 0, so the GOLEM_MIN_LIQUIDITY
+        # floor could never be met and this independent-trading path was dead
+        # for every token — silently, because 0 is a legitimate-looking value.
+        liq   = token_data.get("liquidity_usd") or token_data.get("liquidity") or 0
         if age_h >= GOLEM_MIN_AGE_HOURS and liq >= GOLEM_MIN_LIQUIDITY:
             token_data["valid"] = True
             golem_trade = True

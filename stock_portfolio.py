@@ -713,7 +713,9 @@ def reset_portfolio(cash: float = None) -> dict:
     old = _load()
     if old.get("trade_history"):
         stamp = datetime.now(timezone.utc).strftime("%Y%m%d_%H%M%S")
-        _redis_set(f"stock_portfolio_archive_{stamp}", old)
+        if not _redis_set(f"stock_portfolio_archive_{stamp}", old):
+            log.error("ARCHIVE WRITE FAILED — refusing to reset without a backup.")
+            return {"ok": False, "error": "archive write failed; nothing was reset"}
         log.warning(f"Stock portfolio: archived {len(old['trade_history'])} trades")
 
     fresh = _default_state()
