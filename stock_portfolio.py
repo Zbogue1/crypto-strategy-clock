@@ -337,7 +337,7 @@ def can_trade() -> tuple:
     if s.get("halted_reason"):
         return False, s["halted_reason"]
 
-    if s["day_pnl"] <= -abs(DAILY_MAX_LOSS):
+    if float(s.get("day_pnl", 0) or 0) <= -abs(DAILY_MAX_LOSS):
         reason = (f"daily max loss hit (${s['day_pnl']:+.2f} vs "
                   f"−${DAILY_MAX_LOSS:.0f} limit)")
         s["halted_reason"] = reason
@@ -479,10 +479,52 @@ def open_position(symbol: str, entry: float, stop: float, target: float,
     return pos
 
 
+# A stock moving 10x against its entry inside a same-day hold is corrupt data,
+# not a price. Loose on purpose: refusing a legitimate exit strands a losing
+# position, which is worse than an odd fill.
+MAX_EXIT_MOVE_X = float(os.getenv("STOCK_MAX_EXIT_MOVE_X", "10"))
+
+
+def is_exit_price_sane(entry: float, exit_price: float, symbol: str = "?") -> bool:
+    """
+    False if this exit price is obviously corrupt.
+
+    Rejects only the impossible — missing, zero, negative, or a 10x swing in a
+    position that force-closes the same day. Halts and gaps produce large real
+    moves, so the bar is set well above anything a market can actually do in
+    one session.
+    """
+    if entry is None or exit_price is None:
+        log.error(f"Stock: {symbol} exit price missing (entry={entry}, "
+                  f"exit={exit_price}) — refusing to close on bad data")
+        return False
+    if entry <= 0 or exit_price <= 0:
+        log.error(f"Stock: {symbol} non-positive price (entry={entry}, "
+                  f"exit={exit_price}) — refusing to close")
+        return False
+    move = exit_price / entry
+    if move > MAX_EXIT_MOVE_X or move < (1.0 / MAX_EXIT_MOVE_X):
+        log.error(f"Stock SANITY REJECT: {symbol} exit ${exit_price} vs entry "
+                  f"${entry} implies {move:.1f}x — bad price data, close "
+                  f"skipped. POSITION REMAINS OPEN.")
+        return False
+    return True
+
+
 def close_position(symbol: str, exit_price: float, reason: str = "manual") -> Optional[dict]:
+    """
+    Close a position. Returns the trade dict, or None if nothing was closed.
+
+    None ALWAYS means no exit happened — the caller must not report one.
+    """
     s = _load()
     idx = next((i for i, p in enumerate(s["positions"]) if p["symbol"] == symbol), None)
     if idx is None:
+        return None
+
+    # Validate BEFORE popping — checking afterwards would remove the position
+    # and then bail, losing it from the book entirely.
+    if not is_exit_price_sane(s["positions"][idx].get("entry"), exit_price, symbol):
         return None
 
     pos      = s["positions"].pop(idx)
@@ -490,15 +532,20 @@ def close_position(symbol: str, exit_price: float, reason: str = "manual") -> Op
     pnl      = proceeds - pos["cost"]
     won      = pnl > 0
 
-    s["cash"]         += proceeds
-    s["day_pnl"]      += pnl
-    s["total_trades"] += 1
+    # Bracket access on counters meant a partially-written or migrated state
+    # raised KeyError HERE — after the position was already popped off the
+    # book. The exit would half-complete: position gone, cash never credited,
+    # trade never recorded. A missing counter must never be able to destroy a
+    # position, so every counter defaults instead of exploding.
+    s["cash"]         = float(s.get("cash", 0) or 0) + proceeds
+    s["day_pnl"]      = float(s.get("day_pnl", 0) or 0) + pnl
+    s["total_trades"] = int(s.get("total_trades", 0) or 0) + 1
     if won:
-        s["winning_trades"]      += 1
-        s["consecutive_losses"]   = 0
+        s["winning_trades"]     = int(s.get("winning_trades", 0) or 0) + 1
+        s["consecutive_losses"] = 0
     else:
-        s["losing_trades"]       += 1
-        s["consecutive_losses"]  += 1
+        s["losing_trades"]      = int(s.get("losing_trades", 0) or 0) + 1
+        s["consecutive_losses"] = int(s.get("consecutive_losses", 0) or 0) + 1
 
     opened = pos.get("opened_at", "")
     try:
@@ -520,12 +567,12 @@ def close_position(symbol: str, exit_price: float, reason: str = "manual") -> Op
         "closed_at":   datetime.now(timezone.utc).isoformat(),
         "held_minutes": round(held_min, 1),
     }
-    s["trade_history"].append(trade)
+    s.setdefault("trade_history", []).append(trade)
 
     # Rules 2 & 3 evaluated immediately on close
-    if s["day_pnl"] <= -abs(DAILY_MAX_LOSS):
+    if float(s.get("day_pnl", 0) or 0) <= -abs(DAILY_MAX_LOSS):
         s["halted_reason"] = (f"daily max loss hit (${s['day_pnl']:+.2f})")
-    elif s["consecutive_losses"] >= MAX_CONSECUTIVE_LOSS:
+    elif int(s.get("consecutive_losses", 0) or 0) >= MAX_CONSECUTIVE_LOSS:
         s["halted_reason"] = f"{s['consecutive_losses']} consecutive losers"
 
     _save(s)

@@ -215,12 +215,12 @@ def settle_bet(ticker: str, result: str, reason: str = "settled") -> Optional[di
         "return_pct":  round(pnl / pos["cost_basis"] * 100, 1) if pos["cost_basis"] else 0.0,
     }
 
-    state["cash"] = round(state["cash"] + payout, 2)
-    state["holdings"] = [h for h in state["holdings"] if h["ticker"] != ticker]
-    state["trade_history"].append(trade)
-    state["total_trades"]   += 1
-    state["winning_trades"] += 1 if won else 0
-    state["losing_trades"]  += 0 if won else 1
+    state["cash"] = round(float(state.get("cash", 0) or 0) + payout, 2)
+    state["holdings"] = [h for h in state.get("holdings", []) if h["ticker"] != ticker]
+    state.setdefault("trade_history", []).append(trade)
+    state["total_trades"]   = int(state.get("total_trades", 0) or 0) + 1
+    state["winning_trades"] = int(state.get("winning_trades", 0) or 0) + (1 if won else 0)
+    state["losing_trades"]  = int(state.get("losing_trades", 0) or 0) + (0 if won else 1)
     state["total_pnl"] = round(state.get("total_pnl", 0.0) + pnl, 2)
     _save(state)
 

@@ -517,19 +517,62 @@ def open_position(
     return position
 
 
+# A perp index price moving 20x between entry and exit is corrupt data, not a
+# market move. Loose on purpose — see is_exit_price_sane.
+MAX_EXIT_MOVE_X = float(os.getenv("KALSHI_MAX_EXIT_MOVE_X", "20"))
+
+
+def is_exit_price_sane(entry: float, exit_price: float, ticker: str = "?") -> bool:
+    """
+    False if this exit price is obviously corrupt data.
+
+    Deliberately LOOSE. FOMO's version guards against DexScreener returning
+    nonsense for illiquid memecoins; Kalshi's feed is far more reliable, and
+    the asymmetry of errors runs the other way here. Refusing a legitimate
+    exit leaves a losing position open — which is worse than booking a
+    slightly odd price. So this rejects only what cannot be real: missing,
+    zero, negative, or a 20x move in an instrument that trades in a narrow band.
+    """
+    if entry is None or exit_price is None:
+        log.error(f"Kalshi: {ticker} exit price missing (entry={entry}, "
+                  f"exit={exit_price}) — refusing to close on bad data")
+        return False
+    if entry <= 0 or exit_price <= 0:
+        log.error(f"Kalshi: {ticker} non-positive price (entry={entry}, "
+                  f"exit={exit_price}) — refusing to close")
+        return False
+    move = exit_price / entry
+    if move > MAX_EXIT_MOVE_X or move < (1.0 / MAX_EXIT_MOVE_X):
+        log.error(f"Kalshi SANITY REJECT: {ticker} exit {exit_price} vs entry "
+                  f"{entry} implies {move:.1f}x — bad price data, close skipped. "
+                  f"POSITION REMAINS OPEN.")
+        return False
+    return True
+
+
 def close_position(
     ticker:        str,
     exit_price:    float,
     reason:        str = "manual",   # "stop_loss" | "take_profit" | "manual" | "liquidated"
 ) -> Optional[dict]:
     """
-    Paper-close a position. Returns closed trade dict or None if not found.
+    Paper-close a position. Returns closed trade dict or None if not closed.
+
+    Returning None ALWAYS means nothing was closed — callers must not report an
+    exit. Two reasons: the position isn't open, or the price failed the sanity
+    check and closing would book a fictional P&L.
     """
     state = _load()
 
     idx = next((i for i, h in enumerate(state["holdings"]) if h["ticker"] == ticker), None)
     if idx is None:
         log.warning(f"Kalshi portfolio: no open position for {ticker}")
+        return None
+
+    # Check BEFORE popping the position off the book. Validating after the pop
+    # would remove the holding and then bail, losing it entirely.
+    if not is_exit_price_sane(state["holdings"][idx].get("entry_price"),
+                              exit_price, ticker):
         return None
 
     pos        = state["holdings"].pop(idx)
@@ -542,10 +585,15 @@ def close_position(
     funding_paid   = pos.get("funding_paid", 0.0)
     net_pnl        = realized_pnl - funding_paid
 
-    # Return margin + net profit to cash
-    state["cash"]         += margin + net_pnl
-    state["total_pnl"]    += net_pnl
-    state["total_trades"] += 1
+    # Return margin + net profit to cash.
+    #
+    # Defaulted rather than bracket-accessed: the position has already been
+    # popped off the book by this point, so a KeyError on a missing counter
+    # would leave the exit half-done — position gone, cash never returned,
+    # trade never recorded. A counter must never be able to destroy a position.
+    state["cash"]         = float(state.get("cash", 0) or 0) + margin + net_pnl
+    state["total_pnl"]    = float(state.get("total_pnl", 0) or 0) + net_pnl
+    state["total_trades"] = int(state.get("total_trades", 0) or 0) + 1
 
     # NOTE: total_funding_paid is deliberately NOT incremented here.
     # apply_funding() already added every charge to the running total at the
@@ -557,12 +605,12 @@ def close_position(
 
     won = net_pnl > 0
     if won:
-        state["winning_trades"] += 1
+        state["winning_trades"] = int(state.get("winning_trades", 0) or 0) + 1
     else:
-        state["losing_trades"] += 1
+        state["losing_trades"] = int(state.get("losing_trades", 0) or 0) + 1
 
     # Track peak
-    total_val = state["cash"] + sum(h.get("unrealized_pnl", 0) for h in state["holdings"])
+    total_val = float(state.get("cash", 0) or 0) + sum(h.get("unrealized_pnl", 0) for h in state["holdings"])
     if total_val > state["peak_value"]:
         state["peak_value"] = total_val
 
@@ -593,7 +641,7 @@ def close_position(
         "funding_sentiment": pos.get("funding_sentiment", ""),
     }
 
-    state["trade_history"].append(trade_record)
+    state.setdefault("trade_history", []).append(trade_record)
     _save(state)
 
     log.info(
