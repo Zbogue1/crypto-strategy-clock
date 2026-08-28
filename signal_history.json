@@ -632,5 +632,27 @@
       "SOL"
     ],
     "alert": null
+  },
+  {
+    "ts": "2026-08-28T16:03:40.183955+00:00",
+    "coin": "SOL",
+    "price": 105.12,
+    "signal": "HOLD",
+    "confidence": 62,
+    "score": 0.3,
+    "fg": 73,
+    "btc_price": 78281,
+    "btc_dominance": 59.0,
+    "candidates": [
+      "MON",
+      "PUMP",
+      "EURC",
+      "FDUSD",
+      "USDG",
+      "RLUSD",
+      "LIT",
+      "SOL"
+    ],
+    "alert": "Fed hawkish tone at Jackson Hole \u2014 monitor for further risk-off moves that could threaten the SOL stop-loss."
   }
 ]
