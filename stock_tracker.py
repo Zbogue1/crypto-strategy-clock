@@ -173,6 +173,29 @@ def _record_restart() -> int:
                     "cannot tell redeploys from crashes, so the crash-loop "
                     "alarm is disabled. Check the deploy logs manually if the "
                     "bot seems to be restarting.")
+        # A log line is invisible unless someone opens the Railway console, and
+        # what's disabled here is a SAFETY alarm. Say it once per deploy on
+        # Telegram — a silently-disabled monitor is worse than no monitor,
+        # because you believe you're covered.
+        try:
+            from stock_portfolio import _redis_get, _redis_set
+            if not _redis_get("stock_alarm_disabled_notified"):
+                tg.send(
+                    "Stock Golem: crash-loop alarm is DISABLED.\n\n"
+                    "Railway is not exposing RAILWAY_DEPLOYMENT_ID or "
+                    "RAILWAY_GIT_COMMIT_SHA, so redeploys and crashes look "
+                    "identical and the alarm would fire on every push.\n\n"
+                    "Restarts are still recorded, but nothing will alert you "
+                    "to a crash loop. Check the Railway deploy logs manually "
+                    "if the bot seems to be restarting.\n\n"
+                    "Sent once. Set either variable to re-enable.",
+                    parse_mode=None)
+                if not _redis_set("stock_alarm_disabled_notified", {"at": "sent"}):
+                    log.warning("Could not record the alarm-disabled notice — "
+                                "it may repeat on the next restart.")
+        except Exception as e:
+            log.error(f"Could not notify about the disabled alarm: {e}")
+
         try:
             state = pf._load()
             state.setdefault("restarts", []).append(
