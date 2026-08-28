@@ -257,15 +257,50 @@ def get_relative_volume(symbol: str, days: int = 30) -> Optional[dict]:
 
 # ─── NEWS (Pillar 3) ──────────────────────────────────────────────────────────
 
+# Set by get_news when the endpoint itself fails, so callers can tell
+# "this stock has no news" from "we could not ask". Those are opposite facts
+# and _get() collapses both to None.
+NEWS_FEED_ERROR: Optional[str] = None
+NEWS_FEED_OK: bool = False
+
+
 def get_news(symbol: str, hours: int = 48, limit: int = 10) -> list:
-    """Recent headlines. Pillar 3 wants a catalyst justifying the move."""
+    """
+    Recent headlines. Pillar 3 wants a catalyst justifying the move.
+
+    Returns [] both when a stock genuinely has no news AND when the request
+    fails — so it also records the reason in NEWS_FEED_ERROR. That distinction
+    decides whether the catalyst pillar is screening or is simply blind: on
+    2026-08-26, 10 of 17 rejected candidates showed "no news", which is either
+    a quiet market or an endpoint this account can't reach, and nothing in the
+    output could tell the two apart.
+    """
+    global NEWS_FEED_ERROR, NEWS_FEED_OK
     start = datetime.now(timezone.utc) - timedelta(hours=hours)
-    d = _get(DATA_URL, "/v1beta1/news", {
+    params = {
         "symbols": symbol,
         "start":   start.strftime("%Y-%m-%dT%H:%M:%SZ"),
         "limit":   limit,
         "sort":    "desc",
-    })
+    }
+    try:
+        r = requests.get(f"{DATA_URL}/v1beta1/news", headers=_headers(),
+                         params=params, timeout=15)
+        if r.status_code != 200:
+            NEWS_FEED_ERROR = f"HTTP {r.status_code}: {r.text[:120]}"
+            NEWS_FEED_OK = False
+            log.error(f"Alpaca news for {symbol} FAILED — {NEWS_FEED_ERROR}. "
+                      f"The catalyst pillar is blind, not selective.")
+            return []
+        d = r.json()
+        NEWS_FEED_ERROR = None
+        NEWS_FEED_OK = True
+    except Exception as e:
+        NEWS_FEED_ERROR = f"{type(e).__name__}: {e}"
+        NEWS_FEED_OK = False
+        log.error(f"Alpaca news for {symbol} FAILED — {NEWS_FEED_ERROR}")
+        return []
+
     if not d:
         return []
     return [{
@@ -349,6 +384,11 @@ def get_full_snapshot(symbol: str) -> Optional[dict]:
         "rvol":        rvol["rvol"] if rvol else None,
         "avg_vol":     rvol["avg_vol"] if rvol else None,
         "news_count":  len(news),
+        # Carry WHY there was no news. len(news)==0 with news_feed_ok False
+        # means the feed failed, which is a broken input rather than a stock
+        # without a catalyst — and those deserve opposite treatment.
+        "news_feed_ok":    NEWS_FEED_OK,
+        "news_feed_error": NEWS_FEED_ERROR,
         "headlines":   [n["headline"] for n in news[:4]],
         "catalyst":    catalyst,
         "float_m":     flt["float_m"] if flt else None,

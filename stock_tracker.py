@@ -244,6 +244,26 @@ def build_diagnostic() -> str:
     allowed, why = pf.can_trade()
     L.append(f"Risk gate:   {'clear' if allowed else 'BLOCKED — ' + why}")
 
+    # 2b. Probe the news endpoint directly. The catalyst pillar rejected 10 of
+    # 17 candidates for "no news", which is either a quiet tape or an endpoint
+    # this account cannot reach — and the funnel alone can't tell them apart.
+    # Ask a mega-cap that always has coverage: no headlines for AAPL means the
+    # feed is broken, not that Apple had a quiet two days.
+    try:
+        probe = sd.get_news("AAPL", hours=48, limit=5)
+        if sd.NEWS_FEED_OK:
+            L.append(f"News feed:   OK ({len(probe)} headline(s) for AAPL/48h)")
+            if not probe:
+                L.append("             ...but zero for AAPL — suspicious, "
+                         "check tier permissions")
+        else:
+            L.append(f"News feed:   BROKEN — {sd.NEWS_FEED_ERROR}")
+            L.append("             Pillar 3 cannot verify any catalyst, so it")
+            L.append("             blocks every setup. This is the likely")
+            L.append("             reason nothing has traded.")
+    except Exception as e:
+        L.append(f"News feed:   ERROR {str(e)[:70]}")
+
     # 3. Does the screener return anything?
     try:
         movers = sd.get_movers(top=50, min_pct=sig.MIN_PCT_CHANGE)
@@ -282,8 +302,12 @@ def build_diagnostic() -> str:
             if f.get("catalyst_no_news") or f.get("catalyst_weak"):
                 L.append("")
                 L.append("  catalyst breakdown:")
+                if f.get("catalyst_feed_down"):
+                    L.append(f"    {f['catalyst_feed_down']:>3}x  FEED DOWN "
+                             f"<- broken input, not a screen result")
+                    L.append(f"         {str(f.get('news_feed_error'))[:60]}")
                 L.append(f"    {f.get('catalyst_no_news',0):>3}x  "
-                         f"NO news returned  <- broken input if high")
+                         f"feed OK but no headlines (genuine)")
                 L.append(f"    {f.get('catalyst_weak',0):>3}x  "
                          f"news found but judged insufficient")
                 L.append(f"    {f.get('catalyst_harmful',0):>3}x  "
@@ -363,7 +387,12 @@ def run_scan(force: bool = False, announce: bool = False) -> list:
                     # the biggest rejector the least diagnosable.
                     if name == "catalyst":
                         n_news = snap.get("news_count")
-                        if n_news in (None, 0):
+                        if not snap.get("news_feed_ok", True):
+                            funnel["catalyst_feed_down"] = \
+                                funnel.get("catalyst_feed_down", 0) + 1
+                            funnel["news_feed_error"] = \
+                                snap.get("news_feed_error")
+                        elif n_news in (None, 0):
                             funnel["catalyst_no_news"] = \
                                 funnel.get("catalyst_no_news", 0) + 1
                         else:

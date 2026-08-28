@@ -129,14 +129,36 @@ def score_pillars(snap: dict, market_hot: bool = True) -> dict:
             "harmful": harmful,
         }
     else:
-        n_news = snap.get("news_count", 0) or 0
-        pillars["catalyst"] = {
-            "pass":  n_news > 0,
-            "value": n_news,
-            "note":  f"{n_news} headline(s) in 48h (unanalyzed)" if n_news
-                     else "no catalyst found — higher risk of sudden drop",
-            "harmful": False,
-        }
+        n_news   = snap.get("news_count", 0) or 0
+        feed_ok  = snap.get("news_feed_ok", True)
+        feed_err = snap.get("news_feed_error")
+
+        # A BROKEN FEED IS NOT A FAILED CATALYST.
+        #
+        # Both produce zero headlines, and scoring them the same way means a
+        # dead endpoint silently vetoes every setup while looking like a
+        # disciplined screen. This still does NOT pass — Ross's method requires
+        # a real catalyst, and trading a +100% mover with no known reason is
+        # how you buy a pump. But it is marked as UNKNOWN so the diagnostic can
+        # say "the feed is down" instead of "nothing qualified today".
+        if not feed_ok:
+            pillars["catalyst"] = {
+                "pass":    False,
+                "unknown": True,
+                "value":   None,
+                "note":    f"NEWS FEED UNAVAILABLE ({feed_err}) — cannot "
+                           f"verify a catalyst, so not passing. This is a "
+                           f"broken input, not a screen result.",
+                "harmful": False,
+            }
+        else:
+            pillars["catalyst"] = {
+                "pass":  n_news > 0,
+                "value": n_news,
+                "note":  f"{n_news} headline(s) in 48h (unanalyzed)" if n_news
+                         else "no catalyst found — higher risk of sudden drop",
+                "harmful": False,
+            }
 
     # 4 — Price range
     price = snap.get("price") or 0
