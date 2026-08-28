@@ -275,6 +275,12 @@ def main() -> int:
 
     run_suite("sell audit", "sell_audit.py")
     run_suite("health scan", "health_scan.py")
+    # Fire the real actions, not just inspect the code. This is what catches a
+    # change that compiles and reads correctly but behaves wrongly.
+    run_suite("action simulation", "simulate.py")
+    # And verify the simulator itself still catches a planted bug — a harness
+    # that always passes is worse than none.
+    run_suite("meta test", "meta_test.py")
     print("  behavioural suites done")
 
     return report()
