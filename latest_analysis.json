@@ -1,27 +1,27 @@
 {
-  "timestamp": "2026-08-28T16:03:40.183955+00:00",
+  "timestamp": "2026-08-28T20:00:46.784641+00:00",
   "signal": "HOLD",
   "selected_coin": "SOL",
   "selected_coin_name": "Solana",
-  "selected_coin_price": 105.12,
-  "confidence": 62,
-  "layman_headline": "Solana trade is working \u2014 up 4% \u2014 but the broader market just hit a speed bump.",
-  "layman_explanation": "Our Solana position is up about 4% from where we bought it, heading toward our 15% profit target. The broader market pulled back today after the Fed chair signaled inflation is still a concern, dragging Bitcoin down nearly 3%. The swing trade candidates this cycle are either stablecoins (no trade opportunity), already-extended movers, or new tokens with no technical data to analyze. There's no compelling new entry right now.",
-  "layman_action": "Hold the Solana position and let it work toward the $115 target. The stop-loss at $92 protects downside. Don't chase anything new until a clearer setup emerges.",
-  "expert_reasoning": "The current swing candidates are poor quality: MON is in a downtrend (-6.7% 7d, -46% from ATH), PUMP and LIT are already extended after 13-18% weekly rallies with no technical confirmation data, and the rest are stablecoins. SOL remains the best exposure \u2014 it has high liquidity ($6.2B volume), a clear trend, and our entry at $101 gives us buffer above the $92 stop. BTC dominance at 59% is suppressing altcoin performance broadly, and Fed Chair Warsh's hawkish Jackson Hole stance adds macro risk that makes adding new positions inadvisable. The Greed reading at 73 also counsels patience rather than chasing.",
+  "selected_coin_price": 103.5,
+  "confidence": 52,
+  "layman_headline": "Holding Solana in mild profit while the broader market digests a hawkish Fed signal.",
+  "layman_explanation": "We're sitting on a small 2.4% gain on our Solana position. The market just got rattled by the Fed Chair signaling that rate hikes could still be on the table, which triggered nearly $500 million in liquidations. Today's swing candidates all look weak \u2014 most lack technical data (no RSI, no MACD), several are stablecoins or gold-pegged tokens that aren't swing trade material, and the ones with recent momentum (PUMP, LIT) have already run up significantly and are pulling back hard today. There's no compelling new entry right now.",
+  "layman_action": "Keep holding the existing Solana position. The stop-loss at $92 protects downside. Wait for clearer setups before committing more capital \u2014 the Fed headwinds could push prices lower in the coming days, creating better entry opportunities.",
+  "expert_reasoning": "The swing candidate pool is exceptionally poor this cycle. MON, PUMP, and LIT have all run 10-20% in 7 days and are now pulling back 5-8% intraday \u2014 classic exhaustion patterns without technical confirmation data to assess whether these are buyable dips or the start of deeper corrections. PAXG and XAUT are gold tokens down 3% (tracking gold's pullback), not swing trade material. EURC and USDG are stablecoins. SOL remains the best position: the disinflation vote is a genuine supply-side catalyst, volume is robust at $6.1B, and the 13.1% 7-day gain shows strong momentum despite today's -5.3% dip. However, the CryptoSlate report of $488M in liquidations from the Fed's hawkish tone is a credible headwind (CryptoSlate has 67% reliability). I'm holding rather than adding until the market absorbs this macro shock.",
   "risk_factors": [
-    "Fed hawkishness could trigger a broader risk-off move, pushing BTC below $76K support and dragging SOL down",
-    "BTC dominance at 59% continues to siphon capital away from altcoins, limiting SOL upside",
-    "SOL's 14.7% weekly gain may be extended \u2014 a pullback to $98-100 is possible before continuation"
+    "Fed Chair Warsh's hawkish Jackson Hole comments could trigger further liquidations and extended selling pressure across crypto",
+    "BTC dominance at 59% continues to suppress altcoin performance \u2014 SOL could underperform if dominance rises further",
+    "SOL is up 13% on the week and today's -5.3% dip could signal the beginning of a broader mean-reversion pullback toward $95"
   ],
   "watch_list": [
-    "SOL price action near $108-110 resistance \u2014 a break above could accelerate toward $115 target",
-    "BTC reaction at $76,000 support \u2014 a break below would likely invalidate the SOL trade",
-    "Follow-up Fed commentary and market reaction over the weekend to gauge macro risk"
+    "BTC price action around $77K support \u2014 a break below could drag SOL to our stop-loss zone",
+    "Follow-through from the Fed's Jackson Hole speech \u2014 watch for rate hike probability changes in coming days",
+    "SOL holding $100 psychological support \u2014 a daily close below would weaken the bullish thesis"
   ],
-  "market_context": "BTC pulled back 2.8% to $78.3K after Fed Chair Warsh's hawkish Jackson Hole remarks, but is still up 1.4% on the week. Fear & Greed at 73 (Greed) suggests decent sentiment but caution against aggressive new entries.",
-  "context_banner": "Existing SOL position is performing well at +4%; no new high-conviction setups warrant capital deployment in this pullback environment.",
-  "btc_price": 78281,
+  "market_context": "The crypto market is in a 'Greed' phase (73/100) but just absorbed a hawkish Fed shock that triggered $488M in liquidations. BTC dominance at 59% signals a difficult environment for altcoins, and today's broad 3-5% selloff suggests more digestion may be needed before the next leg up.",
+  "context_banner": "Fed hawkishness creates near-term headwinds; holding existing SOL position while waiting for the market to stabilize before deploying additional capital.",
+  "btc_price": 77548,
   "fear_greed": {
     "current": 73,
     "label": "Greed",
@@ -32,29 +32,29 @@
   "btc_dominance": 59.0,
   "key_signals": [
     {
-      "source": "Fear_Greed",
-      "signal_type": "sentiment",
-      "description": "Greed at 73 and rising \u2014 decent sentiment but approaching levels where new entries carry elevated reversal risk."
-    },
-    {
-      "source": "CoinTelegraph",
-      "signal_type": "news",
-      "description": "Bitcoin dipped to $78.4K as Fed's Warsh downplayed softer inflation prints, creating near-term macro headwind for risk assets."
-    },
-    {
       "source": "CryptoSlate",
       "signal_type": "news",
-      "description": "BlackRock pulled in 115% of all BTC ETF inflows in one day \u2014 institutional demand remains concentrated and supportive of BTC floor."
+      "description": "Fed Chair Warsh triggered $488M in crypto liquidations with hawkish rate-hike commentary at Jackson Hole \u2014 CryptoSlate has 67% reliability, making this a credible bearish signal."
     },
     {
-      "source": "volume_breakout",
-      "signal_type": "technical",
-      "description": "SOL volume at $6.2B remains elevated, supporting the continuation thesis toward $115 as long as $98 support holds."
+      "source": "Fear_Greed",
+      "signal_type": "sentiment",
+      "description": "Fear & Greed at 73 (Greed) and trending higher \u2014 markets may be complacent heading into a hawkish macro shock, increasing correction risk."
     },
     {
       "source": "CoinDesk",
       "signal_type": "news",
-      "description": "Bitcoin outperforming stocks and correlating with gold \u2014 macro narrative supports crypto as a hedge, but BTC dominance at 59% limits alt upside."
+      "description": "Solana's disinflation vote passed in a dramatic finish, providing a fundamental supply-reduction catalyst supporting the existing SOL position."
+    },
+    {
+      "source": "volume_breakout",
+      "signal_type": "technical",
+      "description": "SOL volume at $6.1B is exceptionally high relative to other alts, confirming strong participation but also reflecting forced selling from liquidations."
+    },
+    {
+      "source": "CoinTelegraph",
+      "signal_type": "news",
+      "description": "BTC dipped to $78.4K on the Fed news, and broad altcoin weakness (-4 to -8% across the board) signals this is a macro-driven selloff rather than coin-specific."
     }
   ],
   "_mode": "HUNTING",
