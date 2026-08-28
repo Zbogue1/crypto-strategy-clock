@@ -885,6 +885,62 @@ def handle_relayed_text_message(message: dict):
         return
 
     # -- /reconcile — do the books balance across all three bots? --
+    if text.lower().startswith("/repair_tranches"):
+        # Positions flagged as harvested with no matching sale record are
+        # casualties of the old flag-before-sell bug: marked as having taken
+        # profit while still holding every unit, and permanently blocked from
+        # ever taking that tranche. Clearing the flag lets it fire again.
+        #
+        # Not automatic. If a sale DID happen and only the record was lost,
+        # clearing causes a second partial sale — smaller and not dangerous,
+        # but it is a real trade, so it needs a human yes.
+        try:
+            from fomo_portfolio import load_fomo_portfolio, save_fomo_portfolio, sync_fomo_state_to_github
+            st = load_fomo_portfolio()
+            recorded = {}
+            for t in st.get("tranche_sales", []):
+                k = (t.get("contract") or t.get("token_ticker") or "").lower()
+                recorded[k] = recorded.get(k, 0) + 1
+            stale = []
+            for h in st.get("holdings", []):
+                k = (h.get("contract_address") or h.get("token_ticker") or "").lower()
+                want = int(bool(h.get("tranche_1_sold"))) + int(bool(h.get("tranche_2_sold")))
+                if want > recorded.get(k, 0):
+                    stale.append(h)
+            if not stale:
+                send_telegram("No stale tranche flags. Every flagged harvest "
+                              "has a matching record.", parse_mode=None)
+            elif "confirm" not in text.lower():
+                lines = ["STALE TRANCHE FLAGS", ""]
+                for h in stale:
+                    lines.append(
+                        f"{h.get('token_ticker','?')}: "
+                        f"invested ${float(h.get('spent') or 0):.2f}, "
+                        f"units {float(h.get('units') or 0):,.0f}\n"
+                        f"  t1={h.get('tranche_1_sold')} t2={h.get('tranche_2_sold')} "
+                        f"but 0 sale records")
+                lines += ["", "These are flagged as harvested with no sale on record.",
+                          "Clearing lets the tranche fire again when it next hits 2x.",
+                          "", "If the sale DID happen and only the log was lost,",
+                          "clearing means a second partial sale later.",
+                          "", "Send: /repair_tranches confirm"]
+                send_telegram("\n".join(lines), parse_mode=None)
+            else:
+                for h in stale:
+                    h["tranche_1_sold"] = False
+                    h["tranche_2_sold"] = False
+                    h["trailing_stop_active"] = False
+                save_fomo_portfolio(st)
+                sync_fomo_state_to_github()
+                send_telegram(
+                    f"REPAIRED {len(stale)} position(s): "
+                    f"{', '.join(h.get('token_ticker','?') for h in stale)}\n\n"
+                    f"Tranche flags cleared. They can take profit again at 2x.\n"
+                    f"Nothing was bought or sold.", parse_mode=None)
+        except Exception as e:
+            send_telegram(f"Repair failed: {type(e).__name__}: {e}", parse_mode=None)
+        return
+
     if text.lower().startswith("/inbox"):
         try:
             from fomo_inbox import build_report

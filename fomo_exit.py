@@ -359,6 +359,7 @@ def _execute_partial_sell(
     current_price: float,
     reason: str,
     state: dict,
+    flags: list = None,
 ) -> float:
     """
     Sell `fraction` of the holding's remaining units.
@@ -367,29 +368,31 @@ def _execute_partial_sell(
     """
     from fomo_portfolio import FOMO_TAKER_FEE, save_fomo_portfolio, sync_fomo_state_to_github
 
-    # THE CALLER HAS ALREADY SET tranche_1_sold / tranche_2_sold BEFORE calling
-    # this — deliberately, so a save between the flag and the sale can't fire
-    # the same tranche twice (GTA6 repeated four times before that fix).
+    # FLAGS ARE SET HERE, ONLY ON A COMPLETED SALE — never by the caller.
     #
-    # But that makes every early return here silently destructive: the position
-    # is marked as having taken profit, no units are sold, no record is written,
-    # and the tranche can never fire again because the flag blocks it. $MADE ran
-    # to 2x, was flagged, sold nothing, and gave the whole move back.
+    # The old design had the caller set tranche_1_sold BEFORE calling, so that
+    # the flag and the sale saved together and the tranche couldn't fire twice
+    # (GTA6 exited four times before that). It fixed double-firing and created
+    # something worse: every early return below left the position MARKED as
+    # harvested while holding 100% of its units, with no record and no way for
+    # the tranche to ever fire again.
     #
-    # So an aborted sale must UNSET the flag and say so.
+    # $MADE ran to 2x, was flagged, sold nothing, and round-tripped the entire
+    # move. The Telegram alert still said "TRANCHE 1 EXIT — Locked: $0.00".
+    #
+    # Setting the flag inside, immediately before the same save that writes the
+    # sale and the record, keeps the double-fire protection AND makes it
+    # impossible to be flagged without having sold. That is the invariant:
+    # flag set <=> units sold <=> record written, all in one save.
     def _abort(why: str) -> float:
-        for flag in ("tranche_1_sold", "tranche_2_sold"):
-            if holding.get(flag) and reason.startswith(flag[:9]):
-                holding[flag] = False
         log.error(f"Tranche sale ABORTED for {holding.get('token_ticker','?')} "
-                  f"({reason}): {why} — flag cleared so it can retry")
+                  f"({reason}): {why} — nothing flagged, will retry next cycle")
         try:
             _send_telegram(
                 f"⚠️ <b>{holding.get('token_ticker','?')}: tranche sale failed</b>\n\n"
                 f"{why}\n\n"
-                f"<i>Nothing was sold and the tranche flag was cleared, so it "
-                f"will retry next cycle. Previously this left the position "
-                f"marked as harvested while holding 100% of the units.</i>")
+                f"<i>Nothing was sold and nothing was flagged, so it retries "
+                f"next cycle. The position still holds all its units.</i>")
         except Exception:
             pass
         return 0.0
@@ -452,6 +455,11 @@ def _execute_partial_sell(
         f"sold {fraction*100:.0f}% @ ${current_price:.8f} "
         f"({gain_pct:+.0f}%) → +${net:.2f}"
     )
+
+    # Flag ONLY now — the sale is done, the record is written, and all of it
+    # persists in the single save below.
+    for f in (flags or []):
+        holding[f] = True
 
     save_fomo_portfolio(state)
     sync_fomo_state_to_github()
@@ -703,29 +711,30 @@ def _check_holding(holding: dict, state: dict, prefetched: tuple = None):
 
     # ── TRANCHE 1: 2x → sell 33% ──────────────────────────────────────────
     if gain_x >= TRANCHE_1_MULT and not holding.get("tranche_1_sold"):
-        # Set flag BEFORE _execute_partial_sell so the save includes it —
-        # otherwise the next 5-min cycle reloads from GitHub without the flag
-        # and fires the tranche again (caused 4 repeat exits for GTA6).
-        holding["tranche_1_sold"] = True
-        net = _execute_partial_sell(holding, TRANCHE_SIZE, current_price, "tranche_1_2x", state)
-        _send_telegram(
-            f"💸 <b>TRANCHE 1 EXIT: {ticker}</b> hit 2x\n"
-            f"Sold 33% @ ${current_price:.8f} (+{gain_pct:.0f}%)\n"
-            f"Locked: ${net:.2f} | Remaining 67% riding 🚀"
-        )
+        net = _execute_partial_sell(holding, TRANCHE_SIZE, current_price,
+                                    "tranche_1_2x", state,
+                                    flags=["tranche_1_sold"])
+        # Only claim an exit that actually happened. This message used to fire
+        # unconditionally and reported "Locked: $0.00" on a sale that aborted.
+        if net > 0:
+            _send_telegram(
+                f"💸 <b>TRANCHE 1 EXIT: {ticker}</b> hit 2x\n"
+                f"Sold 33% @ ${current_price:.8f} (+{gain_pct:.0f}%)\n"
+                f"Locked: ${net:.2f} | Remaining 67% riding 🚀"
+            )
         return
 
     # ── TRANCHE 2: 3x → sell another 33% ─────────────────────────────────
     if gain_x >= TRANCHE_2_MULT and holding.get("tranche_1_sold") and not holding.get("tranche_2_sold"):
-        # Same fix: set flags before save so they persist to GitHub.
-        holding["tranche_2_sold"]       = True
-        holding["trailing_stop_active"] = True   # arm the trailing stop
-        net = _execute_partial_sell(holding, 0.5, current_price, "tranche_2_3x", state)
-        _send_telegram(
-            f"💸 <b>TRANCHE 2 EXIT: {ticker}</b> hit 3x\n"
-            f"Sold another 33% @ ${current_price:.8f} (+{gain_pct:.0f}%)\n"
-            f"Locked: ${net:.2f} | Final 33% riding — trailing stop armed at -30% from peak 🎯"
-        )
+        net = _execute_partial_sell(holding, 0.5, current_price,
+                                    "tranche_2_3x", state,
+                                    flags=["tranche_2_sold", "trailing_stop_active"])
+        if net > 0:
+            _send_telegram(
+                f"💸 <b>TRANCHE 2 EXIT: {ticker}</b> hit 3x\n"
+                f"Sold another 33% @ ${current_price:.8f} (+{gain_pct:.0f}%)\n"
+                f"Locked: ${net:.2f} | Final 33% riding — trailing stop armed at -30% from peak 🎯"
+            )
         return
 
     # ── TRAILING STOP on final 33% ────────────────────────────────────────
