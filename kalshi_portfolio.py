@@ -361,17 +361,26 @@ def restore_archive(archive_key: str) -> Optional[dict]:
     return data
 
 
-def _save(state: dict):
-    # Primary: Redis
+def _save(state: dict) -> bool:
+    # Redis is the ONLY durable store — the local file lives in an ephemeral
+    # Railway container and is erased by the next redeploy. Falling back to it
+    # silently is how a week of Kalshi trade history disappeared once already:
+    # the write "succeeded", the process looked healthy, and the data was gone
+    # at the next deploy with nothing in the logs.
     if _redis_set(_PORTFOLIO_KEY, state):
         log.debug("Kalshi portfolio: saved to Redis")
-        return
-    # Fallback: local file
+        return True
+
+    log.error("Kalshi portfolio: REDIS WRITE FAILED — falling back to the "
+              "container filesystem, which is WIPED on the next redeploy. "
+              "Trades saved now may be lost. Check UPSTASH_REDIS_* on this "
+              "service.")
     try:
         with open(PORTFOLIO_FILE, "w") as f:
             json.dump(state, f, indent=2, default=str)
     except Exception as e:
         log.error(f"Kalshi portfolio: save error: {e}")
+    return False
 
 
 # ─── POSITION MATH ────────────────────────────────────────────────────────────

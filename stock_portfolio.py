@@ -301,8 +301,18 @@ def _save(state: dict):
         except Exception as e:
             log.error(f"Stock portfolio: test save failed: {e}")
         return
+    # Redis is the ONLY durable store — the local file lives in an ephemeral
+    # Railway container and is erased by the next redeploy. Falling back to it
+    # silently is how a week of Kalshi trade history disappeared once already:
+    # the write "succeeded", the process looked healthy, and the data was gone
+    # at the next deploy with nothing in the logs.
     if _redis_set(_KEY, state):
-        return
+        return True
+
+    log.error("Stock portfolio: REDIS WRITE FAILED — falling back to the "
+              "container filesystem, which is WIPED on the next redeploy. "
+              "Trades saved now may be lost. Check UPSTASH_REDIS_* on this "
+              "service.")
     try:
         with open(_LOCAL_FILE, "w") as f:
             json.dump(state, f, indent=2, default=str)
