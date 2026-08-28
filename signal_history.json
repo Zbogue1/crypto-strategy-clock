@@ -610,5 +610,27 @@
       "SOL"
     ],
     "alert": "Consider tightening SOL stop-loss to $97 to protect gains ahead of Warsh's Jackson Hole speech."
+  },
+  {
+    "ts": "2026-08-28T12:02:30.061407+00:00",
+    "coin": "SOL",
+    "price": 105.79,
+    "signal": "HOLD",
+    "confidence": 68,
+    "score": 0.45,
+    "fg": 73,
+    "btc_price": 79592,
+    "btc_dominance": 59.2,
+    "candidates": [
+      "MON",
+      "PUMP",
+      "FDUSD",
+      "USDG",
+      "RLUSD",
+      "LIT",
+      "EURC",
+      "SOL"
+    ],
+    "alert": null
   }
 ]
