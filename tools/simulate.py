@@ -280,6 +280,72 @@ def sim_pillars():
             and ok_feed["qualifies"] is True), L
 
 
+@scenario("position_sizing", "Stock sizing — risk stays constant as the stop widens")
+def sim_sizing():
+    """
+    calc_shares is Ross's core rule: shares = risk / (entry - stop). It decides
+    how much money is exposed on every trade and had ZERO test coverage — a
+    mutation sweep killed 0 of its mutants. A silent error here mis-sizes every
+    position without changing anything visible.
+    """
+    import stock_portfolio as SP
+    SP._save({**SP._load(), "cash": 10_000.0, "starting_cash": 10_000.0,
+              "positions": []})
+    tight = SP.calc_shares(10.00, 9.85)      # 15c stop
+    wide  = SP.calc_shares(10.00, 9.50)      # 50c stop
+    L = [f"15c stop -> {tight.get('shares')} sh, risk ${tight.get('total_risk',0):.2f}",
+         f"50c stop -> {wide.get('shares')} sh, risk ${wide.get('total_risk',0):.2f}",
+         f"limiter: {tight.get('limiter')} / {wide.get('limiter')}"]
+    # The whole point of risk-based sizing: dollar risk is constant, share
+    # count shrinks as the stop widens.
+    ok = (tight.get("shares", 0) > wide.get("shares", 0)
+          and abs(tight.get("total_risk", 0) - SP.RISK_PER_TRADE) < 1.0
+          and abs(wide.get("total_risk", 0) - SP.RISK_PER_TRADE) < 1.0)
+    bad = SP.calc_shares(10.0, 10.5)          # stop above entry
+    L.append(f"stop above entry refused={bad.get('shares', 0) == 0}")
+    return (ok and bad.get("shares", 0) == 0), L
+
+
+@scenario("circuit_breakers", "Stock halts on daily loss and consecutive losers")
+def sim_breakers():
+    """
+    The two hard limits that stop a bad day becoming a disaster. Both survived
+    every mutation — nothing verified they fire.
+    """
+    import stock_portfolio as SP
+    SP._save({**SP._load(), "cash": 10_000.0, "positions": [],
+              "day_pnl": 0.0, "consecutive_losses": 0, "halted_reason": ""})
+    clear_ok, _ = SP.can_trade()
+
+    # Test EXACTLY at the threshold. Using -101 against a -100 limit passes
+    # for both `<=` and `<`, so a mutation swapping them survives undetected —
+    # the test looks thorough and proves nothing about the boundary. The whole
+    # question is whether hitting the limit exactly stops trading.
+    SP._save({**SP._load(), "day_pnl": -abs(SP.DAILY_MAX_LOSS)})
+    loss_ok, loss_why = SP.can_trade()
+
+    SP._save({**SP._load(), "day_pnl": -abs(SP.DAILY_MAX_LOSS) + 0.01,
+              "halted_reason": ""})
+    just_under_ok, _ = SP.can_trade()
+
+    SP._save({**SP._load(), "day_pnl": 0.0, "halted_reason": "",
+              "consecutive_losses": SP.MAX_CONSECUTIVE_LOSS})
+    streak_ok, streak_why = SP.can_trade()
+
+    # One below the limit must still trade — otherwise `>=` vs `>` is untested.
+    SP._save({**SP._load(), "day_pnl": 0.0, "halted_reason": "",
+              "consecutive_losses": SP.MAX_CONSECUTIVE_LOSS - 1})
+    just_under_streak, _ = SP.can_trade()
+
+    L = [f"clean state trades={clear_ok}",
+         f"AT daily max loss blocked={not loss_ok} ({loss_why[:38]})",
+         f"1c under the limit still trades={just_under_ok}",
+         f"AT consecutive limit blocked={not streak_ok} ({streak_why[:38]})",
+         f"one below the limit still trades={just_under_streak}"]
+    return (clear_ok and not loss_ok and just_under_ok
+            and not streak_ok and just_under_streak), L
+
+
 @scenario("reconcile_invariant", "Books balance after a full open/close cycle")
 def sim_reconcile():
     import kalshi_portfolio as KP, reconcile as R
