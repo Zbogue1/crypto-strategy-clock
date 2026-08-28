@@ -1,0 +1,69 @@
+#!/bin/sh
+#
+# pre-push — refuse to push if preflight finds a blocking problem.
+#
+# WHY THIS EXISTS
+# On 2026-08-27 preflight reported BLOCKING (a UnicodeEncodeError that crashed
+# the daily-loss halt message on Windows) and the push went through anyway,
+# because running the check and honouring it were two separate human steps.
+# A gate you can walk past is just a slower linter.
+#
+# This removes the human step: git itself refuses.
+#
+# BYPASS
+#   git push --no-verify
+# That still works, and should — sometimes you genuinely need to push broken
+# code to a branch. The point is that bypassing is now a deliberate act rather
+# than something that happens by not noticing.
+
+# NOT `set -e`. With it, the script exits the instant preflight returns
+# non-zero — before reaching the explanation below. The push was correctly
+# refused but the user saw no reason why, which is its own silent failure.
+REPO_ROOT=$(git rev-parse --show-toplevel)
+cd "$REPO_ROOT"
+
+# Find a python. Windows Git Bash usually has `python`, Linux/macOS `python3`.
+if command -v python3 >/dev/null 2>&1; then
+    PY=python3
+elif command -v python >/dev/null 2>&1; then
+    PY=python
+else
+    echo "pre-push: no python found — cannot run preflight."
+    echo "          Fix your PATH, or push with --no-verify if you accept the risk."
+    exit 1
+fi
+
+if [ ! -f tools/preflight.py ]; then
+    echo "pre-push: tools/preflight.py not found — skipping."
+    exit 0
+fi
+
+echo ""
+echo "pre-push: running preflight (PAPER_TEST_MODE=1)..."
+echo ""
+
+# PAPER_TEST_MODE is mandatory: without it anything importing the portfolio
+# modules writes to the LIVE book. Test trades reached production state once
+# already.
+PAPER_TEST_MODE=1 $PY tools/preflight.py || STATUS=$?
+STATUS=${STATUS:-0}
+
+if [ $STATUS -ne 0 ]; then
+    echo ""
+    echo "=============================================================="
+    echo " PUSH BLOCKED — preflight found $STATUS blocking problem(s)."
+    echo ""
+    echo " Every blocking check maps to a bug that already shipped and"
+    echo " cost something. Fix them, then push."
+    echo ""
+    echo " If you genuinely need to push anyway:"
+    echo "     git push --no-verify"
+    echo "=============================================================="
+    echo ""
+    exit 1
+fi
+
+echo ""
+echo "pre-push: preflight clean — pushing."
+echo ""
+exit 0
