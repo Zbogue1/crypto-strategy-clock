@@ -544,5 +544,27 @@
       "SOL"
     ],
     "alert": "Raise SOL stop-loss from $92 to $100 to protect gains as price approaches $115 target."
+  },
+  {
+    "ts": "2026-08-28T00:04:37.836475+00:00",
+    "coin": "SOL",
+    "price": 109.0,
+    "signal": "HOLD",
+    "confidence": 72,
+    "score": 6.5,
+    "fg": 73,
+    "btc_price": 80212,
+    "btc_dominance": 59.2,
+    "candidates": [
+      "MON",
+      "PUMP",
+      "FDUSD",
+      "RLUSD",
+      "USDG",
+      "LIT",
+      "XAUT",
+      "SOL"
+    ],
+    "alert": "SOL approaching $115 exit target \u2014 prepare to take profits within 1-3 days if momentum continues."
   }
 ]
