@@ -2,7 +2,7 @@
   "version": "golem-v1",
   "reset_date": "2026-08-08",
   "reset_reason": "FOMO Golem launch \u2014 fresh $1,000 paper portfolio, FOMO-only strategy",
-  "cash": 9191.054920436161,
+  "cash": 8991.054920436161,
   "starting_cash": 10000.0,
   "peak_value": 10000.0,
   "total_trades": 10,
@@ -130,6 +130,35 @@
       "trailing_stop_active": false,
       "peak_liquidity": 123990.57,
       "last_price_check": 0.0007917
+    },
+    {
+      "position_id": "e6e13c74",
+      "token_ticker": "PANTS",
+      "token_name": "dogwifpants",
+      "entry_price": 0.001531,
+      "units": 130502.93925538864,
+      "spent": 200.0,
+      "stop_loss": 0.00099515,
+      "exit_target": 0.0019903,
+      "wallet_alias": "Golem (narrative: DEPIN)",
+      "wallet_address": "",
+      "contract_address": "FtateF34Xzawa91bpbVNdX72hZYo9cymRDYqBreHHbJi",
+      "catalyst": "Score 6/10 \u2014 Prime window: 8.6d old, Distribution OK (30% top-10)",
+      "catalyst_score": 6,
+      "market_cap": 1502035,
+      "liquidity_usd": 144089.12,
+      "token_age_days": 8.62636467838177,
+      "holder_count": null,
+      "volume_spike_pct": -44.398512064664274,
+      "entered_at": "2026-08-28T00:31:11.468208+00:00",
+      "auto_exit_at": "2026-08-29T00:31:11.468222+00:00",
+      "source": "narrative_import",
+      "regime_at_entry": "BULL",
+      "partial_taken": false,
+      "peak_price": 0.001531,
+      "tranche_1_sold": false,
+      "tranche_2_sold": false,
+      "trailing_stop_active": false
     }
   ],
   "trade_history": [
@@ -486,7 +515,7 @@
     }
   ],
   "archived_history_note": "Prior July 2026 paper trades archived before this reset.",
-  "last_updated": "2026-08-28T00:30:45.803915+00:00",
+  "last_updated": "2026-08-28T00:31:11.468237+00:00",
   "deposits": [
     {
       "target": 10000.0,
