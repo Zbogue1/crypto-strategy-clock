@@ -299,6 +299,13 @@ def build_diagnostic() -> str:
             L.append("  which pillar rejected them:")
             for k, v in sorted(f["pillar_detail"].items(), key=lambda x: -x[1]):
                 L.append(f"    {v:>3}x  {k}")
+        if f.get("pillar_unknown"):
+            L.append("")
+            L.append("  data UNAVAILABLE (not a rejection — a missing input):")
+            for k, v in sorted(f["pillar_unknown"].items(), key=lambda x: -x[1]):
+                L.append(f"    {v:>3}x  {k}")
+            L.append("    A pillar needs 4 of 5 to pass, so each unknown makes")
+            L.append("    qualifying harder without the stock being at fault.")
             if f.get("catalyst_no_news") or f.get("catalyst_weak"):
                 L.append("")
                 L.append("  catalyst breakdown:")
@@ -377,9 +384,23 @@ def run_scan(force: bool = False, announce: bool = False) -> list:
             # can silently veto everything. That would look identical to a
             # quiet market without this breakdown.
             for name, p in (pillars.get("pillars") or {}).items():
-                if isinstance(p, dict) and not p.get("pass"):
+                if not isinstance(p, dict):
+                    continue
+                # pass is TRUE / FALSE / None, and None means UNKNOWN — the
+                # data was unavailable, not that the stock failed. `not
+                # p.get("pass")` is True for None as well as False, so this
+                # counted every missing float lookup as a rejection. Float
+                # showed 14 "rejections" that were really 14 failed yfinance
+                # lookups, which points at a data problem rather than a screen
+                # that's too tight.
+                if p.get("pass") is False:
                     funnel["pillar_detail"][name] = \
                         funnel["pillar_detail"].get(name, 0) + 1
+                elif p.get("pass") is None:
+                    funnel.setdefault("pillar_unknown", {})
+                    funnel["pillar_unknown"][name] = \
+                        funnel["pillar_unknown"].get(name, 0) + 1
+                    continue
                     # "catalyst rejected 18" has two very different meanings:
                     # the news feed returned nothing (a broken input), or it
                     # returned headlines that were judged not to justify the
