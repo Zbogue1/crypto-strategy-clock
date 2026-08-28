@@ -1876,8 +1876,19 @@ def telegram_webhook():
                     edit(
                         f"\u2705 <b>Bought {result['token_ticker']}</b>\n"
                         f"${result['spent']:.2f} @ ${result['entry_price']:.8f}\n"
-                        f"Stop: ${result['stop_loss']:.8f} (-15%) | "
-                        f"Target: ${result['exit_target']:.8f} (+30%)\n"
+                        # Percentages are DERIVED from the prices, never
+                        # hardcoded. The label read "-15%" while the stop was
+                        # computed from FOMO_HARD_STOP_PCT = -0.35, so every
+                        # buy confirmation understated the risk by 20 points —
+                        # $30 at risk on a $200 position instead of the real
+                        # $70. A number a human uses to size risk must come
+                        # from the same source as the number the bot enforces.
+                        f"Stop: ${result['stop_loss']:.8f} "
+                        f"({(result['stop_loss'] / result['entry_price'] - 1) * 100:+.0f}%) | "
+                        f"Target: ${result['exit_target']:.8f} "
+                        f"({(result['exit_target'] / result['entry_price'] - 1) * 100:+.0f}%)\n"
+                        f"Risking ${result['spent'] * abs(result['stop_loss'] / result['entry_price'] - 1):.2f} "
+                        f"to make ${result['spent'] * abs(result['exit_target'] / result['entry_price'] - 1):.2f}\n"
                         f"Following {alert['wallet_alias']}"
                     )
                 else:
