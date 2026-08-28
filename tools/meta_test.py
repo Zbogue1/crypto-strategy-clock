@@ -76,32 +76,42 @@ check("state redirected to a temp dir", "/tmp/sim_" in r.stdout or "sim_" in r.s
 print("\n2. Does a genuinely broken action FAIL the simulation?")
 
 target = ROOT / "fomo_exit.py"
-original = target.read_text(encoding="utf-8")
+# BYTES, not text. read_text/write_text applies universal-newline translation:
+# a CRLF file read on Linux comes back with LF and is written back as LF, so
+# "restoring" the original rewrote all 999 lines and left the file permanently
+# modified in git. A harness that mutates real source MUST restore it
+# byte-identically or it is itself a source of changes.
+original = target.read_bytes()
 
 # Reintroduce the exact bug that shipped: flag the tranche even when the sale
 # aborts. If the simulator is real, tranche_aborts must go red.
-broken = original.replace(
-    "    def _abort(why: str) -> float:\n"
-    "        log.error(",
-    "    def _abort(why: str) -> float:\n"
-    "        holding['tranche_1_sold'] = True   # MUTATION\n"
-    "        log.error(", 1)
+# Match both LF and CRLF so the mutation works regardless of checkout style.
+_nl = b"\r\n" if b"\r\n" in original else b"\n"
+_anchor = b"    def _abort(why: str) -> float:" + _nl + b"        log.error("
+_mutant = (b"    def _abort(why: str) -> float:" + _nl
+           + b"        holding['tranche_1_sold'] = True   # MUTATION" + _nl
+           + b"        log.error(")
+broken = original.replace(_anchor, _mutant, 1)
 
 if broken == original:
     check("mutation applied", False, "anchor not found — meta-test is stale")
 else:
     try:
-        target.write_text(broken, encoding="utf-8")
+        target.write_bytes(broken)
         rb = run_sim("tranche_aborts")
         caught = rb.returncode != 0 and "FAIL" in rb.stdout
         check("simulator catches the reintroduced tranche bug", caught,
               "exit %d" % rb.returncode)
     finally:
-        target.write_text(original, encoding="utf-8")
+        target.write_bytes(original)
 
     rr = run_sim("tranche_aborts")
     check("restored file passes again", rr.returncode == 0,
           f"exit {rr.returncode}")
+    # The restore must be byte-identical, or the harness silently dirties the
+    # working tree on every run.
+    check("file restored byte-for-byte", target.read_bytes() == original,
+          f"{len(target.read_bytes())} vs {len(original)} bytes")
 
 # ─── 3. NETWORK HERMETICITY ───────────────────────────────────────────────────
 print("\n3. Is an unmocked network call caught?")
