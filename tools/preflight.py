@@ -281,6 +281,10 @@ def main() -> int:
     # And verify the simulator itself still catches a planted bug — a harness
     # that always passes is worse than none.
     run_suite("meta test", "meta_test.py")
+    # Prove every scenario can fail, not just the one the meta-test
+    # mutates. A scenario asserting something trivially true would stay
+    # green forever and contribute nothing.
+    run_suite("mutation coverage", "mutation_coverage.py")
     print("  behavioural suites done")
 
     return report()

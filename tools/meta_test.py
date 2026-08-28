@@ -38,9 +38,24 @@ def check(name, ok, detail=""):
 
 
 def run_sim(*args, env=None):
+    """
+    Run the simulator in a subprocess with bytecode caching DISABLED.
+
+    Mutation testing rewrites a source file and immediately re-imports it.
+    Python validates its .pyc cache on (mtime, size), and rapid
+    mutate-run-restore cycles can land inside the same mtime tick — so the
+    subprocess silently imports the OLD bytecode and the mutation appears not
+    to break anything.
+
+    Measured: without -B, a coverage sweep reported 0, 1 and 2 "blind"
+    scenarios across three identical runs. A meta-test that randomly passes is
+    worse than none, because a green result is exactly the thing it exists to
+    make trustworthy.
+    """
     e = dict(os.environ)
+    e["PYTHONDONTWRITEBYTECODE"] = "1"
     e.update(env or {})
-    return subprocess.run([sys.executable, str(SIM), *args],
+    return subprocess.run([sys.executable, "-B", str(SIM), *args],
                           cwd=str(ROOT), capture_output=True, text=True,
                           timeout=180, env=e)
 
@@ -74,6 +89,12 @@ check("state redirected to a temp dir", "/tmp/sim_" in r.stdout or "sim_" in r.s
 
 # ─── 2. MUTATION — does a broken action actually fail? ────────────────────────
 print("\n2. Does a genuinely broken action FAIL the simulation?")
+
+# Remove any stale bytecode before mutating — a cached .pyc from an earlier
+# run can mask the mutation entirely.
+import shutil
+for _pc in ROOT.rglob("__pycache__"):
+    shutil.rmtree(_pc, ignore_errors=True)
 
 target = ROOT / "fomo_exit.py"
 # BYTES, not text. read_text/write_text applies universal-newline translation:
