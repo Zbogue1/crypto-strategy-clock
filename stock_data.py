@@ -246,13 +246,62 @@ def get_relative_volume(symbol: str, days: int = 30) -> Optional[dict]:
     if avg <= 0:
         return None
 
+    raw = today["v"] / avg
+
+    # TIME-WEIGHTING. today["v"] is volume SO FAR; avg is a FULL trading day.
+    # Comparing them directly understates RVOL for the whole morning — which
+    # is the only window this strategy trades. At 10:00 ET, 30 minutes into a
+    # 390-minute session, a stock genuinely running at 5x full-day pace reads
+    # about 0.4x. The docstring claimed the signal engine corrected for this;
+    # it did not, and `rvol` was the joint-top rejector at 15 of 27.
+    #
+    # Pre-market is deliberately left RAW. Ross treats pre-market volume as an
+    # absolute signal — 1M shares before the open against a 200k daily average
+    # is genuinely 5x, and dividing by a near-zero elapsed fraction would
+    # manufacture absurd numbers.
+    frac, phase = _session_elapsed_fraction()
+    if phase == "regular" and frac > 0:
+        projected = raw / frac
+    else:
+        projected = raw
+
     return {
         "symbol":      symbol,
         "today_vol":   today["v"],
         "avg_vol":     int(avg),
-        "rvol":        round(today["v"] / avg, 2),
+        "rvol_raw":    round(raw, 2),
+        "rvol":        round(projected, 2),
+        "session_frac": round(frac, 3),
+        "session_phase": phase,
         "sample_days": len(hist),
     }
+
+
+def _session_elapsed_fraction() -> tuple:
+    """
+    (fraction_of_regular_session_elapsed, phase).
+
+    phase is "pre" | "regular" | "post" | "closed". Only "regular" gets
+    time-weighted — see get_relative_volume.
+    """
+    try:
+        from zoneinfo import ZoneInfo
+        et = datetime.now(ZoneInfo("America/New_York"))
+    except Exception:
+        return 1.0, "unknown"
+
+    if et.weekday() >= 5:
+        return 1.0, "closed"
+
+    mins = et.hour * 60 + et.minute
+    OPEN, CLOSE = 9 * 60 + 30, 16 * 60          # 09:30 - 16:00 ET
+    if mins < 4 * 60:
+        return 1.0, "closed"
+    if mins < OPEN:
+        return 0.0, "pre"
+    if mins >= CLOSE:
+        return 1.0, "post"
+    return (mins - OPEN) / (CLOSE - OPEN), "regular"
 
 
 # ─── NEWS (Pillar 3) ──────────────────────────────────────────────────────────

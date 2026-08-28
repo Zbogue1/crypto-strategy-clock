@@ -327,9 +327,15 @@ def build_diagnostic() -> str:
           f"(small acct)" if sig.USE_SMALL_ACCT else
           f"  price band ${sig.PRICE_MIN:.0f}-${sig.PRICE_MAX:.0f}",
           "",
-          "Note: the free Alpaca feed is IEX-only (~2-3% of real volume), so",
-          "RVOL reads far lower than reality. If 'rvol' dominates the rejection",
-          "list, the screen is being starved by the data feed, not by the market."]
+          "",
+          "RVOL is now time-weighted during the regular session: volume so far",
+          "is projected to a full day before comparing to the daily average.",
+          "Comparing partial volume to a full-day average understated RVOL all",
+          "morning, which is the only window this strategy trades.",
+          "",
+          "The IEX-only feed does NOT bias RVOL — it is a ratio of today to the",
+          "average from the SAME feed, so a constant capture fraction cancels.",
+          "It does add noise on thinly traded names."]
     return "\n".join(L)
 
 

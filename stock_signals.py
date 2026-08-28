@@ -103,7 +103,11 @@ def score_pillars(snap: dict, market_hot: bool = True) -> dict:
         pillars["rvol"] = {
             "pass":  rvol >= MIN_RVOL,
             "value": rvol,
-            "note":  f"{rvol:.1f}x vs {MIN_RVOL:.0f}x required",
+            "note":  (f"{rvol:.1f}x vs {MIN_RVOL:.0f}x required"
+                      + (f" (raw {snap['rvol_raw']:.1f}x, "
+                         f"{snap.get('session_frac',0)*100:.0f}% of session)"
+                         if snap.get("rvol_raw") is not None
+                         and snap.get("session_phase") == "regular" else "")),
         }
 
     # 2 — Already up ≥10%
