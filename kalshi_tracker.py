@@ -84,6 +84,10 @@ ANNOUNCE_START        = os.getenv("KALSHI_ANNOUNCE_START", "false").lower() == "
 # Everything is still recorded to the portfolio and postmortem, so /kalshi and
 # /kalshi_stats show you exactly what happened whenever you want to look.
 # Set KALSHI_SILENT=false to get live entry/exit notifications again.
+# SILENT suppresses ENTRY chatter — signals, scan results, funding ticks.
+# It must never suppress an OUTCOME. A closed trade or a settled bet is
+# money changing hands, and hiding that produced two days of total silence
+# while positions opened, closed and resolved. Outcomes always report.
 SILENT                = os.getenv("KALSHI_SILENT", "true").lower() == "true"
 
 # Keep managing positions that are already open.
@@ -833,8 +837,7 @@ def _run_monitor_cycle():
             continue
         trade = close_position(ticker, price, reason=reason)
         if trade:
-            if not SILENT:
-                send_exit(trade)
+            send_exit(trade)          # outcome — always reported
             log_outcome(ticker, trade)
             log.info(
                 f"Kalshi monitor: day-trade close {ticker} ({reason}) @ {price:.4f} "
@@ -855,8 +858,7 @@ def _run_monitor_cycle():
 
         trade = close_position(ticker, exit_price, reason=reason)
         if trade:
-            if not SILENT:
-                send_exit(trade)
+            send_exit(trade)          # outcome — always reported
             log_outcome(ticker, trade)   # always — this is the learning signal
             log.info(
                 f"Kalshi monitor: closed {ticker} via {reason} @ {exit_price:.4f} "
@@ -1293,7 +1295,7 @@ def _run_event_settle_cycle():
             continue
 
         trade = settle_bet(ticker, s["result"])
-        if trade and not SILENT:
+        if trade:                 # settlement is an outcome
             icon = "✅" if trade["won"] else "❌"
             send_telegram(
                 f"{icon} *EVENT SETTLED* — {'WON' if trade['won'] else 'LOST'}\n\n"
