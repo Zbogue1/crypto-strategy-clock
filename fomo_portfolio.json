@@ -125,7 +125,7 @@
       "regime_at_entry": "BULL",
       "partial_taken": false,
       "peak_price": 0.001489,
-      "tranche_1_sold": true,
+      "tranche_1_sold": false,
       "tranche_2_sold": false,
       "trailing_stop_active": false,
       "peak_liquidity": 123990.57,
@@ -486,7 +486,7 @@
     }
   ],
   "archived_history_note": "Prior July 2026 paper trades archived before this reset.",
-  "last_updated": "2026-08-25T07:45:47.785406+00:00",
+  "last_updated": "2026-08-28T00:30:45.803915+00:00",
   "deposits": [
     {
       "target": 10000.0,
