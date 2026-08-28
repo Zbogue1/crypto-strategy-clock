@@ -1,27 +1,27 @@
 {
-  "timestamp": "2026-08-28T08:01:13.103431+00:00",
+  "timestamp": "2026-08-28T12:02:30.061407+00:00",
   "signal": "HOLD",
   "selected_coin": "SOL",
   "selected_coin_name": "Solana",
-  "selected_coin_price": 106.35,
+  "selected_coin_price": 105.79,
   "confidence": 68,
-  "layman_headline": "Solana is up 5.3% and running strong \u2014 no reason to jump ship or chase new trades yet.",
-  "layman_explanation": "Our Solana position is performing well, already up over 5% from where we bought it. The broader crypto market is in a 'Greed' mood, Bitcoin is pushing toward $80K, and Solana is one of the strongest large-cap performers this week with an 18% weekly gain. The swing trade candidates on our watchlist are either stablecoins (no opportunity), already overextended (PUMP at RSI 84, LIT up 29%), or lack enough technical data to justify a confident entry.",
-  "layman_action": "Hold your current Solana position and consider raising your stop-loss to $97 to lock in some gains. Wait for a pullback or clearer setup before adding a new position.",
-  "expert_reasoning": "SOL is up 18% on the week and 4.47% in 24h, approaching our $115 exit target. The position is in profit at +5.3% with a well-defined trade plan. The candidate list is extremely weak: PUMP has an RSI of 84 (deeply overbought), LIT is up 29% with no technical data to establish support levels, MON is in a downtrend, and three candidates are stablecoins. BTC dominance at 59.2% is headwind for alts, but SOL is bucking this trend due to ecosystem-specific catalysts including the disinflation vote. Raising the stop from $92 to $97 protects ~breakeven while giving the trade room to reach the $115 target. With Fear & Greed at 73 and rising, the market could get overheated soon \u2014 another reason to manage the existing trade rather than add exposure.",
+  "layman_headline": "Solana is up nearly 5% \u2014 let it ride toward the target while the rest of the market lacks clear setups.",
+  "layman_explanation": "Our current Solana position is performing well, up 4.7% from where we bought it, and moving toward our $115 profit target. The broader market is in a 'Greed' mood which supports continued upward momentum, but Bitcoin dominance at 59.2% is making it hard for altcoins to break out independently. The swing trade candidates on the watchlist are either stablecoins, overbought (like PUMP with RSI at 84), or lack enough technical data to justify entry. There's no compelling new trade right now.",
+  "layman_action": "Hold the Solana position. Consider raising the stop-loss from $92 to $97 to lock in a smaller loss floor as the trade matures. Wait for a pullback or clearer setup before adding a new position.",
+  "expert_reasoning": "SOL has gained 15.7% over 7 days with $5.9B in daily volume, confirming strong institutional and retail interest. The position is 4.7% in profit with the $115 exit target roughly 8.7% above entry, still offering favorable reward. BTC's stability near $79.6K and improving Fear & Greed (73, trending up) provide a supportive macro backdrop. However, BTC dominance at 59.2% remains a headwind for altcoin outperformance. I'm raising the mental stop to $97 (trailing) to protect gains while giving the trade room. No new entries are warranted \u2014 PUMP's RSI of 84 signals extreme overbought conditions, LIT lacks any technical indicators for confirmation, and MON is showing negative 7-day momentum.",
   "risk_factors": [
-    "SOL has moved 18% in a week and could face sharp mean reversion if BTC pulls back from $80K",
-    "BTC dominance at 59.2% continues to suppress alt performance broadly \u2014 SOL is an outlier that may not persist",
-    "Fear & Greed at 73 and trending higher suggests we're approaching euphoric territory where corrections become more likely"
+    "BTC dominance at 59.2% could continue compressing altcoin gains if Bitcoin rallies further solo",
+    "SOL is up 15.7% in 7 days \u2014 a sharp pullback to re-test support around $95-100 is possible",
+    "Fear & Greed at 73 (Greed) suggests the market may be getting frothy, increasing correction risk"
   ],
   "watch_list": [
-    "Fed Chair Warsh's Jackson Hole speech \u2014 could trigger major risk-on or risk-off move across crypto",
-    "SOL price action near $110-115 resistance zone \u2014 watch for volume exhaustion or rejection",
-    "BTC behavior around $80K \u2014 a decisive break above could fuel further alt rally, rejection could trigger broad selloff"
+    "SOL price action near $108-110 resistance zone \u2014 a clean break could accelerate toward $115 target",
+    "BTC dominance trend \u2014 any decline below 58% would signal capital rotation into alts",
+    "ENA after 10% pump on buyback vote \u2014 could become a swing candidate if it pulls back to support"
   ],
-  "market_context": "The crypto market is in a greed-driven rally with BTC near $80K and select alts like SOL and ZEC outperforming significantly. Warsh's Jackson Hole speech is the key macro event that could either extend or reverse the current momentum.",
-  "context_banner": "SOL trade is on track toward its $115 target \u2014 discipline and patience beat chasing in an overheated market.",
-  "btc_price": 79663,
+  "market_context": "Bitcoin is at 3-month highs near $79.6K with improving sentiment (Fear & Greed 73), but BTC dominance at 59.2% is keeping most altcoins in check. The market favors large-caps and high-conviction plays over speculative alts right now.",
+  "context_banner": "SOL position approaching target in a greed-driven market \u2014 discipline and trailing stops are the priority over chasing new entries.",
+  "btc_price": 79592,
   "fear_greed": {
     "current": 73,
     "label": "Greed",
@@ -34,27 +34,27 @@
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Fear & Greed at 73 (Greed) and rising \u2014 market is bullish but approaching levels where corrections historically begin, arguing against adding new exposure."
+      "description": "Fear & Greed at 73 (Greed) and trending up from 70.4 weekly avg \u2014 supports holding risk-on positions but cautions against adding new ones at stretched levels."
     },
     {
-      "source": "CoinDesk",
+      "source": "CoinTelegraph",
       "signal_type": "news",
-      "description": "Warsh's Jackson Hole speech flagged as a 'major event for bitcoin and gold' \u2014 key macro risk that could swing prices either direction within 48 hours."
-    },
-    {
-      "source": "CoinDesk",
-      "signal_type": "news",
-      "description": "Solana's disinflation proposal leading the vote provides ecosystem-specific bullish catalyst supporting continued SOL momentum."
+      "description": "CryptoQuant CEO declares bear market 'over' as BTC hits 3-month highs \u2014 reinforces bullish macro backdrop for existing SOL position."
     },
     {
       "source": "RSI",
       "signal_type": "technical",
-      "description": "PUMP RSI at 84 is deeply overbought, eliminating it as a viable entry despite strong 19% weekly gains \u2014 elevated correction risk."
+      "description": "PUMP's RSI at 84 is deeply overbought, eliminating it as a viable entry despite strong 7-day gains of 16.6%."
     },
     {
       "source": "volume_breakout",
       "signal_type": "technical",
-      "description": "SOL 24h volume at $6.8B is massive relative to its market cap, confirming strong conviction behind the current move toward our target."
+      "description": "SOL's $5.9B daily volume is among the highest for alts, confirming genuine participation behind the 15.7% weekly move."
+    },
+    {
+      "source": "CoinDesk",
+      "signal_type": "news",
+      "description": "Bitcoin outperforming stocks and correlating with gold narrative supports continued crypto strength, but high BTC dominance limits alt upside."
     }
   ],
   "_mode": "HUNTING",
