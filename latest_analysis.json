@@ -1,27 +1,27 @@
 {
-  "timestamp": "2026-08-29T00:03:50.730901+00:00",
+  "timestamp": "2026-08-29T04:00:45.968054+00:00",
   "signal": "HOLD",
   "selected_coin": "SOL",
   "selected_coin_name": "Solana",
-  "selected_coin_price": 104.18,
-  "confidence": 62,
-  "layman_headline": "Solana position is up 3% but the broader market just took a hit \u2014 patience is the play.",
-  "layman_explanation": "The crypto market pulled back today with Bitcoin dropping nearly 3% after the Fed chair signaled more inflation-fighting work ahead. Our Solana position is still in profit (+3.1%) and recently got a bullish catalyst \u2014 validators just voted to accelerate SOL's supply reduction. However, the pullback across the board and high Bitcoin dominance (59%) make this a bad time to add new altcoin positions. The swing candidates on the watchlist are either already extended, lack technical data, or are stablecoins/gold tokens with no swing trade upside.",
-  "layman_action": "Hold the current Solana position and wait. The stop-loss at $92 protects against a deeper drop, and the $115 target is still realistic if the disinflation catalyst plays out. Don't chase anything new right now.",
-  "expert_reasoning": "The current swing candidates are poor quality: AKE is a micro-cap with a 67% daily pump and no technical data (classic chase trap), MON and PUMP are bleeding with no catalyst, PAXG/XAUT are gold-pegged stablecoins unsuitable for swing trading, and EURC/RLUSD are literal stablecoins. SOL's position is healthy at +3.1% unrealized with the disinflation vote providing fundamental support. The Fed's hawkish tone at Jackson Hole caused a broad risk-off move \u2014 BTC down 3%, most alts down 4-5%. BTC dominance at 59% continues to suppress altcoin performance. Better to wait for the selling pressure to exhaust before adding new positions. The Fear & Greed index dropping from 73 to 68 confirms cooling sentiment but isn't yet at levels that create strong buying opportunities.",
+  "selected_coin_price": 103.95,
+  "confidence": 52,
+  "layman_headline": "Solana is inching up but the broader market is pulling back \u2014 patience is the play.",
+  "layman_explanation": "We already own Solana and it's up about 3% from where we bought it. The overall crypto market is dipping today with Bitcoin dropping nearly 3%, partly due to the Fed signaling they're still worried about inflation. Solana just passed a major vote to reduce its token supply faster, which is bullish long-term, but right now everything is in pullback mode. The swing candidates on offer today are either already extended (like AKE up 53% in a day), gold-backed stablecoins, or low-conviction plays with missing technical data.",
+  "layman_action": "Hold your Solana position and let the trade play out toward the $115 target. Don't add new positions today \u2014 the setups aren't compelling enough given the market pullback. Keep your stop-loss at $92.",
+  "expert_reasoning": "The current swing candidates are weak: AKE has surged 53% in 24h with no RSI/MACD data, making it a momentum-chasing trap. MON is down 44.5% from ATH with no clear reversal signals. XAUT/PAXG are gold-pegged tokens with minimal swing trade potential. PUMP is a meme-adjacent play with thin data. Our existing SOL position benefits from the just-passed disinflation vote (confirmed by CoinDesk and CryptoSlate \u2014 CryptoSlate is a reliable signal source per our credibility data). The Fed's hawkish tone from Warsh at Jackson Hole creates short-term headwinds, which explains today's broad pullback. With Fear & Greed at 68 (down from 73 yesterday), the market is cooling slightly but not panicking. Better to hold our winning position and wait for a higher-conviction entry on the next candidate.",
   "risk_factors": [
-    "Fed hawkishness could trigger further risk-off selling, pushing SOL below the $100 psychological level",
-    "BTC dominance at 59% continues to drain capital from altcoins \u2014 SOL could underperform even if crypto stabilizes",
-    "SOL's 10.4% weekly gain may need to consolidate further before resuming upward \u2014 a retest of $98-100 is possible"
+    "Fed hawkish stance could push BTC below $75K and drag the entire market including SOL lower",
+    "SOL already up 8.8% on the week \u2014 a short-term pullback to retest $100 is plausible",
+    "Lack of RSI/MACD data on all swing candidates means we're flying partially blind on technicals"
   ],
   "watch_list": [
-    "BTC price action around $77,000-78,000 support \u2014 a breakdown here would drag all alts lower",
-    "SOL holding above $100 as psychological and technical support after the pullback",
-    "Follow-up commentary from Fed officials after Warsh's hawkish Jackson Hole remarks"
+    "BTC price action around the $75K-$78K support zone \u2014 a break lower would be bearish for all alts",
+    "SOL price behavior around $100 psychological support \u2014 if it holds, the uptrend is intact",
+    "Follow-up on Fed rhetoric post-Jackson Hole \u2014 any dovish pivot would fuel a broad rally"
   ],
-  "market_context": "The market is in a risk-off mode following Fed Chair Warsh's hawkish Jackson Hole speech emphasizing unfinished inflation work. BTC dominance at 59% signals capital rotating to Bitcoin safety, making altcoin entries particularly risky right now.",
-  "context_banner": "Fed hawkishness triggers broad crypto pullback \u2014 hold existing SOL position with its disinflation catalyst, but no new entries warranted until selling pressure subsides.",
-  "btc_price": 77839,
+  "market_context": "The crypto market is in a mild pullback with BTC down 2.9% after Fed Chair Warsh's hawkish comments at Jackson Hole. Fear & Greed has cooled from 73 to 68 but remains in Greed territory, suggesting no panic but caution is warranted.",
+  "context_banner": "Market pulling back on Fed hawkishness \u2014 hold SOL with its bullish supply-reduction catalyst and wait for better entries elsewhere.",
+  "btc_price": 77529,
   "fear_greed": {
     "current": 68,
     "label": "Greed",
@@ -29,32 +29,32 @@
     "week_avg": 70.0,
     "trend": "improving"
   },
-  "btc_dominance": 59.0,
+  "btc_dominance": 0.0,
   "key_signals": [
-    {
-      "source": "Fear_Greed",
-      "signal_type": "sentiment",
-      "description": "Fear & Greed dropped from 73 to 68 (Greed) \u2014 cooling but not yet at contrarian buy levels, suggesting more downside possible before a clean setup emerges."
-    },
     {
       "source": "CoinDesk",
       "signal_type": "news",
-      "description": "Fed Chair Warsh at Jackson Hole stated 'we have work to do' on inflation, triggering risk-off selling across crypto with BTC dropping to $78.4K."
+      "description": "Solana disinflation vote passed in dramatic finish, confirming a supply-reduction catalyst that supports medium-term price appreciation."
+    },
+    {
+      "source": "CryptoSlate",
+      "signal_type": "news",
+      "description": "Kraken and Galaxy flipped late on the SOL vote \u2014 institutional interest in the supply change adds credibility to the bullish thesis (CryptoSlate has 67% win rate in our signal data)."
+    },
+    {
+      "source": "Fear_Greed",
+      "signal_type": "sentiment",
+      "description": "Fear & Greed index dropped from 73 to 68 (Greed) \u2014 cooling but not alarming, suggesting a healthy consolidation rather than trend reversal."
     },
     {
       "source": "CoinTelegraph",
       "signal_type": "news",
-      "description": "Solana validators approved a proposal to accelerate SOL disinflation, a structurally bullish supply-reduction catalyst supporting the current position."
+      "description": "Bitcoin dipped to $78.4K as Fed's Warsh downplayed softer inflation prints, creating macro headwinds for risk assets including crypto."
     },
     {
       "source": "volume_breakout",
       "signal_type": "technical",
-      "description": "No compelling volume breakout patterns among swing candidates \u2014 AKE's 67% pump lacks reliable volume data and smells like a pump-and-dump."
-    },
-    {
-      "source": "RSI",
-      "signal_type": "technical",
-      "description": "RSI data unavailable for all swing candidates this cycle, making it impossible to identify oversold bounce setups with confidence."
+      "description": "SOL's 24h volume of $5.4B is notably high relative to its market cap, indicating strong participation and conviction despite the pullback."
     }
   ],
   "_mode": "HUNTING",
