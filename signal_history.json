@@ -764,5 +764,27 @@
       "SOL"
     ],
     "alert": null
+  },
+  {
+    "ts": "2026-08-29T16:04:32.859001+00:00",
+    "coin": "SOL",
+    "price": 105.14,
+    "signal": "HOLD",
+    "confidence": 62,
+    "score": 0.4,
+    "fg": 68,
+    "btc_price": 77885,
+    "btc_dominance": 59.0,
+    "candidates": [
+      "MON",
+      "PUMP",
+      "RLUSD",
+      "FDUSD",
+      "USDG",
+      "XAUT",
+      "JTO",
+      "SOL"
+    ],
+    "alert": null
   }
 ]
