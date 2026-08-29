@@ -676,5 +676,27 @@
       "SOL"
     ],
     "alert": "Fed Chair Warsh's hawkish stance triggered $488M in crypto liquidations \u2014 elevated risk of further downside in next 48-72 hours."
+  },
+  {
+    "ts": "2026-08-29T00:03:50.730901+00:00",
+    "coin": "SOL",
+    "price": 104.18,
+    "signal": "HOLD",
+    "confidence": 62,
+    "score": 0.4,
+    "fg": 68,
+    "btc_price": 77839,
+    "btc_dominance": 59.0,
+    "candidates": [
+      "AKE",
+      "MON",
+      "PUMP",
+      "PAXG",
+      "XAUT",
+      "EURC",
+      "RLUSD",
+      "SOL"
+    ],
+    "alert": "Fed Chair Warsh's hawkish Jackson Hole remarks pushing BTC below $78K \u2014 monitor SOL stop-loss at $92 closely if selling accelerates."
   }
 ]
