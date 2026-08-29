@@ -698,5 +698,27 @@
       "SOL"
     ],
     "alert": "Fed Chair Warsh's hawkish Jackson Hole remarks pushing BTC below $78K \u2014 monitor SOL stop-loss at $92 closely if selling accelerates."
+  },
+  {
+    "ts": "2026-08-29T04:00:45.968054+00:00",
+    "coin": "SOL",
+    "price": 103.95,
+    "signal": "HOLD",
+    "confidence": 52,
+    "score": 0.3,
+    "fg": 68,
+    "btc_price": 77529,
+    "btc_dominance": 0.0,
+    "candidates": [
+      "AKE",
+      "MON",
+      "XAUT",
+      "PAXG",
+      "PUMP",
+      "FDUSD",
+      "USDG",
+      "SOL"
+    ],
+    "alert": null
   }
 ]
