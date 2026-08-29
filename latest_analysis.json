@@ -1,27 +1,27 @@
 {
-  "timestamp": "2026-08-29T04:00:45.968054+00:00",
+  "timestamp": "2026-08-29T08:01:20.240368+00:00",
   "signal": "HOLD",
   "selected_coin": "SOL",
   "selected_coin_name": "Solana",
-  "selected_coin_price": 103.95,
-  "confidence": 52,
-  "layman_headline": "Solana is inching up but the broader market is pulling back \u2014 patience is the play.",
-  "layman_explanation": "We already own Solana and it's up about 3% from where we bought it. The overall crypto market is dipping today with Bitcoin dropping nearly 3%, partly due to the Fed signaling they're still worried about inflation. Solana just passed a major vote to reduce its token supply faster, which is bullish long-term, but right now everything is in pullback mode. The swing candidates on offer today are either already extended (like AKE up 53% in a day), gold-backed stablecoins, or low-conviction plays with missing technical data.",
-  "layman_action": "Hold your Solana position and let the trade play out toward the $115 target. Don't add new positions today \u2014 the setups aren't compelling enough given the market pullback. Keep your stop-loss at $92.",
-  "expert_reasoning": "The current swing candidates are weak: AKE has surged 53% in 24h with no RSI/MACD data, making it a momentum-chasing trap. MON is down 44.5% from ATH with no clear reversal signals. XAUT/PAXG are gold-pegged tokens with minimal swing trade potential. PUMP is a meme-adjacent play with thin data. Our existing SOL position benefits from the just-passed disinflation vote (confirmed by CoinDesk and CryptoSlate \u2014 CryptoSlate is a reliable signal source per our credibility data). The Fed's hawkish tone from Warsh at Jackson Hole creates short-term headwinds, which explains today's broad pullback. With Fear & Greed at 68 (down from 73 yesterday), the market is cooling slightly but not panicking. Better to hold our winning position and wait for a higher-conviction entry on the next candidate.",
+  "selected_coin_price": 103.75,
+  "confidence": 55,
+  "layman_headline": "Holding Solana as it gains 2.7% while waiting for a clearer entry on something new.",
+  "layman_explanation": "The broader crypto market pulled back today with Bitcoin dropping below $78K after the Fed signaled ongoing inflation concerns. Our Solana position is still up 2.7% from entry, supported by a bullish catalyst \u2014 validators just approved a proposal to accelerate SOL supply reduction. The swing candidates on today's watchlist are weak: gold-backed tokens are mid-range with no clear setup, stablecoins don't swing trade, and everything else lacks technical data to build conviction around.",
+  "layman_action": "Hold the current Solana position and let it work toward the $115 target. No new trades today \u2014 the candidate list is thin and the macro backdrop (Fed hawkishness, BTC weakness) argues for patience rather than adding risk.",
+  "expert_reasoning": "The swing candidate pool this cycle is unusually poor. XAUT and PAXG are gold-pegged tokens with RSI ~58-59 (neutral-to-slightly-overbought) and declining 7-day prices \u2014 no clear entry signal. PUMP and MON lack any technical data (no RSI, no MACD, no SMA context) and are down 44-48% from ATH with no identifiable catalyst. FDUSD/USDG/RLUSD are stablecoins. SOL itself is flagged as 'extended' after +10% in 7 days, but our entry was early in that move and the disinflation vote provides fundamental support. Fed Chair Warsh's hawkish Jackson Hole comments drove BTC below $78K, and BTC ETFs ended a 9-day inflow streak \u2014 both bearish headwinds that argue against opening new positions. BTC dominance at 59% continues to suppress altcoin performance broadly.",
   "risk_factors": [
-    "Fed hawkish stance could push BTC below $75K and drag the entire market including SOL lower",
-    "SOL already up 8.8% on the week \u2014 a short-term pullback to retest $100 is plausible",
-    "Lack of RSI/MACD data on all swing candidates means we're flying partially blind on technicals"
+    "Fed hawkishness could push BTC further below $78K, dragging SOL down with it",
+    "SOL's +10% weekly move may trigger profit-taking that erases our gains",
+    "BTC ETF outflows could accelerate if macro sentiment worsens, creating broader market sell pressure"
   ],
   "watch_list": [
-    "BTC price action around the $75K-$78K support zone \u2014 a break lower would be bearish for all alts",
-    "SOL price behavior around $100 psychological support \u2014 if it holds, the uptrend is intact",
-    "Follow-up on Fed rhetoric post-Jackson Hole \u2014 any dovish pivot would fuel a broad rally"
+    "BTC price action around $77K support \u2014 a break below could trigger wider altcoin selling",
+    "SOL follow-through on disinflation vote \u2014 watch for $107-110 resistance test",
+    "Fed commentary post-Jackson Hole and any shifts in rate cut expectations"
   ],
-  "market_context": "The crypto market is in a mild pullback with BTC down 2.9% after Fed Chair Warsh's hawkish comments at Jackson Hole. Fear & Greed has cooled from 73 to 68 but remains in Greed territory, suggesting no panic but caution is warranted.",
-  "context_banner": "Market pulling back on Fed hawkishness \u2014 hold SOL with its bullish supply-reduction catalyst and wait for better entries elsewhere.",
-  "btc_price": 77529,
+  "market_context": "The market is in a 'Greed' phase (68/100) but cooling from 73 yesterday, with BTC pulling back on hawkish Fed signals. High BTC dominance at 59% continues to make altcoin setups challenging.",
+  "context_banner": "Market pullback on Fed hawkishness narrows opportunities \u2014 holding SOL on supply-cut catalyst while waiting for better entries.",
+  "btc_price": 77651,
   "fear_greed": {
     "current": 68,
     "label": "Greed",
@@ -29,32 +29,32 @@
     "week_avg": 70.0,
     "trend": "improving"
   },
-  "btc_dominance": 0.0,
+  "btc_dominance": 59.0,
   "key_signals": [
     {
-      "source": "CoinDesk",
+      "source": "CoinTelegraph",
       "signal_type": "news",
-      "description": "Solana disinflation vote passed in dramatic finish, confirming a supply-reduction catalyst that supports medium-term price appreciation."
+      "description": "Bitcoin ETFs ended a 9-day inflow streak as BTC dipped below $78K, signaling potential short-term institutional risk-off behavior."
     },
     {
       "source": "CryptoSlate",
       "signal_type": "news",
-      "description": "Kraken and Galaxy flipped late on the SOL vote \u2014 institutional interest in the supply change adds credibility to the bullish thesis (CryptoSlate has 67% win rate in our signal data)."
+      "description": "Solana's major supply cut was approved with Kraken and Galaxy flipping late to support \u2014 a reliable source confirming a structurally bullish catalyst for our held position."
     },
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Fear & Greed index dropped from 73 to 68 (Greed) \u2014 cooling but not alarming, suggesting a healthy consolidation rather than trend reversal."
+      "description": "Fear & Greed at 68 (down from 73 yesterday) suggests cooling enthusiasm \u2014 not yet contrarian enough to buy aggressively but not panic territory either."
     },
     {
-      "source": "CoinTelegraph",
-      "signal_type": "news",
-      "description": "Bitcoin dipped to $78.4K as Fed's Warsh downplayed softer inflation prints, creating macro headwinds for risk assets including crypto."
-    },
-    {
-      "source": "volume_breakout",
+      "source": "RSI",
       "signal_type": "technical",
-      "description": "SOL's 24h volume of $5.4B is notably high relative to its market cap, indicating strong participation and conviction despite the pullback."
+      "description": "XAUT and PAXG RSIs at 58-59 are neutral, offering no oversold bounce setup; no RSI data available for other candidates."
+    },
+    {
+      "source": "CoinDesk",
+      "signal_type": "macro",
+      "description": "Fed Chair Warsh's Jackson Hole remarks about 'work to do on inflation' reinforced a hawkish macro backdrop that pressured risk assets including crypto."
     }
   ],
   "_mode": "HUNTING",
