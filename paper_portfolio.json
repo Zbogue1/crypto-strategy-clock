@@ -1,5 +1,5 @@
 {
-  "cash": 653.3331,
+  "cash": 555.3331,
   "holdings": [
     {
       "coin_ticker": "SOL",
@@ -15,6 +15,21 @@
       "stop_loss": 92.0,
       "entry_target": 99.5,
       "expected_days": 8
+    },
+    {
+      "coin_ticker": "UNI",
+      "coin_id": "uni",
+      "units": 20.020858895705523,
+      "entry_price": 4.89,
+      "entry_date": "2026-08-30T08:02:48.848877+00:00",
+      "entry_signal": "BUY",
+      "entry_confidence": 58,
+      "allocated_usd": 98.0,
+      "fee_paid": 0.098,
+      "exit_target": 5.65,
+      "stop_loss": 4.35,
+      "entry_target": 4.75,
+      "expected_days": 7
     }
   ],
   "realized_pnl": -128.8869,
@@ -22,7 +37,7 @@
   "total_trades": 26,
   "winning_trades": 12,
   "losing_trades": 14,
-  "total_fees": 6.677,
+  "total_fees": 6.775,
   "trade_history": [
     {
       "trade_num": 1,
