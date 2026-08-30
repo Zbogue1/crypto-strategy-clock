@@ -1,35 +1,35 @@
 {
   "open_trade": {
-    "coin": "SOL",
-    "entry_time": "2026-08-27T04:01:59.873626+00:00",
+    "coin": "UNI",
+    "entry_time": "2026-08-30T08:02:48.849641+00:00",
     "key_signals": [
       {
-        "source": "CryptoSlate",
+        "source": "CoinTelegraph",
         "signal_type": "news",
-        "description": "Solana cutting block confirmation times across the network \u2014 a tangible technical upgrade that supports the current price momentum with fundamental backing."
-      },
-      {
-        "source": "volume_breakout",
-        "signal_type": "technical",
-        "description": "SOL trading $3.8B in 24h volume with +4.12% daily gain, indicating strong buying pressure and institutional-level participation."
+        "description": "Tokenized stock transfer volume jumped 415% in 30 days to $29.5B, directly supporting increased DEX activity and UNI's value proposition as the leading decentralized exchange."
       },
       {
         "source": "Fear_Greed",
         "signal_type": "sentiment",
-        "description": "Market Fear & Greed at 71 (Greed) with worsening trend \u2014 supportive of momentum trades but requires tight stop-losses as euphoria builds."
+        "description": "Fear & Greed at 69 (Greed) with a worsening trend \u2014 not extreme but suggests caution on entries; pullback entries preferred over chasing."
       },
       {
-        "source": "RSI",
+        "source": "volume_breakout",
         "signal_type": "technical",
-        "description": "PUMP's RSI at 84 eliminated it as a candidate due to extreme overbought conditions, making SOL the superior risk-adjusted choice."
+        "description": "UNI's 11.4% 24h move on strong momentum suggests volume-driven breakout; however waiting for pullback to $4.75 improves risk/reward."
       },
       {
-        "source": "CoinTelegraph",
+        "source": "DeFiLlama",
+        "signal_type": "onchain",
+        "description": "Ethereum TVL remains robust at ~$49B, providing strong fundamental support for Ethereum-native DeFi protocols like Uniswap."
+      },
+      {
+        "source": "CoinDesk",
         "signal_type": "news",
-        "description": "SEC sending crypto custody rule overhaul to White House signals continued regulatory clarity progress, supporting the broader market rally."
+        "description": "Reports on tokenized assets being 'busier than data shows' reinforce the thesis that on-chain activity is accelerating, benefiting DEX infrastructure."
       }
     ],
-    "confidence": 62
+    "confidence": 58
   },
   "signal_stats": {
     "Fear_Greed__sentiment": {
@@ -210,5 +210,5 @@
     }
   },
   "trade_count": 16,
-  "last_updated": "2026-08-27T04:01:59.873637+00:00"
+  "last_updated": "2026-08-30T08:02:48.849648+00:00"
 }
