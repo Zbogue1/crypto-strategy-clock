@@ -852,5 +852,27 @@
       "SOL"
     ],
     "alert": null
+  },
+  {
+    "ts": "2026-08-30T08:02:08.234770+00:00",
+    "coin": "UNI",
+    "price": 4.89,
+    "signal": "BUY",
+    "confidence": 58,
+    "score": 0.35,
+    "fg": 69,
+    "btc_price": 78113,
+    "btc_dominance": 59.5,
+    "candidates": [
+      "PONS",
+      "PUMP",
+      "USDG",
+      "FDUSD",
+      "MON",
+      "RLUSD",
+      "UNI",
+      "SOL"
+    ],
+    "alert": null
   }
 ]
