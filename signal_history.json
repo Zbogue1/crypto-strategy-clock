@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-08-24T04:04:30.971044+00:00",
-    "coin": "SOL",
-    "price": 93.85,
-    "signal": "HOLD",
-    "confidence": 52,
-    "score": -1.2,
-    "fg": 73,
-    "btc_price": 77017,
-    "btc_dominance": 59.2,
-    "candidates": [
-      "LIT",
-      "PUMP",
-      "MON",
-      "RLUSD",
-      "FDUSD",
-      "USDG",
-      "MORPHO",
-      "XRP",
-      "SOL"
-    ],
-    "alert": "XRP position is -5.8% from entry \u2014 monitor $1.35 support closely; stop-loss at $1.30 remains active."
-  },
-  {
     "ts": "2026-08-24T08:02:13.689565+00:00",
     "coin": "BTC",
     "price": 77310,
@@ -880,5 +857,27 @@
       "SOL"
     ],
     "alert": "UNI is up 15% today and within 10% of exit target \u2014 prepare to take profits if momentum fades."
+  },
+  {
+    "ts": "2026-08-30T20:01:27.120856+00:00",
+    "coin": "UNI",
+    "price": 5.34,
+    "signal": "HOLD",
+    "confidence": 62,
+    "score": 0.4,
+    "fg": 69,
+    "btc_price": 78844,
+    "btc_dominance": 59.5,
+    "candidates": [
+      "PONS",
+      "PUMP",
+      "MON",
+      "FDUSD",
+      "USDG",
+      "UNI",
+      "XAUT",
+      "SOL"
+    ],
+    "alert": "UNI approaching $5.65 exit target (+9.2% unrealized) \u2014 prepare to take profits"
   }
 ]
