@@ -1,27 +1,27 @@
 {
-  "timestamp": "2026-08-31T16:01:02.457507+00:00",
+  "timestamp": "2026-08-31T20:02:56.740507+00:00",
   "signal": "HOLD",
   "selected_coin": "SOL",
   "selected_coin_name": "Solana",
-  "selected_coin_price": 102.79,
-  "confidence": 42,
-  "layman_headline": "Current positions are working \u2014 no reason to force a new trade in a cooling market.",
-  "layman_explanation": "We hold Solana (up 1.7%) and Uniswap (up 5.5%), both moving toward their profit targets. The broader market is pulling back slightly with fear/greed dropping from 69 to 62, and Bitcoin dominance at 59.2% means money is flowing to Bitcoin rather than altcoins. The swing trade candidates available right now are either wildly overextended (PONS up 444%), stablecoins, or lack the technical data needed to make a confident entry.",
-  "layman_action": "Hold your current positions and let them work toward their targets. UNI is approaching its exit target of $5.65 \u2014 consider taking profits if it gets there. No new buys today.",
-  "expert_reasoning": "The swing candidate pool is exceptionally weak this cycle. PONS is up 444% in 7 days and only 6.5% from ATH \u2014 textbook blow-off top risk. PUMP is down 51% from ATH with no technical indicators available and high BTC dominance headwinds. MON lacks any RSI/MACD data and is in a downtrend. Gold-backed tokens (XAUT, PAXG) are both down 5% weekly, likely reacting to US-Iran tensions easing. The remaining candidates are stablecoins. With Fear & Greed trending from 69 to 62 (worsening) and BTC dominance at 59.2%, this is not an environment to aggressively add altcoin exposure. Both existing positions (SOL +1.7%, UNI +5.5%) have clear stop-losses and are progressing toward targets. Capital preservation is the priority.",
+  "selected_coin_price": 103.62,
+  "confidence": 45,
+  "layman_headline": "Current positions are working \u2014 no new high-conviction setups warrant adding risk right now.",
+  "layman_explanation": "We're holding two positions that are both in profit: Solana is up about 2.6% and Uniswap is up 6.5%. The broader market is softening \u2014 fear/greed dropped from 69 to 62, Bitcoin is flat, and most altcoins pulled back today. The swing trade candidates on the watchlist are either stablecoins, wildly overextended (PONS up 394% in a week), or declining with no technical data to confirm a bottom. There's no reason to force a new trade when the setups aren't there.",
+  "layman_action": "Hold your current positions and let them run toward their targets. UNI at $5.21 is approaching its $5.65 exit target \u2014 consider tightening your mental stop. No new entries today.",
+  "expert_reasoning": "The candidate pool is exceptionally weak this cycle. MON is down 16.5% weekly and 45.8% from ATH with zero technical indicator data \u2014 a potential value trap without confirmation. PONS is up 394% in 7 days and only 11.9% from ATH \u2014 chasing here is reckless. PUMP is down 50% from ATH with continued selling pressure. The remaining candidates are stablecoins. BTC dominance at 59.2% continues to suppress alt performance, and the fear/greed index is deteriorating (69\u219262). With both current positions in green and progressing toward targets, the highest-EV decision is to hold and wait for a better setup, particularly since our signal credibility data warns that Blockworks-driven setups have a 0% win rate and Fear_Greed signals are only 56% reliable.",
   "risk_factors": [
-    "Fear & Greed dropping from 69 to 62 suggests momentum is fading \u2014 could accelerate lower if BTC breaks below $77k",
-    "BTC dominance at 59.2% continues to pressure altcoins, including our SOL and UNI positions",
-    "US-Iran hostilities mentioned in CryptoSlate could trigger a broader risk-off event"
+    "BTC volatile monthly close with rising US bond yields could drag all alts lower",
+    "Fear & Greed trend worsening from 69 to 62 \u2014 could signal broader risk-off rotation",
+    "High BTC dominance at 59.2% continues to squeeze altcoin performance"
   ],
   "watch_list": [
-    "UNI approaching $5.65 exit target \u2014 monitor for profit-taking opportunity within 48 hours",
-    "BTC holding $77,000 support level \u2014 a break below would threaten all alt positions",
-    "Fear & Greed index \u2014 if it drops below 55, consider tightening stop-losses on both positions"
+    "UNI approaching $5.65 exit target \u2014 monitor for profit-taking or breakout above resistance",
+    "BTC monthly close volatility \u2014 a sharp move below $77K could trigger alt selloffs and stop-losses",
+    "Fear & Greed index trajectory \u2014 if it drops below 50 into Fear territory, consider reducing exposure"
   ],
-  "market_context": "The crypto market is in a mild risk-off phase with BTC flat and altcoins bleeding. Bitcoin dominance at 59.2% and a deteriorating Fear & Greed trend (62 and falling) suggest patience, not aggression.",
-  "context_banner": "Market cooling with weakening sentiment \u2014 protect existing gains and wait for better setups.",
-  "btc_price": 78556,
+  "market_context": "Bitcoin is flat at $78.9K heading into a volatile monthly close, with US bond yields eyeing 20-year highs creating macro headwinds. BTC dominance remains elevated at 59.2%, and market sentiment is softening from Greed toward Neutral.",
+  "context_banner": "Portfolio positions are performing well in a deteriorating sentiment environment \u2014 discipline means waiting for the next high-conviction setup rather than forcing entries.",
+  "btc_price": 78884,
   "fear_greed": {
     "current": 62,
     "label": "Greed",
@@ -34,27 +34,27 @@
     {
       "source": "Fear_Greed",
       "signal_type": "sentiment",
-      "description": "Fear & Greed dropped from 69 to 62 with worsening trend, signaling fading momentum that discourages new entries."
-    },
-    {
-      "source": "CryptoSlate",
-      "signal_type": "news",
-      "description": "Bitcoin on course for best August since 2017 despite US-Iran tensions \u2014 supports holding BTC-correlated positions like SOL but geopolitical risk looms."
-    },
-    {
-      "source": "CoinTelegraph",
-      "signal_type": "news",
-      "description": "Corporate Bitcoin accumulation continues (Strive, Metaplanet, Strategy) supporting BTC floor, but Bitmine's massive ETH buy could support ETH ecosystem including UNI."
+      "description": "Fear & Greed dropped from 69 to 62 with a worsening trend, suggesting fading bullish momentum \u2014 not ideal for opening new alt positions."
     },
     {
       "source": "volume_breakout",
       "signal_type": "technical",
-      "description": "No volume breakout signals detected among swing candidates \u2014 all lack RSI and MACD data, making technical entry conviction impossible."
+      "description": "No swing candidates show volume breakout data; all RSI/MACD/SMA fields are null, making it impossible to confirm technical setups."
     },
     {
-      "source": "on_chain",
-      "signal_type": "onchain",
-      "description": "BTC dominance at 59.2% is historically high and actively suppressing altcoin performance, making new alt entries higher risk."
+      "source": "CoinTelegraph",
+      "signal_type": "news",
+      "description": "Corporate BTC accumulation continues (Strategy, Strive, Bitmine) but this supports BTC dominance, not altcoin upside."
+    },
+    {
+      "source": "CryptoSlate",
+      "signal_type": "news",
+      "description": "CryptoSlate's prediction model maps volatile September ahead \u2014 caution warranted for new entries near month-end."
+    },
+    {
+      "source": "RSI",
+      "signal_type": "technical",
+      "description": "Without RSI data on any candidate, there is no oversold bounce setup to act on \u2014 the core swing trade trigger is missing."
     }
   ],
   "_mode": "HUNTING",
