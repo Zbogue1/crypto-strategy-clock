@@ -1,0 +1,28 @@
+# Line endings — LF everywhere, including Windows checkouts.
+#
+# WHY THIS EXISTS
+# tools/meta_test.py mutates fomo_exit.py and restores it byte-for-byte (it has
+# to: read_text/write_text once rewrote all 999 lines and left the file
+# permanently "modified"). On a Windows checkout with autocrlf, git hands the
+# harness a CRLF file, the harness faithfully writes CRLF back, and git then
+# reports a 999-insertion/999-deletion diff with zero content change — every
+# time preflight runs.
+#
+# Checking LF out on Windows makes the round-trip lossless. Python, Git Bash,
+# and Railway (Linux) are all indifferent to which one is on disk.
+* text=auto eol=lf
+
+# Belt and braces for the pieces where CRLF actively breaks something:
+# a shell script with CRLF fails with a confusing "bad interpreter" error.
+tools/hooks/* text eol=lf
+*.sh         text eol=lf
+
+# Binary — never touch these.
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.gif  binary
+*.pdf  binary
+*.xlsx binary
+*.pptx binary
+*.docx binary

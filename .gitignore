@@ -18,3 +18,11 @@ stock_portfolio.json
 fomo_aftermath.json
 kalshi_event_portfolio.json
 reports/
+
+# Runtime learning output, rebuilt by the FOMO learning cycle. Its siblings
+# (kalshi_event_portfolio.json, stock_portfolio.json) are already ignored;
+# this one was just never added, so it shows up as untracked after every run.
+fomo_lessons.json
+
+# Scratch output from the /watch video pipeline — frames and downloaded video.
+watch-out/
