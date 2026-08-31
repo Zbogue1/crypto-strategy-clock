@@ -242,6 +242,49 @@ def sim_event_blank():
     return (tr is None and held), L
 
 
+@scenario("report_covers_both_books",
+          "Weekly report footer — an event loss must move the headline total")
+def sim_report_both_books():
+    """
+    The bug this pins: build_weekly_report printed get_portfolio_summary(),
+    which is kalshi_portfolio — perps only. Two event bets settling to zero
+    (-$199.85 on 2026-08-29) left "Account: $10,048.79 / All-time: +0.49%"
+    untouched, because the event book is separate cash.
+
+    Losing money must move the number the report leads with.
+    """
+    import kalshi_tracker as KT
+    import kalshi_event_portfolio as KE
+
+    before = KT._account_footer(10_000.0, 10_000.0)
+
+    # A real losing event bet: buy 100 contracts at 40c, resolve against us.
+    KE.open_bet("SIMRPT", "sim market", "YES", 40, 100, 0.40, domain="weather")
+    tr = KE.settle_bet("SIMRPT", "no")
+
+    after = KT._account_footer(10_000.0, 10_000.0)
+    loss  = tr["net_pnl"] if tr else 0.0
+
+    # Parse the combined figure back out of each footer.
+    import re
+    def _combined(s):
+        m = re.search(r"Combined: \$([\d,.]+)", s)
+        return float(m.group(1).replace(",", "")) if m else None
+
+    c_before, c_after = _combined(before), _combined(after)
+    moved = (c_before is not None and c_after is not None
+             and abs((c_before + loss) - c_after) < 0.01)
+
+    L = [f"event loss ${loss:+.2f}",
+         f"combined ${c_before} -> ${c_after}",
+         f"footer names both books={'Perps:' in after and 'Events:' in after}",
+         f"headline moved by the loss={moved}"]
+    ok = (tr is not None and not tr["won"] and loss < 0
+          and "Perps:" in after and "Events:" in after
+          and moved)
+    return ok, L
+
+
 @scenario("stock_close", "Stock close on a bare state — no crash, cash credited")
 def sim_stock_close():
     import stock_portfolio as SP

@@ -1626,6 +1626,47 @@ def _group_trades(trades: list) -> list:
     return sorted(out, key=lambda x: x.get("closed_at", ""))
 
 
+def _account_footer(perp_value: float, perp_start: float) -> str:
+    """
+    Account footer covering BOTH books.
+
+    The report used to print only `get_portfolio_summary()`, which comes from
+    kalshi_portfolio — perps. Event contracts live in a separate book with
+    separate cash, so a day where two event bets settled to zero (-$199.85 on
+    2026-08-29) left the headline "Account: $10,048.79 / All-time: +0.49%"
+    completely unchanged. The number was true about perps and read as though it
+    were the whole account.
+
+    If the event book cannot be read, this says so instead of quietly printing
+    the perp-only figure. A footer that silently narrows its own scope is the
+    same failure in a new place.
+    """
+    try:
+        from kalshi_event_portfolio import get_summary as _event_summary
+        ev = _event_summary()
+        ev_value = float(ev.get("total_value", 0) or 0)
+        ev_start = float(ev.get("starting_cash", 0) or 0)
+    except Exception as e:                      # noqa: BLE001 — report, don't hide
+        log.error(f"Weekly report: event book unreadable ({e})")
+        return (
+            f"*Perps: ${perp_value:.2f}* (started ${perp_start:.2f})\n"
+            f"⚠️ Event book unreadable — this total EXCLUDES event contracts."
+        )
+
+    total   = perp_value + ev_value
+    started = perp_start + ev_start
+    pct     = (total / started - 1) * 100 if started else 0.0
+
+    return (
+        f"Perps:    ${perp_value:.2f} (started ${perp_start:.2f})\n"
+        f"Events:   ${ev_value:.2f} (started ${ev_start:.2f}, "
+        f"{ev.get('wins', 0)}W/{ev.get('losses', 0)}L, "
+        f"${ev.get('at_risk', 0):.2f} at risk)\n"
+        f"*Combined: ${total:.2f}* (started ${started:.2f})\n"
+        f"All-time: *{pct:+.2f}%*"
+    )
+
+
 def build_weekly_report(days: float = 7.0) -> str:
     """Performance report over the trailing N days of closed trades."""
     from kalshi_portfolio import _load as _load_portfolio
@@ -1648,14 +1689,13 @@ def build_weekly_report(days: float = 7.0) -> str:
     starting = state.get("starting_cash", 500.0)
     summary  = get_portfolio_summary()
     total_val = summary["total_value"]
-    all_time_pct = (total_val / starting - 1) * 100 if starting else 0.0
+    footer = _account_footer(total_val, starting)
 
     if not recent:
         return (
             f"📊 *KALSHI — {days:.0f} Day Report*\n\n"
-            "No trades closed in this period.\n\n"
-            f"Account value: *${total_val:.2f}* (started ${starting:.2f})\n"
-            f"All-time: *{all_time_pct:+.2f}%*"
+            "No perp trades closed in this period.\n\n"
+            + footer
         )
 
     wins    = [t for t in recent if t.get("net_pnl", 0) > 0]
@@ -1752,8 +1792,7 @@ def build_weekly_report(days: float = 7.0) -> str:
 
     lines += [
         "",
-        f"*Account: ${total_val:.2f}* (started ${starting:.2f})",
-        f"All-time: *{all_time_pct:+.2f}%*",
+        footer,
         "",
         "_Paper trading. Run /kalshi_stats for calibration detail._",
     ]
