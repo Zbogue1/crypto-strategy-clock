@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-08-24T12:00:44.455484+00:00",
-    "coin": "SOL",
-    "price": 95.7,
-    "signal": "HOLD",
-    "confidence": 62,
-    "score": -1.2,
-    "fg": 73,
-    "btc_price": 78252,
-    "btc_dominance": 59.3,
-    "candidates": [
-      "LIT",
-      "PUMP",
-      "MON",
-      "FDUSD",
-      "RLUSD",
-      "USDG",
-      "EURC",
-      "XRP",
-      "SOL"
-    ],
-    "alert": "SOL approaching $100 exit target \u2014 prepare to take profits within 1-3 days."
-  },
-  {
     "ts": "2026-08-24T16:01:23.774577+00:00",
     "coin": "BTC",
     "price": 78978,
@@ -879,5 +856,28 @@
       "UNI"
     ],
     "alert": null
+  },
+  {
+    "ts": "2026-08-31T04:02:54.885777+00:00",
+    "coin": "SOL",
+    "price": 101.88,
+    "signal": "HOLD",
+    "confidence": 35,
+    "score": -0.8,
+    "fg": 62,
+    "btc_price": 77726,
+    "btc_dominance": 59.7,
+    "candidates": [
+      "PUMP",
+      "MON",
+      "XAUT",
+      "USDG",
+      "FDUSD",
+      "PEPE",
+      "APT",
+      "SOL",
+      "UNI"
+    ],
+    "alert": "Cronos network halted after $75M Tectonic exploit \u2014 monitor for broader DeFi contagion risk."
   }
 ]
