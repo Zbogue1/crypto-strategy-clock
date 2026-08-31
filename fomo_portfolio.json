@@ -2,7 +2,7 @@
   "version": "golem-v1",
   "reset_date": "2026-08-08",
   "reset_reason": "FOMO Golem launch \u2014 fresh $1,000 paper portfolio, FOMO-only strategy",
-  "cash": 9045.378192431857,
+  "cash": 9139.31553622358,
   "starting_cash": 10000.0,
   "peak_value": 10000.0,
   "total_trades": 12,
@@ -38,7 +38,7 @@
       "tranche_2_sold": false,
       "trailing_stop_active": false,
       "peak_liquidity": 221676.52,
-      "last_price_check": 1386.55
+      "last_price_check": 1345.77
     },
     {
       "position_id": "fa2ea0e3",
@@ -68,7 +68,7 @@
       "tranche_2_sold": false,
       "trailing_stop_active": false,
       "peak_liquidity": 411834.4,
-      "last_price_check": 0.02708
+      "last_price_check": 0.0262
     },
     {
       "position_id": "475fd27a",
@@ -98,15 +98,15 @@
       "tranche_2_sold": false,
       "trailing_stop_active": false,
       "peak_liquidity": 951261.63,
-      "last_price_check": 65.42
+      "last_price_check": 65.43
     },
     {
       "position_id": "7b0b76ea",
       "token_ticker": "MADE",
       "token_name": "SelfMade by SP3ND",
       "entry_price": 0.0005992,
-      "units": 222296.39519359145,
-      "spent": 133.33333333333334,
+      "units": 148197.59679572764,
+      "spent": 88.8888888888889,
       "stop_loss": 0.00038948,
       "exit_target": 0.00077896,
       "wallet_alias": "Golem (narrative: AI_AGENTS)",
@@ -125,11 +125,11 @@
       "regime_at_entry": "BULL",
       "partial_taken": false,
       "peak_price": 0.001489,
-      "tranche_1_sold": false,
+      "tranche_1_sold": true,
       "tranche_2_sold": false,
       "trailing_stop_active": false,
-      "peak_liquidity": 123990.57,
-      "last_price_check": 0.0009165
+      "peak_liquidity": 128102.29,
+      "last_price_check": 0.001269
     }
   ],
   "trade_history": [
@@ -558,12 +558,29 @@
     }
   ],
   "archived_history_note": "Prior July 2026 paper trades archived before this reset.",
-  "last_updated": "2026-08-30T21:47:58.425086+00:00",
+  "last_updated": "2026-08-31T15:33:34.961273+00:00",
   "deposits": [
     {
       "target": 10000.0,
       "amount": 9000.0,
       "at": "2026-08-21T04:51:43.410479+00:00"
+    }
+  ],
+  "tranche_sales": [
+    {
+      "token_ticker": "MADE",
+      "contract": "EpXtn6xGoZ4Y45vRjiDUHSCGbBoJD5FaEqZbF98YswH1",
+      "reason": "tranche_1_2x",
+      "fraction": 0.3333,
+      "units_sold": 74098.79839786381,
+      "price": 0.001269,
+      "entry_price": 0.0005992,
+      "proceeds": 93.94,
+      "cost_basis": 44.44,
+      "profit": 49.49,
+      "gain_x": 2.12,
+      "wallet_alias": "Golem (narrative: AI_AGENTS)",
+      "sold_at": "2026-08-31T15:33:34.961109+00:00"
     }
   ]
 }
