@@ -1,27 +1,5 @@
 [
   {
-    "ts": "2026-08-25T04:02:12.867023+00:00",
-    "coin": "XRP",
-    "price": 1.51,
-    "signal": "HOLD",
-    "confidence": 45,
-    "score": -1.2,
-    "fg": 74,
-    "btc_price": 80483,
-    "btc_dominance": 59.3,
-    "candidates": [
-      "MON",
-      "LIT",
-      "PUMP",
-      "FDUSD",
-      "CRVUSD",
-      "USDG",
-      "RLUSD",
-      "XRP"
-    ],
-    "alert": "All swing candidates are overextended after 30-75% weekly rallies. No safe new entries available this cycle."
-  },
-  {
     "ts": "2026-08-25T08:00:52.666529+00:00",
     "coin": "XRP",
     "price": 1.49,
@@ -880,5 +858,28 @@
       "UNI"
     ],
     "alert": null
+  },
+  {
+    "ts": "2026-08-31T20:02:56.740507+00:00",
+    "coin": "SOL",
+    "price": 103.62,
+    "signal": "HOLD",
+    "confidence": 45,
+    "score": -0.8,
+    "fg": 62,
+    "btc_price": 78884,
+    "btc_dominance": 59.2,
+    "candidates": [
+      "MON",
+      "PUMP",
+      "PONS",
+      "XAUT",
+      "FDUSD",
+      "USDG",
+      "CRVUSD",
+      "SOL",
+      "UNI"
+    ],
+    "alert": "UNI is 8.4% from exit target ($5.65) \u2014 consider tightening stop-loss to $4.75 to lock in gains."
   }
 ]
