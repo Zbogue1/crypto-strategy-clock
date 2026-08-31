@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-08-24T16:01:23.774577+00:00",
-    "coin": "BTC",
-    "price": 78978,
-    "signal": "HOLD",
-    "confidence": 0,
-    "score": null,
-    "fg": 73,
-    "btc_price": 78978,
-    "btc_dominance": 59.1,
-    "candidates": [
-      "PUMP",
-      "LIT",
-      "MON",
-      "FDUSD",
-      "CRVUSD",
-      "RLUSD",
-      "USDG",
-      "XRP",
-      "SOL"
-    ],
-    "alert": null
-  },
-  {
     "ts": "2026-08-24T20:04:44.772806+00:00",
     "coin": "SOL",
     "price": 96.29,
@@ -879,5 +856,28 @@
       "UNI"
     ],
     "alert": "Cronos network halted after $75M Tectonic exploit \u2014 monitor for broader DeFi contagion risk."
+  },
+  {
+    "ts": "2026-08-31T08:04:12.257098+00:00",
+    "coin": "XMR",
+    "price": 521.52,
+    "signal": "HOLD",
+    "confidence": 35,
+    "score": -0.3,
+    "fg": 62,
+    "btc_price": 78182,
+    "btc_dominance": 59.7,
+    "candidates": [
+      "PUMP",
+      "MON",
+      "XAUT",
+      "USDG",
+      "FDUSD",
+      "LIT",
+      "PAXG",
+      "SOL",
+      "UNI"
+    ],
+    "alert": null
   }
 ]
