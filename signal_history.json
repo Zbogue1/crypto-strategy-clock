@@ -1,28 +1,5 @@
 [
   {
-    "ts": "2026-08-24T08:02:13.689565+00:00",
-    "coin": "BTC",
-    "price": 77310,
-    "signal": "HOLD",
-    "confidence": 0,
-    "score": null,
-    "fg": 73,
-    "btc_price": 77310,
-    "btc_dominance": 59.2,
-    "candidates": [
-      "LIT",
-      "MON",
-      "PUMP",
-      "FDUSD",
-      "RLUSD",
-      "USDG",
-      "PAXG",
-      "XRP",
-      "SOL"
-    ],
-    "alert": null
-  },
-  {
     "ts": "2026-08-24T12:00:44.455484+00:00",
     "coin": "SOL",
     "price": 95.7,
@@ -879,5 +856,28 @@
       "SOL"
     ],
     "alert": "UNI approaching $5.65 exit target (+9.2% unrealized) \u2014 prepare to take profits"
+  },
+  {
+    "ts": "2026-08-31T00:02:12.742963+00:00",
+    "coin": "UNI",
+    "price": 5.13,
+    "signal": "HOLD",
+    "confidence": 45,
+    "score": -0.3,
+    "fg": 62,
+    "btc_price": 77622,
+    "btc_dominance": 59.7,
+    "candidates": [
+      "PUMP",
+      "MON",
+      "FDUSD",
+      "USDG",
+      "XAUT",
+      "TRUMP",
+      "PEPE",
+      "SOL",
+      "UNI"
+    ],
+    "alert": null
   }
 ]
