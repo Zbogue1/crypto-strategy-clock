@@ -1,27 +1,5 @@
 [
   {
-    "ts": "2026-08-25T00:01:17.865630+00:00",
-    "coin": "SOL",
-    "price": 98.84,
-    "signal": "HOLD",
-    "confidence": 42,
-    "score": -1.2,
-    "fg": 74,
-    "btc_price": 78977,
-    "btc_dominance": 59.1,
-    "candidates": [
-      "PUMP",
-      "LIT",
-      "MON",
-      "XAUT",
-      "FDUSD",
-      "USDG",
-      "CRVUSD",
-      "XRP"
-    ],
-    "alert": "Market is overheated after massive weekly gains \u2014 high risk of near-term pullback. Do not chase."
-  },
-  {
     "ts": "2026-08-25T04:02:12.867023+00:00",
     "coin": "XRP",
     "price": 1.51,
@@ -879,5 +857,28 @@
       "UNI"
     ],
     "alert": "Fear & Greed trend worsening (69\u219262) while Fed rate hike concerns emerge \u2014 tighten stops and prepare for volatility."
+  },
+  {
+    "ts": "2026-08-31T16:01:02.457507+00:00",
+    "coin": "SOL",
+    "price": 102.79,
+    "signal": "HOLD",
+    "confidence": 42,
+    "score": -0.8,
+    "fg": 62,
+    "btc_price": 78556,
+    "btc_dominance": 59.2,
+    "candidates": [
+      "PONS",
+      "PUMP",
+      "MON",
+      "XAUT",
+      "FDUSD",
+      "USDG",
+      "PAXG",
+      "SOL",
+      "UNI"
+    ],
+    "alert": null
   }
 ]
