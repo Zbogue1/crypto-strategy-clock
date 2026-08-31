@@ -145,6 +145,135 @@ def _load_funnel() -> dict:
 _last_funnel: dict = {}
 
 
+# ─── CUMULATIVE FUNNEL ────────────────────────────────────────────────────────
+# The per-scan funnel answers "what happened at 10:30" and each scan overwrites
+# the last. But the scan runs every 2 minutes across a 3.5-hour window — about
+# 105 times a session — so a single sample cannot distinguish a gate that is too
+# strict from one that simply had nothing to catch at that instant.
+#
+# That mattered: one scan showed "5 no valid pullback" and it was impossible to
+# tell whether the pullback rule rejects everything or whether no setup happened
+# to be forming in that particular two-minute slice. detect_pullback is a
+# point-in-time read, so n=1 says almost nothing.
+#
+# This sums every scan in a trading day and keeps it keyed by ET date, so /diag
+# can report "0 candidates from 340 pillar-passes across 105 scans" — a fact you
+# can act on — instead of one snapshot.
+
+_CUM_KEY = "stock_scan_funnel_cumulative"
+
+# Counters summed across scans. Anything not listed here is not accumulated,
+# which keeps a stray key in one scan's dict from inventing a new metric.
+_CUM_FIELDS = ("gainers", "cooldown", "no_snapshot", "failed_pillars",
+               "thin_bars", "no_pullback", "candidates",
+               # Catalyst is the top rejector, and these four separate "no news
+               # exists" from "we could not ask" — the distinction that decides
+               # whether the pillar is screening or blind.
+               "catalyst_no_news", "catalyst_weak",
+               "catalyst_feed_down", "catalyst_harmful")
+
+# Nested per-pillar tallies. Names must match what run_scan actually writes:
+# the unknown bucket is "pillar_unknown", not "unknown_detail".
+_CUM_NESTED = ("pillar_detail", "pillar_unknown")
+
+
+def _et_date() -> str:
+    return now_et().strftime("%Y-%m-%d")
+
+
+def _load_cumulative() -> dict:
+    try:
+        from stock_portfolio import _redis_get
+        cum = _redis_get(_CUM_KEY) or {}
+    except Exception as e:
+        log.error(f"Cumulative funnel read error: {e}")
+        return {}
+    # Roll over at the start of a new trading day rather than summing forever.
+    # Reading a stale date as today's total would overstate every counter.
+    if cum.get("date") != _et_date():
+        return {}
+    return cum
+
+
+def _accumulate_funnel(f: dict):
+    """Fold one scan's funnel into today's running total."""
+    cum = _load_cumulative()
+    if not cum:
+        cum = {"date": _et_date(), "scans": 0,
+               **{k: {} for k in _CUM_NESTED},
+               **{k: 0 for k in _CUM_FIELDS}}
+
+    cum["scans"] = int(cum.get("scans", 0) or 0) + 1
+    for k in _CUM_FIELDS:
+        cum[k] = int(cum.get(k, 0) or 0) + int(f.get(k, 0) or 0)
+
+    # Per-pillar tallies are nested dicts; sum them key by key.
+    for key in _CUM_NESTED:
+        bucket = cum.setdefault(key, {})
+        for name, n in (f.get(key) or {}).items():
+            bucket[name] = int(bucket.get(name, 0) or 0) + int(n or 0)
+
+    cum["last_scan_at"] = datetime.now(timezone.utc).isoformat()
+    try:
+        from stock_portfolio import _redis_set
+        if not _redis_set(_CUM_KEY, cum):
+            log.error("Cumulative funnel Redis write FAILED — today's running "
+                      "totals will be lost on the next redeploy.")
+    except Exception as e:
+        log.error(f"Cumulative funnel persist error: {e}")
+    return cum
+
+
+def format_cumulative(cum: dict) -> str:
+    """Render today's running totals for /diag. Empty string if none yet."""
+    if not cum or not cum.get("scans"):
+        return ""
+
+    scans   = cum.get("scans", 0)
+    gainers = cum.get("gainers", 0)
+    reached = gainers - cum.get("cooldown", 0) - cum.get("no_snapshot", 0)
+    passed  = reached - cum.get("failed_pillars", 0)
+
+    L = [f"\nTODAY SO FAR ({cum.get('date','?')}, {scans} scans)",
+         f"{gainers} gainer-slots screened",
+         f"{cum.get('failed_pillars', 0)} failed the 5 Pillars",
+         f"{cum.get('thin_bars', 0)} too few 1-min bars",
+         f"{cum.get('no_pullback', 0)} no valid pullback",
+         f"{cum.get('candidates', 0)} CANDIDATES"]
+
+    # The number the single-scan view cannot give you: of everything that got
+    # past the pillars, how much died at the pullback gate.
+    if passed > 0:
+        pb = cum.get("no_pullback", 0)
+        L.append(f"\npullback gate: {pb}/{passed} rejected "
+                 f"({pb / passed * 100:.0f}%) across the day")
+
+    det = cum.get("pillar_detail") or {}
+    if det:
+        L.append("\nrejections by pillar (all scans):")
+        for name, n in sorted(det.items(), key=lambda x: -x[1]):
+            L.append(f"  {n}x {name}")
+
+    unk = cum.get("pillar_unknown") or {}
+    if unk:
+        L.append("\nmissing inputs (not rejections):")
+        for name, n in sorted(unk.items(), key=lambda x: -x[1]):
+            L.append(f"  {n}x {name}")
+
+    # Catalyst is the top rejector, so separate "no news exists" from "the feed
+    # was down". Only the first is a screen result; the second is blindness.
+    nn, fd = cum.get("catalyst_no_news", 0), cum.get("catalyst_feed_down", 0)
+    if nn or fd or cum.get("catalyst_weak") or cum.get("catalyst_harmful"):
+        L.append("\ncatalyst, all scans:")
+        if fd:
+            L.append(f"  {fd}x FEED DOWN — blind, not selective")
+        L.append(f"  {nn}x feed OK but no headlines")
+        L.append(f"  {cum.get('catalyst_weak', 0)}x news found, judged insufficient")
+        L.append(f"  {cum.get('catalyst_harmful', 0)}x harmful — correctly refused")
+
+    return "\n".join(L)
+
+
 def _record_restart() -> int:
     """
     Log this start and return how many happened in the last hour.
@@ -343,6 +472,15 @@ def build_diagnostic() -> str:
                 L.append(f"    {f.get('catalyst_harmful',0):>3}x  "
                          f"harmful (dilution/offering) - correctly refused")
 
+    # 4b. The same funnel summed across every scan today. The single-scan view
+    # above is one sample from ~105; it cannot separate "this gate is too
+    # strict" from "nothing was forming at that instant".
+    _cum_txt = format_cumulative(_load_cumulative())
+    if _cum_txt:
+        L.append(_cum_txt)
+    else:
+        L += ["", "TODAY SO FAR", "  no scans accumulated yet today"]
+
     L += ["", "THRESHOLDS",
           f"  RVOL >= {sig.MIN_RVOL}   move >= {sig.MIN_PCT_CHANGE}%   "
           f"pillars >= {sig.MIN_PILLARS}/5",
@@ -475,6 +613,9 @@ def run_scan(force: bool = False, announce: bool = False) -> list:
 
     funnel["at"] = datetime.now(timezone.utc).isoformat()
     _save_funnel(funnel)
+    # Fold into today's running total. One scan cannot tell a strict gate from
+    # an empty moment; ~105 scans a session can.
+    _accumulate_funnel(funnel)
     log.info(f"Scan complete: {len(candidates)} candidate(s), {rejected} rejected "
              f"| funnel={funnel}")
 

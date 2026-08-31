@@ -350,6 +350,66 @@ def sim_underfunded():
     return (refused and alarmed and names_cash), L
 
 
+@scenario("funnel_accumulates",
+          "Scan funnel sums across scans and rolls over on a new day")
+def sim_funnel_accumulates():
+    """
+    One scan cannot tell a strict gate from an empty moment. detect_pullback is
+    a point-in-time read, so "5 no valid pullback" in a single sample says
+    nothing — the scan runs ~105 times a session and each overwrote the last.
+
+    Three things must hold: counters add up, nested pillar tallies add up, and
+    a new ET date starts from zero rather than summing into yesterday.
+    """
+    import stock_tracker as ST
+
+    store = {}
+    ST._redis_stub = store
+    import stock_portfolio as SP
+    SP._redis_set = lambda k, v: (store.__setitem__(k, v), True)[1]
+    SP._redis_get = lambda k: store.get(k)
+
+    day = "2026-08-31"
+    ST._et_date = lambda: day
+
+    scan_a = {"gainers": 20, "failed_pillars": 14, "no_pullback": 5,
+              "candidates": 0, "catalyst_no_news": 10,
+              "pillar_detail": {"catalyst": 10, "rvol": 8},
+              "pillar_unknown": {"float": 3}}
+    scan_b = {"gainers": 18, "failed_pillars": 11, "no_pullback": 4,
+              "candidates": 1, "catalyst_no_news": 7,
+              "pillar_detail": {"catalyst": 7, "price": 2},
+              "pillar_unknown": {"float": 1}}
+
+    ST._accumulate_funnel(scan_a)
+    cum = ST._accumulate_funnel(scan_b)
+
+    summed = (cum["scans"] == 2 and cum["gainers"] == 38
+              and cum["no_pullback"] == 9 and cum["candidates"] == 1
+              and cum["catalyst_no_news"] == 17)
+    nested = (cum["pillar_detail"]["catalyst"] == 17          # 10 + 7
+              and cum["pillar_detail"]["rvol"] == 8           # only scan A
+              and cum["pillar_detail"]["price"] == 2          # only scan B
+              and cum["pillar_unknown"]["float"] == 4)
+
+    # New trading day must NOT inherit yesterday's totals.
+    day = "2026-09-01"
+    fresh = ST._accumulate_funnel(scan_a)
+    rolled = (fresh["scans"] == 1 and fresh["gainers"] == 20
+              and fresh["date"] == "2026-09-01")
+
+    txt = ST.format_cumulative(cum)
+    reports_rate = "pullback gate:" in txt
+
+    L = [f"2 scans -> scans={cum['scans']}, gainers={cum['gainers']}, "
+         f"no_pullback={cum['no_pullback']}",
+         f"nested summed correctly={nested}",
+         f"catalyst 10+7={cum['pillar_detail']['catalyst']}",
+         f"new day resets={rolled} (scans={fresh['scans']})",
+         f"reports pullback rejection rate={reports_rate}"]
+    return (summed and nested and rolled and reports_rate), L
+
+
 @scenario("stock_close", "Stock close on a bare state — no crash, cash credited")
 def sim_stock_close():
     import stock_portfolio as SP
