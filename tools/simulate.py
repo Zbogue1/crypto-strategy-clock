@@ -285,6 +285,71 @@ def sim_report_both_books():
     return ok, L
 
 
+@scenario("no_bet_price_display",
+          "A NO bet must display what we PAID, not the YES quote")
+def sim_no_bet_price():
+    """
+    Shipped bug: "Bet NO at 16c · resolved NO · +20%". A 16c contract paying
+    $1.00 returns +525%; +20% means we actually paid ~83c. calc_position buys
+    NO at (100 - price), open_bet stored the YES price, the display read it.
+    """
+    import kalshi_tracker as KT
+    import kalshi_event_portfolio as KE
+    from kalshi_event_trader import calc_position
+
+    # Market quotes YES at 16c → a NO bet costs 84c.
+    sizing = calc_position(16.0, "NO", stake=100.0)
+    KE.open_bet("SIMNO", "sim", "NO", 16.0, sizing["contracts"],
+                sizing["cost_per"], domain="weather")
+    # By ticker, NOT positions[0] — under --all, earlier scenarios leave their
+    # own bets in the book and [0] silently picked up a 40c YES position from
+    # event_settle. A scenario that reads the wrong row tests nothing.
+    pos = next(p for p in KE.get_summary()["positions"] if p["ticker"] == "SIMNO")
+
+    shown = KT._our_price_cents(pos)
+    # Round-trip: a winning NO at this price must return what the price implies.
+    tr = KE.settle_bet("SIMNO", "no")
+    implied_ret = (100.0 / shown - 1) * 100 if shown else 0.0
+
+    L = [f"stored entry_cents={pos['entry_cents']:.0f}c (the YES quote)",
+         f"displayed={shown:.0f}c", f"actual return={tr['return_pct']:+.0f}%",
+         f"return implied by displayed price={implied_ret:+.0f}%"]
+    # The displayed price must be the ~84c we paid, and must be consistent
+    # with the realised return. 16c would imply +525% against an actual +19%.
+    ok = (abs(shown - 84.0) < 0.5
+          and abs(implied_ret - tr["return_pct"]) < 1.0)
+    return ok, L
+
+
+@scenario("underfunded_book_alarms",
+          "Event book below one stake — alarms instead of going quiet")
+def sim_underfunded():
+    """
+    open_bet refuses when cost > cash and only writes log.warning. The book hit
+    $79.10 against a $100 stake and stopped betting with no notification at all.
+    """
+    import kalshi_tracker as KT
+    import kalshi_event_portfolio as KE
+    capture_telegram()
+    KT.send_telegram = lambda t, *a, **k: (SENT.append(t), True)[1]
+    KT._last_underfunded_alert = 0.0
+
+    st = KE._load()
+    st["cash"] = 79.10                      # the real observed figure
+    KE._save(st)
+
+    # A standard bet must be refused...
+    refused = KE.open_bet("SIMUF", "sim", "YES", 40, 250, 0.40) is None
+    # ...and the scan must say so rather than silently screening.
+    KT._run_event_scan_cycle(force=True)
+    alarmed = any("underfunded" in s.lower() or "halted" in s.lower() for s in SENT)
+    names_cash = any("79.10" in s for s in SENT)
+
+    L = [f"bet refused={refused}", f"alerts={len(SENT)}",
+         f"alarm raised={alarmed}", f"states the cash figure={names_cash}"]
+    return (refused and alarmed and names_cash), L
+
+
 @scenario("stock_close", "Stock close on a bare state — no crash, cash credited")
 def sim_stock_close():
     import stock_portfolio as SP

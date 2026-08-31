@@ -899,6 +899,9 @@ EVENT_TRADING       = os.getenv("KALSHI_EVENT_TRADING", "true").lower() == "true
 # genuinely good setups land on the same day.
 EVENT_DAILY_TARGET  = int(os.getenv("KALSHI_EVENT_DAILY_TRADES", "10"))
 EVENT_SCAN_INTERVAL = int(os.getenv("KALSHI_EVENT_SCAN_SEC", "3600"))
+# The scan runs hourly; an underfunded book would otherwise alert 24x a day.
+UNDERFUNDED_ALERT_COOLDOWN = float(os.getenv("KALSHI_UNDERFUNDED_COOLDOWN", "86400"))
+_last_underfunded_alert = 0.0
 EVENT_SETTLE_INTERVAL = int(os.getenv("KALSHI_EVENT_SETTLE_SEC", "900"))
 # Hard ceiling on one scan. Must stay well under EVENT_SCAN_INTERVAL or
 # cycles overlap and stack up.
@@ -1082,6 +1085,40 @@ def _run_event_scan_cycle(force: bool = False):
                       "at": datetime.now(timezone.utc).isoformat(),
                       "note": f"daily budget used ({opened}/{EVENT_DAILY_TARGET}) "
                               f"- no scan run"})
+        return
+
+    # ── Can the book still fund a bet? ────────────────────────────────────────
+    # open_bet refuses when cost > cash and only writes log.warning, so a book
+    # drawn down below one stake stops betting in complete silence: no Telegram,
+    # nothing in the report. The event book reached $79.10 against a $100 stake
+    # and simply went quiet — a halt that looks identical to "no good markets".
+    #
+    # Say it out loud, once a day, and skip the scan rather than screening
+    # 25,000 markets we cannot act on.
+    global _last_underfunded_alert
+    try:
+        from kalshi_event_trader import STAKE_PER_BET as _stake
+    except Exception:
+        _stake = 100.0
+    _cash = float(event_summary().get("cash", 0) or 0)
+    if _cash < _stake:
+        _now = time.time()
+        if (_now - _last_underfunded_alert) > UNDERFUNDED_ALERT_COOLDOWN:
+            _last_underfunded_alert = _now
+            send_telegram(
+                f"🛑 *EVENT BETTING HALTED — book underfunded*\n\n"
+                f"Cash: *${_cash:.2f}* · stake per bet: ${_stake:.2f}\n\n"
+                f"Every bet is being refused for insufficient cash. This has "
+                f"been silent until now — the scan just stopped placing bets.\n\n"
+                f"Perps are unaffected (separate book). Use "
+                f"`/event_deposit <amount>` to top up, or lower "
+                f"`KALSHI_EVENT_STAKE`."
+            )
+        log.warning(f"Kalshi events: HALTED — cash ${_cash:.2f} < stake ${_stake:.2f}")
+        _save_funnel({"status": "completed", "candidates": 0, "bets": 0,
+                      "at": datetime.now(timezone.utc).isoformat(),
+                      "note": f"HALTED: cash ${_cash:.2f} below "
+                              f"${_stake:.2f} stake - no bet can be funded"})
         return
 
     cycle_started = time.time()
@@ -1300,7 +1337,7 @@ def _run_event_settle_cycle():
             send_telegram(
                 f"{icon} *EVENT SETTLED* — {'WON' if trade['won'] else 'LOST'}\n\n"
                 f"{trade['title'][:90]}\n`{ticker}`\n\n"
-                f"Bet {trade['side']} at {trade['entry_cents']:.0f}c · "
+                f"Bet {trade['side']} at {_our_price_cents(trade):.0f}c · "
                 f"resolved {s['result'].upper()}\n"
                 f"P&L: *${trade['net_pnl']:+.2f}* ({trade['return_pct']:+.0f}%)"
             )
@@ -1400,10 +1437,10 @@ def build_event_book(limit: int = 15) -> str:
             L.append(
                 f"\n  {p['side']} {p['ticker']}\n"
                 f"    {p['title'][:64]}\n"
-                f"    {p['contracts']} contracts @ {p['entry_cents']:.0f}c  "
+                f"    {p['contracts']} contracts @ {_our_price_cents(p):.0f}c  "
                 f"= ${p['cost_basis']:.2f} risked to win ${p['max_gain']:.2f}\n"
                 f"    our estimate {p['our_prob']:.0f}% vs market "
-                f"{p['entry_cents']:.0f}% | edge {p['edge']:.1f}pts | "
+                f"{_our_price_cents(p):.0f}% | edge {p['edge']:.1f}pts | "
                 f"conf {p['confidence']}\n"
                 f"    resolves {str(p.get('close_time',''))[:16].replace('T',' ')} UTC"
             )
@@ -1624,6 +1661,33 @@ def _group_trades(trades: list) -> list:
         g["size"]       = len(g["subs"])
         out.append(g)
     return sorted(out, key=lambda x: x.get("closed_at", ""))
+
+
+def _our_price_cents(pos: dict) -> float:
+    """
+    What WE paid per contract, in cents — not the market's YES quote.
+
+    kalshi_event_trader.calc_position does:
+        cost_per = price/100 if YES else (100 - price)/100
+    but open_bet stores `entry_cents = price_cents`, which is always the YES
+    side. So for a NO bet the two disagree by construction: a NO bought at 83.3c
+    was displayed as "NO at 16c". P&L was right, the label was inverted.
+
+    That mattered twice over. "Bet NO at 16c → +20%" is arithmetically
+    impossible (16c paying $1.00 is +525%), and the open-bet line compared
+    our_prob against the YES quote, rendering a -3pt edge as +64pt.
+
+    cost_per is the authoritative field — it is what cost_basis was computed
+    from — so derive the display from it rather than trusting entry_cents.
+    """
+    cp = pos.get("cost_per")
+    if cp is None:
+        # Pre-fix records may lack cost_per. Reconstruct from cost_basis rather
+        # than falling back to entry_cents, which is the wrong number.
+        contracts = float(pos.get("contracts", 0) or 0)
+        basis     = float(pos.get("cost_basis", 0) or 0)
+        cp = (basis / contracts) if contracts else 0.0
+    return float(cp) * 100.0
 
 
 def _account_footer(perp_value: float, perp_start: float) -> str:
