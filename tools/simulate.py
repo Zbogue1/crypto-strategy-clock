@@ -410,6 +410,99 @@ def sim_funnel_accumulates():
     return (summed and nested and rolled and reports_rate), L
 
 
+@scenario("forming_candle_no_exit",
+          "A still-forming candle must not trigger an exit")
+def sim_forming_candle():
+    """
+    The monitor polls every 20s but bars are 1 minute, so the newest bar is read
+    ~3x before it closes. On a forming bar:
+
+      topping_tail   body is near zero, so any upper wick clears `upper >= 2*body`
+      false_breakout `h > prev_high and c < prev_high` is the normal state of a
+                     candle mid-poke — the very crossing candle Ross enters on
+
+    Both are severity "high", and run_monitor closes the position on any high
+    signal. This scenario pins that a forming bar is ignored and the SAME bar,
+    once closed, is judged normally.
+    """
+    import stock_signals as SG
+    from datetime import datetime, timezone, timedelta
+
+    now = datetime.now(timezone.utc)
+
+    def bar(mins_ago, o, h, l, c, v=10000):
+        t = (now - timedelta(minutes=mins_ago)).replace(second=0, microsecond=0)
+        return {"t": t.strftime("%Y-%m-%dT%H:%M:%SZ"),
+                "o": o, "h": h, "l": l, "c": c, "v": v, "n": 50, "vw": c}
+
+    # Five closed bars advancing, then a 6th that is STILL FORMING and looks
+    # like both a topping tail (tiny body, long upper wick) and a false
+    # breakout (new high, price currently back under the prior high).
+    history = [bar(6, 5.00, 5.10, 4.98, 5.08), bar(5, 5.08, 5.20, 5.06, 5.18),
+               bar(4, 5.18, 5.30, 5.16, 5.28), bar(3, 5.28, 5.40, 5.26, 5.38),
+               bar(2, 5.38, 5.50, 5.36, 5.48)]
+    forming = bar(0, 5.48, 5.62, 5.47, 5.485)      # stamped this minute
+
+    live = SG.check_exit_signals(history + [forming])
+    fired_live = [s["indicator"] for s in live if s["severity"] == "high"]
+
+    # Same candle, one minute later — now closed, and must be judged.
+    closed = dict(forming)
+    closed["t"] = (now - timedelta(minutes=1)).replace(
+        second=0, microsecond=0).strftime("%Y-%m-%dT%H:%M:%SZ")
+    after = SG.check_exit_signals(history + [closed])
+    fired_closed = [s["indicator"] for s in after if s["severity"] == "high"]
+
+    # An unparseable timestamp must also be excluded, not trusted.
+    junk = dict(forming); junk["t"] = "not-a-timestamp"
+    junk_fired = [s["indicator"] for s in SG.check_exit_signals(history + [junk])
+                  if s["severity"] == "high"]
+
+    L = [f"forming bar high-severity signals={fired_live} (want none)",
+         f"same bar once closed={fired_closed} (want at least one)",
+         f"unparseable timestamp={junk_fired} (want none)"]
+    ok = (not fired_live) and bool(fired_closed) and (not junk_fired)
+    return ok, L
+
+
+@scenario("rvol_lookback_50d",
+          "Recent volume spikes must not suppress RVOL below the 5x floor")
+def sim_rvol_lookback():
+    """
+    Ross: "five times higher volume than the 50-DAY average". We used 30.
+
+    A short lookback lets a few recent pop-and-reject days dominate the average,
+    which understates RVOL on exactly the stocks that keep spiking — the effect
+    he names when STKH read 4.46 and he called it "lower than I'd prefer".
+
+    Built from the same synthetic history both ways, so only the window differs.
+    """
+    import stock_data as SD
+
+    # 50 quiet days at 100k, then 3 recent pop-and-reject days at 2M.
+    #
+    # These figures are chosen to straddle the 5x floor and demonstrate the
+    # MECHANISM. They are not evidence that real gainers distribute this way —
+    # that would need a measurement against live data, which this does not do.
+    hist = [100_000] * 47 + [2_000_000] * 3
+    today = 1_200_000
+    #   30-day avg = (27*100k + 3*2M)/30 = 290k -> 4.14x  REJECTED
+    #   50-day avg = (47*100k + 3*2M)/50 = 214k -> 5.61x  passes
+
+    def rvol(window):
+        sample = hist[-window:]
+        return today / (sum(sample) / len(sample))
+
+    r30, r50 = rvol(30), rvol(50)
+    L = [f"30-day avg -> RVOL {r30:.2f}x  ({'PASS' if r30 >= 5 else 'REJECTED'} at 5x floor)",
+         f"50-day avg -> RVOL {r50:.2f}x  ({'PASS' if r50 >= 5 else 'REJECTED'} at 5x floor)",
+         f"code default now {SD.RVOL_LOOKBACK_DAYS} days"]
+    # The point: same stock, same day — the shorter window rejects it and the
+    # window Ross actually specifies does not.
+    ok = (SD.RVOL_LOOKBACK_DAYS == 50 and r30 < 5.0 <= r50)
+    return ok, L
+
+
 @scenario("stock_close", "Stock close on a bare state — no crash, cash credited")
 def sim_stock_close():
     import stock_portfolio as SP

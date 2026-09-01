@@ -21,6 +21,7 @@ See STOCK_GOLEM_STRATEGY.md for the full extracted methodology and sourcing.
 
 import logging
 import os
+from datetime import datetime, timezone
 from typing import Optional
 
 log = logging.getLogger(__name__)
@@ -333,7 +334,32 @@ def detect_pullback(bars: list) -> Optional[dict]:
 
 # ─── EXIT INDICATORS (the automatable subset) ─────────────────────────────────
 
-def check_exit_signals(bars: list) -> list:
+def _bar_closed(bar: dict, timeframe_sec: int = 60,
+                now: Optional[datetime] = None) -> bool:
+    """
+    Has this bar finished forming?
+
+    A bar stamped 13:45:00 on a 1-minute timeframe is final at 13:46:00.
+
+    On an unparseable timestamp this returns False — the bar is treated as
+    still forming and dropped. That is the safe direction: a missed exit signal
+    is still covered by the hard stop-loss, which is checked against live price
+    and not against bars at all. A FALSE exit has no such backstop — it closes a
+    good position for nothing. When the data is ambiguous, don't act on it.
+    """
+    ts = bar.get("t") or ""
+    try:
+        t0 = datetime.fromisoformat(str(ts).replace("Z", "+00:00"))
+        if t0.tzinfo is None:
+            t0 = t0.replace(tzinfo=timezone.utc)
+    except Exception:
+        log.warning(f"Bar timestamp unparseable ({ts!r}) — treating as still "
+                    f"forming and excluding it from exit signals.")
+        return False
+    return ((now or datetime.now(timezone.utc)) - t0).total_seconds() >= timeframe_sec
+
+
+def check_exit_signals(bars: list, timeframe_sec: int = 60) -> list:
     """
     Of Ross's six exit indicators, four need Level 2 / time & sales, which the
     free feed doesn't carry. These two are computable from OHLCV:
@@ -345,6 +371,23 @@ def check_exit_signals(bars: list) -> list:
     the discretionary tape reading, which is plausibly where much of the real
     edge lives.
     """
+    # ── Only CLOSED candles may trigger an exit ──────────────────────────────
+    # Alpaca returns the in-progress bar for the current minute, and the monitor
+    # polls every 20s — so bars[-1] is read about three times before it closes.
+    # Two high-severity signals misfire badly on a forming bar:
+    #
+    #   topping_tail   at t+15s the body is near zero, so ANY upper wick clears
+    #                  `upper >= body * 2`. A flat opening tick reads as a
+    #                  bearish rejection.
+    #   false_breakout `h > prev_high and c < prev_high` is the NORMAL state of
+    #                  a candle that has just poked a new high and hasn't closed
+    #                  yet — which is precisely the crossing candle Ross ENTERS
+    #                  on. The signal fires exactly backwards.
+    #
+    # A candle can look like a topping tail at second 15 and close green at
+    # second 60. Judge it only once it is final.
+    bars = [b for b in bars if _bar_closed(b, timeframe_sec)]
+
     if len(bars) < 3:
         return []
 

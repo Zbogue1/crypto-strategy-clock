@@ -224,9 +224,24 @@ def get_snapshot(symbol: str) -> Optional[dict]:
 
 # ─── RELATIVE VOLUME (Pillar 1) ───────────────────────────────────────────────
 
-def get_relative_volume(symbol: str, days: int = 30) -> Optional[dict]:
+# Ross states the lookback explicitly: "if a stock is trading on five times
+# higher volume than the 50-DAY AVERAGE, that's the day that I want to be
+# trading on it." (Growing a $2k Account to $65,662.04, xGIa8Vg0PWM)
+#
+# This was 30, and the difference is not cosmetic. A shorter window gives a
+# recent volume spike more weight in the average, so a stock that has popped
+# and rejected a few times shows an INFLATED average and therefore an
+# artificially LOW RvOL — which is exactly the effect Ross describes in the
+# red-day recap when STKH read 4.46: "partly because you've had a few of these
+# high volume days where it pops up and rejects."
+#
+# Two separate videos, extracted independently, pointing at this one number.
+RVOL_LOOKBACK_DAYS = int(os.getenv("STOCK_RVOL_LOOKBACK", "50"))
+
+
+def get_relative_volume(symbol: str, days: int = RVOL_LOOKBACK_DAYS) -> Optional[dict]:
     """
-    RVOL = today's volume / average daily volume over `days`.
+    RVOL = today's volume / average daily volume over `days` (Ross: 50).
 
     Ross requires ≥5x. Note we compare full-day-to-date volume against a full
     day average, so early in the session RVOL understates — a stock at 3x by
