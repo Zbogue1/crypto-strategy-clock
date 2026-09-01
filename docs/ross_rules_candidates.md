@@ -98,3 +98,77 @@ volume distribution behind it. It stays unconfirmed.
 - #2 needs a daily-chart frame or an independent data check, not this segment.
 - #13 and #14 are the two worth building. Each needs a `simulate.py` scenario
   that fails against current behaviour first.
+
+---
+
+## Video 02 — "Growing a $2k Account to $65,662.04 in 30 Days"
+
+- URL: https://www.youtube.com/watch?v=xGIa8Vg0PWM
+- Duration: 59:09 · Extracted: 2026-09-01
+- **Two independent reads:** Gemini 3 Flash watching the video natively in
+  Google AI Studio, and a full text transcript read separately.
+
+Reconciliation vocabulary: `confirmed` = both reads agree · `single source` =
+one read only · `conflict` = the reads disagree.
+
+Limitation worth stating: both reads ultimately derive from the same spoken
+words, so this is not fully independent. Gemini additionally read the on-screen
+slides, which is where the numeric filters appear, so it corroborates the
+figures rather than merely re-hearing them. The transcript carries no
+timestamps, so **Gemini's timestamps are single-source and unverified.**
+
+| # | Rule | Agreement | Status vs our code |
+|---|---|---|---|
+| 16 | RVOL ≥5x, measured against the **50-day** average | `confirmed` | ⚠️ **`get_relative_volume(days=30)`** — we use 30 |
+| 17 | Catalyst **not required** if the move is obvious enough | `confirmed` | ⚠️ `pillars["catalyst"]["pass"] = n_news > 0` — we hard-require it |
+| 18 | Price band **$2–$20** | `confirmed` | ⚠️ `PRICE_MIN = 1.0` |
+| 19 | Entry window **7:00–10:00 ET** | `confirmed` | ⚠️ `ENTRY_END_ET = "10:30"` |
+| 20 | Gain ≥10% on the day | `confirmed` | ✅ `MIN_PCT_CHANGE = 10.0` |
+| 21 | Float <20M, lower is better | `confirmed` | ✅ `FLOAT_MAX_HOT_M = 20.0` |
+| 22 | Entry = the **crossing candle** (first to take out the prior candle's high) | `confirmed` | ✅ matches `detect_pullback` |
+| 23 | Stop = **low of the pullback** | `confirmed` | ✅ matches |
+| 24 | Minimum **2:1** profit-to-loss | `confirmed` | check sizing honours this |
+| 25 | Walk away after losing half the day's profit | `confirmed` | `HUMAN-ONLY` |
+| 26 | Max daily loss = average daily gain | `confirmed` | partially — a daily-loss halt exists |
+| 27 | Do not return after walking away | `confirmed` | `HUMAN-ONLY` |
+| 28 | Level 2 / tape exit signals (big seller, hidden seller, red burst) | `single source` (Gemini) | not implemented; needs L2 data we don't have |
+
+### Headline — the 50-day lookback closes an open question
+
+Ross, verbatim: *"if a stock is trading on five times higher volume than the
+**50-day average**, that's the day that I want to be trading on it."*
+
+`get_relative_volume(symbol, days=30)` uses 30. That is not a rounding
+difference — it is the mechanism behind **claim #2 from Video 01**, which was
+logged as `NEW` and unverified.
+
+A shorter lookback means a recent volume spike carries more weight in the
+average. A stock that has popped and rejected a few times therefore shows an
+inflated average and an artificially *low* RVOL — exactly what Ross described
+when STKH read 4.46. A 50-day window dilutes those spikes.
+
+Two videos, two independent extractions, same defect. Claim #2 moves from
+`NEW/unverified` to **confirmed, with a one-line fix.**
+
+### Second finding — the catalyst pillar is stricter than Ross is
+
+*"The only exception that I'll make is that the stock doesn't need to have news
+if it's clearly moving really well and is one of the most obvious stocks
+today."*
+
+Our catalyst pillar is a hard `n_news > 0`, and catalyst was the **top rejector
+at 10 of 14** in the last Stock Golem scan. `MIN_PILLARS = 4` already permits
+one failure — but catalyst failing *plus* any unknown (float was unavailable 3x
+in that same scan) drops a stock to 3 and rejects it.
+
+So the interaction, not the threshold, is doing the damage.
+
+### Next
+
+- #16 (50-day RVOL) is the cheapest high-value change in this whole document.
+- #17 needs care: Ross's exception is qualitative ("most obvious stock today").
+  A mechanical stand-in — e.g. top-N by gain *and* RVOL rank — is a `NEW` rule
+  of our own invention, not his, and must be labelled that way.
+- #18 and #19 are one-line config changes; decide deliberately rather than
+  drifting.
+- #28 stays single-source and unbuildable — we have no Level 2 feed.
