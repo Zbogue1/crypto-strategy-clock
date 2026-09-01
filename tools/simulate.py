@@ -503,6 +503,51 @@ def sim_rvol_lookback():
     return ok, L
 
 
+@scenario("obvious_mover_exception",
+          "No-news stock passes catalyst ONLY when extreme, never when feed is down")
+def sim_obvious_mover():
+    """
+    Ross allows a no-news stock if it is "clearly moving really well and one of
+    the most obvious stocks today". Catalyst was our top rejector at 10/14.
+
+    Four cases matter, and the last two are the ones that protect us:
+      extreme + no news        -> pass (the exception)
+      ordinary + no news       -> fail (exception must not swallow the rule)
+      extreme + FEED DOWN      -> fail (we never looked; can't rule out dilution)
+      harmful news present     -> fail (bad news is not absent news)
+    """
+    import stock_signals as SG
+
+    def snap(pct, rvol, news=0, feed_ok=True, catalyst=None):
+        s = {"symbol": "SIM", "price": 5.0, "pct_change": pct, "rvol": rvol,
+             "news_count": news, "news_feed_ok": feed_ok, "float_m": 8.0}
+        if catalyst:
+            s["catalyst"] = catalyst
+        return s
+
+    extreme  = SG.score_pillars(snap(120.0, 18.0), market_hot=True)
+    ordinary = SG.score_pillars(snap(14.0, 6.0), market_hot=True)
+    blind    = SG.score_pillars(snap(120.0, 18.0, feed_ok=False), market_hot=True)
+    harmful  = SG.score_pillars(
+        snap(120.0, 18.0, catalyst={"passes": True, "quality": "harmful",
+                                    "score": 20, "catalyst_type": "offering",
+                                    "reasoning": "dilutive offering"}),
+        market_hot=True)
+
+    c = lambda r: r["pillars"]["catalyst"]
+    L = [f"extreme+no news  -> catalyst pass={c(extreme)['pass']} "
+         f"(exception={c(extreme).get('exception', False)})",
+         f"ordinary+no news -> catalyst pass={c(ordinary)['pass']}",
+         f"extreme+feed down-> catalyst pass={c(blind)['pass']}",
+         f"harmful news     -> qualifies={harmful['qualifies']} "
+         f"({harmful['disqualified_by']})"]
+    ok = (c(extreme)["pass"] is True and c(extreme).get("exception") is True
+          and c(ordinary)["pass"] is False
+          and c(blind)["pass"] is False
+          and harmful["qualifies"] is False)
+    return ok, L
+
+
 @scenario("stock_close", "Stock close on a bare state — no crash, cash credited")
 def sim_stock_close():
     import stock_portfolio as SP

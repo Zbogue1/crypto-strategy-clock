@@ -46,6 +46,13 @@ FLOAT_MAX_HOT_M   = float(os.getenv("STOCK_FLOAT_MAX_HOT", "20.0"))
 FLOAT_MAX_COLD_M  = float(os.getenv("STOCK_FLOAT_MAX_COLD", "10.0"))
 MIN_PILLARS       = int(os.getenv("STOCK_MIN_PILLARS", "4"))
 
+# ─── "OBVIOUS MOVER" EXCEPTION (our approximation of a Ross judgement call) ────
+# He allows a stock with no news IF it is "clearly moving really well and is one
+# of the most obvious stocks today". These two floors stand in for that: 5x the
+# gain requirement and 2x the RVOL requirement. Both must hold.
+OBVIOUS_PCT       = float(os.getenv("STOCK_OBVIOUS_PCT", "50.0"))
+OBVIOUS_RVOL      = float(os.getenv("STOCK_OBVIOUS_RVOL", "10.0"))
+
 # ─── PULLBACK PARAMETERS ──────────────────────────────────────────────────────
 MAX_RETRACE_PCT   = float(os.getenv("STOCK_MAX_RETRACE", "50.0"))
 EMA_PERIOD        = int(os.getenv("STOCK_EMA_PERIOD", "9"))
@@ -157,13 +164,45 @@ def score_pillars(snap: dict, market_hot: bool = True) -> dict:
                 "harmful": False,
             }
         else:
-            pillars["catalyst"] = {
-                "pass":  n_news > 0,
-                "value": n_news,
-                "note":  f"{n_news} headline(s) in 48h (unanalyzed)" if n_news
-                         else "no catalyst found — higher risk of sudden drop",
-                "harmful": False,
-            }
+            # ── THE "OBVIOUS MOVER" EXCEPTION ────────────────────────────────
+            # Ross, verbatim: "The only exception that I'll make is that the
+            # stock doesn't need to have news if it's clearly moving really well
+            # and is one of the most obvious stocks today. So YXT here up 500%."
+            #
+            # HONEST LABELLING: the thresholds below are OURS, not his. "Most
+            # obvious stock today" is a judgement he makes by eye across the
+            # whole leaderboard. We approximate it with two absolute floors set
+            # far above the normal pillars — 5x the gain requirement and 2x the
+            # RVOL requirement — so it fires only on genuinely extreme movers.
+            # A rank-based version would be more faithful and needs scan context
+            # this function does not receive.
+            #
+            # Deliberately NOT applied when the feed is down. Ross's exception
+            # means "I looked and there is no news". A dead feed means we never
+            # looked, and cannot rule out a dilutive offering.
+            obvious = (pct is not None and pct >= OBVIOUS_PCT
+                       and rvol is not None and rvol >= OBVIOUS_RVOL)
+
+            if n_news == 0 and obvious:
+                pillars["catalyst"] = {
+                    "pass":  True,
+                    "value": 0,
+                    "note":  (f"no headlines, but {pct:.0f}% on {rvol:.1f}x RVOL "
+                              f"— obvious-mover exception (our rule, not a "
+                              f"stated Ross threshold)"),
+                    "harmful":  False,
+                    "exception": True,
+                }
+            else:
+                pillars["catalyst"] = {
+                    "pass":  n_news > 0,
+                    "value": n_news,
+                    "note":  f"{n_news} headline(s) in 48h (unanalyzed)" if n_news
+                             else (f"no catalyst found and not an obvious mover "
+                                   f"(needs ≥{OBVIOUS_PCT:.0f}% and "
+                                   f"≥{OBVIOUS_RVOL:.0f}x) — higher risk of a drop"),
+                    "harmful": False,
+                }
 
     # 4 — Price range
     price = snap.get("price") or 0
