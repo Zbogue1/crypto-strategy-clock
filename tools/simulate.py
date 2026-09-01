@@ -73,6 +73,28 @@ def _install_fakes():
     fake_anthropic.APIError = Exception
     sys.modules.setdefault("anthropic", fake_anthropic)
 
+    # fomo_tracker imports flask at module scope for its webhook server. The
+    # HTTP server is outside-world infrastructure, so it gets faked like any
+    # other network dependency — and stubbing it here keeps the harness working
+    # on machines where flask isn't installed, rather than making a scenario's
+    # result depend on the environment it runs in.
+    if "flask" not in sys.modules:
+        fake_flask = types.ModuleType("flask")
+
+        class _App:
+            def __init__(self, *a, **k): pass
+            def route(self, *a, **k):
+                return lambda fn: fn          # decorator passthrough
+            def run(self, *a, **k): pass
+            def add_url_rule(self, *a, **k): pass
+
+        fake_flask.Flask   = _App
+        fake_flask.request = types.SimpleNamespace(
+            json=None, args={}, headers={}, get_json=lambda *a, **k: None)
+        fake_flask.jsonify = lambda *a, **k: (a[0] if len(a) == 1 else dict(**k))
+        fake_flask.Response = lambda *a, **k: None
+        sys.modules["flask"] = fake_flask
+
     import requests
 
     class _Resp:
@@ -567,6 +589,53 @@ def sim_obvious_mover():
           and c(ordinary)["pass"] is False
           and c(blind)["pass"] is False
           and harmful["qualifies"] is False)
+    return ok, L
+
+
+@scenario("fresh_token_dropped_early",
+          "A <1-day token is dropped BEFORE research, not after paying for it")
+def sim_fresh_token_dropped():
+    """
+    The contradiction: fomo_tracker allowed Golem signals from 30 minutes old,
+    fomo_research hard-vetoed anything under 1 day. Every new_launch signal ran
+    full research + an LLM call and was then rejected for an age known upfront.
+    Nine times in four days, APEC three times in 24 minutes, zero trades.
+
+    With GOLEM_INDEPENDENT_TRADING off, the signal must die at validation —
+    research must never be called at all.
+    """
+    import fomo_tracker as FT
+    capture_telegram()
+
+    assert FT.GOLEM_INDEPENDENT_TRADING is False, \
+        "master switch should default OFF"
+
+    called = {"research": 0, "consensus": 0}
+    FT.research_token = lambda *a, **k: (
+        called.__setitem__("research", called["research"] + 1),
+        {"go": False, "skip_reason": "should never run"})[1]
+    FT._check_launch_consensus = lambda *a, **k: called.__setitem__(
+        "consensus", called["consensus"] + 1)
+
+    # A token that fails ONLY on age — exactly the APEC shape.
+    FT.validate_token = lambda ca: {
+        "valid": False, "age_only_reject": True, "age_days": 0.04,   # ~1 hour
+        "liquidity_usd": 72_353, "market_cap": 3_000_000,
+        "symbol": "APECSIM", "name": "sim", "price": 0.001,
+        "reject_reason": "Token < 1 day old",
+    }
+    FT._lookup_contract_by_symbol = lambda s: "SIMCA"
+
+    FT.process_social_signal({
+        "alias": "Golem", "action": "BUY", "token_symbol": "APECSIM",
+        "contract_address": "SIMCA", "source": "new_launch", "tier": "B",
+        "chain": "solana", "confidence": 70,
+    })
+
+    L = [f"research_token calls={called['research']} (want 0)",
+         f"routed to consensus tracker={called['consensus'] == 1}",
+         f"telegram alerts={len(SENT)} (want 0 — rejections are not news)"]
+    ok = (called["research"] == 0 and called["consensus"] == 1 and not SENT)
     return ok, L
 
 

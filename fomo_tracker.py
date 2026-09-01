@@ -87,8 +87,38 @@ GOLEM_MIN_AGE_HOURS   = float(os.getenv("FOMO_GOLEM_MIN_AGE_HOURS", "0.5"))
 GOLEM_MIN_LIQUIDITY   = float(os.getenv("FOMO_GOLEM_MIN_LIQUIDITY", "15000"))
 # Fraction of normal position size for these higher-risk entries
 GOLEM_SIZE_MULTIPLIER = float(os.getenv("FOMO_GOLEM_SIZE_MULT", "0.5"))
-# Master switch
-GOLEM_INDEPENDENT_TRADING = os.getenv("FOMO_GOLEM_TRADING", "true").lower() == "true"
+# ─── MASTER SWITCH — OFF, DELIBERATELY ────────────────────────────────────────
+# Default flipped from "true" to "false" on 2026-09-01.
+#
+# WHY. This path and the rug guard contradicted each other, and the guard won
+# every time. Here we allow a token from 30 minutes old; fomo_research.py:872
+# hard-vetoes anything under 1 day with no exception. So a new_launch signal
+# passed validation here, ran full token research plus an LLM call, and was then
+# thrown out for an age we already knew before we started. Nine times in four
+# days: Chomp, PINKOTC, GOLD, MRGA, stacyfone, Niko, APEC x3. Zero trades.
+#
+# APEC alone was researched three times in 24 minutes (20:43, 20:53, 21:07),
+# rejected identically each time.
+#
+# The evidence says the guard is right, not the radar. On all nine, the model's
+# own verdict AGREED with the block, unprompted: "you would be the exit
+# liquidity", "textbook signature of a coordinated dev rug setup", "real
+# narratives build over days, not minutes".
+#
+# Note the history: this path was already silently dead once, when it read
+# `liquidity` instead of `liquidity_usd` (see the comment at the read site). We
+# fixed that and it stayed dead, because a second gate was behind the first.
+# Turning it off is what was effectively happening anyway — this just stops the
+# code pretending otherwise, and stops paying for research on tokens it will
+# never buy.
+#
+# Signals still reach _check_launch_consensus(), so young tokens are recorded
+# and learned from. We just don't buy them.
+#
+# To reverse: set FOMO_GOLEM_TRADING=true AND give this path an explicit
+# exemption from the age veto in fomo_research.py. The flag alone is not enough
+# — that is exactly the trap that made this dead code in the first place.
+GOLEM_INDEPENDENT_TRADING = os.getenv("FOMO_GOLEM_TRADING", "false").lower() == "true"
 
 # Notify on filtered/rejected signals. Off by default — rejections are the
 # normal outcome and alerting on each one drowns the actionable messages.
