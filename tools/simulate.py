@@ -330,9 +330,16 @@ def sim_underfunded():
     """
     import kalshi_tracker as KT
     import kalshi_event_portfolio as KE
+    import kalshi_portfolio as KP
     capture_telegram()
     KT.send_telegram = lambda t, *a, **k: (SENT.append(t), True)[1]
-    KT._last_underfunded_alert = 0.0
+
+    # Stand-in for Redis that SURVIVES a simulated restart, so the cooldown is
+    # tested the way production actually behaves.
+    store = {}
+    KP._redis_set = lambda k, v: (store.__setitem__(k, v), True)[1]
+    KP._redis_get = lambda k: store.get(k)
+    store.pop(KT._UNDERFUNDED_KEY, None)
 
     st = KE._load()
     st["cash"] = 79.10                      # the real observed figure
@@ -344,10 +351,25 @@ def sim_underfunded():
     KT._run_event_scan_cycle(force=True)
     alarmed = any("underfunded" in s.lower() or "halted" in s.lower() for s in SENT)
     names_cash = any("79.10" in s for s in SENT)
+    first_count = len(SENT)
 
-    L = [f"bet refused={refused}", f"alerts={len(SENT)}",
-         f"alarm raised={alarmed}", f"states the cash figure={names_cash}"]
-    return (refused and alarmed and names_cash), L
+    # RESTART. The cooldown was a module global and reset to 0.0 here, which is
+    # why the real alarm fired 4x in one night (21:04, 02:25, 02:35, 02:39).
+    # Reloading the module reproduces that exactly.
+    import importlib
+    importlib.reload(KT)
+    KT.send_telegram = lambda t, *a, **k: (SENT.append(t), True)[1]
+    KP._redis_set = lambda k, v: (store.__setitem__(k, v), True)[1]
+    KP._redis_get = lambda k: store.get(k)
+
+    KT._run_event_scan_cycle(force=True)
+    quiet_after_restart = len(SENT) == first_count
+
+    L = [f"bet refused={refused}", f"alarm raised={alarmed}",
+         f"states the cash figure={names_cash}",
+         f"alerts before restart={first_count}, after={len(SENT)}",
+         f"silent across restart={quiet_after_restart}"]
+    return (refused and alarmed and names_cash and quiet_after_restart), L
 
 
 @scenario("funnel_accumulates",

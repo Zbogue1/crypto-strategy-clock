@@ -901,7 +901,39 @@ EVENT_DAILY_TARGET  = int(os.getenv("KALSHI_EVENT_DAILY_TRADES", "10"))
 EVENT_SCAN_INTERVAL = int(os.getenv("KALSHI_EVENT_SCAN_SEC", "3600"))
 # The scan runs hourly; an underfunded book would otherwise alert 24x a day.
 UNDERFUNDED_ALERT_COOLDOWN = float(os.getenv("KALSHI_UNDERFUNDED_COOLDOWN", "86400"))
-_last_underfunded_alert = 0.0
+_UNDERFUNDED_KEY = "kalshi_underfunded_last_alert"
+
+
+def _underfunded_alert_due() -> bool:
+    """
+    True if the underfunded alarm may fire now.
+
+    The timestamp lives in Redis, NOT in a module global. As a global it reset
+    to 0.0 on every process start, so the 24h cooldown died on each Railway
+    restart — the alarm fired at 21:04, then 02:25, 02:35 and 02:39, three times
+    inside fourteen minutes. An alert that repeats every restart trains you to
+    ignore it, which defeats the point of adding it.
+
+    On a Redis failure this returns True (alert anyway). A duplicate warning is
+    noise; a suppressed one hides a halted book.
+    """
+    try:
+        from kalshi_portfolio import _redis_get
+        last = float(_redis_get(_UNDERFUNDED_KEY) or 0)
+    except Exception as e:
+        log.warning(f"Underfunded cooldown read failed ({e}) — alerting anyway")
+        return True
+    return (time.time() - last) > UNDERFUNDED_ALERT_COOLDOWN
+
+
+def _mark_underfunded_alerted():
+    try:
+        from kalshi_portfolio import _redis_set
+        if not _redis_set(_UNDERFUNDED_KEY, time.time()):
+            log.error("Underfunded cooldown write FAILED — the alarm will "
+                      "repeat on the next restart.")
+    except Exception as e:
+        log.error(f"Underfunded cooldown persist error: {e}")
 EVENT_SETTLE_INTERVAL = int(os.getenv("KALSHI_EVENT_SETTLE_SEC", "900"))
 # Hard ceiling on one scan. Must stay well under EVENT_SCAN_INTERVAL or
 # cycles overlap and stack up.
@@ -1095,16 +1127,14 @@ def _run_event_scan_cycle(force: bool = False):
     #
     # Say it out loud, once a day, and skip the scan rather than screening
     # 25,000 markets we cannot act on.
-    global _last_underfunded_alert
     try:
         from kalshi_event_trader import STAKE_PER_BET as _stake
     except Exception:
         _stake = 100.0
     _cash = float(event_summary().get("cash", 0) or 0)
     if _cash < _stake:
-        _now = time.time()
-        if (_now - _last_underfunded_alert) > UNDERFUNDED_ALERT_COOLDOWN:
-            _last_underfunded_alert = _now
+        if _underfunded_alert_due():
+            _mark_underfunded_alerted()
             send_telegram(
                 f"🛑 *EVENT BETTING HALTED — book underfunded*\n\n"
                 f"Cash: *${_cash:.2f}* · stake per bet: ${_stake:.2f}\n\n"
