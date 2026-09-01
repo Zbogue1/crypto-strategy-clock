@@ -120,6 +120,55 @@ GOLEM_SIZE_MULTIPLIER = float(os.getenv("FOMO_GOLEM_SIZE_MULT", "0.5"))
 # — that is exactly the trap that made this dead code in the first place.
 GOLEM_INDEPENDENT_TRADING = os.getenv("FOMO_GOLEM_TRADING", "false").lower() == "true"
 
+# Fraction of normal size for a Tier B (unproven or demoted) wallet.
+TIER_B_SIZE_MULTIPLIER = float(os.getenv("FOMO_TIER_B_SIZE_MULT", "0.5"))
+
+
+def _resolve_wallet_tier(alias: str) -> tuple:
+    """
+    (tier, why) for a wallet alias. Tier is "A" or "B"; unknown resolves to "B".
+
+    Reads the PERFORMANCE file first, because that is where demotions actually
+    land. There are two bookkeeping systems and they disagree:
+
+      fomo_wallet_stats.record_trade_outcome  -> fomo_wallet_performance.json
+          Live. This is what demoted Golem for 3 consecutive losses.
+
+      fomo_tracker.update_wallet_stats        -> trusted_wallets.json["stats"]
+          Dead. All 21 real wallets read trades_followed = 0, so it has never
+          run. A gate reading this would gate on zeros forever.
+
+    Golem is not in trusted_wallets.json at ALL, which is its own bug:
+    _update_wallet_tier() loops the tier lists, finds no match, changes nothing,
+    and the "WALLET DEMOTED" Telegram fires regardless. Unknown therefore has to
+    mean B — treating an unrecognised alias as trusted is how a demoted source
+    keeps full size.
+    """
+    # 1. Live performance record.
+    try:
+        from fomo_wallet_stats import _pull_performance, DEMOTE_CONSEC_LOSSES, \
+            DEMOTE_WIN_RATE, PROMOTE_MIN_TRADES
+        rec = (_pull_performance() or {}).get(alias) or {}
+        if rec:
+            consec = int(rec.get("consecutive_losses", 0) or 0)
+            wr     = rec.get("win_rate")
+            n      = int(rec.get("trades_followed", 0) or 0)
+            if consec >= DEMOTE_CONSEC_LOSSES:
+                return "B", f"{consec} consecutive losses"
+            if wr is not None and n >= PROMOTE_MIN_TRADES and wr < DEMOTE_WIN_RATE:
+                return "B", f"win rate {wr * 100:.0f}%"
+    except Exception as e:
+        log.warning(f"Tier lookup: performance file unreadable ({e}) — "
+                    f"falling back to the watchlist")
+
+    # 2. Watchlist tier field.
+    meta = _get_wallet_meta(alias) or {}
+    t = (meta.get("tier") or "").upper()
+    if t in ("A", "B"):
+        return t, "watchlist tier"
+
+    return "B", "wallet not on the watchlist"
+
 # Notify on filtered/rejected signals. Off by default — rejections are the
 # normal outcome and alerting on each one drowns the actionable messages.
 # Set FOMO_NOTIFY_FILTERED=true to see them again while debugging.
@@ -2635,6 +2684,24 @@ def process_social_signal(signal: dict):
         if golem_trade:
             pos_pct = max(2.0, pos_pct * GOLEM_SIZE_MULTIPLIER)
             log.info(f"Golem young-token sizing: {pos_pct:.1f}% of bankroll")
+
+        # ── TIER GATE ────────────────────────────────────────────────────────
+        # Demotion used to cost a wallet nothing. _demote_wallet() only cleared
+        # the Alchemy webhook, and the sources that matter don't arrive by
+        # webhook — so Golem was demoted at 12:32 for three straight losses at a
+        # 0% win rate, and a $200 GASSPAS buy followed it at 15:07 the same day.
+        # Nothing in the buy path read the tier at all; it was passed into
+        # signal_ctx purely as narrative for the LLM.
+        #
+        # Half size rather than a block: 16 of 21 real wallets sit in Tier B and
+        # none has a recorded outcome yet, so blocking would stop the data
+        # collection that earns promotions in the first place. Demotion should
+        # cost something without ending the experiment.
+        tier, tier_why = _resolve_wallet_tier(alias)
+        if tier == "B":
+            pos_pct = max(MIN_POSITION_PCT, pos_pct * TIER_B_SIZE_MULTIPLIER)
+            log.info(f"Tier B sizing for {alias}: {pos_pct:.1f}% of bankroll "
+                     f"({tier_why})")
         alert_id = create_pending_buy_alert({
             "token_ticker":          token_data["symbol"],
             "token_name":            token_data["name"],

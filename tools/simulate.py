@@ -639,6 +639,55 @@ def sim_fresh_token_dropped():
     return ok, L
 
 
+@scenario("tier_b_halves_size",
+          "Demotion must cost something — Tier B trades at half size")
+def sim_tier_b_sizing():
+    """
+    Golem was demoted at 12:32 (3 consecutive losses, 0% win rate) and a $200
+    GASSPAS buy followed it at 15:07 the SAME DAY. _demote_wallet only cleared
+    the Alchemy webhook, and golem_momentum doesn't arrive by webhook, so the
+    demotion cost nothing.
+
+    Four resolutions matter. The last is Golem's real situation: demoted in the
+    performance file, absent from the watchlist entirely.
+    """
+    import fomo_tracker as FT
+
+    perf = {}
+    FT._get_wallet_meta = lambda a: {
+        "ProvenTrader": {"tier": "A"},
+        "UnprovenTrader": {"tier": "B"},
+    }.get(a, {})
+
+    import fomo_wallet_stats as FWS
+    FWS._pull_performance = lambda: perf
+
+    tier_a  = FT._resolve_wallet_tier("ProvenTrader")
+    tier_b  = FT._resolve_wallet_tier("UnprovenTrader")
+    unknown = FT._resolve_wallet_tier("NeverSeenBefore")
+
+    # Golem: 3 consecutive losses recorded, and NOT on the watchlist.
+    perf["Golem"] = {"consecutive_losses": 3, "trades_followed": 3,
+                     "win_rate": 0.0}
+    golem = FT._resolve_wallet_tier("Golem")
+
+    # A Tier A record must still resolve A even with a losing streak of 2.
+    perf["ProvenTrader"] = {"consecutive_losses": 2, "trades_followed": 8,
+                            "win_rate": 0.75}
+    still_a = FT._resolve_wallet_tier("ProvenTrader")
+
+    L = [f"watchlist A -> {tier_a}", f"watchlist B -> {tier_b}",
+         f"unknown alias -> {unknown}",
+         f"Golem (demoted, off-watchlist) -> {golem}",
+         f"A with 2 losses -> {still_a}",
+         f"size multiplier = {FT.TIER_B_SIZE_MULTIPLIER}"]
+    ok = (tier_a[0] == "A" and tier_b[0] == "B" and unknown[0] == "B"
+          and golem[0] == "B" and "consecutive" in golem[1]
+          and still_a[0] == "A"
+          and 0 < FT.TIER_B_SIZE_MULTIPLIER < 1)
+    return ok, L
+
+
 @scenario("stock_close", "Stock close on a bare state — no crash, cash credited")
 def sim_stock_close():
     import stock_portfolio as SP
