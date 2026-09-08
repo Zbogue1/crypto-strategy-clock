@@ -688,6 +688,55 @@ def sim_tier_b_sizing():
     return ok, L
 
 
+@scenario("float_failure_retries",
+          "A throttled float lookup must retry, not blank the symbol for a day")
+def sim_float_failure_retries():
+    """
+    The bug: an exception was cached for the full 24h exactly like a genuine
+    "this stock has no float data", and logged at DEBUG so nobody saw it. One
+    yfinance rate-limit at 07:02 removed that symbol's float pillar for the
+    whole session. Float-unavailable doubled 3 -> 6 as the gainer list grew,
+    reading as a property of the stocks rather than of our throttling.
+    """
+    import stock_data as SD
+    SD._float_cache.clear()
+
+    calls = {"n": 0}
+
+    class _Boom:
+        def __init__(self, *a, **k): raise RuntimeError("429 Too Many Requests")
+
+    fake_yf = types.ModuleType("yfinance")
+    def _ticker(sym):
+        calls["n"] += 1
+        return _Boom()
+    fake_yf.Ticker = _ticker
+    sys.modules["yfinance"] = fake_yf
+
+    before_fail = SD.FLOAT_LOOKUP_FAILURES
+    SD.get_float("SIMFLT")
+    first_calls = calls["n"]
+
+    # A retry inside the short window is still served from cache...
+    SD.get_float("SIMFLT")
+    cached_calls = calls["n"]
+
+    # ...but the entry must expire in ~FLOAT_ERROR_RETRY_SEC, NOT 24h.
+    hit = SD._float_cache["SIMFLT"]
+    age_left = SD.FLOAT_CACHE_HOURS * 3600 - (__import__("time").time() - hit["ts"])
+
+    L = [f"lookup attempted={first_calls == 1}",
+         f"second call served from cache={cached_calls == first_calls}",
+         f"cache expires in {age_left/60:.0f} min (want ~{SD.FLOAT_ERROR_RETRY_SEC/60:.0f}, not 1440)",
+         f"failure counted={SD.FLOAT_LOOKUP_FAILURES - before_fail}",
+         f"error recorded={bool(SD.FLOAT_LAST_ERROR)}"]
+    ok = (first_calls == 1 and cached_calls == first_calls
+          and age_left < 3600                      # nowhere near 24h
+          and SD.FLOAT_LOOKUP_FAILURES - before_fail == 1
+          and bool(SD.FLOAT_LAST_ERROR))
+    return ok, L
+
+
 @scenario("stock_close", "Stock close on a bare state — no crash, cash credited")
 def sim_stock_close():
     import stock_portfolio as SP

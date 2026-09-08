@@ -427,6 +427,11 @@ def get_news(symbol: str, hours: int = 48, limit: int = 10) -> list:
 
 _float_cache: dict = {}
 FLOAT_CACHE_HOURS = 24
+# A *failed* lookup is retried this soon instead of being cached for a day.
+FLOAT_ERROR_RETRY_SEC = int(os.getenv("STOCK_FLOAT_RETRY_SEC", "600"))
+# Counters so /diag can separate "no float exists" from "we got rate-limited".
+FLOAT_LOOKUP_FAILURES: int = 0
+FLOAT_LAST_ERROR: Optional[str] = None
 
 
 def get_float(symbol: str) -> Optional[dict]:
@@ -455,8 +460,27 @@ def get_float(symbol: str) -> Optional[dict]:
         _float_cache[symbol] = {"ts": now, "data": data}
         return data
     except Exception as e:
-        log.debug(f"Float lookup failed for {symbol}: {e}")
-        _float_cache[symbol] = {"ts": now, "data": None}
+        # A FAILED LOOKUP IS NOT "NO FLOAT DATA".
+        #
+        # This used to cache the exception for the full 24h like a real answer,
+        # so a single yfinance rate-limit at 07:02 blanked that symbol for the
+        # entire session — and it logged at DEBUG, invisible at our INFO level.
+        # Float-unavailable doubled from 3 to 6 as the gainer list grew, which
+        # reads as "these stocks have no float" and is actually "we got
+        # throttled". Each unknown makes 4-of-5 harder, so this silently
+        # suppresses qualification.
+        #
+        # Cache the FAILURE briefly so the next scan retries, and say so out
+        # loud. Line 447 still caches a genuine empty result for the full 24h,
+        # because that one really is an answer.
+        global FLOAT_LOOKUP_FAILURES, FLOAT_LAST_ERROR
+        FLOAT_LOOKUP_FAILURES += 1
+        FLOAT_LAST_ERROR = f"{type(e).__name__}: {e}"[:160]
+        log.warning(f"Float lookup FAILED for {symbol} ({e}) — retrying in "
+                    f"{FLOAT_ERROR_RETRY_SEC}s, not treating as 'no float'.")
+        _float_cache[symbol] = {"ts": now - (FLOAT_CACHE_HOURS * 3600
+                                             - FLOAT_ERROR_RETRY_SEC),
+                                "data": None}
         return None
 
 
