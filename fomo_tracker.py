@@ -1812,6 +1812,114 @@ def health():
     })
 
 
+# ─── HUD STATE ────────────────────────────────────────────────────────────────
+# One read-only view of all three books, for a dashboard to poll.
+#
+# Deliberately READ-ONLY. There is no route here that opens or closes anything,
+# and there never should be. A display that can trade is a trade that happens
+# without a confirmation step, which is the failure class this whole codebase
+# has spent weeks removing.
+
+HUD_TOKEN = os.getenv("HUD_TOKEN", "")
+
+
+def _hud_authorised(req) -> bool:
+    """
+    Shared-secret check.
+
+    This endpoint exposes the entire portfolio on a public Railway URL, so it
+    stays closed unless HUD_TOKEN is set. Failing CLOSED matters: an unset
+    variable after a redeploy would otherwise publish every position to anyone
+    who guessed the path.
+    """
+    if not HUD_TOKEN:
+        return False
+    supplied = (req.headers.get("X-HUD-Token")
+                or req.args.get("token")
+                or "")
+    # Constant-time compare — a plain == leaks length and prefix through timing.
+    import hmac
+    return hmac.compare_digest(supplied, HUD_TOKEN)
+
+
+def _safe(fn, default):
+    """Never let one dead book blank the whole dashboard."""
+    try:
+        return fn()
+    except Exception as e:                       # noqa: BLE001 — report, not hide
+        log.warning(f"HUD: section unavailable ({e})")
+        return {**default, "error": str(e)[:120], "available": False}
+
+
+@app.route("/state", methods=["GET"])
+def hud_state():
+    if not _hud_authorised(request):
+        # 404 rather than 401 — don't confirm the route exists to a scanner.
+        return jsonify({"error": "not found"}), 404
+
+    def _fomo():
+        s = get_fomo_stats()
+        p = load_fomo_portfolio()
+        return {
+            "available":   True,
+            "cash":        round(float(p.get("cash", 0) or 0), 2),
+            "total_value": s["total_value"],
+            "total_trades": s["total_trades"],
+            "holdings": [{
+                "ticker":   h.get("token_ticker"),
+                "spent":    round(float(h.get("spent", 0) or 0), 2),
+                "units":    h.get("units"),
+                "entry":    h.get("entry_price"),
+                "wallet":   h.get("wallet_alias"),
+                "opened_at": h.get("opened_at"),
+            } for h in p.get("holdings", [])],
+        }
+
+    def _kalshi():
+        from kalshi_portfolio import get_portfolio_summary as perp_summary
+        from kalshi_event_portfolio import get_summary as event_summary
+        perp, ev = perp_summary(), event_summary()
+        return {
+            "available": True,
+            "perps": {
+                "total_value": perp.get("total_value"),
+                "positions":   len(perp.get("positions", [])),
+            },
+            "events": {
+                "total_value": ev.get("total_value"),
+                "cash":        ev.get("cash"),
+                "at_risk":     ev.get("at_risk"),
+                "positions":   ev.get("n_positions"),
+                "wins":        ev.get("wins"),
+                "losses":      ev.get("losses"),
+            },
+        }
+
+    def _stock():
+        import stock_portfolio as sp
+        from stock_tracker import _load_funnel, _load_cumulative, in_entry_window
+        s = sp.get_summary()
+        open_now, note = in_entry_window()
+        return {
+            "available":    True,
+            "total_value":  s.get("total_value"),
+            "cash":         s.get("cash"),
+            "positions":    s.get("positions", []),
+            "halted":       s.get("halted_reason"),
+            "window_open":  open_now,
+            "window_note":  note,
+            "last_scan":    _load_funnel(),
+            "today":        _load_cumulative(),
+        }
+
+    return jsonify({
+        "generated_at": datetime.now(timezone.utc).isoformat(),
+        "fomo":   _safe(_fomo,   {"available": False}),
+        "kalshi": _safe(_kalshi, {"available": False}),
+        "stock":  _safe(_stock,  {"available": False}),
+    })
+
+
 @app.route("/test/telegram-button", methods=["GET"])
 def test_telegram_button():
     """Plumbing test only -- sends a fake button, no trade logic attached."""

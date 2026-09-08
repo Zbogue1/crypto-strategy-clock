@@ -737,6 +737,55 @@ def sim_float_failure_retries():
     return ok, L
 
 
+@scenario("hud_state_endpoint",
+          "/state is closed without a token, and survives a dead book")
+def sim_hud_state():
+    """
+    Two ways this endpoint could hurt:
+
+      1. Failing OPEN. It publishes every position on a public Railway URL. If
+         HUD_TOKEN is unset after a redeploy and the check defaults to allow,
+         the whole portfolio is readable by anyone who guesses the path.
+      2. One dead book blanking the dashboard. If Kalshi's Redis is down, FOMO
+         and Stock must still render — a blank screen during a drawdown is
+         exactly when you need it most.
+    """
+    import fomo_tracker as FT
+
+    class _Req:
+        def __init__(self, tok=None):
+            self.headers = {"X-HUD-Token": tok} if tok else {}
+            self.args = {}
+
+    # ── auth ────────────────────────────────────────────────────────────────
+    FT.HUD_TOKEN = ""
+    closed_when_unset = not FT._hud_authorised(_Req("anything"))
+
+    FT.HUD_TOKEN = "s3cret-value"
+    rejects_wrong  = not FT._hud_authorised(_Req("wrong"))
+    rejects_none   = not FT._hud_authorised(_Req())
+    rejects_prefix = not FT._hud_authorised(_Req("s3cret"))     # prefix ≠ match
+    accepts_right  = FT._hud_authorised(_Req("s3cret-value"))
+
+    # ── degradation ─────────────────────────────────────────────────────────
+    def _boom():
+        raise RuntimeError("redis unreachable")
+    dead = FT._safe(_boom, {"available": False})
+    alive = FT._safe(lambda: {"available": True, "v": 1}, {"available": False})
+
+    L = [f"unset token -> closed={closed_when_unset}",
+         f"wrong={rejects_wrong} missing={rejects_none} prefix={rejects_prefix}",
+         f"correct token accepted={accepts_right}",
+         f"dead book degrades: available={dead.get('available')} "
+         f"error_reported={bool(dead.get('error'))}",
+         f"healthy book unaffected={alive.get('available')}"]
+    ok = (closed_when_unset and rejects_wrong and rejects_none
+          and rejects_prefix and accepts_right
+          and dead.get("available") is False and bool(dead.get("error"))
+          and alive.get("available") is True)
+    return ok, L
+
+
 @scenario("stock_close", "Stock close on a bare state — no crash, cash credited")
 def sim_stock_close():
     import stock_portfolio as SP
