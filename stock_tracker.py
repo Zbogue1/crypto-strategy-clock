@@ -125,6 +125,30 @@ REENTRY_COOLDOWN = 900
 _FUNNEL_KEY = "stock_scan_funnel"
 
 
+def rejection_bucket(pillars: dict) -> str:
+    """
+    Which funnel counter a screen-stage rejection belongs to.
+
+    A stock can pass all five pillars and still be rejected — on spread, or on a
+    dilution catalyst. Counting those as pillar failures makes the diagnostic
+    contradict itself: the total says 14 while the per-pillar breakdown adds to
+    9, which reads as a mystery instead of a category.
+
+    Pure and separate from the scan loop on purpose. While this logic lived
+    inline, a mutation folding spread rejections back into `failed_pillars`
+    passed every test — the suite exercised the accumulator, never the
+    attribution.
+
+    Order matters: spread is checked first because it is evaluated on data the
+    pillars never see, so it is the more specific explanation.
+    """
+    if pillars.get("spread_ok") is False:
+        return "wide_spread"
+    if (pillars.get("pillars", {}).get("catalyst", {}) or {}).get("harmful"):
+        return "harmful_catalyst"
+    return "failed_pillars"
+
+
 def _save_funnel(f: dict):
     """
     Persist the scan funnel so it survives a redeploy.
@@ -180,6 +204,8 @@ _CUM_KEY = "stock_scan_funnel_cumulative"
 # which keeps a stray key in one scan's dict from inventing a new metric.
 _CUM_FIELDS = ("gainers", "cooldown", "no_snapshot", "failed_pillars",
                "thin_bars", "no_pullback", "candidates",
+               # Disqualifiers, counted apart from pillar failures.
+               "wide_spread", "harmful_catalyst",
                # Catalyst is the top rejector, and these four separate "no news
                # exists" from "we could not ask" — the distinction that decides
                # whether the pillar is screening or blind.
@@ -246,11 +272,20 @@ def format_cumulative(cum: dict) -> str:
     scans   = cum.get("scans", 0)
     gainers = cum.get("gainers", 0)
     reached = gainers - cum.get("cooldown", 0) - cum.get("no_snapshot", 0)
-    passed  = reached - cum.get("failed_pillars", 0)
+    # Subtract every screen-stage rejection, not just pillar failures. Missing
+    # the disqualifier buckets would overstate how many stocks reached the
+    # pullback test and therefore understate that gate's rejection rate — the
+    # one number this block exists to report.
+    passed  = (reached
+               - cum.get("failed_pillars", 0)
+               - cum.get("wide_spread", 0)
+               - cum.get("harmful_catalyst", 0))
 
     L = [f"\nTODAY SO FAR ({cum.get('date','?')}, {scans} scans)",
          f"{gainers} gainer-slots screened",
          f"{cum.get('failed_pillars', 0)} failed the 5 Pillars",
+         f"{cum.get('wide_spread', 0)} disqualified on spread",
+         f"{cum.get('harmful_catalyst', 0)} disqualified on catalyst",
          f"{cum.get('thin_bars', 0)} too few 1-min bars",
          f"{cum.get('no_pullback', 0)} no valid pullback",
          f"{cum.get('candidates', 0)} CANDIDATES"]
@@ -505,6 +540,8 @@ def build_diagnostic() -> str:
             f"  {f.get('cooldown',0):>4} skipped (re-entry cooldown)",
             f"  {f.get('no_snapshot',0):>4} no snapshot returned",
             f"  {f.get('failed_pillars',0):>4} failed the 5 Pillars",
+            f"  {f.get('wide_spread',0):>4} DISQUALIFIED — spread too wide",
+            f"  {f.get('harmful_catalyst',0):>4} DISQUALIFIED — harmful catalyst",
             f"  {f.get('thin_bars',0):>4} too few 1-min bars",
             f"  {f.get('no_pullback',0):>4} no valid pullback",
             f"  {f.get('candidates',0):>4} CANDIDATES",
@@ -591,7 +628,12 @@ def run_scan(force: bool = False, announce: bool = False) -> list:
     global _last_funnel
     funnel = {"gainers": len(movers), "cooldown": 0, "no_snapshot": 0,
               "failed_pillars": 0, "thin_bars": 0, "no_pullback": 0,
-              "candidates": 0, "pillar_detail": {}}
+              "candidates": 0, "pillar_detail": {},
+              # Disqualifiers are NOT pillar failures. Lumping them into
+              # failed_pillars produces rejections the pillar breakdown cannot
+              # account for — the count says 14 and the reasons add to 9, which
+              # reads as a mystery rather than a category.
+              "wide_spread": 0, "harmful_catalyst": 0}
 
     # Was a hard-coded 20. The screener returned 31 gainers on 2026-09-04 and
     # 11 of them were never examined — silently, since the funnel counted only
@@ -612,7 +654,7 @@ def run_scan(force: bool = False, announce: bool = False) -> list:
         pillars = sig.score_pillars(snap, market_hot=True)
         if not pillars["qualifies"]:
             rejected += 1
-            funnel["failed_pillars"] += 1
+            funnel[rejection_bucket(pillars)] += 1
             # Which pillar is doing the rejecting? On Alpaca's free IEX feed
             # RVOL is computed from ~2-3% of real volume, so it reads low and
             # can silently veto everything. That would look identical to a

@@ -416,12 +416,14 @@ def sim_funnel_accumulates():
     day = "2026-08-31"
     ST._et_date = lambda: day
 
-    scan_a = {"gainers": 20, "failed_pillars": 14, "no_pullback": 5,
+    scan_a = {"gainers": 20, "failed_pillars": 12, "no_pullback": 5,
               "candidates": 0, "catalyst_no_news": 10,
+              "wide_spread": 2, "harmful_catalyst": 1,
               "pillar_detail": {"catalyst": 10, "rvol": 8},
               "pillar_unknown": {"float": 3}}
     scan_b = {"gainers": 18, "failed_pillars": 11, "no_pullback": 4,
               "candidates": 1, "catalyst_no_news": 7,
+              "wide_spread": 1, "harmful_catalyst": 0,
               "pillar_detail": {"catalyst": 7, "price": 2},
               "pillar_unknown": {"float": 1}}
 
@@ -430,7 +432,32 @@ def sim_funnel_accumulates():
 
     summed = (cum["scans"] == 2 and cum["gainers"] == 38
               and cum["no_pullback"] == 9 and cum["candidates"] == 1
-              and cum["catalyst_no_news"] == 17)
+              and cum["catalyst_no_news"] == 17
+              # Disqualifiers accumulate separately from pillar failures.
+              and cum["wide_spread"] == 3 and cum["harmful_catalyst"] == 1
+              and cum["failed_pillars"] == 23)
+
+    # Attribution: a rejection must land in the bucket that EXPLAINS it.
+    # While this lived inline in the scan loop it was untested, and a mutation
+    # folding spread rejections back into failed_pillars passed cleanly.
+    buckets = [
+        ST.rejection_bucket({"spread_ok": False,
+                             "pillars": {"catalyst": {"harmful": False}}}),
+        ST.rejection_bucket({"spread_ok": True,
+                             "pillars": {"catalyst": {"harmful": True}}}),
+        ST.rejection_bucket({"spread_ok": True,
+                             "pillars": {"catalyst": {"harmful": False}}}),
+        # Unknown spread is not a spread rejection — it must fall through.
+        ST.rejection_bucket({"spread_ok": None,
+                             "pillars": {"catalyst": {"harmful": False}}}),
+    ]
+    attribution_ok = buckets == ["wide_spread", "harmful_catalyst",
+                                 "failed_pillars", "failed_pillars"]
+
+    # The pullback rate must count disqualifiers as never reaching the gate.
+    # reached = 38 - 0 - 0 = 38; passed = 38 - 23 - 3 - 1 = 11; no_pullback = 9
+    txt_rate = ST.format_cumulative(cum)
+    rate_correct = "9/11 rejected (82%)" in txt_rate
     nested = (cum["pillar_detail"]["catalyst"] == 17          # 10 + 7
               and cum["pillar_detail"]["rvol"] == 8           # only scan A
               and cum["pillar_detail"]["price"] == 2          # only scan B
@@ -449,9 +476,14 @@ def sim_funnel_accumulates():
          f"no_pullback={cum['no_pullback']}",
          f"nested summed correctly={nested}",
          f"catalyst 10+7={cum['pillar_detail']['catalyst']}",
+         f"disqualifiers kept separate: spread={cum['wide_spread']} "
+         f"harmful={cum['harmful_catalyst']} pillars={cum['failed_pillars']}",
+         f"pullback rate excludes disqualifiers={rate_correct}",
+         f"rejections attributed correctly={attribution_ok} {buckets}",
          f"new day resets={rolled} (scans={fresh['scans']})",
          f"reports pullback rejection rate={reports_rate}"]
-    return (summed and nested and rolled and reports_rate), L
+    return (summed and nested and rolled and reports_rate and rate_correct
+            and attribution_ok), L
 
 
 @scenario("forming_candle_no_exit",
