@@ -147,6 +147,33 @@ def format_sweep(rows: list, label: str, unit: str = "") -> str:
 
 # ─── DATA COLLECTION (network — runs on a machine with Alpaca keys) ──────────
 
+def stride_sample(items: list, n: int) -> list:
+    """
+    Evenly-spaced subset of `items`, preserving order and both endpoints.
+
+    Truncating instead (`items[:n]`) is what made a 180-day request measure
+    2026-03-12 to 2026-05-01 — find_setup_days returns setups sorted by date, so
+    the head of the list is the oldest seven weeks. The tool then split that one
+    spring regime into "train" and "test" as though they were far apart.
+
+    Pure and deterministic, so it can be tested without touching the network —
+    the previous version lived inline in collect_trades and a mutation swapping
+    it back to truncation went undetected.
+    """
+    if n <= 0 or not items:
+        return []
+    if len(items) <= n:
+        return list(items)
+    if n == 1:
+        return [items[0]]
+    # Spread across len-1 so the LAST item is always included. `i * len/n` stops
+    # short — for 1000 items into 100 it ended at index 990, quietly dropping
+    # the ten most recent setups. Those are the ones closest to live conditions,
+    # so they are the last ones you want to lose.
+    last = len(items) - 1
+    return [items[round(i * last / (n - 1))] for i in range(n)]
+
+
 CACHE_PATH = os.path.join(ROOT, "watch-out", "sweep_trades.json")
 
 
@@ -204,8 +231,21 @@ def collect_trades(days: int, max_setups: int, universe_limit: int) -> list:
 
     universe = bt.get_universe(limit=universe_limit) \
         if hasattr(bt, "get_universe") else []
-    setups = bt.find_setup_days(universe, days=days)[:max_setups]
-    print(f"  {len(setups)} candidate setup day(s) to replay")
+    all_setups = bt.find_setup_days(universe, days=days)
+
+    # Stride, don't truncate. find_setup_days returns them sorted by DATE, so
+    # `[:max_setups]` took the EARLIEST ones — a 180-day request measured
+    # 2026-03-12 to 2026-05-01 and reported it as half a year. That is one
+    # spring market regime wearing a six-month label, and walk-forward then
+    # split seven weeks into "train" and "test" as if they were distant.
+    #
+    # An evenly-spaced slice keeps the full window represented and stays
+    # deterministic.
+    setups = stride_sample(all_setups, max_setups)
+
+    if setups:
+        print(f"  {len(setups)} of {len(all_setups)} setup day(s) to replay "
+              f"({setups[0]['date']} → {setups[-1]['date']})")
 
     trades = []
     for k, s in enumerate(setups, 1):
@@ -331,8 +371,26 @@ def split_by_date(trades: list, frac: float = 0.5) -> tuple:
 
 
 def best_setting(trades: list, field: str, values: list, **fixed):
-    """Highest-expectancy value that still clears MIN_SAMPLE. None if none do."""
-    rows = [r for r in sweep_1d(trades, field, values, **fixed) if r["reliable"]]
+    """
+    Highest-expectancy value that clears MIN_SAMPLE *and is profitable*.
+
+    The profitability requirement is the fix for a real false positive. This
+    used to return the best cell even when every cell lost money, and
+    walk_forward would then declare HELD if the test half happened to come out
+    positive. An actual run produced:
+
+        chosen on train: price_min=4 (exp -0.351R) -> test +0.355R -> HELD
+
+    Nothing was held. A losing setting was picked, the next period flipped sign,
+    and the tool called it corroboration. Two of three HELD verdicts in that run
+    were this bug.
+
+    If no cell is profitable in training there is nothing to carry forward, and
+    the honest answer is no verdict.
+    """
+    rows = [r for r in sweep_1d(trades, field, values, **fixed)
+            if r["reliable"] and r["expectancy"] is not None
+            and r["expectancy"] > 0]
     if not rows:
         return None
     return max(rows, key=lambda r: r["expectancy"])
@@ -365,8 +423,8 @@ def walk_forward(trades: list, field: str, values: list, label: str,
 
     pick = best_setting(train, field, values, **fixed)
     if not pick:
-        L.append(f"  no cell on the training half reached {MIN_SAMPLE} trades — "
-                 f"cannot choose a setting to test")
+        L.append(f"  no PROFITABLE cell on the training half with "
+                 f"{MIN_SAMPLE}+ trades — nothing to carry forward, no verdict")
         return "\n".join(L)
 
     kwargs = dict(fixed); kwargs[field] = pick["value"]
@@ -592,6 +650,38 @@ def self_test() -> int:
               for m in (1, 6) for d in range(1, 21)]
     check("a setting that survives out of sample is called HELD",
           "HELD" in walk_forward(steady, "min_rvol", [2, 9], "demo"))
+
+    # THE FALSE POSITIVE. A losing training half followed by a winning test
+    # half must NOT read as HELD. A real run produced
+    # "chosen on train: price_min=4 (exp -0.351R) -> test +0.355R -> HELD",
+    # which is noise flipping sign, reported as corroboration.
+    lose_then_win = (
+        [{"date": f"2026-01-{d:02d}", "rvol": 9, "price": 5, "pct": 20,
+          "r_multiple": -1.0} for d in range(1, 21)]
+        + [{"date": f"2026-06-{d:02d}", "rvol": 9, "price": 5, "pct": 20,
+            "r_multiple": 1.0} for d in range(1, 21)])
+    wf_bad = walk_forward(lose_then_win, "min_rvol", [2, 9], "demo")
+    check("a LOSING training half is never called HELD",
+          "HELD" not in wf_bad and "no PROFITABLE cell" in wf_bad)
+
+    check("best_setting refuses to pick a losing cell",
+          best_setting(lose_then_win[:20], "min_rvol", [2, 9]) is None)
+
+    # ── stride sampling ─────────────────────────────────────────────────────
+    # Setups arrive sorted by date, so truncating measures only the oldest
+    # slice. A 180-day request reported 2026-03-12 to 2026-05-01 — seven weeks.
+    dates = [f"day{i:03d}" for i in range(1000)]
+    s = stride_sample(dates, 100)
+    check("stride keeps both endpoints",
+          s[0] == dates[0] and s[-1] == dates[-1], f"{s[0]}..{s[-1]}")
+    check("stride spans the whole range, not the front",
+          s[-1] != dates[99], f"last={s[-1]} (truncation would give {dates[99]})")
+    check("stride returns exactly n items", len(s) == 100, str(len(s)))
+    check("stride is deterministic", stride_sample(dates, 100) == s)
+    check("stride passes short lists through",
+          stride_sample(dates[:10], 100) == dates[:10])
+    check("stride handles empty and zero safely",
+          stride_sample([], 10) == [] and stride_sample(dates, 0) == [])
 
     print()
     if fails:
