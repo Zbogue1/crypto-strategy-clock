@@ -19,6 +19,13 @@ fomo_aftermath.json
 kalshi_event_portfolio.json
 reports/
 
+# Secrets — never commit. Nothing in this repo reads a .env, but if one is ever
+# created for local tooling it must not be committed by accident.
+.env
+.env.*
+*.pem
+*.key
+
 # Runtime learning output, rebuilt by the FOMO learning cycle. Its siblings
 # (kalshi_event_portfolio.json, stock_portfolio.json) are already ignored;
 # this one was just never added, so it shows up as untracked after every run.
