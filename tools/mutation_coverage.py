@@ -78,6 +78,14 @@ MUTATIONS = {
  "hud_state_endpoint": ("fomo_tracker.py",
     b"    if not HUD_TOKEN:\n        return False",
     b"    if not HUD_TOKEN:\n        return True  # MUT: open to everyone"),
+
+ # The original sin: flagging a tranche as harvested when the sale ABORTED.
+ # $MADE was marked sold while still holding 100% of its units. This scenario
+ # existed the whole time and was in NEITHER list — the coverage report said
+ # "13 covered, 10 uncovered" out of 24, and nobody noticed the arithmetic.
+ "tranche_aborts": ("fomo_exit.py",
+    b"    def _abort(why: str) -> float:\n        log.error(",
+    b"    def _abort(why: str) -> float:\n        holding['tranche_1_sold'] = True  # MUT\n        log.error("),
 }
 
 # Scenarios with NO automated mutation yet. Each was hand-mutated when written,
@@ -128,30 +136,64 @@ for scn, (fname, anchor, mutant) in MUTATIONS.items():
 
 print()
 
-# Report the gap explicitly. A tool that silently covers a third of the suite
-# is itself the "green light over untested code" problem it exists to prevent —
-# a clean run here reads as "the suite is trustworthy" and only means "the
-# scenarios I happen to know about are".
+# ─── ACCOUNT FOR EVERY SCENARIO ───────────────────────────────────────────────
+# Read the real scenario list instead of trusting the two lists above.
+#
+# The first version of this report printed "13 covered, 10 uncovered" against a
+# suite of 24, and the missing one was `tranche_aborts` — the scenario guarding
+# the most expensive bug this project has had. A hand-maintained inventory
+# drifts the moment anyone adds a scenario, and a coverage report with a hole in
+# its own accounting is the exact failure it exists to prevent.
+#
+# So: derive the truth, and fail loudly on anything unaccounted for.
+unaccounted = []
 try:
-    _all = subprocess.run([sys.executable, "-B", str(SIM), "--list"],
-                          cwd=str(ROOT), capture_output=True, text=True,
-                          timeout=60).stdout
-    total = sum(1 for line in _all.splitlines()
-                if line.strip() and not line.startswith(" ") and "  " in line)
-except Exception:
-    total = 0
+    sys.path.insert(0, str(ROOT / "tools"))
+    import importlib.util
+    _spec = importlib.util.spec_from_file_location("_sim_probe", SIM)
+    _mod = importlib.util.module_from_spec(_spec)
+    _argv, sys.argv = sys.argv, ["simulate.py", "--list"]
+    os.environ["PAPER_TEST_MODE"] = "1"
+    try:
+        _spec.loader.exec_module(_mod)
+    except SystemExit:
+        pass
+    finally:
+        sys.argv = _argv
+    every = set(_mod.SCENARIOS)
+    unaccounted = sorted(every - set(MUTATIONS) - set(UNCOVERED))
+    ghosts = sorted((set(MUTATIONS) | set(UNCOVERED)) - every)
+    print(f"COVERAGE: {len(MUTATIONS)} of {len(every)} scenario(s) have an "
+          f"automated mutation.")
+    if ghosts:
+        print(f"          {len(ghosts)} listed scenario(s) no longer exist: "
+              f"{', '.join(ghosts)}")
+except Exception as e:                      # noqa: BLE001
+    print(f"COVERAGE: {len(MUTATIONS)} scenario(s) covered "
+          f"(could not read the full list: {e})")
 
-covered = len(MUTATIONS)
-print(f"COVERAGE: {covered} scenario(s) have an automated mutation.")
 if UNCOVERED:
-    print(f"          {len(UNCOVERED)} do NOT — hand-verified once, "
+    print(f"          {len(UNCOVERED)} known-uncovered — hand-verified once, "
           f"not re-checked:")
     for s in UNCOVERED:
         print(f"            - {s}")
     print("          A regression in those is invisible to this tool.")
 
+if unaccounted:
+    print()
+    print(f"  UNACCOUNTED: {len(unaccounted)} scenario(s) are in NEITHER list —")
+    print(f"  neither covered nor knowingly skipped: {', '.join(unaccounted)}")
+    print("  A scenario nobody has decided about is worse than one skipped on")
+    print("  purpose. Add a mutation, or add it to UNCOVERED deliberately.")
+
 print()
 if useless:
     print(f"{len(useless)} scenario(s) PROVE NOTHING: {', '.join(useless)}")
     sys.exit(len(useless))
-print("Every COVERED scenario fails when its target is broken.")
+if unaccounted:
+    # Non-zero exit so preflight blocks on it. An unaccounted scenario is a
+    # silent hole in the one report whose job is finding silent holes.
+    print(f"{len(unaccounted)} scenario(s) UNACCOUNTED FOR — decide about them.")
+    sys.exit(len(unaccounted))
+print("Every COVERED scenario fails when its target is broken, and every "
+      "scenario is accounted for.")
