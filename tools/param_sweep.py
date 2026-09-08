@@ -182,6 +182,91 @@ def collect_trades(days: int, max_setups: int, universe_limit: int) -> list:
     return trades
 
 
+# ─── MONTE CARLO ──────────────────────────────────────────────────────────────
+
+def bootstrap(trades: list, n_runs: int = 2000, seed: int = 0) -> Optional[dict]:
+    """
+    Resample the trade list WITH replacement, n_runs times, and return the
+    distribution of mean R.
+
+    WHY. Every number above is a point estimate with no error bars, and we
+    already watched one move a long way: MIN_RVOL=5.0 read +0.385R, then
+    +0.800R, then +0.473R across three runs of the same strategy. Without a
+    spread there is no way to tell a real difference between two cells from
+    noise — which is why the plateau reading had to be hedged in prose.
+
+    Bootstrapping asks: given these exact trades, how much would the mean move
+    if luck had dealt them in a different order and mix? If the 5th-95th
+    percentile straddles zero, the cell is not evidence of anything.
+
+    Returns percentiles plus P(profitable) — the share of resamples with a
+    positive mean.
+    """
+    if not trades:
+        return None
+    import random
+    rng = random.Random(seed)          # seeded: same data -> same verdict
+    rs = [t["r_multiple"] for t in trades]
+    n = len(rs)
+    means = []
+    for _ in range(n_runs):
+        means.append(sum(rng.choice(rs) for _ in range(n)) / n)
+    means.sort()
+
+    def pct(p):
+        return means[min(n_runs - 1, max(0, int(p / 100 * n_runs)))]
+
+    return {
+        "n":        n,
+        "mean":     sum(rs) / n,
+        "p05":      pct(5),
+        "p50":      pct(50),
+        "p95":      pct(95),
+        "p_profit": sum(1 for m in means if m > 0) / n_runs * 100,
+    }
+
+
+def monte_carlo_sweep(trades: list, field: str, values: list, label: str,
+                      n_runs: int = 2000, **fixed) -> str:
+    """
+    Bootstrap EVERY cell, not one.
+
+    The source is explicit about this: "If you do a Monte Carlo on just one
+    parameter set you're doing it completely wrong." One cell tells you the
+    noise inside that cell. Every cell tells you whether the DIFFERENCES between
+    cells survive their own error bars — which is the actual question when
+    picking a threshold.
+    """
+    L = [f"\n{label}", "-" * 72,
+         f"  {'value':>7}  {'n':>4}  {'mean':>8}  {'5th':>8}  {'95th':>8}  "
+         f"{'P(profit)':>9}  verdict"]
+
+    any_cell = False
+    for v in values:
+        kwargs = dict(fixed); kwargs[field] = v
+        sel = [t for t in trades
+               if t.get("rvol", 0) >= kwargs.get("min_rvol", 0)
+               and kwargs.get("price_min", 0) <= t.get("price", 0)
+                   <= kwargs.get("price_max", 1e9)
+               and t.get("pct", 0) >= kwargs.get("min_pct", 0)]
+        if len(sel) < MIN_SAMPLE:
+            L.append(f"  {v:>7}  {len(sel):>4}  — below {MIN_SAMPLE}, not shown")
+            continue
+        any_cell = True
+        b = bootstrap(sel, n_runs=n_runs)
+        # A cell whose 5th percentile is under zero cannot be distinguished
+        # from a losing setting by this data, however good its mean looks.
+        verdict = ("solid"  if b["p05"] > 0 else
+                   "shaky"  if b["p_profit"] >= 90 else
+                   "NOISE")
+        L.append(f"  {v:>7}  {b['n']:>4}  {b['mean']:>+8.3f}  {b['p05']:>+8.3f}  "
+                 f"{b['p95']:>+8.3f}  {b['p_profit']:>8.0f}%  {verdict}")
+
+    if not any_cell:
+        L.append(f"  no cell reached {MIN_SAMPLE} trades — widen --days")
+    return "\n".join(L)
+
+
 # ─── WALK-FORWARD ─────────────────────────────────────────────────────────────
 
 def split_by_date(trades: list, frac: float = 0.5) -> tuple:
@@ -306,6 +391,59 @@ def self_test() -> int:
     check("unreliable cells are not printed as numbers",
           "not shown" in txt or all(r["reliable"] for r in rows))
 
+    # ── monte carlo ─────────────────────────────────────────────────────────
+    # A strong, consistent edge: 200 trades, every one +1R.
+    strong = [{"rvol": 9, "price": 5, "pct": 20, "r_multiple": 1.0}] * 200
+    b = bootstrap(strong, n_runs=500)
+    check("a certain winner has a 5th percentile above zero", b["p05"] > 0,
+          f"p05={b['p05']:+.3f}")
+    check("and 100% of resamples profitable", b["p_profit"] == 100.0)
+
+    # A coin flip: +1R and -1R in equal measure. Mean ~0, must NOT read solid.
+    coin = ([{"rvol": 9, "price": 5, "pct": 20, "r_multiple": 1.0}] * 100
+            + [{"rvol": 9, "price": 5, "pct": 20, "r_multiple": -1.0}] * 100)
+    bc = bootstrap(coin, n_runs=500)
+    check("a coin flip straddles zero", bc["p05"] < 0 < bc["p95"],
+          f"[{bc['p05']:+.3f}, {bc['p95']:+.3f}]")
+    check("coin flip is ~50% profitable", 30 < bc["p_profit"] < 70,
+          f"{bc['p_profit']:.0f}%")
+
+    # THE case that matters: a positive MEAN that is not distinguishable from
+    # noise. Three big winners carrying twenty losers — exactly the shape a
+    # small sample produces, and exactly what a point estimate hides.
+    lucky = ([{"rvol": 9, "price": 5, "pct": 20, "r_multiple": 9.0}] * 3
+             + [{"rvol": 9, "price": 5, "pct": 20, "r_multiple": -1.0}] * 20)
+    bl = bootstrap(lucky, n_runs=800)
+    check("a positive mean carried by outliers is flagged, not celebrated",
+          bl["mean"] > 0 and bl["p05"] < 0,
+          f"mean={bl['mean']:+.3f} but p05={bl['p05']:+.3f}")
+
+    check("bootstrap is deterministic for a given seed",
+          bootstrap(coin, n_runs=200)["p50"] == bootstrap(coin, n_runs=200)["p50"])
+    check("empty input returns None, not a fake distribution",
+          bootstrap([]) is None)
+
+    # Assert the VERDICT is right, not merely that a verdict appeared.
+    # The first version of this check only counted verdict words, so a mutation
+    # hardcoding "solid" for every cell sailed through — a test that cannot
+    # distinguish a correct answer from a constant is not a test.
+    mc_strong = monte_carlo_sweep(strong, "min_rvol", [2], "demo", n_runs=300)
+    check("a certain winner is called solid",
+          "solid" in mc_strong and "NOISE" not in mc_strong)
+
+    mc_coin = monte_carlo_sweep(coin, "min_rvol", [2], "demo", n_runs=300)
+    check("a coin flip is called NOISE, never solid",
+          "NOISE" in mc_coin and "solid" not in mc_coin)
+
+    mc_lucky = monte_carlo_sweep(lucky, "min_rvol", [2], "demo", n_runs=300)
+    check("an outlier-carried mean is not called solid",
+          "solid" not in mc_lucky)
+
+    mc_both = monte_carlo_sweep(strong + coin, "min_rvol", [2, 99],
+                                "demo", n_runs=200)
+    check("monte carlo evaluates every cell, not one",
+          mc_both.count("\n  ") >= 2)
+
     # ── walk-forward ────────────────────────────────────────────────────────
     early = [{"date": f"2026-01-{d:02d}", "rvol": 9, "price": 5, "pct": 20,
               "r_multiple": 1.0} for d in range(1, 21)]
@@ -379,6 +517,27 @@ def main():
                  min_rvol=sig.MIN_RVOL, price_min=sig.PRICE_MIN,
                  price_max=sig.PRICE_MAX),
         "MIN_PCT_CHANGE sweep (live setting: %.0f%%)" % sig.MIN_PCT_CHANGE, "%"))
+
+    # ── Monte Carlo on EVERY cell ─────────────────────────────────────────────
+    print("\n" + "=" * 72)
+    print(" MONTE CARLO — error bars on every cell, not just the best one")
+    print("=" * 72)
+
+    print(monte_carlo_sweep(trades, "min_rvol", [2, 3, 4, 5, 6, 7, 8, 10],
+                            "MIN_RVOL", price_min=sig.PRICE_MIN,
+                            price_max=sig.PRICE_MAX, min_pct=sig.MIN_PCT_CHANGE))
+
+    print(monte_carlo_sweep(trades, "price_min", [0.5, 1, 2, 3, 4, 5],
+                            "PRICE_MIN", min_rvol=sig.MIN_RVOL,
+                            price_max=sig.PRICE_MAX, min_pct=sig.MIN_PCT_CHANGE))
+
+    print(monte_carlo_sweep(trades, "min_pct", [5, 10, 15, 20, 30, 50],
+                            "MIN_PCT_CHANGE", min_rvol=sig.MIN_RVOL,
+                            price_min=sig.PRICE_MIN, price_max=sig.PRICE_MAX))
+
+    print("\n  solid = 5th percentile above zero — the edge survives bad luck")
+    print("  shaky = mostly profitable but the 5th percentile dips below zero")
+    print("  NOISE = cannot be told apart from a losing setting by this data")
 
     # ── Walk-forward: the only test that asks whether any of this generalises ──
     print("\n" + "=" * 64)
