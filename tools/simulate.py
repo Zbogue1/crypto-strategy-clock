@@ -866,6 +866,85 @@ def sim_decision_snapshot():
     return ok, L
 
 
+@scenario("spread_filter",
+          "A wide spread disqualifies outright; a missing quote never passes")
+def sim_spread_filter():
+    """
+    Ross: "we had MMF moving, but... I can't trade that. The spreads are too
+    big." A disqualifier, not a sixth pillar — he does not weigh it against
+    other qualities.
+
+    The dangerous case is the MISSING quote. Pre-market and thin names often
+    have none, and scoring absent data as a tight spread would wave through
+    precisely the illiquid stocks this filter exists to stop.
+    """
+    import stock_signals as SG
+
+    def snap(spread_pct, **kw):
+        s = {"symbol": "SIM", "price": 5.0, "pct_change": 60.0, "rvol": 12.0,
+             "news_count": 2, "news_feed_ok": True, "float_m": 8.0,
+             "spread_pct": spread_pct}
+        s.update(kw)
+        return s
+
+    tight  = SG.score_pillars(snap(0.20), market_hot=True)   # 1c on a $5 stock
+    wide   = SG.score_pillars(snap(3.00), market_hot=True)   # 15c on a $5 stock
+    absent = SG.score_pillars(snap(None), market_hot=True)
+    edge   = SG.score_pillars(snap(SG.MAX_SPREAD_PCT), market_hot=True)
+
+    # Exercise the PARSING too, not just the scoring. Building the snap dict by
+    # hand skips get_snapshot entirely — a mutation making it return 0.0 for a
+    # missing quote went undetected, and 0.0 reads as a perfect spread. That is
+    # the exact stock this filter exists to reject.
+    import stock_data as SD
+    _orig_get = SD._get
+    try:
+        def _payload(with_quote):
+            base = {"dailyBar": {"o": 4.9, "h": 5.2, "l": 4.8, "c": 5.0,
+                                 "v": 900000},
+                    "prevDailyBar": {"c": 3.1},
+                    "latestTrade": {"p": 5.0}}
+            if with_quote:
+                base["latestQuote"] = {"bp": 4.99, "ap": 5.01}
+            return base
+
+        SD._get = lambda *a, **k: _payload(True)
+        with_q = SD.get_snapshot("SIM")
+        SD._get = lambda *a, **k: _payload(False)
+        without_q = SD.get_snapshot("SIM")
+    finally:
+        SD._get = _orig_get
+
+    parsed_ok = (with_q["spread"] is not None
+                 and abs(with_q["spread"] - 0.02) < 1e-6
+                 and with_q["spread_pct"] is not None)
+    absent_is_none = (without_q["spread"] is None
+                      and without_q["spread_pct"] is None)
+
+    L = [f"quote parsed: spread=${with_q['spread']} "
+         f"({with_q['spread_pct']}% of price)",
+         f"no quote -> spread_pct={without_q['spread_pct']} (want None, not 0)",
+         f"tight 0.20% -> qualifies={tight['qualifies']} grade={tight['grade']}",
+         f"wide 3.00%  -> qualifies={wide['qualifies']} grade={wide['grade']} "
+         f"({wide['disqualified_by'][:40]})",
+         f"no quote    -> spread_ok={absent['spread_ok']} "
+         f"qualifies={absent['qualifies']}",
+         f"exactly at the limit passes={edge['spread_ok']}",
+         f"spread is NOT a sixth pillar={'spread' not in tight['pillars']}",
+         f"pillar count unchanged={len(tight['pillars'])}"]
+    ok = (parsed_ok and absent_is_none
+          and tight["qualifies"] is True and tight["spread_ok"] is True
+          # wide spread disqualifies even though every pillar passes
+          and wide["qualifies"] is False and wide["grade"] == "F"
+          and wide["passed"] >= SG.MIN_PILLARS
+          # unknown is unknown — not a pass, but not a rejection either
+          and absent["spread_ok"] is None and absent["qualifies"] is True
+          and edge["spread_ok"] is True
+          and "spread" not in tight["pillars"]
+          and len(tight["pillars"]) == 5)
+    return ok, L
+
+
 @scenario("stock_close", "Stock close on a bare state — no crash, cash credited")
 def sim_stock_close():
     import stock_portfolio as SP

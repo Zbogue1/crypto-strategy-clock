@@ -90,6 +90,21 @@ MIN_PILLARS       = int(os.getenv("STOCK_MIN_PILLARS", "4"))
 OBVIOUS_PCT       = float(os.getenv("STOCK_OBVIOUS_PCT", "50.0"))
 OBVIOUS_RVOL      = float(os.getenv("STOCK_OBVIOUS_RVOL", "10.0"))
 
+# ─── SPREAD ───────────────────────────────────────────────────────────────────
+# Ross rejects on spread outright, no scoring: "we had MMF moving, but I was
+# like, ah, that one is just I can't trade that. The spreads are too big."
+#
+# A DISQUALIFIER, not a sixth pillar. He does not weigh it against other
+# qualities — a stock you cannot get in and out of cleanly is not a setup at
+# any grade.
+#
+# THE NUMBER IS OURS. He never states one. 1.0% of price is chosen because a
+# typical stop on this strategy sits 2-4% below entry, so a 1% spread already
+# eats a quarter to a half of the risk before the trade moves — paid twice,
+# entering and exiting. Labelled in the note so a later review can tell our
+# invention from his rule.
+MAX_SPREAD_PCT    = float(os.getenv("STOCK_MAX_SPREAD_PCT", "1.0"))
+
 # ─── PULLBACK PARAMETERS ──────────────────────────────────────────────────────
 MAX_RETRACE_PCT   = float(os.getenv("STOCK_MAX_RETRACE", "50.0"))
 EMA_PERIOD        = int(os.getenv("STOCK_EMA_PERIOD", "9"))
@@ -273,15 +288,42 @@ def score_pillars(snap: dict, market_hot: bool = True) -> dict:
     # clothes. Hard veto regardless of how strong the other pillars look.
     harmful_catalyst = bool(pillars.get("catalyst", {}).get("harmful"))
 
+    # ── SPREAD — a disqualifier, and NOT one of the five ─────────────────────
+    # Kept out of `pillars` deliberately: adding a sixth entry would change the
+    # meaning of "4 of 5" everywhere it is counted, and would let a wide spread
+    # be outvoted by other qualities. Ross does not trade a wide spread at any
+    # grade.
+    #
+    # Missing quote data is UNKNOWN, never a pass. Pre-market and thin names
+    # often have no quote, and treating that as a tight spread would wave
+    # through exactly the illiquid stocks the filter exists to stop.
+    spread_pct = snap.get("spread_pct")
+    if spread_pct is None:
+        spread_ok, spread_note = None, "spread unknown (no quote available)"
+    else:
+        spread_ok = spread_pct <= MAX_SPREAD_PCT
+        spread_note = (f"{spread_pct:.2f}% of price vs {MAX_SPREAD_PCT:.2f}% max "
+                       f"(our threshold, not a stated Ross number)")
+
+    wide_spread = spread_ok is False
+
+    disq = ("harmful catalyst (dilution/distress)" if harmful_catalyst
+            else f"spread too wide — {spread_note}" if wide_spread else "")
+
     return {
         "symbol":     snap.get("symbol", "?"),
         "pillars":    pillars,
         "passed":     passed,
         "failed":     failed,
         "unknown":    unknown,
-        "qualifies":  passed >= MIN_PILLARS and not harmful_catalyst,
-        "disqualified_by": "harmful catalyst (dilution/distress)" if harmful_catalyst else "",
-        "grade":      "F" if harmful_catalyst else
+        "spread_pct": spread_pct,
+        "spread_ok":  spread_ok,          # True / False / None(unknown)
+        "spread_note": spread_note,
+        "qualifies":  (passed >= MIN_PILLARS
+                       and not harmful_catalyst
+                       and not wide_spread),
+        "disqualified_by": disq,
+        "grade":      "F" if (harmful_catalyst or wide_spread) else
                       ("A" if passed == 5 else ("B" if passed == 4 else "C")),
     }
 

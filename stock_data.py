@@ -251,10 +251,28 @@ def get_snapshot(symbol: str) -> Optional[dict]:
     daily = d.get("dailyBar") or {}
     prev  = d.get("prevDailyBar") or {}
     trade = d.get("latestTrade") or {}
+    quote = d.get("latestQuote") or {}
 
     prev_close = float(prev.get("c", 0) or 0)
     last       = float(trade.get("p", 0) or 0) or float(daily.get("c", 0) or 0)
     pct = ((last / prev_close - 1) * 100) if prev_close else 0.0
+
+    # BID/ASK. This response has always carried latestQuote and this function
+    # always threw it away — the docstring says "latest quote/trade" and only
+    # the trade was read. Ross rejects on spread outright ("MMF... I can't trade
+    # that. The spreads are too big"), and that filter was unbuildable purely
+    # because the data was being discarded at no saving.
+    #
+    # bid/ask/spread are None when the quote is absent or nonsensical — NOT 0.
+    # A zero spread reads as a perfect market and would pass every filter; the
+    # honest value for "we don't know" is unknown.
+    bid = float(quote.get("bp", 0) or 0)
+    ask = float(quote.get("ap", 0) or 0)
+    spread = spread_pct = None
+    if bid > 0 and ask > 0 and ask >= bid:
+        spread = round(ask - bid, 4)
+        if last > 0:
+            spread_pct = round(spread / last * 100, 3)
 
     return {
         "symbol":     symbol,
@@ -265,6 +283,10 @@ def get_snapshot(symbol: str) -> Optional[dict]:
         "day_high":   float(daily.get("h", 0) or 0),
         "day_low":    float(daily.get("l", 0) or 0),
         "day_volume": int(daily.get("v", 0) or 0),
+        "bid":        bid or None,
+        "ask":        ask or None,
+        "spread":     spread,
+        "spread_pct": spread_pct,
     }
 
 
