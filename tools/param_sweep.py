@@ -182,6 +182,84 @@ def collect_trades(days: int, max_setups: int, universe_limit: int) -> list:
     return trades
 
 
+# ─── WALK-FORWARD ─────────────────────────────────────────────────────────────
+
+def split_by_date(trades: list, frac: float = 0.5) -> tuple:
+    """
+    Chronological split. NOT random — a random split leaks the future into the
+    training half, because trades from the same week share market conditions.
+    """
+    ordered = sorted(trades, key=lambda t: t.get("date", ""))
+    cut = int(len(ordered) * frac)
+    return ordered[:cut], ordered[cut:]
+
+
+def best_setting(trades: list, field: str, values: list, **fixed):
+    """Highest-expectancy value that still clears MIN_SAMPLE. None if none do."""
+    rows = [r for r in sweep_1d(trades, field, values, **fixed) if r["reliable"]]
+    if not rows:
+        return None
+    return max(rows, key=lambda r: r["expectancy"])
+
+
+def walk_forward(trades: list, field: str, values: list, label: str,
+                 **fixed) -> str:
+    """
+    Choose a threshold on the FIRST half, then measure it on the second half
+    without re-tuning.
+
+    This is the only test here that can distinguish a real effect from a shape
+    fitted to one particular six months. Everything above describes the sample;
+    this asks whether the sample generalises.
+
+    A setting that wins in-sample and collapses out-of-sample was curve-fit —
+    even though we never consciously fitted it, because CHOOSING the best cell
+    from a sweep is fitting, whatever the number's origin.
+    """
+    train, test = split_by_date(trades)
+    L = [f"\n{label}", "-" * 64,
+         f"  train: {len(train)} trades ({train[0]['date']} → {train[-1]['date']})"
+         if train else "  train: empty",
+         f"  test:  {len(test)} trades ({test[0]['date']} → {test[-1]['date']})"
+         if test else "  test:  empty"]
+
+    if not train or not test:
+        L.append("  not enough history to split — widen --days")
+        return "\n".join(L)
+
+    pick = best_setting(train, field, values, **fixed)
+    if not pick:
+        L.append(f"  no cell on the training half reached {MIN_SAMPLE} trades — "
+                 f"cannot choose a setting to test")
+        return "\n".join(L)
+
+    kwargs = dict(fixed); kwargs[field] = pick["value"]
+    out = evaluate(test, **kwargs)
+
+    L.append(f"\n  chosen on train: {field}={pick['value']} "
+             f"(exp {pick['expectancy']:+.3f}R, n={pick['n']})")
+    if not out["reliable"]:
+        L.append(f"  out-of-sample:   n={out['n']} — below {MIN_SAMPLE}, "
+                 f"NO VERDICT POSSIBLE")
+        return "\n".join(L)
+
+    L.append(f"  out-of-sample:   exp {out['expectancy']:+.3f}R, "
+             f"win {out['win_rate']:.0f}%, n={out['n']}")
+
+    drop = pick["expectancy"] - out["expectancy"]
+    if out["expectancy"] <= 0:
+        L.append("  VERDICT: FAILED — profitable in training, unprofitable out "
+                 "of sample. This setting was fitted to the first half.")
+    elif drop > pick["expectancy"] * 0.5:
+        L.append(f"  VERDICT: WEAK — held its sign but lost {drop:+.3f}R "
+                 f"({drop / pick['expectancy'] * 100:.0f}%). Expect the live "
+                 f"result nearer the out-of-sample number.")
+    else:
+        L.append("  VERDICT: HELD — similar performance on data it was not "
+                 "chosen from. This is the only encouraging outcome available.")
+    return "\n".join(L)
+
+
 # ─── SELF TEST ────────────────────────────────────────────────────────────────
 
 def self_test() -> int:
@@ -227,6 +305,29 @@ def self_test() -> int:
     txt = format_sweep(rows, "demo")
     check("unreliable cells are not printed as numbers",
           "not shown" in txt or all(r["reliable"] for r in rows))
+
+    # ── walk-forward ────────────────────────────────────────────────────────
+    early = [{"date": f"2026-01-{d:02d}", "rvol": 9, "price": 5, "pct": 20,
+              "r_multiple": 1.0} for d in range(1, 21)]
+    late  = [{"date": f"2026-06-{d:02d}", "rvol": 9, "price": 5, "pct": 20,
+              "r_multiple": -1.0} for d in range(1, 21)]
+    tr, te = split_by_date(early + late)
+    check("split is chronological, not random",
+          all(t["date"].startswith("2026-01") for t in tr)
+          and all(t["date"].startswith("2026-06") for t in te),
+          f"train {tr[0]['date']}..{tr[-1]['date']}")
+
+    # Profitable in training, a disaster after — must be reported as FAILED.
+    wf = walk_forward(early + late, "min_rvol", [2, 9], "demo")
+    check("a setting that dies out of sample is called FAILED",
+          "FAILED" in wf)
+
+    # Consistent throughout — must be reported as HELD.
+    steady = [{"date": f"2026-0{m}-{d:02d}", "rvol": 9, "price": 5, "pct": 20,
+               "r_multiple": 1.0 if d % 3 else -1.0}
+              for m in (1, 6) for d in range(1, 21)]
+    check("a setting that survives out of sample is called HELD",
+          "HELD" in walk_forward(steady, "min_rvol", [2, 9], "demo"))
 
     print()
     if fails:
@@ -278,6 +379,23 @@ def main():
                  min_rvol=sig.MIN_RVOL, price_min=sig.PRICE_MIN,
                  price_max=sig.PRICE_MAX),
         "MIN_PCT_CHANGE sweep (live setting: %.0f%%)" % sig.MIN_PCT_CHANGE, "%"))
+
+    # ── Walk-forward: the only test that asks whether any of this generalises ──
+    print("\n" + "=" * 64)
+    print(" WALK-FORWARD — chosen on the first half, measured on the second")
+    print("=" * 64)
+
+    print(walk_forward(trades, "min_rvol", [2, 3, 4, 5, 6, 7, 8, 10],
+                       "MIN_RVOL", price_min=sig.PRICE_MIN,
+                       price_max=sig.PRICE_MAX, min_pct=sig.MIN_PCT_CHANGE))
+
+    print(walk_forward(trades, "price_min", [0.5, 1, 2, 3, 4, 5],
+                       "PRICE_MIN", min_rvol=sig.MIN_RVOL,
+                       price_max=sig.PRICE_MAX, min_pct=sig.MIN_PCT_CHANGE))
+
+    print(walk_forward(trades, "min_pct", [5, 10, 15, 20, 30, 50],
+                       "MIN_PCT_CHANGE", min_rvol=sig.MIN_RVOL,
+                       price_min=sig.PRICE_MIN, price_max=sig.PRICE_MAX))
 
     print("\n" + "=" * 64)
     print(" HOW TO READ THIS")
