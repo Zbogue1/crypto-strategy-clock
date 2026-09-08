@@ -209,6 +209,43 @@ The first Gemini pass and this one had the same model, same video, same account
 missed entirely, including the single most actionable one. A second reader is
 worth little if both readers are asked the same question.
 
+---
+
+## Measured against our own data — `tools/param_sweep.py`
+
+281 replayed trades, 180 days, walk-forward split at 2026-05-08.
+
+| Threshold | Our data says | Action |
+|---|---|---|
+| RVOL | **plateau 4x–7x**, all +0.42 to +0.47R | keep 5.0 — mid-plateau |
+| PRICE_MIN | monotone rising $0.5 → $5 across **three separate runs** | **$2 → $3** |
+| MIN_PCT | peak 15–20%, 10% marginally below | keep 10.0 — inside noise |
+
+Walk-forward: all three HELD. RVOL chose 6x on train (+0.500R) and scored
++0.432R on test; PRICE_MIN chose $3 (+0.500R → +0.596R); MIN_PCT chose 10%
+(+0.333R → +0.587R).
+
+### Three caveats that matter more than the result
+
+**The estimate is unstable.** `MIN_RVOL = 5.0` has read +0.385R, then +0.800R,
+then +0.473R across three runs of increasing size. Plan around +0.4R; the +0.800
+was noise.
+
+**Two of three improved out of sample.** Settings do not normally get better on
+unseen data — that says May–June was an easier market than March–May, so HELD
+was graded on a friendly curve. A harder test half could have produced WEAK.
+
+**The backtest validates a LOOSER strategy than the bot runs.**
+`find_setup_days` screens on percent change, RVOL and price only. The live bot
+demands 4 of 5 pillars *including catalyst and float*, then a valid pullback.
+That is why the backtest finds ~2.2 setups a day while the live scan finds zero
+candidates a day. These numbers say the Ross entry pattern has positive
+expectancy on liquid movers. They say **nothing** about whether our catalyst and
+float gates add edge or destroy it.
+
+Also: `replay_session` fills exactly at the stop and target. Real fills are
+worse. +0.4R is an optimistic ceiling.
+
 ### Next
 
 - #16 (50-day RVOL) is the cheapest high-value change in this whole document.

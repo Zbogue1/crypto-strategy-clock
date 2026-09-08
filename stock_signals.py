@@ -29,11 +29,26 @@ log = logging.getLogger(__name__)
 # ─── PILLAR THRESHOLDS ────────────────────────────────────────────────────────
 MIN_RVOL          = float(os.getenv("STOCK_MIN_RVOL", "5.0"))
 MIN_PCT_CHANGE    = float(os.getenv("STOCK_MIN_PCT", "10.0"))
-# $2, not $1. Confirmed three ways in xGIa8Vg0PWM: the transcript ("the price is
-# fine between 2 and 20"), the 5-Pillars slide ("Most day traders prefer $2.00 -
-# $20.00"), and the stock-selection criteria slide ("2-20 price"). Sub-$2 names
-# carry wider spreads relative to the move, which is the reason for the floor.
-PRICE_MIN         = float(os.getenv("STOCK_PRICE_MIN", "2.0"))
+# $3.
+#
+# Ross says $2 (transcript, the 5-Pillars slide, and the criteria slide all
+# agree). Our own data says higher is better, and this is the one place where
+# measurement outranks the source — he trades a different feed, a different
+# broker and far larger size, so his spread economics are not ours.
+#
+# tools/param_sweep.py, 281 replayed trades over 180 days:
+#     $0.50  +0.274R   $1  +0.358R   $2  +0.473R
+#     $3     +0.556R   $4  +0.637R   $5  +0.637R
+#
+# Monotonic, and monotonic in the same direction across three separate runs
+# (60-day, 232-trade, 281-trade). Walk-forward chose $3 on the first half of the
+# period and it HELD on the second (+0.500R train -> +0.596R test).
+#
+# Stopping at $3 rather than $4-5 deliberately: the higher cells rest on n=25,
+# they drift further from a threshold three sources attribute to Ross, and
+# raising the floor also shrinks an already thin candidate pool. $3 is the
+# furthest the evidence carries without over-fitting to one six-month window.
+PRICE_MIN         = float(os.getenv("STOCK_PRICE_MIN", "3.0"))
 PRICE_MAX         = float(os.getenv("STOCK_PRICE_MAX", "20.0"))
 # Small-account variant narrows to $5-10 (no leverage under $5)
 SMALL_ACCT_MIN    = float(os.getenv("STOCK_SMALL_PRICE_MIN", "5.0"))
