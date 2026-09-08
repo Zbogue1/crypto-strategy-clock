@@ -30,6 +30,7 @@ Exit code is the number of blocking findings.
 
 import ast
 import builtins
+import os
 import pathlib
 import subprocess
 import sys
@@ -307,6 +308,9 @@ def main() -> int:
                         if f.name.startswith(ACTIVE)})
     print("  static checks done")
 
+    check_imports([f for f in files if f.name.startswith(ACTIVE)])
+    print("  import check done")
+
     run_suite("sell audit", "sell_audit.py")
     run_suite("health scan", "health_scan.py")
     # Fire the real actions, not just inspect the code. This is what catches a
@@ -322,6 +326,93 @@ def main() -> int:
     print("  behavioural suites done")
 
     return report()
+
+
+# ─── 6. DOES IT ACTUALLY IMPORT? ──────────────────────────────────────────────
+
+def check_imports(paths) -> None:
+    """
+    Import every active module in a subprocess and BLOCK if any fails.
+
+    Every other check here reads the code. `ast.parse` proves a file is valid
+    Python; it proves nothing about whether it runs. A module-level NameError, a
+    bad `from x import y`, a decorator that raises — all parse perfectly, pass
+    every static check, and die the moment Railway starts the service.
+
+    That gap is real: a full session of edits touched module scope in six files
+    and preflight would have reported CLEAN on a build that could not boot.
+
+    Runs in a subprocess so a module with side effects at import time cannot
+    contaminate this process, with PAPER_TEST_MODE forced so nothing can write
+    to a live book while merely being imported.
+
+    Third-party packages absent from THIS machine but present on Railway
+    (anthropic, flask) are stubbed — their absence is an environment fact, not a
+    defect in our code, and blocking on it would make preflight unrunnable
+    locally.
+    """
+    names = sorted({p.stem for p in paths})
+    probe = (
+        "import sys, types, os\n"
+        "os.environ['PAPER_TEST_MODE'] = '1'\n"
+        "for _n, _a in (('anthropic', ('Anthropic',)), ):\n"
+        "    _m = types.ModuleType(_n)\n"
+        "    _m.Anthropic = lambda **k: None\n"
+        "    _m.APIStatusError = Exception; _m.APIError = Exception\n"
+        "    sys.modules.setdefault(_n, _m)\n"
+        "if 'flask' not in sys.modules:\n"
+        "    _f = types.ModuleType('flask')\n"
+        "    class _App:\n"
+        "        def __init__(s, *a, **k): pass\n"
+        "        def route(s, *a, **k): return lambda fn: fn\n"
+        "        def run(s, *a, **k): pass\n"
+        "        def add_url_rule(s, *a, **k): pass\n"
+        "    _f.Flask = _App\n"
+        "    _f.request = types.SimpleNamespace(json=None, args={}, headers={},"
+        " get_json=lambda *a, **k: None)\n"
+        "    _f.jsonify = lambda *a, **k: (a[0] if len(a) == 1 else dict(**k))\n"
+        "    _f.Response = lambda *a, **k: None\n"
+        "    sys.modules['flask'] = _f\n"
+        "import traceback, os.path\n"
+        "_seen = set()\n"
+        f"for _name in {names!r}:\n"
+        "    try:\n"
+        "        __import__(_name)\n"
+        "    except Exception as _e:\n"
+        "        # Blame the module where the traceback ORIGINATED, not the one\n"
+        "        # that happened to import it first. A single NameError in\n"
+        "        # stock_signals surfaced as three failures — stock_backtest,\n"
+        "        # stock_signals, stock_tracker — with the innocent importer\n"
+        "        # listed first. Three alarms for one bug, pointing at the\n"
+        "        # wrong file, is how a real finding gets skimmed past.\n"
+        "        _tb = _e.__traceback__\n"
+        "        _origin = _name\n"
+        "        while _tb is not None:\n"
+        "            _fn = _tb.tb_frame.f_code.co_filename\n"
+        "            if _fn.endswith('.py') and os.path.basename(_fn) != '<string>':\n"
+        "                _origin = os.path.splitext(os.path.basename(_fn))[0]\n"
+        "            _tb = _tb.tb_next\n"
+        "        _key = (_origin, type(_e).__name__, str(_e))\n"
+        "        if _key in _seen:\n"
+        "            continue\n"
+        "        _seen.add(_key)\n"
+        "        _via = '' if _origin == _name else f' (reached via {_name})'\n"
+        "        print(f'IMPORTFAIL {_origin} {type(_e).__name__}: {_e}{_via}')\n"
+    )
+    try:
+        r = subprocess.run([sys.executable, "-B", "-c", probe], cwd=str(ROOT),
+                           capture_output=True, text=True, timeout=180,
+                           env={**os.environ, "PAPER_TEST_MODE": "1",
+                                "PYTHONDONTWRITEBYTECODE": "1"})
+    except Exception as e:                       # noqa: BLE001
+        block("IMPORT-CHECK", "preflight", f"could not run the import probe: {e}")
+        return
+
+    for line in (r.stdout + r.stderr).splitlines():
+        if line.startswith("IMPORTFAIL "):
+            _, mod, rest = line.split(" ", 2)
+            block("IMPORT-FAILED", f"{mod}.py",
+                  f"{rest[:110]} — parses fine, will not start")
 
 
 def report() -> int:
