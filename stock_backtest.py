@@ -75,19 +75,29 @@ def get_universe(limit: int = 600) -> list:
         log.error(f"Assets fetch failed: {e}")
         return []
 
-    out = []
-    for a in assets:
-        if not a.get("tradable") or a.get("status") != "active":
-            continue
-        sym = a.get("symbol", "")
-        ok, _ = sd.is_tradeable_instrument(sym)
-        if not ok:
-            continue
-        out.append(sym)
-        if len(out) >= limit:
-            break
+    # DETERMINISM. This used to take the first `limit` symbols in whatever order
+    # Alpaca happened to return them — and that order is not guaranteed. So two
+    # runs of the same backtest screened DIFFERENT universes, found different
+    # setups, and produced different results that looked like the same
+    # experiment. Measured: 281 trades on one run and 147 on the next, same
+    # 180-day window, one day apart, with the expectancy flipping sign.
+    #
+    # Sort, then take an evenly-spaced slice. Sorting alone would bias the
+    # sample toward A-names; striding spreads it across the alphabet while
+    # staying reproducible — the same inputs now give the same universe.
+    eligible = sorted({
+        a.get("symbol", "") for a in assets
+        if a.get("tradable") and a.get("status") == "active"
+        and sd.is_tradeable_instrument(a.get("symbol", ""))[0]
+    })
+    if len(eligible) > limit:
+        step = len(eligible) / limit
+        out = [eligible[int(i * step)] for i in range(limit)]
+    else:
+        out = eligible
 
-    log.info(f"Universe: {len(out)} tradeable common-stock symbols")
+    log.info(f"Universe: {len(out)} of {len(eligible)} eligible symbols "
+             f"(deterministic stride)")
     return out
 
 

@@ -147,6 +147,40 @@ def format_sweep(rows: list, label: str, unit: str = "") -> str:
 
 # ─── DATA COLLECTION (network — runs on a machine with Alpaca keys) ──────────
 
+CACHE_PATH = os.path.join(ROOT, "watch-out", "sweep_trades.json")
+
+
+def _cache_key(days: int, max_setups: int, universe_limit: int) -> str:
+    return f"{days}d-{max_setups}s-{universe_limit}u"
+
+
+def load_cached_trades(days: int, max_setups: int, universe_limit: int):
+    """Reuse a previous collection so repeated analysis sees IDENTICAL data."""
+    try:
+        import json
+        with open(CACHE_PATH, encoding="utf-8") as f:
+            blob = json.load(f)
+    except Exception:
+        return None
+    if blob.get("key") != _cache_key(days, max_setups, universe_limit):
+        return None
+    return blob.get("trades") or None
+
+
+def save_cached_trades(trades: list, days: int, max_setups: int,
+                       universe_limit: int):
+    try:
+        import json
+        os.makedirs(os.path.dirname(CACHE_PATH), exist_ok=True)
+        with open(CACHE_PATH, "w", encoding="utf-8") as f:
+            json.dump({"key": _cache_key(days, max_setups, universe_limit),
+                       "collected_at": __import__("datetime").datetime.now()
+                                       .isoformat(timespec="seconds"),
+                       "trades": trades}, f)
+    except Exception as e:
+        print(f"  (could not cache trades: {e})")
+
+
 def collect_trades(days: int, max_setups: int, universe_limit: int) -> list:
     """
     One expensive pass: find setups with permissive thresholds, replay each.
@@ -458,6 +492,58 @@ def self_test() -> int:
           str(sys.stdout.encoding).lower().replace("-", "").startswith("utf8"),
           str(sys.stdout.encoding))
 
+    # ── reproducibility ─────────────────────────────────────────────────────
+    # The universe used to be "first N in whatever order Alpaca returned", so
+    # two runs measured different symbols and the difference looked like a
+    # result. Same input must give the same universe.
+    import stock_backtest as _bt
+
+    class _FakeResp:
+        status_code = 200
+        def __init__(self, order): self._order = order
+        def json(self):
+            return [{"symbol": s, "tradable": True, "status": "active"}
+                    for s in self._order]
+
+    # 3-letter tickers ending in X: under the 5-char limit and not matching the
+    # warrant/unit suffix regex, so they survive is_tradeable_instrument.
+    # (First attempt used SYM000 — six characters — and the filter dropped every
+    # one, producing an empty universe that looked like a code failure.)
+    _A = [chr(c) for c in range(ord("A"), ord("Z") + 1)]
+    syms = [f"{a}{b}X" for a in _A for b in _A][:300]
+    import random as _r
+    shuffled_a = syms[:];  _r.Random(1).shuffle(shuffled_a)
+    shuffled_b = syms[:];  _r.Random(2).shuffle(shuffled_b)
+
+    _orig_get = _bt.requests.get
+    try:
+        _bt.requests.get = lambda *a, **k: _FakeResp(shuffled_a)
+        u1 = _bt.get_universe(limit=50)
+        _bt.requests.get = lambda *a, **k: _FakeResp(shuffled_b)
+        u2 = _bt.get_universe(limit=50)
+    finally:
+        _bt.requests.get = _orig_get
+
+    check("universe is identical regardless of API response order", u1 == u2,
+          f"{len(u1)} symbols, first={u1[0] if u1 else None}")
+    check("universe spans the alphabet, not just the front",
+          bool(u1) and u1[-1] > u1[len(u1) // 2] > u1[0],
+          f"{u1[0]}..{u1[-1]}" if u1 else "empty")
+
+    # Cache must round-trip exactly, and must NOT serve a different shape.
+    import tempfile
+    _orig_cache = globals()["CACHE_PATH"]
+    globals()["CACHE_PATH"] = os.path.join(tempfile.mkdtemp(), "c.json")
+    try:
+        save_cached_trades(trades, 180, 400, 600)
+        same = load_cached_trades(180, 400, 600)
+        other = load_cached_trades(90, 400, 600)
+        check("cache round-trips the exact trade set", same == trades,
+              f"{len(same or [])} vs {len(trades)}")
+        check("cache refuses a different parameter set", other is None)
+    finally:
+        globals()["CACHE_PATH"] = _orig_cache
+
     check("bootstrap is deterministic for a given seed",
           bootstrap(coin, n_runs=200)["p50"] == bootstrap(coin, n_runs=200)["p50"])
     check("empty input returns None, not a fake distribution",
@@ -523,6 +609,8 @@ def main():
     ap.add_argument("--max-setups", type=int, default=120)
     ap.add_argument("--universe-limit", type=int, default=600)
     ap.add_argument("--self-test", action="store_true")
+    ap.add_argument("--fresh", action="store_true",
+                    help="ignore the cached trade set and re-collect")
     a = ap.parse_args()
 
     if a.self_test:
@@ -531,7 +619,20 @@ def main():
     print("PARAMETER STABILITY SWEEP")
     print(f"  lookback {a.days} days · min sample {MIN_SAMPLE} trades/cell\n")
 
-    trades = collect_trades(a.days, a.max_setups, a.universe_limit)
+    # Reuse the previous collection unless asked not to. Two analyses of the
+    # same cached trades are comparable; two fresh collections are not
+    # necessarily, because the market data underneath keeps moving. Comparing
+    # runs was how a +0.473R result became -0.182R overnight and looked like a
+    # finding rather than a different sample.
+    trades = None if a.fresh else load_cached_trades(a.days, a.max_setups,
+                                                     a.universe_limit)
+    if trades:
+        print(f"  using {len(trades)} CACHED trade(s) — "
+              f"run with --fresh to re-collect\n")
+    else:
+        trades = collect_trades(a.days, a.max_setups, a.universe_limit)
+        if trades:
+            save_cached_trades(trades, a.days, a.max_setups, a.universe_limit)
     if not trades:
         print("\nNo trades collected — nothing to sweep. Widen --days.")
         sys.exit(1)
