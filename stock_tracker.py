@@ -56,7 +56,15 @@ MONITOR_INTERVAL = int(os.getenv("STOCK_MONITOR_INTERVAL", "20"))   # 20 sec
 COMMAND_INTERVAL = int(os.getenv("STOCK_COMMAND_INTERVAL", "5"))
 
 ENTRY_START_ET   = os.getenv("STOCK_ENTRY_START", "07:00")
-ENTRY_END_ET     = os.getenv("STOCK_ENTRY_END", "10:30")
+# 10:00, not 10:30. Three independent reads of xGIa8Vg0PWM agree, and the third
+# is the strongest: his TradeVue "Performance by Hour" chart shows profits
+# peaking 09:00-10:00 and turning to LOSSES after 10:00. That is his own
+# measured P&L, not an opinion. The transcript ("between 7am and 10am") and a
+# separate model's audio read say the same.
+#
+# We were taking entries in the half hour where the trader we are copying
+# reliably loses money.
+ENTRY_END_ET     = os.getenv("STOCK_ENTRY_END", "10:00")
 FORCE_CLOSE_ET   = os.getenv("STOCK_FORCE_CLOSE", "15:50")
 
 MAX_HOLD_MINUTES = float(os.getenv("STOCK_MAX_HOLD_MIN", "120"))

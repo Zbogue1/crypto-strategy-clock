@@ -29,7 +29,11 @@ log = logging.getLogger(__name__)
 # ─── PILLAR THRESHOLDS ────────────────────────────────────────────────────────
 MIN_RVOL          = float(os.getenv("STOCK_MIN_RVOL", "5.0"))
 MIN_PCT_CHANGE    = float(os.getenv("STOCK_MIN_PCT", "10.0"))
-PRICE_MIN         = float(os.getenv("STOCK_PRICE_MIN", "1.0"))
+# $2, not $1. Confirmed three ways in xGIa8Vg0PWM: the transcript ("the price is
+# fine between 2 and 20"), the 5-Pillars slide ("Most day traders prefer $2.00 -
+# $20.00"), and the stock-selection criteria slide ("2-20 price"). Sub-$2 names
+# carry wider spreads relative to the move, which is the reason for the floor.
+PRICE_MIN         = float(os.getenv("STOCK_PRICE_MIN", "2.0"))
 PRICE_MAX         = float(os.getenv("STOCK_PRICE_MAX", "20.0"))
 # Small-account variant narrows to $5-10 (no leverage under $5)
 SMALL_ACCT_MIN    = float(os.getenv("STOCK_SMALL_PRICE_MIN", "5.0"))

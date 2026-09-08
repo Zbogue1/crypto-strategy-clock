@@ -163,6 +163,52 @@ in that same scan) drops a stock to 3 and rejects it.
 
 So the interaction, not the threshold, is doing the damage.
 
+---
+
+## Video 02, third read — VISUAL ONLY
+
+A second Gemini pass on the same video, prompted to **ignore the audio** and
+describe only what is on screen. The first pass was asked for "rules the speaker
+states", which biased it toward speech; it read slides incidentally but never
+described a chart, scanner or Level 2 window. This pass fixes that.
+
+| # | Finding (visible, not spoken) | Agreement | Status vs our code |
+|---|---|---|---|
+| 29 | **TradeVue "Performance by Hour": profits peak 09:00–10:00, LOSSES after 10:00** | `confirmed` x3 | ⚠️ `ENTRY_END_ET` was **10:30** |
+| 30 | Criteria slide: "2-20 price" | `confirmed` x3 | ⚠️ `PRICE_MIN` was **1.0** |
+| 31 | Scanner row YXT: Float 2.87M · **Rel Vol 8,066.61** · +84.62% | `confirmed` | Corroborates #13 — a short-window RVOL column we do not compute |
+| 32 | Quiz chart UPC: spiked, **failed to hold VWAP** → rejection | `confirmed` | ✅ `detect_pullback` requires holding VWAP |
+| 33 | Quiz chart RKDA: **pulled back below the 9 EMA** → rejection | `confirmed` | ✅ requires holding the 9 EMA |
+| 34 | Quiz chart TPET: **held the 9 EMA (~2.10)**, broke out → buy | `confirmed` | ✅ same rule, positive case |
+| 35 | YXT trade: entry 7.60, stop 7.45, risk **$750**, target 8.00–8.50 | `single source` | ~2% stop; ~1.2% of a $63k account |
+| 36 | TradeVue: win rate **76.47%**, avg win 1,625.74, avg loss −1,300.57 | `single source` | **conflicts with #24** |
+| 37 | Histogram "Performance by Instrument Relative Volume" spikes at 150%+ | `unclear` | 150% vs the 5x rule — different metric or different scale. Do not act on it. |
+
+### Why #29 is the most valuable line in this document
+
+It is the only rule sourced from the trader's own *measured outcomes* rather
+than from what he says about himself. Everything else is self-report; this is a
+P&L chart. And it contradicted our config in the direction that costs money —
+we were entering trades during the half hour his data shows as losing.
+
+### #36 — his stated ratio and his real one disagree
+
+He aims for "at least a two to one profit to loss ratio" (#24). His dashboard
+shows an average winner of 1,625.74 against an average loser of −1,300.57 —
+about **1.25:1** — carried by a 76% win rate.
+
+So the edge is in *frequency*, not payoff. He exits winners earlier than his
+stated target. Worth knowing before anyone "fixes" our exits to chase 2:1: that
+would be copying his intention rather than his behaviour, and his behaviour is
+what produced the record.
+
+### Method note
+
+The first Gemini pass and this one had the same model, same video, same account
+— only the prompt differed, and the second surfaced nine findings the first
+missed entirely, including the single most actionable one. A second reader is
+worth little if both readers are asked the same question.
+
 ### Next
 
 - #16 (50-day RVOL) is the cheapest high-value change in this whole document.
