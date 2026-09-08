@@ -40,12 +40,46 @@ ACTIVE = ("kalshi_", "fomo_", "stock_", "vision", "reconcile")
 BLOCKING: list = []
 WARNING: list = []
 
+# ─── ACKNOWLEDGED FALSE POSITIVES ─────────────────────────────────────────────
+# (kind, file, line) -> why it is safe. Checked, not guessed.
+#
+# WHY THIS EXISTS. These three printed on EVERY push for a full session and were
+# scrolled past every time — by both of us. A warning you learn to skip is worse
+# than no warning, because it hides the real one that arrives beside it. Same
+# failure as an alarm firing four times a night: the noise trains you to ignore
+# the signal.
+#
+# Anything listed here was verified by reading the code, and the reason is
+# recorded so a future reader can re-check rather than re-trust. If a line
+# number drifts, the entry stops matching and the warning comes back — which is
+# the correct behaviour, since the code it was about has moved.
+ACKNOWLEDGED = {
+    ("TRI-STATE", "kalshi_tracker.py", 1248):
+        "evaluate() has 7 returns and every one sets 'trade' to an explicit "
+        "True/False. None is not reachable, so `not x.get('trade')` is safe.",
+    ("TRI-STATE", "kalshi_tracker.py", 468):
+        "deposit() has exactly two returns, both with an explicit 'ok'. "
+        "None is not reachable.",
+    ("KEY-MISMATCH", "fomo_tracker.py", 2608):
+        "Second half of `get('liquidity_usd') or get('liquidity') or 0` — the "
+        "correct key is read first and this is a defensive fallback. Also sits "
+        "inside the Golem independent path, disabled 2026-09-08.",
+}
+
+SILENCED: list = []
+
 
 def block(kind, where, msg):
     BLOCKING.append((kind, where, msg))
 
 
 def warn(kind, where, msg):
+    # `where` looks like "kalshi_tracker.py:1248"
+    fname, _, lineno = str(where).partition(":")
+    key = (kind, fname, int(lineno) if lineno.isdigit() else -1)
+    if key in ACKNOWLEDGED:
+        SILENCED.append((kind, where, ACKNOWLEDGED[key]))
+        return
     WARNING.append((kind, where, msg))
 
 
@@ -292,6 +326,13 @@ def main() -> int:
 
 def report() -> int:
     print()
+    # Say how many were silenced, never hide the fact. A suppression list you
+    # cannot see is indistinguishable from a check that stopped running.
+    if SILENCED:
+        print(f"({len(SILENCED)} acknowledged false positive(s) suppressed — "
+              f"see ACKNOWLEDGED in tools/preflight.py)")
+        print()
+
     if not BLOCKING and not WARNING:
         print("CLEAN — safe to push.")
         return 0
