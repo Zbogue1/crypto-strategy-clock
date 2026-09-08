@@ -685,7 +685,9 @@ def _try_enter(c: dict, clock_note: str = ""):
     )
     if pos:
         _last_entry[sym] = time.time()
-        pm.log_entry(pos, snap, pillars, pb, review)
+        # c["bars"] is the exact window detect_pullback was handed during the
+        # scan — not a re-fetch. That distinction is the point of the snapshot.
+        pm.log_entry(pos, snap, pillars, pb, review, bars=c.get("bars"))
         if not SILENT:
             tg.send(tg.format_entry(pos, snap, pillars, review, pb))
 
@@ -708,6 +710,7 @@ def run_monitor():
         px = snap["price"]
         pf.update_high_water(sym, px)
 
+        bars = None
         reason = None
         if px <= p["stop"]:
             reason = "stop_loss"
@@ -729,9 +732,20 @@ def run_monitor():
                         log.info(f"{sym}: {high[0]['indicator']} — {high[0]['note']}")
 
         if reason:
+            # Capture the bar window this exit happened in, BEFORE closing.
+            # Re-fetching later would show the bar already closed and destroy
+            # the evidence of a forming-candle exit.
+            #
+            # Fetched here rather than unconditionally at the top of the loop:
+            # the monitor runs every 20s per position, so an unconditional call
+            # would multiply API load on every cycle. This costs one extra call
+            # only at the moment of an exit, and only when a price rule fired
+            # before we had reason to look at bars.
+            if bars is None:
+                bars = sd.get_bars(sym, "1Min", lookback_days=1)
             trade = pf.close_position(sym, px, reason=reason)
             if trade:
-                pm.log_outcome(sym, trade)      # always — this is the learning
+                pm.log_outcome(sym, trade, bars=bars)   # always — this is the learning
                 if not SILENT:
                     tg.send(tg.format_exit(trade))
             after = pf.get_summary()

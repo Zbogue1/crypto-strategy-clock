@@ -806,6 +806,66 @@ def sim_hud_state():
     return ok, L
 
 
+@scenario("decision_snapshot",
+          "Every buy and sell stores the bars it saw, with a closed/forming flag")
+def sim_decision_snapshot():
+    """
+    The forming-candle bug was invisible on a P&L report and obvious on a chart.
+    But a chart rebuilt LATER cannot show it — by then the bar has closed and
+    looks innocent. The window has to be frozen at the moment of the decision.
+
+    Three things must hold:
+      1. bars are captured, so a chart can be drawn at all
+      2. a still-forming newest bar is recorded as False, not silently True
+      3. an unjudgeable bar is None (unknown), never False — inventing evidence
+         of the bug we are hunting is worse than admitting we don't know
+    """
+    import stock_postmortem as PM
+    from datetime import datetime, timezone, timedelta
+
+    now = datetime.now(timezone.utc)
+
+    def bar(mins_ago, c=5.0):
+        t = (now - timedelta(minutes=mins_ago)).replace(second=0, microsecond=0)
+        return {"t": t.strftime("%Y-%m-%dT%H:%M:%SZ"),
+                "o": c, "h": c + 0.05, "l": c - 0.05, "c": c, "v": 9000}
+
+    closed_hist = [bar(i) for i in range(9, 1, -1)]
+
+    snap_closed  = PM.bar_snapshot(closed_hist + [bar(2)])
+    snap_forming = PM.bar_snapshot(closed_hist + [bar(0)])     # this minute
+    snap_junk    = PM.bar_snapshot(closed_hist + [{**bar(0), "t": "garbage"}])
+    snap_empty   = PM.bar_snapshot([])
+
+    capped = PM.bar_snapshot([bar(i) for i in range(400, 0, -1)])
+
+    # Check the STORED bars, not just the count. bar_count is derived from the
+    # input length, so a mutation that stored an empty list still reported the
+    # right count — the one thing this feature exists to do went unverified.
+    stored = snap_closed["bars"]
+    renderable = (len(stored) == snap_closed["bar_count"]
+                  and all(b.get("t") and b.get("o") is not None
+                          and b.get("h") is not None and b.get("l") is not None
+                          and b.get("c") is not None for b in stored))
+
+    L = [f"bars captured={snap_closed['bar_count']}",
+         f"bars actually stored={len(stored)} and chart-renderable={renderable}",
+         f"closed bar -> newest_bar_closed={snap_closed['newest_bar_closed']}",
+         f"forming bar -> {snap_forming['newest_bar_closed']} (want False)",
+         f"unparseable -> {snap_junk['newest_bar_closed']} (want None, not False)",
+         f"empty input safe={snap_empty['bar_count'] == 0}",
+         f"window capped at {capped['bar_count']} (limit {PM.SNAPSHOT_BARS})"]
+    ok = (snap_closed["bar_count"] > 0
+          and renderable
+          and len(capped["bars"]) == PM.SNAPSHOT_BARS
+          and snap_closed["newest_bar_closed"] is True
+          and snap_forming["newest_bar_closed"] is False
+          and snap_junk["newest_bar_closed"] is None
+          and snap_empty["bar_count"] == 0
+          and capped["bar_count"] == PM.SNAPSHOT_BARS)
+    return ok, L
+
+
 @scenario("stock_close", "Stock close on a bare state — no crash, cash credited")
 def sim_stock_close():
     import stock_portfolio as SP

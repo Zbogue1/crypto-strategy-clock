@@ -109,8 +109,73 @@ def _save(state: dict):
 
 # ─── LOGGING ──────────────────────────────────────────────────────────────────
 
+SNAPSHOT_BARS = int(os.getenv("STOCK_SNAPSHOT_BARS", "60"))
+
+
+def bar_snapshot(bars: list, decided_at: str = "",
+                 timeframe_sec: int = 60) -> dict:
+    """
+    Freeze the bar window a decision was made from.
+
+    WHY THIS EXISTS, AND WHY IT CANNOT BE RECONSTRUCTED LATER.
+
+    check_exit_signals used to read bars[-1] — the bar still FORMING — and the
+    monitor polls every 20s. On an unfinished candle the body is near zero, so
+    any upper wick satisfies "topping tail", and "made a new high, trading below
+    it" is the normal state of a candle mid-breakout. Both are severity high,
+    and a high signal closes the position. Every trade would have been exited
+    within a minute of entry, and on a P&L report that reads as a bad strategy
+    rather than a bug.
+
+    Re-fetching these bars afterwards DESTROYS the evidence: by then the bar has
+    closed and looks innocent. The window has to be recorded as the decision
+    function received it, at the moment it received it. That is the whole point.
+
+    `newest_bar_closed` is the single most valuable field here — it is what
+    makes that class of bug visible instead of merely inferable.
+    """
+    bars = list(bars or [])[-SNAPSHOT_BARS:]
+    newest_closed = None
+    if bars:
+        # _bar_closed() returns False for an UNPARSEABLE timestamp, because in
+        # the exit filter "can't judge it, so exclude it" is the safe move.
+        # Here False means "definitely still forming" — the signature of the bug
+        # we are hunting. Recording an unreadable timestamp as False would
+        # manufacture that evidence.
+        #
+        # So parse first. Only a timestamp we can actually read gets a verdict;
+        # anything else stays None.
+        ts = (bars[-1] or {}).get("t") or ""
+        try:
+            datetime.fromisoformat(str(ts).replace("Z", "+00:00"))
+            parseable = True
+        except Exception:
+            parseable = False
+
+        if not parseable:
+            log.warning(f"Snapshot: newest bar timestamp unreadable ({ts!r}) — "
+                        f"recording closure as UNKNOWN, not as 'forming'.")
+        else:
+            try:
+                from stock_signals import _bar_closed
+                newest_closed = _bar_closed(bars[-1], timeframe_sec)
+            except Exception as e:                # noqa: BLE001
+                log.warning(f"Snapshot: could not judge bar closure ({e})")
+    return {
+        "decided_at":  decided_at or datetime.now(timezone.utc).isoformat(),
+        "bar_count":   len(bars),
+        # Tri-state on purpose: True / False / None(unknown). Recording an
+        # unknown as False would invent evidence of the exact bug we are hunting.
+        "newest_bar_closed": newest_closed,
+        "newest_bar_t":      bars[-1].get("t") if bars else None,
+        "bars": [{"t": b.get("t"), "o": b.get("o"), "h": b.get("h"),
+                  "l": b.get("l"), "c": b.get("c"), "v": b.get("v")}
+                 for b in bars],
+    }
+
+
 def log_entry(pos: dict, snap: dict, pillars: dict,
-              pullback: dict, review: dict) -> int:
+              pullback: dict, review: dict, bars: list = None) -> int:
     """Record the full belief-state at entry. Returns the call id."""
     state = _load()
     cat = snap.get("catalyst") or {}
@@ -144,6 +209,14 @@ def log_entry(pos: dict, snap: dict, pillars: dict,
         "stop":             pos.get("stop"),
         "target":           pos.get("target"),
 
+        # The bars the entry decision actually saw. Chart-renderable, and
+        # queryable — "every entry taken via the obvious-mover exception",
+        # "every exit that fired on an unclosed bar".
+        "entry_snapshot": bar_snapshot(bars, pos.get("opened_at", "")),
+        "catalyst_exception": bool((snap.get("catalyst") or {}).get("exception")
+                                   or (pillars.get("pillars", {})
+                                       .get("catalyst", {}) or {}).get("exception")),
+
         # filled on close
         "outcome":     None,
         "exit":        None,
@@ -152,6 +225,7 @@ def log_entry(pos: dict, snap: dict, pillars: dict,
         "exit_reason": None,
         "held_minutes": None,
         "closed_at":   None,
+        "exit_snapshot": None,
     }
     state["calls"].append(record)
     _save(state)
@@ -160,8 +234,15 @@ def log_entry(pos: dict, snap: dict, pillars: dict,
     return record["id"]
 
 
-def log_outcome(symbol: str, trade: dict):
-    """Write the result back against the most recent open call for this symbol."""
+def log_outcome(symbol: str, trade: dict, bars: list = None):
+    """
+    Write the result back against the most recent open call for this symbol.
+
+    `bars` is the window the EXIT decision saw. This is the more important of
+    the two snapshots: the forming-candle bug lives on the exit side, and an
+    exit marker sitting mid-candle on a bar that then closed green is only
+    visible if the bars were captured at the moment of the decision.
+    """
     state = _load()
     rec = next((c for c in reversed(state["calls"])
                 if c["symbol"] == symbol and c["outcome"] is None), None)
@@ -172,6 +253,18 @@ def log_outcome(symbol: str, trade: dict):
     risk_ps = (rec.get("entry") or 0) - (rec.get("stop") or 0)
     pnl_ps  = (trade.get("exit") or 0) - (rec.get("entry") or 0)
 
+    snap = bar_snapshot(bars, trade.get("closed_at", ""))
+    if snap["newest_bar_closed"] is False:
+        # Loud, because this is the shape of a shipped bug rather than a
+        # normal exit. It is not proof — a stop-loss legitimately fires on the
+        # live price mid-bar — but every instance deserves a look.
+        log.warning(
+            f"Postmortem: {symbol} exited on reason={trade.get('reason')} "
+            f"while the newest bar was STILL FORMING ({snap['newest_bar_t']}). "
+            f"Expected for stop_loss/target (live price); suspicious for a "
+            f"candle-pattern reason."
+        )
+
     rec.update({
         "outcome":      "win" if trade.get("won") else "loss",
         "exit":         trade.get("exit"),
@@ -180,6 +273,7 @@ def log_outcome(symbol: str, trade: dict):
         "exit_reason":  trade.get("reason"),
         "held_minutes": trade.get("held_minutes"),
         "closed_at":    trade.get("closed_at"),
+        "exit_snapshot": snap,
     })
     _save(state)
     log.info(f"Postmortem: outcome for {symbol} — {rec['outcome']} "
