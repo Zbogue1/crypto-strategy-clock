@@ -42,7 +42,63 @@ MUTATIONS = {
  "reconcile_invariant": ("kalshi_portfolio.py",
     b"    state[\"cash\"]         = float(state.get(\"cash\", 0) or 0) + margin + net_pnl",
     b"    state[\"cash\"]         = float(state.get(\"cash\", 0) or 0) + margin + net_pnl + 1.0"),
+
+ # ── Added 2026-09-08. Coverage was 8 of 24 scenarios: everything built in one
+ # long session was hand-mutated once and never again. Hand verification is
+ # true at the moment it is done and decays silently — if an edit later stops a
+ # scenario catching anything, only this file would notice.
+ #
+ # These five were chosen by what a silent regression would COST, not by
+ # scenario order. The remainder are listed in UNCOVERED below.
+
+ # Exits judging an unfinished candle closed every position within a minute of
+ # entry. The single most expensive bug found in that session.
+ "forming_candle_no_exit": ("stock_signals.py",
+    b"    bars = [b for b in bars if _bar_closed(b, timeframe_sec)]",
+    b"    bars = list(bars)  # MUT: judge forming candles again"),
+
+ # A broken spread filter fails in both directions: reject every candidate, or
+ # reject none and trade names that cannot be exited cleanly.
+ "spread_filter": ("stock_signals.py",
+    b"    wide_spread = spread_ok is False",
+    b"    wide_spread = False  # MUT: spread never disqualifies"),
+
+ # Demotion that costs nothing is how a 0%-win-rate wallet kept full size.
+ "tier_b_halves_size": ("fomo_tracker.py",
+    b'    return "B", "wallet not on the watchlist"',
+    b'    return "A", "wallet not on the watchlist"  # MUT: unknown = trusted'),
+
+ # This exception is OUR rule, not Ross's. If it stops being bounded it becomes
+ # "catalyst optional", which is not what he says at all.
+ "obvious_mover_exception": ("stock_signals.py",
+    b"            obvious = (pct is not None and pct >= OBVIOUS_PCT",
+    b"            obvious = True or (pct is not None and pct >= OBVIOUS_PCT"),
+
+ # A token check that fails OPEN publishes the whole portfolio on a public URL.
+ "hud_state_endpoint": ("fomo_tracker.py",
+    b"    if not HUD_TOKEN:\n        return False",
+    b"    if not HUD_TOKEN:\n        return True  # MUT: open to everyone"),
 }
+
+# Scenarios with NO automated mutation yet. Each was hand-mutated when written,
+# so it is verified as of 2026-09-08 — but that verification does not repeat.
+# A regression in any of these would go unnoticed by this tool.
+#
+# Ordered by consequence, worst first:
+UNCOVERED = [
+    "decision_snapshot",        # evidence capture; a silent break loses the
+                                # only record of why a trade happened
+    "float_failure_retries",    # a throttled lookup cached as "no float" for a
+                                # day suppresses qualification invisibly
+    "underfunded_book_alarms",  # a halted book going quiet again
+    "fresh_token_dropped_early",# wasted research spend on pre-rejected tokens
+    "report_covers_both_books", # a losing book hidden from the headline
+    "no_bet_price_display",     # inverted entry price corrupts calibration
+    "funnel_accumulates",       # diagnostics that misattribute rejections
+    "rvol_lookback_50d",        # threshold drift back to 30 days
+    "circuit_breakers",         # pre-existing, never covered
+    "position_sizing",          # pre-existing, never covered
+]
 
 def run(scn):
     env=dict(os.environ); env["PYTHONDONTWRITEBYTECODE"]="1"
@@ -71,7 +127,31 @@ for scn, (fname, anchor, mutant) in MUTATIONS.items():
         useless.append(scn)
 
 print()
+
+# Report the gap explicitly. A tool that silently covers a third of the suite
+# is itself the "green light over untested code" problem it exists to prevent —
+# a clean run here reads as "the suite is trustworthy" and only means "the
+# scenarios I happen to know about are".
+try:
+    _all = subprocess.run([sys.executable, "-B", str(SIM), "--list"],
+                          cwd=str(ROOT), capture_output=True, text=True,
+                          timeout=60).stdout
+    total = sum(1 for line in _all.splitlines()
+                if line.strip() and not line.startswith(" ") and "  " in line)
+except Exception:
+    total = 0
+
+covered = len(MUTATIONS)
+print(f"COVERAGE: {covered} scenario(s) have an automated mutation.")
+if UNCOVERED:
+    print(f"          {len(UNCOVERED)} do NOT — hand-verified once, "
+          f"not re-checked:")
+    for s in UNCOVERED:
+        print(f"            - {s}")
+    print("          A regression in those is invisible to this tool.")
+
+print()
 if useless:
     print(f"{len(useless)} scenario(s) PROVE NOTHING: {', '.join(useless)}")
     sys.exit(len(useless))
-print("Every scenario fails when its target is broken.")
+print("Every COVERED scenario fails when its target is broken.")
