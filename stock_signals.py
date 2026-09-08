@@ -27,28 +27,46 @@ from typing import Optional
 log = logging.getLogger(__name__)
 
 # ─── PILLAR THRESHOLDS ────────────────────────────────────────────────────────
-MIN_RVOL          = float(os.getenv("STOCK_MIN_RVOL", "5.0"))
+# 3.0, down from Ross's stated 5.0 — and this is the one place our own
+# measurement overrules the source, so the reasoning is written down.
+#
+# tools/param_sweep.py, 674 replayed trades, 2026-03-12 to 2026-09-04,
+# train/test split at 2026-06-01:
+#
+#     2x  n=199  +0.316R  5th +0.156  100% profitable  SOLID
+#     3x  n=134  +0.269R  5th +0.074   99%             SOLID
+#     4x  n= 91  +0.154R               84%             NOISE
+#     5x  n= 67  +0.075R               64%             NOISE   <- was here
+#
+# Performance falls monotonically as the threshold rises, and 5x is a coin
+# flip. Walk-forward chose 2x on the first half (+0.345R) and it returned
+# +0.279R on the second — HELD, 19% decay, on data it never saw.
+#
+# WHY 3 AND NOT 2, since 2 measured best. Two reasons, both honest hedges:
+#   - The backtest screens on gain/RVOL/price only. The live bot also demands
+#     catalyst, float and a valid pullback. It is measuring the Ross ENTRY
+#     PATTERN, not Stock Golem, so a threshold tuned to it may not transfer.
+#   - This estimate has flipped sign twice in one night on smaller samples.
+#     One clean run is not enough to abandon a number three independent
+#     readings attribute to Ross.
+# 3x is Monte-Carlo solid at 99%, doubles the sample versus 5x, and stays
+# nearer the source. If a second clean run agrees, 2x is the better answer.
+MIN_RVOL          = float(os.getenv("STOCK_MIN_RVOL", "3.0"))
 MIN_PCT_CHANGE    = float(os.getenv("STOCK_MIN_PCT", "10.0"))
-# $3.
+# Back to $2 — Ross's stated figure, confirmed three ways in xGIa8Vg0PWM (the
+# transcript, the 5-Pillars slide, and the stock-selection criteria slide).
 #
-# Ross says $2 (transcript, the 5-Pillars slide, and the criteria slide all
-# agree). Our own data says higher is better, and this is the one place where
-# measurement outranks the source — he trades a different feed, a different
-# broker and far larger size, so his spread economics are not ours.
+# This was briefly $3 on the strength of a sweep that showed expectancy rising
+# monotonically with the price floor. That reading did not survive. The run it
+# came from drew a different universe each time — get_universe took whatever
+# order Alpaca returned — so successive runs measured different symbols and the
+# trend was an artefact of the sample, not the threshold.
 #
-# tools/param_sweep.py, 281 replayed trades over 180 days:
-#     $0.50  +0.274R   $1  +0.358R   $2  +0.473R
-#     $3     +0.556R   $4  +0.637R   $5  +0.637R
-#
-# Monotonic, and monotonic in the same direction across three separate runs
-# (60-day, 232-trade, 281-trade). Walk-forward chose $3 on the first half of the
-# period and it HELD on the second (+0.500R train -> +0.596R test).
-#
-# Stopping at $3 rather than $4-5 deliberately: the higher cells rest on n=25,
-# they drift further from a threshold three sources attribute to Ross, and
-# raising the floor also shrinks an already thin candidate pool. $3 is the
-# furthest the evidence carries without over-fitting to one six-month window.
-PRICE_MIN         = float(os.getenv("STOCK_PRICE_MIN", "3.0"))
+# On the corrected run (674 trades, deterministic universe, full window) EVERY
+# price cell is NOISE, and walk-forward rated the best of them WEAK with 68%
+# decay out of sample. There is no measurement here that outranks the source,
+# so the source wins.
+PRICE_MIN         = float(os.getenv("STOCK_PRICE_MIN", "2.0"))
 PRICE_MAX         = float(os.getenv("STOCK_PRICE_MAX", "20.0"))
 # Small-account variant narrows to $5-10 (no leverage under $5)
 SMALL_ACCT_MIN    = float(os.getenv("STOCK_SMALL_PRICE_MIN", "5.0"))

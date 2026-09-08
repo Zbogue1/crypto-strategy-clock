@@ -213,17 +213,47 @@ worth little if both readers are asked the same question.
 
 ## Measured against our own data — `tools/param_sweep.py`
 
-281 replayed trades, 180 days, walk-forward split at 2026-05-08.
+> **The first three runs of this tool were invalid.** `get_universe()` returned
+> symbols in whatever order Alpaca sent them, so every run screened a different
+> universe. Successive runs produced 281, 147 and 213 trades over the same
+> window and the expectancy flipped sign. Conclusions drawn from them —
+> including a `PRICE_MIN` change to $3 — were artefacts of the sample. Fixed by
+> sorting and striding the universe, and by caching the collected trade set.
+> Only the final run below is trustworthy.
 
-| Threshold | Our data says | Action |
-|---|---|---|
-| RVOL | **plateau 4x–7x**, all +0.42 to +0.47R | keep 5.0 — mid-plateau |
-| PRICE_MIN | monotone rising $0.5 → $5 across **three separate runs** | **$2 → $3** |
-| MIN_PCT | peak 15–20%, 10% marginally below | keep 10.0 — inside noise |
+**674 trades · 2026-03-12 → 2026-09-04 · 4,000-symbol universe · split 2026-06-01**
 
-Walk-forward: all three HELD. RVOL chose 6x on train (+0.500R) and scored
-+0.432R on test; PRICE_MIN chose $3 (+0.500R → +0.596R); MIN_PCT chose 10%
-(+0.333R → +0.587R).
+| Threshold | Monte Carlo | Walk-forward | Action |
+|---|---|---|---|
+| RVOL | 2x and 3x **solid**; 4x+ NOISE; **5x = 64%, a coin flip** | 2x HELD (+0.345 → +0.279R) | **5.0 → 3.0** |
+| PRICE_MIN | every cell NOISE | $4 WEAK, 68% decay | **$3 → $2** (revert) |
+| MIN_PCT | every cell NOISE | 5% FAILED | keep 10.0 |
+
+```
+MIN_RVOL   2x  n=199  +0.316R  5th +0.156  100%  SOLID
+           3x  n=134  +0.269R  5th +0.074   99%  SOLID
+           4x  n= 91  +0.154R               84%  NOISE
+           5x  n= 67  +0.075R               64%  NOISE
+```
+
+### The RVOL finding contradicts the source
+
+Performance falls monotonically as the threshold rises. 5x — stated by Ross and
+confirmed from three independent readings — is indistinguishable from a losing
+setting on our data.
+
+Set to **3.0**, not 2.0, deliberately. 2x measured best and is the one
+walk-forward validated, but two hedges apply: the backtest screens on
+gain/RVOL/price only while the live bot also demands catalyst, float and a valid
+pullback, so it is measuring the entry *pattern* rather than Stock Golem; and
+this estimate flipped sign twice in one night on smaller samples. 3x is solid at
+99%, doubles the sample versus 5x, and stays nearer the source. **If a second
+clean run agrees, 2x is the better answer.**
+
+### PRICE_MIN reverted
+
+$3 came from the broken runs. On corrected data every price cell is NOISE. No
+measurement outranks the source here, so Ross's $2 stands.
 
 ### Three caveats that matter more than the result
 
