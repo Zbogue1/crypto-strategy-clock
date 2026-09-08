@@ -45,6 +45,52 @@ PAPER_URL = "https://paper-api.alpaca.markets"
 FEED      = os.getenv("ALPACA_FEED", "iex")   # free tier = iex
 
 
+# ─── MARKET CALENDAR ──────────────────────────────────────────────────────────
+
+_calendar_cache: dict = {}      # "YYYY-MM-DD" -> bool
+
+
+def is_trading_day(day=None) -> bool:
+    """
+    Is `day` (ET date, default today) a session the market actually holds?
+
+    in_entry_window() only tested `weekday() >= 5`, so every market HOLIDAY read
+    as a normal trading day: Labor Day 2026-09-07 is a Monday, the scan would
+    have run 07:00-10:30 against a closed market and screened stale quotes.
+
+    Alpaca's /v2/calendar returns entries ONLY for real sessions, so absence
+    from the response is the holiday test. Cached per date — one call a day.
+
+    FAILS OPEN. If the calendar can't be reached we assume the market is open:
+    scanning on a holiday finds nothing and costs a few API calls, while
+    wrongly skipping a real session costs the whole day. Loud in the log either
+    way.
+    """
+    from datetime import date as _date
+    if day is None:
+        try:
+            from zoneinfo import ZoneInfo
+            day = datetime.now(ZoneInfo("America/New_York")).date()
+        except Exception:
+            day = datetime.now(timezone.utc).date()
+    key = day.isoformat() if isinstance(day, _date) else str(day)
+
+    if key in _calendar_cache:
+        return _calendar_cache[key]
+
+    d = _get(PAPER_URL, "/v2/calendar", {"start": key, "end": key})
+    if d is None:
+        log.warning(f"Market calendar unreachable for {key} — assuming OPEN. "
+                    f"A holiday scan is cheap; a skipped session is not.")
+        return True
+
+    open_today = any(str(e.get("date", "")).startswith(key) for e in (d or []))
+    _calendar_cache[key] = open_today
+    if not open_today:
+        log.info(f"{key} is not a trading session (holiday or weekend).")
+    return open_today
+
+
 # ─── INSTRUMENT FILTERING ─────────────────────────────────────────────────────
 
 # Suffixes that denote non-common-stock instruments on US exchanges.

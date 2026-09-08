@@ -60,6 +60,8 @@ ENTRY_END_ET     = os.getenv("STOCK_ENTRY_END", "10:30")
 FORCE_CLOSE_ET   = os.getenv("STOCK_FORCE_CLOSE", "15:50")
 
 MAX_HOLD_MINUTES = float(os.getenv("STOCK_MAX_HOLD_MIN", "120"))
+# How many of the day's gainers to actually screen (get_movers fetches 50).
+SCAN_MAX_MOVERS  = int(os.getenv("STOCK_SCAN_MAX_MOVERS", "50"))
 SILENT           = os.getenv("STOCK_SILENT", "false").lower() == "true"
 # "I'm online" on every Railway restart is noise. Off unless asked for.
 ANNOUNCE_START   = os.getenv("STOCK_ANNOUNCE_START", "false").lower() == "true"
@@ -88,6 +90,10 @@ def in_entry_window() -> tuple:
     t = now_et()
     if t.weekday() >= 5:
         return False, "weekend"
+    # Weekday alone is not a session. Labor Day 2026-09-07 is a Monday, and
+    # without this the scan runs 07:00-10:30 against a closed market.
+    if not sd.is_trading_day(t.date()):
+        return False, "market holiday"
     start, end = _parse_hhmm(ENTRY_START_ET), _parse_hhmm(ENTRY_END_ET)
     cur = t.time()
     if cur < start:
@@ -530,7 +536,11 @@ def run_scan(force: bool = False, announce: bool = False) -> list:
               "failed_pillars": 0, "thin_bars": 0, "no_pullback": 0,
               "candidates": 0, "pillar_detail": {}}
 
-    for m in movers[:20]:
+    # Was a hard-coded 20. The screener returned 31 gainers on 2026-09-04 and
+    # 11 of them were never examined — silently, since the funnel counted only
+    # what it looked at. A stock cannot qualify if it is never screened, and the
+    # scan is the cheap part.
+    for m in movers[:SCAN_MAX_MOVERS]:
         sym = m["symbol"]
         if time.time() - _last_entry.get(sym, 0) < REENTRY_COOLDOWN:
             funnel["cooldown"] += 1
