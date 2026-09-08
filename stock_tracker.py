@@ -410,27 +410,9 @@ def build_diagnostic() -> str:
     allowed, why = pf.can_trade()
     L.append(f"Risk gate:   {'clear' if allowed else 'BLOCKED — ' + why}")
 
-    # 2b. Probe the news endpoint directly. The catalyst pillar rejected 10 of
-    # 17 candidates for "no news", which is either a quiet tape or an endpoint
-    # this account cannot reach — and the funnel alone can't tell them apart.
-    # Ask a mega-cap that always has coverage: no headlines for AAPL means the
-    # feed is broken, not that Apple had a quiet two days.
-    try:
-        probe = sd.get_news("AAPL", hours=48, limit=5)
-        if sd.NEWS_FEED_OK:
-            L.append(f"News feed:   OK ({len(probe)} headline(s) for AAPL/48h)")
-            if not probe:
-                L.append("             ...but zero for AAPL — suspicious, "
-                         "check tier permissions")
-        else:
-            L.append(f"News feed:   BROKEN — {sd.NEWS_FEED_ERROR}")
-            L.append("             Pillar 3 cannot verify any catalyst, so it")
-            L.append("             blocks every setup. This is the likely")
-            L.append("             reason nothing has traded.")
-    except Exception as e:
-        L.append(f"News feed:   ERROR {str(e)[:70]}")
-
-    # 3. Does the screener return anything?
+    # 3. Does the screener return anything? (Moved ABOVE the news probe so the
+    # probe can use the real gainers instead of a mega-cap.)
+    movers = []
     try:
         movers = sd.get_movers(top=50, min_pct=sig.MIN_PCT_CHANGE)
         L.append(f"Screener:    {len(movers)} gainer(s) at >= {sig.MIN_PCT_CHANGE:.0f}%")
@@ -444,6 +426,73 @@ def build_diagnostic() -> str:
                 for m in movers[:5]))
     except Exception as e:
         L.append(f"Screener:    ERROR {str(e)[:60]}")
+
+    # 3b. NEWS COVERAGE — probed against the stocks we actually screen.
+    #
+    # This used to ask AAPL only. AAPL always has news, so a green result proved
+    # the endpoint answers and NOTHING about whether Benzinga covers a $3
+    # biotech up 45% — which is the entire question, because catalyst is the top
+    # rejector (11 of 14 on the last scan).
+    #
+    # Two possibilities with opposite fixes, and the funnel cannot tell them
+    # apart:
+    #   coverage gap   -> the feed does not carry these names. A second source
+    #                     (Twitter/CT, web search) would genuinely help.
+    #   quiet tape     -> the feed carries them and they really have no news.
+    #                     A second source just confirms the absence; the answer
+    #                     is the obvious-mover exception, perhaps looser.
+    try:
+        anchor = sd.get_news("AAPL", hours=48, limit=5)
+        if not sd.NEWS_FEED_OK:
+            L.append(f"News feed:   BROKEN — {sd.NEWS_FEED_ERROR}")
+            L.append("             Pillar 3 cannot verify any catalyst, so it")
+            L.append("             blocks every setup.")
+        else:
+            L.append(f"News feed:   endpoint OK ({len(anchor)} for AAPL/48h)")
+            sample = [m["symbol"] for m in movers[:8]]
+            if not sample:
+                L.append("             no gainers to probe — cannot judge coverage")
+            else:
+                covered, bare, failed = [], [], []
+                for symb in sample:
+                    try:
+                        n = len(sd.get_news(symb, hours=48, limit=5))
+                        if not sd.NEWS_FEED_OK:
+                            failed.append(symb)
+                        elif n:
+                            covered.append(f"{symb}:{n}")
+                        else:
+                            bare.append(symb)
+                    except Exception:
+                        failed.append(symb)
+                    time.sleep(0.15)
+
+                L.append(f"             REAL GAINERS: {len(covered)} with news, "
+                         f"{len(bare)} without, {len(failed)} errored")
+                if covered:
+                    L.append("               has news: " + ", ".join(covered[:8]))
+                if bare:
+                    L.append("               no news:  " + ", ".join(bare[:8]))
+                if failed:
+                    L.append("               errored:  " + ", ".join(failed[:8]))
+
+                # The verdict is the point of the whole probe.
+                n_ok = len(covered)
+                if failed and not covered:
+                    L.append("             VERDICT: feed reachable for AAPL but "
+                             "failing on small caps — coverage/permission gap.")
+                elif n_ok == 0 and bare:
+                    L.append("             VERDICT: zero coverage of today's "
+                             "movers. A second news source would help.")
+                elif n_ok >= max(1, len(sample) // 2):
+                    L.append("             VERDICT: feed DOES cover these names. "
+                             "Catalyst rejections are a quiet tape, not a gap — "
+                             "a second source would not change them.")
+                else:
+                    L.append("             VERDICT: partial coverage. Some movers "
+                             "carry no news at all; judge per stock.")
+    except Exception as e:
+        L.append(f"News feed:   ERROR {str(e)[:70]}")
 
     # 4. Where did candidates die last scan?
     L += ["", "LAST SCAN FUNNEL"]
