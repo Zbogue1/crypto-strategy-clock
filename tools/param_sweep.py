@@ -47,6 +47,23 @@ from typing import Optional
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, ROOT)
 
+# ─── OUTPUT ENCODING ──────────────────────────────────────────────────────────
+# On Windows, a PIPE makes Python fall back to cp1252 for stdout, which cannot
+# encode the bar-chart block, the arrows, or the >= sign this tool prints. Run
+# it in a terminal and it works; run `... | tee sweep.txt` and it dies with
+# UnicodeEncodeError — after replaying 400 setups and collecting 147 trades,
+# before printing a single result. The whole run is lost to a formatting glyph.
+#
+# This codebase has been bitten by the identical bug before (U+2212 in the
+# daily-loss halt message), so fix the CLASS: force UTF-8 and never raise on an
+# unencodable character. A mangled symbol is a cosmetic problem; a crash after
+# several minutes of API calls is not.
+for _stream in (sys.stdout, sys.stderr):
+    try:
+        _stream.reconfigure(encoding="utf-8", errors="replace")
+    except Exception:
+        pass
+
 # Below this many trades a cell is noise, not a measurement.
 MIN_SAMPLE = int(os.getenv("SWEEP_MIN_SAMPLE", "12"))
 
@@ -417,6 +434,29 @@ def self_test() -> int:
     check("a positive mean carried by outliers is flagged, not celebrated",
           bl["mean"] > 0 and bl["p05"] < 0,
           f"mean={bl['mean']:+.3f} but p05={bl['p05']:+.3f}")
+
+    # Every rendered string must survive a Windows cp1252 pipe. The real run
+    # died on U+2265 after replaying 400 setups — the results were computed and
+    # then thrown away by a print. Render each block and encode it the way a
+    # piped Windows stdout would.
+    rendered = "\n".join([
+        format_sweep(sweep_1d(trades, "min_rvol", [2, 5]), "enc"),
+        monte_carlo_sweep(trades, "min_rvol", [2], "enc", n_runs=50),
+        walk_forward([{**t, "date": f"2026-0{1 + i % 2}-01"}
+                      for i, t in enumerate(trades)],
+                     "min_rvol", [2], "enc"),
+    ])
+    try:
+        rendered.encode("cp1252")
+        cp1252_safe = True
+    except UnicodeEncodeError:
+        cp1252_safe = False
+    check("output survives a Windows cp1252 pipe", cp1252_safe or
+          sys.stdout.encoding.lower().startswith("utf"),
+          "stdout=" + str(sys.stdout.encoding))
+    check("stdout was reconfigured to UTF-8",
+          str(sys.stdout.encoding).lower().replace("-", "").startswith("utf8"),
+          str(sys.stdout.encoding))
 
     check("bootstrap is deterministic for a given seed",
           bootstrap(coin, n_runs=200)["p50"] == bootstrap(coin, n_runs=200)["p50"])
