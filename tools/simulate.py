@@ -773,16 +773,36 @@ def sim_hud_state():
     dead = FT._safe(_boom, {"available": False})
     alive = FT._safe(lambda: {"available": True, "v": 1}, {"available": False})
 
+    # ── must NOT invent other services' books ───────────────────────────────
+    # The first version imported kalshi_portfolio and stock_portfolio from
+    # inside FOMO's process. Those modules read Redis creds from THIS
+    # environment, found FOMO's database, missed their key and built fresh
+    # defaults — served as fact. Kalshi events read $1,000 against a real
+    # $79.10; Stock read $2,000 against a real $10,000.
+    src = open(os.path.join(ROOT, "fomo_tracker.py"), encoding="utf-8").read()
+    hud = src[src.index("def hud_state"):src.index("def test_telegram_button")]
+    # Strip comments first — the block DESCRIBES the bug in prose, and matching
+    # on the explanation instead of the code is its own false positive. (It
+    # caught me: the first version of this check failed on my own comment.)
+    code = "\n".join(l for l in hud.splitlines()
+                     if not l.strip().startswith("#"))
+    no_cross_service = not any(
+        f"import {m}" in code or f"from {m}" in code
+        for m in ("kalshi_portfolio", "stock_portfolio",
+                  "kalshi_event_portfolio"))
+
     L = [f"unset token -> closed={closed_when_unset}",
          f"wrong={rejects_wrong} missing={rejects_none} prefix={rejects_prefix}",
          f"correct token accepted={accepts_right}",
          f"dead book degrades: available={dead.get('available')} "
          f"error_reported={bool(dead.get('error'))}",
-         f"healthy book unaffected={alive.get('available')}"]
+         f"healthy book unaffected={alive.get('available')}",
+         f"does not read other services' books={no_cross_service}"]
     ok = (closed_when_unset and rejects_wrong and rejects_none
           and rejects_prefix and accepts_right
           and dead.get("available") is False and bool(dead.get("error"))
-          and alive.get("available") is True)
+          and alive.get("available") is True
+          and no_cross_service)
     return ok, L
 
 

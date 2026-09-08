@@ -1875,48 +1875,33 @@ def hud_state():
             } for h in p.get("holdings", [])],
         }
 
-    def _kalshi():
-        from kalshi_portfolio import get_portfolio_summary as perp_summary
-        from kalshi_event_portfolio import get_summary as event_summary
-        perp, ev = perp_summary(), event_summary()
-        return {
-            "available": True,
-            "perps": {
-                "total_value": perp.get("total_value"),
-                "positions":   len(perp.get("positions", [])),
-            },
-            "events": {
-                "total_value": ev.get("total_value"),
-                "cash":        ev.get("cash"),
-                "at_risk":     ev.get("at_risk"),
-                "positions":   ev.get("n_positions"),
-                "wins":        ev.get("wins"),
-                "losses":      ev.get("losses"),
-            },
-        }
-
-    def _stock():
-        import stock_portfolio as sp
-        from stock_tracker import _load_funnel, _load_cumulative, in_entry_window
-        s = sp.get_summary()
-        open_now, note = in_entry_window()
-        return {
-            "available":    True,
-            "total_value":  s.get("total_value"),
-            "cash":         s.get("cash"),
-            "positions":    s.get("positions", []),
-            "halted":       s.get("halted_reason"),
-            "window_open":  open_now,
-            "window_note":  note,
-            "last_scan":    _load_funnel(),
-            "today":        _load_cumulative(),
-        }
-
+    # NOT reported here: Kalshi and Stock.
+    #
+    # Each bot is its own Railway service with its own Upstash database. When
+    # THIS process imports kalshi_portfolio or stock_portfolio, those modules
+    # read Redis credentials from *this* service's environment, find FOMO's
+    # database, fail to find their key — and construct a fresh default book.
+    #
+    # The first version of this endpoint did exactly that and served the result
+    # as fact: FOMO holdings [] with 0 trades, Kalshi events at $1,000 when the
+    # real figure was $79.10, Stock at $2,000 when it holds $10,000. Every
+    # number plausible, every number wrong. A dashboard that invents balances is
+    # worse than no dashboard.
+    #
+    # kalshi_event_portfolio._load() also PERSISTS a default book when it finds
+    # none, so a read-only endpoint was triggering a write.
+    #
+    # Each service must report its own book. See docs/planned_hud.md.
     return jsonify({
         "generated_at": datetime.now(timezone.utc).isoformat(),
-        "fomo":   _safe(_fomo,   {"available": False}),
-        "kalshi": _safe(_kalshi, {"available": False}),
-        "stock":  _safe(_stock,  {"available": False}),
+        "service":      "fomo",
+        "fomo":         _safe(_fomo, {"available": False}),
+        "kalshi":       {"available": False,
+                         "reason": "separate Railway service — poll its own "
+                                   "/state; this process cannot see its Redis"},
+        "stock":        {"available": False,
+                         "reason": "separate Railway service — poll its own "
+                                   "/state; this process cannot see its Redis"},
     })
 
 
