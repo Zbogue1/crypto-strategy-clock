@@ -79,6 +79,12 @@ MUTATIONS = {
     b"    if not HUD_TOKEN:\n        return False",
     b"    if not HUD_TOKEN:\n        return True  # MUT: open to everyone"),
 
+ # Placeholder wallets eating the API error budget silently disabled
+ # auto-removal — a safety feature switched off by arithmetic.
+ "revet_error_budget": ("fomo_tracker.py",
+    b"    return [w for w in (wallets or [])\n            if w.get(\"wallet\")",
+    b"    return list(wallets or [])  # MUT: placeholders back in\n    return [w for w in (wallets or [])\n            if w.get(\"wallet\")"),
+
  # The original sin: flagging a tranche as harvested when the sale ABORTED.
  # $MADE was marked sold while still holding 100% of its units. This scenario
  # existed the whole time and was in NEITHER list — the coverage report said

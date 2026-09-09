@@ -61,7 +61,10 @@ ACKNOWLEDGED = {
     ("TRI-STATE", "kalshi_tracker.py", 468):
         "deposit() has exactly two returns, both with an explicit 'ok'. "
         "None is not reachable.",
-    ("KEY-MISMATCH", "fomo_tracker.py", 2608):
+    # Line moved 2608 -> 2629 when real_wallets() was added above it. The
+    # acknowledgement is line-anchored on purpose, so it stopped matching and
+    # the warning came back for re-verification — which is the point.
+    ("KEY-MISMATCH", "fomo_tracker.py", 2629):
         "Second half of `get('liquidity_usd') or get('liquidity') or 0` — the "
         "correct key is read first and this is a defensive fallback. Also sits "
         "inside the Golem independent path, disabled 2026-09-08.",

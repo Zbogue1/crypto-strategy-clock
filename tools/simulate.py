@@ -998,6 +998,53 @@ def sim_spread_filter():
     return ok, L
 
 
+@scenario("revet_error_budget",
+          "Placeholder wallets must not consume the API error budget")
+def sim_revet_error_budget():
+    """
+    trusted_wallets.json carries 6 FILL_IN_* placeholders with no address. They
+    were sent to GMGN, failed inevitably, and counted toward `errors` — while
+    the denominator excluded them. Hence "27 of 21 wallets couldn't be fetched".
+
+    Worse than a wrong number: 6 guaranteed failures against 21 real wallets is
+    28.6% of a 30% budget, so ONE genuine failure disabled auto-removal. A
+    safety feature switched off by arithmetic nobody could see.
+    """
+    real = [{"wallet": f"So1anaAddr{i:03d}", "alias": f"real{i}"} for i in range(21)]
+    fake = [{"wallet": f"FILL_IN_{n}_WALLET_ADDRESS", "alias": n}
+            for n in ("Daumen", "GCR", "MevZoid", "mk4", "remus", "WhiteRussian")]
+    every = real + fake
+
+    # Call the REAL filter, not a copy of it. Reimplementing it here would test
+    # this file rather than fomo_tracker, and a mutation to the shipped code
+    # would sail through green.
+    import fomo_tracker as FT
+    kept = FT.real_wallets(every)
+
+    # Old behaviour: placeholders fail, are counted, denominator excludes them.
+    old_errors, old_denom = len(fake), len(real)
+    old_ratio = old_errors / old_denom
+
+    # New: placeholders never reach the API, so they cannot error.
+    new_errors = 0
+    new_ratio = new_errors / len(kept)
+
+    limit = 0.30
+    L = [f"placeholders filtered out={len(every) - len(kept)} of {len(every)}",
+         f"only real wallets sent={all(not w['wallet'].lower().startswith('fill_in') for w in kept)}",
+         f"OLD: {old_errors}/{old_denom} = {old_ratio*100:.1f}% of a "
+         f"{limit*100:.0f}% budget spent on placeholders",
+         f"NEW: {new_errors}/{len(kept)} = {new_ratio*100:.1f}%",
+         f"old budget nearly exhausted before any real failure="
+         f"{old_ratio > limit * 0.9}",
+         f"new leaves the budget intact={new_ratio < 0.01}"]
+    ok = (len(kept) == 21
+          and all(not w["wallet"].lower().startswith("fill_in") for w in kept)
+          and old_ratio > limit * 0.9      # the old way really was that close
+          and new_ratio < 0.01)
+    return ok, L
+
+
 @scenario("stock_close", "Stock close on a bare state — no crash, cash credited")
 def sim_stock_close():
     import stock_portfolio as SP

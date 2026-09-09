@@ -124,6 +124,27 @@ GOLEM_INDEPENDENT_TRADING = os.getenv("FOMO_GOLEM_TRADING", "false").lower() == 
 TIER_B_SIZE_MULTIPLIER = float(os.getenv("FOMO_TIER_B_SIZE_MULT", "0.5"))
 
 
+def real_wallets(wallets: list) -> list:
+    """
+    Watchlist entries with an actual address — placeholders removed.
+
+    trusted_wallets.json holds aspirational rows like
+    FILL_IN_Daumen_WALLET_ADDRESS. Sending them to GMGN guarantees a failure,
+    and those failures were counted against an error budget whose denominator
+    excluded them: "27 of 21 wallets couldn't be fetched".
+
+    6 certain failures against 21 real wallets is 28.6% of a 30% budget, so a
+    single genuine failure tipped it over and silently disabled auto-removal.
+
+    Pure and separate from the caller so it can be tested. While this lived
+    inline, a scenario covering it had to reimplement the filter — which tests
+    the copy, not the code.
+    """
+    return [w for w in (wallets or [])
+            if w.get("wallet")
+            and not str(w["wallet"]).lower().startswith("fill_in")]
+
+
 def _resolve_wallet_tier(alias: str) -> tuple:
     """
     (tier, why) for a wallet alias. Tier is "A" or "B"; unknown resolves to "B".
@@ -2976,14 +2997,34 @@ def run_weekly_discovery(ignore_gate: bool = False):
     # ── Run 0: Re-vet existing watchlist ──────────────────────────────────────
     try:
         wallet_data = load_trusted_wallets()
-        all_wallets = wallet_data.get("tier_a", []) + wallet_data.get("tier_b", [])
-        log.info(f"Re-vetting {len(all_wallets)} watchlisted wallets...")
+        every_wallet = wallet_data.get("tier_a", []) + wallet_data.get("tier_b", [])
+
+        # PLACEHOLDERS NEVER REACH THE API.
+        #
+        # trusted_wallets.json holds 6 entries like FILL_IN_Daumen_WALLET_ADDRESS
+        # — aspirational names with no address. They were being sent to GMGN,
+        # failing (they cannot do anything else), and landing in `errors`. But
+        # the denominator excluded them, so the message read "27 of 21 wallets
+        # couldn't be fetched" — a numerator larger than its own denominator.
+        #
+        # It was not only cosmetic. 6 guaranteed failures out of 21 real wallets
+        # is 28.6% of a 30% error budget, spent before a single genuine failure.
+        # One flaky fetch tipped it over and auto-removal switched off — a safety
+        # feature disabled by arithmetic nobody could see.
+        #
+        # Filtering here fixes the count by construction (same population on both
+        # sides) and stops 6 pointless API calls per run.
+        all_wallets = real_wallets(every_wallet)
+        skipped = len(every_wallet) - len(all_wallets)
+        log.info(f"Re-vetting {len(all_wallets)} watchlisted wallets"
+                 + (f" ({skipped} placeholder(s) skipped)" if skipped else ""))
+
         revett_results = revett_watchlist(all_wallets)   # mutates wallet dicts in-place
 
-        # Safety gate — if >50% of wallets errored (API down/rate-limited),
+        # Safety gate — if too many wallets errored (API down/rate-limited),
         # the data is too unreliable to act on. Skip removal entirely this run.
-        total_wallets  = len([w for w in all_wallets
-                               if w.get("wallet") and not w["wallet"].lower().startswith("fill_in")])
+        # Numerator and denominator now come from the SAME list.
+        total_wallets  = len(all_wallets)
         total_errors   = len(revett_results.get("errors", []))
         # If a meaningful share of wallets errored, the whole run is suspect —
         # removing wallets based on a partially-down API loses good traders
