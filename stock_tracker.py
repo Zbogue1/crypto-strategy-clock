@@ -253,6 +253,11 @@ def _accumulate_funnel(f: dict):
         for name, n in (f.get(key) or {}).items():
             bucket[name] = int(bucket.get(name, 0) or 0) + int(n or 0)
 
+    # Keep the spread distribution across the whole session, capped so a day of
+    # scans cannot bloat the Redis value.
+    samples = list(cum.get("spread_samples") or []) + list(f.get("spread_samples") or [])
+    cum["spread_samples"] = samples[-2000:]
+
     cum["last_scan_at"] = datetime.now(timezone.utc).isoformat()
     try:
         from stock_portfolio import _redis_set
@@ -296,6 +301,19 @@ def format_cumulative(cum: dict) -> str:
         pb = cum.get("no_pullback", 0)
         L.append(f"\npullback gate: {pb}/{passed} rejected "
                  f"({pb / passed * 100:.0f}%) across the day")
+
+    # The spread distribution — so the threshold is set from observation.
+    sp = sorted(cum.get("spread_samples") or [])
+    if sp:
+        def _p(q):
+            return sp[min(len(sp) - 1, int(q / 100 * len(sp)))]
+        import stock_signals as _sg
+        under = sum(1 for v in sp if v <= _sg.MAX_SPREAD_PCT)
+        L.append(f"\nspread seen ({len(sp)} quotes, IEX — wider than NBBO):")
+        L.append(f"  p10 {_p(10):.2f}%  median {_p(50):.2f}%  "
+                 f"p90 {_p(90):.2f}%  max {sp[-1]:.2f}%")
+        L.append(f"  {under}/{len(sp)} ({under / len(sp) * 100:.0f}%) pass the "
+                 f"{_sg.MAX_SPREAD_PCT:.1f}% limit")
 
     det = cum.get("pillar_detail") or {}
     if det:
@@ -633,7 +651,12 @@ def run_scan(force: bool = False, announce: bool = False) -> list:
               # failed_pillars produces rejections the pillar breakdown cannot
               # account for — the count says 14 and the reasons add to 9, which
               # reads as a mystery rather than a category.
-              "wide_spread": 0, "harmful_catalyst": 0}
+              "wide_spread": 0, "harmful_catalyst": 0,
+              # Every observed spread, so the threshold can be set from the
+              # distribution instead of from reasoning. The first guess (1.0%)
+              # rejected 60% of everything on its first live session; without
+              # these samples the second guess would be just as blind.
+              "spread_samples": []}
 
     # Was a hard-coded 20. The screener returned 31 gainers on 2026-09-04 and
     # 11 of them were never examined — silently, since the funnel counted only
@@ -652,6 +675,10 @@ def run_scan(force: bool = False, announce: bool = False) -> list:
             continue
 
         pillars = sig.score_pillars(snap, market_hot=True)
+        # Record the spread whether it passed or failed — a distribution built
+        # only from rejections tells you nothing about where the line should be.
+        if pillars.get("spread_pct") is not None:
+            funnel["spread_samples"].append(round(pillars["spread_pct"], 2))
         if not pillars["qualifies"]:
             rejected += 1
             funnel[rejection_bucket(pillars)] += 1

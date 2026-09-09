@@ -437,6 +437,23 @@ def sim_funnel_accumulates():
               and cum["wide_spread"] == 3 and cum["harmful_catalyst"] == 1
               and cum["failed_pillars"] == 23)
 
+    # Spread samples must accumulate across scans and be capped, so the
+    # threshold can be re-derived from observation rather than guessed twice.
+    # The first guess (1.0%) rejected 60% of everything on its first session.
+    #
+    # ON A SEPARATE DATE. _accumulate_funnel reads and writes one shared
+    # cumulative per ET date, so running these against `day` polluted the
+    # counters the pullback-rate assertion below depends on — the rate check
+    # started failing for a reason that had nothing to do with rates. Test
+    # pollution through shared state, caught by an unrelated assertion.
+    day = "2026-12-31"
+    ST._accumulate_funnel({"gainers": 5, "spread_samples": [0.4, 1.1, 2.2]})
+    sp_cum = ST._accumulate_funnel({"gainers": 5, "spread_samples": [3.9, 0.8]})
+    samples_ok = sorted(sp_cum["spread_samples"]) == [0.4, 0.8, 1.1, 2.2, 3.9]
+    big = ST._accumulate_funnel({"gainers": 1, "spread_samples": [1.0] * 5000})
+    capped_ok = len(big["spread_samples"]) <= 2000
+    day = "2026-08-31"                     # restore for the checks that follow
+
     # Attribution: a rejection must land in the bucket that EXPLAINS it.
     # While this lived inline in the scan loop it was untested, and a mutation
     # folding spread rejections back into failed_pillars passed cleanly.
@@ -480,10 +497,11 @@ def sim_funnel_accumulates():
          f"harmful={cum['harmful_catalyst']} pillars={cum['failed_pillars']}",
          f"pullback rate excludes disqualifiers={rate_correct}",
          f"rejections attributed correctly={attribution_ok} {buckets}",
+         f"spread samples accumulate={samples_ok} and are capped={capped_ok}",
          f"new day resets={rolled} (scans={fresh['scans']})",
          f"reports pullback rejection rate={reports_rate}"]
     return (summed and nested and rolled and reports_rate and rate_correct
-            and attribution_ok), L
+            and attribution_ok and samples_ok and capped_ok), L
 
 
 @scenario("forming_candle_no_exit",
@@ -920,7 +938,10 @@ def sim_spread_filter():
         return s
 
     tight  = SG.score_pillars(snap(0.20), market_hot=True)   # 1c on a $5 stock
-    wide   = SG.score_pillars(snap(3.00), market_hot=True)   # 15c on a $5 stock
+    # Comfortably past the limit, whatever the limit currently is. Hardcoding
+    # 3.00 here meant this case silently became a PASS the moment the threshold
+    # moved from 1.0% to 3.0% — the test kept its name and stopped testing.
+    wide   = SG.score_pillars(snap(SG.MAX_SPREAD_PCT * 2), market_hot=True)
     absent = SG.score_pillars(snap(None), market_hot=True)
     edge   = SG.score_pillars(snap(SG.MAX_SPREAD_PCT), market_hot=True)
 
@@ -957,8 +978,8 @@ def sim_spread_filter():
          f"({with_q['spread_pct']}% of price)",
          f"no quote -> spread_pct={without_q['spread_pct']} (want None, not 0)",
          f"tight 0.20% -> qualifies={tight['qualifies']} grade={tight['grade']}",
-         f"wide 3.00%  -> qualifies={wide['qualifies']} grade={wide['grade']} "
-         f"({wide['disqualified_by'][:40]})",
+         f"wide {SG.MAX_SPREAD_PCT * 2:.1f}% -> qualifies={wide['qualifies']} "
+         f"grade={wide['grade']} ({wide['disqualified_by'][:38]})",
          f"no quote    -> spread_ok={absent['spread_ok']} "
          f"qualifies={absent['qualifies']}",
          f"exactly at the limit passes={edge['spread_ok']}",

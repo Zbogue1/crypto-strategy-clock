@@ -98,12 +98,26 @@ OBVIOUS_RVOL      = float(os.getenv("STOCK_OBVIOUS_RVOL", "10.0"))
 # qualities — a stock you cannot get in and out of cleanly is not a setup at
 # any grade.
 #
-# THE NUMBER IS OURS. He never states one. 1.0% of price is chosen because a
-# typical stop on this strategy sits 2-4% below entry, so a 1% spread already
-# eats a quarter to a half of the risk before the trade moves — paid twice,
-# entering and exiting. Labelled in the note so a later review can tell our
-# invention from his rule.
-MAX_SPREAD_PCT    = float(os.getenv("STOCK_MAX_SPREAD_PCT", "1.0"))
+# THE NUMBER IS OURS. He never states one.
+#
+# It was 1.0%, reasoned from stop distance, and on its first live session it
+# disqualified 996 of 1652 screened stocks — 60% of everything, more than every
+# pillar combined. That is not a filter, it is a wall.
+#
+# WHY 1% WAS WRONG, and it is not just tightness. We read bid/ask from the
+# ALPACA IEX FEED, which sees 2-3% of consolidated volume. Fewer participants
+# posting means a wider quote, so an IEX spread is systematically worse than the
+# NBBO you would actually trade against. The capabilities doc said the IEX
+# limitation "cancels out for RVOL because both sides come from the same feed" —
+# true for a ratio, FALSE for a spread. We were rejecting stocks for
+# illiquidity we cannot actually measure.
+#
+# 3.0% is deliberately loose: on a $3 stock that is 9 cents, wide even by IEX
+# standards. The aim is to catch the genuinely untradeable (Ross's MMF) and
+# nothing else, until the observed distribution tells us where the real line is.
+# The funnel now records that distribution — see spread_samples in
+# stock_tracker.run_scan. Calibrate from data next session, do not guess again.
+MAX_SPREAD_PCT    = float(os.getenv("STOCK_MAX_SPREAD_PCT", "3.0"))
 
 # ─── PULLBACK PARAMETERS ──────────────────────────────────────────────────────
 MAX_RETRACE_PCT   = float(os.getenv("STOCK_MAX_RETRACE", "50.0"))
